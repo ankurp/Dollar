@@ -10,6 +10,8 @@
 		921A86B2193EAD2B0045F310 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 921A86B1193EAD2B0045F310 /* AppDelegate.swift */; };
 		921A86B4193EAD2B0045F310 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 921A86B3193EAD2B0045F310 /* Images.xcassets */; };
 		921A86C0193EAD2B0045F310 /* DollarTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 921A86BF193EAD2B0045F310 /* DollarTests.swift */; };
+		921A86CD193EADB20045F310 /* Dollar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 921A86CC193EADB20045F310 /* Dollar.swift */; };
+		921A86CE193EADB20045F310 /* Dollar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 921A86CC193EADB20045F310 /* Dollar.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -30,6 +32,7 @@
 		921A86B9193EAD2B0045F310 /* DollarTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DollarTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		921A86BE193EAD2B0045F310 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		921A86BF193EAD2B0045F310 /* DollarTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DollarTests.swift; sourceTree = "<group>"; };
+		921A86CC193EADB20045F310 /* Dollar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dollar.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,6 +56,7 @@
 		921A86A3193EAD2B0045F310 = {
 			isa = PBXGroup;
 			children = (
+				921A86C9193EAD340045F310 /* Classes */,
 				921A86AE193EAD2B0045F310 /* Dollar */,
 				921A86BC193EAD2B0045F310 /* DollarTests */,
 				921A86AD193EAD2B0045F310 /* Products */,
@@ -101,6 +105,14 @@
 				921A86BE193EAD2B0045F310 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		921A86C9193EAD340045F310 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				921A86CC193EADB20045F310 /* Dollar.swift */,
+			);
+			name = Classes;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -200,6 +212,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				921A86CD193EADB20045F310 /* Dollar.swift in Sources */,
 				921A86B2193EAD2B0045F310 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -209,6 +222,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				921A86C0193EAD2B0045F310 /* DollarTests.swift in Sources */,
+				921A86CE193EADB20045F310 /* Dollar.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

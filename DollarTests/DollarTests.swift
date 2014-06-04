@@ -20,16 +20,13 @@ class DollarTests: XCTestCase {
         super.tearDown()
     }
     
-    func testExample() {
-        // This is an example of a functional test case.
-        XCTAssert(true, "Pass")
+    func testFirst() {
+        XCTAssert($.first([1, 2, 3, 4]) as Double == 1, "Return first element")
+        XCTAssert($.first([]) as NSNull == NSNull(), "Return first element")
     }
     
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measureBlock() {
-            // Put the code you want to measure the time of here.
-        }
+    func testNoop() {
+        XCTAssert($.noop() as NSNull == NSNull(), "No op returns nothing")
     }
     
 }
