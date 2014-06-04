@@ -1,0 +1,394 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		921A86B2193EAD2B0045F310 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 921A86B1193EAD2B0045F310 /* AppDelegate.swift */; };
+		921A86B4193EAD2B0045F310 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 921A86B3193EAD2B0045F310 /* Images.xcassets */; };
+		921A86C0193EAD2B0045F310 /* DollarTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 921A86BF193EAD2B0045F310 /* DollarTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		921A86BA193EAD2B0045F310 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 921A86A4193EAD2B0045F310 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 921A86AB193EAD2B0045F310;
+			remoteInfo = Dollar;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		921A86AC193EAD2B0045F310 /* Dollar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Dollar.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		921A86B0193EAD2B0045F310 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		921A86B1193EAD2B0045F310 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		921A86B3193EAD2B0045F310 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		921A86B9193EAD2B0045F310 /* DollarTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DollarTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		921A86BE193EAD2B0045F310 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		921A86BF193EAD2B0045F310 /* DollarTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DollarTests.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		921A86A9193EAD2B0045F310 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		921A86B6193EAD2B0045F310 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		921A86A3193EAD2B0045F310 = {
+			isa = PBXGroup;
+			children = (
+				921A86AE193EAD2B0045F310 /* Dollar */,
+				921A86BC193EAD2B0045F310 /* DollarTests */,
+				921A86AD193EAD2B0045F310 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		921A86AD193EAD2B0045F310 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				921A86AC193EAD2B0045F310 /* Dollar.app */,
+				921A86B9193EAD2B0045F310 /* DollarTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		921A86AE193EAD2B0045F310 /* Dollar */ = {
+			isa = PBXGroup;
+			children = (
+				921A86B1193EAD2B0045F310 /* AppDelegate.swift */,
+				921A86B3193EAD2B0045F310 /* Images.xcassets */,
+				921A86AF193EAD2B0045F310 /* Supporting Files */,
+			);
+			path = Dollar;
+			sourceTree = "<group>";
+		};
+		921A86AF193EAD2B0045F310 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				921A86B0193EAD2B0045F310 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		921A86BC193EAD2B0045F310 /* DollarTests */ = {
+			isa = PBXGroup;
+			children = (
+				921A86BF193EAD2B0045F310 /* DollarTests.swift */,
+				921A86BD193EAD2B0045F310 /* Supporting Files */,
+			);
+			path = DollarTests;
+			sourceTree = "<group>";
+		};
+		921A86BD193EAD2B0045F310 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				921A86BE193EAD2B0045F310 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		921A86AB193EAD2B0045F310 /* Dollar */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 921A86C3193EAD2B0045F310 /* Build configuration list for PBXNativeTarget "Dollar" */;
+			buildPhases = (
+				921A86A8193EAD2B0045F310 /* Sources */,
+				921A86A9193EAD2B0045F310 /* Frameworks */,
+				921A86AA193EAD2B0045F310 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Dollar;
+			productName = Dollar;
+			productReference = 921A86AC193EAD2B0045F310 /* Dollar.app */;
+			productType = "com.apple.product-type.application";
+		};
+		921A86B8193EAD2B0045F310 /* DollarTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 921A86C6193EAD2B0045F310 /* Build configuration list for PBXNativeTarget "DollarTests" */;
+			buildPhases = (
+				921A86B5193EAD2B0045F310 /* Sources */,
+				921A86B6193EAD2B0045F310 /* Frameworks */,
+				921A86B7193EAD2B0045F310 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				921A86BB193EAD2B0045F310 /* PBXTargetDependency */,
+			);
+			name = DollarTests;
+			productName = DollarTests;
+			productReference = 921A86B9193EAD2B0045F310 /* DollarTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		921A86A4193EAD2B0045F310 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0600;
+				ORGANIZATIONNAME = "Encore Dev Labs LLC";
+				TargetAttributes = {
+					921A86AB193EAD2B0045F310 = {
+						CreatedOnToolsVersion = 6.0;
+					};
+					921A86B8193EAD2B0045F310 = {
+						CreatedOnToolsVersion = 6.0;
+						TestTargetID = 921A86AB193EAD2B0045F310;
+					};
+				};
+			};
+			buildConfigurationList = 921A86A7193EAD2B0045F310 /* Build configuration list for PBXProject "Dollar" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 921A86A3193EAD2B0045F310;
+			productRefGroup = 921A86AD193EAD2B0045F310 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				921A86AB193EAD2B0045F310 /* Dollar */,
+				921A86B8193EAD2B0045F310 /* DollarTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		921A86AA193EAD2B0045F310 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				921A86B4193EAD2B0045F310 /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		921A86B7193EAD2B0045F310 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		921A86A8193EAD2B0045F310 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				921A86B2193EAD2B0045F310 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		921A86B5193EAD2B0045F310 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				921A86C0193EAD2B0045F310 /* DollarTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		921A86BB193EAD2B0045F310 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 921A86AB193EAD2B0045F310 /* Dollar */;
+			targetProxy = 921A86BA193EAD2B0045F310 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		921A86C1193EAD2B0045F310 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				METAL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		921A86C2193EAD2B0045F310 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				METAL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		921A86C4193EAD2B0045F310 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				INFOPLIST_FILE = Dollar/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		921A86C5193EAD2B0045F310 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				INFOPLIST_FILE = Dollar/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		921A86C7193EAD2B0045F310 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Dollar.app/Dollar";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = DollarTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				METAL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+			};
+			name = Debug;
+		};
+		921A86C8193EAD2B0045F310 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Dollar.app/Dollar";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = DollarTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				METAL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		921A86A7193EAD2B0045F310 /* Build configuration list for PBXProject "Dollar" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				921A86C1193EAD2B0045F310 /* Debug */,
+				921A86C2193EAD2B0045F310 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		921A86C3193EAD2B0045F310 /* Build configuration list for PBXNativeTarget "Dollar" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				921A86C4193EAD2B0045F310 /* Debug */,
+				921A86C5193EAD2B0045F310 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		921A86C6193EAD2B0045F310 /* Build configuration list for PBXNativeTarget "DollarTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				921A86C7193EAD2B0045F310 /* Debug */,
+				921A86C8193EAD2B0045F310 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 921A86A4193EAD2B0045F310 /* Project object */;
+}
