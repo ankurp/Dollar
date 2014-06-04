@@ -10,8 +10,8 @@
 		921A86B2193EAD2B0045F310 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 921A86B1193EAD2B0045F310 /* AppDelegate.swift */; };
 		921A86B4193EAD2B0045F310 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 921A86B3193EAD2B0045F310 /* Images.xcassets */; };
 		921A86C0193EAD2B0045F310 /* DollarTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 921A86BF193EAD2B0045F310 /* DollarTests.swift */; };
-		921A86CD193EADB20045F310 /* Dollar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 921A86CC193EADB20045F310 /* Dollar.swift */; };
-		921A86CE193EADB20045F310 /* Dollar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 921A86CC193EADB20045F310 /* Dollar.swift */; };
+		92960072193EB96A001EDA23 /* Dollar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92960071193EB96A001EDA23 /* Dollar.swift */; };
+		92960073193EB96A001EDA23 /* Dollar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92960071193EB96A001EDA23 /* Dollar.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -32,7 +32,7 @@
 		921A86B9193EAD2B0045F310 /* DollarTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DollarTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		921A86BE193EAD2B0045F310 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		921A86BF193EAD2B0045F310 /* DollarTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DollarTests.swift; sourceTree = "<group>"; };
-		921A86CC193EADB20045F310 /* Dollar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dollar.swift; sourceTree = "<group>"; };
+		92960071193EB96A001EDA23 /* Dollar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Dollar.swift; path = Classes/Dollar.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,7 +110,7 @@
 		921A86C9193EAD340045F310 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				921A86CC193EADB20045F310 /* Dollar.swift */,
+				92960071193EB96A001EDA23 /* Dollar.swift */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -212,8 +212,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				921A86CD193EADB20045F310 /* Dollar.swift in Sources */,
 				921A86B2193EAD2B0045F310 /* AppDelegate.swift in Sources */,
+				92960072193EB96A001EDA23 /* Dollar.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -222,7 +222,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				921A86C0193EAD2B0045F310 /* DollarTests.swift in Sources */,
-				921A86CE193EADB20045F310 /* Dollar.swift in Sources */,
+				92960073193EB96A001EDA23 /* Dollar.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -393,6 +393,7 @@
 				921A86C5193EAD2B0045F310 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		921A86C6193EAD2B0045F310 /* Build configuration list for PBXNativeTarget "DollarTests" */ = {
 			isa = XCConfigurationList;
@@ -401,6 +402,7 @@
 				921A86C8193EAD2B0045F310 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
