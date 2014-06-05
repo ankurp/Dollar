@@ -51,11 +51,42 @@ struct $ {
         var result: AnyObject[] = [];
         
         while ++index < length {
-            //Todo
+            //@TODO Implement
         }
         return result;
     }
 
+    //$.indexOf([2, 3, 4, 5], 3)
+    //Return index of the value
+    static func indexOf(array: AnyObject[], value: AnyObject) -> Int {
+        //@TODO Implement
+        return 0
+    }
+
+    //$.initial([2, 3, 4, 5])
+    //Returns all except for last element
+    static func initial(array: AnyObject[]) -> AnyObject[] {
+        return self.initial(array, numElements: 1)
+    }
+    
+    //$.initial([2, 3, 4, 5], 2)
+    //Returns all except for last 2
+    static func initial(array: AnyObject[], numElements: Int) -> AnyObject[] {
+        return [] //@TODO Implement
+    }
+    
+    //$.intersection([1, 2, 3], [5, 2, 1, 4], [2, 1])
+    //Will return intersection of all arrays
+    static func intersection(arrays: AnyObject[]...) -> AnyObject[] {
+        return [] //@TODO Implement
+    }
+    
+    //$.last([1, 2, 3])
+    //Will return last element in the array
+    static func last(array: AnyObject[]) -> AnyObject {
+        return array[array.count - 1]
+    }
+    
     //$.noop()
     //A no-operation function.
     static func noop() -> AnyObject {

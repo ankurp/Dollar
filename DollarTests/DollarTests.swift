@@ -12,11 +12,9 @@ class DollarTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
-        // Put setup code here. This method is called before the invocation of each test method in the class.
     }
     
     override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
         super.tearDown()
     }
     
@@ -27,6 +25,30 @@ class DollarTests: XCTestCase {
     
     func testNoop() {
         XCTAssert($.noop() as NSNull == NSNull(), "No op returns nothing")
+    }
+    
+    func testCompact() {
+        XCTAssert($.compact([3, 4, 5]) as Int[] == [3, 4, 5], "Return truth array")
+    }
+    
+    func testFlatten() {
+        XCTAssert($.flatten([[3], 4, 5], isShallow: false) as Int[] == [3, 4, 5], "Return flat array")
+    }
+    
+    func testIndexOf() {
+        XCTAssert($.indexOf([[3], 4, 5], value: 4) as Int == 1, "Return index of value")
+    }
+    
+    func testInitial() {
+        XCTAssert($.initial([3, 4, 5]) as Int[] == [3, 4], "Return all values except for last")
+    }
+    
+    func testIntersection() {
+        XCTAssert($.intersection([3, 4, 5], [3, 4]) as Int[] == [3, 4], "Returns intersection")
+    }
+    
+    func testLast() {
+        XCTAssert($.last([3, 4, 5]) as Int == 5, "Returns last element in array")
     }
     
 }
