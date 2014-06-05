@@ -29,7 +29,7 @@ Will return intersection of all arrays
 `$.last([1, 2, 3])`
 Will return last element in the array
 
-Will add lazy evaluation using chaining
-`$([2,3])`
+Need to add lazy evaluation using chaining
+`$([[[2], 3], 4]).flatten().first().value()` should return 2
 
 More functions will be added first for all array types and then for dictionary type.
