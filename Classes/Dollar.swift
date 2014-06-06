@@ -87,6 +87,107 @@ struct $ {
         return array[array.count - 1]
     }
     
+    //$.difference([1, 2, 3], [2], [3])
+    //returns [1]
+    //Returns first array passed subtracted by remaining arrays
+    static func difference(arrays: AnyObject[]...) -> AnyObject[] {
+        return [] //@TODO implement
+    }
+    
+    //$.rest([2, 3, 4])
+    //returns [3, 4]
+    //Returns last n - 1 elements in array
+    static func rest(array: AnyObject[]) -> AnyObject[] {
+        return self.rest(array, numElements: 1)
+    }
+    
+    //$.rest([2, 3, 4], 2)
+    //returns [4]
+    //Returns last n - numElements elements in array
+    static func rest(array: AnyObject[], numElements: Int) -> AnyObject[] {
+        return [] //@TODO implement
+    }
+    
+    //$.findIndex([2, 3, 3]) { return $0 == 3 }
+    //returns 1
+    //Returns index of element
+    static func findIndex(array: AnyObject[], iterator: (AnyObject) -> Bool) -> Int {
+        return 0 //@TODO implement
+    }
+    
+    //$.findLastIndex([2, 3, 3]) { return $0 == 3 }
+    //returns 2
+    //Returns last index of element
+    static func findLastIndex(array: AnyObject[], iterator: (AnyObject) -> Bool) -> Int {
+        return 0 //@TODO implement
+    }
+    
+    //$.lastIndexOf([2, 3, 4], 3)
+    //returns 1
+    static func lastIndexOf(array: AnyObject[], value: AnyObject) -> Int {
+        return 0 //@TODO implement
+    }
+    
+    //$.pull()
+    static func pull(array: AnyObject[], values: AnyObject...) -> AnyObject[] {
+        return [] //@TODO implement
+    }
+    
+    //$.range()
+    static func range(endVal: Int) -> Int[] {
+        return self.range(0, endVal: endVal)
+    }
+
+    //$.range()
+    static func range(startVal: Int, endVal: Int) -> Int[] {
+        return self.range(startVal, endVal: endVal, incrementBy: 1)
+    }
+
+    //$.range()
+    static func range(startVal: Int, endVal: Int, incrementBy: Int) -> Int[] {
+        return [] //@TODO implement
+    }
+    
+    //$.remove()
+    static func remove(array: AnyObject, iterator: (AnyObject) -> Bool) -> AnyObject[] {
+        return [] //@TODO implement
+    }
+    
+    //$.sortedIndex()
+    static func sortedIndex(array: AnyObject, value: AnyObject) -> Int {
+        return 0 //@TODO implement
+    }
+
+    //$.union()
+    static func union(arrays: AnyObject[]...) -> AnyObject[] {
+        return [] //@TODO implement
+    }
+
+    //$.uniq()
+    static func uniq(array: AnyObject[]) -> AnyObject[] {
+        return [] //@TODO implement
+    }
+    
+    //$.without()
+    static func without(array: AnyObject[], values: Int...) -> AnyObject[] {
+        return [] //@TODO implement
+    }
+    
+    //$.xor()
+    static func xor(arrays: AnyObject[]...) -> AnyObject[] {
+        return [] //@TODO implement
+    }
+    
+    //$.zip()
+    static func zip(arrays: AnyObject[]...) -> AnyObject[] {
+        return [] //@TODO implement
+    }
+
+    //$.zipObject()
+    static func zipObject<T, E>(keys: T[], values: E[]) -> Dictionary<T, E> {
+        return Dictionary<T, E>() //@TODO implement
+    }
+    
     //$.noop()
     //A no-operation function.
     static func noop() -> AnyObject {
