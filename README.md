@@ -3,7 +3,7 @@ Dollar.swift
 
 A functional tool-belt for Swift Language. Library Source code is in Classes folder. 
 
-It is under construction so please be patient as more functions get added. If you are interested in contributing please fork this project implement new methods or changes and submit a pull request.
+It is under construction so please be patient as more functions get added. If you are interested in contributing please fork this project implement new methods or changes in the `Dollar.swift` file in the Classes folder and submit a pull request.
 
 `$.first([0, 1, false, 2, '', 3])`
 Gets the first element or first n elements of an array.
