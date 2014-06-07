@@ -117,26 +117,54 @@ struct $ {
     //$.findIndex([2, 3, 3]) { return $0 == 3 }
     //returns 1
     //Returns index of element
-    static func findIndex(array: AnyObject[], iterator: (AnyObject) -> Bool) -> Int {
-        return 0 //@TODO implement
+    static func findIndex(array: AnyObject[], iterator: (AnyObject) -> Bool) -> Int? {
+        for (index, elem : AnyObject) in enumerate(array) {
+            if iterator(elem) {
+                return index
+            }
+        }
+        return nil
     }
     
     //$.findLastIndex([2, 3, 3]) { return $0 == 3 }
     //returns 2
     //Returns last index of element
-    static func findLastIndex(array: AnyObject[], iterator: (AnyObject) -> Bool) -> Int {
-        return 0 //@TODO implement
+    static func findLastIndex(array: AnyObject[], iterator: (AnyObject) -> Bool) -> Int? {
+        let count = array.count
+        for (index, _) in enumerate(array) {
+            let reverseIndex = count - (index + 1)
+            let elem: AnyObject = array[reverseIndex]
+            if iterator(elem) {
+                return reverseIndex
+            }
+        }
+        return nil
     }
     
     //$.lastIndexOf([2, 3, 4], 3)
     //returns 1
-    static func lastIndexOf(array: AnyObject[], value: AnyObject) -> Int {
-        return 0 //@TODO implement
+    static func lastIndexOf<T: Equatable>(array: T[], value: T) -> Int? {
+        var count = array.count
+        for (index, _) in enumerate(array) {
+            let reverseIndex = count - (index + 1)
+            if value == array[reverseIndex] {
+                return reverseIndex
+            }
+        }
+        return nil
+    }
+    
+    static func contains<T : Equatable>(array: T[], value: T) -> Bool {
+        return array.filter({ $0 as? T == value }).count > 0
     }
     
     //$.pull()
-    static func pull(array: AnyObject[], values: AnyObject...) -> AnyObject[] {
-        return [] //@TODO implement
+    static func pull<T : Equatable>(array: T[], values: T...) -> T[] {
+        return self.pull(array, values: values)
+    }
+    
+    static func pull<T : Equatable>(array: T[], values: T[]) -> T[] {
+        return array.filter { !self.contains(values, value: $0) }
     }
     
     //$.range()
@@ -151,17 +179,26 @@ struct $ {
 
     //$.range()
     static func range(startVal: Int, endVal: Int, incrementBy: Int) -> Int[] {
-        return [] //@TODO implement
+        var result: Int[] = []
+        for var i = startVal; i < endVal; i = i + incrementBy {
+            result += i
+        }
+        return result
     }
     
     //$.remove()
-    static func remove(array: AnyObject, iterator: (AnyObject) -> Bool) -> AnyObject[] {
-        return [] //@TODO implement
+    static func remove(array: AnyObject[], iterator: (AnyObject) -> Bool) -> AnyObject[] {
+        return array.filter { !iterator($0) }
     }
-    
+        
     //$.sortedIndex()
-    static func sortedIndex(array: AnyObject, value: AnyObject) -> Int {
-        return 0 //@TODO implement
+    static func sortedIndex<T : Comparable>(array: T[], value: T) -> Int {
+        for (index, elem) in enumerate(array) {
+            if elem > value {
+                return index
+            }
+        }
+        return array.count
     }
 
     //$.union()
@@ -175,8 +212,8 @@ struct $ {
     }
     
     //$.without()
-    static func without(array: AnyObject[], values: Int...) -> AnyObject[] {
-        return [] //@TODO implement
+    static func without<T : Equatable>(array: T[], values: T...) -> T[] {
+        return self.pull(array, values: values)
     }
     
     //$.xor()
@@ -186,7 +223,19 @@ struct $ {
     
     //$.zip()
     static func zip(arrays: AnyObject[]...) -> AnyObject[] {
-        return [] //@TODO implement
+        var result: AnyObject[] = []
+        for _ in arrays {
+            result += [] as AnyObject[]
+        }
+        for (index, array) in enumerate(arrays) {
+            for (elemIndex, elem : AnyObject) in enumerate(array) {
+//                if let arr : AnyObject[]? = result[index] {
+//                    arr += elem
+//                }
+                //@TODO Implement
+            }
+        }
+        return result
     }
 
     //$.zipObject()

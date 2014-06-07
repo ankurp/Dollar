@@ -59,4 +59,58 @@ class DollarTests: XCTestCase {
         XCTAssert($.last([3, 4, 5]) as Int == 5, "Returns last element in array")
     }
     
+    func testFindIndex() {
+        
+    }
+    
+    func testFindLastIndex() {
+        
+    }
+    
+    func testFirstIndexOf() {
+        
+    }
+    
+    func testLastIndexOf() {
+        
+    }
+    
+    func testContains() {
+        
+    }
+    
+    func testRange() {
+        XCTAssert($.range(4) as Int[] == [0, 1, 2, 3], "Generates range")
+        XCTAssert($.range(1, endVal: 5) as Int[] == [1, 2, 3, 4], "Generates range")
+        XCTAssert($.range(0, endVal: 20, incrementBy: 5) as Int[] == [0, 5, 10, 15], "Generates range")
+    }
+    
+    func testRemove() {
+        let result = $.remove([1, 2, 3, 4, 5, 6], iterator: { $0 as Int == 2 || $0 as Int == 3 })
+        XCTAssert(result as Int[] == [1, 4, 5, 6], "Remove based on callback")
+    }
+    
+    func testSortedIndex() {
+        XCTAssert($.sortedIndex([3, 4, 6, 10], value: 5) as Int == 2, "Index to insert element at in a sorted array")
+        XCTAssert($.sortedIndex([10, 20, 30, 50], value: 40) as Int == 3, "Index to insert element at in a sorted array")
+    }
+    
+    func testWithout() {
+        XCTAssert($.without([3, 4, 5, 3, 5], values: 3, 5) as Int[] == [4], "Removes elements passed after the array")
+        XCTAssert($.without([3, 4, 5, 3, 5], values: 4) as Int[] == [3, 5, 3, 5], "Removes elements passed after the array")
+        XCTAssert($.without([3, 4, 5, 3, 5], values: 3, 4, 5) as Int[] == [], "Removes elements passed after the array")
+    }
+    
+    func testPull() {
+        XCTAssert($.pull([3, 4, 5, 3, 5], values: 3, 5) as Int[] == [4], "Removes elements passed after the array")
+        XCTAssert($.pull([3, 4, 5, 3, 5], values: 4) as Int[] == [3, 5, 3, 5], "Removes elements passed after the array")
+        XCTAssert($.pull([3, 4, 5, 3, 5], values: 3, 4, 5) as Int[] == [], "Removes elements passed after the array")
+    }
+    
+    func testZip() {
+        let x = $.zip(["fred", "barney"], [30, 40], [true, false])
+        XCTAssert(x as NSObject[] == [["fred", 30, true], ["barney", 40, false]], "Zip up arrays")
+
+    }
+    
 }
