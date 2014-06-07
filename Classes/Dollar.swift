@@ -1,6 +1,6 @@
 //
 //  $.swift
-//  Dollar
+//  Dollar - A functional tool-belt for Swift Language
 //
 //  Created by Ankur Patel on 6/3/14.
 //  Copyright (c) 2014 Encore Dev Labs LLC. All rights reserved.
@@ -10,13 +10,13 @@ import Foundation
 
 struct $ {
     
-    //$.first([0, 1, false, 2, '', 3]);
+    //$.first([0, 1, false, 2, '', 3])
     //Gets the first element or first n elements of an array.
-    static func first(collection: AnyObject[]) -> AnyObject {
-        if collection.isEmpty {
-            return NSNull()
+    static func first(array: AnyObject[]) -> AnyObject? {
+        if array.isEmpty {
+            return nil
         } else {
-            return collection[0];
+            return array[0]
         }
     }
     
@@ -81,8 +81,12 @@ struct $ {
     
     //$.last([1, 2, 3])
     //Will return last element in the array
-    static func last(array: AnyObject[]) -> AnyObject {
-        return array[array.count - 1]
+    static func last(array: AnyObject[]) -> AnyObject? {
+        if array.isEmpty {
+            return nil
+        } else {
+            return array[array.count - 1]
+        }
     }
     
     //$.difference([1, 2, 3], [2], [3])
@@ -192,7 +196,7 @@ struct $ {
     
     //$.noop()
     //A no-operation function.
-    static func noop() -> AnyObject {
-        return NSNull();
+    static func noop() -> AnyObject? {
+        return nil
     }
 }

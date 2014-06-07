@@ -20,11 +20,11 @@ class DollarTests: XCTestCase {
     
     func testFirst() {
         XCTAssert($.first([1, 2, 3, 4]) as Double == 1, "Return first element")
-        XCTAssert($.first([]) as NSNull == NSNull(), "Return first element")
+        XCTAssert($.first([]) == nil, "Return first element")
     }
     
     func testNoop() {
-        XCTAssert($.noop() as NSNull == NSNull(), "No op returns nothing")
+        XCTAssert($.noop() == nil, "No op returns nothing")
     }
     
     func testCompact() {
