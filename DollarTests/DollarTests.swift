@@ -108,9 +108,11 @@ class DollarTests: XCTestCase {
     }
     
     func testZip() {
-        let x = $.zip(["fred", "barney"], [30, 40], [true, false])
-        XCTAssert(x as NSObject[] == [["fred", 30, true], ["barney", 40, false]], "Zip up arrays")
-
+        XCTAssert($.zip(["fred", "barney"], [30, 40], [true, false]) as NSObject[] == [["fred", 30, true], ["barney", 40, false]], "Zip up arrays")
+    }
+    
+    func testZipObject() {
+        XCTAssert($.zipObject(["fred", "barney"], values: [30, 40]) as Dictionary<String, Int> == ["fred": 30, "barney": 40], "Zip up array to object")
     }
     
 }

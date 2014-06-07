@@ -223,16 +223,13 @@ struct $ {
     
     //$.zip()
     static func zip(arrays: AnyObject[]...) -> AnyObject[] {
-        var result: AnyObject[] = []
-        for _ in arrays {
+        var result: AnyObject[][] = []
+        for _ in arrays[0] {
             result += [] as AnyObject[]
         }
         for (index, array) in enumerate(arrays) {
             for (elemIndex, elem : AnyObject) in enumerate(array) {
-//                if let arr : AnyObject[]? = result[index] {
-//                    arr += elem
-//                }
-                //@TODO Implement
+                result[elemIndex] += elem
             }
         }
         return result
@@ -240,7 +237,11 @@ struct $ {
 
     //$.zipObject()
     static func zipObject<T, E>(keys: T[], values: E[]) -> Dictionary<T, E> {
-        return Dictionary<T, E>() //@TODO implement
+        var result = Dictionary<T, E>()
+        for (index, key) in enumerate(keys) {
+            result[key] = values[index]
+        }
+        return result
     }
     
     //$.noop()
