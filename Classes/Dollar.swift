@@ -22,14 +22,11 @@ struct $ {
     
     //$.compact([0, 1, false, 2, '', 3])
     //Remove all falsey values
-    static func compact(array: AnyObject[]) -> AnyObject[] {
-        var index = -1
-        let length = array.count
+    static func compact(array: AnyObject?[]) -> AnyObject[] {
         var result: AnyObject[] = []
-    
-        while ++index < length {
-            if let value : AnyObject = AnyObject?(array[index]) {
-                result += value
+        for elem: AnyObject? in array {
+            if let val: AnyObject = elem {
+                result += val
             }
         }
         return result
@@ -37,30 +34,27 @@ struct $ {
 
     //$.flatten([[2],3,4])
     //flatten array
-    static func flatten(array: AnyObject[], isShallow: Bool) -> AnyObject[] {
-        return self.flatten(array, isShallow: isShallow, fromIndex: 0)
+    static func flatten(array: AnyObject[]) -> AnyObject[] {
+        var resultArr: AnyObject[] = []
+        for elem : AnyObject in array {
+            if let val = elem as? AnyObject[] {
+                resultArr += self.flatten(val)
+            } else {
+                resultArr += elem
+            }
+        }
+        return resultArr
     }
     
-    //Private
-    static func flatten(array: AnyObject[], isShallow: Bool, fromIndex: Int) -> AnyObject[] {
-        let length = array.count
-        if length == 0 {
-            return []
-        }
-        var index = fromIndex - 1
-        var result: AnyObject[] = [];
-        
-        while ++index < length {
-            //@TODO Implement
-        }
-        return result;
-    }
-
     //$.indexOf([2, 3, 4, 5], 3)
     //Return index of the value
-    static func indexOf(array: AnyObject[], value: AnyObject) -> Int {
-        //@TODO Implement
-        return 0
+    static func indexOf<T: Equatable>(array: T[], value: T) -> Int? {
+        for (index, elem) in enumerate(array) {
+            if elem == value {
+                return index
+            }
+        }
+        return nil
     }
 
     //$.initial([2, 3, 4, 5])
@@ -72,7 +66,11 @@ struct $ {
     //$.initial([2, 3, 4, 5], 2)
     //Returns all except for last 2
     static func initial(array: AnyObject[], numElements: Int) -> AnyObject[] {
-        return [] //@TODO Implement
+        var result: AnyObject[] = []
+        for (index, _) in enumerate((0..array.count - numElements)) {
+            result += array[index]
+        }
+        return result
     }
     
     //$.intersection([1, 2, 3], [5, 2, 1, 4], [2, 1])
@@ -105,7 +103,11 @@ struct $ {
     //returns [4]
     //Returns last n - numElements elements in array
     static func rest(array: AnyObject[], numElements: Int) -> AnyObject[] {
-        return [] //@TODO implement
+        var result: AnyObject[] = []
+        for (index, _) in enumerate((numElements..array.count)) {
+            result += array[index + numElements]
+        }
+        return result
     }
     
     //$.findIndex([2, 3, 3]) { return $0 == 3 }
