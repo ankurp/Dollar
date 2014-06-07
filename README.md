@@ -12,32 +12,30 @@ It is under construction. If you are interested in contributing
 
 ### Array Methods Implemented
 
-  $.first
-  $.compact
-  $.contains
-  $.findIndex
-  $.findLastIndex
-  $.flatten
-  $.indexOf
-  $.initial
-  $.last
-  $.lastIndexOf
-  $.rest
-  $.noop
-  $.pull
-  $.range
-  $.remove
-  $.sortedIndex
-  $.without
-
-### Array Methods To Be Implemented
-  $.difference
-  $.intersection
-  $.union
-  $.uniq
-  $.xor
-  $.zip
-  $.zipObject
+* $.first
+* $.compact
+* $.contains
+* $.difference
+* $.findIndex
+* $.findLastIndex
+* $.flatten
+* $.indexOf
+* $.initial
+* $.intersection
+* $.last
+* $.lastIndexOf
+* $.rest
+* $.noop
+* $.pull
+* $.range
+* $.remove
+* $.sortedIndex
+* $.union
+* $.uniq
+* $.without
+* $.xor
+* $.zip
+* $.zipObject
 
 ### Example usage
 
