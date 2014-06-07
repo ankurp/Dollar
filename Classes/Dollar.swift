@@ -75,8 +75,25 @@ struct $ {
     
     //$.intersection([1, 2, 3], [5, 2, 1, 4], [2, 1])
     //Will return intersection of all arrays
-    static func intersection(arrays: AnyObject[]...) -> AnyObject[] {
-        return [] //@TODO Implement
+    static func intersection<T : Hashable>(arrays: T[]...) -> T[] {
+        var map : Dictionary<T, Int> = Dictionary<T, Int>()
+        for arr in arrays {
+            for elem in arr {
+                if let val : Int = map[elem] {
+                    map[elem] = val + 1
+                } else {
+                    map[elem] = 1
+                }
+            }
+        }
+        var result : T[] = []
+        let count = arrays.count
+        for (key, value) in map {
+            if value == count {
+                result += key
+            }
+        }
+        return result
     }
     
     //$.last([1, 2, 3])
@@ -92,8 +109,24 @@ struct $ {
     //$.difference([1, 2, 3], [2], [3])
     //returns [1]
     //Returns first array passed subtracted by remaining arrays
-    static func difference(arrays: AnyObject[]...) -> AnyObject[] {
-        return [] //@TODO implement
+    static func difference<T : Hashable>(arrays: T[]...) -> T[] {
+        var result : T[] = []
+        var map : Dictionary<T, Bool> = Dictionary<T, Bool>()
+        let firstArr : T[] = self.first(arrays) as T[]
+        let restArr : T[][] = self.rest(arrays) as T[][]
+        
+        for elem in firstArr {
+            map[elem] = true
+        }
+        for arr in restArr {
+            for elem in arr {
+                map.removeValueForKey(elem)
+            }
+        }
+        for key in map.keys {
+            result += key
+        }
+        return result
     }
     
     //$.rest([2, 3, 4])
@@ -117,8 +150,8 @@ struct $ {
     //$.findIndex([2, 3, 3]) { return $0 == 3 }
     //returns 1
     //Returns index of element
-    static func findIndex(array: AnyObject[], iterator: (AnyObject) -> Bool) -> Int? {
-        for (index, elem : AnyObject) in enumerate(array) {
+    static func findIndex<T>(array: T[], iterator: (T) -> Bool) -> Int? {
+        for (index, elem : T) in enumerate(array) {
             if iterator(elem) {
                 return index
             }
@@ -129,11 +162,11 @@ struct $ {
     //$.findLastIndex([2, 3, 3]) { return $0 == 3 }
     //returns 2
     //Returns last index of element
-    static func findLastIndex(array: AnyObject[], iterator: (AnyObject) -> Bool) -> Int? {
+    static func findLastIndex<T>(array: T[], iterator: (T) -> Bool) -> Int? {
         let count = array.count
         for (index, _) in enumerate(array) {
             let reverseIndex = count - (index + 1)
-            let elem: AnyObject = array[reverseIndex]
+            let elem : T = array[reverseIndex]
             if iterator(elem) {
                 return reverseIndex
             }
@@ -202,13 +235,31 @@ struct $ {
     }
 
     //$.union()
-    static func union(arrays: AnyObject[]...) -> AnyObject[] {
-        return [] //@TODO implement
+    static func union<T : Hashable>(arrays: T[]...) -> T[] {
+        var map : Dictionary<T, Bool> = Dictionary<T, Bool>()
+        for arr in arrays {
+            for elem in arr {
+                map[elem] = true
+            }
+        }
+        var result : T[] = []
+        for key in map.keys {
+            result += key
+        }
+        return result
     }
 
     //$.uniq()
-    static func uniq(array: AnyObject[]) -> AnyObject[] {
-        return [] //@TODO implement
+    static func uniq<T : Hashable>(array: T[]) -> T[] {
+        var map : Dictionary<T, Bool> = Dictionary<T, Bool>()
+        for elem in array {
+            map[elem] = true
+        }
+        var result : T[] = []
+        for key in map.keys {
+            result += key
+        }
+        return result
     }
     
     //$.without()
@@ -217,14 +268,26 @@ struct $ {
     }
     
     //$.xor()
-    static func xor(arrays: AnyObject[]...) -> AnyObject[] {
-        return [] //@TODO implement
+    static func xor<T : Hashable>(arrays: T[]...) -> T[] {
+        var map : Dictionary<T, Bool> = Dictionary<T, Bool>()
+        for arr in arrays {
+            for elem in arr {
+                map[elem] = !map[elem]
+            }
+        }
+        var result : T[] = []
+        for (key, value) in map {
+            if value {
+                result += key
+            }
+        }
+        return result
     }
     
     //$.zip()
     static func zip(arrays: AnyObject[]...) -> AnyObject[] {
         var result: AnyObject[][] = []
-        for _ in arrays[0] {
+        for _ in self.first(arrays) as AnyObject[] {
             result += [] as AnyObject[]
         }
         for (index, array) in enumerate(arrays) {

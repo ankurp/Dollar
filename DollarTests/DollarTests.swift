@@ -60,25 +60,30 @@ class DollarTests: XCTestCase {
     }
     
     func testFindIndex() {
-        
+        let arr = [["age": 36], ["age": 40], ["age": 1]]
+        let result = $.findIndex(arr) { $0["age"] < 20 }
+        XCTAssert(result == 2, "Returns index of element in array")
     }
     
     func testFindLastIndex() {
-        
+        let arr = [["age": 36], ["age": 40], ["age": 1]]
+        let result = $.findLastIndex(arr) { $0["age"] > 30 }
+        XCTAssert(result == 1, "Returns last index of element in array")
     }
     
-    func testFirstIndexOf() {
-        
+    func testIndexOf() {
+        XCTAssert($.indexOf([1, 2, 3, 1, 2, 3], value: 2) == 1, "Returns index of element in array")
     }
     
     func testLastIndexOf() {
-        
+        XCTAssert($.lastIndexOf([1, 2, 3, 1, 2, 3], value: 2) == 4, "Returns last index of element in array")
     }
     
     func testContains() {
-        
+        XCTAssert($.contains([1, 2, 3, 1, 2, 3], value: 2) == true, "Checks if array contains element")
+        XCTAssert($.contains([1, 2, 3, 1, 2, 3], value: 10) == false, "Checks if array contains element")
     }
-    
+
     func testRange() {
         XCTAssert($.range(4) as Int[] == [0, 1, 2, 3], "Generates range")
         XCTAssert($.range(1, endVal: 5) as Int[] == [1, 2, 3, 4], "Generates range")
@@ -113,6 +118,27 @@ class DollarTests: XCTestCase {
     
     func testZipObject() {
         XCTAssert($.zipObject(["fred", "barney"], values: [30, 40]) as Dictionary<String, Int> == ["fred": 30, "barney": 40], "Zip up array to object")
+    }
+    
+    func testIntersection() {
+        XCTAssert($.intersection([1, 2, 3], [5, 2, 1, 4], [2, 1]) as Int[] == [1, 2], "Intersection of arrays")
+    }
+    
+    func testDifference() {
+        XCTAssert($.difference([1, 2, 3, 4, 5], [5, 2, 10]) as Int[] == [1, 3, 4], "Difference of arrays")
+    }
+    
+    func testUniq() {
+        XCTAssert($.uniq([1, 2, 1, 3, 1]) as Int[] == [1, 2, 3], "Uniq of arrays")
+    }
+    
+    func testUnion() {
+        XCTAssert($.union([1, 2, 3], [5, 2, 1, 4], [2, 1]) as Int[] == [1, 2, 3, 4, 5], "Union of arrays")
+    }
+    
+    func testXOR() {
+        let x = $.xor([1, 2, 3], [5, 2, 1, 4])
+        XCTAssert(x as Int[] == [3, 4, 5], "Xor of arrays")
     }
     
 }
