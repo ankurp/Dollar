@@ -70,11 +70,7 @@ class DollarTests: XCTestCase {
         let result = $.findLastIndex(arr) { $0["age"] > 30 }
         XCTAssert(result == 1, "Returns last index of element in array")
     }
-    
-    func testIndexOf() {
-        XCTAssert($.indexOf([1, 2, 3, 1, 2, 3], value: 2) == 1, "Returns index of element in array")
-    }
-    
+        
     func testLastIndexOf() {
         XCTAssert($.lastIndexOf([1, 2, 3, 1, 2, 3], value: 2) == 4, "Returns last index of element in array")
     }
