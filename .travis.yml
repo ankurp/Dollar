@@ -1,1 +1,2 @@
 language: objective-c
+script: xcodebuild test -scheme DollarTests -sdk iphonesimulator
