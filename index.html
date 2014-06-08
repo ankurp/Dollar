@@ -27,24 +27,30 @@
         </ul>
       </header>
       <section>
-        <p>$ is a Swift library that provides useful functional programming helper methods without extending any built in objects. </p>
-        
-        <h3>
-          <a name="array-methods" class="anchor" href="#setup">
-            <span class="octicon octicon-link"></span>
-          </a>
-          Setup
-        </h3>
-        <p>Include the <code> Dollar.swift </code> file from the Classes folder in your Project and make sure to check the Product in the Add to targets panel when importing the file.</p>
-        
-        <p>Currently there are issues loading the library using <code> pod 'Dollar', '~&gt; 0.1.1' </code>
-      
-        <h3>
-          <a name="array-methods" class="anchor" href="#array-methods">
-            <span class="octicon octicon-link"></span>
-          </a>
-          Array Helper Methods
-        </h3>
+        <pre>
+     ___
+   _|\  \__
+  |\   ____\
+  \ \  \___|_
+   \ \_____  \
+    \|____|\  \
+      ____\_\  \
+     |\___    __\
+     \|___|\__\_|
+          \|__|     is a Swift library that provides useful functional programming 
+                    helper methods without extending any built in objects.
+</pre>
+
+<h3>
+<a name="setup" class="anchor" href="#setup"><span class="octicon octicon-link"></span></a>Setup</h3>
+
+<p>Include the <code>Dollar.swift</code> file from the Classes folder in your Project and make sure to check the Product in the Add to targets panel when importing the file.</p>
+
+<p>Currently there are issues loading the library using <code>pod 'Dollar', '~&gt; 0.1.2'</code></p>
+
+<h3>
+<a name="array-helper-methods" class="anchor" href="#array-helper-methods"><span class="octicon octicon-link"></span></a>Array Helper Methods</h3>
+
 <ul>
 <li>$.first</li>
 <li>$.compact</li>
@@ -70,6 +76,16 @@
 <li>$.xor</li>
 <li>$.zip</li>
 <li>$.zipObject</li>
+</ul><h3>
+<a name="collection-helper-methods" class="anchor" href="#collection-helper-methods"><span class="octicon octicon-link"></span></a>Collection Helper Methods</h3>
+
+<ul>
+<li>$.at</li>
+<li>$.every</li>
+<li>$.find</li>
+<li>$.min</li>
+<li>$.max</li>
+<li>$.pluck</li>
 </ul><h3>
 <a name="usage" class="anchor" href="#usage"><span class="octicon octicon-link"></span></a>Usage</h3>
 
@@ -108,12 +124,12 @@
 <p><code>$.last([3, 4, 5]) as Int == 5</code></p>
 
 <pre><code>let arr = [["age": 36], ["age": 40], ["age": 1]]
-let result = $.findIndex(arr) { $0["age"] &lt; 20 }
+let result = $.findIndex(arr) { ["age"] &lt; 20 }
 result == 2
 </code></pre>
 
 <pre><code>let arr = [["age": 36], ["age": 40], ["age": 1]]
-let result = $.findLastIndex(arr) { $0["age"] &gt; 30 }
+let result = $.findLastIndex(arr) { ["age"] &gt; 30 }
 result == 1
 </code></pre>
 
@@ -165,6 +181,28 @@ result as Int[] == [1, 4, 5, 6]
 
 <p><code>$.xor([1, 2, 3], [5, 2, 1, 4]) as Int[] == [3, 4, 5]</code></p>
 
+<p><code>$.at(["ant", "bat", "cat", "dog", "egg"], indexes: 0, 2, 4) as String[] == ["ant", "cat", "egg"]</code></p>
+
+<p><code>$.every([1, 2, 3, 4], iterator: { $0 &lt; 20 }) == true</code></p>
+
+<p><code>$.every([1, 2, 3, 4], iterator: { $0 == 1 }) == false</code></p>
+
+<p><code>$.find([1, 2, 3, 4], iterator: { $0 == 2 }) == 2</code></p>
+
+<p><code>$.find([1, 2, 3, 4], iterator: { $0 == 10 }) == nil</code></p>
+
+<p><code>$.max([1, 2, 3, 4, 2, 1]) == 4</code></p>
+
+<p><code>$.min([2, 1, 2, 3, 4]) == 1</code></p>
+
+<pre><code>let arr : Int[] = [2, 1, 2, 3, 4]
+$.contains(arr, value: $.sample(arr) as NSObject)
+</code></pre>
+
+<pre><code>let arr : Dictionary&lt;String, Int&gt;[] = [["age": 20], ["age": 30], ["age": 40]]
+$.pluck(arr, value: "age") == [20, 30, 40]
+</code></pre>
+
 <h3>
 <a name="contributing" class="anchor" href="#contributing"><span class="octicon octicon-link"></span></a>Contributing</h3>
 
@@ -173,7 +211,7 @@ result as Int[] == [1, 4, 5, 6]
 <ol>
 <li>Please fork this project</li>
 <li>Implement new methods or changes in the <code>Dollar.swift</code> file in the Classes folder</li>
-<li>Write tests in <code>DollarTests.swift</code> file in the DollarTests folder </li>
+<li>Write tests in <code>DollarTests.swift</code> file in the DollarTests folder</li>
 <li>Submit a pull request.</li>
 </ol><h3>
 <a name="roadmap" class="anchor" href="#roadmap"><span class="octicon octicon-link"></span></a>Roadmap</h3>
