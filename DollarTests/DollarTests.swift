@@ -137,4 +137,36 @@ class DollarTests: XCTestCase {
         XCTAssert(x as Int[] == [3, 4, 5], "Xor of arrays")
     }
     
+    func testAt() {
+        XCTAssert($.at(["ant", "bat", "cat", "dog", "egg"], indexes: 0, 2, 4) as String[] == ["ant", "cat", "egg"], "At of arrays")
+    }
+    
+    func testEvery() {
+        XCTAssert($.every([1, 2, 3, 4], iterator: { $0 < 20 }) == true, "All elements in collection are true")
+        XCTAssert($.every([1, 2, 3, 4], iterator: { $0 == 1 }) == false, "All elements in collection are true")
+    }
+    
+    func testFind() {
+        XCTAssert($.find([1, 2, 3, 4], iterator: { $0 == 2 }) == 2, "Return element when object is found")
+        XCTAssert($.find([1, 2, 3, 4], iterator: { $0 == 10 }) == nil, "Return nil when object not found")
+    }
+    
+    func testMax() {
+        XCTAssert($.max([1, 2, 3, 4, 2, 1]) == 4, "Returns maximum element")
+    }
+    
+    func testMin() {
+        XCTAssert($.min([2, 1, 2, 3, 4]) == 1, "Returns minumum element")
+    }
+    
+    func testSample() {
+        let arr : Int[] = [2, 1, 2, 3, 4]
+        XCTAssert($.contains(arr, value: $.sample(arr) as NSObject), "Returns sample which is an element from the array")
+    }
+    
+    func testPluck() {
+        let arr : Dictionary<String, Int>[] = [["age": 20], ["age": 30], ["age": 40]]
+        XCTAssert($.pluck(arr, value: "age") == [20, 30, 40], "Returns values from the object where they key is the value")
+    }
+    
 }

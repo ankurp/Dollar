@@ -1,4 +1,14 @@
 //
+//     ___
+//   _|\  \__
+//  |\   ____\
+//  \ \  \___|_
+//   \ \_____  \
+//    \|____|\  \
+//      ____\_\  \
+//     |\___    __\
+//     \|___|\__\_|
+//          \|__|
 //  $.swift
 //  Dollar - A functional tool-belt for Swift Language
 //
@@ -9,6 +19,15 @@
 import Foundation
 
 struct $ {
+    
+    //  ________  ________  ________  ________      ___    ___
+    // |\   __  \|\   __  \|\   __  \|\   __  \    |\  \  /  /|
+    // \ \  \|\  \ \  \|\  \ \  \|\  \ \  \|\  \   \ \  \/  / /
+    //  \ \   __  \ \   _  _\ \   _  _\ \   __  \   \ \    / /
+    //   \ \  \ \  \ \  \\  \\ \  \\  \\ \  \ \  \   \/  /  /
+    //    \ \__\ \__\ \__\\ _\\ \__\\ _\\ \__\ \__\__/  / /
+    //     \|__|\|__|\|__|\|__|\|__|\|__|\|__|\|__|\___/ /
+    //                                            \|___|/
     
     //$.first([0, 1, false, 2, '', 3])
     //Gets the first element or first n elements of an array.
@@ -187,10 +206,6 @@ struct $ {
         return nil
     }
     
-    static func contains<T : Equatable>(array: T[], value: T) -> Bool {
-        return array.filter({ $0 as? T == value }).count > 0
-    }
-    
     //$.pull()
     static func pull<T : Equatable>(array: T[], values: T...) -> T[] {
         return self.pull(array, values: values)
@@ -312,4 +327,80 @@ struct $ {
     static func noop() -> AnyObject? {
         return nil
     }
+    
+    
+    //  ________  ________  ___       ___       _______   ________ _________  ___  ________  ________
+    // |\   ____\|\   __  \|\  \     |\  \     |\  ___ \ |\   ____\\___   ___\\  \|\   __  \|\   ___  \
+    // \ \  \___|\ \  \|\  \ \  \    \ \  \    \ \   __/|\ \  \___\|___ \  \_\ \  \ \  \|\  \ \  \\ \  \
+    //  \ \  \    \ \  \\\  \ \  \    \ \  \    \ \  \_|/_\ \  \       \ \  \ \ \  \ \  \\\  \ \  \\ \  \
+    //   \ \  \____\ \  \\\  \ \  \____\ \  \____\ \  \_|\ \ \  \____   \ \  \ \ \  \ \  \\\  \ \  \\ \  \
+    //    \ \_______\ \_______\ \_______\ \_______\ \_______\ \_______\  \ \__\ \ \__\ \_______\ \__\\ \__\
+    //     \|_______|\|_______|\|_______|\|_______|\|_______|\|_______|   \|__|  \|__|\|_______|\|__| \|__|
+    
+    static func contains<T : Equatable>(array: T[], value: T) -> Bool {
+        return array.filter({ $0 as? T == value }).count > 0
+    }
+    
+    static func at(array: AnyObject[], indexes: Int...) -> AnyObject[] {
+        var result : AnyObject[] = []
+        for index in indexes {
+            result += array[index]
+        }
+        return result
+    }
+
+    static func every<T>(array: T[], iterator: (T) -> Bool) -> Bool {
+        var result : Bool = true
+        for elem in array {
+            result &= iterator(elem)
+        }
+        return result
+    }
+    
+    static func find<T : Equatable>(array: T[], iterator: (T) -> Bool) -> T? {
+        for elem in array {
+            let result = iterator(elem)
+            if result {
+                return elem
+            }
+        }
+        return nil
+    }
+    
+    static func min<T : Comparable>(array: T[]) -> T? {
+        var minVal = array[0]
+        for elem in array {
+            if minVal > elem {
+                minVal = elem
+            }
+        }
+        return minVal
+    }
+    
+    static func max<T : Comparable>(array: T[]) -> T? {
+        var maxVal = array[0]
+        for elem in array {
+            if maxVal < elem {
+                maxVal = elem
+            }
+        }
+        return maxVal
+    }
+    
+    static func sample(array: AnyObject[]) -> AnyObject {
+        return array[random() % array.count]
+    }
+    
+    static func pluck<T, E>(array: Dictionary<T, E>[], value: T) -> E[] {
+        var result : E[] = []
+        
+        for obj in array {
+            if let val = obj[value] {
+                result += val
+            }
+        }
+        
+        return result
+    }
+    
 }
