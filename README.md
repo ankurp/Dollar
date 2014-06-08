@@ -14,7 +14,7 @@ If you are interested in contributing
 3. Write tests in `DollarTests.swift` file in the DollarTests folder
 4. Submit a pull request.
 
-### Array Methods Implemented
+### Array Helper Methods
 
 * $.first
 * $.compact
