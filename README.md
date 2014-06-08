@@ -44,6 +44,14 @@ If you are interested in contributing
 * $.zip
 * $.zipObject
 
+### Collection Helper Methods
+* $.at
+* $.every
+* $.find
+* $.min
+* $.max
+* $.pluck
+
 ### Roadmap
 
 More functions will be added and then ability to chain operations and lazily evaluation of chained expressions.
@@ -145,3 +153,26 @@ result as Int[] == [1, 4, 5, 6]
 
 `$.xor([1, 2, 3], [5, 2, 1, 4]) as Int[] == [3, 4, 5]`
 
+`$.at(["ant", "bat", "cat", "dog", "egg"], indexes: 0, 2, 4) as String[] == ["ant", "cat", "egg"]`
+
+`$.every([1, 2, 3, 4], iterator: { $0 < 20 }) == true`
+
+`$.every([1, 2, 3, 4], iterator: { $0 == 1 }) == false`
+    
+`$.find([1, 2, 3, 4], iterator: { $0 == 2 }) == 2`
+
+`$.find([1, 2, 3, 4], iterator: { $0 == 10 }) == nil`
+    
+`$.max([1, 2, 3, 4, 2, 1]) == 4`
+    
+`$.min([2, 1, 2, 3, 4]) == 1`
+
+```    
+let arr : Int[] = [2, 1, 2, 3, 4]
+$.contains(arr, value: $.sample(arr) as NSObject)
+```
+
+```
+let arr : Dictionary<String, Int>[] = [["age": 20], ["age": 30], ["age": 40]]
+$.pluck(arr, value: "age") == [20, 30, 40]
+```
