@@ -1,13 +1,17 @@
 Dollar.swift
 ===========
 
-A functional tool-belt for Swift Language. Library Source code is in Classes folder. 
+$ is a Swift library that provides useful functional programming helper methods without extending any built in objects. 
+
+
+### Setup
+Include the library using `pod 'Dollar', '~> 0.1.0'` or you can include the `Dollar.swift` file in Classes folder
 
 If you are interested in contributing 
 
 1. Please fork this project
 2. Implement new methods or changes in the `Dollar.swift` file in the Classes folder
-3. Write tests in `DollarTests.swift` file in the DollarTests folder 
+3. Write tests in `DollarTests.swift` file in the DollarTests folder
 4. Submit a pull request.
 
 ### Array Methods Implemented
