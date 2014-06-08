@@ -1,84 +1,177 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
   <head>
-    <meta charset='utf-8'>
+    <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <link href='https://fonts.googleapis.com/css?family=Architects+Daughter' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen" />
-    <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen" />
-    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print" />
+    <title>Dollar.swift by ankurp</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <script src="javascripts/scale.fix.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
 
     <!--[if lt IE 9]>
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
-
-    <title>Dollar.swift by ankurp</title>
   </head>
-
   <body>
-    <header>
-      <div class="inner">
+    <div class="wrapper">
+      <header>
         <h1>Dollar.swift</h1>
-        <h2>A functional tool-belt for Swift Language</h2>
-        <a href="https://github.com/ankurp/Dollar.swift" class="button"><small>View project on</small>GitHub</a>
-      </div>
-    </header>
+        <p>A functional tool-belt for Swift Language</p>
+        <p class="view"><a href="https://github.com/ankurp/Dollar.swift">View the Project on GitHub <small>ankurp/Dollar.swift</small></a></p>
+        <ul>
+          <li><a href="https://github.com/ankurp/Dollar.swift/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/ankurp/Dollar.swift/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/ankurp/Dollar.swift">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <h3>
+<a name="array-methods" class="anchor" href="#array-methods"><span class="octicon octicon-link"></span></a>Array Methods</h3>
 
-    <div id="content-wrapper">
-      <div class="inner clearfix">
-        <section id="main-content">
-          <h3>
-<a name="welcome-to-github-pages" class="anchor" href="#welcome-to-github-pages"><span class="octicon octicon-link"></span></a>Welcome to GitHub Pages.</h3>
+<ul>
+<li>$.first</li>
+<li>$.compact</li>
+<li>$.contains</li>
+<li>$.difference</li>
+<li>$.findIndex</li>
+<li>$.findLastIndex</li>
+<li>$.flatten</li>
+<li>$.indexOf</li>
+<li>$.initial</li>
+<li>$.intersection</li>
+<li>$.last</li>
+<li>$.lastIndexOf</li>
+<li>$.rest</li>
+<li>$.noop</li>
+<li>$.pull</li>
+<li>$.range</li>
+<li>$.remove</li>
+<li>$.sortedIndex</li>
+<li>$.union</li>
+<li>$.uniq</li>
+<li>$.without</li>
+<li>$.xor</li>
+<li>$.zip</li>
+<li>$.zipObject</li>
+</ul><h3>
+<a name="usage" class="anchor" href="#usage"><span class="octicon octicon-link"></span></a>Usage</h3>
 
-<p>This automatic page generator is the easiest way to create beautiful pages for all of your projects. Author your page content here using GitHub Flavored Markdown, select a template crafted by a designer, and publish. After your page is generated, you can check out the new branch:</p>
+<p><code>$.first([1, 2, 3, 4]) as Double == 1</code></p>
 
-<pre><code>$ cd your_repo_root/repo_name
-$ git fetch origin
-$ git checkout gh-pages
+<p><code>$.first([]) == nil</code></p>
+
+<p><code>$.noop() == nil</code></p>
+
+<p><code>$.compact([3, nil, 4, 5]) as NSObject[] == [3, 4, 5]</code></p>
+
+<p><code>$.compact([nil, nil]) as NSObject[] == []</code></p>
+
+<p><code>$.flatten([[3], 4, 5]) as Int[] == [3, 4, 5]</code></p>
+
+<p><code>$.flatten([[3], "Hello", 5]) as NSObject[] == [3, "Hello", 5]</code></p>
+
+<p><code>$.flatten([[[3], 4], 5]) as Int[] == [3, 4, 5]</code></p>
+
+<p><code>$.indexOf(["A", "B", "C"], value: "B") == 1</code></p>
+
+<p><code>$.indexOf([3, 4, 5], value: 5) == 2</code></p>
+
+<p><code>$.indexOf([3, 4, 5], value: 3) == 0</code></p>
+
+<p><code>$.indexOf([3, 4, 5], value: 2) == nil</code></p>
+
+<p><code>$.initial([3, 4, 5]) as Int[] == [3, 4]</code></p>
+
+<p><code>$.initial([3, 4, 5], numElements: 2) as Int[] == [3]</code></p>
+
+<p><code>$.rest([3, 4, 5]) as Int[] == [4, 5]</code></p>
+
+<p><code>$.rest([3, 4, 5], numElements: 2) as Int[] == [5]</code></p>
+
+<p><code>$.last([3, 4, 5]) as Int == 5</code></p>
+
+<pre><code>let arr = [["age": 36], ["age": 40], ["age": 1]]
+let result = $.findIndex(arr) { $0["age"] &lt; 20 }
+result == 2
 </code></pre>
 
-<p>If you're using the GitHub for Mac, simply sync your repository and you'll see the new branch.</p>
+<pre><code>let arr = [["age": 36], ["age": 40], ["age": 1]]
+let result = $.findLastIndex(arr) { $0["age"] &gt; 30 }
+result == 1
+</code></pre>
+
+<p><code>$.indexOf([1, 2, 3, 1, 2, 3], value: 2) == 1</code></p>
+
+<p><code>$.lastIndexOf([1, 2, 3, 1, 2, 3], value: 2) == 4</code></p>
+
+<p><code>$.contains([1, 2, 3, 1, 2, 3], value: 2) == true</code></p>
+
+<p><code>$.contains([1, 2, 3, 1, 2, 3], value: 10) == false</code>`</p>
+
+<p><code>$.range(4) as Int[] == [0, 1, 2, 3]</code></p>
+
+<p><code>$.range(1, endVal: 5) as Int[] == [1, 2, 3, 4]</code></p>
+
+<p><code>$.range(0, endVal: 20, incrementBy: 5) as Int[] == [0, 5, 10, 15]</code></p>
+
+<pre><code>let result = $.remove([1, 2, 3, 4, 5, 6], iterator: { $0 as Int == 2 || $0 as Int == 3 })
+result as Int[] == [1, 4, 5, 6]
+</code></pre>
+
+<p><code>$.sortedIndex([3, 4, 6, 10], value: 5) as Int == 2</code></p>
+
+<p><code>$.sortedIndex([10, 20, 30, 50], value: 40) as Int == 3</code></p>
+
+<p><code>$.without([3, 4, 5, 3, 5], values: 3, 5) as Int[] == [4]</code></p>
+
+<p><code>$.without([3, 4, 5, 3, 5], values: 4) as Int[] == [3, 5, 3, 5]</code></p>
+
+<p><code>$.without([3, 4, 5, 3, 5], values: 3, 4, 5) as Int[] == []</code></p>
+
+<p><code>$.pull([3, 4, 5, 3, 5], values: 3, 5) as Int[] == [4]</code></p>
+
+<p><code>$.pull([3, 4, 5, 3, 5], values: 4) as Int[] == [3, 5, 3, 5]</code></p>
+
+<p><code>$.pull([3, 4, 5, 3, 5], values: 3, 4, 5) as Int[] == []</code></p>
+
+<p><code>$.zip(["fred", "barney"], [30, 40], [true, false]) as NSObject[] == [["fred", 30, true], ["barney", 40, false]]</code></p>
+
+<p><code>$.zipObject(["fred", "barney"], values: [30, 40]) as Dictionary&lt;String, Int&gt; == ["fred": 30, "barney": 40]</code></p>
+
+<p><code>$.intersection([1, 2, 3], [5, 2, 1, 4], [2, 1]) as Int[] == [1, 2]</code></p>
+
+<p><code>$.difference([1, 2, 3, 4, 5], [5, 2, 10]) as Int[] == [1, 3, 4]</code></p>
+
+<p><code>$.uniq([1, 2, 1, 3, 1]) as Int[] == [1, 2, 3]</code></p>
+
+<p><code>$.union([1, 2, 3], [5, 2, 1, 4], [2, 1]) as Int[] == [1, 2, 3, 4, 5]</code></p>
+
+<p><code>$.xor([1, 2, 3], [5, 2, 1, 4]) as Int[] == [3, 4, 5]</code></p>
 
 <h3>
-<a name="designer-templates" class="anchor" href="#designer-templates"><span class="octicon octicon-link"></span></a>Designer Templates</h3>
+<a name="contributing" class="anchor" href="#contributing"><span class="octicon octicon-link"></span></a>Contributing</h3>
 
-<p>We've crafted some handsome templates for you to use. Go ahead and continue to layouts to browse through them. You can easily go back to edit your page before publishing. After publishing your page, you can revisit the page generator and switch to another theme. Your Page content will be preserved if it remained markdown format.</p>
+<p>If you are interested in contributing </p>
 
-<h3>
-<a name="rather-drive-stick" class="anchor" href="#rather-drive-stick"><span class="octicon octicon-link"></span></a>Rather Drive Stick?</h3>
+<ol>
+<li>Please fork this project</li>
+<li>Implement new methods or changes in the <code>Dollar.swift</code> file in the Classes folder</li>
+<li>Write tests in <code>DollarTests.swift</code> file in the DollarTests folder </li>
+<li>Submit a pull request.</li>
+</ol><h3>
+<a name="roadmap" class="anchor" href="#roadmap"><span class="octicon octicon-link"></span></a>Roadmap</h3>
 
-<p>If you prefer to not use the automatic generator, push a branch named <code>gh-pages</code> to your repository to create a page manually. In addition to supporting regular HTML content, GitHub Pages support Jekyll, a simple, blog aware static site generator written by our own Tom Preston-Werner. Jekyll makes it easy to create site-wide headers and footers without having to copy them across every page. It also offers intelligent blog support and other advanced templating features.</p>
-
-<h3>
-<a name="authors-and-contributors" class="anchor" href="#authors-and-contributors"><span class="octicon octicon-link"></span></a>Authors and Contributors</h3>
-
-<p>You can <a href="https://github.com/blog/821" class="user-mention">@mention</a> a GitHub username to generate a link to their profile. The resulting <code>&lt;a&gt;</code> element will link to the contributor's GitHub Profile. For example: In 2007, Chris Wanstrath (<a href="https://github.com/defunkt" class="user-mention">@defunkt</a>), PJ Hyett (<a href="https://github.com/pjhyett" class="user-mention">@pjhyett</a>), and Tom Preston-Werner (<a href="https://github.com/mojombo" class="user-mention">@mojombo</a>) founded GitHub.</p>
-
-<h3>
-<a name="support-or-contact" class="anchor" href="#support-or-contact"><span class="octicon octicon-link"></span></a>Support or Contact</h3>
-
-<p>Having trouble with Pages? Check out the documentation at <a href="http://help.github.com/pages">http://help.github.com/pages</a> or contact <a href="mailto:support@github.com">support@github.com</a> and we’ll help you sort it out.</p>
-        </section>
-
-        <aside id="sidebar">
-          <a href="https://github.com/ankurp/Dollar.swift/zipball/master" class="button">
-            <small>Download</small>
-            .zip file
-          </a>
-          <a href="https://github.com/ankurp/Dollar.swift/tarball/master" class="button">
-            <small>Download</small>
-            .tar.gz file
-          </a>
-
-          <p class="repo-owner"><a href="https://github.com/ankurp/Dollar.swift"></a> is maintained by <a href="https://github.com/ankurp">ankurp</a>.</p>
-
-          <p>This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the Architect theme by <a href="https://twitter.com/jasonlong">Jason Long</a>.</p>
-        </aside>
-      </div>
+<p>More functions will be added and then ability to chain operations and lazily evaluation of chained expressions.</p>
+      </section>
     </div>
-
-            <script type="text/javascript">
+    <footer>
+      <p>Project maintained by <a href="https://github.com/ankurp">ankurp</a></p>
+      <p>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></p>
+    </footer>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+              <script type="text/javascript">
             var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
             document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
           </script>
