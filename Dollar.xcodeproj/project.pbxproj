@@ -7,11 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		921690921943F8E3004A4337 /* Dollar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92960071193EB96A001EDA23 /* Dollar.swift */; };
+		921690931943F932004A4337 /* Dollar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92960071193EB96A001EDA23 /* Dollar.swift */; };
 		921A86B2193EAD2B0045F310 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 921A86B1193EAD2B0045F310 /* AppDelegate.swift */; };
 		921A86B4193EAD2B0045F310 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 921A86B3193EAD2B0045F310 /* Images.xcassets */; };
 		921A86C0193EAD2B0045F310 /* DollarTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 921A86BF193EAD2B0045F310 /* DollarTests.swift */; };
-		92960072193EB96A001EDA23 /* Dollar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92960071193EB96A001EDA23 /* Dollar.swift */; };
-		92960073193EB96A001EDA23 /* Dollar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92960071193EB96A001EDA23 /* Dollar.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -25,6 +25,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		28419E690A5640DA969FBC20 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
+		3744CB855F7F4A898E4FF1E0 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		921A86AC193EAD2B0045F310 /* Dollar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Dollar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		921A86B0193EAD2B0045F310 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		921A86B1193EAD2B0045F310 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -53,6 +55,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6BF749FF90F142D8BA0A2A83 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				3744CB855F7F4A898E4FF1E0 /* libPods.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		921A86A3193EAD2B0045F310 = {
 			isa = PBXGroup;
 			children = (
@@ -60,6 +70,8 @@
 				921A86AE193EAD2B0045F310 /* Dollar */,
 				921A86BC193EAD2B0045F310 /* DollarTests */,
 				921A86AD193EAD2B0045F310 /* Products */,
+				28419E690A5640DA969FBC20 /* Pods.xcconfig */,
+				6BF749FF90F142D8BA0A2A83 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -122,9 +134,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 921A86C3193EAD2B0045F310 /* Build configuration list for PBXNativeTarget "Dollar" */;
 			buildPhases = (
+				29B7E098B70E453A810BE276 /* Check Pods Manifest.lock */,
 				921A86A8193EAD2B0045F310 /* Sources */,
 				921A86A9193EAD2B0045F310 /* Frameworks */,
 				921A86AA193EAD2B0045F310 /* Resources */,
+				9659467608E94A04A0F8FF48 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -207,13 +221,46 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		29B7E098B70E453A810BE276 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		9659467608E94A04A0F8FF48 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		921A86A8193EAD2B0045F310 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				921A86B2193EAD2B0045F310 /* AppDelegate.swift in Sources */,
-				92960072193EB96A001EDA23 /* Dollar.swift in Sources */,
+				921690931943F932004A4337 /* Dollar.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -222,7 +269,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				921A86C0193EAD2B0045F310 /* DollarTests.swift in Sources */,
-				92960073193EB96A001EDA23 /* Dollar.swift in Sources */,
+				921690921943F8E3004A4337 /* Dollar.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -318,10 +365,12 @@
 		};
 		921A86C4193EAD2B0045F310 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 28419E690A5640DA969FBC20 /* Pods.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				INFOPLIST_FILE = Dollar/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -329,10 +378,12 @@
 		};
 		921A86C5193EAD2B0045F310 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 28419E690A5640DA969FBC20 /* Pods.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				INFOPLIST_FILE = Dollar/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
