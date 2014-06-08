@@ -5,8 +5,11 @@ $ is a Swift library that provides useful functional programming helper methods 
 
 
 ### Setup
-Include the library using `pod 'Dollar', '~> 0.1.0'` or you can include the `Dollar.swift` file in Classes folder
+Include the `Dollar.swift` file from the Classes folder in your Project and make sure to check the Product in the Add to targets panel when importing the file.
 
+Currently there are issues loading the library using `pod 'Dollar', '~> 0.1.1'`
+
+### Contributing
 If you are interested in contributing 
 
 1. Please fork this project
