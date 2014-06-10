@@ -5,7 +5,7 @@ $ is a Swift library that provides useful functional programming helper methods 
 
 
 ### Setup
-Include the `Dollar` framework into your project and import the library using `import Dollar`
+Include the `Dollar.swift` into your project and import the library using `import Dollar`
 
 Currently there are issues loading the library using `pod 'Dollar', '~> 0.1'`
 
