@@ -45,7 +45,7 @@ class DollarTests: XCTestCase {
         XCTAssert($.indexOf([3, 4, 5], value: 3) == 0, "Return index of value")
         XCTAssert($.indexOf([3, 4, 5], value: 2) == nil, "Return index of value")
     }
-    
+
     func testInitial() {
         XCTAssert($.initial([3, 4, 5]) as Int[] == [3, 4], "Return all values except for last")
         XCTAssert($.initial([3, 4, 5], numElements: 2) as Int[] == [3], "Return all values except for last")
@@ -71,7 +71,7 @@ class DollarTests: XCTestCase {
         let result = $.findLastIndex(arr) { $0["age"] > 30 }
         XCTAssert(result == 1, "Returns last index of element in array")
     }
-    
+        
     func testLastIndexOf() {
         XCTAssert($.lastIndexOf([1, 2, 3, 1, 2, 3], value: 2) == 4, "Returns last index of element in array")
     }
@@ -80,7 +80,7 @@ class DollarTests: XCTestCase {
         XCTAssert($.contains([1, 2, 3, 1, 2, 3], value: 2) == true, "Checks if array contains element")
         XCTAssert($.contains([1, 2, 3, 1, 2, 3], value: 10) == false, "Checks if array contains element")
     }
-    
+
     func testRange() {
         XCTAssert($.range(4) as Int[] == [0, 1, 2, 3], "Generates range")
         XCTAssert($.range(1, endVal: 5) as Int[] == [1, 2, 3, 4], "Generates range")

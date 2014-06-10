@@ -5,9 +5,9 @@ $ is a Swift library that provides useful functional programming helper methods 
 
 
 ### Setup
-Include the `Dollar.swift` file from the Classes folder in your Project and make sure to check the Product in the Add to targets panel when importing the file.
+Include the `Dollar` framework into your project and import the library using `import Dollar`
 
-Currently there are issues loading the library using `pod 'Dollar', '~> 0.1.1'`
+Currently there are issues loading the library using `pod 'Dollar', '~> 0.1'`
 
 ### Contributing
 If you are interested in contributing 
