@@ -407,6 +407,7 @@
 				92E0D05419467C67002ACC3D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		92E0D05519467C67002ACC3D /* Build configuration list for PBXNativeTarget "DollarTests" */ = {
 			isa = XCConfigurationList;
@@ -415,6 +416,7 @@
 				92E0D05719467C67002ACC3D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
