@@ -1,7 +1,7 @@
 Dollar.swift [![Build Status](https://travis-ci.org/ankurp/Dollar.swift.svg?branch=master)](https://travis-ci.org/ankurp/Dollar.swift)
 ===========
 
-$ is a Swift library that provides useful functional programming helper methods without extending any built in objects. 
+$ is a Swift library that provides useful functional programming helper methods without extending any built in objects.
 
 
 ### Setup
@@ -10,7 +10,7 @@ Include the `Dollar.swift` into your project and import the library using `impor
 Currently there are issues loading the library using `pod 'Dollar', '~> 0.1'`
 
 ### Contributing
-If you are interested in contributing 
+If you are interested in contributing
 
 1. Please fork this project
 2. Implement new methods or changes in the `Dollar.swift` file in the Classes folder
@@ -26,6 +26,7 @@ If you are interested in contributing
 * $.findIndex
 * $.findLastIndex
 * $.flatten
+* $.frequencies
 * $.indexOf
 * $.initial
 * $.intersection
@@ -112,6 +113,8 @@ result == 1
 
 `$.contains([1, 2, 3, 1, 2, 3], value: 10) == false``
 
+`$.frequencies(["a", "a", "b", "c", "a", "b"]) == ["a": 3, "b": 2, "c": 1]`
+
 `$.range(4) as Int[] == [0, 1, 2, 3]`
 
 `$.range(1, endVal: 5) as Int[] == [1, 2, 3, 4]`
@@ -158,16 +161,16 @@ result as Int[] == [1, 4, 5, 6]
 `$.every([1, 2, 3, 4], iterator: { $0 < 20 }) == true`
 
 `$.every([1, 2, 3, 4], iterator: { $0 == 1 }) == false`
-    
+
 `$.find([1, 2, 3, 4], iterator: { $0 == 2 }) == 2`
 
 `$.find([1, 2, 3, 4], iterator: { $0 == 10 }) == nil`
-    
+
 `$.max([1, 2, 3, 4, 2, 1]) == 4`
-    
+
 `$.min([2, 1, 2, 3, 4]) == 1`
 
-```    
+```
 let arr : Int[] = [2, 1, 2, 3, 4]
 $.contains(arr, value: $.sample(arr) as NSObject)
 ```

@@ -170,4 +170,8 @@ class DollarTests: XCTestCase {
         XCTAssert($.pluck(arr, value: "age") == [20, 30, 40], "Returns values from the object where they key is the value")
     }
     
+    func testFrequencies() {
+        XCTAssert($.frequencies(["a", "a", "b", "c", "a", "b"]) == ["a": 3, "b": 2, "c": 1], "Returns correct frequency dictionary")
+    }
+    
 }
