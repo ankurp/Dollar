@@ -6,7 +6,7 @@ Pod::Spec.new do |s|
   s.license      = { :type => 'MIT', :file => 'LICENSE' }
   s.author       = { "Ankur Patel" => "ankur.patel@ymail.com" }
   s.source       = { :git => "https://github.com/ankurp/Dollar.swift.git", :tag => "0.1.3" }
-  s.source_files  = 'Classes/*.{h,swift}'
+  s.source_files  = 'Dollar/*.{h,swift}'
   s.frameworks   = 'Foundation'
   s.requires_arc = true
 end
