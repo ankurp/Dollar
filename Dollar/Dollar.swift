@@ -328,6 +328,21 @@ struct $ {
         return nil
     }
     
+    //$.frequencies(["a", "a", "b", "c", "a", "b"])
+    //returns: ["a": 3, "b": 2, "c": 1]
+    //returns number of times each element appears in an array.
+    static func frequencies<T>(array: Array<T>) -> Dictionary<T, Int> {
+        var result = Dictionary<T, Int>()
+        for elem in array {
+            if let freq = result[elem] {
+                result[elem] = freq + 1
+            } else {
+                result[elem] = 1
+            }
+        }
+        return result
+    }
+    
     
     //  ________  ________  ___       ___       _______   ________ _________  ___  ________  ________
     // |\   ____\|\   __  \|\  \     |\  \     |\  ___ \ |\   ____\\___   ___\\  \|\   __  \|\   ___  \
