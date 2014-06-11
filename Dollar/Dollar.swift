@@ -443,15 +443,17 @@ struct $ {
         return result
     }
     
-    static func merge<T, U>(original: Dictionary<T, U>, dictionary: Dictionary<T, U>) -> Dictionary<T, U> {
+    static func merge<T, U>(original: Dictionary<T, U>, dictionaries: Dictionary<T, U>...) -> Dictionary<T, U> {
         var result : Dictionary<T, U> = Dictionary<T, U>()
         
         for (key, value) in original {
             result[key] = value
         }
         
-        for (key, value) in dictionary {
-            result[key] = value
+        for dict in dictionaries {
+            for (key, value) in dict {
+                result[key] = value
+            }
         }
         
         return result

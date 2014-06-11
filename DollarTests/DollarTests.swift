@@ -187,7 +187,8 @@ class DollarTests: XCTestCase {
     func tesMerge() {
         let dict: Dictionary<String, Int> = ["Dog": 1, "Cat": 2]
         let dict2: Dictionary<String, Int> = ["Cow": 3]
-        XCTAssert($.merge(dict, dictionary: dict2) == ["Dog": 1, "Cat": 2, "Cow": 3], "Returns correct merged dictionary")
+        let dict3: Dictionary<String, Int> = ["Sheep": 4]
+        XCTAssert($.merge(dict, dictionaries: dict2, dict3) == ["Dog": 1, "Cat": 2, "Cow": 3, "Sheep": 4], "Returns correct merged dictionary")
     }
     
     func testPick() {

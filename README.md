@@ -191,6 +191,25 @@ let arr : Dictionary<String, Int>[] = [["age": 20], ["age": 30], ["age": 40]]
 $.pluck(arr, value: "age") == [20, 30, 40]
 ```
 
+`$.keys(["Dog": 1, "Cat": 2])`
+
+`$.values(["Dog": 1, "Cat": 2])`
+
+```
+let dict: Dictionary<String, Int> = ["Dog": 1, "Cat": 2]
+let dict2: Dictionary<String, Int> = ["Cow": 3]
+let dict3: Dictionary<String, Int> = ["Sheep": 4]
+$.merge(dict, dictionaries: dict2, dict3)
+```
+
+`$.pick(["Dog": 1, "Cat": 2, "Cow": 3], keys: "Dog", "Cow")`
+
+`$.omit(["Dog": 1, "Cat": 2, "Cow": 3], keys: "Cat", "Dog")`
+
+```
+var beatle = Car(name: "Fusca")
+$.tap(beatle, {$0.name = "Beatle"}).color = "Blue"
+```
 
 ### Why not extend the collection type?
 1. The project doesnt extend the collection using the extension features to keep it purely functional and
