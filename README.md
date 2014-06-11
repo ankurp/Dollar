@@ -52,6 +52,18 @@ If you are interested in contributing
 * $.max
 * $.pluck
 
+### Dictionary Helper Methods
+
+* $.keys
+* $.values
+* $.merge
+* $.pick
+* $.omit
+
+### Object Helper Methods
+
+* $.tap
+
 ### Roadmap
 
 More functions will be added and then ability to chain operations and lazily evaluation of chained expressions.
