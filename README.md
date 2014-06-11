@@ -1,8 +1,7 @@
 Dollar.swift [![Build Status](https://travis-ci.org/ankurp/Dollar.swift.svg?branch=master)](https://travis-ci.org/ankurp/Dollar.swift)
 ===========
 
-$ is a Swift library that provides useful functional programming helper methods without extending any built in objects.
-
+$ is a Swift library that provides useful functional programming helper methods without extending any built in objects. It is similar to Lo-Dash or Underscore in Javascript.
 
 ### Setup
 Include the `Dollar.swift` into your project and import the library using `import Dollar`
@@ -179,3 +178,9 @@ $.contains(arr, value: $.sample(arr) as NSObject)
 let arr : Dictionary<String, Int>[] = [["age": 20], ["age": 30], ["age": 40]]
 $.pluck(arr, value: "age") == [20, 30, 40]
 ```
+
+
+### Why not extend the collection type?
+1. The project doesnt extend the collection using the extension features to keep it purely functional and
+2. To not override any methods via extensions if Apple decides to add those methods into the collection class themselves as part of the language update. This could lead to inconsistent behavior for those who use the library and those who don't.
+
