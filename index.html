@@ -27,7 +27,7 @@
         </ul>
       </header>
       <section>
-        <h1 style="font-weight:normal;">Dollar is a Swift library that provides useful functional programming helper methods without extending any built in objects.</h1>
+        <h1 style="font-weight:normal;">Dollar is a Swift library that provides useful functional programming helper methods without extending any built in objects. It is similar to Lo-Dash or Underscore in Javascript.</h1>
         <pre>
      ___
    _|\  \__
@@ -59,6 +59,7 @@
 <li>$.findIndex</li>
 <li>$.findLastIndex</li>
 <li>$.flatten</li>
+<li>$.frequencies</li>
 <li>$.indexOf</li>
 <li>$.initial</li>
 <li>$.intersection</li>
@@ -139,7 +140,9 @@ result == 1
 
 <p><code>$.contains([1, 2, 3, 1, 2, 3], value: 2) == true</code></p>
 
-<p><code>$.contains([1, 2, 3, 1, 2, 3], value: 10) == false</code>`</p>
+<p><code>$.contains([1, 2, 3, 1, 2, 3], value: 10) == false</code></p>
+
+<p><code>$.frequencies(["a", "a", "b", "c", "a", "b"]) == ["a": 3, "b": 2, "c": 1]</code></p>
 
 <p><code>$.range(4) as Int[] == [0, 1, 2, 3]</code></p>
 
