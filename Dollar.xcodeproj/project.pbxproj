@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0409870219481EB300E3997C /* Car.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0409870119481EB300E3997C /* Car.swift */; };
 		92E0D04219467C67002ACC3D /* Dollar.h in Headers */ = {isa = PBXBuildFile; fileRef = 92E0D04119467C67002ACC3D /* Dollar.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		92E0D04819467C67002ACC3D /* Dollar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92E0D03C19467C67002ACC3D /* Dollar.framework */; };
 		92E0D04F19467C67002ACC3D /* DollarTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92E0D04E19467C67002ACC3D /* DollarTests.swift */; };
@@ -14,6 +15,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		040987041948227200E3997C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 92E0D03319467C67002ACC3D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 92E0D03B19467C67002ACC3D;
+			remoteInfo = Dollar;
+		};
 		92E0D04919467C67002ACC3D /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 92E0D03319467C67002ACC3D /* Project object */;
@@ -24,6 +32,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0409870119481EB300E3997C /* Car.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Car.swift; sourceTree = "<group>"; };
 		92E0D03C19467C67002ACC3D /* Dollar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Dollar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		92E0D04019467C67002ACC3D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		92E0D04119467C67002ACC3D /* Dollar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Dollar.h; sourceTree = "<group>"; };
@@ -92,6 +101,7 @@
 			isa = PBXGroup;
 			children = (
 				92E0D04E19467C67002ACC3D /* DollarTests.swift */,
+				0409870119481EB300E3997C /* Car.swift */,
 				92E0D04C19467C67002ACC3D /* Supporting Files */,
 			);
 			path = DollarTests;
@@ -149,6 +159,7 @@
 			);
 			dependencies = (
 				92E0D04A19467C67002ACC3D /* PBXTargetDependency */,
+				040987051948227200E3997C /* PBXTargetDependency */,
 			);
 			name = DollarTests;
 			productName = DollarTests;
@@ -221,6 +232,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0409870219481EB300E3997C /* Car.swift in Sources */,
 				92E0D04F19467C67002ACC3D /* DollarTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -228,6 +240,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		040987051948227200E3997C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 92E0D03B19467C67002ACC3D /* Dollar */;
+			targetProxy = 040987041948227200E3997C /* PBXContainerItemProxy */;
+		};
 		92E0D04A19467C67002ACC3D /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 92E0D03B19467C67002ACC3D /* Dollar */;
