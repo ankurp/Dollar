@@ -174,4 +174,12 @@ class DollarTests: XCTestCase {
         XCTAssert($.frequencies(["a", "a", "b", "c", "a", "b"]) == ["a": 3, "b": 2, "c": 1], "Returns correct frequency dictionary")
     }
     
+    func testChaining() {
+        var chain = $(array: [1, 2, 3])
+        XCTAssert(chain.first() as Int == 1, "Returns first elemtn which ends the chain")
+        
+        chain = $(array: [[1, 2], 3, [[4], 5]])
+        XCTAssert(chain.flatten().value() as Int[] == [1, 2, 3, 4, 5], "Returns flatten array from chaining")
+    }
+    
 }

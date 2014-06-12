@@ -20,6 +20,41 @@ import Foundation
 
 struct $ {
     
+    //  ________  ___  ___  ________  ___  ________
+    // |\   ____\|\  \|\  \|\   __  \|\  \|\   ___  \
+    // \ \  \___|\ \  \\\  \ \  \|\  \ \  \ \  \\ \  \
+    //  \ \  \    \ \   __  \ \   __  \ \  \ \  \\ \  \
+    //   \ \  \____\ \  \ \  \ \  \ \  \ \  \ \  \\ \  \
+    //    \ \_______\ \__\ \__\ \__\ \__\ \__\ \__\\ \__\
+    //     \|_______|\|__|\|__|\|__|\|__|\|__|\|__| \|__|
+    //
+    var resultArray: AnyObject[] = []
+    init(array: AnyObject[]) {
+        self.resultArray = array
+    }
+
+    mutating func first() -> AnyObject? {
+        return $.first(self.resultArray)
+    }
+    
+    mutating func flatten() -> $ {
+        self.resultArray = $.flatten(self.resultArray)
+        return self
+    }
+    
+    mutating func initial() -> $ {
+        return self.initial(1)
+    }
+    
+    mutating func initial(numElements: Int) -> $ {
+        self.resultArray = $.initial(self.resultArray, numElements: numElements)
+        return self
+    }
+
+    func value() -> AnyObject[] {
+        return self.resultArray
+    }
+
     //  ________  ________  ________  ________      ___    ___
     // |\   __  \|\   __  \|\   __  \|\   __  \    |\  \  /  /|
     // \ \  \|\  \ \  \|\  \ \  \|\  \ \  \|\  \   \ \  \/  / /
