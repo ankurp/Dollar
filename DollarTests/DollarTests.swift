@@ -209,4 +209,15 @@ class DollarTests: XCTestCase {
         XCTAssert(beatle.color == "Blue", "Set the car color")
     }
 
+    func testChaining() {
+        var chain = $(array: [1, 2, 3])
+        XCTAssert(chain.first() as Int == 1, "Returns first element which ends the chain")
+        
+        chain = $(array: [[1, 2], 3, [[4], 5]])
+        XCTAssert(chain.flatten().initial(2).value() as Int[] == [1, 2, 3], "Returns flatten array from chaining")
+        
+        chain = $(array: [[1, 2], 3, [[4], 5]])
+        XCTAssert(chain.initial().flatten().first() as Int == 1, "Returns flatten array from chaining")
+    }
+
 }
