@@ -18,7 +18,7 @@
     <div class="wrapper">
       <header>
         <h1>Dollar.swift</h1>
-        <p>A functional tool-belt for Swift Language</p>
+        <p>A functional tool-belt for Swift Language similar to Lo-Dash or Underscore in Javascript</p>
         <p class="view"><a href="https://github.com/ankurp/Dollar.swift">View the Project on GitHub <small>ankurp/Dollar.swift</small></a></p>
         <ul>
           <li><a href="https://github.com/ankurp/Dollar.swift/zipball/master">Download <strong>ZIP File</strong></a></li>
@@ -27,8 +27,10 @@
         </ul>
       </header>
       <section>
-        <h1 style="font-weight:normal;">Dollar is a Swift library that provides useful functional programming helper methods without extending any built in objects. It is similar to Lo-Dash or Underscore in Javascript.</h1>
-        <pre>
+        <h1>
+<a name="-is-a-swift-library-that-provides-useful-functional-programming-helper-methods-without-extending-any-built-in-objects" class="anchor" href="#-is-a-swift-library-that-provides-useful-functional-programming-helper-methods-without-extending-any-built-in-objects"><span class="octicon octicon-link"></span></a>$ is a Swift library that provides useful functional programming helper methods without extending any built in objects.</h1>
+
+<pre>
      ___
    _|\  \__
   |\   ____\
@@ -38,17 +40,27 @@
       ____\_\  \
      |\___    __\
      \|___|\__\_|
-          \|__|
-          </pre>
+          \|__|     
+</pre>
 
 <h3>
 <a name="setup" class="anchor" href="#setup"><span class="octicon octicon-link"></span></a>Setup</h3>
 
-<p>Include the <code>Dollar.swift</code> file from the Classes folder in your Project and make sure to check the Product in the Add to targets panel when importing the file.</p>
+<p>Include the <code>Dollar.swift</code> into your project and import the library using <code>import Dollar</code></p>
 
-<p>Currently there are issues loading the library using <code>pod 'Dollar', '~&gt; 0.1.2'</code></p>
+<p>Currently there are issues loading the library using <code>pod 'Dollar', '~&gt; 0.2'</code></p>
 
 <h3>
+<a name="contributing" class="anchor" href="#contributing"><span class="octicon octicon-link"></span></a>Contributing</h3>
+
+<p>If you are interested in contributing</p>
+
+<ol>
+<li>Please fork this project</li>
+<li>Implement new methods or changes in the <code>Dollar.swift</code> file in the Classes folder</li>
+<li>Write tests in <code>DollarTests.swift</code> file in the DollarTests folder</li>
+<li>Submit a pull request.</li>
+</ol><h3>
 <a name="array-helper-methods" class="anchor" href="#array-helper-methods"><span class="octicon octicon-link"></span></a>Array Helper Methods</h3>
 
 <ul>
@@ -88,6 +100,34 @@
 <li>$.max</li>
 <li>$.pluck</li>
 </ul><h3>
+<a name="dictionary-helper-methods" class="anchor" href="#dictionary-helper-methods"><span class="octicon octicon-link"></span></a>Dictionary Helper Methods</h3>
+
+<ul>
+<li>$.keys</li>
+<li>$.values</li>
+<li>$.merge</li>
+<li>$.pick</li>
+<li>$.omit</li>
+</ul><h3>
+<a name="object-helper-methods" class="anchor" href="#object-helper-methods"><span class="octicon octicon-link"></span></a>Object Helper Methods</h3>
+
+<ul>
+<li>$.tap</li>
+</ul><h3>
+<a name="chaining" class="anchor" href="#chaining"><span class="octicon octicon-link"></span></a>Chaining</h3>
+
+<ul>
+<li>$(array: ...)</li>
+<li><code>$(array: [1, 2, 3]).first() as Int == 1</code></li>
+<li><code>$(array: [[1, 2], 3, [[4], 5]]).flatten().initial(2).value() as Int[] == [1, 2, 3]</code></li>
+<li><code>$(array: [[1, 2], 3, [[4], 5]]).initial().flatten().first() as Int == 1</code></li>
+<li>...</li>
+</ul><h3>
+<a name="roadmap" class="anchor" href="#roadmap"><span class="octicon octicon-link"></span></a>Roadmap</h3>
+
+<p>More functions will be added and then ability to chain operations and lazily evaluation of chained expressions.</p>
+
+<h3>
 <a name="usage" class="anchor" href="#usage"><span class="octicon octicon-link"></span></a>Usage</h3>
 
 <p><code>$.first([1, 2, 3, 4]) as Double == 1</code></p>
@@ -125,12 +165,12 @@
 <p><code>$.last([3, 4, 5]) as Int == 5</code></p>
 
 <pre><code>let arr = [["age": 36], ["age": 40], ["age": 1]]
-let result = $.findIndex(arr) { ["age"] &lt; 20 }
+let result = $.findIndex(arr) { $0["age"] &lt; 20 }
 result == 2
 </code></pre>
 
 <pre><code>let arr = [["age": 36], ["age": 40], ["age": 1]]
-let result = $.findLastIndex(arr) { ["age"] &gt; 30 }
+let result = $.findLastIndex(arr) { $0["age"] &gt; 30 }
 result == 1
 </code></pre>
 
@@ -140,7 +180,7 @@ result == 1
 
 <p><code>$.contains([1, 2, 3, 1, 2, 3], value: 2) == true</code></p>
 
-<p><code>$.contains([1, 2, 3, 1, 2, 3], value: 10) == false</code></p>
+<p><code>$.contains([1, 2, 3, 1, 2, 3], value: 10) == false</code>`</p>
 
 <p><code>$.frequencies(["a", "a", "b", "c", "a", "b"]) == ["a": 3, "b": 2, "c": 1]</code></p>
 
@@ -206,20 +246,31 @@ $.contains(arr, value: $.sample(arr) as NSObject)
 $.pluck(arr, value: "age") == [20, 30, 40]
 </code></pre>
 
-<h3>
-<a name="contributing" class="anchor" href="#contributing"><span class="octicon octicon-link"></span></a>Contributing</h3>
+<p><code>$.keys(["Dog": 1, "Cat": 2])</code></p>
 
-<p>If you are interested in contributing </p>
+<p><code>$.values(["Dog": 1, "Cat": 2])</code></p>
+
+<pre><code>let dict: Dictionary&lt;String, Int&gt; = ["Dog": 1, "Cat": 2]
+let dict2: Dictionary&lt;String, Int&gt; = ["Cow": 3]
+let dict3: Dictionary&lt;String, Int&gt; = ["Sheep": 4]
+$.merge(dict, dictionaries: dict2, dict3)
+</code></pre>
+
+<p><code>$.pick(["Dog": 1, "Cat": 2, "Cow": 3], keys: "Dog", "Cow")</code></p>
+
+<p><code>$.omit(["Dog": 1, "Cat": 2, "Cow": 3], keys: "Cat", "Dog")</code></p>
+
+<pre><code>var beatle = Car(name: "Fusca")
+$.tap(beatle, {$0.name = "Beatle"}).color = "Blue"
+</code></pre>
+
+<h3>
+<a name="why-not-extend-the-collection-type" class="anchor" href="#why-not-extend-the-collection-type"><span class="octicon octicon-link"></span></a>Why not extend the collection type?</h3>
 
 <ol>
-<li>Please fork this project</li>
-<li>Implement new methods or changes in the <code>Dollar.swift</code> file in the Classes folder</li>
-<li>Write tests in <code>DollarTests.swift</code> file in the DollarTests folder</li>
-<li>Submit a pull request.</li>
-</ol><h3>
-<a name="roadmap" class="anchor" href="#roadmap"><span class="octicon octicon-link"></span></a>Roadmap</h3>
-
-<p>More functions will be added and then ability to chain operations and lazily evaluation of chained expressions.</p>
+<li>The project doesnt extend the collection using the extension features to keep it purely functional and</li>
+<li>To not override any methods via extensions if Apple decides to add those methods into the collection class themselves as part of the language update. This could lead to inconsistent behavior for those who use the library and those who don't.</li>
+</ol>
       </section>
     </div>
     <footer>
