@@ -18,7 +18,7 @@
 
 import Foundation
 
-struct $ {
+class $ {
     
     //  ________  ___  ___  ________  ___  ________
     // |\   ____\|\  \|\  \|\   __  \|\  \|\   ___  \
@@ -33,20 +33,20 @@ struct $ {
         self.resultArray = array
     }
 
-    mutating func first() -> AnyObject? {
+    func first() -> AnyObject? {
         return $.first(self.resultArray)
     }
     
-    mutating func flatten() -> $ {
+    func flatten() -> $ {
         self.resultArray = $.flatten(self.resultArray)
         return self
     }
     
-    mutating func initial() -> $ {
+    func initial() -> $ {
         return self.initial(1)
     }
     
-    mutating func initial(numElements: Int) -> $ {
+    func initial(numElements: Int) -> $ {
         self.resultArray = $.initial(self.resultArray, numElements: numElements)
         return self
     }
@@ -66,7 +66,7 @@ struct $ {
     
     //$.first([0, 1, false, 2, '', 3])
     //Gets the first element or first n elements of an array.
-    static func first(array: AnyObject[]) -> AnyObject? {
+    class func first(array: AnyObject[]) -> AnyObject? {
         if array.isEmpty {
             return nil
         } else {
@@ -76,7 +76,7 @@ struct $ {
     
     //$.compact([0, 1, false, 2, '', 3])
     //Remove all falsey values
-    static func compact(array: AnyObject?[]) -> AnyObject[] {
+    class func compact(array: AnyObject?[]) -> AnyObject[] {
         var result: AnyObject[] = []
         for elem: AnyObject? in array {
             if let val: AnyObject = elem {
@@ -88,7 +88,7 @@ struct $ {
 
     //$.flatten([[2],3,4])
     //flatten array
-    static func flatten(array: AnyObject[]) -> AnyObject[] {
+    class func flatten(array: AnyObject[]) -> AnyObject[] {
         var resultArr: AnyObject[] = []
         for elem : AnyObject in array {
             if let val = elem as? AnyObject[] {
@@ -102,7 +102,7 @@ struct $ {
     
     //$.indexOf([2, 3, 4, 5], 3)
     //Return index of the value
-    static func indexOf<T: Equatable>(array: T[], value: T) -> Int? {
+    class func indexOf<T: Equatable>(array: T[], value: T) -> Int? {
         for (index, elem) in enumerate(array) {
             if elem == value {
                 return index
@@ -113,13 +113,13 @@ struct $ {
 
     //$.initial([2, 3, 4, 5])
     //Returns all except for last element
-    static func initial(array: AnyObject[]) -> AnyObject[] {
+    class func initial(array: AnyObject[]) -> AnyObject[] {
         return self.initial(array, numElements: 1)
     }
     
     //$.initial([2, 3, 4, 5], 2)
     //Returns all except for last 2
-    static func initial(array: AnyObject[], numElements: Int) -> AnyObject[] {
+    class func initial(array: AnyObject[], numElements: Int) -> AnyObject[] {
         var result: AnyObject[] = []
         for (index, _) in enumerate((0..array.count - numElements)) {
             result += array[index]
@@ -129,7 +129,7 @@ struct $ {
     
     //$.intersection([1, 2, 3], [5, 2, 1, 4], [2, 1])
     //Will return intersection of all arrays
-    static func intersection<T : Hashable>(arrays: T[]...) -> T[] {
+    class func intersection<T : Hashable>(arrays: T[]...) -> T[] {
         var map : Dictionary<T, Int> = Dictionary<T, Int>()
         for arr in arrays {
             for elem in arr {
@@ -152,7 +152,7 @@ struct $ {
     
     //$.last([1, 2, 3])
     //Will return last element in the array
-    static func last(array: AnyObject[]) -> AnyObject? {
+    class func last(array: AnyObject[]) -> AnyObject? {
         if array.isEmpty {
             return nil
         } else {
@@ -163,7 +163,7 @@ struct $ {
     //$.difference([1, 2, 3], [2], [3])
     //returns [1]
     //Returns first array passed subtracted by remaining arrays
-    static func difference<T : Hashable>(arrays: T[]...) -> T[] {
+    class func difference<T : Hashable>(arrays: T[]...) -> T[] {
         var result : T[] = []
         var map : Dictionary<T, Bool> = Dictionary<T, Bool>()
         let firstArr : T[] = self.first(arrays) as T[]
@@ -186,14 +186,14 @@ struct $ {
     //$.rest([2, 3, 4])
     //returns [3, 4]
     //Returns last n - 1 elements in array
-    static func rest(array: AnyObject[]) -> AnyObject[] {
+    class func rest(array: AnyObject[]) -> AnyObject[] {
         return self.rest(array, numElements: 1)
     }
     
     //$.rest([2, 3, 4], 2)
     //returns [4]
     //Returns last n - numElements elements in array
-    static func rest(array: AnyObject[], numElements: Int) -> AnyObject[] {
+    class func rest(array: AnyObject[], numElements: Int) -> AnyObject[] {
         var result: AnyObject[] = []
         for (index, _) in enumerate((numElements..array.count)) {
             result += array[index + numElements]
@@ -204,7 +204,7 @@ struct $ {
     //$.findIndex([2, 3, 3]) { return $0 == 3 }
     //returns 1
     //Returns index of element
-    static func findIndex<T>(array: T[], iterator: (T) -> Bool) -> Int? {
+    class func findIndex<T>(array: T[], iterator: (T) -> Bool) -> Int? {
         for (index, elem : T) in enumerate(array) {
             if iterator(elem) {
                 return index
@@ -216,7 +216,7 @@ struct $ {
     //$.findLastIndex([2, 3, 3]) { return $0 == 3 }
     //returns 2
     //Returns last index of element
-    static func findLastIndex<T>(array: T[], iterator: (T) -> Bool) -> Int? {
+    class func findLastIndex<T>(array: T[], iterator: (T) -> Bool) -> Int? {
         let count = array.count
         for (index, _) in enumerate(array) {
             let reverseIndex = count - (index + 1)
@@ -230,7 +230,7 @@ struct $ {
     
     //$.lastIndexOf([2, 3, 4], 3)
     //returns 1
-    static func lastIndexOf<T: Equatable>(array: T[], value: T) -> Int? {
+    class func lastIndexOf<T: Equatable>(array: T[], value: T) -> Int? {
         var count = array.count
         for (index, _) in enumerate(array) {
             let reverseIndex = count - (index + 1)
@@ -242,26 +242,26 @@ struct $ {
     }
     
     //$.pull()
-    static func pull<T : Equatable>(array: T[], values: T...) -> T[] {
+    class func pull<T : Equatable>(array: T[], values: T...) -> T[] {
         return self.pull(array, values: values)
     }
     
-    static func pull<T : Equatable>(array: T[], values: T[]) -> T[] {
+    class func pull<T : Equatable>(array: T[], values: T[]) -> T[] {
         return array.filter { !self.contains(values, value: $0) }
     }
     
     //$.range()
-    static func range(endVal: Int) -> Int[] {
+    class func range(endVal: Int) -> Int[] {
         return self.range(0, endVal: endVal)
     }
 
     //$.range()
-    static func range(startVal: Int, endVal: Int) -> Int[] {
+    class func range(startVal: Int, endVal: Int) -> Int[] {
         return self.range(startVal, endVal: endVal, incrementBy: 1)
     }
 
     //$.range()
-    static func range(startVal: Int, endVal: Int, incrementBy: Int) -> Int[] {
+    class func range(startVal: Int, endVal: Int, incrementBy: Int) -> Int[] {
         var result: Int[] = []
         for var i = startVal; i < endVal; i = i + incrementBy {
             result += i
@@ -270,12 +270,12 @@ struct $ {
     }
     
     //$.remove()
-    static func remove(array: AnyObject[], iterator: (AnyObject) -> Bool) -> AnyObject[] {
+    class func remove(array: AnyObject[], iterator: (AnyObject) -> Bool) -> AnyObject[] {
         return array.filter { !iterator($0) }
     }
         
     //$.sortedIndex()
-    static func sortedIndex<T : Comparable>(array: T[], value: T) -> Int {
+    class func sortedIndex<T : Comparable>(array: T[], value: T) -> Int {
         for (index, elem) in enumerate(array) {
             if elem > value {
                 return index
@@ -285,7 +285,7 @@ struct $ {
     }
 
     //$.union()
-    static func union<T : Hashable>(arrays: T[]...) -> T[] {
+    class func union<T : Hashable>(arrays: T[]...) -> T[] {
         var map : Dictionary<T, Bool> = Dictionary<T, Bool>()
         for arr in arrays {
             for elem in arr {
@@ -300,7 +300,7 @@ struct $ {
     }
 
     //$.uniq()
-    static func uniq<T : Hashable>(array: T[]) -> T[] {
+    class func uniq<T : Hashable>(array: T[]) -> T[] {
         var map : Dictionary<T, Bool> = Dictionary<T, Bool>()
         for elem in array {
             map[elem] = true
@@ -313,12 +313,12 @@ struct $ {
     }
     
     //$.without()
-    static func without<T : Equatable>(array: T[], values: T...) -> T[] {
+    class func without<T : Equatable>(array: T[], values: T...) -> T[] {
         return self.pull(array, values: values)
     }
     
     //$.xor()
-    static func xor<T : Hashable>(arrays: T[]...) -> T[] {
+    class func xor<T : Hashable>(arrays: T[]...) -> T[] {
         var map : Dictionary<T, Bool> = Dictionary<T, Bool>()
         for arr in arrays {
             for elem in arr {
@@ -335,7 +335,7 @@ struct $ {
     }
     
     //$.zip()
-    static func zip(arrays: AnyObject[]...) -> AnyObject[] {
+    class func zip(arrays: AnyObject[]...) -> AnyObject[] {
         var result: AnyObject[][] = []
         for _ in self.first(arrays) as AnyObject[] {
             result += [] as AnyObject[]
@@ -349,7 +349,7 @@ struct $ {
     }
 
     //$.zipObject()
-    static func zipObject<T, E>(keys: T[], values: E[]) -> Dictionary<T, E> {
+    class func zipObject<T, E>(keys: T[], values: E[]) -> Dictionary<T, E> {
         var result = Dictionary<T, E>()
         for (index, key) in enumerate(keys) {
             result[key] = values[index]
@@ -359,14 +359,14 @@ struct $ {
     
     //$.noop()
     //A no-operation function.
-    static func noop() -> AnyObject? {
+    class func noop() -> AnyObject? {
         return nil
     }
     
     //$.frequencies(["a", "a", "b", "c", "a", "b"])
     //returns: ["a": 3, "b": 2, "c": 1]
     //returns number of times each element appears in an array.
-    static func frequencies<T>(array: Array<T>) -> Dictionary<T, Int> {
+    class func frequencies<T>(array: Array<T>) -> Dictionary<T, Int> {
         var result = Dictionary<T, Int>()
         for elem in array {
             if let freq = result[elem] {
@@ -387,11 +387,11 @@ struct $ {
     //    \ \_______\ \_______\ \_______\ \_______\ \_______\ \_______\  \ \__\ \ \__\ \_______\ \__\\ \__\
     //     \|_______|\|_______|\|_______|\|_______|\|_______|\|_______|   \|__|  \|__|\|_______|\|__| \|__|
     
-    static func contains<T : Equatable>(array: T[], value: T) -> Bool {
+    class func contains<T : Equatable>(array: T[], value: T) -> Bool {
         return array.filter({ $0 as? T == value }).count > 0
     }
     
-    static func at(array: AnyObject[], indexes: Int...) -> AnyObject[] {
+    class func at(array: AnyObject[], indexes: Int...) -> AnyObject[] {
         var result : AnyObject[] = []
         for index in indexes {
             result += array[index]
@@ -399,7 +399,7 @@ struct $ {
         return result
     }
 
-    static func every<T>(array: T[], iterator: (T) -> Bool) -> Bool {
+    class func every<T>(array: T[], iterator: (T) -> Bool) -> Bool {
         var result : Bool = true
         for elem in array {
             result &= iterator(elem)
@@ -407,7 +407,7 @@ struct $ {
         return result
     }
     
-    static func find<T : Equatable>(array: T[], iterator: (T) -> Bool) -> T? {
+    class func find<T : Equatable>(array: T[], iterator: (T) -> Bool) -> T? {
         for elem in array {
             let result = iterator(elem)
             if result {
@@ -417,7 +417,7 @@ struct $ {
         return nil
     }
     
-    static func min<T : Comparable>(array: T[]) -> T? {
+    class func min<T : Comparable>(array: T[]) -> T? {
         var minVal = array[0]
         for elem in array {
             if minVal > elem {
@@ -427,7 +427,7 @@ struct $ {
         return minVal
     }
     
-    static func max<T : Comparable>(array: T[]) -> T? {
+    class func max<T : Comparable>(array: T[]) -> T? {
         var maxVal = array[0]
         for elem in array {
             if maxVal < elem {
@@ -437,11 +437,11 @@ struct $ {
         return maxVal
     }
     
-    static func sample(array: AnyObject[]) -> AnyObject {
+    class func sample(array: AnyObject[]) -> AnyObject {
         return array[random() % array.count]
     }
     
-    static func pluck<T, E>(array: Dictionary<T, E>[], value: T) -> E[] {
+    class func pluck<T, E>(array: Dictionary<T, E>[], value: T) -> E[] {
         var result : E[] = []
         
         for obj in array {
@@ -455,14 +455,14 @@ struct $ {
     
     // Objects
     
-    static func tap<T>(object: T, function: (T) -> ()) -> T {
+    class func tap<T>(object: T, function: (T) -> ()) -> T {
         function(object)
         return object
     }
     
     // Dictionaries
     
-    static func keys<T, U>(dictionary: Dictionary<T, U>) -> T[] {
+    class func keys<T, U>(dictionary: Dictionary<T, U>) -> T[] {
         var result : T[] = []
         for (key, _) in dictionary {
             result.insert(key, atIndex: 0)
@@ -470,7 +470,7 @@ struct $ {
         return result
     }
     
-    static func values<T, U>(dictionary: Dictionary<T, U>) -> U[] {
+    class func values<T, U>(dictionary: Dictionary<T, U>) -> U[] {
         var result : U[] = []
         for (_, value) in dictionary {
             result.insert(value, atIndex: 0)
@@ -478,7 +478,7 @@ struct $ {
         return result
     }
     
-    static func merge<T, U>(original: Dictionary<T, U>, dictionaries: Dictionary<T, U>...) -> Dictionary<T, U> {
+    class func merge<T, U>(original: Dictionary<T, U>, dictionaries: Dictionary<T, U>...) -> Dictionary<T, U> {
         var result : Dictionary<T, U> = Dictionary<T, U>()
         
         for (key, value) in original {
@@ -494,7 +494,7 @@ struct $ {
         return result
     }
     
-    static func pick<T, U>(dictionary: Dictionary<T, U>, keys: T...) -> Dictionary<T, U> {
+    class func pick<T, U>(dictionary: Dictionary<T, U>, keys: T...) -> Dictionary<T, U> {
         var result : Dictionary<T, U> = Dictionary<T, U>()
         
         for key in keys {
@@ -504,7 +504,7 @@ struct $ {
         return result
     }
     
-    static func omit<T, U>(dictionary: Dictionary<T, U>, keys: T...) -> Dictionary<T, U> {
+    class func omit<T, U>(dictionary: Dictionary<T, U>, keys: T...) -> Dictionary<T, U> {
         var result : Dictionary<T, U> = Dictionary<T, U>()
         
         for (key, value) in dictionary {
