@@ -64,6 +64,13 @@ If you are interested in contributing
 
 * $.tap
 
+### Chaining
+* $(array: ...)
+* `$(array: [1, 2, 3]).first() as Int == 1`
+* `$(array: [[1, 2], 3, [[4], 5]]).flatten().initial(2).value() as Int[] == [1, 2, 3]`
+* `$(array: [[1, 2], 3, [[4], 5]]).initial().flatten().first() as Int == 1`
+* ...
+
 ### Roadmap
 
 More functions will be added and then ability to chain operations and lazily evaluation of chained expressions.
