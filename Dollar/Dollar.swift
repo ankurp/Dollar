@@ -453,4 +453,66 @@ struct $ {
         return result
     }
     
+    // Objects
+    
+    static func tap<T>(object: T, function: (T) -> ()) -> T {
+        function(object)
+        return object
+    }
+    
+    // Dictionaries
+    
+    static func keys<T, U>(dictionary: Dictionary<T, U>) -> T[] {
+        var result : T[] = []
+        for (key, _) in dictionary {
+            result.insert(key, atIndex: 0)
+        }
+        return result
+    }
+    
+    static func values<T, U>(dictionary: Dictionary<T, U>) -> U[] {
+        var result : U[] = []
+        for (_, value) in dictionary {
+            result.insert(value, atIndex: 0)
+        }
+        return result
+    }
+    
+    static func merge<T, U>(original: Dictionary<T, U>, dictionaries: Dictionary<T, U>...) -> Dictionary<T, U> {
+        var result : Dictionary<T, U> = Dictionary<T, U>()
+        
+        for (key, value) in original {
+            result[key] = value
+        }
+        
+        for dict in dictionaries {
+            for (key, value) in dict {
+                result[key] = value
+            }
+        }
+        
+        return result
+    }
+    
+    static func pick<T, U>(dictionary: Dictionary<T, U>, keys: T...) -> Dictionary<T, U> {
+        var result : Dictionary<T, U> = Dictionary<T, U>()
+        
+        for key in keys {
+            result[key] = dictionary[key]
+        }
+        
+        return result
+    }
+    
+    static func omit<T, U>(dictionary: Dictionary<T, U>, keys: T...) -> Dictionary<T, U> {
+        var result : Dictionary<T, U> = Dictionary<T, U>()
+        
+        for (key, value) in dictionary {
+            if !self.contains(keys, value: key) {
+                result[key] = value
+            }
+        }
+        
+        return result
+    }
 }

@@ -173,13 +173,48 @@ class DollarTests: XCTestCase {
     func testFrequencies() {
         XCTAssert($.frequencies(["a", "a", "b", "c", "a", "b"]) == ["a": 3, "b": 2, "c": 1], "Returns correct frequency dictionary")
     }
+
+    func testKeys() {
+        let dict: Dictionary<String, Int> = ["Dog": 1, "Cat": 2]
+        XCTAssert($.keys(dict) == ["Dog", "Cat"], "Returns correct array with keys")
+    }
     
+    func testValues() {
+        let dict: Dictionary<String, Int> = ["Dog": 1, "Cat": 2]
+        XCTAssert($.values(dict) == [1, 2], "Returns correct array with values")
+    }
+    
+    func tesMerge() {
+        let dict: Dictionary<String, Int> = ["Dog": 1, "Cat": 2]
+        let dict2: Dictionary<String, Int> = ["Cow": 3]
+        let dict3: Dictionary<String, Int> = ["Sheep": 4]
+        XCTAssert($.merge(dict, dictionaries: dict2, dict3) == ["Dog": 1, "Cat": 2, "Cow": 3, "Sheep": 4], "Returns correct merged dictionary")
+    }
+    
+    func testPick() {
+        let dict: Dictionary<String, Int> = ["Dog": 1, "Cat": 2, "Cow": 3]
+        XCTAssert($.pick(dict, keys: "Dog", "Cow") == ["Dog": 1, "Cow": 3], "Returns correct picked dictionary")
+    }
+    
+    func testOmit() {
+        let dict: Dictionary<String, Int> = ["Dog": 1, "Cat": 2, "Cow": 3]
+        XCTAssert($.omit(dict, keys: "Dog") == ["Cat": 2, "Cow": 3], "Returns correct omited dictionary")
+    }
+    
+    func testTap() {
+        var beatle = CarExample(name: "Fusca")
+        $.tap(beatle, {$0.name = "Beatle"}).color = "Blue"
+        
+        XCTAssert(beatle.name == "Beatle", "Set the car name")
+        XCTAssert(beatle.color == "Blue", "Set the car color")
+    }
+
     func testChaining() {
         var chain = $(array: [1, 2, 3])
-        XCTAssert(chain.first() as Int == 1, "Returns first elemtn which ends the chain")
+        XCTAssert(chain.first() as Int == 1, "Returns first element which ends the chain")
         
         chain = $(array: [[1, 2], 3, [[4], 5]])
         XCTAssert(chain.flatten().value() as Int[] == [1, 2, 3, 4, 5], "Returns flatten array from chaining")
     }
-    
+
 }
