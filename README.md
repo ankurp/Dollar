@@ -1,81 +1,93 @@
-Dollar.swift [![Build Status](https://travis-ci.org/ankurp/Dollar.swift.svg?branch=master)](https://travis-ci.org/ankurp/Dollar.swift)
+Dollar.$wift [![Build Status](https://travis-ci.org/ankurp/Dollar.swift.svg?branch=master)](https://travis-ci.org/ankurp/Dollar.swift)
 ===========
 
 $ is a Swift library that provides useful functional programming helper methods without extending any built in objects. It is similar to Lo-Dash or Underscore in Javascript.
 
-### Setup
+## Contents ##
+
+- [Setup](#setup)
+- [Usage](#usage)
+  - [Array Methods](#array)
+  - [Dictionary](#dictionary)
+  - [Object](#object)
+  - [Chaining](#chaining)
+- [Examples](#example)
+- [Contributing](#contributing)
+- [Roadmap](#roadmap)
+- [Why not extend collection?](#why)
+
+## Setup ##
 Include the `Dollar.swift` into your project and import the library using `import Dollar`
 
-Currently there are issues loading the library using `pod 'Dollar', '~> 0.1'`
+Currently there are issues loading the library using `pod 'Dollar', '~> 0.2'`
 
-### Contributing
-If you are interested in contributing
+## Usage ##
 
-1. Please fork this project
-2. Implement new methods or changes in the `Dollar.swift` file in the Classes folder
-3. Write tests in `DollarTests.swift` file in the DollarTests folder
-4. Submit a pull request.
+### Array Methods ###
 
-### Array Helper Methods
+Name | Usage
+---- | ---------
+**`$.at`**|Creates an array of elements from the specified indexes, or keys, of the collection. Indexes may be specified as individual arguments or as arrays of indexes.
+**`$.first`**|Gets the first element in the array.
+**`$.compact`**|Creates an array with all nil values removed.
+**`$.contains`**|Checks if a given value is present in the array.
+**`$.difference`**|Creates an array excluding all values of the provided arrays
+**`$.every`**|Checks if the given callback returns true value for all items in the array.
+**`$.find`**|Iterates over elements of an array and returning the first element that the callback returns true for.
+**`$.findIndex`**|This method is like find except that it returns the index of the first element that passes the callback check.
+**`$.findLastIndex`**|This method is like findIndex except that it iterates over elements of the array from right to left.
+**`$.flatten`**|Flattens a nested array of any depth.
+**`$.frequencies`**|This method returns a dictionary of values in an array mapping to the total number of occurances in the array.
+**`$.indexOf`**|Gets the index at which the first occurrence of value is found.
+**`$.initial`**|Gets all but the last element or last n elements of an array.
+**`$.intersection`**|Creates an array of unique values present in all provided arrays.
+**`$.last`**|Gets the last element from the array.
+**`$.lastIndexOf`**|Gets the index at which the last occurrence of value is found.
+**`$.rest`**|The opposite of initial this method gets all but the first element or first n elements of an array.
+**`$.noop`**|A no-operation function.
+**`$.min`**|Retrieves the minimum value in an array.
+**`$.max`**|Retrieves the maximum value in an array.
+**`$.pluck`**|Retrieves the value of a specified property from all elements in the array.
+**`$.pull`**|Removes all provided values from the given array.
+**`$.range`**|Creates an array of numbers (positive and/or negative) progressing from start up to but not including end.
+**`$.remove`**|Removes all elements from an array that the callback returns true.
+**`$.sortedIndex`**|Gives the smallest index at which a value should be inserted into a given the array is sorted.
+**`$.union`**|Creates an array of unique values, in order, of the provided arrays.
+**`$.uniq`**|Creates a duplicate-value-free version of an array.
+**`$.without`**|Creates an array excluding all provided values.
+**`$.xor`**|Creates an array that is the symmetric difference of the provided arrays.
+**`$.zip`**|Creates an array of grouped elements, the first of which contains the first elements of the given arrays.
+**`$.zipObject`**|Creates an object composed from arrays of keys and values.
 
-* $.first
-* $.compact
-* $.contains
-* $.difference
-* $.findIndex
-* $.findLastIndex
-* $.flatten
-* $.frequencies
-* $.indexOf
-* $.initial
-* $.intersection
-* $.last
-* $.lastIndexOf
-* $.rest
-* $.noop
-* $.pull
-* $.range
-* $.remove
-* $.sortedIndex
-* $.union
-* $.uniq
-* $.without
-* $.xor
-* $.zip
-* $.zipObject
 
-### Collection Helper Methods
-* $.at
-* $.every
-* $.find
-* $.min
-* $.max
-* $.pluck
+### Dictionary Methods ###
 
-### Dictionary Helper Methods
+Name | Usage
+---- | ---------
+**`$.keys`**|Creates an array of keys given a dictionary.
+**`$.values`**|Creates an array of values given a dictionary
+**`$.merge`**|Merges all of the dictionaries together and the latter dictionary overrides the value at a given key
+**`$.pick`**|Creates a shallow clone of a dictionary composed of the specified keys.
+**`$.omit`**|Creates a shallow clone of a dictionary excluding the specified keys.
 
-* $.keys
-* $.values
-* $.merge
-* $.pick
-* $.omit
+### Object Methods ###
 
-### Object Helper Methods
+Name | Usage
+---- | ---------
+**`$.tap`**|Invokes interceptor with the object and then returns object.
 
-* $.tap
+### Chaining ###
 
-### Chaining
-* $(array: ...)
-* `$(array: [1, 2, 3]).first() as Int == 1`
-* `$(array: [[1, 2], 3, [[4], 5]]).flatten().initial(2).value() as Int[] == [1, 2, 3]`
-* `$(array: [[1, 2], 3, [[4], 5]]).initial().flatten().first() as Int == 1`
-* ...
+**`$(array: ...)`**
 
-### Roadmap
+Name | Usage
+---- | ---------
+**`flatten`**|Flattens a nested array of any depth.
+**`initial`**|Gets all but the last element or last n elements of an array.
+**`first`**|Returns the first element in the array and terminated the chain
+**`value`**|Returns the array after applying all of the chained operators on it.
 
-More functions will be added and then ability to chain operations and lazily evaluation of chained expressions.
-
-###Usage
+## Examples ##
 
 `$.first([1, 2, 3, 4]) as Double == 1`
 
@@ -218,7 +230,27 @@ var beatle = Car(name: "Fusca")
 $.tap(beatle, {$0.name = "Beatle"}).color = "Blue"
 ```
 
-### Why not extend the collection type?
-1. The project doesnt extend the collection using the extension features to keep it purely functional and
+`$(array: [1, 2, 3]).first() as Int == 1`
+
+`$(array: [[1, 2], 3, [[4], 5]]).flatten().initial(2).value() as Int[] == [1, 2, 3]`
+
+`$(array: [[1, 2], 3, [[4], 5]]).initial().flatten().first() as Int == 1`
+
+
+## Contributing ##
+If you are interested in contributing
+
+1. Please fork this project
+2. Implement new methods or changes in the `Dollar.swift` file in the Classes folder
+3. Write tests in `DollarTests.swift` file in the DollarTests folder
+4. Submit a pull request.
+
+## Roadmap ##
+
+More functions will be added and then ability to chain operations and lazily evaluation of chained expressions.
+
+
+## Why not extend collection? ##
+1. The project doesnt extend or monkey patch the collection using the extension features to keep it purely functional and
 2. To not override any methods via extensions if Apple decides to add those methods into the collection class themselves as part of the language update. This could lead to inconsistent behavior for those who use the library and those who don't.
 
