@@ -38,7 +38,7 @@ Currently there are issues loading the library using `pod 'Dollar', '~> 0.2'`
 
 ### Array Methods ###
 
-Name | Usage
+Method | Usage
 ---- | ---------
 **`$.at`**|Creates an array of elements from the specified indexes, or keys, of the collection. Indexes may be specified as individual arguments or as arrays of indexes.
 **`$.first`**|Gets the first element in the array.
@@ -75,7 +75,7 @@ Name | Usage
 
 ### Dictionary Methods ###
 
-Name | Usage
+Method | Usage
 ---- | ---------
 **`$.keys`**|Creates an array of keys given a dictionary.
 **`$.values`**|Creates an array of values given a dictionary
@@ -85,7 +85,7 @@ Name | Usage
 
 ### Object Methods ###
 
-Name | Usage
+Method | Usage
 ---- | ---------
 **`$.tap`**|Invokes interceptor with the object and then returns object.
 
@@ -93,7 +93,7 @@ Name | Usage
 
 **`$(array: ...)`**
 
-Name | Usage
+Method | Usage
 ---- | ---------
 **`flatten`**|Flattens a nested array of any depth.
 **`initial`**|Gets all but the last element or last n elements of an array.
