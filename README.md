@@ -7,14 +7,14 @@ $ is a Swift library that provides useful functional programming helper methods 
 
 - [Setup](#setup)
 - [Usage](#usage)
-  - [Array Methods](#array)
-  - [Dictionary Methods](#dictionary)
-  - [Object Methods](#object)
+  - [Array](#array-methods)
+  - [Dictionary](#dictionary-methods)
+  - [Object](#object-methods)
   - [Chaining](#chaining)
 - [Examples](#example)
 - [Contributing](#contributing)
 - [Roadmap](#roadmap)
-- [Why not extend collection?](#why)
+- [Why?](#why-not-extend-collection)
 
 ## Setup ##
 Include the `Dollar.swift` into your project and import the library using `import Dollar`
