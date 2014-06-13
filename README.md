@@ -3,18 +3,31 @@ Dollar.$wift [![Build Status](https://travis-ci.org/ankurp/Dollar.swift.svg?bran
 
 $ is a Swift library that provides useful functional programming helper methods without extending any built in objects. It is similar to Lo-Dash or Underscore in Javascript.
 
+<pre>
+   ___    ___       __   ___  ________ _________   
+ _|\  \__|\  \     |\  \|\  \|\  _____\\___   ___\ 
+|\   ____\ \  \    \ \  \ \  \ \  \__/\|___ \  \_| 
+\ \  \___|\ \  \  __\ \  \ \  \ \   __\    \ \  \  
+ \ \_____  \ \  \|\__\_\  \ \  \ \  \_|     \ \  \ 
+  \|____|\  \ \____________\ \__\ \__\       \ \__\
+    ____\_\  \|____________|\|__|\|__|        \|__|
+   |\___    __\                                    
+   \|___|\__\_|                                    
+        \|__|                                      
+</pre>
+
 ## Contents ##
 
 - [Setup](#setup)
 - [Usage](#usage)
-  - [Array Methods](#array)
-  - [Dictionary](#dictionary)
-  - [Object](#object)
+  - [Array](#array-methods)
+  - [Dictionary](#dictionary-methods)
+  - [Object](#object-methods)
   - [Chaining](#chaining)
-- [Examples](#example)
+- [Examples](#examples)
 - [Contributing](#contributing)
 - [Roadmap](#roadmap)
-- [Why not extend collection?](#why)
+- [Why?](#why-not-extend-collection)
 
 ## Setup ##
 Include the `Dollar.swift` into your project and import the library using `import Dollar`
