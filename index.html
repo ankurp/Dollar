@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <title>Dollar.swift by ankurp</title>
+    <title>Dollar.$wift by ankurp</title>
 
     <link rel="stylesheet" href="stylesheets/styles.css">
     <link rel="stylesheet" href="stylesheets/pygment_trac.css">
@@ -17,7 +17,7 @@
   <body>
     <div class="wrapper">
       <header>
-        <h1>Dollar.swift</h1>
+        <h1>Dollar.$wift</h1>
         <p>A functional tool-belt for Swift Language similar to Lo-Dash or Underscore in Javascript</p>
         <p class="view"><a href="https://github.com/ankurp/Dollar.swift">View the Project on GitHub <small>ankurp/Dollar.swift</small></a></p>
         <ul>
@@ -43,92 +43,241 @@
           \|__|     
 </pre>
 
-<h3>
-<a name="setup" class="anchor" href="#setup"><span class="octicon octicon-link"></span></a>Setup</h3>
+<h2>
+<a name="contents" class="anchor" href="#contents"><span class="octicon octicon-link"></span></a>Contents</h2>
+
+<ul>
+<li><a href="#setup">Setup</a></li>
+<li>
+<a href="#usage">Usage</a>
+
+<ul>
+<li><a href="#array-methods">Array</a></li>
+<li><a href="#dictionary-methods">Dictionary</a></li>
+<li><a href="#object-methods">Object</a></li>
+<li><a href="#chaining">Chaining</a></li>
+</ul>
+</li>
+<li><a href="#example">Examples</a></li>
+<li><a href="#contributing">Contributing</a></li>
+<li><a href="#roadmap">Roadmap</a></li>
+<li><a href="#why-not-extend-collection">Why?</a></li>
+</ul><h2>
+<a name="setup" class="anchor" href="#setup"><span class="octicon octicon-link"></span></a>Setup</h2>
 
 <p>Include the <code>Dollar.swift</code> into your project and import the library using <code>import Dollar</code></p>
 
 <p>Currently there are issues loading the library using <code>pod 'Dollar', '~&gt; 0.2'</code></p>
 
+<h2>
+<a name="usage" class="anchor" href="#usage"><span class="octicon octicon-link"></span></a>Usage</h2>
+
 <h3>
-<a name="contributing" class="anchor" href="#contributing"><span class="octicon octicon-link"></span></a>Contributing</h3>
+<a name="array-methods" class="anchor" href="#array-methods"><span class="octicon octicon-link"></span></a>Array Methods</h3>
 
-<p>If you are interested in contributing</p>
+<table>
+<thead><tr>
+<th>Name</th>
+<th>Usage</th>
+</tr></thead>
+<tbody>
+<tr>
+<td><strong><code>$.at</code></strong></td>
+<td>Creates an array of elements from the specified indexes, or keys, of the collection. Indexes may be specified as individual arguments or as arrays of indexes.</td>
+</tr>
+<tr>
+<td><strong><code>$.first</code></strong></td>
+<td>Gets the first element in the array.</td>
+</tr>
+<tr>
+<td><strong><code>$.compact</code></strong></td>
+<td>Creates an array with all nil values removed.</td>
+</tr>
+<tr>
+<td><strong><code>$.contains</code></strong></td>
+<td>Checks if a given value is present in the array.</td>
+</tr>
+<tr>
+<td><strong><code>$.difference</code></strong></td>
+<td>Creates an array excluding all values of the provided arrays</td>
+</tr>
+<tr>
+<td><strong><code>$.every</code></strong></td>
+<td>Checks if the given callback returns true value for all items in the array.</td>
+</tr>
+<tr>
+<td><strong><code>$.find</code></strong></td>
+<td>Iterates over elements of an array and returning the first element that the callback returns true for.</td>
+</tr>
+<tr>
+<td><strong><code>$.findIndex</code></strong></td>
+<td>This method is like find except that it returns the index of the first element that passes the callback check.</td>
+</tr>
+<tr>
+<td><strong><code>$.findLastIndex</code></strong></td>
+<td>This method is like findIndex except that it iterates over elements of the array from right to left.</td>
+</tr>
+<tr>
+<td><strong><code>$.flatten</code></strong></td>
+<td>Flattens a nested array of any depth.</td>
+</tr>
+<tr>
+<td><strong><code>$.frequencies</code></strong></td>
+<td>This method returns a dictionary of values in an array mapping to the total number of occurances in the array.</td>
+</tr>
+<tr>
+<td><strong><code>$.indexOf</code></strong></td>
+<td>Gets the index at which the first occurrence of value is found.</td>
+</tr>
+<tr>
+<td><strong><code>$.initial</code></strong></td>
+<td>Gets all but the last element or last n elements of an array.</td>
+</tr>
+<tr>
+<td><strong><code>$.intersection</code></strong></td>
+<td>Creates an array of unique values present in all provided arrays.</td>
+</tr>
+<tr>
+<td><strong><code>$.last</code></strong></td>
+<td>Gets the last element from the array.</td>
+</tr>
+<tr>
+<td><strong><code>$.lastIndexOf</code></strong></td>
+<td>Gets the index at which the last occurrence of value is found.</td>
+</tr>
+<tr>
+<td><strong><code>$.rest</code></strong></td>
+<td>The opposite of initial this method gets all but the first element or first n elements of an array.</td>
+</tr>
+<tr>
+<td><strong><code>$.noop</code></strong></td>
+<td>A no-operation function.</td>
+</tr>
+<tr>
+<td><strong><code>$.min</code></strong></td>
+<td>Retrieves the minimum value in an array.</td>
+</tr>
+<tr>
+<td><strong><code>$.max</code></strong></td>
+<td>Retrieves the maximum value in an array.</td>
+</tr>
+<tr>
+<td><strong><code>$.pluck</code></strong></td>
+<td>Retrieves the value of a specified property from all elements in the array.</td>
+</tr>
+<tr>
+<td><strong><code>$.pull</code></strong></td>
+<td>Removes all provided values from the given array.</td>
+</tr>
+<tr>
+<td><strong><code>$.range</code></strong></td>
+<td>Creates an array of numbers (positive and/or negative) progressing from start up to but not including end.</td>
+</tr>
+<tr>
+<td><strong><code>$.remove</code></strong></td>
+<td>Removes all elements from an array that the callback returns true.</td>
+</tr>
+<tr>
+<td><strong><code>$.sortedIndex</code></strong></td>
+<td>Gives the smallest index at which a value should be inserted into a given the array is sorted.</td>
+</tr>
+<tr>
+<td><strong><code>$.union</code></strong></td>
+<td>Creates an array of unique values, in order, of the provided arrays.</td>
+</tr>
+<tr>
+<td><strong><code>$.uniq</code></strong></td>
+<td>Creates a duplicate-value-free version of an array.</td>
+</tr>
+<tr>
+<td><strong><code>$.without</code></strong></td>
+<td>Creates an array excluding all provided values.</td>
+</tr>
+<tr>
+<td><strong><code>$.xor</code></strong></td>
+<td>Creates an array that is the symmetric difference of the provided arrays.</td>
+</tr>
+<tr>
+<td><strong><code>$.zip</code></strong></td>
+<td>Creates an array of grouped elements, the first of which contains the first elements of the given arrays.</td>
+</tr>
+<tr>
+<td><strong><code>$.zipObject</code></strong></td>
+<td>Creates an object composed from arrays of keys and values.</td>
+</tr>
+</tbody>
+</table><h3>
+<a name="dictionary-methods" class="anchor" href="#dictionary-methods"><span class="octicon octicon-link"></span></a>Dictionary Methods</h3>
 
-<ol>
-<li>Please fork this project</li>
-<li>Implement new methods or changes in the <code>Dollar.swift</code> file in the Classes folder</li>
-<li>Write tests in <code>DollarTests.swift</code> file in the DollarTests folder</li>
-<li>Submit a pull request.</li>
-</ol><h3>
-<a name="array-helper-methods" class="anchor" href="#array-helper-methods"><span class="octicon octicon-link"></span></a>Array Helper Methods</h3>
+<table>
+<thead><tr>
+<th>Name</th>
+<th>Usage</th>
+</tr></thead>
+<tbody>
+<tr>
+<td><strong><code>$.keys</code></strong></td>
+<td>Creates an array of keys given a dictionary.</td>
+</tr>
+<tr>
+<td><strong><code>$.values</code></strong></td>
+<td>Creates an array of values given a dictionary</td>
+</tr>
+<tr>
+<td><strong><code>$.merge</code></strong></td>
+<td>Merges all of the dictionaries together and the latter dictionary overrides the value at a given key</td>
+</tr>
+<tr>
+<td><strong><code>$.pick</code></strong></td>
+<td>Creates a shallow clone of a dictionary composed of the specified keys.</td>
+</tr>
+<tr>
+<td><strong><code>$.omit</code></strong></td>
+<td>Creates a shallow clone of a dictionary excluding the specified keys.</td>
+</tr>
+</tbody>
+</table><h3>
+<a name="object-methods" class="anchor" href="#object-methods"><span class="octicon octicon-link"></span></a>Object Methods</h3>
 
-<ul>
-<li>$.first</li>
-<li>$.compact</li>
-<li>$.contains</li>
-<li>$.difference</li>
-<li>$.findIndex</li>
-<li>$.findLastIndex</li>
-<li>$.flatten</li>
-<li>$.frequencies</li>
-<li>$.indexOf</li>
-<li>$.initial</li>
-<li>$.intersection</li>
-<li>$.last</li>
-<li>$.lastIndexOf</li>
-<li>$.rest</li>
-<li>$.noop</li>
-<li>$.pull</li>
-<li>$.range</li>
-<li>$.remove</li>
-<li>$.sortedIndex</li>
-<li>$.union</li>
-<li>$.uniq</li>
-<li>$.without</li>
-<li>$.xor</li>
-<li>$.zip</li>
-<li>$.zipObject</li>
-</ul><h3>
-<a name="collection-helper-methods" class="anchor" href="#collection-helper-methods"><span class="octicon octicon-link"></span></a>Collection Helper Methods</h3>
-
-<ul>
-<li>$.at</li>
-<li>$.every</li>
-<li>$.find</li>
-<li>$.min</li>
-<li>$.max</li>
-<li>$.pluck</li>
-</ul><h3>
-<a name="dictionary-helper-methods" class="anchor" href="#dictionary-helper-methods"><span class="octicon octicon-link"></span></a>Dictionary Helper Methods</h3>
-
-<ul>
-<li>$.keys</li>
-<li>$.values</li>
-<li>$.merge</li>
-<li>$.pick</li>
-<li>$.omit</li>
-</ul><h3>
-<a name="object-helper-methods" class="anchor" href="#object-helper-methods"><span class="octicon octicon-link"></span></a>Object Helper Methods</h3>
-
-<ul>
-<li>$.tap</li>
-</ul><h3>
+<table>
+<thead><tr>
+<th>Name</th>
+<th>Usage</th>
+</tr></thead>
+<tbody><tr>
+<td><strong><code>$.tap</code></strong></td>
+<td>Invokes interceptor with the object and then returns object.</td>
+</tr></tbody>
+</table><h3>
 <a name="chaining" class="anchor" href="#chaining"><span class="octicon octicon-link"></span></a>Chaining</h3>
 
-<ul>
-<li>$(array: ...)</li>
-<li><code>$(array: [1, 2, 3]).first() as Int == 1</code></li>
-<li><code>$(array: [[1, 2], 3, [[4], 5]]).flatten().initial(2).value() as Int[] == [1, 2, 3]</code></li>
-<li><code>$(array: [[1, 2], 3, [[4], 5]]).initial().flatten().first() as Int == 1</code></li>
-<li>...</li>
-</ul><h3>
-<a name="roadmap" class="anchor" href="#roadmap"><span class="octicon octicon-link"></span></a>Roadmap</h3>
+<p><strong><code>$(array: ...)</code></strong></p>
 
-<p>More functions will be added and then ability to chain operations and lazily evaluation of chained expressions.</p>
-
-<h3>
-<a name="usage" class="anchor" href="#usage"><span class="octicon octicon-link"></span></a>Usage</h3>
+<table>
+<thead><tr>
+<th>Name</th>
+<th>Usage</th>
+</tr></thead>
+<tbody>
+<tr>
+<td><strong><code>flatten</code></strong></td>
+<td>Flattens a nested array of any depth.</td>
+</tr>
+<tr>
+<td><strong><code>initial</code></strong></td>
+<td>Gets all but the last element or last n elements of an array.</td>
+</tr>
+<tr>
+<td><strong><code>first</code></strong></td>
+<td>Returns the first element in the array and terminated the chain</td>
+</tr>
+<tr>
+<td><strong><code>value</code></strong></td>
+<td>Returns the array after applying all of the chained operators on it.</td>
+</tr>
+</tbody>
+</table><h2>
+<a name="examples" class="anchor" href="#examples"><span class="octicon octicon-link"></span></a>Examples</h2>
 
 <p><code>$.first([1, 2, 3, 4]) as Double == 1</code></p>
 
@@ -264,11 +413,32 @@ $.merge(dict, dictionaries: dict2, dict3)
 $.tap(beatle, {$0.name = "Beatle"}).color = "Blue"
 </code></pre>
 
-<h3>
-<a name="why-not-extend-the-collection-type" class="anchor" href="#why-not-extend-the-collection-type"><span class="octicon octicon-link"></span></a>Why not extend the collection type?</h3>
+<p><code>$(array: [1, 2, 3]).first() as Int == 1</code></p>
+
+<p><code>$(array: [[1, 2], 3, [[4], 5]]).flatten().initial(2).value() as Int[] == [1, 2, 3]</code></p>
+
+<p><code>$(array: [[1, 2], 3, [[4], 5]]).initial().flatten().first() as Int == 1</code></p>
+
+<h2>
+<a name="contributing" class="anchor" href="#contributing"><span class="octicon octicon-link"></span></a>Contributing</h2>
+
+<p>If you are interested in contributing</p>
 
 <ol>
-<li>The project doesnt extend the collection using the extension features to keep it purely functional and</li>
+<li>Please fork this project</li>
+<li>Implement new methods or changes in the <code>Dollar.swift</code> file in the Classes folder</li>
+<li>Write tests in <code>DollarTests.swift</code> file in the DollarTests folder</li>
+<li>Submit a pull request.</li>
+</ol><h2>
+<a name="roadmap" class="anchor" href="#roadmap"><span class="octicon octicon-link"></span></a>Roadmap</h2>
+
+<p>More functions will be added and then ability to chain operations and lazily evaluation of chained expressions.</p>
+
+<h2>
+<a name="why-not-extend-collection" class="anchor" href="#why-not-extend-collection"><span class="octicon octicon-link"></span></a>Why not extend collection?</h2>
+
+<ol>
+<li>The project doesnt extend or monkey patch the collection using the extension features to keep it purely functional and</li>
 <li>To not override any methods via extensions if Apple decides to add those methods into the collection class themselves as part of the language update. This could lead to inconsistent behavior for those who use the library and those who don't.</li>
 </ol>
       </section>
