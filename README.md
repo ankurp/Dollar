@@ -11,7 +11,7 @@ $ is a Swift library that provides useful functional programming helper methods 
   - [Dictionary](#dictionary-methods)
   - [Object](#object-methods)
   - [Chaining](#chaining)
-- [Examples](#example)
+- [Examples](#examples)
 - [Contributing](#contributing)
 - [Roadmap](#roadmap)
 - [Why?](#why-not-extend-collection)
