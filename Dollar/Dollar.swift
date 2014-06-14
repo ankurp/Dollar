@@ -233,6 +233,10 @@ class $ {
         return result
     }
     
+    class func join<T: ExtensibleCollection>(array: T[], separator: T) -> T {
+        return Swift.join(separator, reinterpretCast(array) as T[])
+    }
+    
     class func keys<T, U>(dictionary: Dictionary<T, U>) -> T[] {
         var result : T[] = []
         for (key, _) in dictionary {
@@ -393,7 +397,27 @@ class $ {
         function(object)
         return object
     }
-
+    
+    class func times<T>(n: Int, function: () -> T) -> T[] {
+        return self.times(n) { (index: Int) -> T in
+            return function()
+        }
+    }
+    
+    class func times(n: Int, function: () -> ()) {
+        self.times(n) { (index: Int) -> () in
+            function()
+        }
+    }
+    
+    class func times<T>(n: Int, function: (Int) -> T) -> T[] {
+        var result: T[] = []
+        for index in (0..n) {
+            result += function(index)
+        }
+        return result
+    }
+    
     class func union<T : Hashable>(arrays: T[]...) -> T[] {
         var map : Dictionary<T, Bool> = Dictionary<T, Bool>()
         for arr in arrays {
