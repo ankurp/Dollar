@@ -433,18 +433,19 @@ class $ {
     class func pull<T : Equatable>(array: T[], values: T[]) -> T[] {
         return array.filter { !self.contains(values, value: $0) }
     }
-    
-    class func range(endVal: Int) -> Int[] {
+
+    class func range<T : ForwardIndex where T : IntegerLiteralConvertible>(endVal: T) -> T[] {
         return self.range(0, endVal: endVal)
     }
     
-    class func range(startVal: Int, endVal: Int) -> Int[] {
+    class func range<T : ForwardIndex where T.DistanceType : IntegerLiteralConvertible>(startVal: T, endVal: T) -> T[] {
         return self.range(startVal, endVal: endVal, incrementBy: 1)
     }
     
-    class func range(startVal: Int, endVal: Int, incrementBy: Int) -> Int[] {
+    class func range<T : ForwardIndex>(startVal: T, endVal: T, incrementBy: T.DistanceType) -> T[] {
         let range = (startVal..endVal).by(incrementBy)
-        return Int[](range)
+        
+        return sequence(range)
     }
     
     class func sequence<S : Sequence>(seq: S) -> S.GeneratorType.Element[] {
