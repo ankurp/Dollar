@@ -65,6 +65,23 @@ class $ {
     //    \ \__\ \__\ \_______\ \_______\ \__\    \ \_______\ \__\\ _\
     //     \|__|\|__|\|_______|\|_______|\|__|     \|_______|\|__|\|__|
     //
+    class func after<T, E>(n: Int, function: (T...) -> E) -> ((T...) -> E?) {
+        var counter = n
+        return { (params: (T...)) -> E? in
+            if --counter <= 0 {
+                return function(reinterpretCast(params))
+            }
+            return nil
+        }
+    }
+    
+    class func after<T>(n: Int, function: () -> T) -> (() -> T?) {
+        let f = self.after(n) { (params: (Any?...)) -> T? in
+            return function()
+        }
+        return { f()? }
+    }
+
     class func at(array: AnyObject[], indexes: Int...) -> AnyObject[] {
         var result : AnyObject[] = []
         for index in indexes {
