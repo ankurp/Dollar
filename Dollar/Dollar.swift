@@ -359,6 +359,10 @@ class $ {
         return result
     }
     
+    class func sequence<S : Sequence>(seq: S) -> S.GeneratorType.Element[] {
+        return Array<S.GeneratorType.Element>(seq)
+    }
+ 
     class func remove(array: AnyObject[], iterator: (AnyObject) -> Bool) -> AnyObject[] {
         return array.filter { !iterator($0) }
     }
