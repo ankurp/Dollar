@@ -139,6 +139,10 @@
 <td>Creates an array of unique values present in all provided arrays.</td>
 </tr>
 <tr>
+<td><strong><code>$.join</code></strong></td>
+<td>Joins the elements in the array to create a concatenated element of the same type.</td>
+</tr>
+<tr>
 <td><strong><code>$.last</code></strong></td>
 <td>Gets the last element from the array.</td>
 </tr>
@@ -173,6 +177,10 @@
 <tr>
 <td><strong><code>$.range</code></strong></td>
 <td>Creates an array of numbers (positive and/or negative) progressing from start up to but not including end.</td>
+</tr>
+<tr>
+<td><strong><code>$.sequence</code></strong></td>
+<td>Creates an array of an arbitrary sequence. Especially useful with builtin ranges.</td>
 </tr>
 <tr>
 <td><strong><code>$.remove</code></strong></td>
@@ -259,12 +267,20 @@
 </tr></thead>
 <tbody>
 <tr>
+<td><strong><code>$.after</code></strong></td>
+<td>Creates a function that executes passed function only after being called n times.</td>
+</tr>
+<tr>
 <td><strong><code>$.bind</code></strong></td>
 <td>Creates a function that, when called, invokes func with the binding of arguments provided.</td>
 </tr>
 <tr>
 <td><strong><code>$.partial</code></strong></td>
 <td>Creates a function that, when called, invokes func with any additional partial arguments prepended to those provided to the new function.</td>
+</tr>
+<tr>
+<td><strong><code>$.times</code></strong></td>
+<td>Call a function n times and also passes the index. If a value is returned in the function then the times method will return an array of those values.</td>
 </tr>
 </tbody>
 </table><h3>
@@ -358,6 +374,14 @@ result == 1
 
 <p><code>$.range(0, endVal: 20, incrementBy: 5) as Int[] == [0, 5, 10, 15]</code></p>
 
+<p><code>$.sequence(0..4) == [0, 1, 2, 3]</code></p>
+
+<p><code>$.sequence(-2.0..2.0) == [-2.0, -1.0, 0.0, 1.0]</code></p>
+
+<p><code>$.sequence((0..20).by(5)) == [0, 5, 10, 15]</code></p>
+
+<p><code>$.sequence("abc") == ["a", "b", "c"]</code></p>
+
 <pre><code>let result = $.remove([1, 2, 3, 4, 5, 6], iterator: { $0 as Int == 2 || $0 as Int == 3 })
 result as Int[] == [1, 4, 5, 6]
 </code></pre>
@@ -444,6 +468,27 @@ partialFunc("World", "Swift") == "Hello World from Swift"
 
 <pre><code>let helloWorldFunc = $.bind({(T...) in T[0] + " " + T[1] + " from " + T[2] }, "Hello", "World", "Swift")
 helloWorldFunc() == "Hello World from Swift"
+</code></pre>
+
+<pre><code>let fun = $.bind({ (names: String...) -&gt; String in
+   let people = $.join(names, separator: " from ")
+   return "Hello \(people)"
+   }, "Ankur", "Swift")
+$.times(2, function: fun) as String[] == ["Hello Ankur from Swift", "Hello Ankur from Swift"]
+</code></pre>
+
+<pre><code>var saves = ["profile", "settings"];
+let asyncSave = { (function: () -&gt; ()?) in
+   function() // Saving right away for testing but in real world would be async
+}
+var isDone = false
+var completeCallback = $.after(saves.count) {
+   isDone = true
+}
+for elem in saves {
+   asyncSave(completeCallback)
+}
+isDone == true
 </code></pre>
 
 <h2>
