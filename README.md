@@ -55,6 +55,7 @@ Method | Usage
 **`$.indexOf`**|Gets the index at which the first occurrence of value is found.
 **`$.initial`**|Gets all but the last element or last n elements of an array.
 **`$.intersection`**|Creates an array of unique values present in all provided arrays.
+**`$.join`**|Joins the elements in the array to create a concatenated element of the same type.
 **`$.last`**|Gets the last element from the array.
 **`$.lastIndexOf`**|Gets the index at which the last occurrence of value is found.
 **`$.rest`**|The opposite of initial this method gets all but the first element or first n elements of an array.
@@ -97,6 +98,7 @@ Method | Usage
 ---- | ---------
 **`$.bind`**|Creates a function that, when called, invokes func with the binding of arguments provided.
 **`$.partial`**|Creates a function that, when called, invokes func with any additional partial arguments prepended to those provided to the new function.
+**`$.times`**|Call a function n times and also passes the index. If a value is returned in the function then the times method will return an array of those values.
 
 ### Chaining ###
 
