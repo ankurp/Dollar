@@ -80,11 +80,18 @@ class DollarTests: XCTestCase {
         XCTAssert($.contains([1, 2, 3, 1, 2, 3], value: 2) == true, "Checks if array contains element")
         XCTAssert($.contains([1, 2, 3, 1, 2, 3], value: 10) == false, "Checks if array contains element")
     }
-
+    
     func testRange() {
         XCTAssert($.range(4) as Int[] == [0, 1, 2, 3], "Generates range")
         XCTAssert($.range(1, endVal: 5) as Int[] == [1, 2, 3, 4], "Generates range")
         XCTAssert($.range(0, endVal: 20, incrementBy: 5) as Int[] == [0, 5, 10, 15], "Generates range")
+    }
+    
+    func testSequence() {
+        XCTAssert($.sequence(0..4) == [0, 1, 2, 3], "Generates array of integers")
+        XCTAssert($.sequence(-2.0..2.0) == [-2.0, -1.0, 0.0, 1.0], "Generates array of doubles")
+        XCTAssert($.sequence((0..20).by(5)) == [0, 5, 10, 15], "Generates array with offset")
+        XCTAssert($.sequence("abc") == ["a", "b", "c"], "Generates array of characters")
     }
     
     func testRemove() {

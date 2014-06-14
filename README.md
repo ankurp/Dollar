@@ -64,6 +64,7 @@ Method | Usage
 **`$.pluck`**|Retrieves the value of a specified property from all elements in the array.
 **`$.pull`**|Removes all provided values from the given array.
 **`$.range`**|Creates an array of numbers (positive and/or negative) progressing from start up to but not including end.
+**`$.sequence`**|Creates an array of an arbitrary sequence. Especially useful with builtin ranges.
 **`$.remove`**|Removes all elements from an array that the callback returns true.
 **`$.sortedIndex`**|Gives the smallest index at which a value should be inserted into a given the array is sorted.
 **`$.union`**|Creates an array of unique values, in order, of the provided arrays.
@@ -171,6 +172,14 @@ result == 1
 `$.range(1, endVal: 5) as Int[] == [1, 2, 3, 4]`
 
 `$.range(0, endVal: 20, incrementBy: 5) as Int[] == [0, 5, 10, 15]`
+
+`$.sequence(0..4) == [0, 1, 2, 3]`
+
+`$.sequence(-2.0..2.0) == [-2.0, -1.0, 0.0, 1.0]`
+
+`$.sequence((0..20).by(5)) == [0, 5, 10, 15]`
+
+`$.sequence("abc") == ["a", "b", "c"]`
 
 ```
 let result = $.remove([1, 2, 3, 4, 5, 6], iterator: { $0 as Int == 2 || $0 as Int == 3 })
