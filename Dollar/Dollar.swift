@@ -352,11 +352,8 @@ class $ {
     }
     
     class func range(startVal: Int, endVal: Int, incrementBy: Int) -> Int[] {
-        var result: Int[] = []
-        for var i = startVal; i < endVal; i = i + incrementBy {
-            result += i
-        }
-        return result
+        let range = (startVal..endVal).by(incrementBy)
+        return Int[](range)
     }
     
     class func remove(array: AnyObject[], iterator: (AnyObject) -> Bool) -> AnyObject[] {
