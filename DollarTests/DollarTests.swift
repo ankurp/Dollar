@@ -221,9 +221,9 @@ class DollarTests: XCTestCase {
     }
     
     func testCurry() {
-        let curried = $.curry({(T...) in T }, "Hello")
+        let partialFunc = $.partial({(T...) in T }, "Hello")
         
-        XCTAssert(curried("World", "Swift!") == ["Hello", "World", "Swift!"], "Returns curry function that is evaluated")
+        XCTAssert(partialFunc("World", "Swift!") == ["Hello", "World", "Swift!"], "Returns curry function that is evaluated")
     }
 
 }

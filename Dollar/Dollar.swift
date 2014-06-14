@@ -87,7 +87,7 @@ class $ {
         return array.filter({ $0 as? T == value }).count > 0
     }
 
-    class func curry<T, E> (function: (T...) -> E, _ parameters: T...) -> ((T...) -> E) {
+    class func partial<T, E> (function: (T...) -> E, _ parameters: T...) -> ((T...) -> E) {
         return {
             (params: T...) -> E in
             return function(reinterpretCast(parameters + params))
