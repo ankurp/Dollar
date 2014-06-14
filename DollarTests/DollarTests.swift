@@ -239,4 +239,12 @@ class DollarTests: XCTestCase {
 
     }
 
+    func testTimes() {
+        let fun = $.bind({ (names: String...) -> String in
+            let people = $.join(names, separator: " from ")
+            return "Hello \(people)"
+            }, "Ankur", "Swift")
+        XCTAssert($.times(3, function: fun) as String[] == ["Hello Ankur from Swift", "Hello Ankur from Swift", "Hello Ankur from Swift"], "Call a function 3 times")
+    }
+    
 }
