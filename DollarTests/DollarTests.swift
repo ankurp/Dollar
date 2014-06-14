@@ -219,5 +219,11 @@ class DollarTests: XCTestCase {
         chain = $(array: [[1, 2], 3, [[4], 5]])
         XCTAssert(chain.initial().flatten().first() as Int == 1, "Returns flatten array from chaining")
     }
+    
+    func testCurry() {
+        let curried = $.curry({(T...) in T }, "Hello")
+        
+        XCTAssert(curried("World", "Swift!") == ["Hello", "World", "Swift!"], "Returns curry function that is evaluated")
+    }
 
 }
