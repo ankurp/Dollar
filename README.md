@@ -96,6 +96,7 @@ Method | Usage
 
 Method | Usage
 ---- | ---------
+**`$.after`**|Creates a function that executes passed function only after being called n times.
 **`$.bind`**|Creates a function that, when called, invokes func with the binding of arguments provided.
 **`$.partial`**|Creates a function that, when called, invokes func with any additional partial arguments prepended to those provided to the new function.
 **`$.times`**|Call a function n times and also passes the index. If a value is returned in the function then the times method will return an array of those values.
@@ -278,6 +279,28 @@ let helloWorldFunc = $.bind({(T...) in T[0] + " " + T[1] + " from " + T[2] }, "H
 helloWorldFunc() == "Hello World from Swift"
 ```
 
+```
+let fun = $.bind({ (names: String...) -> String in
+   let people = $.join(names, separator: " from ")
+   return "Hello \(people)"
+   }, "Ankur", "Swift")
+$.times(2, function: fun) as String[] == ["Hello Ankur from Swift", "Hello Ankur from Swift"]
+```
+
+```
+var saves = ["profile", "settings"];
+let asyncSave = { (function: () -> ()?) in
+   function() // Saving right away for testing but in real world would be async
+}
+var isDone = false
+var completeCallback = $.after(saves.count) {
+   isDone = true
+}
+for elem in saves {
+   asyncSave(completeCallback)
+}
+isDone == true
+```
 
 ## Contributing ##
 If you are interested in contributing
