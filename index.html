@@ -55,6 +55,7 @@
 <li><a href="#array-methods">Array</a></li>
 <li><a href="#dictionary-methods">Dictionary</a></li>
 <li><a href="#object-methods">Object</a></li>
+<li><a href="#function-methods">Function</a></li>
 <li><a href="#chaining">Chaining</a></li>
 </ul>
 </li>
@@ -249,6 +250,24 @@
 <td>Invokes interceptor with the object and then returns object.</td>
 </tr></tbody>
 </table><h3>
+<a name="function-methods" class="anchor" href="#function-methods"><span class="octicon octicon-link"></span></a>Function Methods</h3>
+
+<table>
+<thead><tr>
+<th>Method</th>
+<th>Usage</th>
+</tr></thead>
+<tbody>
+<tr>
+<td><strong><code>$.bind</code></strong></td>
+<td>Creates a function that, when called, invokes func with the binding of arguments provided.</td>
+</tr>
+<tr>
+<td><strong><code>$.partial</code></strong></td>
+<td>Creates a function that, when called, invokes func with any additional partial arguments prepended to those provided to the new function.</td>
+</tr>
+</tbody>
+</table><h3>
 <a name="chaining" class="anchor" href="#chaining"><span class="octicon octicon-link"></span></a>Chaining</h3>
 
 <p><strong><code>$(array: ...)</code></strong></p>
@@ -418,6 +437,14 @@ $.tap(beatle, {$0.name = "Beatle"}).color = "Blue"
 <p><code>$(array: [[1, 2], 3, [[4], 5]]).flatten().initial(2).value() as Int[] == [1, 2, 3]</code></p>
 
 <p><code>$(array: [[1, 2], 3, [[4], 5]]).initial().flatten().first() as Int == 1</code></p>
+
+<pre><code>let partialFunc = $.partial({(T...) in T[0] + " " + T[1] + " from " + T[2] }, "Hello")
+partialFunc("World", "Swift") == "Hello World from Swift"
+</code></pre>
+
+<pre><code>let helloWorldFunc = $.bind({(T...) in T[0] + " " + T[1] + " from " + T[2] }, "Hello", "World", "Swift")
+helloWorldFunc() == "Hello World from Swift"
+</code></pre>
 
 <h2>
 <a name="contributing" class="anchor" href="#contributing"><span class="octicon octicon-link"></span></a>Contributing</h2>
