@@ -246,5 +246,20 @@ class DollarTests: XCTestCase {
             }, "Ankur", "Swift")
         XCTAssert($.times(3, function: fun) as String[] == ["Hello Ankur from Swift", "Hello Ankur from Swift", "Hello Ankur from Swift"], "Call a function 3 times")
     }
-    
+
+    func testAfter() {
+        var saves = ["profile", "settings"];
+        let asyncSave = { (function: () -> ()?) in
+            function()
+        }
+        var isDone = false
+        var completeCallback = $.after(saves.count) {
+            isDone = true
+        }
+        for elem in saves {
+            asyncSave(completeCallback)
+        }
+        XCTAssert(isDone, "Should be done")
+    }
+
 }
