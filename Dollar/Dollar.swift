@@ -72,6 +72,13 @@ class $ {
         }
         return result
     }
+    
+    class func bind<T, E>(function: (T...) -> E, _ parameters: T...) -> (() -> E) {
+        return { () -> E in
+            return function(reinterpretCast(parameters))
+        }
+        
+    }
 
     class func compact(array: AnyObject?[]) -> AnyObject[] {
         var result: AnyObject[] = []
@@ -83,13 +90,12 @@ class $ {
         return result
     }
     
-    class func contains<T : Equatable>(array: T[], value: T) -> Bool {
+    class func contains<T: Equatable>(array: T[], value: T) -> Bool {
         return array.filter({ $0 as? T == value }).count > 0
     }
 
     class func partial<T, E> (function: (T...) -> E, _ parameters: T...) -> ((T...) -> E) {
-        return {
-            (params: T...) -> E in
+        return { (params: T...) -> E in
             return function(reinterpretCast(parameters + params))
         }
     }
@@ -122,7 +128,7 @@ class $ {
         return result
     }
     
-    class func find<T : Equatable>(array: T[], iterator: (T) -> Bool) -> T? {
+    class func find<T: Equatable>(array: T[], iterator: (T) -> Bool) -> T? {
         for elem in array {
             let result = iterator(elem)
             if result {

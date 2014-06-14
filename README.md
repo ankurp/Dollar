@@ -23,6 +23,7 @@ $ is a Swift library that provides useful functional programming helper methods 
   - [Array](#array-methods)
   - [Dictionary](#dictionary-methods)
   - [Object](#object-methods)
+  - [Function](#function-methods)
   - [Chaining](#chaining)
 - [Examples](#examples)
 - [Contributing](#contributing)
@@ -88,6 +89,13 @@ Method | Usage
 Method | Usage
 ---- | ---------
 **`$.tap`**|Invokes interceptor with the object and then returns object.
+
+### Function Methods ###
+
+Method | Usage
+---- | ---------
+**`$.bind`**|Creates a function that, when called, invokes func with the binding of arguments provided.
+**`$.partial`**|Creates a function that, when called, invokes func with any additional partial arguments prepended to those provided to the new function.
 
 ### Chaining ###
 
@@ -248,6 +256,16 @@ $.tap(beatle, {$0.name = "Beatle"}).color = "Blue"
 `$(array: [[1, 2], 3, [[4], 5]]).flatten().initial(2).value() as Int[] == [1, 2, 3]`
 
 `$(array: [[1, 2], 3, [[4], 5]]).initial().flatten().first() as Int == 1`
+
+```
+let partialFunc = $.partial({(T...) in T[0] + " " + T[1] + " from " + T[2] }, "Hello")
+partialFunc("World", "Swift") == "Hello World from Swift"
+```
+    
+```
+let helloWorldFunc = $.bind({(T...) in T[0] + " " + T[1] + " from " + T[2] }, "Hello", "World", "Swift")
+helloWorldFunc() == "Hello World from Swift"
+```
 
 
 ## Contributing ##

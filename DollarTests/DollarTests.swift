@@ -221,9 +221,15 @@ class DollarTests: XCTestCase {
     }
     
     func testCurry() {
-        let partialFunc = $.partial({(T...) in T }, "Hello")
-        
-        XCTAssert(partialFunc("World", "Swift!") == ["Hello", "World", "Swift!"], "Returns curry function that is evaluated")
+        let partialFunc = $.partial({(T...) in T[0] + " " + T[1] + " from " + T[2] }, "Hello")
+        XCTAssert(partialFunc("World", "Swift") == "Hello World from Swift", "Returns curry function that is evaluated")
+    }
+    
+    
+    func testBind() {
+        let helloWorldFunc = $.bind({(T...) in T[0] + " " + T[1] + " from " + T[2] }, "Hello", "World", "Swift")
+        XCTAssert(helloWorldFunc() == "Hello World from Swift", "Returns curry function that is evaluated")
+
     }
 
 }
