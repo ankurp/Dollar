@@ -51,7 +51,52 @@ class $ {
         self.resultArray = $.initial(self.resultArray, numElements: numElements)
         return self
     }
-
+    
+    func map(function: (AnyObject) -> AnyObject) -> $ {
+        var result: AnyObject[] = []
+        for elem : AnyObject in self.resultArray {
+            result += function(elem)
+        }
+        self.resultArray = result
+        return self
+    }
+    
+    func each(function: (AnyObject) -> ()) -> $ {
+        for elem : AnyObject in self.resultArray {
+            function(elem)
+        }
+        return self
+    }
+    
+    func filter(function: (AnyObject) -> Bool) -> $ {
+        var result: AnyObject[] = []
+        for elem : AnyObject in self.resultArray {
+            if function(elem) {
+                result += elem
+            }
+        }
+        self.resultArray = result
+        return self
+    }
+    
+    func all(function: (AnyObject) -> Bool) -> Bool {
+        for elem : AnyObject in self.resultArray {
+            if !function(elem) {
+                return false
+            }
+        }
+        return true
+    }
+    
+    func any(function: (AnyObject) -> Bool) -> Bool {
+        for elem : AnyObject in self.resultArray {
+            if function(elem) {
+                return true
+            }
+        }
+        return false
+    }
+    
     func value() -> AnyObject[] {
         return self.resultArray
     }
