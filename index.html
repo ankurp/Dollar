@@ -295,6 +295,26 @@
 </tr></thead>
 <tbody>
 <tr>
+<td><strong><code>any</code></strong></td>
+<td>Returns true if callback function returns true for at least one element in the array</td>
+</tr>
+<tr>
+<td><strong><code>all</code></strong></td>
+<td>Returns true if callback function returns true for all elements in the array</td>
+</tr>
+<tr>
+<td><strong><code>each</code></strong></td>
+<td>Passes each element value to the callback function</td>
+</tr>
+<tr>
+<td><strong><code>filter</code></strong></td>
+<td>Filters the arrary to elements for which the callback function returns true</td>
+</tr>
+<tr>
+<td><strong><code>first</code></strong></td>
+<td>Returns the first element in the array and terminated the chain</td>
+</tr>
+<tr>
 <td><strong><code>flatten</code></strong></td>
 <td>Flattens a nested array of any depth.</td>
 </tr>
@@ -303,8 +323,8 @@
 <td>Gets all but the last element or last n elements of an array.</td>
 </tr>
 <tr>
-<td><strong><code>first</code></strong></td>
-<td>Returns the first element in the array and terminated the chain</td>
+<td><strong><code>map</code></strong></td>
+<td>Maps each element to the new value returned in the callback function</td>
 </tr>
 <tr>
 <td><strong><code>value</code></strong></td>
@@ -489,6 +509,18 @@ for elem in saves {
    asyncSave(completeCallback)
 }
 isDone == true
+</code></pre>
+
+<pre><code>var chain = $(array: [10, 20, 30, 40, 50])
+var elements: Int[] = []
+chain.each { elements += $0 as Int }
+elements as Int[] == [10, 20, 30, 40, 50]
+</code></pre>
+
+<pre><code>var chain = $(array: [10, 20, 30, 40, 50])
+chain.all { ($0 as Int) &lt; 100 } == true
+chain.all { ($0 as Int) &lt; 40 } == false
+chain.any { ($0 as Int) &lt; 40 } == true
 </code></pre>
 
 <h2>
