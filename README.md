@@ -26,6 +26,10 @@ $ is a Swift library that provides useful functional programming helper methods 
   - [Function](#function-methods)
   - [Chaining](#chaining)
 - [Examples](#examples)
+  - [Array](#array)
+  - [Dictionary](#dictionary)
+  - [Object](#object)
+  - [Chaining](#chaining---array-)
 - [Contributing](#contributing)
 - [Roadmap](#roadmap)
 - [Why?](#why-not-extend-collection)
@@ -121,39 +125,85 @@ Method | Usage
 
 ## Examples ##
 
-`$.first([1, 2, 3, 4]) as Double == 1`
+### Array ###
 
-`$.first([]) == nil`
+### at - `$.at`
 
-`$.noop() == nil`
+Creates an array of elements from the specified indexes, or keys, of the collection. Indexes may be specified as individual arguments or as arrays of indexes.
 
-`$.compact([3, nil, 4, 5]) as NSObject[] == [3, 4, 5]`
+`$.at(["ant", "bat", "cat", "dog", "egg"], indexes: 0, 2, 4) as String[] == ["ant", "cat", "egg"]`
 
-`$.compact([nil, nil]) as NSObject[] == []`
+### first - `$.first(array: AnyObject[])` 
+Gets the first element in the array.
+```
+$.first([1, 2, 3, 4]) as Double 
+=> 1
 
-`$.flatten([[3], 4, 5]) as Int[] == [3, 4, 5]`
+$.first([]) 
+=> nil
+```
 
-`$.flatten([[3], "Hello", 5]) as NSObject[] == [3, "Hello", 5]`
+### compact - `$.compact`
 
-`$.flatten([[[3], 4], 5]) as Int[] == [3, 4, 5]`
+Creates an array with all nil values removed.
 
-`$.indexOf(["A", "B", "C"], value: "B") == 1`
+```
+$.compact([3, nil, 4, 5]) as NSObject[] 
+=> [3, 4, 5]
 
-`$.indexOf([3, 4, 5], value: 5) == 2`
+$.compact([nil, nil]) as NSObject[] 
+=> []
+```
 
-`$.indexOf([3, 4, 5], value: 3) == 0`
+### contains - `$.contains`
 
-`$.indexOf([3, 4, 5], value: 2) == nil`
+Checks if a given value is present in the array.
 
-`$.initial([3, 4, 5]) as Int[] == [3, 4]`
+```
+$.contains([1, 2, 3, 1, 2, 3], value: 2) 
+=> true
 
-`$.initial([3, 4, 5], numElements: 2) as Int[] == [3]    `
+$.contains([1, 2, 3, 1, 2, 3], value: 10) 
+=> false
+```
 
-`$.rest([3, 4, 5]) as Int[] == [4, 5]`
+### difference - `$.difference`
 
-`$.rest([3, 4, 5], numElements: 2) as Int[] == [5]`
+Creates an array excluding all values of the provided arrays
 
-`$.last([3, 4, 5]) as Int == 5`
+```
+$.difference([1, 2, 3, 4, 5], [5, 2, 10]) as Int[] 
+=> [1, 3, 4]
+```
+
+
+### every - `$.every`
+
+Checks if the given callback returns true value for all items in the array.
+
+```
+$.every([1, 2, 3, 4], iterator: { $0 < 20 }) 
+=> true
+
+$.every([1, 2, 3, 4], iterator: { $0 == 1 }) 
+=> false
+```
+
+### find - `$.find`
+
+Iterates over elements of an array and returning the first element that the callback returns true for.
+
+```
+$.find([1, 2, 3, 4], iterator: { $0 == 2 }) 
+=> 2
+
+$.find([1, 2, 3, 4], iterator: { $0 == 10 }) 
+=> nil
+```
+
+### findIndex - `$.findIndex`
+
+This method is like find except that it returns the index of the first element that passes the callback check.
 
 ```
 let arr = [["age": 36], ["age": 40], ["age": 1]]
@@ -161,98 +211,312 @@ let result = $.findIndex(arr) { $0["age"] < 20 }
 result == 2
 ```
 
+### findLastIndex - `$.findLastIndex`
+
+This method is like findIndex except that it iterates over elements of the array from right to left.
+
 ```
 let arr = [["age": 36], ["age": 40], ["age": 1]]
 let result = $.findLastIndex(arr) { $0["age"] > 30 }
-result == 1
+result
+=> 1
 ```
 
-`$.indexOf([1, 2, 3, 1, 2, 3], value: 2) == 1`
+### flatten - `$.flatten`
 
-`$.lastIndexOf([1, 2, 3, 1, 2, 3], value: 2) == 4`
-
-`$.contains([1, 2, 3, 1, 2, 3], value: 2) == true`
-
-`$.contains([1, 2, 3, 1, 2, 3], value: 10) == false``
-
-`$.frequencies(["a", "a", "b", "c", "a", "b"]) == ["a": 3, "b": 2, "c": 1]`
-
-`$.range(4) as Int[] == [0, 1, 2, 3]`
-
-`$.range(1, endVal: 5) as Int[] == [1, 2, 3, 4]`
-
-`$.range(0, endVal: 20, incrementBy: 5) as Int[] == [0, 5, 10, 15]`
-
-`$.sequence(0..4) == [0, 1, 2, 3]`
-
-`$.sequence(-2.0..2.0) == [-2.0, -1.0, 0.0, 1.0]`
-
-`$.sequence((0..20).by(5)) == [0, 5, 10, 15]`
-
-`$.sequence("abc") == ["a", "b", "c"]`
+Flattens a nested array of any depth.
 
 ```
-let result = $.remove([1, 2, 3, 4, 5, 6], iterator: { $0 as Int == 2 || $0 as Int == 3 })
-result as Int[] == [1, 4, 5, 6]
+$.flatten([[3], 4, 5]) as Int[] 
+=> [3, 4, 5]
+
+$.flatten([[3], "Hello", 5]) as NSObject[] 
+=> [3, "Hello", 5]
+
+$.flatten([[[3], 4], 5]) as Int[] 
+=> [3, 4, 5]
 ```
 
-`$.sortedIndex([3, 4, 6, 10], value: 5) as Int == 2`
-
-`$.sortedIndex([10, 20, 30, 50], value: 40) as Int == 3`
-
-`$.without([3, 4, 5, 3, 5], values: 3, 5) as Int[] == [4]`
-
-`$.without([3, 4, 5, 3, 5], values: 4) as Int[] == [3, 5, 3, 5]`
-
-`$.without([3, 4, 5, 3, 5], values: 3, 4, 5) as Int[] == []`
-
-`$.pull([3, 4, 5, 3, 5], values: 3, 5) as Int[] == [4]`
-
-`$.pull([3, 4, 5, 3, 5], values: 4) as Int[] == [3, 5, 3, 5]`
-
-`$.pull([3, 4, 5, 3, 5], values: 3, 4, 5) as Int[] == []`
-
-`$.zip(["fred", "barney"], [30, 40], [true, false]) as NSObject[] == [["fred", 30, true], ["barney", 40, false]]`
-
-`$.zipObject(["fred", "barney"], values: [30, 40]) as Dictionary<String, Int> == ["fred": 30, "barney": 40]`
-
-`$.intersection([1, 2, 3], [5, 2, 1, 4], [2, 1]) as Int[] == [1, 2]`
-
-`$.difference([1, 2, 3, 4, 5], [5, 2, 10]) as Int[] == [1, 3, 4]`
-
-`$.uniq([1, 2, 1, 3, 1]) as Int[] == [1, 2, 3]`
-
-`$.union([1, 2, 3], [5, 2, 1, 4], [2, 1]) as Int[] == [1, 2, 3, 4, 5]`
-
-`$.xor([1, 2, 3], [5, 2, 1, 4]) as Int[] == [3, 4, 5]`
-
-`$.at(["ant", "bat", "cat", "dog", "egg"], indexes: 0, 2, 4) as String[] == ["ant", "cat", "egg"]`
-
-`$.every([1, 2, 3, 4], iterator: { $0 < 20 }) == true`
-
-`$.every([1, 2, 3, 4], iterator: { $0 == 1 }) == false`
-
-`$.find([1, 2, 3, 4], iterator: { $0 == 2 }) == 2`
-
-`$.find([1, 2, 3, 4], iterator: { $0 == 10 }) == nil`
-
-`$.max([1, 2, 3, 4, 2, 1]) == 4`
-
-`$.min([2, 1, 2, 3, 4]) == 1`
+### frequencies - `$.frequencies`
+This method returns a dictionary of values in an array mapping to the total number of occurances in the array.
 
 ```
-let arr : Int[] = [2, 1, 2, 3, 4]
-$.contains(arr, value: $.sample(arr) as NSObject)
+$.frequencies(["a", "a", "b", "c", "a", "b"]) 
+=> ["a": 3, "b": 2, "c": 1]
 ```
+
+### indexof - `$.indexof`
+
+Gets the index at which the first occurrence of value is found.
+
+```
+$.indexOf([1, 2, 3, 1, 2, 3], value: 2) 
+=> 1
+
+$.indexOf(["A", "B", "C"], value: "B") 
+=> 1
+
+$.indexOf([3, 4, 5], value: 5) 
+=> 2
+
+$.indexOf([3, 4, 5], value: 3) 
+=> 0
+
+$.indexOf([3, 4, 5], value: 2) 
+=> nil
+```
+
+### initial - `$.initial`
+
+Gets all but the last element or last n elements of an array.
+
+```
+$.initial([3, 4, 5]) as Int[] 
+=> [3, 4]
+
+$.initial([3, 4, 5], numElements: 2) as Int[] 
+=> [3]
+```
+
+### intersection - `$.intersection`
+
+Creates an array of unique values present in all provided arrays.
+
+```
+$.intersection([1, 2, 3], [5, 2, 1, 4], [2, 1]) as Int[] 
+=> [1, 2]
+```
+
+### last - `$.last`
+
+Gets the last element from the array.
+
+```
+$.last([3, 4, 5]) as Int 
+=> 5
+```
+
+
+### lastIndexOf - `$.lastIndexOf`
+
+Gets the index at which the last occurrence of value is found.
+
+```
+$.lastIndexOf([1, 2, 3, 1, 2, 3], value: 2) 
+=> 4
+```
+
+
+### rest - `$.rest`
+
+The opposite of initial this method gets all but the first element or first n elements of an array.
+
+```
+$.rest([3, 4, 5]) as Int[] 
+=> [4, 5]
+
+$.rest([3, 4, 5], numElements: 2) as Int[] 
+=> [5]
+```
+
+### noop - `$.noop()`
+
+A no-operation function.
+
+```
+$.noop() 
+=> nil
+```
+
+
+### min - `$.min`
+
+Retrieves the minimum value in an array.
+
+```
+$.min([2, 1, 2, 3, 4]) 
+=> 1
+```
+
+
+### max - `$.max`
+
+Retrieves the maximum value in an array.
+
+```
+$.max([1, 2, 3, 4, 2, 1]) 
+=> 4
+```
+
+### pluck - `$.pluck`
+
+Retrieves the value of a specified property from all elements in the array.
 
 ```
 let arr : Dictionary<String, Int>[] = [["age": 20], ["age": 30], ["age": 40]]
 $.pluck(arr, value: "age") == [20, 30, 40]
 ```
 
-`$.keys(["Dog": 1, "Cat": 2])`
 
-`$.values(["Dog": 1, "Cat": 2])`
+### pull - `$.pull`
+
+Removes all provided values from the given array.
+
+```
+$.pull([3, 4, 5, 3, 5], values: 3, 5) as Int[] 
+=> [4]
+
+$.pull([3, 4, 5, 3, 5], values: 4) as Int[] 
+=> [3, 5, 3, 5]
+
+$.pull([3, 4, 5, 3, 5], values: 3, 4, 5) as Int[] 
+=> []
+```
+
+### range - `$.range`
+
+Creates an array of numbers (positive and/or negative) progressing from start up to but not including end.
+
+```
+$.range(4) as Int[] 
+=> [0, 1, 2, 3]
+
+$.range(1, endVal: 5) as Int[] 
+=> [1, 2, 3, 4]
+
+$.range(0, endVal: 20, incrementBy: 5) as Int[] 
+=> [0, 5, 10, 15]
+```
+
+### sample - `$.sample`
+```
+let arr : Int[] = [2, 1, 2, 3, 4]
+$.contains(arr, value: $.sample(arr) as NSObject)
+=> true
+```
+
+### sequence - `$.sequence`
+
+Creates an array of an arbitrary sequence. Especially useful with builtin ranges.
+
+```
+$.sequence(0..4) 
+=> [0, 1, 2, 3]
+
+$.sequence(-2.0..2.0) 
+=> [-2.0, -1.0, 0.0, 1.0]
+
+$.sequence((0..20).by(5)) 
+=> [0, 5, 10, 15]
+
+$.sequence("abc") 
+=> ["a", "b", "c"]
+```
+
+### remove - `$.remove`
+
+Removes all elements from an array that the callback returns true.
+
+```
+let result = $.remove([1, 2, 3, 4, 5, 6], iterator: { $0 as Int == 2 || $0 as Int == 3 })
+result as Int[] 
+=> [1, 4, 5, 6]
+```
+
+### sortedIndex - `$.sortedIndex`
+
+Gives the smallest index at which a value should be inserted into a given the array is sorted.
+
+```
+$.sortedIndex([3, 4, 6, 10], value: 5) as Int 
+=> 2
+
+$.sortedIndex([10, 20, 30, 50], value: 40) as Int 
+=> 3
+```
+
+
+### union - `$.union`
+
+Creates an array of unique values, in order, of the provided arrays.
+
+```
+$.union([1, 2, 3], [5, 2, 1, 4], [2, 1]) as Int[] 
+=> [1, 2, 3, 4, 5]
+```
+
+### uniq - `$.uniq`
+
+Creates a duplicate-value-free version of an array.
+
+```
+$.uniq([1, 2, 1, 3, 1]) as Int[] 
+=> [1, 2, 3]
+```
+
+### without - `$.without`
+
+Creates an array excluding all provided values.
+
+```
+$.without([3, 4, 5, 3, 5], values: 3, 5) as Int[] 
+=> [4]
+
+$.without([3, 4, 5, 3, 5], values: 4) as Int[] 
+=> [3, 5, 3, 5]
+
+$.without([3, 4, 5, 3, 5], values: 3, 4, 5) as Int[] 
+=> []
+```
+
+### xor - `$.xor`
+
+Creates an array that is the symmetric difference of the provided arrays.
+
+```
+$.xor([1, 2, 3], [5, 2, 1, 4]) as Int[] 
+=> [3, 4, 5]
+```
+
+### zip - `$.zip`
+
+Creates an array of grouped elements, the first of which contains the first elements of the given arrays.
+
+```
+$.zip(["fred", "barney"], [30, 40], [true, false]) as NSObject[] 
+=> [["fred", 30, true], ["barney", 40, false]]
+```
+
+### zipObject - `$.zipObject`
+
+Creates an object composed from arrays of keys and values.
+
+```
+$.zipObject(["fred", "barney"], values: [30, 40]) as Dictionary<String, Int> 
+=> ["fred": 30, "barney": 40]
+```
+
+### Dictionary ###
+
+### keys - `$.keys`
+
+Creates an array of keys given a dictionary.
+
+```
+$.keys(["Dog": 1, "Cat": 2])
+```
+
+### values - `$.values`
+
+Creates an array of values given a dictionary
+
+```
+$.values(["Dog": 1, "Cat": 2])
+```
+
+### merge - `$.merge`
+
+Merges all of the dictionaries together and the latter dictionary overrides the value at a given key
 
 ```
 let dict: Dictionary<String, Int> = ["Dog": 1, "Cat": 2]
@@ -261,40 +525,61 @@ let dict3: Dictionary<String, Int> = ["Sheep": 4]
 $.merge(dict, dictionaries: dict2, dict3)
 ```
 
-`$.pick(["Dog": 1, "Cat": 2, "Cow": 3], keys: "Dog", "Cow")`
+### pick - `$.pick`
 
-`$.omit(["Dog": 1, "Cat": 2, "Cow": 3], keys: "Cat", "Dog")`
+Creates a shallow clone of a dictionary composed of the specified keys.
+
+```
+$.pick(["Dog": 1, "Cat": 2, "Cow": 3], keys: "Dog", "Cow")
+```
+
+### omit - `$.omit`
+
+Creates a shallow clone of a dictionary excluding the specified keys.
+
+```
+$.omit(["Dog": 1, "Cat": 2, "Cow": 3], keys: "Cat", "Dog")
+```
+
+### Object ###
+
+### tap - `$.tap`
+
+Invokes interceptor with the object and then returns object.
 
 ```
 var beatle = Car(name: "Fusca")
 $.tap(beatle, {$0.name = "Beatle"}).color = "Blue"
 ```
 
-`$(array: [1, 2, 3]).first() as Int == 1`
-
-`$(array: [[1, 2], 3, [[4], 5]]).flatten().initial(2).value() as Int[] == [1, 2, 3]`
-
-`$(array: [[1, 2], 3, [[4], 5]]).initial().flatten().first() as Int == 1`
-
+### Chaining - `$(array: ...)`
 ```
+$(array: [1, 2, 3])
+
+$(array: [1, 2, 3]).first() as Int 
+=> 1
+
+$(array: [[1, 2], 3, [[4], 5]]).flatten().initial(2).value() as Int[] 
+=> [1, 2, 3]
+
+$(array: [[1, 2], 3, [[4], 5]]).initial().flatten().first() as Int 
+=> 1
+
 let partialFunc = $.partial({(T...) in T[0] + " " + T[1] + " from " + T[2] }, "Hello")
-partialFunc("World", "Swift") == "Hello World from Swift"
-```
+partialFunc("World", "Swift") 
+=> "Hello World from Swift"
     
-```
 let helloWorldFunc = $.bind({(T...) in T[0] + " " + T[1] + " from " + T[2] }, "Hello", "World", "Swift")
-helloWorldFunc() == "Hello World from Swift"
-```
+helloWorldFunc() 
+=> "Hello World from Swift"
 
-```
 let fun = $.bind({ (names: String...) -> String in
    let people = $.join(names, separator: " from ")
    return "Hello \(people)"
    }, "Ankur", "Swift")
-$.times(2, function: fun) as String[] == ["Hello Ankur from Swift", "Hello Ankur from Swift"]
-```
+$.times(2, function: fun) as String[] 
+=> ["Hello Ankur from Swift", "Hello Ankur from Swift"]
 
-```
 var saves = ["profile", "settings"];
 let asyncSave = { (function: () -> ()?) in
    function() // Saving right away for testing but in real world would be async
@@ -306,21 +591,23 @@ var completeCallback = $.after(saves.count) {
 for elem in saves {
    asyncSave(completeCallback)
 }
-isDone == true
-```
+isDone 
+=> true
 
-```
 var chain = $(array: [10, 20, 30, 40, 50])
 var elements: Int[] = []
 chain.each { elements += $0 as Int }
-elements as Int[] == [10, 20, 30, 40, 50]
-```
+elements as Int[] 
+=> [10, 20, 30, 40, 50]
 
-```
 var chain = $(array: [10, 20, 30, 40, 50])
-chain.all { ($0 as Int) < 100 } == true
-chain.all { ($0 as Int) < 40 } == false
-chain.any { ($0 as Int) < 40 } == true
+chain.all { ($0 as Int) < 100 } 
+=> true
+
+chain.all { ($0 as Int) < 40 } 
+=> false
+
+chain.any { ($0 as Int) < 40 } => true
 ```
 
 ## Contributing ##
