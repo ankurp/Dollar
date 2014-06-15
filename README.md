@@ -107,9 +107,14 @@ Method | Usage
 
 Method | Usage
 ---- | ---------
+**`any`**|Returns true if callback function returns true for at least one element in the array
+**`all`**|Returns true if callback function returns true for all elements in the array
+**`each`**|Passes each element value to the callback function
+**`filter`**|Filters the arrary to elements for which the callback function returns true
+**`first`**|Returns the first element in the array and terminated the chain
 **`flatten`**|Flattens a nested array of any depth.
 **`initial`**|Gets all but the last element or last n elements of an array.
-**`first`**|Returns the first element in the array and terminated the chain
+**`map`**|Maps each element to the new value returned in the callback function
 **`value`**|Returns the array after applying all of the chained operators on it.
 
 ## Examples ##
@@ -300,6 +305,20 @@ for elem in saves {
    asyncSave(completeCallback)
 }
 isDone == true
+```
+
+```
+var chain = $(array: [10, 20, 30, 40, 50])
+var elements: Int[] = []
+chain.each { elements += $0 as Int }
+elements as Int[] == [10, 20, 30, 40, 50]
+```
+
+```
+var chain = $(array: [10, 20, 30, 40, 50])
+chain.all { ($0 as Int) < 100 } == true
+chain.all { ($0 as Int) < 40 } == false
+chain.any { ($0 as Int) < 40 } == true
 ```
 
 ## Contributing ##
