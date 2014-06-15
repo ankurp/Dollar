@@ -238,6 +238,10 @@ class DollarTests: XCTestCase {
         XCTAssert(chain.all { ($0 as Int) < 100 } == true, "All elements are less than 100")
         XCTAssert(chain.all { ($0 as Int) < 40 } == false, "All elements are not less than 40")
         XCTAssert(chain.any { ($0 as Int) < 40 } == true, "At least one element is less than 40")
+        
+        elements = [];
+        chain.slice(0, end: 3).each({ elements += $0 as Int});
+        XCTAssert(elements as Int[] == [10, 20, 30], "Chained seld")
 
     }
 
@@ -274,6 +278,34 @@ class DollarTests: XCTestCase {
             asyncSave(completeCallback)
         }
         XCTAssert(isDone, "Should be done")
+    }
+    
+    func testSlice() {
+        var res = $.slice([1,2,3,4,5], start: 0, end: 2);
+        XCTAssert(res as Int[] == [1, 2], "Slice subarray 0..2");
+        
+        res = $.slice([1,2,3,4,5], start: 0);
+        XCTAssert(res as Int[] == [1, 2, 3, 4, 5], "Slice at 0 is whole array")
+        
+        res = $.slice([1,2,3,4,5], start: 3);
+        
+        XCTAssert(res as Int[] == [4, 5], "Slice with start goes till end")
+        
+        res = $.slice([1,2,3,4,5], start: 8);
+        XCTAssert(res as Int[] == [], "Slice out of bounds is empty")
+        
+        res = $.slice([1,2,3,4,5], start: 8, end: 10);
+        XCTAssert(res as Int[] == [], "Slice out of bounds is empty")
+        
+        res = $.slice([1,2,3,4,5], start: 8 , end: 2);
+        XCTAssert(res as Int[] == [], "Slice with end < start is empty")
+        
+        res = $.slice([1,2,3,4,5], start: 3, end: 3);
+        XCTAssert(res as Int[] == [], "Slice at x and x is empty")
+        
+        res = $.slice([1,2,3,4,5], start: 2, end: 5);
+        XCTAssert(res as Int[] == [3,4,5], "Slice at x and x is subarray")
+        
     }
 
 }

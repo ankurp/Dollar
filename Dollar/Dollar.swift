@@ -117,7 +117,11 @@ class $ {
         return self.resultArray
     }
 
-
+    func slice(start: Int, end: Int = 0) -> $ {
+        self.resultArray =  $.slice(self.resultArray, start: start, end: end);
+        return self;
+    }
+    
     //  ___  ___  _______   ___       ________  _______   ________
     // |\  \|\  \|\  ___ \ |\  \     |\   __  \|\  ___ \ |\   __  \
     // \ \  \\\  \ \   __/|\ \  \    \ \  \|\  \ \   __/|\ \  \|\  \
@@ -462,6 +466,21 @@ class $ {
         return array[random() % array.count]
     }
 
+    class func slice(array: AnyObject[], start: Int, end: Int = 0) -> AnyObject[] {
+        
+        var uend = end;
+        if (uend == 0) {
+            uend = array.count;
+        }
+        
+        if end > array.count || start > array.count || uend < start {
+            return [];
+        } else {
+            return Array(array[start..uend]);
+        }
+        
+    }
+    
     class func sortedIndex<T : Comparable>(array: T[], value: T) -> Int {
         for (index, elem) in enumerate(array) {
             if elem > value {
