@@ -225,8 +225,13 @@ class DollarTests: XCTestCase {
         
         chain = $(array: [[1, 2], 3, [[4], 5]])
         XCTAssert(chain.initial().flatten().first() as Int == 1, "Returns flatten array from chaining")
+        
+        chain = $(array: [[1, 2], 3, [[4], 5]])
+        XCTAssert(chain.flatten().map({ (elem) in elem as Int * 10 }).value() as Int[] == [10, 20, 30, 40, 50], "Returns mapped values")
+        
+        XCTAssert(chain.first() as Int == 10, "Returns first element from mapped value")
     }
-    
+
     func testCurry() {
         let partialFunc = $.partial({(T...) in T[0] + " " + T[1] + " from " + T[2] }, "Hello")
         XCTAssert(partialFunc("World", "Swift") == "Hello World from Swift", "Returns curry function that is evaluated")
