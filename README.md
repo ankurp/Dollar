@@ -307,6 +307,20 @@ for elem in saves {
 isDone == true
 ```
 
+```
+var chain = $(array: [10, 20, 30, 40, 50])
+var elements: Int[] = []
+chain.each { elements += $0 as Int }
+elements as Int[] == [10, 20, 30, 40, 50]
+```
+
+```
+var chain = $(array: [10, 20, 30, 40, 50])
+chain.all { ($0 as Int) < 100 } == true
+chain.all { ($0 as Int) < 40 } == false
+chain.any { ($0 as Int) < 40 } == true
+```
+
 ## Contributing ##
 If you are interested in contributing
 
