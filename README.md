@@ -132,10 +132,15 @@ Method | Usage
 
 Creates an array of elements from the specified indexes, or keys, of the collection. Indexes may be specified as individual arguments or as arrays of indexes.
 
-`$.at(["ant", "bat", "cat", "dog", "egg"], indexes: 0, 2, 4) as String[] == ["ant", "cat", "egg"]`
+```
+$.at(["ant", "bat", "cat", "dog", "egg"], indexes: 0, 2, 4) as String[] 
+=> ["ant", "cat", "egg"]
+```
 
 ### first - `$.first(array: AnyObject[])` 
+
 Gets the first element in the array.
+
 ```
 $.first([1, 2, 3, 4]) as Double 
 => 1
@@ -653,4 +658,3 @@ More functions will be added and then ability to chain operations and lazily eva
 ## Why not extend collection? ##
 1. The project doesnt extend or monkey patch the collection using the extension features to keep it purely functional and
 2. To not override any methods via extensions if Apple decides to add those methods into the collection class themselves as part of the language update. This could lead to inconsistent behavior for those who use the library and those who don't.
-
