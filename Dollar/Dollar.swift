@@ -61,9 +61,25 @@ class $ {
         return self
     }
     
+    func map(function: (Int, AnyObject) -> AnyObject) -> $ {
+        var result: AnyObject[] = []
+        for (index, elem : AnyObject) in enumerate(self.resultArray) {
+            result += function(index, elem)
+        }
+        self.resultArray = result
+        return self
+    }
+    
     func each(function: (AnyObject) -> ()) -> $ {
         for elem : AnyObject in self.resultArray {
             function(elem)
+        }
+        return self
+    }
+    
+    func each(function: (Int, AnyObject) -> ()) -> $ {
+        for (index, elem : AnyObject) in enumerate(self.resultArray) {
+            function(index, elem)
         }
         return self
     }
