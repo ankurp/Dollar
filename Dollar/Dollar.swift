@@ -61,7 +61,7 @@ class $ {
         return self
     }
     
-    func each(function: (AnyObject) -> AnyObject) -> $ {
+    func each(function: (AnyObject) -> ()) -> $ {
         for elem : AnyObject in self.resultArray {
             function(elem)
         }
