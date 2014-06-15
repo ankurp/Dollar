@@ -66,6 +66,7 @@
 <li><a href="#array">Array</a></li>
 <li><a href="#dictionary">Dictionary</a></li>
 <li><a href="#object">Object</a></li>
+<li><a href="#function">Function</a></li>
 <li><a href="#chaining---array-">Chaining</a></li>
 </ul>
 </li>
@@ -819,6 +820,66 @@ $.tap(beatle, {$0.name = "Beatle"}).color = "Blue"
 </code></pre>
 
 <h3>
+<a name="function" class="anchor" href="#function"><span class="octicon octicon-link"></span></a>Function</h3>
+
+<h3>
+<a name="after---after" class="anchor" href="#after---after"><span class="octicon octicon-link"></span></a>after - <code>$.after</code>
+</h3>
+
+<p>Creates a function that executes passed function only after being called n times.</p>
+
+<pre><code>var saves = ["profile", "settings"];
+let asyncSave = { (function: () -&gt; ()?) in
+   function() // Saving right away for testing but in real world would be async
+}
+var isDone = false
+var completeCallback = $.after(saves.count) {
+   isDone = true
+}
+for elem in saves {
+   asyncSave(completeCallback)
+}
+isDone 
+=&gt; true
+</code></pre>
+
+<h3>
+<a name="bind---bind" class="anchor" href="#bind---bind"><span class="octicon octicon-link"></span></a>bind - <code>$.bind</code>
+</h3>
+
+<p>Creates a function that, when called, invokes func with the binding of arguments provided.</p>
+
+<pre><code>let helloWorldFunc = $.bind({(T...) in T[0] + " " + T[1] + " from " + T[2] }, "Hello", "World", "Swift")
+helloWorldFunc() 
+=&gt; "Hello World from Swift"
+</code></pre>
+
+<h3>
+<a name="partial---partial" class="anchor" href="#partial---partial"><span class="octicon octicon-link"></span></a>partial - <code>$.partial</code>
+</h3>
+
+<p>Creates a function that, when called, invokes func with any additional partial arguments prepended to those provided to the new function.</p>
+
+<pre><code>let partialFunc = $.partial({(T...) in T[0] + " " + T[1] + " from " + T[2] }, "Hello")
+partialFunc("World", "Swift") 
+=&gt; "Hello World from Swift"
+</code></pre>
+
+<h3>
+<a name="times---times" class="anchor" href="#times---times"><span class="octicon octicon-link"></span></a>times - <code>$.times</code>
+</h3>
+
+<p>Call a function n times and also passes the index. If a value is returned in the function then the times method will return an array of those values.</p>
+
+<pre><code>let fun = $.bind({ (names: String...) -&gt; String in
+   let people = $.join(names, separator: " from ")
+   return "Hello \(people)"
+   }, "Ankur", "Swift")
+$.times(2, function: fun) as String[] 
+=&gt; ["Hello Ankur from Swift", "Hello Ankur from Swift"]
+</code></pre>
+
+<h3>
 <a name="chaining---array-" class="anchor" href="#chaining---array-"><span class="octicon octicon-link"></span></a>Chaining - <code>$(array: ...)</code>
 </h3>
 
@@ -832,35 +893,6 @@ $(array: [[1, 2], 3, [[4], 5]]).flatten().initial(2).value() as Int[]
 
 $(array: [[1, 2], 3, [[4], 5]]).initial().flatten().first() as Int 
 =&gt; 1
-
-let partialFunc = $.partial({(T...) in T[0] + " " + T[1] + " from " + T[2] }, "Hello")
-partialFunc("World", "Swift") 
-=&gt; "Hello World from Swift"
-
-let helloWorldFunc = $.bind({(T...) in T[0] + " " + T[1] + " from " + T[2] }, "Hello", "World", "Swift")
-helloWorldFunc() 
-=&gt; "Hello World from Swift"
-
-let fun = $.bind({ (names: String...) -&gt; String in
-   let people = $.join(names, separator: " from ")
-   return "Hello \(people)"
-   }, "Ankur", "Swift")
-$.times(2, function: fun) as String[] 
-=&gt; ["Hello Ankur from Swift", "Hello Ankur from Swift"]
-
-var saves = ["profile", "settings"];
-let asyncSave = { (function: () -&gt; ()?) in
-   function() // Saving right away for testing but in real world would be async
-}
-var isDone = false
-var completeCallback = $.after(saves.count) {
-   isDone = true
-}
-for elem in saves {
-   asyncSave(completeCallback)
-}
-isDone 
-=&gt; true
 
 var chain = $(array: [10, 20, 30, 40, 50])
 var elements: Int[] = []
