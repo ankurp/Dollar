@@ -29,6 +29,7 @@ $ is a Swift library that provides useful functional programming helper methods 
   - [Array](#array)
   - [Dictionary](#dictionary)
   - [Object](#object)
+  - [Function](#function)
   - [Chaining](#chaining---array-)
 - [Contributing](#contributing)
 - [Roadmap](#roadmap)
@@ -552,34 +553,13 @@ var beatle = Car(name: "Fusca")
 $.tap(beatle, {$0.name = "Beatle"}).color = "Blue"
 ```
 
-### Chaining - `$(array: ...)`
+### Function ###
+
+### after - `$.after`
+
+Creates a function that executes passed function only after being called n times.
+
 ```
-$(array: [1, 2, 3])
-
-$(array: [1, 2, 3]).first() as Int 
-=> 1
-
-$(array: [[1, 2], 3, [[4], 5]]).flatten().initial(2).value() as Int[] 
-=> [1, 2, 3]
-
-$(array: [[1, 2], 3, [[4], 5]]).initial().flatten().first() as Int 
-=> 1
-
-let partialFunc = $.partial({(T...) in T[0] + " " + T[1] + " from " + T[2] }, "Hello")
-partialFunc("World", "Swift") 
-=> "Hello World from Swift"
-    
-let helloWorldFunc = $.bind({(T...) in T[0] + " " + T[1] + " from " + T[2] }, "Hello", "World", "Swift")
-helloWorldFunc() 
-=> "Hello World from Swift"
-
-let fun = $.bind({ (names: String...) -> String in
-   let people = $.join(names, separator: " from ")
-   return "Hello \(people)"
-   }, "Ankur", "Swift")
-$.times(2, function: fun) as String[] 
-=> ["Hello Ankur from Swift", "Hello Ankur from Swift"]
-
 var saves = ["profile", "settings"];
 let asyncSave = { (function: () -> ()?) in
    function() // Saving right away for testing but in real world would be async
@@ -593,6 +573,53 @@ for elem in saves {
 }
 isDone 
 => true
+```
+
+### bind - `$.bind`
+
+Creates a function that, when called, invokes func with the binding of arguments provided.
+
+```
+let helloWorldFunc = $.bind({(T...) in T[0] + " " + T[1] + " from " + T[2] }, "Hello", "World", "Swift")
+helloWorldFunc() 
+=> "Hello World from Swift"
+```
+
+### partial - `$.partial`
+
+Creates a function that, when called, invokes func with any additional partial arguments prepended to those provided to the new function.
+
+```
+let partialFunc = $.partial({(T...) in T[0] + " " + T[1] + " from " + T[2] }, "Hello")
+partialFunc("World", "Swift") 
+=> "Hello World from Swift"
+```
+
+### times - `$.times`
+
+Call a function n times and also passes the index. If a value is returned in the function then the times method will return an array of those values.
+
+```
+let fun = $.bind({ (names: String...) -> String in
+   let people = $.join(names, separator: " from ")
+   return "Hello \(people)"
+   }, "Ankur", "Swift")
+$.times(2, function: fun) as String[] 
+=> ["Hello Ankur from Swift", "Hello Ankur from Swift"]
+```
+
+### Chaining - `$(array: ...)`
+```
+$(array: [1, 2, 3])
+
+$(array: [1, 2, 3]).first() as Int 
+=> 1
+
+$(array: [[1, 2], 3, [[4], 5]]).flatten().initial(2).value() as Int[] 
+=> [1, 2, 3]
+
+$(array: [[1, 2], 3, [[4], 5]]).initial().flatten().first() as Int 
+=> 1
 
 var chain = $(array: [10, 20, 30, 40, 50])
 var elements: Int[] = []
