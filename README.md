@@ -67,6 +67,7 @@ Method | Usage
 **`$.range`**|Creates an array of numbers (positive and/or negative) progressing from start up to but not including end.
 **`$.sequence`**|Creates an array of an arbitrary sequence. Especially useful with builtin ranges.
 **`$.remove`**|Removes all elements from an array that the callback returns true.
+**`$.slice`**|Slices the array based on the start and end position. If an end position is not specified it will slice till the end of the array.
 **`$.sortedIndex`**|Gives the smallest index at which a value should be inserted into a given the array is sorted.
 **`$.union`**|Creates an array of unique values, in order, of the provided arrays.
 **`$.uniq`**|Creates a duplicate-value-free version of an array.
@@ -115,6 +116,7 @@ Method | Usage
 **`flatten`**|Flattens a nested array of any depth.
 **`initial`**|Gets all but the last element or last n elements of an array.
 **`map`**|Maps each element to the new value returned in the callback function
+**`slice`**|Slices the array based on the start and end position. If an end position is not specified it will slice till the end of the array.
 **`value`**|Returns the array after applying all of the chained operators on it.
 
 ## Examples ##
