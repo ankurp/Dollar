@@ -595,6 +595,105 @@ class $ {
         }
         return result
     }
-
+    
+    /**
+    *  Produces an array of arrays, each containing n elements, each offset by step.
+    *  If the final partition is not n elements long it is dropped.
+    *  @param array The array to partition.
+    *  @param n The number of elements in each partition.
+    *  @param step The number of elements to progress between each partition. Set to n if not supplied.
+    *  @return Array partitioned into n element arrays, starting step elements apart.
+    */
+    class func partition<T>(array: Array<T>, var n: Int, var step: Int? = nil) -> Array<Array<T>> {
+        var result = Array<Array<T>>()
+        if !step?   { step = n } // If no step is supplied move n each step.
+        if step < 1 { step = 1 } // Less than 1 results in an infinite loop.
+        if n < 1    { n = 0 }    // Allow 0 if user wants [[],[],[]] for some reason.
+        if n > array.count { return [[]] }
+        
+        for i in (0...array.count-n).by(step!) {
+            result += Array(array[i..(i+n)] as Slice<T>)
+        }
+        
+        return result
+    }
+    
+    /**
+    *  Produces an array of arrays, each containing n elements, each offset by step.
+    *  @param array The array to partition.
+    *  @param n The number of elements in each partition.
+    *  @param step The number of elements to progress between each partition. Set to n if not supplied.
+    *  @param pad An array of elements to pad the last partition if it is not long enough to
+    *             contain n elements. If nil is passed or there are not enough pad elements
+    *             the last partition may less than n elements long.
+    *  @return Array partitioned into n element arrays, starting step elements apart.
+    */
+    class func partition<T>(var array: Array<T>, var n: Int, var step: Int? = nil, pad: T[]?) -> Array<Array<T>> {
+        var result = Array<Array<T>>()
+        if !step?   { step = n } // If no step is supplied move n each step.
+        if step < 1 { step = 1 } // Less than 1 results in an infinite loop.
+        if n < 1    { n = 0 }    // Allow 0 if user wants [[],[],[]] for some reason.
+        
+        for i in (0..array.count).by(step!) {
+            var end = i+n
+            if end > array.count { end = array.count }
+            result += Array(array[i..end] as Slice<T>)
+            if end != i+n { break }
+        }
+        
+        if let padding = pad {
+            let remain = array.count%n
+            let end = padding.count > remain ? remain : padding.count
+            result[result.count-1] += Array(padding[0..end] as Slice<T>)
+        }
+        
+        return result
+    }
+    
+    /**
+    *  Produces an array of arrays, each containing n elements, each offset by step.
+    *  @param array The array to partition.
+    *  @param n The number of elements in each partition.
+    *  @param step The number of elements to progress between each partition. Set to n if not supplied.
+    *  @return Array partitioned into n element arrays, starting step elements apart.
+    */
+    class func partitionAll<T>(array: Array<T>, var n: Int, var step: Int? = nil) -> Array<Array<T>> {
+        var result = Array<Array<T>>()
+        if !step?   { step = n } // If no step is supplied move n each step.
+        if step < 1 { step = 1 } // Less than 1 results in an infinite loop.
+        if n < 1    { n = 0 }    // Allow 0 if user wants [[],[],[]] for some reason.
+        
+        for i in (0..array.count).by(step!) {
+            var end = i+n
+            if end > array.count { end = array.count }
+            result += Array(array[i..end] as Slice<T>)
+        }
+        
+        return result
+    }
+    
+    /**
+    *  Applies function to each element in array, splitting it each time function returns a new value.
+    *  @param array The array to partition.
+    *  @param function Function which takes an element and produces an equatable result.
+    *  @return Array partitioned in order, splitting via results of function.
+    */
+    class func partitionBy<T, U: Equatable>(array: Array<T>, function: (T) -> U) -> Array<Array<T>> {
+        var result = Array<Array<T>>()
+        var lastValue: U? = nil
+        
+        for item in array {
+            let value = function(item)
+            
+            if value == lastValue? {
+                result[result.count-1] += item
+            } else {
+                result.append([item])
+                lastValue = value
+            }
+        }
+        
+        return result
+    }
     
 }

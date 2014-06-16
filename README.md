@@ -80,6 +80,9 @@ Method | Usage
 **`$.xor`**|Creates an array that is the symmetric difference of the provided arrays.
 **`$.zip`**|Creates an array of grouped elements, the first of which contains the first elements of the given arrays.
 **`$.zipObject`**|Creates an object composed from arrays of keys and values.
+**`$.partition`**|Produces an array of arrays, each containing n elements, each offset by step. Stops after a partition is less than n length.
+**`$.partitionAll`**|Produces an array of arrays, each containing n elements, each offset by step. Continues after a partition is less than n length.
+**`$.partitionBy`**|Applies a function to each element in array, splitting it each time the function returns a new value.
 
 
 ### Dictionary Methods ###
@@ -137,7 +140,7 @@ $.at(["ant", "bat", "cat", "dog", "egg"], indexes: 0, 2, 4) as String[]
 => ["ant", "cat", "egg"]
 ```
 
-### first - `$.first(array: AnyObject[])` 
+### first - `$.first(array: AnyObject[])`
 
 Gets the first element in the array.
 
@@ -306,7 +309,6 @@ $.last([3, 4, 5]) as Int
 => 5
 ```
 
-
 ### lastIndexOf - `$.lastIndexOf`
 
 Gets the index at which the last occurrence of value is found.
@@ -315,7 +317,6 @@ Gets the index at which the last occurrence of value is found.
 $.lastIndexOf([1, 2, 3, 1, 2, 3], value: 2) 
 => 4
 ```
-
 
 ### rest - `$.rest`
 
@@ -338,7 +339,6 @@ $.noop()
 => nil
 ```
 
-
 ### min - `$.min`
 
 Retrieves the minimum value in an array.
@@ -347,7 +347,6 @@ Retrieves the minimum value in an array.
 $.min([2, 1, 2, 3, 4]) 
 => 1
 ```
-
 
 ### max - `$.max`
 
@@ -367,7 +366,6 @@ let arr : Dictionary<String, Int>[] = [["age": 20], ["age": 30], ["age": 40]]
 $.pluck(arr, value: "age") 
 => [20, 30, 40]
 ```
-
 
 ### pull - `$.pull`
 
@@ -446,7 +444,6 @@ $.sortedIndex([10, 20, 30, 50], value: 40) as Int
 => 3
 ```
 
-
 ### union - `$.union`
 
 Creates an array of unique values, in order, of the provided arrays.
@@ -505,6 +502,46 @@ Creates an object composed from arrays of keys and values.
 ```
 $.zipObject(["fred", "barney"], values: [30, 40]) as Dictionary<String, Int> 
 => ["fred": 30, "barney": 40]
+```
+
+### partition - `$.partition`
+
+Produces an array of arrays, each containing n elements, each offset by step. Stops after a partition is less than n length.
+
+```
+let arr = [1, 2, 3, 4, 5]
+$.partition(arr, n: 2)
+=> [[1, 2], [3, 4]]
+
+$.partition(arr, n: 4, step: 1)
+=> [[1, 2, 3, 4], [2, 3, 4, 5]]
+
+$.partition(arr, n: 4, step: 1, pad: nil)
+=> [[1, 2, 3, 4], [2, 3, 4, 5], [3, 4, 5]]
+
+$.partition(arr, n: 4, step: 1, pad: [6, 7, 8])
+=> [[1, 2, 3, 4], [2, 3, 4, 5], [3, 4, 5, 6]]
+```
+
+### partitionAll - `$.partitionAll`
+
+Produces an array of arrays, each containing n elements, each offset by step. Continues after a partition is less than n length.
+
+```
+$.partitionAll([1, 2, 3, 4, 5], n:4, step: 1)
+=> [[1, 2, 3, 4], [2, 3, 4, 5], [3, 4, 5], [4, 5], [5]]
+```
+
+### partitionBy - `$.partitionBy`
+
+Applies a function to each element in array, splitting it each time the function returns a new value.
+
+```
+$.partitionBy([1, 2, 3, 4, 5]) { $0 % 2 == 0 }
+=> [[1], [2, 4], [3, 5], [6]]
+
+$.partitionBy([1, 7, 3, 6, 10, 12]) { $0 % 3 }
+=> [[1, 7], [3, 6], [10], [12]]
 ```
 
 ### Dictionary ###

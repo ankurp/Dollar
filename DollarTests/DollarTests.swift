@@ -315,5 +315,68 @@ class DollarTests: XCTestCase {
         XCTAssert(res as Int[] == [3,4,5], "Slice at x and x is subarray")
         
     }
+    
+    // Helper function for testing partition, Swift cannot compare nested arrays.
+    func compareNestedArray(first: Array<Array<Int>>, with second: Array<Array<Int>>) -> Bool {
+        if first.count != second.count { return false }
+        for i in 0..first.count {
+            if first[i] != second[i] { return false }
+        }
+        return true
+    }
+
+    func testPartition() {
+        var array = [1, 2, 3, 4, 5]
+
+        var test = $.partition(array, n: 2)
+        XCTAssert(compareNestedArray(test, with: [[1, 2], [3, 4]]), "Partition uses n for step if not supplied.")
+        
+        test = $.partition(array, n: 2, step: 1)
+        XCTAssert(compareNestedArray(test, with: [[1, 2], [2, 3], [3, 4], [4, 5]]), "Partition allows specifying a custom step.")
+        
+        test = $.partition(array, n: 2, step: 1, pad: nil)
+        XCTAssert(compareNestedArray(test, with: [[1, 2], [2, 3], [3, 4], [4, 5], [5]]), "Partition with nil pad allows the last partition to be less than n length")
+        
+        test = $.partition(array, n: 4, step: 1, pad: nil)
+        XCTAssert(compareNestedArray(test, with: [[1, 2, 3, 4], [2, 3, 4, 5], [3, 4, 5]]), "Partition with nil pad stops at the first partition less than n length.")
+
+        test = $.partition(array, n: 2, step: 1, pad: [6,7,8])
+        XCTAssert(compareNestedArray(test, with: [[1, 2], [2, 3], [3, 4], [4, 5], [5, 6]]), "Partition pads the last partition to the right length.")
+        
+        test = $.partition(array, n: 4, step: 3, pad: [6])
+        XCTAssert(compareNestedArray(test, with: [[1, 2, 3, 4], [4, 5, 6]]), "Partition doesn't add more elements than pad has.")
+        
+        test = $.partition([1, 2, 3, 4, 5], n: 2, pad: [6])
+        XCTAssert(compareNestedArray(test, with: [[1, 2], [3, 4], [5, 6]]), "Partition with pad and no step uses n as step.")
+        
+        test = $.partition([1, 2, 3, 4, 5, 6], n: 2, step: 4)
+        XCTAssert(compareNestedArray(test, with: [[1, 2], [5, 6]]), "Partition step length works.")
+        
+        test = $.partition(array, n: 10)
+        XCTAssert(compareNestedArray(test, with: [[]]), "Partition without pad returns [[]] if n is longer than array.")
+    }
+    
+    func testPartitionAll() {
+        var array = [1, 2, 3, 4, 5]
+        var test = $.partitionAll(array, n: 2, step: 1)
+        XCTAssert(compareNestedArray(test, with: [[1, 2], [2, 3], [3, 4], [4, 5], [5]]), "PartitionAll includes partitions less than n.")
+        
+        test = $.partitionAll(array, n: 2)
+        XCTAssert(compareNestedArray(test, with: [[1, 2], [3, 4], [5]]), "PartitionAll uses n as the step when not supplied.")
+        
+        test = $.partitionAll(array, n:4, step: 1)
+        XCTAssert(compareNestedArray(test, with: [[1, 2, 3, 4], [2, 3, 4, 5], [3, 4, 5], [4, 5], [5]]), "PartitionAll does not stop at the first partition less than n length.")
+    }
+    
+    func testPartitionBy() {
+        var test = $.partitionBy([1, 2, 3, 4, 5]) { $0 > 10 }
+        XCTAssert(compareNestedArray(test, with: [[1, 2, 3, 4, 5]]), "PartitionBy doesn't try to split unnecessarily.")
+        
+        test = $.partitionBy([1, 2, 4, 3, 5, 6]) { $0 % 2 == 0 }
+        XCTAssert(compareNestedArray(test, with: [[1], [2, 4], [3, 5], [6]]), "PartitionBy splits appropriately on Bool.")
+        
+        test = $.partitionBy([1, 7, 3, 6, 10, 12]) { $0 % 3 }
+        XCTAssert(compareNestedArray(test, with: [[1, 7], [3, 6], [10], [12]]), "PartitionBy can split on functions other than Bool.")
+    }
 
 }
