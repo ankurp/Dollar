@@ -338,6 +338,8 @@ class DollarTests: XCTestCase {
         test = $.partition(array, n: 4, step: 3, pad: [6])
         XCTAssert(compareNestedArray(test, with: [[1, 2, 3, 4], [4, 5, 6]]), "Partition doesn't add more elements than pad has.")
         
+        test = $.partition([1, 2, 3, 4, 5], n: 2, pad: [6])
+        XCTAssert(compareNestedArray(test, with: [[1, 2], [3, 4], [5, 6]]), "Partition with pad and no step uses n as step.")
         
         test = $.partition([1, 2, 3, 4, 5, 6], n: 2, step: 4)
         XCTAssert(compareNestedArray(test, with: [[1, 2], [5, 6]]), "Partition step length works.")
@@ -350,6 +352,9 @@ class DollarTests: XCTestCase {
         var array = [1, 2, 3, 4, 5]
         var test = $.partitionAll(array, n: 2, step: 1)
         XCTAssert(compareNestedArray(test, with: [[1, 2], [2, 3], [3, 4], [4, 5], [5]]), "PartitionAll includes partitions less than n.")
+        
+        test = $.partitionAll(array, n: 2)
+        XCTAssert(compareNestedArray(test, with: [[1, 2], [3, 4], [5]]), "PartitionAll uses n as the step when not supplied.")
         
         test = $.partitionAll(array, n:4, step: 1)
         XCTAssert(compareNestedArray(test, with: [[1, 2, 3, 4], [2, 3, 4, 5], [3, 4, 5], [4, 5], [5]]), "PartitionAll does not stop at the first partition less than n length.")
