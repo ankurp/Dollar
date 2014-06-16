@@ -214,7 +214,8 @@ This method is like find except that it returns the index of the first element t
 ```
 let arr = [["age": 36], ["age": 40], ["age": 1]]
 let result = $.findIndex(arr) { $0["age"] < 20 }
-result == 2
+result 
+=> 2
 ```
 
 ### findLastIndex - `$.findLastIndex`
@@ -360,7 +361,8 @@ Retrieves the value of a specified property from all elements in the array.
 
 ```
 let arr : Dictionary<String, Int>[] = [["age": 20], ["age": 30], ["age": 40]]
-$.pluck(arr, value: "age") == [20, 30, 40]
+$.pluck(arr, value: "age") 
+=> [20, 30, 40]
 ```
 
 
@@ -510,6 +512,7 @@ Creates an array of keys given a dictionary.
 
 ```
 $.keys(["Dog": 1, "Cat": 2])
+=> ["Dog", "Cat"]
 ```
 
 ### values - `$.values`
@@ -518,6 +521,7 @@ Creates an array of values given a dictionary
 
 ```
 $.values(["Dog": 1, "Cat": 2])
+=> [1, 2]
 ```
 
 ### merge - `$.merge`
@@ -639,7 +643,8 @@ chain.all { ($0 as Int) < 100 }
 chain.all { ($0 as Int) < 40 } 
 => false
 
-chain.any { ($0 as Int) < 40 } => true
+chain.any { ($0 as Int) < 40 } 
+=> true
 ```
 
 ## Contributing ##
