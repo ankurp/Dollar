@@ -179,6 +179,9 @@ class DollarTests: XCTestCase {
     
     func testFrequencies() {
         XCTAssert($.frequencies(["a", "a", "b", "c", "a", "b"]) == ["a": 3, "b": 2, "c": 1], "Returns correct frequency dictionary")
+        
+        let condFreq = $.frequencies([1,2,3,4,5]) { $0 % 2 == 0 }
+        XCTAssert(condFreq == [false: 3, true: 2], "Returns correct frequency dictionary from cond")
     }
 
     func testKeys() {

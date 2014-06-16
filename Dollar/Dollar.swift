@@ -262,12 +262,17 @@ class $ {
     }
     
     class func frequencies<T>(array: Array<T>) -> Dictionary<T, Int> {
-        var result = Dictionary<T, Int>()
+        return self.frequencies(array) { $0 }
+    }
+    
+    class func frequencies<T, U: Equatable>(array: Array<T>, function: (T) -> U) -> Dictionary<U, Int> {
+        var result = Dictionary<U, Int>()
         for elem in array {
-            if let freq = result[elem] {
-                result[elem] = freq + 1
+            let key = function(elem)
+            if let freq = result[key] {
+                result[key] = freq + 1
             } else {
-                result[elem] = 1
+                result[key] = 1
             }
         }
         return result
