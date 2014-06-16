@@ -56,7 +56,7 @@ Method | Usage
 **`$.findIndex`**|This method is like find except that it returns the index of the first element that passes the callback check.
 **`$.findLastIndex`**|This method is like findIndex except that it iterates over elements of the array from right to left.
 **`$.flatten`**|Flattens a nested array of any depth.
-**`$.frequencies`**|This method returns a dictionary of values in an array mapping to the total number of occurances in the array.
+**`$.frequencies`**|This method returns a dictionary of values in an array mapping to the total number of occurrences in the array. If passed a function it returns a frequency table of the results of the given function on the arrays elements.
 **`$.indexOf`**|Gets the index at which the first occurrence of value is found.
 **`$.initial`**|Gets all but the last element or last n elements of an array.
 **`$.intersection`**|Creates an array of unique values present in all provided arrays.
@@ -245,11 +245,14 @@ $.flatten([[[3], 4], 5]) as Int[]
 ```
 
 ### frequencies - `$.frequencies`
-This method returns a dictionary of values in an array mapping to the total number of occurances in the array.
+This method returns a dictionary of values in an array mapping to the total number of occurrences in the array. If passed a function it returns a frequency table of the results of the given function on the arrays elements.
 
 ```
 $.frequencies(["a", "a", "b", "c", "a", "b"]) 
 => ["a": 3, "b": 2, "c": 1]
+
+$.frequencies([1, 2, 3, 4, 5]) { $0 % 2 == 0 }
+=> [false: 3, true: 2]
 ```
 
 ### indexof - `$.indexof`
