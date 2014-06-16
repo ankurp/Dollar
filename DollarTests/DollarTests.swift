@@ -20,8 +20,8 @@ class DollarTests: XCTestCase {
     }
     
     func testFirst() {
-        XCTAssert($.first([1, 2, 3, 4]) as Double == 1, "Return first element")
-        XCTAssert($.first([]) == nil, "Return first element")
+        XCTAssert($.first([1, 2, 3, 4])! == 1, "Return first element")
+        XCTAssert($.first(Any[]()) == nil, "Returns nil when array is empty")
     }
     
     func testNoop() {
@@ -57,7 +57,8 @@ class DollarTests: XCTestCase {
     }
     
     func testLast() {
-        XCTAssert($.last([3, 4, 5]) as Int == 5, "Returns last element in array")
+        XCTAssert($.last([3, 4, 5])! == 5, "Returns last element in array")
+        XCTAssert($.last(Any[]()) == nil, "Returns nil when array is empty")
     }
     
     func testFindIndex() {

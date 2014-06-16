@@ -241,7 +241,7 @@ class $ {
         return nil
     }
     
-    class func first(array: AnyObject[]) -> AnyObject? {
+    class func first<T>(array: T[]) -> T? {
         if array.isEmpty {
             return nil
         } else {
@@ -332,7 +332,7 @@ class $ {
         return result
     }
     
-    class func last(array: AnyObject[]) -> AnyObject? {
+    class func last<T>(array: T[]) -> T? {
         if array.isEmpty {
             return nil
         } else {
