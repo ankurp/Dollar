@@ -136,7 +136,7 @@ Method | Usage
 Creates an array of elements from the specified indexes, or keys, of the collection. Indexes may be specified as individual arguments or as arrays of indexes.
 
 ```
-$.at(["ant", "bat", "cat", "dog", "egg"], indexes: 0, 2, 4) as String[] 
+$.at(["ant", "bat", "cat", "dog", "egg"], indexes: 0, 2, 4) 
 => ["ant", "cat", "egg"]
 ```
 
@@ -145,7 +145,7 @@ $.at(["ant", "bat", "cat", "dog", "egg"], indexes: 0, 2, 4) as String[]
 Gets the first element in the array.
 
 ```
-$.first([1, 2, 3, 4]) as Double 
+$.first([1, 2, 3, 4])
 => 1
 
 $.first([]) 
@@ -157,7 +157,7 @@ $.first([])
 Creates an array with all nil values removed.
 
 ```
-$.compact([3, nil, 4, 5]) as NSObject[] 
+$.compact([3, nil, 4, 5]) 
 => [3, 4, 5]
 
 $.compact([nil, nil]) as NSObject[] 
@@ -181,7 +181,7 @@ $.contains([1, 2, 3, 1, 2, 3], value: 10)
 Creates an array excluding all values of the provided arrays
 
 ```
-$.difference([1, 2, 3, 4, 5], [5, 2, 10]) as Int[] 
+$.difference([1, 2, 3, 4, 5], [5, 2, 10]) 
 => [1, 3, 4]
 ```
 
@@ -194,7 +194,7 @@ Checks if the given callback returns true value for all items in the array.
 $.every([1, 2, 3, 4], iterator: { $0 < 20 }) 
 => true
 
-$.every([1, 2, 3, 4], iterator: { $0 == 1 }) 
+$.every([1, 2, 3, 4]) { $0 == 1 } 
 => false
 ```
 
@@ -206,7 +206,7 @@ Iterates over elements of an array and returning the first element that the call
 $.find([1, 2, 3, 4], iterator: { $0 == 2 }) 
 => 2
 
-$.find([1, 2, 3, 4], iterator: { $0 == 10 }) 
+$.find([1, 2, 3, 4]) { $0 == 10 } 
 => nil
 ```
 
@@ -284,10 +284,10 @@ $.indexOf([3, 4, 5], value: 2)
 Gets all but the last element or last n elements of an array.
 
 ```
-$.initial([3, 4, 5]) as Int[] 
+$.initial([3, 4, 5]) 
 => [3, 4]
 
-$.initial([3, 4, 5], numElements: 2) as Int[] 
+$.initial([3, 4, 5], numElements: 2) 
 => [3]
 ```
 
@@ -296,7 +296,7 @@ $.initial([3, 4, 5], numElements: 2) as Int[]
 Creates an array of unique values present in all provided arrays.
 
 ```
-$.intersection([1, 2, 3], [5, 2, 1, 4], [2, 1]) as Int[] 
+$.intersection([1, 2, 3], [5, 2, 1, 4], [2, 1]) 
 => [1, 2]
 ```
 
@@ -305,7 +305,7 @@ $.intersection([1, 2, 3], [5, 2, 1, 4], [2, 1]) as Int[]
 Gets the last element from the array.
 
 ```
-$.last([3, 4, 5]) as Int 
+$.last([3, 4, 5]) 
 => 5
 ```
 
@@ -323,10 +323,10 @@ $.lastIndexOf([1, 2, 3, 1, 2, 3], value: 2)
 The opposite of initial this method gets all but the first element or first n elements of an array.
 
 ```
-$.rest([3, 4, 5]) as Int[] 
+$.rest([3, 4, 5]) 
 => [4, 5]
 
-$.rest([3, 4, 5], numElements: 2) as Int[] 
+$.rest([3, 4, 5], numElements: 2) 
 => [5]
 ```
 
@@ -372,13 +372,13 @@ $.pluck(arr, value: "age")
 Removes all provided values from the given array.
 
 ```
-$.pull([3, 4, 5, 3, 5], values: 3, 5) as Int[] 
+$.pull([3, 4, 5, 3, 5], values: 3, 5) 
 => [4]
 
-$.pull([3, 4, 5, 3, 5], values: 4) as Int[] 
+$.pull([3, 4, 5, 3, 5], values: 4) 
 => [3, 5, 3, 5]
 
-$.pull([3, 4, 5, 3, 5], values: 3, 4, 5) as Int[] 
+$.pull([3, 4, 5, 3, 5], values: 3, 4, 5) 
 => []
 ```
 
@@ -387,20 +387,20 @@ $.pull([3, 4, 5, 3, 5], values: 3, 4, 5) as Int[]
 Creates an array of numbers (positive and/or negative) progressing from start up to but not including end.
 
 ```
-$.range(4) as Int[] 
+$.range(4) 
 => [0, 1, 2, 3]
 
-$.range(1, endVal: 5) as Int[] 
+$.range(1, endVal: 5) 
 => [1, 2, 3, 4]
 
-$.range(0, endVal: 20, incrementBy: 5) as Int[] 
+$.range(0, endVal: 20, incrementBy: 5) 
 => [0, 5, 10, 15]
 ```
 
 ### sample - `$.sample`
 ```
 let arr : Int[] = [2, 1, 2, 3, 4]
-$.contains(arr, value: $.sample(arr) as NSObject)
+$.contains(arr, value: $.sample(arr))
 => true
 ```
 
@@ -427,8 +427,8 @@ $.sequence("abc")
 Removes all elements from an array that the callback returns true.
 
 ```
-let result = $.remove([1, 2, 3, 4, 5, 6], iterator: { $0 as Int == 2 || $0 as Int == 3 })
-result as Int[] 
+let result = $.remove([1, 2, 3, 4, 5, 6]) { $0 == 2 || $0 == 3 }
+result
 => [1, 4, 5, 6]
 ```
 
@@ -437,10 +437,10 @@ result as Int[]
 Gives the smallest index at which a value should be inserted into a given the array is sorted.
 
 ```
-$.sortedIndex([3, 4, 6, 10], value: 5) as Int 
+$.sortedIndex([3, 4, 6, 10], value: 5)
 => 2
 
-$.sortedIndex([10, 20, 30, 50], value: 40) as Int 
+$.sortedIndex([10, 20, 30, 50], value: 40)
 => 3
 ```
 
@@ -449,7 +449,7 @@ $.sortedIndex([10, 20, 30, 50], value: 40) as Int
 Creates an array of unique values, in order, of the provided arrays.
 
 ```
-$.union([1, 2, 3], [5, 2, 1, 4], [2, 1]) as Int[] 
+$.union([1, 2, 3], [5, 2, 1, 4], [2, 1]) 
 => [1, 2, 3, 4, 5]
 ```
 
@@ -458,7 +458,7 @@ $.union([1, 2, 3], [5, 2, 1, 4], [2, 1]) as Int[]
 Creates a duplicate-value-free version of an array.
 
 ```
-$.uniq([1, 2, 1, 3, 1]) as Int[] 
+$.uniq([1, 2, 1, 3, 1])
 => [1, 2, 3]
 ```
 
@@ -467,13 +467,13 @@ $.uniq([1, 2, 1, 3, 1]) as Int[]
 Creates an array excluding all provided values.
 
 ```
-$.without([3, 4, 5, 3, 5], values: 3, 5) as Int[] 
+$.without([3, 4, 5, 3, 5], values: 3, 5)
 => [4]
 
-$.without([3, 4, 5, 3, 5], values: 4) as Int[] 
+$.without([3, 4, 5, 3, 5], values: 4)
 => [3, 5, 3, 5]
 
-$.without([3, 4, 5, 3, 5], values: 3, 4, 5) as Int[] 
+$.without([3, 4, 5, 3, 5], values: 3, 4, 5)
 => []
 ```
 
@@ -482,7 +482,7 @@ $.without([3, 4, 5, 3, 5], values: 3, 4, 5) as Int[]
 Creates an array that is the symmetric difference of the provided arrays.
 
 ```
-$.xor([1, 2, 3], [5, 2, 1, 4]) as Int[] 
+$.xor([1, 2, 3], [5, 2, 1, 4])
 => [3, 4, 5]
 ```
 

@@ -147,8 +147,8 @@ class $ {
         return { f()? }
     }
 
-    class func at(array: AnyObject[], indexes: Int...) -> AnyObject[] {
-        var result : AnyObject[] = []
+    class func at<T>(array: T[], indexes: Int...) -> T[] {
+        var result: T[] = []
         for index in indexes {
             result += array[index]
         }
@@ -159,13 +159,12 @@ class $ {
         return { () -> E in
             return function(reinterpretCast(parameters))
         }
-        
     }
 
-    class func compact(array: AnyObject?[]) -> AnyObject[] {
-        var result: AnyObject[] = []
-        for elem: AnyObject? in array {
-            if let val: AnyObject = elem {
+    class func compact<T>(array: T?[]) -> T[] {
+        var result: T[] = []
+        for elem in array {
+            if let val = elem {
                 result += val
             }
         }
@@ -287,12 +286,8 @@ class $ {
         return nil
     }
 
-    class func initial(array: AnyObject[]) -> AnyObject[] {
-        return self.initial(array, numElements: 1)
-    }
-    
-    class func initial(array: AnyObject[], numElements: Int) -> AnyObject[] {
-        var result: AnyObject[] = []
+    class func initial<T>(array: T[], numElements: Int = 1) -> T[] {
+        var result: T[] = []
         for (index, _) in enumerate((0..array.count - numElements)) {
             result += array[index]
         }
@@ -452,27 +447,23 @@ class $ {
         return Array<S.GeneratorType.Element>(seq)
     }
  
-    class func remove(array: AnyObject[], iterator: (AnyObject) -> Bool) -> AnyObject[] {
+    class func remove<T>(array: T[], iterator: (T) -> Bool) -> T[] {
         return array.filter { !iterator($0) }
     }
     
-    class func rest(array: AnyObject[]) -> AnyObject[] {
-        return self.rest(array, numElements: 1)
-    }
-    
-    class func rest(array: AnyObject[], numElements: Int) -> AnyObject[] {
-        var result: AnyObject[] = []
+    class func rest<T>(array: T[], numElements: Int = 1) -> T[] {
+        var result: T[] = []
         for (index, _) in enumerate((numElements..array.count)) {
             result += array[index + numElements]
         }
         return result
     }
     
-    class func sample(array: AnyObject[]) -> AnyObject {
+    class func sample<T>(array: T[]) -> T {
         return array[random() % array.count]
     }
 
-    class func slice(array: AnyObject[], start: Int, end: Int = 0) -> AnyObject[] {
+    class func slice<T>(array: T[], start: Int, end: Int = 0) -> T[] {
         
         var uend = end;
         if (uend == 0) {
@@ -484,7 +475,6 @@ class $ {
         } else {
             return Array(array[start..uend]);
         }
-        
     }
     
     class func sortedIndex<T : Comparable>(array: T[], value: T) -> Int {

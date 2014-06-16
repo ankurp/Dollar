@@ -29,7 +29,7 @@ class DollarTests: XCTestCase {
     }
     
     func testCompact() {
-        XCTAssert($.compact([3, nil, 4, 5]) as NSObject[] == [3, 4, 5], "Return truth array")
+        XCTAssert($.compact([3, nil, 4, 5]) == [3, 4, 5], "Return truth array")
         XCTAssert($.compact([nil, nil]) as NSObject[] == [], "Return truth array")
     }
     
@@ -47,13 +47,16 @@ class DollarTests: XCTestCase {
     }
 
     func testInitial() {
-        XCTAssert($.initial([3, 4, 5]) as Int[] == [3, 4], "Return all values except for last")
-        XCTAssert($.initial([3, 4, 5], numElements: 2) as Int[] == [3], "Return all values except for last")
+        var test = $.initial([3, 4, 5])
+        XCTAssert(test == [3, 4], "Return all values except for last")
+        
+        test = $.initial([3, 4, 5], numElements: 2)
+        XCTAssert(test == [3], "Return all values except for last")
     }
     
     func testRest() {
-        XCTAssert($.rest([3, 4, 5]) as Int[] == [4, 5], "Returns intersection")
-        XCTAssert($.rest([3, 4, 5], numElements: 2) as Int[] == [5], "Returns intersection")
+        XCTAssert($.rest([3, 4, 5]) == [4, 5], "Returns intersection")
+        XCTAssert($.rest([3, 4, 5], numElements: 2) == [5], "Returns intersection")
     }
     
     func testLast() {
@@ -83,13 +86,23 @@ class DollarTests: XCTestCase {
     }
     
     func testRange() {
-        XCTAssert($.range(4) as Int[] == [0, 1, 2, 3], "Generates range")
-        XCTAssert($.range(1, endVal: 5) as Int[] == [1, 2, 3, 4], "Generates range")
-        XCTAssert($.range(0, endVal: 20, incrementBy: 5) as Int[] == [0, 5, 10, 15], "Generates range")
+        var test = $.range(4)
+        XCTAssert(test == [0, 1, 2, 3], "Generates range")
         
-        XCTAssert($.range(4.0) as Double[] == [0.0, 1.0, 2.0, 3.0], "Generates range of doubles")
-        XCTAssert($.range(-2.0, endVal: 2.0) as Double[] == [-2.0, -1.0, 0.0, 1.0], "Generates range of doubles")
-        XCTAssert($.range(-10.0, endVal: 10.0, incrementBy: 5) as Double[] == [-10.0, -5.0, 0.0, 5.0], "Generates range of doubles")
+        test = $.range(1, endVal: 5)
+        XCTAssert(test == [1, 2, 3, 4], "Generates range")
+            
+        test = $.range(0, endVal: 20, incrementBy: 5)
+        XCTAssert(test == [0, 5, 10, 15], "Generates range")
+        
+        var testDouble = $.range(4.0)
+        XCTAssert(testDouble == [0.0, 1.0, 2.0, 3.0], "Generates range of doubles")
+        
+        testDouble = $.range(-2.0, endVal: 2.0)
+        XCTAssert(testDouble == [-2.0, -1.0, 0.0, 1.0], "Generates range of doubles")
+        
+        testDouble = $.range(-10.0, endVal: 10.0, incrementBy: 5)
+        XCTAssert(testDouble == [-10.0, -5.0, 0.0, 5.0], "Generates range of doubles")
     }
     
     func testSequence() {
@@ -100,25 +113,25 @@ class DollarTests: XCTestCase {
     }
     
     func testRemove() {
-        let result = $.remove([1, 2, 3, 4, 5, 6], iterator: { $0 as Int == 2 || $0 as Int == 3 })
-        XCTAssert(result as Int[] == [1, 4, 5, 6], "Remove based on callback")
+        let result = $.remove([1, 2, 3, 4, 5, 6], iterator: { $0 == 2 || $0 == 3 })
+        XCTAssert(result == [1, 4, 5, 6], "Remove based on callback")
     }
     
     func testSortedIndex() {
-        XCTAssert($.sortedIndex([3, 4, 6, 10], value: 5) as Int == 2, "Index to insert element at in a sorted array")
-        XCTAssert($.sortedIndex([10, 20, 30, 50], value: 40) as Int == 3, "Index to insert element at in a sorted array")
+        XCTAssert($.sortedIndex([3, 4, 6, 10], value: 5) == 2, "Index to insert element at in a sorted array")
+        XCTAssert($.sortedIndex([10, 20, 30, 50], value: 40) == 3, "Index to insert element at in a sorted array")
     }
     
     func testWithout() {
-        XCTAssert($.without([3, 4, 5, 3, 5], values: 3, 5) as Int[] == [4], "Removes elements passed after the array")
-        XCTAssert($.without([3, 4, 5, 3, 5], values: 4) as Int[] == [3, 5, 3, 5], "Removes elements passed after the array")
-        XCTAssert($.without([3, 4, 5, 3, 5], values: 3, 4, 5) as Int[] == [], "Removes elements passed after the array")
+        XCTAssert($.without([3, 4, 5, 3, 5], values: 3, 5) == [4], "Removes elements passed after the array")
+        XCTAssert($.without([3, 4, 5, 3, 5], values: 4) == [3, 5, 3, 5], "Removes elements passed after the array")
+        XCTAssert($.without([3, 4, 5, 3, 5], values: 3, 4, 5) == [], "Removes elements passed after the array")
     }
     
     func testPull() {
         XCTAssert($.pull([3, 4, 5, 3, 5], values: 3, 5) as Int[] == [4], "Removes elements passed after the array")
         XCTAssert($.pull([3, 4, 5, 3, 5], values: 4) as Int[] == [3, 5, 3, 5], "Removes elements passed after the array")
-        XCTAssert($.pull([3, 4, 5, 3, 5], values: 3, 4, 5) as Int[] == [], "Removes elements passed after the array")
+        XCTAssert($.pull([3, 4, 5, 3, 5], values: 3, 4, 5) == [], "Removes elements passed after the array")
     }
     
     func testZip() {
@@ -130,28 +143,28 @@ class DollarTests: XCTestCase {
     }
     
     func testIntersection() {
-        XCTAssert($.intersection([1, 2, 3], [5, 2, 1, 4], [2, 1]) as Int[] == [1, 2], "Intersection of arrays")
+        XCTAssert($.intersection([1, 2, 3], [5, 2, 1, 4], [2, 1]) == [1, 2], "Intersection of arrays")
     }
     
     func testDifference() {
-        XCTAssert($.difference([1, 2, 3, 4, 5], [5, 2, 10]) as Int[] == [1, 3, 4], "Difference of arrays")
+        XCTAssert($.difference([1, 2, 3, 4, 5], [5, 2, 10]) == [1, 3, 4], "Difference of arrays")
     }
     
     func testUniq() {
-        XCTAssert($.uniq([1, 2, 1, 3, 1]) as Int[] == [1, 2, 3], "Uniq of arrays")
+        XCTAssert($.uniq([1, 2, 1, 3, 1]) == [1, 2, 3], "Uniq of arrays")
     }
     
     func testUnion() {
-        XCTAssert($.union([1, 2, 3], [5, 2, 1, 4], [2, 1]) as Int[] == [1, 2, 3, 4, 5], "Union of arrays")
+        XCTAssert($.union([1, 2, 3], [5, 2, 1, 4], [2, 1]) == [1, 2, 3, 4, 5], "Union of arrays")
     }
     
     func testXOR() {
         let x = $.xor([1, 2, 3], [5, 2, 1, 4])
-        XCTAssert(x as Int[] == [3, 4, 5], "Xor of arrays")
+        XCTAssert(x == [3, 4, 5], "Xor of arrays")
     }
     
     func testAt() {
-        XCTAssert($.at(["ant", "bat", "cat", "dog", "egg"], indexes: 0, 2, 4) as String[] == ["ant", "cat", "egg"], "At of arrays")
+        XCTAssert($.at(["ant", "bat", "cat", "dog", "egg"], indexes: 0, 2, 4) == ["ant", "cat", "egg"], "At of arrays")
     }
     
     func testEvery() {
@@ -174,7 +187,7 @@ class DollarTests: XCTestCase {
     
     func testSample() {
         let arr : Int[] = [2, 1, 2, 3, 4]
-        XCTAssert($.contains(arr, value: $.sample(arr) as NSObject), "Returns sample which is an element from the array")
+        XCTAssert($.contains(arr, value: $.sample(arr)), "Returns sample which is an element from the array")
     }
     
     func testPluck() {
@@ -290,29 +303,29 @@ class DollarTests: XCTestCase {
     
     func testSlice() {
         var res = $.slice([1,2,3,4,5], start: 0, end: 2);
-        XCTAssert(res as Int[] == [1, 2], "Slice subarray 0..2");
+        XCTAssert(res == [1, 2], "Slice subarray 0..2");
         
         res = $.slice([1,2,3,4,5], start: 0);
-        XCTAssert(res as Int[] == [1, 2, 3, 4, 5], "Slice at 0 is whole array")
+        XCTAssert(res == [1, 2, 3, 4, 5], "Slice at 0 is whole array")
         
         res = $.slice([1,2,3,4,5], start: 3);
         
-        XCTAssert(res as Int[] == [4, 5], "Slice with start goes till end")
+        XCTAssert(res == [4, 5], "Slice with start goes till end")
         
         res = $.slice([1,2,3,4,5], start: 8);
-        XCTAssert(res as Int[] == [], "Slice out of bounds is empty")
+        XCTAssert(res == [], "Slice out of bounds is empty")
         
         res = $.slice([1,2,3,4,5], start: 8, end: 10);
-        XCTAssert(res as Int[] == [], "Slice out of bounds is empty")
+        XCTAssert(res == [], "Slice out of bounds is empty")
         
         res = $.slice([1,2,3,4,5], start: 8 , end: 2);
-        XCTAssert(res as Int[] == [], "Slice with end < start is empty")
+        XCTAssert(res == [], "Slice with end < start is empty")
         
         res = $.slice([1,2,3,4,5], start: 3, end: 3);
-        XCTAssert(res as Int[] == [], "Slice at x and x is empty")
+        XCTAssert(res == [], "Slice at x and x is empty")
         
         res = $.slice([1,2,3,4,5], start: 2, end: 5);
-        XCTAssert(res as Int[] == [3,4,5], "Slice at x and x is subarray")
+        XCTAssert(res == [3,4,5], "Slice at x and x is subarray")
         
     }
     
