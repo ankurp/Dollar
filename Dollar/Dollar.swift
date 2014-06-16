@@ -20,7 +20,7 @@
 import Foundation
 
 class $ {
-    
+
     //  ________  ___  ___  ________  ___  ________
     // |\   ____\|\  \|\  \|\   __  \|\  \|\   ___  \
     // \ \  \___|\ \  \\\  \ \  \|\  \ \  \ \  \\ \  \
@@ -177,7 +177,7 @@ class $ {
         self.resultArray =  $.slice(self.resultArray, start: start, end: end);
         return self;
     }
-    
+
     //  ___  ___  _______   ___       ________  _______   ________
     // |\  \|\  \|\  ___ \ |\  \     |\   __  \|\  ___ \ |\   __  \
     // \ \  \\\  \ \   __/|\ \  \    \ \  \|\  \ \   __/|\ \  \|\  \
@@ -277,7 +277,7 @@ class $ {
         var map : Dictionary<T, Bool> = Dictionary<T, Bool>()
         let firstArr : T[] = self.first(arrays)!
         let restArr : T[][] = self.rest(arrays) as T[][]
-        
+
         for elem in firstArr {
             map[elem] = true
         }
@@ -444,12 +444,14 @@ class $ {
     */
     class func initial<T>(array: T[], numElements: Int = 1) -> T[] {
         var result: T[] = []
-        for (index, _) in enumerate((0..array.count - numElements)) {
-            result += array[index]
+        if (array.count > numElements) {
+            for index in 0..(array.count - numElements) {
+                result += array[index]
+            }
         }
         return result
     }
-    
+
     /**
     *  Creates an array of unique values present in all provided arrays.
     *  @param arrays The arrays whose intersection need to be done
@@ -603,13 +605,13 @@ class $ {
     */
     class func omit<T, U>(dictionary: Dictionary<T, U>, keys: T...) -> Dictionary<T, U> {
         var result : Dictionary<T, U> = Dictionary<T, U>()
-        
+
         for (key, value) in dictionary {
             if !self.contains(keys, value: key) {
                 result[key] = value
             }
         }
-        
+
         return result
     }
     
@@ -831,8 +833,10 @@ class $ {
     */
     class func rest<T>(array: T[], numElements: Int = 1) -> T[] {
         var result: T[] = []
-        for (index, _) in enumerate((numElements..array.count)) {
-            result += array[index + numElements]
+        if (numElements < array.count) {
+            for index in numElements..array.count {
+                result += array[index]
+            }
         }
         return result
     }
@@ -858,7 +862,7 @@ class $ {
         if (uend == 0) {
             uend = array.count;
         }
-        
+
         if end > array.count || start > array.count || uend < start {
             return [];
         } else {
