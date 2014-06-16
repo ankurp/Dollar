@@ -85,6 +85,10 @@ class DollarTests: XCTestCase {
         XCTAssert($.range(4) as Int[] == [0, 1, 2, 3], "Generates range")
         XCTAssert($.range(1, endVal: 5) as Int[] == [1, 2, 3, 4], "Generates range")
         XCTAssert($.range(0, endVal: 20, incrementBy: 5) as Int[] == [0, 5, 10, 15], "Generates range")
+        
+        XCTAssert($.range(4.0) as Double[] == [0.0, 1.0, 2.0, 3.0], "Generates range of doubles")
+        XCTAssert($.range(-2.0, endVal: 2.0) as Double[] == [-2.0, -1.0, 0.0, 1.0], "Generates range of doubles")
+        XCTAssert($.range(-10.0, endVal: 10.0, incrementBy: 5) as Double[] == [-10.0, -5.0, 0.0, 5.0], "Generates range of doubles")
     }
     
     func testSequence() {
