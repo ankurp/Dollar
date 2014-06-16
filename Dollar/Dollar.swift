@@ -185,7 +185,7 @@ class $ {
     class func difference<T : Hashable>(arrays: T[]...) -> T[] {
         var result : T[] = []
         var map : Dictionary<T, Bool> = Dictionary<T, Bool>()
-        let firstArr : T[] = self.first(arrays) as T[]
+        let firstArr : T[] = self.first(arrays)!
         let restArr : T[][] = self.rest(arrays) as T[][]
         
         for elem in firstArr {
@@ -241,7 +241,7 @@ class $ {
         return nil
     }
     
-    class func first(array: AnyObject[]) -> AnyObject? {
+    class func first<T>(array: T[]) -> T? {
         if array.isEmpty {
             return nil
         } else {
@@ -332,7 +332,7 @@ class $ {
         return result
     }
     
-    class func last(array: AnyObject[]) -> AnyObject? {
+    class func last<T>(array: T[]) -> T? {
         if array.isEmpty {
             return nil
         } else {
