@@ -339,7 +339,7 @@ class DollarTests: XCTestCase {
         
     }
     
-    // Helper function for testing partition, Swift cannot compare nested arrays.
+    /// Helper function for testing partition, Swift cannot compare nested arrays.
     func compareNestedArray(first: Array<Array<Int>>, with second: Array<Array<Int>>) -> Bool {
         if first.count != second.count { return false }
         for i in 0..first.count {
