@@ -264,7 +264,7 @@ class $ {
     *  @return Whether value is in the array
     */
     class func contains<T: Equatable>(array: T[], value: T) -> Bool {
-        return array.filter({ $0 as? T == value }).count > 0
+        return array.filter({ $0 == value }).count > 0
     }
 
     /**
