@@ -244,8 +244,8 @@ class $ {
     /// :param array The array to check against.
     /// :param value The value to check.
     /// :return Whether value is in the array.
-    class func contains<T: Equatable>(array: T[], value: T) -> Bool {
-        return array.filter({ $0 == value }).count > 0
+    class func contains<T : Equatable>(array: T[], value: T) -> Bool {
+        return Swift.contains(array, value)
     }
     
     /// Creates an array excluding all values of the provided arrays.
