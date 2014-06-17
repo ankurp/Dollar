@@ -65,8 +65,9 @@ Method | Usage
 **`$.lastIndexOf`**|Gets the index at which the last occurrence of value is found.
 **`$.rest`**|The opposite of initial this method gets all but the first element or first n elements of an array.
 **`$.noop`**|A no-operation function.
-**`$.min`**|Retrieves the minimum value in an array.
 **`$.max`**|Retrieves the maximum value in an array.
+**`$.merge`**|Creates an array of all values, including duplicates, of the arrays in the order they are provided.
+**`$.min`**|Retrieves the minimum value in an array.
 **`$.pluck`**|Retrieves the value of a specified property from all elements in the array.
 **`$.pull`**|Removes all provided values from the given array.
 **`$.range`**|Creates an array of numbers (positive and/or negative) progressing from start up to but not including end.
@@ -75,7 +76,6 @@ Method | Usage
 **`$.slice`**|Slices the array based on the start and end position. If an end position is not specified it will slice till the end of the array.
 **`$.sortedIndex`**|Gives the smallest index at which a value should be inserted into a given the array is sorted.
 **`$.union`**|Creates an array of unique values, in order, of the provided arrays.
-**`$.merge`**|Creates an array of all values, including duplicates, of the arrays in the order they are provided.
 **`$.uniq`**|Creates a duplicate-value-free version of an array.
 **`$.without`**|Creates an array excluding all provided values.
 **`$.xor`**|Creates an array that is the symmetric difference of the provided arrays.
