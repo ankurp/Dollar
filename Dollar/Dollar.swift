@@ -428,12 +428,7 @@ class $ {
     *  @return Index of the element otherwise returns nil if not found
     */
     class func indexOf<T: Equatable>(array: T[], value: T) -> Int? {
-        for (index, elem) in enumerate(array) {
-            if elem == value {
-                return index
-            }
-        }
-        return nil
+        return self.findIndex(array) { $0 == value }
     }
 
     /**
@@ -519,14 +514,7 @@ class $ {
     *  @return Last index of element if found otherwise returns nil
     */
     class func lastIndexOf<T: Equatable>(array: T[], value: T) -> Int? {
-        var count = array.count
-        for (index, _) in enumerate(array) {
-            let reverseIndex = count - (index + 1)
-            if value == array[reverseIndex] {
-                return reverseIndex
-            }
-        }
-        return nil
+        return self.findLastIndex(array) { $0 == value }
     }
     
     /**
