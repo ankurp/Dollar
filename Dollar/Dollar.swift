@@ -361,19 +361,25 @@ class $ {
         return maxVal
     }
     
-    class func merge<T, U>(original: Dictionary<T, U>, dictionaries: Dictionary<T, U>...) -> Dictionary<T, U> {
-        var result : Dictionary<T, U> = Dictionary<T, U>()
-        
-        for (key, value) in original {
-            result[key] = value
-        }
-        
+    class func merge<T, U>(#dictionaries: Dictionary<T, U>...) -> Dictionary<T, U> {
+        var result = Dictionary<T, U>()
+
         for dict in dictionaries {
             for (key, value) in dict {
                 result[key] = value
             }
         }
-        
+
+        return result
+    }
+
+    class func merge<T>(#arrays: Array<T>...) -> Array<T> {
+        var result = Array<T>()
+
+        for arr in arrays {
+            result += arr
+        }
+
         return result
     }
     

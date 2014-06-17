@@ -75,6 +75,7 @@ Method | Usage
 **`$.slice`**|Slices the array based on the start and end position. If an end position is not specified it will slice till the end of the array.
 **`$.sortedIndex`**|Gives the smallest index at which a value should be inserted into a given the array is sorted.
 **`$.union`**|Creates an array of unique values, in order, of the provided arrays.
+**`$.merge`**|Creates an array of all values, including duplicates, of the arrays in the order they are provided.
 **`$.uniq`**|Creates a duplicate-value-free version of an array.
 **`$.without`**|Creates an array excluding all provided values.
 **`$.xor`**|Creates an array that is the symmetric difference of the provided arrays.
@@ -451,6 +452,19 @@ Creates an array of unique values, in order, of the provided arrays.
 ```
 $.union([1, 2, 3], [5, 2, 1, 4], [2, 1]) as Int[] 
 => [1, 2, 3, 4, 5]
+```
+
+### merge - `$.merge`
+
+Creates an array of all values, including duplicates, of the arrays in the order they are provided.
+
+```
+let arr  = [1, 5]
+let arr2 = [2, 4]
+let arr3 = [5, 6]
+let result = $.merge(arrays: arr, arr2, arr3)
+result
+=> [1, 5, 2, 4, 5, 6]
 ```
 
 ### uniq - `$.uniq`
