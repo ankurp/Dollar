@@ -47,7 +47,6 @@ Currently there are issues loading the library using `pod 'Dollar', '~> 0.2'`
 Method | Usage
 ---- | ---------
 **`$.at`**|Creates an array of elements from the specified indexes, or keys, of the collection. Indexes may be specified as individual arguments or as arrays of indexes.
-**`$.first`**|Gets the first element in the array.
 **`$.compact`**|Creates an array with all nil values removed.
 **`$.contains`**|Checks if a given value is present in the array.
 **`$.difference`**|Creates an array excluding all values of the provided arrays
@@ -55,6 +54,7 @@ Method | Usage
 **`$.find`**|Iterates over elements of an array and returning the first element that the callback returns true for.
 **`$.findIndex`**|This method is like find except that it returns the index of the first element that passes the callback check.
 **`$.findLastIndex`**|This method is like findIndex except that it iterates over elements of the array from right to left.
+**`$.first`**|Gets the first element in the array.
 **`$.flatten`**|Flattens a nested array of any depth.
 **`$.frequencies`**|This method returns a dictionary of values in an array mapping to the total number of occurrences in the array. If passed a function it returns a frequency table of the results of the given function on the arrays elements.
 **`$.indexOf`**|Gets the index at which the first occurrence of value is found.
@@ -141,18 +141,6 @@ $.at(["ant", "bat", "cat", "dog", "egg"], indexes: 0, 2, 4)
 => ["ant", "cat", "egg"]
 ```
 
-### first - `$.first(array: AnyObject[])`
-
-Gets the first element in the array.
-
-```
-$.first([1, 2, 3, 4])
-=> 1
-
-$.first([]) 
-=> nil
-```
-
 ### compact - `$.compact`
 
 Creates an array with all nil values removed.
@@ -231,6 +219,18 @@ let arr = [["age": 36], ["age": 40], ["age": 1]]
 let result = $.findLastIndex(arr) { $0["age"] > 30 }
 result
 => 1
+```
+
+### first - `$.first(array: AnyObject[])`
+
+Gets the first element in the array.
+
+```
+$.first([1, 2, 3, 4])
+=> 1
+
+$.first([]) 
+=> nil
 ```
 
 ### flatten - `$.flatten`
