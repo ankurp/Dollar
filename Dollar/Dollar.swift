@@ -483,6 +483,15 @@ class $ {
         return self.findLastIndex(array) { $0 == value }
     }
     
+    /// Maps each element to new value based on the map function passed
+    ///
+    /// :param array The array to source from.
+    /// :param transform The mapping function
+    /// :return Array of elements mapped using the map function
+    class func map<T, E>(array: T[], transform: (T) -> E) -> E[] {
+        return array.map(transform)
+    }
+    
     /// Retrieves the maximum value in an array.
     ///
     /// :param array The array to source from.
@@ -733,6 +742,16 @@ class $ {
     class func range<T : ForwardIndex>(startVal: T, endVal: T, incrementBy: T.DistanceType) -> T[] {
         let range = (startVal..endVal).by(incrementBy)
         return self.sequence(range)
+    }
+    
+    /// Reduce function that will resolve to one value after performing combine function on all elements
+    ///
+    /// :param array The array to source from.
+    /// :param initial Initial value to seed the reduce function with
+    /// :param combine Function that will combine the passed value with element in the array
+    /// :return The result of reducing all of the elements in the array into one value
+    class func reduce<U, T>(array: T[], initial: U, combine: (U, T) -> U) -> U {
+        return array.reduce(initial, combine: combine)
     }
     
     /// Creates an array of an arbitrary sequence. Especially useful with builtin ranges.

@@ -401,5 +401,15 @@ class DollarTests: XCTestCase {
         test = $.partitionBy([1, 7, 3, 6, 10, 12]) { $0 % 3 }
         XCTAssert(compareNestedArray(test, with: [[1, 7], [3, 6], [10], [12]]), "PartitionBy can split on functions other than Bool.")
     }
+    
+    func testMap() {
+        let result = $.map([1, 2, 3, 4, 5]) { $0 * 2 }
+        XCTAssert(result == [2, 4, 6, 8, 10], "Map function should double values in the array")
+    }
 
+    func testReduce() {
+        XCTAssert($.reduce([1, 2, 3, 4, 5], initial: 0) { $0 + $1 } == 15, "Reduce function should sum elements in the array")
+    }
+
+    
 }
