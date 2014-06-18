@@ -70,14 +70,12 @@ class DollarTests: XCTestCase {
 
     func testFindIndex() {
         let arr = [["age": 36], ["age": 40], ["age": 1]]
-        let result = $.findIndex(arr) { $0["age"] < 20 }
-        XCTAssert(result == 2, "Returns index of element in array")
+        XCTAssert($.findIndex(arr) { $0["age"] < 20 } == 2, "Returns index of element in array")
     }
 
     func testFindLastIndex() {
         let arr = [["age": 36], ["age": 40], ["age": 1]]
-        let result = $.findLastIndex(arr) { $0["age"] > 30 }
-        XCTAssert(result == 1, "Returns last index of element in array")
+        XCTAssert($.findLastIndex(arr) { $0["age"] > 30 } == 1, "Returns last index of element in array")
     }
 
     func testLastIndexOf() {
@@ -117,8 +115,7 @@ class DollarTests: XCTestCase {
     }
 
     func testRemove() {
-        let result = $.remove([1, 2, 3, 4, 5, 6], iterator: { $0 == 2 || $0 == 3 })
-        XCTAssert(result == [1, 4, 5, 6], "Remove based on callback")
+        XCTAssert($.remove([1, 2, 3, 4, 5, 6], iterator: { $0 == 2 || $0 == 3 }) == [1, 4, 5, 6], "Remove based on callback")
     }
 
     func testSortedIndex() {
@@ -163,8 +160,7 @@ class DollarTests: XCTestCase {
     }
 
     func testXOR() {
-        let x = $.xor([1, 2, 3], [5, 2, 1, 4])
-        XCTAssert(x == [3, 4, 5], "Xor of arrays")
+        XCTAssert($.xor([1, 2, 3], [5, 2, 1, 4]) == [3, 4, 5], "Xor of arrays")
     }
 
     func testAt() {
@@ -195,7 +191,7 @@ class DollarTests: XCTestCase {
     }
 
     func testPluck() {
-        let arr : Dictionary<String, Int>[] = [["age": 20], ["age": 30], ["age": 40]]
+        let arr = [["age": 20], ["age": 30], ["age": 40]]
         XCTAssert($.pluck(arr, value: "age") == [20, 30, 40], "Returns values from the object where they key is the value")
     }
 
@@ -207,19 +203,19 @@ class DollarTests: XCTestCase {
     }
 
     func testKeys() {
-        let dict: Dictionary<String, Int> = ["Dog": 1, "Cat": 2]
+        let dict = ["Dog": 1, "Cat": 2]
         XCTAssert($.keys(dict) == ["Dog", "Cat"], "Returns correct array with keys")
     }
 
     func testValues() {
-        let dict: Dictionary<String, Int> = ["Dog": 1, "Cat": 2]
+        let dict = ["Dog": 1, "Cat": 2]
         XCTAssert($.values(dict) == [1, 2], "Returns correct array with values")
     }
     
     func testMerge() {
-        let dict: Dictionary<String, Int> = ["Dog": 1, "Cat": 2]
-        let dict2: Dictionary<String, Int> = ["Cow": 3]
-        let dict3: Dictionary<String, Int> = ["Sheep": 4]
+        let dict  = ["Dog": 1, "Cat": 2]
+        let dict2 = ["Cow": 3]
+        let dict3 = ["Sheep": 4]
         XCTAssert($.merge(dictionaries: dict, dict2, dict3) == ["Dog": 1, "Cat": 2, "Cow": 3, "Sheep": 4], "Returns correct merged dictionary")
 
         let arr  = [1, 5]
@@ -230,12 +226,12 @@ class DollarTests: XCTestCase {
     }
 
     func testPick() {
-        let dict: Dictionary<String, Int> = ["Dog": 1, "Cat": 2, "Cow": 3]
+        let dict = ["Dog": 1, "Cat": 2, "Cow": 3]
         XCTAssert($.pick(dict, keys: "Dog", "Cow") == ["Dog": 1, "Cow": 3], "Returns correct picked dictionary")
     }
 
     func testOmit() {
-        let dict: Dictionary<String, Int> = ["Dog": 1, "Cat": 2, "Cow": 3]
+        let dict = ["Dog": 1, "Cat": 2, "Cow": 3]
         XCTAssert($.omit(dict, keys: "Dog") == ["Cat": 2, "Cow": 3], "Returns correct omited dictionary")
     }
 
@@ -270,8 +266,8 @@ class DollarTests: XCTestCase {
         XCTAssert(chain.all { ($0 as Int) < 40 } == false, "All elements are not less than 40")
         XCTAssert(chain.any { ($0 as Int) < 40 } == true, "At least one element is less than 40")
 
-        elements = [];
-        chain.slice(0, end: 3).each({ elements += $0 as Int});
+        elements = []
+        chain.slice(0, end: 3).each({ elements += $0 as Int})
         XCTAssert(elements as Int[] == [10, 20, 30], "Chained seld")
 
     }
@@ -297,7 +293,7 @@ class DollarTests: XCTestCase {
     }
 
     func testAfter() {
-        var saves = ["profile", "settings"];
+        var saves = ["profile", "settings"]
         let asyncSave = { (function: () -> ()?) in
             function()
         }
@@ -312,29 +308,28 @@ class DollarTests: XCTestCase {
     }
 
     func testSlice() {
-        var res = $.slice([1,2,3,4,5], start: 0, end: 2);
-        XCTAssert(res == [1, 2], "Slice subarray 0..2");
+        var res = $.slice([1,2,3,4,5], start: 0, end: 2)
+        XCTAssert(res == [1, 2], "Slice subarray 0..2")
         
-        res = $.slice([1,2,3,4,5], start: 0);
+        res = $.slice([1,2,3,4,5], start: 0)
         XCTAssert(res == [1, 2, 3, 4, 5], "Slice at 0 is whole array")
         
-        res = $.slice([1,2,3,4,5], start: 3);
-        
+        res = $.slice([1,2,3,4,5], start: 3)
         XCTAssert(res == [4, 5], "Slice with start goes till end")
         
-        res = $.slice([1,2,3,4,5], start: 8);
+        res = $.slice([1,2,3,4,5], start: 8)
         XCTAssert(res == [], "Slice out of bounds is empty")
         
-        res = $.slice([1,2,3,4,5], start: 8, end: 10);
+        res = $.slice([1,2,3,4,5], start: 8, end: 10)
         XCTAssert(res == [], "Slice out of bounds is empty")
         
-        res = $.slice([1,2,3,4,5], start: 8 , end: 2);
+        res = $.slice([1,2,3,4,5], start: 8 , end: 2)
         XCTAssert(res == [], "Slice with end < start is empty")
         
-        res = $.slice([1,2,3,4,5], start: 3, end: 3);
+        res = $.slice([1,2,3,4,5], start: 3, end: 3)
         XCTAssert(res == [], "Slice at x and x is empty")
         
-        res = $.slice([1,2,3,4,5], start: 2, end: 5);
+        res = $.slice([1,2,3,4,5], start: 2, end: 5)
         XCTAssert(res == [3,4,5], "Slice at x and x is subarray")
         
     }
@@ -351,55 +346,29 @@ class DollarTests: XCTestCase {
     func testPartition() {
         var array = [1, 2, 3, 4, 5]
 
-        var test = $.partition(array, n: 2)
-        XCTAssert(compareNestedArray(test, with: [[1, 2], [3, 4]]), "Partition uses n for step if not supplied.")
-        
-        test = $.partition(array, n: 2, step: 1)
-        XCTAssert(compareNestedArray(test, with: [[1, 2], [2, 3], [3, 4], [4, 5]]), "Partition allows specifying a custom step.")
-        
-        test = $.partition(array, n: 2, step: 1, pad: nil)
-        XCTAssert(compareNestedArray(test, with: [[1, 2], [2, 3], [3, 4], [4, 5], [5]]), "Partition with nil pad allows the last partition to be less than n length")
-        
-        test = $.partition(array, n: 4, step: 1, pad: nil)
-        XCTAssert(compareNestedArray(test, with: [[1, 2, 3, 4], [2, 3, 4, 5], [3, 4, 5]]), "Partition with nil pad stops at the first partition less than n length.")
-
-        test = $.partition(array, n: 2, step: 1, pad: [6,7,8])
-        XCTAssert(compareNestedArray(test, with: [[1, 2], [2, 3], [3, 4], [4, 5], [5, 6]]), "Partition pads the last partition to the right length.")
-        
-        test = $.partition(array, n: 4, step: 3, pad: [6])
-        XCTAssert(compareNestedArray(test, with: [[1, 2, 3, 4], [4, 5, 6]]), "Partition doesn't add more elements than pad has.")
-        
-        test = $.partition([1, 2, 3, 4, 5], n: 2, pad: [6])
-        XCTAssert(compareNestedArray(test, with: [[1, 2], [3, 4], [5, 6]]), "Partition with pad and no step uses n as step.")
-        
-        test = $.partition([1, 2, 3, 4, 5, 6], n: 2, step: 4)
-        XCTAssert(compareNestedArray(test, with: [[1, 2], [5, 6]]), "Partition step length works.")
-        
-        test = $.partition(array, n: 10)
-        XCTAssert(compareNestedArray(test, with: [[]]), "Partition without pad returns [[]] if n is longer than array.")
+        XCTAssert(compareNestedArray($.partition(array, n: 2), with: [[1, 2], [3, 4]]), "Partition uses n for step if not supplied.")
+        XCTAssert(compareNestedArray($.partition(array, n: 2, step: 1), with: [[1, 2], [2, 3], [3, 4], [4, 5]]), "Partition allows specifying a custom step.")
+        XCTAssert(compareNestedArray($.partition(array, n: 2, step: 1, pad: nil), with: [[1, 2], [2, 3], [3, 4], [4, 5], [5]]), "Partition with nil pad allows the last partition to be less than n length")
+        XCTAssert(compareNestedArray($.partition(array, n: 4, step: 1, pad: nil), with: [[1, 2, 3, 4], [2, 3, 4, 5], [3, 4, 5]]), "Partition with nil pad stops at the first partition less than n length.")
+        XCTAssert(compareNestedArray($.partition(array, n: 2, step: 1, pad: [6,7,8]), with: [[1, 2], [2, 3], [3, 4], [4, 5], [5, 6]]), "Partition pads the last partition to the right length.")
+        XCTAssert(compareNestedArray($.partition(array, n: 4, step: 3, pad: [6]), with: [[1, 2, 3, 4], [4, 5, 6]]), "Partition doesn't add more elements than pad has.")
+        XCTAssert(compareNestedArray($.partition([1, 2, 3, 4, 5], n: 2, pad: [6]), with: [[1, 2], [3, 4], [5, 6]]), "Partition with pad and no step uses n as step.")
+        XCTAssert(compareNestedArray($.partition([1, 2, 3, 4, 5, 6], n: 2, step: 4), with: [[1, 2], [5, 6]]), "Partition step length works.")
+        XCTAssert(compareNestedArray($.partition(array, n: 10), with: [[]]), "Partition without pad returns [[]] if n is longer than array.")
     }
     
     func testPartitionAll() {
         var array = [1, 2, 3, 4, 5]
-        var test = $.partitionAll(array, n: 2, step: 1)
-        XCTAssert(compareNestedArray(test, with: [[1, 2], [2, 3], [3, 4], [4, 5], [5]]), "PartitionAll includes partitions less than n.")
-        
-        test = $.partitionAll(array, n: 2)
-        XCTAssert(compareNestedArray(test, with: [[1, 2], [3, 4], [5]]), "PartitionAll uses n as the step when not supplied.")
-        
-        test = $.partitionAll(array, n:4, step: 1)
-        XCTAssert(compareNestedArray(test, with: [[1, 2, 3, 4], [2, 3, 4, 5], [3, 4, 5], [4, 5], [5]]), "PartitionAll does not stop at the first partition less than n length.")
+
+        XCTAssert(compareNestedArray($.partitionAll(array, n: 2, step: 1), with: [[1, 2], [2, 3], [3, 4], [4, 5], [5]]), "PartitionAll includes partitions less than n.")
+        XCTAssert(compareNestedArray($.partitionAll(array, n: 2), with: [[1, 2], [3, 4], [5]]), "PartitionAll uses n as the step when not supplied.")
+        XCTAssert(compareNestedArray($.partitionAll(array, n:4, step: 1), with: [[1, 2, 3, 4], [2, 3, 4, 5], [3, 4, 5], [4, 5], [5]]), "PartitionAll does not stop at the first partition less than n length.")
     }
     
     func testPartitionBy() {
-        var test = $.partitionBy([1, 2, 3, 4, 5]) { $0 > 10 }
-        XCTAssert(compareNestedArray(test, with: [[1, 2, 3, 4, 5]]), "PartitionBy doesn't try to split unnecessarily.")
-        
-        test = $.partitionBy([1, 2, 4, 3, 5, 6]) { $0 % 2 == 0 }
-        XCTAssert(compareNestedArray(test, with: [[1], [2, 4], [3, 5], [6]]), "PartitionBy splits appropriately on Bool.")
-        
-        test = $.partitionBy([1, 7, 3, 6, 10, 12]) { $0 % 3 }
-        XCTAssert(compareNestedArray(test, with: [[1, 7], [3, 6], [10], [12]]), "PartitionBy can split on functions other than Bool.")
+        XCTAssert(compareNestedArray($.partitionBy([1, 2, 3, 4, 5]) { $0 > 10 }, with: [[1, 2, 3, 4, 5]]), "PartitionBy doesn't try to split unnecessarily.")
+        XCTAssert(compareNestedArray($.partitionBy([1, 2, 4, 3, 5, 6]) { $0 % 2 == 0 }, with: [[1], [2, 4], [3, 5], [6]]), "PartitionBy splits appropriately on Bool.")
+        XCTAssert(compareNestedArray($.partitionBy([1, 7, 3, 6, 10, 12]) { $0 % 3 }, with: [[1, 7], [3, 6], [10], [12]]), "PartitionBy can split on functions other than Bool.")
     }
     
     func testMap() {
