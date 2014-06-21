@@ -299,40 +299,18 @@ class DollarTests: XCTestCase {
         XCTAssertEqualObjects($.slice([1,2,3,4,5], start: 2, end: 5), [3,4,5], "Slice at x and x is subarray")
     }
     
-    func testPartition() {
-        var array = [1, 2, 3, 4, 5]
-        
-        XCTAssertEqualObjects($.partition(array, n: 2), [[1, 2], [3, 4]], "Partition uses n for step if not supplied.")
-        XCTAssertEqualObjects($.partition(array, n: 2, step: 1), [[1, 2], [2, 3], [3, 4], [4, 5]], "Partition allows specifying a custom step.")
-        XCTAssertEqualObjects($.partition(array, n: 2, step: 1, pad: nil), [[1, 2], [2, 3], [3, 4], [4, 5], [5]], "Partition with nil pad allows the last partition to be less than n length")
-        XCTAssertEqualObjects($.partition(array, n: 4, step: 1, pad: nil), [[1, 2, 3, 4], [2, 3, 4, 5], [3, 4, 5]], "Partition with nil pad stops at the first partition less than n length.")
-        XCTAssertEqualObjects($.partition(array, n: 2, step: 1, pad: [6,7,8]), [[1, 2], [2, 3], [3, 4], [4, 5], [5, 6]], "Partition pads the last partition to the right length.")
-        XCTAssertEqualObjects($.partition(array, n: 4, step: 3, pad: [6]), [[1, 2, 3, 4], [4, 5, 6]], "Partition doesn't add more elements than pad has.")
-        XCTAssertEqualObjects($.partition([1, 2, 3, 4, 5], n: 2, pad: [6]), [[1, 2], [3, 4], [5, 6]], "Partition with pad and no step uses n as step.")
-        XCTAssertEqualObjects($.partition([1, 2, 3, 4, 5, 6], n: 2, step: 4), [[1, 2], [5, 6]], "Partition step length works.")
-        XCTAssertEqualObjects($.partition(array, n: 10), [[]], "Partition without pad returns [[]] if n is longer than array.")
-    }
-    
-    func testPartitionAll() {
-        var array = [1, 2, 3, 4, 5]
+    func testFib() {
+        var times = 0
+        let fibMemo = $.memoize { fibMemo, val in 
+            i += 1
+            return val == 1 || val == 0 ? 1 : fibMemo(val - 1) + fibMemo(val - 2) 
+        }
+        let x = fibMemo(5)
+        XCTAssertEqualObjects(i, 6, "Function called 6 times")
+        i = 0
+        let y = fibMemo(5)
+        XCTAssertEqualObjects(i, 0, "Function called 0 times due to memonize")
 
-        XCTAssertEqualObjects($.partitionAll(array, n: 2, step: 1), [[1, 2], [2, 3], [3, 4], [4, 5], [5]], "PartitionAll includes partitions less than n.")
-        XCTAssertEqualObjects($.partitionAll(array, n: 2), [[1, 2], [3, 4], [5]], "PartitionAll uses n as the step when not supplied.")
-        XCTAssertEqualObjects($.partitionAll(array, n:4, step: 1), [[1, 2, 3, 4], [2, 3, 4, 5], [3, 4, 5], [4, 5], [5]], "PartitionAll does not stop at the first partition less than n length.")
-    }
-    
-    func testPartitionBy() {
-        XCTAssertEqualObjects($.partitionBy([1, 2, 3, 4, 5]) { $0 > 10 }, [[1, 2, 3, 4, 5]], "PartitionBy doesn't try to split unnecessarily.")
-        XCTAssertEqualObjects($.partitionBy([1, 2, 4, 3, 5, 6]) { $0 % 2 == 0 }, [[1], [2, 4], [3, 5], [6]], "PartitionBy splits appropriately on Bool.")
-        XCTAssertEqualObjects($.partitionBy([1, 7, 3, 6, 10, 12]) { $0 % 3 }, [[1, 7], [3, 6], [10], [12]], "PartitionBy can split on functions other than Bool.")
-    }
-    
-    func testMap() {
-        XCTAssertEqualObjects($.map([1, 2, 3, 4, 5]) { $0 * 2 }, [2, 4, 6, 8, 10], "Map function should double values in the array")
-    }
-
-    func testReduce() {
-        XCTAssertEqual($.reduce([1, 2, 3, 4, 5], initial: 0) { $0 + $1 }, 15, "Reduce function should sum elements in the array")
     }
 
 }
