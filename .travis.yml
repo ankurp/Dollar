@@ -1,2 +1,2 @@
-language: objective-c
+language: swift
 script: xcodebuild test -scheme DollarTests
