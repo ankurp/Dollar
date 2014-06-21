@@ -160,7 +160,7 @@ class DollarTests: XCTestCase {
 
     func testFind() {
         XCTAssertEqualObjects($.find([1, 2, 3, 4], iterator: { $0 == 2 }), 2, "Return element when object is found")
-        XCTAssertNil($.find([1, 2, 3, 4], iterator: { $0 == 10 }), "Return nil when object not found")
+        XCTAssertEqualObjects($.find([1, 2, 3, 4], iterator: { $0 == 10 }), nil, "Return nil when object not found")
     }
 
     func testMax() {
