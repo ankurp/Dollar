@@ -1,7 +1,7 @@
 Dollar.$wift [![Build Status](https://travis-ci.org/ankurp/Dollar.swift.svg?branch=master)](https://travis-ci.org/ankurp/Dollar.swift)
 ===========
 
-$ is a Swift library that provides useful functional programming helper methods without extending any built in objects. It is similar to Lo-Dash or Underscore in Javascript.
+Dollar is a Swift library that provides useful functional programming helper methods without extending any built in objects. It is similar to Lo-Dash or Underscore in Javascript.
 
 <div style="text-align:center;"><img src="http://i.imgur.com/zb88jFU.png" alt="Introducing Swift"></div>
 
