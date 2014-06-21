@@ -99,6 +99,7 @@ Method | Usage
 **`$.bind`**|Creates a function that, when called, invokes func with the binding of arguments provided.
 **`$.partial`**|Creates a function that, when called, invokes func with any additional partial arguments prepended to those provided to the new function.
 **`$.times`**|Call a function n times and also passes the index. If a value is returned in the function then the times method will return an array of those values.
+**`$.id`**|The identify function. Simply returns the argument its given.
 
 ### Chaining ###
 
