@@ -287,17 +287,6 @@ class DollarTests: XCTestCase {
         }
         XCTAssertTrue(isDone, "Should be done")
     }
-
-    func testSlice() {
-        XCTAssertEqualObjects($.slice([1,2,3,4,5], start: 0, end: 2), [1, 2], "Slice subarray 0..2")
-        XCTAssertEqualObjects($.slice([1,2,3,4,5], start: 0), [1, 2, 3, 4, 5], "Slice at 0 is whole array")
-        XCTAssertEqualObjects($.slice([1,2,3,4,5], start: 3), [4, 5], "Slice with start goes till end")
-        XCTAssertEqualObjects($.slice([1,2,3,4,5], start: 8), [], "Slice out of bounds is empty")
-        XCTAssertEqualObjects($.slice([1,2,3,4,5], start: 8, end: 10), [], "Slice out of bounds is empty")
-        XCTAssertEqualObjects($.slice([1,2,3,4,5], start: 8 , end: 2), [], "Slice with end < start is empty")
-        XCTAssertEqualObjects($.slice([1,2,3,4,5], start: 3, end: 3), [], "Slice at x and x is empty")
-        XCTAssertEqualObjects($.slice([1,2,3,4,5], start: 2, end: 5), [3,4,5], "Slice at x and x is subarray")
-    }
     
     func testPartition() {
         var array = [1, 2, 3, 4, 5]
@@ -315,7 +304,7 @@ class DollarTests: XCTestCase {
     
     func testPartitionAll() {
         var array = [1, 2, 3, 4, 5]
-
+        
         XCTAssertEqualObjects($.partitionAll(array, n: 2, step: 1), [[1, 2], [2, 3], [3, 4], [4, 5], [5]], "PartitionAll includes partitions less than n.")
         XCTAssertEqualObjects($.partitionAll(array, n: 2), [[1, 2], [3, 4], [5]], "PartitionAll uses n as the step when not supplied.")
         XCTAssertEqualObjects($.partitionAll(array, n:4, step: 1), [[1, 2, 3, 4], [2, 3, 4, 5], [3, 4, 5], [4, 5], [5]], "PartitionAll does not stop at the first partition less than n length.")
@@ -330,9 +319,37 @@ class DollarTests: XCTestCase {
     func testMap() {
         XCTAssertEqualObjects($.map([1, 2, 3, 4, 5]) { $0 * 2 }, [2, 4, 6, 8, 10], "Map function should double values in the array")
     }
-
+    
     func testReduce() {
         XCTAssertEqual($.reduce([1, 2, 3, 4, 5], initial: 0) { $0 + $1 }, 15, "Reduce function should sum elements in the array")
+    }
+    
+    func testSlice() {
+        XCTAssertEqualObjects($.slice([1,2,3,4,5], start: 0, end: 2), [1, 2], "Slice subarray 0..2")
+        XCTAssertEqualObjects($.slice([1,2,3,4,5], start: 0), [1, 2, 3, 4, 5], "Slice at 0 is whole array")
+        XCTAssertEqualObjects($.slice([1,2,3,4,5], start: 3), [4, 5], "Slice with start goes till end")
+        XCTAssertEqualObjects($.slice([1,2,3,4,5], start: 8), [], "Slice out of bounds is empty")
+        XCTAssertEqualObjects($.slice([1,2,3,4,5], start: 8, end: 10), [], "Slice out of bounds is empty")
+        XCTAssertEqualObjects($.slice([1,2,3,4,5], start: 8 , end: 2), [], "Slice with end < start is empty")
+        XCTAssertEqualObjects($.slice([1,2,3,4,5], start: 3, end: 3), [], "Slice at x and x is empty")
+        XCTAssertEqualObjects($.slice([1,2,3,4,5], start: 2, end: 5), [3,4,5], "Slice at x and x is subarray")
+    }
+    
+    func testFib() {
+        var times = 0
+        let fibMemo = $.memoize { (fib: (Int -> Int), val: Int) -> Int in
+            times += 1
+            return val == 1 || val == 0 ? 1 : fib(val - 1) + fib(val - 2)
+        }
+        let x = fibMemo(5)
+        XCTAssertEqualObjects(times, 6, "Function called 6 times")
+        times = 0
+        let y = fibMemo(5)
+        XCTAssertEqualObjects(times, 0, "Function called 0 times due to memoize")
+
+        times = 0
+        let z = fibMemo(6)
+        XCTAssertEqualObjects(times, 1, "Function called 1 times due to memoize")
     }
 
 }
