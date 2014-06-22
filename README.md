@@ -349,7 +349,7 @@ $.max([1, 2, 3, 4, 2, 1])
 
 ### memoize - `$.memoize`
 
-```
+```swift
 var times = 0 // to test memoization
 
 let fibMemo = $.memoize { (fib: (Int -> Int), val: Int) -> Int in
@@ -686,7 +686,7 @@ $.times(2, function: fun) as String[]
 ```
 
 ### Chaining - `$(array: ...)`
-```
+```swift
 $(array: [1, 2, 3])
 
 $(array: [1, 2, 3]).first() as Int 
