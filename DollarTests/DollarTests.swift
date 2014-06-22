@@ -301,16 +301,19 @@ class DollarTests: XCTestCase {
     
     func testFib() {
         var times = 0
-        let fibMemo = $.memoize { fibMemo, val in 
-            i += 1
-            return val == 1 || val == 0 ? 1 : fibMemo(val - 1) + fibMemo(val - 2) 
+        let fibMemo = $.memoize { (fib: (Int -> Int), val: Int) -> Int in
+            times += 1
+            return val == 1 || val == 0 ? 1 : fib(val - 1) + fib(val - 2)
         }
         let x = fibMemo(5)
-        XCTAssertEqualObjects(i, 6, "Function called 6 times")
-        i = 0
+        XCTAssertEqualObjects(times, 6, "Function called 6 times")
+        times = 0
         let y = fibMemo(5)
-        XCTAssertEqualObjects(i, 0, "Function called 0 times due to memonize")
+        XCTAssertEqualObjects(times, 0, "Function called 0 times due to memoize")
 
+        times = 0
+        let z = fibMemo(6)
+        XCTAssertEqualObjects(times, 1, "Function called 1 times due to memoize")
     }
 
 }

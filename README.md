@@ -347,6 +347,31 @@ $.max([1, 2, 3, 4, 2, 1])
 => 4
 ```
 
+### memoize - `$.memoize`
+
+```
+var times = 0 // to test memoization
+
+let fibMemo = $.memoize { (fib: (Int -> Int), val: Int) -> Int in
+    times += 1
+    return val == 1 || val == 0 ? 1 : fib(val - 1) + fib(val - 2)
+}
+
+let x = fibMemo(5)
+times
+=> 6
+
+times = 0
+let y = fibMemo(5)
+times
+=> 0
+
+times = 0
+let z = fibMemo(6)
+times
+=> 1
+```
+
 ### pluck - `$.pluck`
 
 Retrieves the value of a specified property from all elements in the array.

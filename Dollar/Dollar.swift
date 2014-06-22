@@ -513,7 +513,7 @@ class $ {
     class func memoize<T: Hashable, U>(function: ((T -> U), T) -> U) -> (T -> U) {
         var cache = Dictionary<T, U>()
         var funcRef: (T -> U)!
-        return { (param : T) -> U in
+        funcRef = { (param : T) -> U in
             if let cacheVal = cache[param] {
                 return cacheVal
             } else {
@@ -521,8 +521,9 @@ class $ {
                 return cache[param]!
             }
         }
+        return funcRef
     }
-    
+
     /// Merge dictionaries together, later dictionaries overiding earlier values of keys.
     ///
     /// :param dictionaries The dictionaries to source from.
