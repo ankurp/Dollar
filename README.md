@@ -125,7 +125,7 @@ Method | Usage
 
 Creates an array of elements from the specified indexes, or keys, of the collection. Indexes may be specified as individual arguments or as arrays of indexes.
 
-```
+```swift
 $.at(["ant", "bat", "cat", "dog", "egg"], indexes: 0, 2, 4) 
 => ["ant", "cat", "egg"]
 ```
@@ -134,7 +134,7 @@ $.at(["ant", "bat", "cat", "dog", "egg"], indexes: 0, 2, 4)
 
 Creates an array with all nil values removed.
 
-```
+```swift
 $.compact([3, nil, 4, 5]) 
 => [3, 4, 5]
 
@@ -146,7 +146,7 @@ $.compact([nil, nil]) as NSObject[]
 
 Checks if a given value is present in the array.
 
-```
+```swift
 $.contains([1, 2, 3, 1, 2, 3], value: 2) 
 => true
 
@@ -158,7 +158,7 @@ $.contains([1, 2, 3, 1, 2, 3], value: 10)
 
 Creates an array excluding all values of the provided arrays
 
-```
+```swift
 $.difference([1, 2, 3, 4, 5], [5, 2, 10]) 
 => [1, 3, 4]
 ```
@@ -168,7 +168,7 @@ $.difference([1, 2, 3, 4, 5], [5, 2, 10])
 
 Checks if the given callback returns true value for all items in the array.
 
-```
+```swift
 $.every([1, 2, 3, 4], iterator: { $0 < 20 }) 
 => true
 
@@ -180,7 +180,7 @@ $.every([1, 2, 3, 4]) { $0 == 1 }
 
 Iterates over elements of an array and returning the first element that the callback returns true for.
 
-```
+```swift
 $.find([1, 2, 3, 4], iterator: { $0 == 2 }) 
 => 2
 
@@ -192,7 +192,7 @@ $.find([1, 2, 3, 4]) { $0 == 10 }
 
 This method is like find except that it returns the index of the first element that passes the callback check.
 
-```
+```swift
 let arr = [["age": 36], ["age": 40], ["age": 1]]
 let result = $.findIndex(arr) { $0["age"] < 20 }
 result 
@@ -203,7 +203,7 @@ result
 
 This method is like findIndex except that it iterates over elements of the array from right to left.
 
-```
+```swift
 let arr = [["age": 36], ["age": 40], ["age": 1]]
 let result = $.findLastIndex(arr) { $0["age"] > 30 }
 result
@@ -214,7 +214,7 @@ result
 
 Gets the first element in the array.
 
-```
+```swift
 $.first([1, 2, 3, 4])
 => 1
 
@@ -226,7 +226,7 @@ $.first([])
 
 Flattens a nested array of any depth.
 
-```
+```swift
 $.flatten([[3], 4, 5]) as Int[] 
 => [3, 4, 5]
 
@@ -240,7 +240,7 @@ $.flatten([[[3], 4], 5]) as Int[]
 ### frequencies - `$.frequencies`
 This method returns a dictionary of values in an array mapping to the total number of occurrences in the array. If passed a function it returns a frequency table of the results of the given function on the arrays elements.
 
-```
+```swift
 $.frequencies(["a", "a", "b", "c", "a", "b"]) 
 => ["a": 3, "b": 2, "c": 1]
 
@@ -252,7 +252,7 @@ $.frequencies([1, 2, 3, 4, 5]) { $0 % 2 == 0 }
 
 Gets the index at which the first occurrence of value is found.
 
-```
+```swift
 $.indexOf([1, 2, 3, 1, 2, 3], value: 2) 
 => 1
 
@@ -273,7 +273,7 @@ $.indexOf([3, 4, 5], value: 2)
 
 Gets all but the last element or last n elements of an array.
 
-```
+```swift
 $.initial([3, 4, 5]) 
 => [3, 4]
 
@@ -285,7 +285,7 @@ $.initial([3, 4, 5], numElements: 2)
 
 Creates an array of unique values present in all provided arrays.
 
-```
+```swift
 $.intersection([1, 2, 3], [5, 2, 1, 4], [2, 1]) 
 => [1, 2]
 ```
@@ -294,7 +294,7 @@ $.intersection([1, 2, 3], [5, 2, 1, 4], [2, 1])
 
 Gets the last element from the array.
 
-```
+```swift
 $.last([3, 4, 5]) 
 => 5
 ```
@@ -303,7 +303,7 @@ $.last([3, 4, 5])
 
 Gets the index at which the last occurrence of value is found.
 
-```
+```swift
 $.lastIndexOf([1, 2, 3, 1, 2, 3], value: 2) 
 => 4
 ```
@@ -312,7 +312,7 @@ $.lastIndexOf([1, 2, 3, 1, 2, 3], value: 2)
 
 The opposite of initial this method gets all but the first element or first n elements of an array.
 
-```
+```swift
 $.rest([3, 4, 5]) 
 => [4, 5]
 
@@ -324,7 +324,7 @@ $.rest([3, 4, 5], numElements: 2)
 
 A no-operation function.
 
-```
+```swift
 $.noop() 
 => nil
 ```
@@ -333,7 +333,7 @@ $.noop()
 
 Retrieves the minimum value in an array.
 
-```
+```swift
 $.min([2, 1, 2, 3, 4]) 
 => 1
 ```
@@ -342,7 +342,7 @@ $.min([2, 1, 2, 3, 4])
 
 Retrieves the maximum value in an array.
 
-```
+```swift
 $.max([1, 2, 3, 4, 2, 1]) 
 => 4
 ```
@@ -351,7 +351,7 @@ $.max([1, 2, 3, 4, 2, 1])
 
 Retrieves the value of a specified property from all elements in the array.
 
-```
+```swift
 let arr : Dictionary<String, Int>[] = [["age": 20], ["age": 30], ["age": 40]]
 $.pluck(arr, value: "age") 
 => [20, 30, 40]
@@ -361,7 +361,7 @@ $.pluck(arr, value: "age")
 
 Removes all provided values from the given array.
 
-```
+```swift
 $.pull([3, 4, 5, 3, 5], values: 3, 5) 
 => [4]
 
@@ -376,7 +376,7 @@ $.pull([3, 4, 5, 3, 5], values: 3, 4, 5)
 
 Creates an array of numbers (positive and/or negative) progressing from start up to but not including end.
 
-```
+```swift
 $.range(4) 
 => [0, 1, 2, 3]
 
@@ -398,7 +398,7 @@ $.contains(arr, value: $.sample(arr))
 
 Creates an array of an arbitrary sequence. Especially useful with builtin ranges.
 
-```
+```swift
 $.sequence(0..4) 
 => [0, 1, 2, 3]
 
@@ -416,7 +416,7 @@ $.sequence("abc")
 
 Removes all elements from an array that the callback returns true.
 
-```
+```swift
 let result = $.remove([1, 2, 3, 4, 5, 6]) { $0 == 2 || $0 == 3 }
 result
 => [1, 4, 5, 6]
@@ -426,7 +426,7 @@ result
 
 Gives the smallest index at which a value should be inserted into a given the array is sorted.
 
-```
+```swift
 $.sortedIndex([3, 4, 6, 10], value: 5)
 => 2
 
@@ -438,7 +438,7 @@ $.sortedIndex([10, 20, 30, 50], value: 40)
 
 Creates an array of unique values, in order, of the provided arrays.
 
-```
+```swift
 $.union([1, 2, 3], [5, 2, 1, 4], [2, 1]) 
 => [1, 2, 3, 4, 5]
 ```
@@ -447,7 +447,7 @@ $.union([1, 2, 3], [5, 2, 1, 4], [2, 1])
 
 Creates an array of all values, including duplicates, of the arrays in the order they are provided.
 
-```
+```swift
 let arr  = [1, 5]
 let arr2 = [2, 4]
 let arr3 = [5, 6]
@@ -460,7 +460,7 @@ result
 
 Creates a duplicate-value-free version of an array.
 
-```
+```swift
 $.uniq([1, 2, 1, 3, 1])
 => [1, 2, 3]
 ```
@@ -469,7 +469,7 @@ $.uniq([1, 2, 1, 3, 1])
 
 Creates an array excluding all provided values.
 
-```
+```swift
 $.without([3, 4, 5, 3, 5], values: 3, 5)
 => [4]
 
@@ -484,7 +484,7 @@ $.without([3, 4, 5, 3, 5], values: 3, 4, 5)
 
 Creates an array that is the symmetric difference of the provided arrays.
 
-```
+```swift
 $.xor([1, 2, 3], [5, 2, 1, 4])
 => [3, 4, 5]
 ```
@@ -493,7 +493,7 @@ $.xor([1, 2, 3], [5, 2, 1, 4])
 
 Creates an array of grouped elements, the first of which contains the first elements of the given arrays.
 
-```
+```swift
 $.zip(["fred", "barney"], [30, 40], [true, false]) as NSObject[] 
 => [["fred", 30, true], ["barney", 40, false]]
 ```
@@ -502,7 +502,7 @@ $.zip(["fred", "barney"], [30, 40], [true, false]) as NSObject[]
 
 Creates an object composed from arrays of keys and values.
 
-```
+```swift
 $.zipObject(["fred", "barney"], values: [30, 40]) as Dictionary<String, Int> 
 => ["fred": 30, "barney": 40]
 ```
@@ -511,7 +511,7 @@ $.zipObject(["fred", "barney"], values: [30, 40]) as Dictionary<String, Int>
 
 Produces an array of arrays, each containing n elements, each offset by step. Stops after a partition is less than n length.
 
-```
+```swift
 let arr = [1, 2, 3, 4, 5]
 $.partition(arr, n: 2)
 => [[1, 2], [3, 4]]
@@ -530,7 +530,7 @@ $.partition(arr, n: 4, step: 1, pad: [6, 7, 8])
 
 Produces an array of arrays, each containing n elements, each offset by step. Continues after a partition is less than n length.
 
-```
+```swift
 $.partitionAll([1, 2, 3, 4, 5], n:4, step: 1)
 => [[1, 2, 3, 4], [2, 3, 4, 5], [3, 4, 5], [4, 5], [5]]
 ```
@@ -539,7 +539,7 @@ $.partitionAll([1, 2, 3, 4, 5], n:4, step: 1)
 
 Applies a function to each element in array, splitting it each time the function returns a new value.
 
-```
+```swift
 $.partitionBy([1, 2, 3, 4, 5]) { $0 % 2 == 0 }
 => [[1], [2, 4], [3, 5], [6]]
 
@@ -553,7 +553,7 @@ $.partitionBy([1, 7, 3, 6, 10, 12]) { $0 % 3 }
 
 Creates an array of keys given a dictionary.
 
-```
+```swift
 $.keys(["Dog": 1, "Cat": 2])
 => ["Dog", "Cat"]
 ```
@@ -562,7 +562,7 @@ $.keys(["Dog": 1, "Cat": 2])
 
 Creates an array of values given a dictionary
 
-```
+```swift
 $.values(["Dog": 1, "Cat": 2])
 => [1, 2]
 ```
@@ -571,7 +571,7 @@ $.values(["Dog": 1, "Cat": 2])
 
 Merges all of the dictionaries together and the latter dictionary overrides the value at a given key
 
-```
+```swift
 let dict: Dictionary<String, Int> = ["Dog": 1, "Cat": 2]
 let dict2: Dictionary<String, Int> = ["Cow": 3]
 let dict3: Dictionary<String, Int> = ["Sheep": 4]
@@ -582,7 +582,7 @@ $.merge(dict, dictionaries: dict2, dict3)
 
 Creates a shallow clone of a dictionary composed of the specified keys.
 
-```
+```swift
 $.pick(["Dog": 1, "Cat": 2, "Cow": 3], keys: "Dog", "Cow")
 ```
 
@@ -590,7 +590,7 @@ $.pick(["Dog": 1, "Cat": 2, "Cow": 3], keys: "Dog", "Cow")
 
 Creates a shallow clone of a dictionary excluding the specified keys.
 
-```
+```swift
 $.omit(["Dog": 1, "Cat": 2, "Cow": 3], keys: "Cat", "Dog")
 ```
 
@@ -600,7 +600,7 @@ $.omit(["Dog": 1, "Cat": 2, "Cow": 3], keys: "Cat", "Dog")
 
 Invokes interceptor with the object and then returns object.
 
-```
+```swift
 var beatle = Car(name: "Fusca")
 $.tap(beatle, {$0.name = "Beatle"}).color = "Blue"
 ```
@@ -611,7 +611,7 @@ $.tap(beatle, {$0.name = "Beatle"}).color = "Blue"
 
 Creates a function that executes passed function only after being called n times.
 
-```
+```swift
 var saves = ["profile", "settings"];
 let asyncSave = { (function: () -> ()?) in
    function() // Saving right away for testing but in real world would be async
@@ -631,7 +631,7 @@ isDone
 
 Creates a function that, when called, invokes func with the binding of arguments provided.
 
-```
+```swift
 let helloWorldFunc = $.bind({(T...) in T[0] + " " + T[1] + " from " + T[2] }, "Hello", "World", "Swift")
 helloWorldFunc() 
 => "Hello World from Swift"
@@ -641,7 +641,7 @@ helloWorldFunc()
 
 Creates a function that, when called, invokes func with any additional partial arguments prepended to those provided to the new function.
 
-```
+```swift
 let partialFunc = $.partial({(T...) in T[0] + " " + T[1] + " from " + T[2] }, "Hello")
 partialFunc("World", "Swift") 
 => "Hello World from Swift"
@@ -651,7 +651,7 @@ partialFunc("World", "Swift")
 
 Call a function n times and also passes the index. If a value is returned in the function then the times method will return an array of those values.
 
-```
+```swift
 let fun = $.bind({ (names: String...) -> String in
    let people = $.join(names, separator: " from ")
    return "Hello \(people)"
