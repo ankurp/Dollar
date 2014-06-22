@@ -29,7 +29,7 @@
       <section>
         <p>Dollar is a Swift library that provides useful functional programming helper methods without extending any built in objects. It is similar to Lo-Dash or Underscore in Javascript.</p>
 
-<p><img src="http://i.imgur.com/zb88jFU.png" alt="Introducing Swift"></p>
+<div><img src="http://i.imgur.com/zb88jFU.png" alt="Introducing Swift"></div>
 
 <h2>
 <a name="contents" class="anchor" href="#contents"><span class="octicon octicon-link"></span></a>Contents</h2>
@@ -365,9 +365,9 @@
 
 <p>Creates an array of elements from the specified indexes, or keys, of the collection. Indexes may be specified as individual arguments or as arrays of indexes.</p>
 
-<pre><code>$.at(["ant", "bat", "cat", "dog", "egg"], indexes: 0, 2, 4) 
-=&gt; ["ant", "cat", "egg"]
-</code></pre>
+<div class="highlight highlight-swift"><pre><span class="err">$</span><span class="p">.</span><span class="n">at</span><span class="p">([</span><span class="s">"ant"</span><span class="p">,</span> <span class="s">"bat"</span><span class="p">,</span> <span class="s">"cat"</span><span class="p">,</span> <span class="s">"dog"</span><span class="p">,</span> <span class="s">"egg"</span><span class="p">],</span> <span class="nl">indexes</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span> 
+<span class="o">=&gt;</span> <span class="p">[</span><span class="s">"ant"</span><span class="p">,</span> <span class="s">"cat"</span><span class="p">,</span> <span class="s">"egg"</span><span class="p">]</span>
+</pre></div>
 
 <h3>
 <a name="compact---compact" class="anchor" href="#compact---compact"><span class="octicon octicon-link"></span></a>compact - <code>$.compact</code>
@@ -375,12 +375,12 @@
 
 <p>Creates an array with all nil values removed.</p>
 
-<pre><code>$.compact([3, nil, 4, 5]) 
-=&gt; [3, 4, 5]
+<div class="highlight highlight-swift"><pre><span class="err">$</span><span class="p">.</span><span class="n">compact</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span> <span class="nb">nil</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span> 
+<span class="o">=&gt;</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
 
-$.compact([nil, nil]) as NSObject[] 
-=&gt; []
-</code></pre>
+<span class="err">$</span><span class="p">.</span><span class="n">compact</span><span class="p">([</span><span class="nb">nil</span><span class="p">,</span> <span class="nb">nil</span><span class="p">])</span> <span class="kt">as</span> <span class="bp">NSObject</span><span class="p">[]</span> 
+<span class="o">=&gt;</span> <span class="p">[]</span>
+</pre></div>
 
 <h3>
 <a name="contains---contains" class="anchor" href="#contains---contains"><span class="octicon octicon-link"></span></a>contains - <code>$.contains</code>
@@ -388,12 +388,12 @@ $.compact([nil, nil]) as NSObject[]
 
 <p>Checks if a given value is present in the array.</p>
 
-<pre><code>$.contains([1, 2, 3, 1, 2, 3], value: 2) 
-=&gt; true
+<div class="highlight highlight-swift"><pre><span class="err">$</span><span class="p">.</span><span class="n">contains</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="nl">value</span><span class="p">:</span> <span class="mi">2</span><span class="p">)</span> 
+<span class="o">=&gt;</span> <span class="nb">true</span>
 
-$.contains([1, 2, 3, 1, 2, 3], value: 10) 
-=&gt; false
-</code></pre>
+<span class="err">$</span><span class="p">.</span><span class="n">contains</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="nl">value</span><span class="p">:</span> <span class="mi">10</span><span class="p">)</span> 
+<span class="o">=&gt;</span> <span class="nb">false</span>
+</pre></div>
 
 <h3>
 <a name="difference---difference" class="anchor" href="#difference---difference"><span class="octicon octicon-link"></span></a>difference - <code>$.difference</code>
@@ -401,9 +401,9 @@ $.contains([1, 2, 3, 1, 2, 3], value: 10)
 
 <p>Creates an array excluding all values of the provided arrays</p>
 
-<pre><code>$.difference([1, 2, 3, 4, 5], [5, 2, 10]) 
-=&gt; [1, 3, 4]
-</code></pre>
+<div class="highlight highlight-swift"><pre><span class="err">$</span><span class="p">.</span><span class="n">difference</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">10</span><span class="p">])</span> 
+<span class="o">=&gt;</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
+</pre></div>
 
 <h3>
 <a name="every---every" class="anchor" href="#every---every"><span class="octicon octicon-link"></span></a>every - <code>$.every</code>
@@ -411,12 +411,12 @@ $.contains([1, 2, 3, 1, 2, 3], value: 10)
 
 <p>Checks if the given callback returns true value for all items in the array.</p>
 
-<pre><code>$.every([1, 2, 3, 4], iterator: { $0 &lt; 20 }) 
-=&gt; true
+<div class="highlight highlight-swift"><pre><span class="err">$</span><span class="p">.</span><span class="n">every</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="nl">iterator</span><span class="p">:</span> <span class="p">{</span> <span class="err">$</span><span class="mi">0</span> <span class="o">&lt;</span> <span class="mi">20</span> <span class="p">})</span> 
+<span class="o">=&gt;</span> <span class="nb">true</span>
 
-$.every([1, 2, 3, 4]) { $0 == 1 } 
-=&gt; false
-</code></pre>
+<span class="err">$</span><span class="p">.</span><span class="n">every</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">])</span> <span class="p">{</span> <span class="err">$</span><span class="mi">0</span> <span class="o">==</span> <span class="mi">1</span> <span class="p">}</span> 
+<span class="o">=&gt;</span> <span class="nb">false</span>
+</pre></div>
 
 <h3>
 <a name="find---find" class="anchor" href="#find---find"><span class="octicon octicon-link"></span></a>find - <code>$.find</code>
@@ -424,12 +424,12 @@ $.every([1, 2, 3, 4]) { $0 == 1 }
 
 <p>Iterates over elements of an array and returning the first element that the callback returns true for.</p>
 
-<pre><code>$.find([1, 2, 3, 4], iterator: { $0 == 2 }) 
-=&gt; 2
+<div class="highlight highlight-swift"><pre><span class="err">$</span><span class="p">.</span><span class="n">find</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="nl">iterator</span><span class="p">:</span> <span class="p">{</span> <span class="err">$</span><span class="mi">0</span> <span class="o">==</span> <span class="mi">2</span> <span class="p">})</span> 
+<span class="o">=&gt;</span> <span class="mi">2</span>
 
-$.find([1, 2, 3, 4]) { $0 == 10 } 
-=&gt; nil
-</code></pre>
+<span class="err">$</span><span class="p">.</span><span class="n">find</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">])</span> <span class="p">{</span> <span class="err">$</span><span class="mi">0</span> <span class="o">==</span> <span class="mi">10</span> <span class="p">}</span> 
+<span class="o">=&gt;</span> <span class="nb">nil</span>
+</pre></div>
 
 <h3>
 <a name="findindex---findindex" class="anchor" href="#findindex---findindex"><span class="octicon octicon-link"></span></a>findIndex - <code>$.findIndex</code>
@@ -437,11 +437,11 @@ $.find([1, 2, 3, 4]) { $0 == 10 }
 
 <p>This method is like find except that it returns the index of the first element that passes the callback check.</p>
 
-<pre><code>let arr = [["age": 36], ["age": 40], ["age": 1]]
-let result = $.findIndex(arr) { $0["age"] &lt; 20 }
-result 
-=&gt; 2
-</code></pre>
+<div class="highlight highlight-swift"><pre><span class="k">let</span> <span class="n">arr</span> <span class="o">=</span> <span class="p">[[</span><span class="s">"age"</span><span class="o">:</span> <span class="mi">36</span><span class="p">],</span> <span class="p">[</span><span class="s">"age"</span><span class="o">:</span> <span class="mi">40</span><span class="p">],</span> <span class="p">[</span><span class="s">"age"</span><span class="o">:</span> <span class="mi">1</span><span class="p">]]</span>
+<span class="k">let</span> <span class="n">result</span> <span class="o">=</span> <span class="err">$</span><span class="p">.</span><span class="n">findIndex</span><span class="p">(</span><span class="n">arr</span><span class="p">)</span> <span class="p">{</span> <span class="err">$</span><span class="mi">0</span><span class="p">[</span><span class="s">"age"</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">20</span> <span class="p">}</span>
+<span class="n">result</span> 
+<span class="o">=&gt;</span> <span class="mi">2</span>
+</pre></div>
 
 <h3>
 <a name="findlastindex---findlastindex" class="anchor" href="#findlastindex---findlastindex"><span class="octicon octicon-link"></span></a>findLastIndex - <code>$.findLastIndex</code>
@@ -449,11 +449,11 @@ result
 
 <p>This method is like findIndex except that it iterates over elements of the array from right to left.</p>
 
-<pre><code>let arr = [["age": 36], ["age": 40], ["age": 1]]
-let result = $.findLastIndex(arr) { $0["age"] &gt; 30 }
-result
-=&gt; 1
-</code></pre>
+<div class="highlight highlight-swift"><pre><span class="k">let</span> <span class="n">arr</span> <span class="o">=</span> <span class="p">[[</span><span class="s">"age"</span><span class="o">:</span> <span class="mi">36</span><span class="p">],</span> <span class="p">[</span><span class="s">"age"</span><span class="o">:</span> <span class="mi">40</span><span class="p">],</span> <span class="p">[</span><span class="s">"age"</span><span class="o">:</span> <span class="mi">1</span><span class="p">]]</span>
+<span class="k">let</span> <span class="n">result</span> <span class="o">=</span> <span class="err">$</span><span class="p">.</span><span class="n">findLastIndex</span><span class="p">(</span><span class="n">arr</span><span class="p">)</span> <span class="p">{</span> <span class="err">$</span><span class="mi">0</span><span class="p">[</span><span class="s">"age"</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">30</span> <span class="p">}</span>
+<span class="n">result</span>
+<span class="o">=&gt;</span> <span class="mi">1</span>
+</pre></div>
 
 <h3>
 <a name="first---firstarray-anyobject" class="anchor" href="#first---firstarray-anyobject"><span class="octicon octicon-link"></span></a>first - <code>$.first(array: AnyObject[])</code>
@@ -461,12 +461,12 @@ result
 
 <p>Gets the first element in the array.</p>
 
-<pre><code>$.first([1, 2, 3, 4])
-=&gt; 1
+<div class="highlight highlight-swift"><pre><span class="err">$</span><span class="p">.</span><span class="n">first</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">])</span>
+<span class="o">=&gt;</span> <span class="mi">1</span>
 
-$.first([]) 
-=&gt; nil
-</code></pre>
+<span class="err">$</span><span class="p">.</span><span class="n">first</span><span class="p">([])</span> 
+<span class="o">=&gt;</span> <span class="nb">nil</span>
+</pre></div>
 
 <h3>
 <a name="flatten---flatten" class="anchor" href="#flatten---flatten"><span class="octicon octicon-link"></span></a>flatten - <code>$.flatten</code>
@@ -474,15 +474,15 @@ $.first([])
 
 <p>Flattens a nested array of any depth.</p>
 
-<pre><code>$.flatten([[3], 4, 5]) as Int[] 
-=&gt; [3, 4, 5]
+<div class="highlight highlight-swift"><pre><span class="err">$</span><span class="p">.</span><span class="n">flatten</span><span class="p">([[</span><span class="mi">3</span><span class="p">],</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span> <span class="kt">as</span> <span class="n">Int</span><span class="p">[]</span> 
+<span class="o">=&gt;</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
 
-$.flatten([[3], "Hello", 5]) as NSObject[] 
-=&gt; [3, "Hello", 5]
+<span class="err">$</span><span class="p">.</span><span class="n">flatten</span><span class="p">([[</span><span class="mi">3</span><span class="p">],</span> <span class="s">"Hello"</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span> <span class="kt">as</span> <span class="bp">NSObject</span><span class="p">[]</span> 
+<span class="o">=&gt;</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="s">"Hello"</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
 
-$.flatten([[[3], 4], 5]) as Int[] 
-=&gt; [3, 4, 5]
-</code></pre>
+<span class="err">$</span><span class="p">.</span><span class="n">flatten</span><span class="p">([[[</span><span class="mi">3</span><span class="p">],</span> <span class="mi">4</span><span class="p">],</span> <span class="mi">5</span><span class="p">])</span> <span class="kt">as</span> <span class="n">Int</span><span class="p">[]</span> 
+<span class="o">=&gt;</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
+</pre></div>
 
 <h3>
 <a name="frequencies---frequencies" class="anchor" href="#frequencies---frequencies"><span class="octicon octicon-link"></span></a>frequencies - <code>$.frequencies</code>
@@ -490,12 +490,12 @@ $.flatten([[[3], 4], 5]) as Int[]
 
 <p>This method returns a dictionary of values in an array mapping to the total number of occurrences in the array. If passed a function it returns a frequency table of the results of the given function on the arrays elements.</p>
 
-<pre><code>$.frequencies(["a", "a", "b", "c", "a", "b"]) 
-=&gt; ["a": 3, "b": 2, "c": 1]
+<div class="highlight highlight-swift"><pre><span class="err">$</span><span class="p">.</span><span class="n">frequencies</span><span class="p">([</span><span class="s">"a"</span><span class="p">,</span> <span class="s">"a"</span><span class="p">,</span> <span class="s">"b"</span><span class="p">,</span> <span class="s">"c"</span><span class="p">,</span> <span class="s">"a"</span><span class="p">,</span> <span class="s">"b"</span><span class="p">])</span> 
+<span class="o">=&gt;</span> <span class="p">[</span><span class="s">"a"</span><span class="o">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s">"b"</span><span class="o">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s">"c"</span><span class="o">:</span> <span class="mi">1</span><span class="p">]</span>
 
-$.frequencies([1, 2, 3, 4, 5]) { $0 % 2 == 0 }
-=&gt; [false: 3, true: 2]
-</code></pre>
+<span class="err">$</span><span class="p">.</span><span class="n">frequencies</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span> <span class="p">{</span> <span class="err">$</span><span class="mi">0</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span> <span class="p">}</span>
+<span class="o">=&gt;</span> <span class="p">[</span><span class="nb">false</span><span class="o">:</span> <span class="mi">3</span><span class="p">,</span> <span class="nb">true</span><span class="o">:</span> <span class="mi">2</span><span class="p">]</span>
+</pre></div>
 
 <h3>
 <a name="indexof---indexof" class="anchor" href="#indexof---indexof"><span class="octicon octicon-link"></span></a>indexof - <code>$.indexof</code>
@@ -503,21 +503,21 @@ $.frequencies([1, 2, 3, 4, 5]) { $0 % 2 == 0 }
 
 <p>Gets the index at which the first occurrence of value is found.</p>
 
-<pre><code>$.indexOf([1, 2, 3, 1, 2, 3], value: 2) 
-=&gt; 1
+<div class="highlight highlight-swift"><pre><span class="err">$</span><span class="p">.</span><span class="n">indexOf</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="nl">value</span><span class="p">:</span> <span class="mi">2</span><span class="p">)</span> 
+<span class="o">=&gt;</span> <span class="mi">1</span>
 
-$.indexOf(["A", "B", "C"], value: "B") 
-=&gt; 1
+<span class="err">$</span><span class="p">.</span><span class="n">indexOf</span><span class="p">([</span><span class="s">"A"</span><span class="p">,</span> <span class="s">"B"</span><span class="p">,</span> <span class="s">"C"</span><span class="p">],</span> <span class="nl">value</span><span class="p">:</span> <span class="s">"B"</span><span class="p">)</span> 
+<span class="o">=&gt;</span> <span class="mi">1</span>
 
-$.indexOf([3, 4, 5], value: 5) 
-=&gt; 2
+<span class="err">$</span><span class="p">.</span><span class="n">indexOf</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span> <span class="nl">value</span><span class="p">:</span> <span class="mi">5</span><span class="p">)</span> 
+<span class="o">=&gt;</span> <span class="mi">2</span>
 
-$.indexOf([3, 4, 5], value: 3) 
-=&gt; 0
+<span class="err">$</span><span class="p">.</span><span class="n">indexOf</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span> <span class="nl">value</span><span class="p">:</span> <span class="mi">3</span><span class="p">)</span> 
+<span class="o">=&gt;</span> <span class="mi">0</span>
 
-$.indexOf([3, 4, 5], value: 2) 
-=&gt; nil
-</code></pre>
+<span class="err">$</span><span class="p">.</span><span class="n">indexOf</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span> <span class="nl">value</span><span class="p">:</span> <span class="mi">2</span><span class="p">)</span> 
+<span class="o">=&gt;</span> <span class="nb">nil</span>
+</pre></div>
 
 <h3>
 <a name="initial---initial" class="anchor" href="#initial---initial"><span class="octicon octicon-link"></span></a>initial - <code>$.initial</code>
@@ -525,12 +525,12 @@ $.indexOf([3, 4, 5], value: 2)
 
 <p>Gets all but the last element or last n elements of an array.</p>
 
-<pre><code>$.initial([3, 4, 5]) 
-=&gt; [3, 4]
+<div class="highlight highlight-swift"><pre><span class="err">$</span><span class="p">.</span><span class="n">initial</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span> 
+<span class="o">=&gt;</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
 
-$.initial([3, 4, 5], numElements: 2) 
-=&gt; [3]
-</code></pre>
+<span class="err">$</span><span class="p">.</span><span class="n">initial</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span> <span class="nl">numElements</span><span class="p">:</span> <span class="mi">2</span><span class="p">)</span> 
+<span class="o">=&gt;</span> <span class="p">[</span><span class="mi">3</span><span class="p">]</span>
+</pre></div>
 
 <h3>
 <a name="intersection---intersection" class="anchor" href="#intersection---intersection"><span class="octicon octicon-link"></span></a>intersection - <code>$.intersection</code>
@@ -538,9 +538,9 @@ $.initial([3, 4, 5], numElements: 2)
 
 <p>Creates an array of unique values present in all provided arrays.</p>
 
-<pre><code>$.intersection([1, 2, 3], [5, 2, 1, 4], [2, 1]) 
-=&gt; [1, 2]
-</code></pre>
+<div class="highlight highlight-swift"><pre><span class="err">$</span><span class="p">.</span><span class="n">intersection</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span> 
+<span class="o">=&gt;</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+</pre></div>
 
 <h3>
 <a name="last---last" class="anchor" href="#last---last"><span class="octicon octicon-link"></span></a>last - <code>$.last</code>
@@ -548,9 +548,9 @@ $.initial([3, 4, 5], numElements: 2)
 
 <p>Gets the last element from the array.</p>
 
-<pre><code>$.last([3, 4, 5]) 
-=&gt; 5
-</code></pre>
+<div class="highlight highlight-swift"><pre><span class="err">$</span><span class="p">.</span><span class="n">last</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span> 
+<span class="o">=&gt;</span> <span class="mi">5</span>
+</pre></div>
 
 <h3>
 <a name="lastindexof---lastindexof" class="anchor" href="#lastindexof---lastindexof"><span class="octicon octicon-link"></span></a>lastIndexOf - <code>$.lastIndexOf</code>
@@ -558,9 +558,9 @@ $.initial([3, 4, 5], numElements: 2)
 
 <p>Gets the index at which the last occurrence of value is found.</p>
 
-<pre><code>$.lastIndexOf([1, 2, 3, 1, 2, 3], value: 2) 
-=&gt; 4
-</code></pre>
+<div class="highlight highlight-swift"><pre><span class="err">$</span><span class="p">.</span><span class="n">lastIndexOf</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="nl">value</span><span class="p">:</span> <span class="mi">2</span><span class="p">)</span> 
+<span class="o">=&gt;</span> <span class="mi">4</span>
+</pre></div>
 
 <h3>
 <a name="rest---rest" class="anchor" href="#rest---rest"><span class="octicon octicon-link"></span></a>rest - <code>$.rest</code>
@@ -568,12 +568,12 @@ $.initial([3, 4, 5], numElements: 2)
 
 <p>The opposite of initial this method gets all but the first element or first n elements of an array.</p>
 
-<pre><code>$.rest([3, 4, 5]) 
-=&gt; [4, 5]
+<div class="highlight highlight-swift"><pre><span class="err">$</span><span class="p">.</span><span class="n">rest</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span> 
+<span class="o">=&gt;</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
 
-$.rest([3, 4, 5], numElements: 2) 
-=&gt; [5]
-</code></pre>
+<span class="err">$</span><span class="p">.</span><span class="n">rest</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span> <span class="nl">numElements</span><span class="p">:</span> <span class="mi">2</span><span class="p">)</span> 
+<span class="o">=&gt;</span> <span class="p">[</span><span class="mi">5</span><span class="p">]</span>
+</pre></div>
 
 <h3>
 <a name="noop---noop" class="anchor" href="#noop---noop"><span class="octicon octicon-link"></span></a>noop - <code>$.noop()</code>
@@ -581,9 +581,9 @@ $.rest([3, 4, 5], numElements: 2)
 
 <p>A no-operation function.</p>
 
-<pre><code>$.noop() 
-=&gt; nil
-</code></pre>
+<div class="highlight highlight-swift"><pre><span class="err">$</span><span class="p">.</span><span class="n">noop</span><span class="p">()</span> 
+<span class="o">=&gt;</span> <span class="nb">nil</span>
+</pre></div>
 
 <h3>
 <a name="min---min" class="anchor" href="#min---min"><span class="octicon octicon-link"></span></a>min - <code>$.min</code>
@@ -591,9 +591,9 @@ $.rest([3, 4, 5], numElements: 2)
 
 <p>Retrieves the minimum value in an array.</p>
 
-<pre><code>$.min([2, 1, 2, 3, 4]) 
-=&gt; 1
-</code></pre>
+<div class="highlight highlight-swift"><pre><span class="err">$</span><span class="p">.</span><span class="n">min</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">])</span> 
+<span class="o">=&gt;</span> <span class="mi">1</span>
+</pre></div>
 
 <h3>
 <a name="max---max" class="anchor" href="#max---max"><span class="octicon octicon-link"></span></a>max - <code>$.max</code>
@@ -601,35 +601,35 @@ $.rest([3, 4, 5], numElements: 2)
 
 <p>Retrieves the maximum value in an array.</p>
 
-<pre><code>$.max([1, 2, 3, 4, 2, 1]) 
-=&gt; 4
-</code></pre>
+<div class="highlight highlight-swift"><pre><span class="err">$</span><span class="p">.</span><span class="n">max</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span> 
+<span class="o">=&gt;</span> <span class="mi">4</span>
+</pre></div>
 
 <h3>
 <a name="memoize---memoize" class="anchor" href="#memoize---memoize"><span class="octicon octicon-link"></span></a>memoize - <code>$.memoize</code>
 </h3>
 
-<pre><code>var times = 0 // to test memoization
+<div class="highlight highlight-swift"><pre><span class="k">var</span> <span class="n">times</span> <span class="o">=</span> <span class="mi">0</span> <span class="c1">// to test memoization</span>
 
-let fibMemo = $.memoize { (fib: (Int -&gt; Int), val: Int) -&gt; Int in
-    times += 1
-    return val == 1 || val == 0 ? 1 : fib(val - 1) + fib(val - 2)
-}
+<span class="k">let</span> <span class="n">fibMemo</span> <span class="o">=</span> <span class="err">$</span><span class="p">.</span><span class="n">memoize</span> <span class="p">{</span> <span class="p">(</span><span class="nl">fib</span><span class="p">:</span> <span class="p">(</span><span class="n">Int</span> <span class="o">-&gt;</span> <span class="n">Int</span><span class="p">),</span> <span class="nl">val</span><span class="p">:</span> <span class="n">Int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Int</span> <span class="k">in</span>
+    <span class="n">times</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="k">return</span> <span class="n">val</span> <span class="o">==</span> <span class="mi">1</span> <span class="o">||</span> <span class="n">val</span> <span class="o">==</span> <span class="mi">0</span> <span class="o">?</span> <span class="mi">1</span> <span class="o">:</span> <span class="n">fib</span><span class="p">(</span><span class="n">val</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">fib</span><span class="p">(</span><span class="n">val</span> <span class="o">-</span> <span class="mi">2</span><span class="p">)</span>
+<span class="p">}</span>
 
-let x = fibMemo(5)
-times
-=&gt; 6
+<span class="k">let</span> <span class="n">x</span> <span class="o">=</span> <span class="n">fibMemo</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">times</span>
+<span class="o">=&gt;</span> <span class="mi">6</span>
 
-times = 0
-let y = fibMemo(5)
-times
-=&gt; 0
+<span class="n">times</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">let</span> <span class="n">y</span> <span class="o">=</span> <span class="n">fibMemo</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">times</span>
+<span class="o">=&gt;</span> <span class="mi">0</span>
 
-times = 0
-let z = fibMemo(6)
-times
-=&gt; 1
-</code></pre>
+<span class="n">times</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">let</span> <span class="n">z</span> <span class="o">=</span> <span class="n">fibMemo</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span>
+<span class="n">times</span>
+<span class="o">=&gt;</span> <span class="mi">1</span>
+</pre></div>
 
 <h3>
 <a name="pluck---pluck" class="anchor" href="#pluck---pluck"><span class="octicon octicon-link"></span></a>pluck - <code>$.pluck</code>
@@ -637,10 +637,10 @@ times
 
 <p>Retrieves the value of a specified property from all elements in the array.</p>
 
-<pre><code>let arr : Dictionary&lt;String, Int&gt;[] = [["age": 20], ["age": 30], ["age": 40]]
-$.pluck(arr, value: "age") 
-=&gt; [20, 30, 40]
-</code></pre>
+<div class="highlight highlight-swift"><pre><span class="k">let</span> <span class="nl">arr</span> <span class="p">:</span> <span class="n">Dictionary</span><span class="o">&lt;</span><span class="n">String</span><span class="p">,</span> <span class="n">Int</span><span class="o">&gt;</span><span class="p">[]</span> <span class="o">=</span> <span class="p">[[</span><span class="s">"age"</span><span class="o">:</span> <span class="mi">20</span><span class="p">],</span> <span class="p">[</span><span class="s">"age"</span><span class="o">:</span> <span class="mi">30</span><span class="p">],</span> <span class="p">[</span><span class="s">"age"</span><span class="o">:</span> <span class="mi">40</span><span class="p">]]</span>
+<span class="err">$</span><span class="p">.</span><span class="n">pluck</span><span class="p">(</span><span class="n">arr</span><span class="p">,</span> <span class="nl">value</span><span class="p">:</span> <span class="s">"age"</span><span class="p">)</span> 
+<span class="o">=&gt;</span> <span class="p">[</span><span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">40</span><span class="p">]</span>
+</pre></div>
 
 <h3>
 <a name="pull---pull" class="anchor" href="#pull---pull"><span class="octicon octicon-link"></span></a>pull - <code>$.pull</code>
@@ -648,15 +648,15 @@ $.pluck(arr, value: "age")
 
 <p>Removes all provided values from the given array.</p>
 
-<pre><code>$.pull([3, 4, 5, 3, 5], values: 3, 5) 
-=&gt; [4]
+<div class="highlight highlight-swift"><pre><span class="err">$</span><span class="p">.</span><span class="n">pull</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span> <span class="nl">values</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span> 
+<span class="o">=&gt;</span> <span class="p">[</span><span class="mi">4</span><span class="p">]</span>
 
-$.pull([3, 4, 5, 3, 5], values: 4) 
-=&gt; [3, 5, 3, 5]
+<span class="err">$</span><span class="p">.</span><span class="n">pull</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span> <span class="nl">values</span><span class="p">:</span> <span class="mi">4</span><span class="p">)</span> 
+<span class="o">=&gt;</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
 
-$.pull([3, 4, 5, 3, 5], values: 3, 4, 5) 
-=&gt; []
-</code></pre>
+<span class="err">$</span><span class="p">.</span><span class="n">pull</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span> <span class="nl">values</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span> 
+<span class="o">=&gt;</span> <span class="p">[]</span>
+</pre></div>
 
 <h3>
 <a name="range---range" class="anchor" href="#range---range"><span class="octicon octicon-link"></span></a>range - <code>$.range</code>
@@ -664,15 +664,15 @@ $.pull([3, 4, 5, 3, 5], values: 3, 4, 5)
 
 <p>Creates an array of numbers (positive and/or negative) progressing from start up to but not including end.</p>
 
-<pre><code>$.range(4) 
-=&gt; [0, 1, 2, 3]
+<div class="highlight highlight-swift"><pre><span class="err">$</span><span class="p">.</span><span class="n">range</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span> 
+<span class="o">=&gt;</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
 
-$.range(1, endVal: 5) 
-=&gt; [1, 2, 3, 4]
+<span class="err">$</span><span class="p">.</span><span class="n">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nl">endVal</span><span class="p">:</span> <span class="mi">5</span><span class="p">)</span> 
+<span class="o">=&gt;</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
 
-$.range(0, endVal: 20, incrementBy: 5) 
-=&gt; [0, 5, 10, 15]
-</code></pre>
+<span class="err">$</span><span class="p">.</span><span class="n">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nl">endVal</span><span class="p">:</span> <span class="mi">20</span><span class="p">,</span> <span class="nl">incrementBy</span><span class="p">:</span> <span class="mi">5</span><span class="p">)</span> 
+<span class="o">=&gt;</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">15</span><span class="p">]</span>
+</pre></div>
 
 <h3>
 <a name="sample---sample" class="anchor" href="#sample---sample"><span class="octicon octicon-link"></span></a>sample - <code>$.sample</code>
@@ -689,18 +689,18 @@ $.contains(arr, value: $.sample(arr))
 
 <p>Creates an array of an arbitrary sequence. Especially useful with builtin ranges.</p>
 
-<pre><code>$.sequence(0..4) 
-=&gt; [0, 1, 2, 3]
+<div class="highlight highlight-swift"><pre><span class="err">$</span><span class="p">.</span><span class="n">sequence</span><span class="p">(</span><span class="mf">0..4</span><span class="p">)</span> 
+<span class="o">=&gt;</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
 
-$.sequence(-2.0..2.0) 
-=&gt; [-2.0, -1.0, 0.0, 1.0]
+<span class="err">$</span><span class="p">.</span><span class="n">sequence</span><span class="p">(</span><span class="o">-</span><span class="mf">2.0</span><span class="p">.</span><span class="mf">.2.0</span><span class="p">)</span> 
+<span class="o">=&gt;</span> <span class="p">[</span><span class="o">-</span><span class="mf">2.0</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">]</span>
 
-$.sequence((0..20).by(5)) 
-=&gt; [0, 5, 10, 15]
+<span class="err">$</span><span class="p">.</span><span class="n">sequence</span><span class="p">((</span><span class="mf">0..20</span><span class="p">).</span><span class="n">by</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span> 
+<span class="o">=&gt;</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">15</span><span class="p">]</span>
 
-$.sequence("abc") 
-=&gt; ["a", "b", "c"]
-</code></pre>
+<span class="err">$</span><span class="p">.</span><span class="n">sequence</span><span class="p">(</span><span class="s">"abc"</span><span class="p">)</span> 
+<span class="o">=&gt;</span> <span class="p">[</span><span class="s">"a"</span><span class="p">,</span> <span class="s">"b"</span><span class="p">,</span> <span class="s">"c"</span><span class="p">]</span>
+</pre></div>
 
 <h3>
 <a name="remove---remove" class="anchor" href="#remove---remove"><span class="octicon octicon-link"></span></a>remove - <code>$.remove</code>
@@ -708,10 +708,10 @@ $.sequence("abc")
 
 <p>Removes all elements from an array that the callback returns true.</p>
 
-<pre><code>let result = $.remove([1, 2, 3, 4, 5, 6]) { $0 == 2 || $0 == 3 }
-result
-=&gt; [1, 4, 5, 6]
-</code></pre>
+<div class="highlight highlight-swift"><pre><span class="k">let</span> <span class="n">result</span> <span class="o">=</span> <span class="err">$</span><span class="p">.</span><span class="n">remove</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">])</span> <span class="p">{</span> <span class="err">$</span><span class="mi">0</span> <span class="o">==</span> <span class="mi">2</span> <span class="o">||</span> <span class="err">$</span><span class="mi">0</span> <span class="o">==</span> <span class="mi">3</span> <span class="p">}</span>
+<span class="n">result</span>
+<span class="o">=&gt;</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">]</span>
+</pre></div>
 
 <h3>
 <a name="sortedindex---sortedindex" class="anchor" href="#sortedindex---sortedindex"><span class="octicon octicon-link"></span></a>sortedIndex - <code>$.sortedIndex</code>
@@ -719,12 +719,12 @@ result
 
 <p>Gives the smallest index at which a value should be inserted into a given the array is sorted.</p>
 
-<pre><code>$.sortedIndex([3, 4, 6, 10], value: 5)
-=&gt; 2
+<div class="highlight highlight-swift"><pre><span class="err">$</span><span class="p">.</span><span class="n">sortedIndex</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">10</span><span class="p">],</span> <span class="nl">value</span><span class="p">:</span> <span class="mi">5</span><span class="p">)</span>
+<span class="o">=&gt;</span> <span class="mi">2</span>
 
-$.sortedIndex([10, 20, 30, 50], value: 40)
-=&gt; 3
-</code></pre>
+<span class="err">$</span><span class="p">.</span><span class="n">sortedIndex</span><span class="p">([</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">50</span><span class="p">],</span> <span class="nl">value</span><span class="p">:</span> <span class="mi">40</span><span class="p">)</span>
+<span class="o">=&gt;</span> <span class="mi">3</span>
+</pre></div>
 
 <h3>
 <a name="union---union" class="anchor" href="#union---union"><span class="octicon octicon-link"></span></a>union - <code>$.union</code>
@@ -732,9 +732,9 @@ $.sortedIndex([10, 20, 30, 50], value: 40)
 
 <p>Creates an array of unique values, in order, of the provided arrays.</p>
 
-<pre><code>$.union([1, 2, 3], [5, 2, 1, 4], [2, 1]) 
-=&gt; [1, 2, 3, 4, 5]
-</code></pre>
+<div class="highlight highlight-swift"><pre><span class="err">$</span><span class="p">.</span><span class="k">union</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span> 
+<span class="o">=&gt;</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
+</pre></div>
 
 <h3>
 <a name="merge---merge" class="anchor" href="#merge---merge"><span class="octicon octicon-link"></span></a>merge - <code>$.merge</code>
@@ -742,13 +742,13 @@ $.sortedIndex([10, 20, 30, 50], value: 40)
 
 <p>Creates an array of all values, including duplicates, of the arrays in the order they are provided.</p>
 
-<pre><code>let arr  = [1, 5]
-let arr2 = [2, 4]
-let arr3 = [5, 6]
-let result = $.merge(arrays: arr, arr2, arr3)
-result
-=&gt; [1, 5, 2, 4, 5, 6]
-</code></pre>
+<div class="highlight highlight-swift"><pre><span class="k">let</span> <span class="n">arr</span>  <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
+<span class="k">let</span> <span class="n">arr2</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
+<span class="k">let</span> <span class="n">arr3</span> <span class="o">=</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">]</span>
+<span class="k">let</span> <span class="n">result</span> <span class="o">=</span> <span class="err">$</span><span class="p">.</span><span class="n">merge</span><span class="p">(</span><span class="nl">arrays</span><span class="p">:</span> <span class="n">arr</span><span class="p">,</span> <span class="n">arr2</span><span class="p">,</span> <span class="n">arr3</span><span class="p">)</span>
+<span class="n">result</span>
+<span class="o">=&gt;</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">]</span>
+</pre></div>
 
 <h3>
 <a name="uniq---uniq" class="anchor" href="#uniq---uniq"><span class="octicon octicon-link"></span></a>uniq - <code>$.uniq</code>
@@ -756,9 +756,9 @@ result
 
 <p>Creates a duplicate-value-free version of an array.</p>
 
-<pre><code>$.uniq([1, 2, 1, 3, 1])
-=&gt; [1, 2, 3]
-</code></pre>
+<div class="highlight highlight-swift"><pre><span class="err">$</span><span class="p">.</span><span class="n">uniq</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+<span class="o">=&gt;</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+</pre></div>
 
 <h3>
 <a name="without---without" class="anchor" href="#without---without"><span class="octicon octicon-link"></span></a>without - <code>$.without</code>
@@ -766,15 +766,15 @@ result
 
 <p>Creates an array excluding all provided values.</p>
 
-<pre><code>$.without([3, 4, 5, 3, 5], values: 3, 5)
-=&gt; [4]
+<div class="highlight highlight-swift"><pre><span class="err">$</span><span class="p">.</span><span class="n">without</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span> <span class="nl">values</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<span class="o">=&gt;</span> <span class="p">[</span><span class="mi">4</span><span class="p">]</span>
 
-$.without([3, 4, 5, 3, 5], values: 4)
-=&gt; [3, 5, 3, 5]
+<span class="err">$</span><span class="p">.</span><span class="n">without</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span> <span class="nl">values</span><span class="p">:</span> <span class="mi">4</span><span class="p">)</span>
+<span class="o">=&gt;</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
 
-$.without([3, 4, 5, 3, 5], values: 3, 4, 5)
-=&gt; []
-</code></pre>
+<span class="err">$</span><span class="p">.</span><span class="n">without</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span> <span class="nl">values</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<span class="o">=&gt;</span> <span class="p">[]</span>
+</pre></div>
 
 <h3>
 <a name="xor---xor" class="anchor" href="#xor---xor"><span class="octicon octicon-link"></span></a>xor - <code>$.xor</code>
@@ -782,9 +782,9 @@ $.without([3, 4, 5, 3, 5], values: 3, 4, 5)
 
 <p>Creates an array that is the symmetric difference of the provided arrays.</p>
 
-<pre><code>$.xor([1, 2, 3], [5, 2, 1, 4])
-=&gt; [3, 4, 5]
-</code></pre>
+<div class="highlight highlight-swift"><pre><span class="err">$</span><span class="p">.</span><span class="n">xor</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">])</span>
+<span class="o">=&gt;</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
+</pre></div>
 
 <h3>
 <a name="zip---zip" class="anchor" href="#zip---zip"><span class="octicon octicon-link"></span></a>zip - <code>$.zip</code>
@@ -792,9 +792,9 @@ $.without([3, 4, 5, 3, 5], values: 3, 4, 5)
 
 <p>Creates an array of grouped elements, the first of which contains the first elements of the given arrays.</p>
 
-<pre><code>$.zip(["fred", "barney"], [30, 40], [true, false]) as NSObject[] 
-=&gt; [["fred", 30, true], ["barney", 40, false]]
-</code></pre>
+<div class="highlight highlight-swift"><pre><span class="err">$</span><span class="p">.</span><span class="n">zip</span><span class="p">([</span><span class="s">"fred"</span><span class="p">,</span> <span class="s">"barney"</span><span class="p">],</span> <span class="p">[</span><span class="mi">30</span><span class="p">,</span> <span class="mi">40</span><span class="p">],</span> <span class="p">[</span><span class="nb">true</span><span class="p">,</span> <span class="nb">false</span><span class="p">])</span> <span class="kt">as</span> <span class="bp">NSObject</span><span class="p">[]</span> 
+<span class="o">=&gt;</span> <span class="p">[[</span><span class="s">"fred"</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="nb">true</span><span class="p">],</span> <span class="p">[</span><span class="s">"barney"</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="nb">false</span><span class="p">]]</span>
+</pre></div>
 
 <h3>
 <a name="zipobject---zipobject" class="anchor" href="#zipobject---zipobject"><span class="octicon octicon-link"></span></a>zipObject - <code>$.zipObject</code>
@@ -802,9 +802,9 @@ $.without([3, 4, 5, 3, 5], values: 3, 4, 5)
 
 <p>Creates an object composed from arrays of keys and values.</p>
 
-<pre><code>$.zipObject(["fred", "barney"], values: [30, 40]) as Dictionary&lt;String, Int&gt; 
-=&gt; ["fred": 30, "barney": 40]
-</code></pre>
+<div class="highlight highlight-swift"><pre><span class="err">$</span><span class="p">.</span><span class="n">zipObject</span><span class="p">([</span><span class="s">"fred"</span><span class="p">,</span> <span class="s">"barney"</span><span class="p">],</span> <span class="nl">values</span><span class="p">:</span> <span class="p">[</span><span class="mi">30</span><span class="p">,</span> <span class="mi">40</span><span class="p">])</span> <span class="kt">as</span> <span class="n">Dictionary</span><span class="o">&lt;</span><span class="n">String</span><span class="p">,</span> <span class="n">Int</span><span class="o">&gt;</span> 
+<span class="o">=&gt;</span> <span class="p">[</span><span class="s">"fred"</span><span class="o">:</span> <span class="mi">30</span><span class="p">,</span> <span class="s">"barney"</span><span class="o">:</span> <span class="mi">40</span><span class="p">]</span>
+</pre></div>
 
 <h3>
 <a name="partition---partition" class="anchor" href="#partition---partition"><span class="octicon octicon-link"></span></a>partition - <code>$.partition</code>
@@ -812,19 +812,19 @@ $.without([3, 4, 5, 3, 5], values: 3, 4, 5)
 
 <p>Produces an array of arrays, each containing n elements, each offset by step. Stops after a partition is less than n length.</p>
 
-<pre><code>let arr = [1, 2, 3, 4, 5]
-$.partition(arr, n: 2)
-=&gt; [[1, 2], [3, 4]]
+<div class="highlight highlight-swift"><pre><span class="k">let</span> <span class="n">arr</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
+<span class="err">$</span><span class="p">.</span><span class="n">partition</span><span class="p">(</span><span class="n">arr</span><span class="p">,</span> <span class="nl">n</span><span class="p">:</span> <span class="mi">2</span><span class="p">)</span>
+<span class="o">=&gt;</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]]</span>
 
-$.partition(arr, n: 4, step: 1)
-=&gt; [[1, 2, 3, 4], [2, 3, 4, 5]]
+<span class="err">$</span><span class="p">.</span><span class="n">partition</span><span class="p">(</span><span class="n">arr</span><span class="p">,</span> <span class="nl">n</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span> <span class="nl">step</span><span class="p">:</span> <span class="mi">1</span><span class="p">)</span>
+<span class="o">=&gt;</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]]</span>
 
-$.partition(arr, n: 4, step: 1, pad: nil)
-=&gt; [[1, 2, 3, 4], [2, 3, 4, 5], [3, 4, 5]]
+<span class="err">$</span><span class="p">.</span><span class="n">partition</span><span class="p">(</span><span class="n">arr</span><span class="p">,</span> <span class="nl">n</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span> <span class="nl">step</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="nl">pad</span><span class="p">:</span> <span class="nb">nil</span><span class="p">)</span>
+<span class="o">=&gt;</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]]</span>
 
-$.partition(arr, n: 4, step: 1, pad: [6, 7, 8])
-=&gt; [[1, 2, 3, 4], [2, 3, 4, 5], [3, 4, 5, 6]]
-</code></pre>
+<span class="err">$</span><span class="p">.</span><span class="n">partition</span><span class="p">(</span><span class="n">arr</span><span class="p">,</span> <span class="nl">n</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span> <span class="nl">step</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="nl">pad</span><span class="p">:</span> <span class="p">[</span><span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">])</span>
+<span class="o">=&gt;</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">]]</span>
+</pre></div>
 
 <h3>
 <a name="partitionall---partitionall" class="anchor" href="#partitionall---partitionall"><span class="octicon octicon-link"></span></a>partitionAll - <code>$.partitionAll</code>
@@ -832,9 +832,9 @@ $.partition(arr, n: 4, step: 1, pad: [6, 7, 8])
 
 <p>Produces an array of arrays, each containing n elements, each offset by step. Continues after a partition is less than n length.</p>
 
-<pre><code>$.partitionAll([1, 2, 3, 4, 5], n:4, step: 1)
-=&gt; [[1, 2, 3, 4], [2, 3, 4, 5], [3, 4, 5], [4, 5], [5]]
-</code></pre>
+<div class="highlight highlight-swift"><pre><span class="err">$</span><span class="p">.</span><span class="n">partitionAll</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span> <span class="nl">n</span><span class="p">:</span><span class="mi">4</span><span class="p">,</span> <span class="nl">step</span><span class="p">:</span> <span class="mi">1</span><span class="p">)</span>
+<span class="o">=&gt;</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span> <span class="p">[</span><span class="mi">5</span><span class="p">]]</span>
+</pre></div>
 
 <h3>
 <a name="partitionby---partitionby" class="anchor" href="#partitionby---partitionby"><span class="octicon octicon-link"></span></a>partitionBy - <code>$.partitionBy</code>
@@ -842,12 +842,12 @@ $.partition(arr, n: 4, step: 1, pad: [6, 7, 8])
 
 <p>Applies a function to each element in array, splitting it each time the function returns a new value.</p>
 
-<pre><code>$.partitionBy([1, 2, 3, 4, 5]) { $0 % 2 == 0 }
-=&gt; [[1], [2, 4], [3, 5], [6]]
+<div class="highlight highlight-swift"><pre><span class="err">$</span><span class="p">.</span><span class="n">partitionBy</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span> <span class="p">{</span> <span class="err">$</span><span class="mi">0</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span> <span class="p">}</span>
+<span class="o">=&gt;</span> <span class="p">[[</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span> <span class="p">[</span><span class="mi">6</span><span class="p">]]</span>
 
-$.partitionBy([1, 7, 3, 6, 10, 12]) { $0 % 3 }
-=&gt; [[1, 7], [3, 6], [10], [12]]
-</code></pre>
+<span class="err">$</span><span class="p">.</span><span class="n">partitionBy</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">12</span><span class="p">])</span> <span class="p">{</span> <span class="err">$</span><span class="mi">0</span> <span class="o">%</span> <span class="mi">3</span> <span class="p">}</span>
+<span class="o">=&gt;</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span> <span class="p">[</span><span class="mi">10</span><span class="p">],</span> <span class="p">[</span><span class="mi">12</span><span class="p">]]</span>
+</pre></div>
 
 <h3>
 <a name="dictionary" class="anchor" href="#dictionary"><span class="octicon octicon-link"></span></a>Dictionary</h3>
@@ -858,9 +858,9 @@ $.partitionBy([1, 7, 3, 6, 10, 12]) { $0 % 3 }
 
 <p>Creates an array of keys given a dictionary.</p>
 
-<pre><code>$.keys(["Dog": 1, "Cat": 2])
-=&gt; ["Dog", "Cat"]
-</code></pre>
+<div class="highlight highlight-swift"><pre><span class="err">$</span><span class="p">.</span><span class="n">keys</span><span class="p">([</span><span class="s">"Dog"</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s">"Cat"</span><span class="o">:</span> <span class="mi">2</span><span class="p">])</span>
+<span class="o">=&gt;</span> <span class="p">[</span><span class="s">"Dog"</span><span class="p">,</span> <span class="s">"Cat"</span><span class="p">]</span>
+</pre></div>
 
 <h3>
 <a name="values---values" class="anchor" href="#values---values"><span class="octicon octicon-link"></span></a>values - <code>$.values</code>
@@ -868,9 +868,9 @@ $.partitionBy([1, 7, 3, 6, 10, 12]) { $0 % 3 }
 
 <p>Creates an array of values given a dictionary</p>
 
-<pre><code>$.values(["Dog": 1, "Cat": 2])
-=&gt; [1, 2]
-</code></pre>
+<div class="highlight highlight-swift"><pre><span class="err">$</span><span class="p">.</span><span class="n">values</span><span class="p">([</span><span class="s">"Dog"</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s">"Cat"</span><span class="o">:</span> <span class="mi">2</span><span class="p">])</span>
+<span class="o">=&gt;</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+</pre></div>
 
 <h3>
 <a name="merge---merge-1" class="anchor" href="#merge---merge-1"><span class="octicon octicon-link"></span></a>merge - <code>$.merge</code>
@@ -878,11 +878,11 @@ $.partitionBy([1, 7, 3, 6, 10, 12]) { $0 % 3 }
 
 <p>Merges all of the dictionaries together and the latter dictionary overrides the value at a given key</p>
 
-<pre><code>let dict: Dictionary&lt;String, Int&gt; = ["Dog": 1, "Cat": 2]
-let dict2: Dictionary&lt;String, Int&gt; = ["Cow": 3]
-let dict3: Dictionary&lt;String, Int&gt; = ["Sheep": 4]
-$.merge(dict, dictionaries: dict2, dict3)
-</code></pre>
+<div class="highlight highlight-swift"><pre><span class="k">let</span> <span class="nl">dict</span><span class="p">:</span> <span class="n">Dictionary</span><span class="o">&lt;</span><span class="n">String</span><span class="p">,</span> <span class="n">Int</span><span class="o">&gt;</span> <span class="o">=</span> <span class="p">[</span><span class="s">"Dog"</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s">"Cat"</span><span class="o">:</span> <span class="mi">2</span><span class="p">]</span>
+<span class="k">let</span> <span class="nl">dict2</span><span class="p">:</span> <span class="n">Dictionary</span><span class="o">&lt;</span><span class="n">String</span><span class="p">,</span> <span class="n">Int</span><span class="o">&gt;</span> <span class="o">=</span> <span class="p">[</span><span class="s">"Cow"</span><span class="o">:</span> <span class="mi">3</span><span class="p">]</span>
+<span class="k">let</span> <span class="nl">dict3</span><span class="p">:</span> <span class="n">Dictionary</span><span class="o">&lt;</span><span class="n">String</span><span class="p">,</span> <span class="n">Int</span><span class="o">&gt;</span> <span class="o">=</span> <span class="p">[</span><span class="s">"Sheep"</span><span class="o">:</span> <span class="mi">4</span><span class="p">]</span>
+<span class="err">$</span><span class="p">.</span><span class="n">merge</span><span class="p">(</span><span class="n">dict</span><span class="p">,</span> <span class="nl">dictionaries</span><span class="p">:</span> <span class="n">dict2</span><span class="p">,</span> <span class="n">dict3</span><span class="p">)</span>
+</pre></div>
 
 <h3>
 <a name="pick---pick" class="anchor" href="#pick---pick"><span class="octicon octicon-link"></span></a>pick - <code>$.pick</code>
@@ -890,8 +890,8 @@ $.merge(dict, dictionaries: dict2, dict3)
 
 <p>Creates a shallow clone of a dictionary composed of the specified keys.</p>
 
-<pre><code>$.pick(["Dog": 1, "Cat": 2, "Cow": 3], keys: "Dog", "Cow")
-</code></pre>
+<div class="highlight highlight-swift"><pre><span class="err">$</span><span class="p">.</span><span class="n">pick</span><span class="p">([</span><span class="s">"Dog"</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s">"Cat"</span><span class="o">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s">"Cow"</span><span class="o">:</span> <span class="mi">3</span><span class="p">],</span> <span class="nl">keys</span><span class="p">:</span> <span class="s">"Dog"</span><span class="p">,</span> <span class="s">"Cow"</span><span class="p">)</span>
+</pre></div>
 
 <h3>
 <a name="omit---omit" class="anchor" href="#omit---omit"><span class="octicon octicon-link"></span></a>omit - <code>$.omit</code>
@@ -899,8 +899,8 @@ $.merge(dict, dictionaries: dict2, dict3)
 
 <p>Creates a shallow clone of a dictionary excluding the specified keys.</p>
 
-<pre><code>$.omit(["Dog": 1, "Cat": 2, "Cow": 3], keys: "Cat", "Dog")
-</code></pre>
+<div class="highlight highlight-swift"><pre><span class="err">$</span><span class="p">.</span><span class="n">omit</span><span class="p">([</span><span class="s">"Dog"</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s">"Cat"</span><span class="o">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s">"Cow"</span><span class="o">:</span> <span class="mi">3</span><span class="p">],</span> <span class="nl">keys</span><span class="p">:</span> <span class="s">"Cat"</span><span class="p">,</span> <span class="s">"Dog"</span><span class="p">)</span>
+</pre></div>
 
 <h3>
 <a name="object" class="anchor" href="#object"><span class="octicon octicon-link"></span></a>Object</h3>
@@ -911,9 +911,9 @@ $.merge(dict, dictionaries: dict2, dict3)
 
 <p>Invokes interceptor with the object and then returns object.</p>
 
-<pre><code>var beatle = Car(name: "Fusca")
-$.tap(beatle, {$0.name = "Beatle"}).color = "Blue"
-</code></pre>
+<div class="highlight highlight-swift"><pre><span class="k">var</span> <span class="n">beatle</span> <span class="o">=</span> <span class="n">Car</span><span class="p">(</span><span class="nl">name</span><span class="p">:</span> <span class="s">"Fusca"</span><span class="p">)</span>
+<span class="err">$</span><span class="p">.</span><span class="n">tap</span><span class="p">(</span><span class="n">beatle</span><span class="p">,</span> <span class="p">{</span><span class="err">$</span><span class="mf">0.</span><span class="n">name</span> <span class="o">=</span> <span class="s">"Beatle"</span><span class="p">}).</span><span class="n">color</span> <span class="o">=</span> <span class="s">"Blue"</span>
+</pre></div>
 
 <h3>
 <a name="function" class="anchor" href="#function"><span class="octicon octicon-link"></span></a>Function</h3>
@@ -924,20 +924,20 @@ $.tap(beatle, {$0.name = "Beatle"}).color = "Blue"
 
 <p>Creates a function that executes passed function only after being called n times.</p>
 
-<pre><code>var saves = ["profile", "settings"];
-let asyncSave = { (function: () -&gt; ()?) in
-   function() // Saving right away for testing but in real world would be async
-}
-var isDone = false
-var completeCallback = $.after(saves.count) {
-   isDone = true
-}
-for elem in saves {
-   asyncSave(completeCallback)
-}
-isDone 
-=&gt; true
-</code></pre>
+<div class="highlight highlight-swift"><pre><span class="k">var</span> <span class="n">saves</span> <span class="o">=</span> <span class="p">[</span><span class="s">"profile"</span><span class="p">,</span> <span class="s">"settings"</span><span class="p">];</span>
+<span class="k">let</span> <span class="n">asyncSave</span> <span class="o">=</span> <span class="p">{</span> <span class="p">(</span><span class="nl">function</span><span class="p">:</span> <span class="p">()</span> <span class="o">-&gt;</span> <span class="p">()</span><span class="o">?</span><span class="p">)</span> <span class="k">in</span>
+   <span class="n">function</span><span class="p">()</span> <span class="c1">// Saving right away for testing but in real world would be async</span>
+<span class="p">}</span>
+<span class="k">var</span> <span class="n">isDone</span> <span class="o">=</span> <span class="nb">false</span>
+<span class="k">var</span> <span class="n">completeCallback</span> <span class="o">=</span> <span class="err">$</span><span class="p">.</span><span class="n">after</span><span class="p">(</span><span class="n">saves</span><span class="p">.</span><span class="n">count</span><span class="p">)</span> <span class="p">{</span>
+   <span class="n">isDone</span> <span class="o">=</span> <span class="nb">true</span>
+<span class="p">}</span>
+<span class="k">for</span> <span class="n">elem</span> <span class="k">in</span> <span class="n">saves</span> <span class="p">{</span>
+   <span class="n">asyncSave</span><span class="p">(</span><span class="n">completeCallback</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="n">isDone</span> 
+<span class="o">=&gt;</span> <span class="nb">true</span>
+</pre></div>
 
 <h3>
 <a name="bind---bind" class="anchor" href="#bind---bind"><span class="octicon octicon-link"></span></a>bind - <code>$.bind</code>
@@ -945,10 +945,10 @@ isDone
 
 <p>Creates a function that, when called, invokes func with the binding of arguments provided.</p>
 
-<pre><code>let helloWorldFunc = $.bind({(T...) in T[0] + " " + T[1] + " from " + T[2] }, "Hello", "World", "Swift")
-helloWorldFunc() 
-=&gt; "Hello World from Swift"
-</code></pre>
+<div class="highlight highlight-swift"><pre><span class="k">let</span> <span class="n">helloWorldFunc</span> <span class="o">=</span> <span class="err">$</span><span class="p">.</span><span class="n">bind</span><span class="p">({(</span><span class="n">T</span><span class="p">...)</span> <span class="k">in</span> <span class="n">T</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="s">" "</span> <span class="o">+</span> <span class="n">T</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="s">" from "</span> <span class="o">+</span> <span class="n">T</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="p">},</span> <span class="s">"Hello"</span><span class="p">,</span> <span class="s">"World"</span><span class="p">,</span> <span class="s">"Swift"</span><span class="p">)</span>
+<span class="n">helloWorldFunc</span><span class="p">()</span> 
+<span class="o">=&gt;</span> <span class="s">"Hello World from Swift"</span>
+</pre></div>
 
 <h3>
 <a name="partial---partial" class="anchor" href="#partial---partial"><span class="octicon octicon-link"></span></a>partial - <code>$.partial</code>
@@ -956,10 +956,10 @@ helloWorldFunc()
 
 <p>Creates a function that, when called, invokes func with any additional partial arguments prepended to those provided to the new function.</p>
 
-<pre><code>let partialFunc = $.partial({(T...) in T[0] + " " + T[1] + " from " + T[2] }, "Hello")
-partialFunc("World", "Swift") 
-=&gt; "Hello World from Swift"
-</code></pre>
+<div class="highlight highlight-swift"><pre><span class="k">let</span> <span class="n">partialFunc</span> <span class="o">=</span> <span class="err">$</span><span class="p">.</span><span class="n">partial</span><span class="p">({(</span><span class="n">T</span><span class="p">...)</span> <span class="k">in</span> <span class="n">T</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="s">" "</span> <span class="o">+</span> <span class="n">T</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="s">" from "</span> <span class="o">+</span> <span class="n">T</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="p">},</span> <span class="s">"Hello"</span><span class="p">)</span>
+<span class="n">partialFunc</span><span class="p">(</span><span class="s">"World"</span><span class="p">,</span> <span class="s">"Swift"</span><span class="p">)</span> 
+<span class="o">=&gt;</span> <span class="s">"Hello World from Swift"</span>
+</pre></div>
 
 <h3>
 <a name="times---times" class="anchor" href="#times---times"><span class="octicon octicon-link"></span></a>times - <code>$.times</code>
@@ -967,45 +967,45 @@ partialFunc("World", "Swift")
 
 <p>Call a function n times and also passes the index. If a value is returned in the function then the times method will return an array of those values.</p>
 
-<pre><code>let fun = $.bind({ (names: String...) -&gt; String in
-   let people = $.join(names, separator: " from ")
-   return "Hello \(people)"
-   }, "Ankur", "Swift")
-$.times(2, function: fun) as String[] 
-=&gt; ["Hello Ankur from Swift", "Hello Ankur from Swift"]
-</code></pre>
+<div class="highlight highlight-swift"><pre><span class="k">let</span> <span class="n">fun</span> <span class="o">=</span> <span class="err">$</span><span class="p">.</span><span class="n">bind</span><span class="p">({</span> <span class="p">(</span><span class="nl">names</span><span class="p">:</span> <span class="n">String</span><span class="p">...)</span> <span class="o">-&gt;</span> <span class="n">String</span> <span class="k">in</span>
+   <span class="k">let</span> <span class="n">people</span> <span class="o">=</span> <span class="err">$</span><span class="p">.</span><span class="n">join</span><span class="p">(</span><span class="n">names</span><span class="p">,</span> <span class="nl">separator</span><span class="p">:</span> <span class="s">" from "</span><span class="p">)</span>
+   <span class="k">return</span> <span class="s">"Hello \(people)"</span>
+   <span class="p">},</span> <span class="s">"Ankur"</span><span class="p">,</span> <span class="s">"Swift"</span><span class="p">)</span>
+<span class="err">$</span><span class="p">.</span><span class="n">times</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="nl">function</span><span class="p">:</span> <span class="n">fun</span><span class="p">)</span> <span class="kt">as</span> <span class="n">String</span><span class="p">[]</span> 
+<span class="o">=&gt;</span> <span class="p">[</span><span class="s">"Hello Ankur from Swift"</span><span class="p">,</span> <span class="s">"Hello Ankur from Swift"</span><span class="p">]</span>
+</pre></div>
 
 <h3>
 <a name="chaining---array-" class="anchor" href="#chaining---array-"><span class="octicon octicon-link"></span></a>Chaining - <code>$(array: ...)</code>
 </h3>
 
-<pre><code>$(array: [1, 2, 3])
+<div class="highlight highlight-swift"><pre><span class="err">$</span><span class="p">(</span><span class="nl">array</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
 
-$(array: [1, 2, 3]).first() as Int 
-=&gt; 1
+<span class="err">$</span><span class="p">(</span><span class="nl">array</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]).</span><span class="n">first</span><span class="p">()</span> <span class="kt">as</span> <span class="n">Int</span> 
+<span class="o">=&gt;</span> <span class="mi">1</span>
 
-$(array: [[1, 2], 3, [[4], 5]]).flatten().initial(2).value() as Int[] 
-=&gt; [1, 2, 3]
+<span class="err">$</span><span class="p">(</span><span class="nl">array</span><span class="p">:</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="mi">3</span><span class="p">,</span> <span class="p">[[</span><span class="mi">4</span><span class="p">],</span> <span class="mi">5</span><span class="p">]]).</span><span class="n">flatten</span><span class="p">().</span><span class="n">initial</span><span class="p">(</span><span class="mi">2</span><span class="p">).</span><span class="n">value</span><span class="p">()</span> <span class="kt">as</span> <span class="n">Int</span><span class="p">[]</span> 
+<span class="o">=&gt;</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
 
-$(array: [[1, 2], 3, [[4], 5]]).initial().flatten().first() as Int 
-=&gt; 1
+<span class="err">$</span><span class="p">(</span><span class="nl">array</span><span class="p">:</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="mi">3</span><span class="p">,</span> <span class="p">[[</span><span class="mi">4</span><span class="p">],</span> <span class="mi">5</span><span class="p">]]).</span><span class="n">initial</span><span class="p">().</span><span class="n">flatten</span><span class="p">().</span><span class="n">first</span><span class="p">()</span> <span class="kt">as</span> <span class="n">Int</span> 
+<span class="o">=&gt;</span> <span class="mi">1</span>
 
-var chain = $(array: [10, 20, 30, 40, 50])
-var elements: Int[] = []
-chain.each { elements += $0 as Int }
-elements as Int[] 
-=&gt; [10, 20, 30, 40, 50]
+<span class="k">var</span> <span class="n">chain</span> <span class="o">=</span> <span class="err">$</span><span class="p">(</span><span class="nl">array</span><span class="p">:</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">50</span><span class="p">])</span>
+<span class="k">var</span> <span class="nl">elements</span><span class="p">:</span> <span class="n">Int</span><span class="p">[]</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">chain</span><span class="p">.</span><span class="n">each</span> <span class="p">{</span> <span class="n">elements</span> <span class="o">+=</span> <span class="err">$</span><span class="mi">0</span> <span class="kt">as</span> <span class="n">Int</span> <span class="p">}</span>
+<span class="n">elements</span> <span class="kt">as</span> <span class="n">Int</span><span class="p">[]</span> 
+<span class="o">=&gt;</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">50</span><span class="p">]</span>
 
-var chain = $(array: [10, 20, 30, 40, 50])
-chain.all { ($0 as Int) &lt; 100 } 
-=&gt; true
+<span class="k">var</span> <span class="n">chain</span> <span class="o">=</span> <span class="err">$</span><span class="p">(</span><span class="nl">array</span><span class="p">:</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">50</span><span class="p">])</span>
+<span class="n">chain</span><span class="p">.</span><span class="n">all</span> <span class="p">{</span> <span class="p">(</span><span class="err">$</span><span class="mi">0</span> <span class="kt">as</span> <span class="n">Int</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">100</span> <span class="p">}</span> 
+<span class="o">=&gt;</span> <span class="nb">true</span>
 
-chain.all { ($0 as Int) &lt; 40 } 
-=&gt; false
+<span class="n">chain</span><span class="p">.</span><span class="n">all</span> <span class="p">{</span> <span class="p">(</span><span class="err">$</span><span class="mi">0</span> <span class="kt">as</span> <span class="n">Int</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">40</span> <span class="p">}</span> 
+<span class="o">=&gt;</span> <span class="nb">false</span>
 
-chain.any { ($0 as Int) &lt; 40 } 
-=&gt; true
-</code></pre>
+<span class="n">chain</span><span class="p">.</span><span class="n">any</span> <span class="p">{</span> <span class="p">(</span><span class="err">$</span><span class="mi">0</span> <span class="kt">as</span> <span class="n">Int</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">40</span> <span class="p">}</span> 
+<span class="o">=&gt;</span> <span class="nb">true</span>
+</pre></div>
 
 <h2>
 <a name="contributing" class="anchor" href="#contributing"><span class="octicon octicon-link"></span></a>Contributing</h2>
