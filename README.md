@@ -725,7 +725,7 @@ If you are interested in contributing
 
 ## Roadmap ##
 
-More functions will be added and then ability to chain operations and lazily evaluation of chained expressions.
+More functions such as curry function and then ability to lazily evaluat chained expressions.
 
 
 ## Why not extend collection? ##
