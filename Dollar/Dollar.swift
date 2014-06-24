@@ -579,6 +579,13 @@ class $ {
         return nil
     }
     
+    /// The identity function. Returns the argument it is given.
+    ///
+    /// :return Argument.
+    class func id<T>(thing: T) -> T {
+        return thing
+    }
+    
     /// Creates a shallow clone of a dictionary excluding the specified keys.
     ///
     /// :param dictionary The dictionary to source from.

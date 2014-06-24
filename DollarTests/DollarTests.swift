@@ -323,6 +323,10 @@ class DollarTests: XCTestCase {
     func testReduce() {
         XCTAssertEqual($.reduce([1, 2, 3, 4, 5], initial: 0) { $0 + $1 }, 15, "Reduce function should sum elements in the array")
     }
+    
+    func testId() {
+        XCTAssertEqual($.id(1), 1, "Id should return the argument it gets passed")
+    }
 
     
     func testSlice() {
