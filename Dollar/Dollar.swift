@@ -392,6 +392,14 @@ class $ {
         return result
     }
     
+    /// The identity function. Returns the argument it is given.
+    ///
+    /// :param arg Value to return
+    /// :return Argument that was passed
+    class func id<T>(arg: T) -> T {
+        return arg
+    }
+    
     /// Gets the index at which the first occurrence of value is found.
     ///
     /// :param array The array to source from.
