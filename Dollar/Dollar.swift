@@ -19,7 +19,7 @@
 
 import Foundation
 
-class $ {
+class Dollar {
     
     //  ________  ___  ___  ________  ___  ________
     // |\   ____\|\  \|\  \|\   __  \|\  \|\   ___  \
@@ -43,21 +43,21 @@ class $ {
     ///
     /// :return First element from the array.
     func first() -> AnyObject? {
-        return $.first(self.resultArray)
+        return Dollar.first(self.resultArray)
     }
     
     /// Flattens nested array.
     ///
     /// :return The wrapper object.
-    func flatten() -> $ {
-        self.resultArray = $.flatten(self.resultArray)
+    func flatten() -> Self {
+        self.resultArray = Dollar.flatten(self.resultArray)
         return self
     }
     
     /// Keeps all the elements except last one.
     ///
     /// :return The wrapper object.
-    func initial() -> $ {
+    func initial() -> Self {
         return self.initial(1)
     }
     
@@ -65,8 +65,8 @@ class $ {
     ///
     /// :param numElements Number of items to remove from the end of the array.
     /// :return The wrapper object.
-    func initial(numElements: Int) -> $ {
-        self.resultArray = $.initial(self.resultArray, numElements: numElements)
+    func initial(numElements: Int) -> Self {
+        self.resultArray = Dollar.initial(self.resultArray, numElements: numElements)
         return self
     }
     
@@ -74,7 +74,7 @@ class $ {
     ///
     /// :param function Function to map.
     /// :return The wrapper object.
-    func map(function: (AnyObject) -> AnyObject) -> $ {
+    func map(function: (AnyObject) -> AnyObject) -> Self {
         var result: AnyObject[] = []
         for elem : AnyObject in self.resultArray {
             result += function(elem)
@@ -87,7 +87,7 @@ class $ {
     ///
     /// :param array The array to wrap.
     /// :return The wrapper object.
-    func map(function: (Int, AnyObject) -> AnyObject) -> $ {
+    func map(function: (Int, AnyObject) -> AnyObject) -> Self {
         var result: AnyObject[] = []
         for (index, elem : AnyObject) in enumerate(self.resultArray) {
             result += function(index, elem)
@@ -100,7 +100,7 @@ class $ {
     ///
     /// :param array The array to wrap.
     /// :return The wrapper object.
-    func each(function: (AnyObject) -> ()) -> $ {
+    func each(function: (AnyObject) -> ()) -> Self {
         for elem : AnyObject in self.resultArray {
             function(elem)
         }
@@ -111,7 +111,7 @@ class $ {
     ///
     /// :param array The array to wrap.
     /// :return The wrapper object.
-    func each(function: (Int, AnyObject) -> ()) -> $ {
+    func each(function: (Int, AnyObject) -> ()) -> Self {
         for (index, elem : AnyObject) in enumerate(self.resultArray) {
             function(index, elem)
         }
@@ -122,7 +122,7 @@ class $ {
     ///
     /// :param function Function to tell whether to keep an element or remove.
     /// :return The wrapper object.
-    func filter(function: (AnyObject) -> Bool) -> $ {
+    func filter(function: (AnyObject) -> Bool) -> Self {
         self.resultArray = self.resultArray.filter(function)
         return self
     }
@@ -132,7 +132,7 @@ class $ {
     /// :param function Function to tell whether element value is true or false.
     /// :return Whether all elements are true according to func function.
     func all(function: (AnyObject) -> Bool) -> Bool {
-        return $.every(self.resultArray, iterator: function)
+        return Dollar.every(self.resultArray, iterator: function)
     }
     
     /// Returns if any element in array is true based on the passed function.
@@ -160,8 +160,8 @@ class $ {
     /// :param start Start index to start slicing from.
     /// :param end End index to stop slicing to and not including element at that index.
     /// :return The wrapper object.
-    func slice(start: Int, end: Int = 0) -> $ {
-        self.resultArray =  $.slice(self.resultArray, start: start, end: end);
+    func slice(start: Int, end: Int = 0) -> Self {
+        self.resultArray =  Dollar.slice(self.resultArray, start: start, end: end);
         return self;
     }
     
@@ -1007,3 +1007,6 @@ class $ {
     }
     
 }
+
+typealias $ = Dollar
+
