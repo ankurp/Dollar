@@ -97,6 +97,7 @@ Method | Usage
 ---- | ---------
 **`$.after`**|Creates a function that executes passed function only after being called n times.
 **`$.bind`**|Creates a function that, when called, invokes func with the binding of arguments provided.
+**`$.id`**|The identify function which simply returns the argument its given.
 **`$.partial`**|Creates a function that, when called, invokes func with any additional partial arguments prepended to those provided to the new function.
 **`$.times`**|Call a function n times and also passes the index. If a value is returned in the function then the times method will return an array of those values.
 
@@ -659,6 +660,15 @@ Creates a function that, when called, invokes func with the binding of arguments
 ```swift
 let helloWorldFunc = $.bind({(T...) in T[0] + " " + T[1] + " from " + T[2] }, "Hello", "World", "Swift")
 helloWorldFunc() 
+=> "Hello World from Swift"
+```
+
+### id - `$.id`
+
+The identify function which simply returns the argument its given.
+
+```swift
+$.id("Hello World from Swift")
 => "Hello World from Swift"
 ```
 
