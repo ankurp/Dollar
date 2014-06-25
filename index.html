@@ -293,6 +293,10 @@
 <td>Creates a function that, when called, invokes func with the binding of arguments provided.</td>
 </tr>
 <tr>
+<td><strong><code>$.id</code></strong></td>
+<td>The identify function which simply returns the argument its given.</td>
+</tr>
+<tr>
 <td><strong><code>$.partial</code></strong></td>
 <td>Creates a function that, when called, invokes func with any additional partial arguments prepended to those provided to the new function.</td>
 </tr>
@@ -951,6 +955,16 @@ $.contains(arr, value: $.sample(arr))
 </pre></div>
 
 <h3>
+<a name="id---id" class="anchor" href="#id---id"><span class="octicon octicon-link"></span></a>id - <code>$.id</code>
+</h3>
+
+<p>The identify function which simply returns the argument its given.</p>
+
+<div class="highlight highlight-swift"><pre><span class="err">$</span><span class="p">.</span><span class="kt">id</span><span class="p">(</span><span class="s">"Hello World from Swift"</span><span class="p">)</span>
+<span class="o">=&gt;</span> <span class="s">"Hello World from Swift"</span>
+</pre></div>
+
+<h3>
 <a name="partial---partial" class="anchor" href="#partial---partial"><span class="octicon octicon-link"></span></a>partial - <code>$.partial</code>
 </h3>
 
@@ -1020,7 +1034,7 @@ $.contains(arr, value: $.sample(arr))
 </ol><h2>
 <a name="roadmap" class="anchor" href="#roadmap"><span class="octicon octicon-link"></span></a>Roadmap</h2>
 
-<p>More functions will be added and then ability to chain operations and lazily evaluation of chained expressions.</p>
+<p>More functions such as curry function and then ability to lazily evaluat chained expressions.</p>
 
 <h2>
 <a name="why-not-extend-collection" class="anchor" href="#why-not-extend-collection"><span class="octicon octicon-link"></span></a>Why not extend collection?</h2>
