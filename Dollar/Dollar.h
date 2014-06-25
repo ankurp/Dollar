@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 Encore Dev Labs LLC. All rights reserved.
 //
 
-#import <Cocoa/Cocoa.h>
+#import <Foundation/Foundation.h>
 
 //! Project version number for Dollar.
 FOUNDATION_EXPORT double DollarVersionNumber;
