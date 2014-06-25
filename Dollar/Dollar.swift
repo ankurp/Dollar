@@ -254,20 +254,28 @@ class Dollar {
     /// :return The difference between the first array and all the remaining arrays from the arrays params.
     class func difference<T : Hashable>(arrays: T[]...) -> T[] {
         var result : T[] = []
-        var map : Dictionary<T, Bool> = Dictionary<T, Bool>()
+        var map : Dictionary<T, Int> = Dictionary<T, Int>()
         let firstArr : T[] = self.first(arrays)!
         let restArr : T[][] = self.rest(arrays) as T[][]
         
         for elem in firstArr {
-            map[elem] = true
+            if let val = map[elem] {
+                map[elem] = val + 1
+            } else {
+                map[elem] = 1
+            }
         }
         for arr in restArr {
             for elem in arr {
-                map.removeValueForKey(elem)
+                if let val = map[elem] {
+                    map[elem] = val - 1
+                }
             }
         }
-        for key in map.keys {
-            result += key
+        for (key, count) in map {
+            for _ in 0..count {
+                result += key
+            }
         }
         return result
     }
