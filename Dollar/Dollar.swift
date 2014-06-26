@@ -46,6 +46,20 @@ class $ {
         return $.first(self.resultArray)
     }
     
+    /// Get the second object in the wrapper object.
+    ///
+    /// :return Second element from the array.
+    func second() -> AnyObject? {
+        return $.second(self.resultArray)
+    }
+    
+    /// Get the Third object in the wrapper object.
+    ///
+    /// :return Thrid element from the array.
+    func third() -> AnyObject? {
+        return $.thrid(self.resultArray)
+    }
+    
     /// Flattens nested array.
     ///
     /// :return The wrapper object.
