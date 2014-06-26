@@ -24,6 +24,51 @@ class DollarTests: XCTestCase {
         XCTAssertNil($.first(NSObject[]()), "Returns nil when array is empty")
     }
 
+    func testSecond() {
+        XCTAssertEqualObjects($.second([1, 2, 3, 4, 5, 6, 7, 8, 9, 10])!, 2, "Return second element")
+        XCTAssertNil($.second(NSObject[]()), "Returns nil when array is empty")
+    }
+    
+    func testThird() {
+        XCTAssertEqualObjects($.third([1, 2, 3, 4, 5, 6, 7, 8, 9, 10])!, 3, "Return third element")
+        XCTAssertNil($.third(NSObject[]()), "Returns nil when array is empty")
+    }
+    
+    func testFourth() {
+        XCTAssertEqualObjects($.fourth([1, 2, 3, 4, 5, 6, 7, 8, 9, 10])!, 4, "Return fourth element")
+        XCTAssertNil($.fourt(NSObject[]()), "Returns nil when array is empty")
+    }
+    
+    func testFifth() {
+        XCTAssertEqualObjects($.fifth([1, 2, 3, 4, 5, 6, 7, 8, 9, 10])!, 5, "Return fifth element")
+        XCTAssertNil($.fifth(NSObject[]()), "Returns nil when array is empty")
+    }
+    
+    func testSixth() {
+        XCTAssertEqualObjects($.sixth([1, 2, 3, 4, 5, 6, 7, 8, 9, 10])!, 6, "Return sixth element")
+        XCTAssertNil($.sixth(NSObject[]()), "Returns nil when array is empty")
+    }
+    
+    func testSeventh() {
+        XCTAssertEqualObjects($.seventh([1, 2, 3, 4, 5, 6, 7, 8, 9, 10])!, 7, "Return seventh element")
+        XCTAssertNil($.seventh(NSObject[]()), "Returns nil when array is empty")
+    }
+    
+    func testEighth() {
+        XCTAssertEqualObjects($.eighth([1, 2, 3, 4, 5, 6, 7, 8, 9, 10])!, 8, "Return eighth element")
+        XCTAssertNil($.eighth(NSObject[]()), "Returns nil when array is empty")
+    }
+    
+    func testNinth() {
+        XCTAssertEqualObjects($.ninth([1, 2, 3, 4, 5, 6, 7, 8, 9, 10])!, 9, "Return ninth element")
+        XCTAssertNil($.ninth(NSObject[]()), "Returns nil when array is empty")
+    }
+    
+    func testTenth() {
+        XCTAssertEqualObjects($.tenth([1, 2, 3, 4, 5, 6, 7, 8, 9, 10])!, 10, "Return tenth element")
+        XCTAssertNil($.tenth(NSObject[]()), "Returns nil when array is empty")
+    }
+
     func testNoop() {
         XCTAssertNil($.noop(), "No op returns nothing")
     }
