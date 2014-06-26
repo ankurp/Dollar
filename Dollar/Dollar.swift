@@ -415,7 +415,7 @@ class $ {
     /// :param array The array to wrap.
     /// :return Second element from the array.
     class func second<T>(array: T[]) -> T? {
-        if array.isEmpty || array.count < 2 {
+        if array.count < 2 {
             return nil
         } else {
             return array[1]
@@ -427,7 +427,7 @@ class $ {
     /// :param array The array to wrap.
     /// :return Third element from the array.
     class func third<T>(array: T[]) -> T? {
-        if array.isEmpty || array.count < 3 {
+        if array.count < 3 {
             return nil
         } else {
             return array[2]
@@ -439,7 +439,7 @@ class $ {
     /// :param array The array to wrap.
     /// :return Fourth element from the array.
     class func fourth<T>(array: T[]) -> T? {
-        if array.isEmpty || array.count < 4 {
+        if array.count < 4 {
             return nil
         } else {
             return array[3]
@@ -451,7 +451,7 @@ class $ {
     /// :param array The array to wrap.
     /// :return Fifth element from the array.
     class func fifth<T>(array: T[]) -> T? {
-        if array.isEmpty || array.count < 5 {
+        if array.count < 5 {
             return nil
         } else {
             return array[4]
@@ -463,7 +463,7 @@ class $ {
     /// :param array The array to wrap.
     /// :return Sixth element from the array.
     class func sixth<T>(array: T[]) -> T? {
-        if array.isEmpty || array.count < 6 {
+        if array.count < 6 {
             return nil
         } else {
             return array[5]
@@ -475,7 +475,7 @@ class $ {
     /// :param array The array to wrap.
     /// :return Seventh element from the array.
     class func seventh<T>(array: T[]) -> T? {
-        if array.isEmpty || array.count < 7 {
+        if array.count < 7 {
             return nil
         } else {
             return array[6]
@@ -487,7 +487,7 @@ class $ {
     /// :param array The array to wrap.
     /// :return Eighth element from the array.
     class func eighth<T>(array: T[]) -> T? {
-        if array.isEmpty || array.count < 8 {
+        if array.count < 8 {
             return nil
         } else {
             return array[7]
@@ -499,7 +499,7 @@ class $ {
     /// :param array The array to wrap.
     /// :return Ninth element from the array.
     class func ninth<T>(array: T[]) -> T? {
-        if array.isEmpty || array.count < 9 {
+        if array.count < 9 {
             return nil
         } else {
             return array[8]
@@ -511,7 +511,7 @@ class $ {
     /// :param array The array to wrap.
     /// :return Tenth element from the array.
     class func tenth<T>(array: T[]) -> T? {
-        if array.isEmpty || array.count < 10 {
+        if array.count < 10 {
             return nil
         } else {
             return array[9]
