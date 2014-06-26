@@ -3,3 +3,6 @@ xcuserdata
 
 .DS_Store
 Build/
+
+.idea/
+*.iml
