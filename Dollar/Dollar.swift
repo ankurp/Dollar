@@ -267,9 +267,7 @@ class Dollar {
         }
         for arr in restArr {
             for elem in arr {
-                if let val = map[elem] {
-                    map[elem] = val - 1
-                }
+                map.removeValueForKey(elem)
             }
         }
         for (key, count) in map {
