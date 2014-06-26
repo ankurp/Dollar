@@ -347,6 +347,30 @@ class $ {
         }
     }
     
+    /// Gets the second element in the array.
+    ///
+    /// :param array The array to wrap.
+    /// :return Second element from the array.
+    class func second<T>(array: T[]) -> T? {
+        if array.isEmpty || array.count < 1 {
+            return nil
+        } else {
+            return array[1]
+        }
+    }
+    
+    /// Gets the third element in the array.
+    ///
+    /// :param array The array to wrap.
+    /// :return Third element from the array.
+    class func third<T>(array: T[]) -> T? {
+        if array.isEmpty || array.count < 2 {
+            return nil
+        } else {
+            return array[2]
+        }
+    }
+    
     /// Flattens a nested array of any depth.
     ///
     /// :param array The array to flatten.
