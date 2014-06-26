@@ -44,6 +44,15 @@ Method | Usage
 **`$.findIndex`**|This method is like find except that it returns the index of the first element that passes the callback check.
 **`$.findLastIndex`**|This method is like findIndex except that it iterates over elements of the array from right to left.
 **`$.first`**|Gets the first element in the array.
+**`$.second`**|Gets the second element in the array.
+**`$.third`**|Gets the third element in the array.
+**`$.fourth`**|Gets the fourth element in the array.
+**`$.fifth`**|Gets the fifth element in the array.
+**`$.sixth`**|Gets the sixth element in the array.
+**`$.seventh`**|Gets the seventh element in the array.
+**`$.eighth`**|Gets the eighth element in the array.
+**`$.ninth`**|Gets the ninth element in the array.
+**`$.tenth`**|Gets the tenth element in the array.
 **`$.flatten`**|Flattens a nested array of any depth.
 **`$.frequencies`**|This method returns a dictionary of values in an array mapping to the total number of occurrences in the array. If passed a function it returns a frequency table of the results of the given function on the arrays elements.
 **`$.indexOf`**|Gets the index at which the first occurrence of value is found.
@@ -112,6 +121,15 @@ Method | Usage
 **`each`**|Passes each element value to the callback function
 **`filter`**|Filters the arrary to elements for which the callback function returns true
 **`first`**|Returns the first element in the array and terminated the chain
+**`second`**|Returns the second element in the array and terminated the chain
+**`third`**|Returns the third element in the array and terminated the chain
+**`fouth`**|Returns the fourth element in the array and terminated the chain
+**`fifth`**|Returns the fifth element in the array and terminated the chain
+**`sixth`**|Returns the sixth element in the array and terminated the chain
+**`seventh`**|Returns the seventh element in the array and terminated the chain
+**`eighth`**|Returns the eighth element in the array and terminated the chain
+**`ninth`**|Returns the ninth element in the array and terminated the chain
+**`tenth`**|Returns the tenth element in the array and terminated the chain
 **`flatten`**|Flattens a nested array of any depth.
 **`initial`**|Gets all but the last element or last n elements of an array.
 **`map`**|Maps each element to the new value returned in the callback function
@@ -220,6 +238,21 @@ $.first([1, 2, 3, 4])
 => 1
 
 $.first([]) 
+=> nil
+```
+
+### second - `$.second(array: AnyObject[])`
+
+Gets the second element in the array.
+
+```
+$.second([1, 2, 3, 4])
+=> 2
+
+$.second([1]) 
+=> nil
+
+$.second([])
 => nil
 ```
 

@@ -46,6 +46,69 @@ class Dollar {
         return Dollar.first(self.resultArray)
     }
     
+    /// Get the second object in the wrapper object.
+    ///
+    /// :return Second element from the array.
+    func second() -> AnyObject? {
+        return $.second(self.resultArray)
+    }
+    
+    /// Get the third object in the wrapper object.
+    ///
+    /// :return Third element from the array.
+    func third() -> AnyObject? {
+        return $.third(self.resultArray)
+    }
+    
+    /// Get the fourth object in the wrapper object.
+    ///
+    /// :return Fourth element from the array.
+    func fourth() -> AnyObject? {
+        return $.fourth(self.resultArray)
+    }
+    
+    /// Get the fifth object in the wrapper object.
+    ///
+    /// :return Fifth element from the array.
+    func fifth() -> AnyObject? {
+        return $.fifth(self.resultArray)
+    }
+    
+    /// Get the sixth object in the wrapper object.
+    ///
+    /// :return Sixth element from the array.
+    func sixth() -> AnyObject? {
+        return $.sixth(self.resultArray)
+    }
+    
+    /// Get the seventh object in the wrapper object.
+    ///
+    /// :return Seventh element from the array.
+    func seventh() -> AnyObject? {
+        return $.seventh(self.resultArray)
+    }
+    
+    /// Get the eighth object in the wrapper object.
+    ///
+    /// :return Eighth element from the array.
+    func eighth() -> AnyObject? {
+        return $.eighth(self.resultArray)
+    }
+    
+    /// Get the ninth object in the wrapper object.
+    ///
+    /// :return Ninth element from the array.
+    func ninth() -> AnyObject? {
+        return $.ninth(self.resultArray)
+    }
+    
+    /// Get the tenth object in the wrapper object.
+    ///
+    /// :return Tenth element from the array.
+    func tenth() -> AnyObject? {
+        return $.tenth(self.resultArray)
+    }
+    
     /// Flattens nested array.
     ///
     /// :return The wrapper object.
@@ -350,6 +413,114 @@ class Dollar {
             return nil
         } else {
             return array[0]
+        }
+    }
+    
+    /// Gets the second element in the array.
+    ///
+    /// :param array The array to wrap.
+    /// :return Second element from the array.
+    class func second<T>(array: T[]) -> T? {
+        if array.count < 2 {
+            return nil
+        } else {
+            return array[1]
+        }
+    }
+    
+    /// Gets the third element in the array.
+    ///
+    /// :param array The array to wrap.
+    /// :return Third element from the array.
+    class func third<T>(array: T[]) -> T? {
+        if array.count < 3 {
+            return nil
+        } else {
+            return array[2]
+        }
+    }
+    
+    /// Gets the fourth element in the array.
+    ///
+    /// :param array The array to wrap.
+    /// :return Fourth element from the array.
+    class func fourth<T>(array: T[]) -> T? {
+        if array.count < 4 {
+            return nil
+        } else {
+            return array[3]
+        }
+    }
+    
+    /// Gets the fifth element in the array.
+    ///
+    /// :param array The array to wrap.
+    /// :return Fifth element from the array.
+    class func fifth<T>(array: T[]) -> T? {
+        if array.count < 5 {
+            return nil
+        } else {
+            return array[4]
+        }
+    }
+    
+    /// Gets the sixth element in the array.
+    ///
+    /// :param array The array to wrap.
+    /// :return Sixth element from the array.
+    class func sixth<T>(array: T[]) -> T? {
+        if array.count < 6 {
+            return nil
+        } else {
+            return array[5]
+        }
+    }
+    
+    /// Gets the seventh element in the array.
+    ///
+    /// :param array The array to wrap.
+    /// :return Seventh element from the array.
+    class func seventh<T>(array: T[]) -> T? {
+        if array.count < 7 {
+            return nil
+        } else {
+            return array[6]
+        }
+    }
+    
+    /// Gets the eighth element in the array.
+    ///
+    /// :param array The array to wrap.
+    /// :return Eighth element from the array.
+    class func eighth<T>(array: T[]) -> T? {
+        if array.count < 8 {
+            return nil
+        } else {
+            return array[7]
+        }
+    }
+    
+    /// Gets the ninth element in the array.
+    ///
+    /// :param array The array to wrap.
+    /// :return Ninth element from the array.
+    class func ninth<T>(array: T[]) -> T? {
+        if array.count < 9 {
+            return nil
+        } else {
+            return array[8]
+        }
+    }
+    
+    /// Gets the tenth element in the array.
+    ///
+    /// :param array The array to wrap.
+    /// :return Tenth element from the array.
+    class func tenth<T>(array: T[]) -> T? {
+        if array.count < 10 {
+            return nil
+        } else {
+            return array[9]
         }
     }
     
