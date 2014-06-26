@@ -768,7 +768,7 @@ If you are interested in contributing
 
 ## Roadmap ##
 
-More functions such as curry function and then ability to lazily evaluat chained expressions.
+More functions such as curry function and then ability to lazily evaluate chained expressions.
 
 
 ## Why not extend collection? ##
