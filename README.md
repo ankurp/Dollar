@@ -44,6 +44,8 @@ Method | Usage
 **`$.findIndex`**|This method is like find except that it returns the index of the first element that passes the callback check.
 **`$.findLastIndex`**|This method is like findIndex except that it iterates over elements of the array from right to left.
 **`$.first`**|Gets the first element in the array.
+**`$.second`**|Gets the second element in the array.
+**`$.third`**|Gets the third element in the array.
 **`$.flatten`**|Flattens a nested array of any depth.
 **`$.frequencies`**|This method returns a dictionary of values in an array mapping to the total number of occurrences in the array. If passed a function it returns a frequency table of the results of the given function on the arrays elements.
 **`$.indexOf`**|Gets the index at which the first occurrence of value is found.
@@ -111,6 +113,8 @@ Method | Usage
 **`each`**|Passes each element value to the callback function
 **`filter`**|Filters the arrary to elements for which the callback function returns true
 **`first`**|Returns the first element in the array and terminated the chain
+**`second`**|Returns the second element in the array and terminated the chain
+**`third`**|Returns the third element in the array and terminated the chain
 **`flatten`**|Flattens a nested array of any depth.
 **`initial`**|Gets all but the last element or last n elements of an array.
 **`map`**|Maps each element to the new value returned in the callback function
