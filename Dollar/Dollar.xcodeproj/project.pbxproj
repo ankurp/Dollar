@@ -82,8 +82,8 @@
 		92E0D03E19467C67002ACC3D /* Dollar */ = {
 			isa = PBXGroup;
 			children = (
-				92E0D05819467CA2002ACC3D /* Dollar.swift */,
 				92E0D04119467C67002ACC3D /* Dollar.h */,
+				92E0D05819467CA2002ACC3D /* Dollar.swift */,
 				92E0D03F19467C67002ACC3D /* Supporting Files */,
 			);
 			path = Dollar;
