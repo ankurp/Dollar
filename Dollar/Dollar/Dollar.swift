@@ -263,13 +263,22 @@ class Dollar {
         }
         return { f()? }
     }
-    
+
     /// Creates an array of elements from the specified indexes, or keys, of the collection.
     /// Indexes may be specified as individual arguments or as arrays of indexes.
     ///
     /// :param array The array to wrap.
     /// :return First element from the array.
     class func at<T>(array: T[], indexes: Int...) -> T[] {
+        return self.at(array, indexes: indexes)
+    }
+    
+    /// Creates an array of elements from the specified indexes, or keys, of the collection.
+    /// Indexes may be specified as individual arguments or as arrays of indexes.
+    ///
+    /// :param array The array to wrap.
+    /// :return First element from the array.
+    class func at<T>(array: T[], indexes: Int[]) -> T[] {
         var result: T[] = []
         for index in indexes {
             result += array[index]
@@ -528,10 +537,10 @@ class Dollar {
     ///
     /// :param array The array to flatten.
     /// :return Flattened array.
-    class func flatten(array: AnyObject[]) -> AnyObject[] {
-        var resultArr: AnyObject[] = []
-        for elem : AnyObject in array {
-            if let val = elem as? AnyObject[] {
+    class func flatten<T>(array: T[]) -> T[] {
+        var resultArr: T[] = []
+        for elem : T in array {
+            if let val = elem as? T[] {
                 resultArr += self.flatten(val)
             } else {
                 resultArr += elem

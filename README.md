@@ -3,6 +3,8 @@ Dollar.$wift [![Build Status](https://travis-ci.org/ankurp/Dollar.swift.svg?bran
 
 Dollar is a Swift library that provides useful functional programming helper methods without extending any built in objects. It is similar to Lo-Dash or Underscore in Javascript.
 
+Cent is a library that extends certain Swift object types using the extension feature and gives its two cents to Swift language.
+
 <div style="text-align:center;margin: 0 auto;"><img style="width:250px" src="http://i.imgur.com/zb88jFU.png" alt="Introducing Swift"></div>
 
 ## Contents ##
@@ -22,12 +24,14 @@ Dollar is a Swift library that provides useful functional programming helper met
   - [Chaining](#chaining---array-)
 - [Contributing](#contributing)
 - [Roadmap](#roadmap)
-- [Why?](#why-not-extend-collection)
+- [Dollar or Cent?](#dollar-or-cent)
 
 ## Setup ##
-Include the `Dollar.swift` into your project and import the library using `import Dollar`
+* Include the `Dollar` framework by dragging it into your project and import the library in your code using `import Dollar`
+OR
+* Include the `Cent` framework by dragging it into your project and import the library in your code using `import Cent`
 
-Currently there are issues loading the library using `pod 'Dollar', '~> 0.2'`
+Currently there are issues loading the library using `pod 'Dollar', '~> 0.2'` which is pending changes from Cocoapods.
 
 ## Usage ##
 
@@ -62,7 +66,6 @@ Method | Usage
 **`$.last`**|Gets the last element from the array.
 **`$.lastIndexOf`**|Gets the index at which the last occurrence of value is found.
 **`$.rest`**|The opposite of initial this method gets all but the first element or first n elements of an array.
-**`$.noop`**|A no-operation function.
 **`$.max`**|Retrieves the maximum value in an array.
 **`$.merge`**|Creates an array of all values, including duplicates, of the arrays in the order they are provided.
 **`$.min`**|Retrieves the minimum value in an array.
@@ -107,6 +110,8 @@ Method | Usage
 **`$.after`**|Creates a function that executes passed function only after being called n times.
 **`$.bind`**|Creates a function that, when called, invokes func with the binding of arguments provided.
 **`$.id`**|The identify function which simply returns the argument its given.
+**`$.memoize`**|Returns a memoized function to improve performance by caching recursive function values.
+**`$.noop`**|A no-operation function.
 **`$.partial`**|Creates a function that, when called, invokes func with any additional partial arguments prepended to those provided to the new function.
 **`$.times`**|Call a function n times and also passes the index. If a value is returned in the function then the times method will return an array of those values.
 
@@ -354,15 +359,6 @@ $.rest([3, 4, 5], numElements: 2)
 => [5]
 ```
 
-### noop - `$.noop()`
-
-A no-operation function.
-
-```swift
-$.noop() 
-=> nil
-```
-
 ### min - `$.min`
 
 Retrieves the minimum value in an array.
@@ -379,31 +375,6 @@ Retrieves the maximum value in an array.
 ```swift
 $.max([1, 2, 3, 4, 2, 1]) 
 => 4
-```
-
-### memoize - `$.memoize`
-
-```swift
-var times = 0 // to test memoization
-
-let fibMemo = $.memoize { (fib: (Int -> Int), val: Int) -> Int in
-    times += 1
-    return val == 1 || val == 0 ? 1 : fib(val - 1) + fib(val - 2)
-}
-
-let x = fibMemo(5)
-times
-=> 6
-
-times = 0
-let y = fibMemo(5)
-times
-=> 0
-
-times = 0
-let z = fibMemo(6)
-times
-=> 1
 ```
 
 ### pluck - `$.pluck`
@@ -705,6 +676,42 @@ $.id("Hello World from Swift")
 => "Hello World from Swift"
 ```
 
+### memoize - `$.memoize`
+
+Returns a memoized function to improve performance by caching recursive function values.
+
+```swift
+var times = 0 // to test memoization
+
+let fibMemo = $.memoize { (fib: (Int -> Int), val: Int) -> Int in
+times += 1
+return val == 1 || val == 0 ? 1 : fib(val - 1) + fib(val - 2)
+}
+
+let x = fibMemo(5)
+times
+=> 6
+
+times = 0
+let y = fibMemo(5)
+times
+=> 0
+
+times = 0
+let z = fibMemo(6)
+times
+=> 1
+```
+
+### noop - `$.noop()`
+
+A no-operation function.
+
+```swift
+$.noop() 
+=> nil
+```
+
 ### partial - `$.partial`
 
 Creates a function that, when called, invokes func with any additional partial arguments prepended to those provided to the new function.
@@ -768,9 +775,9 @@ If you are interested in contributing
 
 ## Roadmap ##
 
-More functions such as curry function and then ability to lazily evaluate chained expressions.
+* More functions such as curry function and then ability to lazily evaluate chained expressions.
+* Add extention functions to the Cent library
 
 
-## Why not extend collection? ##
-1. The project doesnt extend or monkey patch the collection using the extension features to keep it purely functional and
-2. To not override any methods via extensions if Apple decides to add those methods into the collection class themselves as part of the language update. This could lead to inconsistent behavior for those who use the library and those who don't.
+### Dollar or Cent ###
+If you are interested only in pure functional programming `import Dollar` otherwise `import Cent` which includes extensions for certain object type such as Array for now but more will be added.
