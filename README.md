@@ -5,8 +5,6 @@ Dollar is a Swift library that provides useful functional programming helper met
 
 Cent is a library that extends certain Swift object types using the extension feature and gives its two cents to Swift language.
 
-<div style="text-align:center;margin: 0 auto;"><img style="width:250px" src="http://i.imgur.com/zb88jFU.png" alt="Introducing Swift"></div>
-
 ## Contents ##
 
 - [Setup](#setup)
