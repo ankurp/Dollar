@@ -3,6 +3,8 @@ Dollar.$wift [![Build Status](https://travis-ci.org/ankurp/Dollar.swift.svg?bran
 
 Dollar is a Swift library that provides useful functional programming helper methods without extending any built in objects. It is similar to Lo-Dash or Underscore in Javascript.
 
+Cent is a library that extends certain Swift object types using the extension feature and gives its two cents to Swift language.
+
 <div style="text-align:center;margin: 0 auto;"><img style="width:250px" src="http://i.imgur.com/zb88jFU.png" alt="Introducing Swift"></div>
 
 ## Contents ##
@@ -22,12 +24,14 @@ Dollar is a Swift library that provides useful functional programming helper met
   - [Chaining](#chaining---array-)
 - [Contributing](#contributing)
 - [Roadmap](#roadmap)
-- [Why?](#why-not-extend-collection)
+- [Dollar or Cent?](#dollar-or-cent)
 
 ## Setup ##
-Include the `Dollar.swift` into your project and import the library using `import Dollar`
+* Include the `Dollar` framework by dragging it into your project and import the library in your code using `import Dollar`
+OR
+* Include the `Cent` framework by dragging it into your project and import the library in your code using `import Cent`
 
-Currently there are issues loading the library using `pod 'Dollar', '~> 0.2'`
+Currently there are issues loading the library using `pod 'Dollar', '~> 0.2'` which is pending changes from Cocoapods.
 
 ## Usage ##
 
@@ -771,9 +775,9 @@ If you are interested in contributing
 
 ## Roadmap ##
 
-More functions such as curry function and then ability to lazily evaluate chained expressions.
+* More functions such as curry function and then ability to lazily evaluate chained expressions.
+* Add extention functions to the Cent library
 
 
-## Why not extend collection? ##
-1. The project doesnt extend or monkey patch the collection using the extension features to keep it purely functional and
-2. To not override any methods via extensions if Apple decides to add those methods into the collection class themselves as part of the language update. This could lead to inconsistent behavior for those who use the library and those who don't.
+### Dollar or Cent ###
+If you are interested only in pure functional programming `import Dollar` otherwise `import Cent` which includes extensions for certain object type such as Array for now but more will be added.
