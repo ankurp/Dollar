@@ -1,9 +1,9 @@
 Dollar and Cent [![Build Status](https://travis-ci.org/ankurp/Dollar.swift.svg?branch=master)](https://travis-ci.org/ankurp/Dollar.swift)
 ===========
 
-![Introducing Dollar](https://raw.githubusercontent.com/ankurp/Dollar.swift/master/Dollar.png) Dollar is a Swift library that provides useful functional programming helper methods without extending any built in objects. It is similar to Lo-Dash or Underscore in Javascript.
+<img src="https://raw.githubusercontent.com/ankurp/Dollar.swift/master/Dollar.png" align="left" /> Dollar is a Swift library that provides useful functional programming helper methods without extending any built in objects. It is similar to Lo-Dash or Underscore in Javascript.
 
-![Introducing Cent](https://raw.githubusercontent.com/ankurp/Dollar.swift/master/Cent.png) Cent is a library that extends certain Swift object types using the extension feature and gives its two cents to Swift language.
+<img src="https://raw.githubusercontent.com/ankurp/Dollar.swift/master/Cent.png" align="left" /> Cent is a library that extends certain Swift object types using the extension feature and gives its two cents to Swift language.
 
 ## Contents ##
 
