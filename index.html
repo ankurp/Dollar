@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <title>Dollar.$wift by ankurp</title>
+    <title>Dollar and Cent by ankurp</title>
 
     <link rel="stylesheet" href="stylesheets/styles.css">
     <link rel="stylesheet" href="stylesheets/pygment_trac.css">
@@ -17,8 +17,8 @@
   <body>
     <div class="wrapper">
       <header>
-        <h1>Dollar.$wift</h1>
-        <p>A functional tool-belt for Swift Language similar to Lo-Dash or Underscore in Javascript</p>
+        <h1>Dollar and Cent</h1>
+        <p>Dollar is a functional tool-belt and Cent is an extension for missing methods in Swift</p>
         <p class="view"><a href="https://github.com/ankurp/Dollar.swift">View the Project on GitHub <small>ankurp/Dollar.swift</small></a></p>
         <ul>
           <li><a href="https://github.com/ankurp/Dollar.swift/zipball/master">Download <strong>ZIP File</strong></a></li>
@@ -29,7 +29,9 @@
       <section>
         <p>Dollar is a Swift library that provides useful functional programming helper methods without extending any built in objects. It is similar to Lo-Dash or Underscore in Javascript.</p>
 
-<div><img src="http://i.imgur.com/zb88jFU.png" alt="Introducing Swift"></div>
+<p>Cent is a library that extends certain Swift object types using the extension feature and gives its two cents to Swift language.</p>
+
+<p><a href="https://github.com/ankurp/Dollar.swift"><div><img src="http://i.imgur.com/zb88jFU.png" alt="Introducing Swift"></div></a></p>
 
 <h2>
 <a name="contents" class="anchor" href="#contents"><span class="octicon octicon-link"></span></a>Contents</h2>
@@ -60,13 +62,16 @@
 </li>
 <li><a href="#contributing">Contributing</a></li>
 <li><a href="#roadmap">Roadmap</a></li>
-<li><a href="#why-not-extend-collection">Why?</a></li>
+<li><a href="#dollar-or-cent">Dollar or Cent?</a></li>
 </ul><h2>
 <a name="setup" class="anchor" href="#setup"><span class="octicon octicon-link"></span></a>Setup</h2>
 
-<p>Include the <code>Dollar.swift</code> into your project and import the library using <code>import Dollar</code></p>
-
-<p>Currently there are issues loading the library using <code>pod 'Dollar', '~&gt; 0.2'</code></p>
+<ul>
+<li>Include the <code>Dollar</code> framework by dragging it into your project and import the library in your code using <code>import Dollar</code>
+OR</li>
+<li>Include the <code>Cent</code> framework by dragging it into your project and import the library in your code using <code>import Cent</code>
+</li>
+</ul><p>Currently there are issues loading the library using <code>pod 'Dollar', '~&gt; 0.2'</code> which is pending changes from Cocoapods.</p>
 
 <h2>
 <a name="usage" class="anchor" href="#usage"><span class="octicon octicon-link"></span></a>Usage</h2>
@@ -117,6 +122,42 @@
 <td>Gets the first element in the array.</td>
 </tr>
 <tr>
+<td><strong><code>$.second</code></strong></td>
+<td>Gets the second element in the array.</td>
+</tr>
+<tr>
+<td><strong><code>$.third</code></strong></td>
+<td>Gets the third element in the array.</td>
+</tr>
+<tr>
+<td><strong><code>$.fourth</code></strong></td>
+<td>Gets the fourth element in the array.</td>
+</tr>
+<tr>
+<td><strong><code>$.fifth</code></strong></td>
+<td>Gets the fifth element in the array.</td>
+</tr>
+<tr>
+<td><strong><code>$.sixth</code></strong></td>
+<td>Gets the sixth element in the array.</td>
+</tr>
+<tr>
+<td><strong><code>$.seventh</code></strong></td>
+<td>Gets the seventh element in the array.</td>
+</tr>
+<tr>
+<td><strong><code>$.eighth</code></strong></td>
+<td>Gets the eighth element in the array.</td>
+</tr>
+<tr>
+<td><strong><code>$.ninth</code></strong></td>
+<td>Gets the ninth element in the array.</td>
+</tr>
+<tr>
+<td><strong><code>$.tenth</code></strong></td>
+<td>Gets the tenth element in the array.</td>
+</tr>
+<tr>
 <td><strong><code>$.flatten</code></strong></td>
 <td>Flattens a nested array of any depth.</td>
 </tr>
@@ -151,10 +192,6 @@
 <tr>
 <td><strong><code>$.rest</code></strong></td>
 <td>The opposite of initial this method gets all but the first element or first n elements of an array.</td>
-</tr>
-<tr>
-<td><strong><code>$.noop</code></strong></td>
-<td>A no-operation function.</td>
 </tr>
 <tr>
 <td><strong><code>$.max</code></strong></td>
@@ -297,6 +334,14 @@
 <td>The identify function which simply returns the argument its given.</td>
 </tr>
 <tr>
+<td><strong><code>$.memoize</code></strong></td>
+<td>Returns a memoized function to improve performance by caching recursive function values.</td>
+</tr>
+<tr>
+<td><strong><code>$.noop</code></strong></td>
+<td>A no-operation function.</td>
+</tr>
+<tr>
 <td><strong><code>$.partial</code></strong></td>
 <td>Creates a function that, when called, invokes func with any additional partial arguments prepended to those provided to the new function.</td>
 </tr>
@@ -335,6 +380,42 @@
 <tr>
 <td><strong><code>first</code></strong></td>
 <td>Returns the first element in the array and terminated the chain</td>
+</tr>
+<tr>
+<td><strong><code>second</code></strong></td>
+<td>Returns the second element in the array and terminated the chain</td>
+</tr>
+<tr>
+<td><strong><code>third</code></strong></td>
+<td>Returns the third element in the array and terminated the chain</td>
+</tr>
+<tr>
+<td><strong><code>fouth</code></strong></td>
+<td>Returns the fourth element in the array and terminated the chain</td>
+</tr>
+<tr>
+<td><strong><code>fifth</code></strong></td>
+<td>Returns the fifth element in the array and terminated the chain</td>
+</tr>
+<tr>
+<td><strong><code>sixth</code></strong></td>
+<td>Returns the sixth element in the array and terminated the chain</td>
+</tr>
+<tr>
+<td><strong><code>seventh</code></strong></td>
+<td>Returns the seventh element in the array and terminated the chain</td>
+</tr>
+<tr>
+<td><strong><code>eighth</code></strong></td>
+<td>Returns the eighth element in the array and terminated the chain</td>
+</tr>
+<tr>
+<td><strong><code>ninth</code></strong></td>
+<td>Returns the ninth element in the array and terminated the chain</td>
+</tr>
+<tr>
+<td><strong><code>tenth</code></strong></td>
+<td>Returns the tenth element in the array and terminated the chain</td>
 </tr>
 <tr>
 <td><strong><code>flatten</code></strong></td>
@@ -473,6 +554,22 @@
 </pre></div>
 
 <h3>
+<a name="second---secondarray-anyobject" class="anchor" href="#second---secondarray-anyobject"><span class="octicon octicon-link"></span></a>second - <code>$.second(array: AnyObject[])</code>
+</h3>
+
+<p>Gets the second element in the array.</p>
+
+<pre><code>$.second([1, 2, 3, 4])
+=&gt; 2
+
+$.second([1]) 
+=&gt; nil
+
+$.second([])
+=&gt; nil
+</code></pre>
+
+<h3>
 <a name="flatten---flatten" class="anchor" href="#flatten---flatten"><span class="octicon octicon-link"></span></a>flatten - <code>$.flatten</code>
 </h3>
 
@@ -580,16 +677,6 @@
 </pre></div>
 
 <h3>
-<a name="noop---noop" class="anchor" href="#noop---noop"><span class="octicon octicon-link"></span></a>noop - <code>$.noop()</code>
-</h3>
-
-<p>A no-operation function.</p>
-
-<div class="highlight highlight-swift"><pre><span class="err">$</span><span class="p">.</span><span class="n">noop</span><span class="p">()</span> 
-<span class="o">=&gt;</span> <span class="nb">nil</span>
-</pre></div>
-
-<h3>
 <a name="min---min" class="anchor" href="#min---min"><span class="octicon octicon-link"></span></a>min - <code>$.min</code>
 </h3>
 
@@ -607,32 +694,6 @@
 
 <div class="highlight highlight-swift"><pre><span class="err">$</span><span class="p">.</span><span class="n">max</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span> 
 <span class="o">=&gt;</span> <span class="mi">4</span>
-</pre></div>
-
-<h3>
-<a name="memoize---memoize" class="anchor" href="#memoize---memoize"><span class="octicon octicon-link"></span></a>memoize - <code>$.memoize</code>
-</h3>
-
-<div class="highlight highlight-swift"><pre><span class="k">var</span> <span class="n">times</span> <span class="o">=</span> <span class="mi">0</span> <span class="c1">// to test memoization</span>
-
-<span class="k">let</span> <span class="n">fibMemo</span> <span class="o">=</span> <span class="err">$</span><span class="p">.</span><span class="n">memoize</span> <span class="p">{</span> <span class="p">(</span><span class="nl">fib</span><span class="p">:</span> <span class="p">(</span><span class="n">Int</span> <span class="o">-&gt;</span> <span class="n">Int</span><span class="p">),</span> <span class="nl">val</span><span class="p">:</span> <span class="n">Int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Int</span> <span class="k">in</span>
-    <span class="n">times</span> <span class="o">+=</span> <span class="mi">1</span>
-    <span class="k">return</span> <span class="n">val</span> <span class="o">==</span> <span class="mi">1</span> <span class="o">||</span> <span class="n">val</span> <span class="o">==</span> <span class="mi">0</span> <span class="o">?</span> <span class="mi">1</span> <span class="o">:</span> <span class="n">fib</span><span class="p">(</span><span class="n">val</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">fib</span><span class="p">(</span><span class="n">val</span> <span class="o">-</span> <span class="mi">2</span><span class="p">)</span>
-<span class="p">}</span>
-
-<span class="k">let</span> <span class="n">x</span> <span class="o">=</span> <span class="n">fibMemo</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
-<span class="n">times</span>
-<span class="o">=&gt;</span> <span class="mi">6</span>
-
-<span class="n">times</span> <span class="o">=</span> <span class="mi">0</span>
-<span class="k">let</span> <span class="n">y</span> <span class="o">=</span> <span class="n">fibMemo</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
-<span class="n">times</span>
-<span class="o">=&gt;</span> <span class="mi">0</span>
-
-<span class="n">times</span> <span class="o">=</span> <span class="mi">0</span>
-<span class="k">let</span> <span class="n">z</span> <span class="o">=</span> <span class="n">fibMemo</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span>
-<span class="n">times</span>
-<span class="o">=&gt;</span> <span class="mi">1</span>
 </pre></div>
 
 <h3>
@@ -965,6 +1026,44 @@ $.contains(arr, value: $.sample(arr))
 </pre></div>
 
 <h3>
+<a name="memoize---memoize" class="anchor" href="#memoize---memoize"><span class="octicon octicon-link"></span></a>memoize - <code>$.memoize</code>
+</h3>
+
+<p>Returns a memoized function to improve performance by caching recursive function values.</p>
+
+<div class="highlight highlight-swift"><pre><span class="k">var</span> <span class="n">times</span> <span class="o">=</span> <span class="mi">0</span> <span class="c1">// to test memoization</span>
+
+<span class="k">let</span> <span class="n">fibMemo</span> <span class="o">=</span> <span class="err">$</span><span class="p">.</span><span class="n">memoize</span> <span class="p">{</span> <span class="p">(</span><span class="nl">fib</span><span class="p">:</span> <span class="p">(</span><span class="n">Int</span> <span class="o">-&gt;</span> <span class="n">Int</span><span class="p">),</span> <span class="nl">val</span><span class="p">:</span> <span class="n">Int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Int</span> <span class="k">in</span>
+<span class="n">times</span> <span class="o">+=</span> <span class="mi">1</span>
+<span class="k">return</span> <span class="n">val</span> <span class="o">==</span> <span class="mi">1</span> <span class="o">||</span> <span class="n">val</span> <span class="o">==</span> <span class="mi">0</span> <span class="o">?</span> <span class="mi">1</span> <span class="o">:</span> <span class="n">fib</span><span class="p">(</span><span class="n">val</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">fib</span><span class="p">(</span><span class="n">val</span> <span class="o">-</span> <span class="mi">2</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="k">let</span> <span class="n">x</span> <span class="o">=</span> <span class="n">fibMemo</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">times</span>
+<span class="o">=&gt;</span> <span class="mi">6</span>
+
+<span class="n">times</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">let</span> <span class="n">y</span> <span class="o">=</span> <span class="n">fibMemo</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">times</span>
+<span class="o">=&gt;</span> <span class="mi">0</span>
+
+<span class="n">times</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">let</span> <span class="n">z</span> <span class="o">=</span> <span class="n">fibMemo</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span>
+<span class="n">times</span>
+<span class="o">=&gt;</span> <span class="mi">1</span>
+</pre></div>
+
+<h3>
+<a name="noop---noop" class="anchor" href="#noop---noop"><span class="octicon octicon-link"></span></a>noop - <code>$.noop()</code>
+</h3>
+
+<p>A no-operation function.</p>
+
+<div class="highlight highlight-swift"><pre><span class="err">$</span><span class="p">.</span><span class="n">noop</span><span class="p">()</span> 
+<span class="o">=&gt;</span> <span class="nb">nil</span>
+</pre></div>
+
+<h3>
 <a name="partial---partial" class="anchor" href="#partial---partial"><span class="octicon octicon-link"></span></a>partial - <code>$.partial</code>
 </h3>
 
@@ -1034,15 +1133,13 @@ $.contains(arr, value: $.sample(arr))
 </ol><h2>
 <a name="roadmap" class="anchor" href="#roadmap"><span class="octicon octicon-link"></span></a>Roadmap</h2>
 
-<p>More functions such as curry function and then ability to lazily evaluat chained expressions.</p>
+<ul>
+<li>More functions such as curry function and then ability to lazily evaluate chained expressions.</li>
+<li>Add extention functions to the Cent library</li>
+</ul><h3>
+<a name="dollar-or-cent" class="anchor" href="#dollar-or-cent"><span class="octicon octicon-link"></span></a>Dollar or Cent</h3>
 
-<h2>
-<a name="why-not-extend-collection" class="anchor" href="#why-not-extend-collection"><span class="octicon octicon-link"></span></a>Why not extend collection?</h2>
-
-<ol>
-<li>The project doesnt extend or monkey patch the collection using the extension features to keep it purely functional and</li>
-<li>To not override any methods via extensions if Apple decides to add those methods into the collection class themselves as part of the language update. This could lead to inconsistent behavior for those who use the library and those who don't.</li>
-</ol>
+<p>If you are interested only in pure functional programming <code>import Dollar</code> otherwise <code>import Cent</code> which includes extensions for certain object type such as Array for now but more will be added.</p>
       </section>
     </div>
     <footer>
