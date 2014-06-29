@@ -16,4 +16,7 @@
    <FileRef
       location = "group:README.md">
    </FileRef>
+   <FileRef
+      location = "group:CONTRIBUTING.md">
+   </FileRef>
 </Workspace>
