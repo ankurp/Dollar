@@ -7,4 +7,13 @@
    <FileRef
       location = "group:Dollar/Dollar.xcodeproj">
    </FileRef>
+   <FileRef
+      location = "group:Dollar.podspec">
+   </FileRef>
+   <FileRef
+      location = "group:LICENSE">
+   </FileRef>
+   <FileRef
+      location = "group:README.md">
+   </FileRef>
 </Workspace>

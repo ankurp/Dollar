@@ -7,7 +7,8 @@
 //
 
 import XCTest
+import Cent
 
 class CentTests: XCTestCase {
-    
+
 }

@@ -62,7 +62,6 @@ Method | Usage
 **`$.last`**|Gets the last element from the array.
 **`$.lastIndexOf`**|Gets the index at which the last occurrence of value is found.
 **`$.rest`**|The opposite of initial this method gets all but the first element or first n elements of an array.
-**`$.noop`**|A no-operation function.
 **`$.max`**|Retrieves the maximum value in an array.
 **`$.merge`**|Creates an array of all values, including duplicates, of the arrays in the order they are provided.
 **`$.min`**|Retrieves the minimum value in an array.
@@ -107,6 +106,8 @@ Method | Usage
 **`$.after`**|Creates a function that executes passed function only after being called n times.
 **`$.bind`**|Creates a function that, when called, invokes func with the binding of arguments provided.
 **`$.id`**|The identify function which simply returns the argument its given.
+**`$.memoize`**|Returns a memoized function to improve performance by caching recursive function values.
+**`$.noop`**|A no-operation function.
 **`$.partial`**|Creates a function that, when called, invokes func with any additional partial arguments prepended to those provided to the new function.
 **`$.times`**|Call a function n times and also passes the index. If a value is returned in the function then the times method will return an array of those values.
 
@@ -354,15 +355,6 @@ $.rest([3, 4, 5], numElements: 2)
 => [5]
 ```
 
-### noop - `$.noop()`
-
-A no-operation function.
-
-```swift
-$.noop() 
-=> nil
-```
-
 ### min - `$.min`
 
 Retrieves the minimum value in an array.
@@ -379,31 +371,6 @@ Retrieves the maximum value in an array.
 ```swift
 $.max([1, 2, 3, 4, 2, 1]) 
 => 4
-```
-
-### memoize - `$.memoize`
-
-```swift
-var times = 0 // to test memoization
-
-let fibMemo = $.memoize { (fib: (Int -> Int), val: Int) -> Int in
-    times += 1
-    return val == 1 || val == 0 ? 1 : fib(val - 1) + fib(val - 2)
-}
-
-let x = fibMemo(5)
-times
-=> 6
-
-times = 0
-let y = fibMemo(5)
-times
-=> 0
-
-times = 0
-let z = fibMemo(6)
-times
-=> 1
 ```
 
 ### pluck - `$.pluck`
@@ -703,6 +670,42 @@ The identify function which simply returns the argument its given.
 ```swift
 $.id("Hello World from Swift")
 => "Hello World from Swift"
+```
+
+### memoize - `$.memoize`
+
+Returns a memoized function to improve performance by caching recursive function values.
+
+```swift
+var times = 0 // to test memoization
+
+let fibMemo = $.memoize { (fib: (Int -> Int), val: Int) -> Int in
+times += 1
+return val == 1 || val == 0 ? 1 : fib(val - 1) + fib(val - 2)
+}
+
+let x = fibMemo(5)
+times
+=> 6
+
+times = 0
+let y = fibMemo(5)
+times
+=> 0
+
+times = 0
+let z = fibMemo(6)
+times
+=> 1
+```
+
+### noop - `$.noop()`
+
+A no-operation function.
+
+```swift
+$.noop() 
+=> nil
 ```
 
 ### partial - `$.partial`
