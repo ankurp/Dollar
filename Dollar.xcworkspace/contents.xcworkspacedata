@@ -8,9 +8,6 @@
       location = "group:Dollar/Dollar.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:Dollar.podspec">
-   </FileRef>
-   <FileRef
       location = "group:LICENSE">
    </FileRef>
    <FileRef
@@ -18,5 +15,11 @@
    </FileRef>
    <FileRef
       location = "group:CONTRIBUTING.md">
+   </FileRef>
+   <FileRef
+      location = "group:Dollar/Dollar.podspec">
+   </FileRef>
+   <FileRef
+      location = "group:Cent/Cent.podspec">
    </FileRef>
 </Workspace>
