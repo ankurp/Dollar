@@ -1,5 +1,5 @@
 //
-//  Array+Cent.swift
+//  Array.swift
 //  Cent
 //
 //  Created by Ankur Patel on 6/28/14.
