@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		920C569C1962514E009D5129 /* Dictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 920C569B1962514E009D5129 /* Dictionary.swift */; };
+		920C569E196251B5009D5129 /* Int.swift in Sources */ = {isa = PBXBuildFile; fileRef = 920C569D196251B5009D5129 /* Int.swift */; };
+		920C56A0196251D7009D5129 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 920C569F196251D7009D5129 /* String.swift */; };
+		920C56A419625401009D5129 /* Range.swift in Sources */ = {isa = PBXBuildFile; fileRef = 920C56A319625401009D5129 /* Range.swift */; };
+		920C56A8196255E6009D5129 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 920C56A7196255E6009D5129 /* Date.swift */; };
 		924F92E2195F8338003DBB60 /* Cent.h in Headers */ = {isa = PBXBuildFile; fileRef = 924F92E1195F8338003DBB60 /* Cent.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		924F92E8195F8338003DBB60 /* Cent.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 924F92DC195F8338003DBB60 /* Cent.framework */; };
 		924F92EF195F8338003DBB60 /* CentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 924F92EE195F8338003DBB60 /* CentTests.swift */; };
@@ -16,6 +21,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		920C569B1962514E009D5129 /* Dictionary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dictionary.swift; sourceTree = "<group>"; };
+		920C569D196251B5009D5129 /* Int.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Int.swift; sourceTree = "<group>"; };
+		920C569F196251D7009D5129 /* String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
+		920C56A319625401009D5129 /* Range.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Range.swift; sourceTree = "<group>"; };
+		920C56A7196255E6009D5129 /* Date.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
 		924F92DC195F8338003DBB60 /* Cent.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Cent.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		924F92E0195F8338003DBB60 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		924F92E1195F8338003DBB60 /* Cent.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Cent.h; sourceTree = "<group>"; };
@@ -70,6 +80,11 @@
 			children = (
 				924F92E1195F8338003DBB60 /* Cent.h */,
 				924F92FA195F854B003DBB60 /* Array.swift */,
+				920C569B1962514E009D5129 /* Dictionary.swift */,
+				920C569D196251B5009D5129 /* Int.swift */,
+				920C569F196251D7009D5129 /* String.swift */,
+				920C56A319625401009D5129 /* Range.swift */,
+				920C56A7196255E6009D5129 /* Date.swift */,
 				924F92DF195F8338003DBB60 /* Supporting Files */,
 			);
 			path = Cent;
@@ -207,7 +222,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				920C569E196251B5009D5129 /* Int.swift in Sources */,
+				920C56A8196255E6009D5129 /* Date.swift in Sources */,
 				924F92FB195F854B003DBB60 /* Array.swift in Sources */,
+				920C56A419625401009D5129 /* Range.swift in Sources */,
+				920C56A0196251D7009D5129 /* String.swift in Sources */,
+				920C569C1962514E009D5129 /* Dictionary.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
