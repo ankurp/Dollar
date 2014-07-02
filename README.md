@@ -10,18 +10,32 @@ Cent is a library that extends certain Swift object types using the extension fe
 ## Contents ##
 
 - [Setup](#setup)
-- [Usage](#usage)
+- [Dollar Usage](#dollar-usage)
   - [Array](#array-methods)
   - [Dictionary](#dictionary-methods)
   - [Object](#object-methods)
   - [Function](#function-methods)
   - [Chaining](#chaining)
-- [Examples](#examples)
+- [Dollar Examples](#dollar-examples)
   - [Array](#array)
   - [Dictionary](#dictionary)
   - [Object](#object)
   - [Function](#function)
   - [Chaining](#chaining---array-)
+- [Cent Usage](#cent-usage)
+  - [Array](#array-extensions)
+  - [Date](#date-extensions)  
+  - [Dictionary](#dictionary-extensions)
+  - [Int](#int-extensions)
+  - [String](#string-extensions)
+  - [Range](#range-extensions)
+- [Cent Examples](#cent-examples)
+  - [Array](#array-example-usage)
+  - [Date](#date-example-usage)
+  - [Dictionary](#dictionary-example-usage)
+  - [Int](#int-example-usage)
+  - [String](#string-example-usage)
+  - [Range](#range-example-usage)
 - [Contributing](#contributing)
 - [Roadmap](#roadmap)
 - [Dollar or Cent?](#dollar-or-cent)
@@ -33,7 +47,7 @@ OR
 
 Currently there are issues loading the library using `pod 'Dollar', '~> 0.2'` which is pending changes from Cocoapods.
 
-## Usage ##
+## Dollar Usage ##
 
 ### Array Methods ###
 
@@ -141,7 +155,7 @@ Method | Usage
 **`slice`**|Slices the array based on the start and end position. If an end position is not specified it will slice till the end of the array.
 **`value`**|Returns the array after applying all of the chained operators on it.
 
-## Examples ##
+## Dollar Examples ##
 
 ### Array ###
 
@@ -767,6 +781,65 @@ chain.all { ($0 as Int) < 40 }
 chain.any { ($0 as Int) < 40 } 
 => true
 ```
+
+
+## Cent Usage ##
+
+### Array Extensions ###
+
+Method | Usage
+---- | ---------
+> TODO: Add methods
+
+### Date Extensions ###
+
+Method | Usage
+---- | ---------
+> TODO: Add methods
+
+### Dictionary Extensions ###
+
+Method | Usage
+---- | ---------
+> TODO: Add methods
+
+### Int Extensions ###
+
+Method | Usage
+---- | ---------
+> TODO: Add methods
+
+### String Extensions ###
+
+Method | Usage
+---- | ---------
+> TODO: Add methods
+
+### Range Extensions ###
+
+Method | Usage
+---- | ---------
+> TODO: Add methods
+
+## Cent Examples ##
+
+### Array Example Usage ###
+> TODO: Add exmaples
+
+### Date Example Usage ###
+> TODO: Add exmaples
+
+### Dictionary Example Usage ###
+> TODO: Add exmaples
+
+### Int Example Usage ###
+> TODO: Add exmaples
+
+### String Example Usage ###
+> TODO: Add exmaples
+
+### Range Example Usage ###
+> TODO: Add exmaples
 
 ## Contributing ##
 If you are interested in contributing checkout [CONTRIBUTING.md](CONTRIBUTING.md)
