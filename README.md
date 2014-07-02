@@ -605,7 +605,8 @@ Merges all of the dictionaries together and the latter dictionary overrides the 
 let dict: Dictionary<String, Int> = ["Dog": 1, "Cat": 2]
 let dict2: Dictionary<String, Int> = ["Cow": 3]
 let dict3: Dictionary<String, Int> = ["Sheep": 4]
-$.merge(dict, dictionaries: dict2, dict3)
+$.merge(dictionaries: dict, dict2, dict3)
+=> ["Dog": 1, "Cat": 2, "Cow": 3, "Sheep": 4]
 ```
 
 ### pick - `$.pick`
@@ -614,6 +615,7 @@ Creates a shallow clone of a dictionary composed of the specified keys.
 
 ```swift
 $.pick(["Dog": 1, "Cat": 2, "Cow": 3], keys: "Dog", "Cow")
+=> ["Dog": 1, "Cow": 3]
 ```
 
 ### omit - `$.omit`
@@ -622,6 +624,7 @@ Creates a shallow clone of a dictionary excluding the specified keys.
 
 ```swift
 $.omit(["Dog": 1, "Cat": 2, "Cow": 3], keys: "Cat", "Dog")
+=> ["Cow": 3, "Sheep": 4]
 ```
 
 ### Object ###

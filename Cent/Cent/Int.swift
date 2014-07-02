@@ -11,6 +11,14 @@ import Dollar
 
 extension Int {
     
-    //TODO: Implement
+    func times(callback: (Int) -> ()) {
+        (0..self).eachWithIndex { callback($0) }
+    }
+    
+    func times (function: () -> ()) {
+        self.times { (index: Int) -> () in
+            function()
+        }
+    }
     
 }
