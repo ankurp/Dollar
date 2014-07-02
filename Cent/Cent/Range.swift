@@ -9,8 +9,22 @@
 import Foundation
 import Dollar
 
-extension Float {
+extension Range {
     
-    //TODO: Implement
+    func eachWithIndex(callback: (T) -> ()) {
+        for index in self {
+            callback(index)
+        }
+    }
     
+    func each(callback: () -> ()) {
+        self.eachWithIndex { (T) -> () in
+            callback()
+        }
+    }
+    
+}
+
+@infix func ==<T: ForwardIndex>(left: Range<T>, right: Range<T>) -> Bool {
+    return left.startIndex == right.startIndex && left.endIndex == right.endIndex
 }

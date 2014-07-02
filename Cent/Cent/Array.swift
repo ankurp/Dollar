@@ -35,6 +35,14 @@ extension Array {
         return $.flatten(self)
     }
     
+    func get(index: Int) -> Element? {
+        if index < self.count {
+            return self[index]
+        } else {
+            return nil
+        }
+    }
+    
     func initial(numElements: Int? = 1) -> Element[] {
         return $.initial(self, numElements: numElements!)
     }

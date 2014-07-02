@@ -11,6 +11,12 @@ import Dollar
 
 extension Dictionary {
     
-    //TODO: Implement
+    func isEmpty () -> Bool {
+        return Array(self.keys).isEmpty
+    }
+    
+    func merge<K, V>(dictionaries: Dictionary<K, V>...) -> Dictionary {
+        return $.merge(dictionaries: reinterpretCast($.merge(arrays: [self], dictionaries)))
+    }
     
 }
