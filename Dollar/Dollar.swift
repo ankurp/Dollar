@@ -84,6 +84,12 @@ class $ {
         return self
     }
     
+    /// Converts array of strings to a grammatical english string
+    /// values separated by commas and the last value is ", and value"
+    func toSentence(array: String[]) -> String? {
+        return $.toSentence(array)
+    }
+
     /// Maps elements to new elements.
     ///
     /// :param function Function to map.
@@ -488,6 +494,30 @@ class $ {
         return Swift.join(separator, reinterpretCast(array) as T[])
     }
     
+    /// Converts array of Strings into one sentence structured string
+    ///
+    /// :param array The array to sentencify 
+    /// :return String where all items of array are joined by ", " and the last item is joined by ", and"
+    /// $.toSentence(["Lions", "Tigers", "Bears"]) => "Lions, Tigers, and Bears"
+    class func toSentence(array: String[]) -> String? {
+        switch array.count {
+        case 0:
+            return nil
+        case 1:
+            return array[0]
+        case 2:
+            return "\(array[0]) and \(array[1])"
+        case let x where x > 2:
+            return Swift.join(", ", reinterpretCast(Array(array[0..x-1])) as String[]) + ", and \(array[x-1])"
+        default:
+            return nil
+        }
+    }
+
+
+
+    }
+
     /// Creates an array of keys given a dictionary.
     ///
     /// :param dictionary The dictionary to source from.

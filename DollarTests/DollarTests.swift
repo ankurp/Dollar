@@ -63,6 +63,13 @@ class DollarTests: XCTestCase {
         XCTAssertNil($.last(NSObject[]()), "Returns nil when array is empty")
     }
 
+    func testToSentence() {
+        XCTAssertEqualObjects($.toSentence(["Lions", "Tigers", "Bears"]) as String, "Lions, Tigers, and Bears", "Returns comma separated joined string")
+        XCTAssertEqualObjects($.toSentence(["Lions", "Tigers"]) as String, "Lions and Tigers", "Returns one string of elements joined by and")
+        XCTAssertEqualObjects($.toSentence(["Lions"]) as String "Lions", "Returns the one element in the array as a string")
+        XCTAssertNil($.toSentence(NSObject[]()), "Returns nil when array is empty")
+    }
+
     func testFindIndex() {
         let arr = [["age": 36], ["age": 40], ["age": 1]]
         XCTAssertEqualObjects($.findIndex(arr) { $0["age"] < 20 }, 2, "Returns index of element in array")
