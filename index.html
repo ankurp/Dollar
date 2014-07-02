@@ -39,7 +39,7 @@
 <ul>
 <li><a href="#setup">Setup</a></li>
 <li>
-<a href="#usage">Usage</a>
+<a href="#dollar-usage">Dollar Usage</a>
 
 <ul>
 <li><a href="#array-methods">Array</a></li>
@@ -50,7 +50,7 @@
 </ul>
 </li>
 <li>
-<a href="#examples">Examples</a>
+<a href="#dollar-examples">Dollar Examples</a>
 
 <ul>
 <li><a href="#array">Array</a></li>
@@ -58,6 +58,32 @@
 <li><a href="#object">Object</a></li>
 <li><a href="#function">Function</a></li>
 <li><a href="#chaining---array-">Chaining</a></li>
+</ul>
+</li>
+<li>
+<a href="#cent-usage">Cent Usage</a>
+
+<ul>
+<li><a href="#array-extensions">Array</a></li>
+<li>
+<a href="#date-extensions">Date</a><br>
+</li>
+<li><a href="#dictionary-extensions">Dictionary</a></li>
+<li><a href="#int-extensions">Int</a></li>
+<li><a href="#string-extensions">String</a></li>
+<li><a href="#range-extensions">Range</a></li>
+</ul>
+</li>
+<li>
+<a href="#cent-examples">Cent Examples</a>
+
+<ul>
+<li><a href="#array-example-usage">Array</a></li>
+<li><a href="#date-example-usage">Date</a></li>
+<li><a href="#dictionary-example-usage">Dictionary</a></li>
+<li><a href="#int-example-usage">Int</a></li>
+<li><a href="#string-example-usage">String</a></li>
+<li><a href="#range-example-usage">Range</a></li>
 </ul>
 </li>
 <li><a href="#contributing">Contributing</a></li>
@@ -74,7 +100,7 @@ OR</li>
 </ul><p>Currently there are issues loading the library using <code>pod 'Dollar', '~&gt; 0.2'</code> which is pending changes from Cocoapods.</p>
 
 <h2>
-<a name="usage" class="anchor" href="#usage"><span class="octicon octicon-link"></span></a>Usage</h2>
+<a name="dollar-usage" class="anchor" href="#dollar-usage"><span class="octicon octicon-link"></span></a>Dollar Usage</h2>
 
 <h3>
 <a name="array-methods" class="anchor" href="#array-methods"><span class="octicon octicon-link"></span></a>Array Methods</h3>
@@ -439,7 +465,7 @@ OR</li>
 </tr>
 </tbody>
 </table><h2>
-<a name="examples" class="anchor" href="#examples"><span class="octicon octicon-link"></span></a>Examples</h2>
+<a name="dollar-examples" class="anchor" href="#dollar-examples"><span class="octicon octicon-link"></span></a>Dollar Examples</h2>
 
 <h3>
 <a name="array" class="anchor" href="#array"><span class="octicon octicon-link"></span></a>Array</h3>
@@ -946,7 +972,8 @@ $.contains(arr, value: $.sample(arr))
 <div class="highlight highlight-swift"><pre><span class="k">let</span> <span class="nl">dict</span><span class="p">:</span> <span class="n">Dictionary</span><span class="o">&lt;</span><span class="n">String</span><span class="p">,</span> <span class="n">Int</span><span class="o">&gt;</span> <span class="o">=</span> <span class="p">[</span><span class="s">"Dog"</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s">"Cat"</span><span class="o">:</span> <span class="mi">2</span><span class="p">]</span>
 <span class="k">let</span> <span class="nl">dict2</span><span class="p">:</span> <span class="n">Dictionary</span><span class="o">&lt;</span><span class="n">String</span><span class="p">,</span> <span class="n">Int</span><span class="o">&gt;</span> <span class="o">=</span> <span class="p">[</span><span class="s">"Cow"</span><span class="o">:</span> <span class="mi">3</span><span class="p">]</span>
 <span class="k">let</span> <span class="nl">dict3</span><span class="p">:</span> <span class="n">Dictionary</span><span class="o">&lt;</span><span class="n">String</span><span class="p">,</span> <span class="n">Int</span><span class="o">&gt;</span> <span class="o">=</span> <span class="p">[</span><span class="s">"Sheep"</span><span class="o">:</span> <span class="mi">4</span><span class="p">]</span>
-<span class="err">$</span><span class="p">.</span><span class="n">merge</span><span class="p">(</span><span class="n">dict</span><span class="p">,</span> <span class="nl">dictionaries</span><span class="p">:</span> <span class="n">dict2</span><span class="p">,</span> <span class="n">dict3</span><span class="p">)</span>
+<span class="err">$</span><span class="p">.</span><span class="n">merge</span><span class="p">(</span><span class="nl">dictionaries</span><span class="p">:</span> <span class="n">dict</span><span class="p">,</span> <span class="n">dict2</span><span class="p">,</span> <span class="n">dict3</span><span class="p">)</span>
+<span class="o">=&gt;</span> <span class="p">[</span><span class="s">"Dog"</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s">"Cat"</span><span class="o">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s">"Cow"</span><span class="o">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s">"Sheep"</span><span class="o">:</span> <span class="mi">4</span><span class="p">]</span>
 </pre></div>
 
 <h3>
@@ -956,6 +983,7 @@ $.contains(arr, value: $.sample(arr))
 <p>Creates a shallow clone of a dictionary composed of the specified keys.</p>
 
 <div class="highlight highlight-swift"><pre><span class="err">$</span><span class="p">.</span><span class="n">pick</span><span class="p">([</span><span class="s">"Dog"</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s">"Cat"</span><span class="o">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s">"Cow"</span><span class="o">:</span> <span class="mi">3</span><span class="p">],</span> <span class="nl">keys</span><span class="p">:</span> <span class="s">"Dog"</span><span class="p">,</span> <span class="s">"Cow"</span><span class="p">)</span>
+<span class="o">=&gt;</span> <span class="p">[</span><span class="s">"Dog"</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s">"Cow"</span><span class="o">:</span> <span class="mi">3</span><span class="p">]</span>
 </pre></div>
 
 <h3>
@@ -965,6 +993,7 @@ $.contains(arr, value: $.sample(arr))
 <p>Creates a shallow clone of a dictionary excluding the specified keys.</p>
 
 <div class="highlight highlight-swift"><pre><span class="err">$</span><span class="p">.</span><span class="n">omit</span><span class="p">([</span><span class="s">"Dog"</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s">"Cat"</span><span class="o">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s">"Cow"</span><span class="o">:</span> <span class="mi">3</span><span class="p">],</span> <span class="nl">keys</span><span class="p">:</span> <span class="s">"Cat"</span><span class="p">,</span> <span class="s">"Dog"</span><span class="p">)</span>
+<span class="o">=&gt;</span> <span class="p">[</span><span class="s">"Cow"</span><span class="o">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s">"Sheep"</span><span class="o">:</span> <span class="mi">4</span><span class="p">]</span>
 </pre></div>
 
 <h3>
@@ -1119,6 +1148,132 @@ $.contains(arr, value: $.sample(arr))
 <span class="n">chain</span><span class="p">.</span><span class="n">any</span> <span class="p">{</span> <span class="p">(</span><span class="err">$</span><span class="mi">0</span> <span class="kt">as</span> <span class="n">Int</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">40</span> <span class="p">}</span> 
 <span class="o">=&gt;</span> <span class="nb">true</span>
 </pre></div>
+
+<h2>
+<a name="cent-usage" class="anchor" href="#cent-usage"><span class="octicon octicon-link"></span></a>Cent Usage</h2>
+
+<h3>
+<a name="array-extensions" class="anchor" href="#array-extensions"><span class="octicon octicon-link"></span></a>Array Extensions</h3>
+
+<table>
+<thead><tr>
+<th>Method</th>
+<th>Usage</th>
+</tr></thead>
+<tbody></tbody>
+</table><blockquote>
+<p>TODO: Add methods</p>
+</blockquote>
+
+<h3>
+<a name="date-extensions" class="anchor" href="#date-extensions"><span class="octicon octicon-link"></span></a>Date Extensions</h3>
+
+<table>
+<thead><tr>
+<th>Method</th>
+<th>Usage</th>
+</tr></thead>
+<tbody></tbody>
+</table><blockquote>
+<p>TODO: Add methods</p>
+</blockquote>
+
+<h3>
+<a name="dictionary-extensions" class="anchor" href="#dictionary-extensions"><span class="octicon octicon-link"></span></a>Dictionary Extensions</h3>
+
+<table>
+<thead><tr>
+<th>Method</th>
+<th>Usage</th>
+</tr></thead>
+<tbody></tbody>
+</table><blockquote>
+<p>TODO: Add methods</p>
+</blockquote>
+
+<h3>
+<a name="int-extensions" class="anchor" href="#int-extensions"><span class="octicon octicon-link"></span></a>Int Extensions</h3>
+
+<table>
+<thead><tr>
+<th>Method</th>
+<th>Usage</th>
+</tr></thead>
+<tbody></tbody>
+</table><blockquote>
+<p>TODO: Add methods</p>
+</blockquote>
+
+<h3>
+<a name="string-extensions" class="anchor" href="#string-extensions"><span class="octicon octicon-link"></span></a>String Extensions</h3>
+
+<table>
+<thead><tr>
+<th>Method</th>
+<th>Usage</th>
+</tr></thead>
+<tbody></tbody>
+</table><blockquote>
+<p>TODO: Add methods</p>
+</blockquote>
+
+<h3>
+<a name="range-extensions" class="anchor" href="#range-extensions"><span class="octicon octicon-link"></span></a>Range Extensions</h3>
+
+<table>
+<thead><tr>
+<th>Method</th>
+<th>Usage</th>
+</tr></thead>
+<tbody></tbody>
+</table><blockquote>
+<p>TODO: Add methods</p>
+</blockquote>
+
+<h2>
+<a name="cent-examples" class="anchor" href="#cent-examples"><span class="octicon octicon-link"></span></a>Cent Examples</h2>
+
+<h3>
+<a name="array-example-usage" class="anchor" href="#array-example-usage"><span class="octicon octicon-link"></span></a>Array Example Usage</h3>
+
+<blockquote>
+<p>TODO: Add examples</p>
+</blockquote>
+
+<h3>
+<a name="date-example-usage" class="anchor" href="#date-example-usage"><span class="octicon octicon-link"></span></a>Date Example Usage</h3>
+
+<blockquote>
+<p>TODO: Add examples</p>
+</blockquote>
+
+<h3>
+<a name="dictionary-example-usage" class="anchor" href="#dictionary-example-usage"><span class="octicon octicon-link"></span></a>Dictionary Example Usage</h3>
+
+<blockquote>
+<p>TODO: Add examples</p>
+</blockquote>
+
+<h3>
+<a name="int-example-usage" class="anchor" href="#int-example-usage"><span class="octicon octicon-link"></span></a>Int Example Usage</h3>
+
+<blockquote>
+<p>TODO: Add examples</p>
+</blockquote>
+
+<h3>
+<a name="string-example-usage" class="anchor" href="#string-example-usage"><span class="octicon octicon-link"></span></a>String Example Usage</h3>
+
+<blockquote>
+<p>TODO: Add examples</p>
+</blockquote>
+
+<h3>
+<a name="range-example-usage" class="anchor" href="#range-example-usage"><span class="octicon octicon-link"></span></a>Range Example Usage</h3>
+
+<blockquote>
+<p>TODO: Add examples</p>
+</blockquote>
 
 <h2>
 <a name="contributing" class="anchor" href="#contributing"><span class="octicon octicon-link"></span></a>Contributing</h2>
