@@ -824,22 +824,22 @@ Method | Usage
 ## Cent Examples ##
 
 ### Array Example Usage ###
-> TODO: Add exmaples
+> TODO: Add examples
 
 ### Date Example Usage ###
-> TODO: Add exmaples
+> TODO: Add examples
 
 ### Dictionary Example Usage ###
-> TODO: Add exmaples
+> TODO: Add examples
 
 ### Int Example Usage ###
-> TODO: Add exmaples
+> TODO: Add examples
 
 ### String Example Usage ###
-> TODO: Add exmaples
+> TODO: Add examples
 
 ### Range Example Usage ###
-> TODO: Add exmaples
+> TODO: Add examples
 
 ## Contributing ##
 If you are interested in contributing checkout [CONTRIBUTING.md](CONTRIBUTING.md)
