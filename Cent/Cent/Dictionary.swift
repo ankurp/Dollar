@@ -11,12 +11,22 @@ import Dollar
 
 extension Dictionary {
     
+    /// Checks whether Dictionary has no keys and hence is empty
+    ///
+    /// :return Whether dictionary is empty
     func isEmpty () -> Bool {
         return Array(self.keys).isEmpty
     }
-    
-    func merge<K, V>(dictionaries: Dictionary<K, V>...) -> Dictionary {
-        return $.merge(dictionaries: reinterpretCast($.merge(arrays: [self], dictionaries)))
+
+    /// Merges the dictionary with dictionaries passed. The latter dictionaries will override
+    /// values of the keys that are already set
+    ///
+    /// :param dictionaries A comma seperated list of dictionaries
+    mutating func merge<K, V>(dictionaries: Dictionary<K, V>...) {
+        let dict : Dictionary<K, V> = $.merge(dictionaries: reinterpretCast(dictionaries))
+        for (key, value) in dict {
+            self.updateValue(value as ValueType, forKey: key as KeyType)
+        }
     }
     
 }

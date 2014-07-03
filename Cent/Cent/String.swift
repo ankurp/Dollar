@@ -11,6 +11,10 @@ import Dollar
 
 extension String {
     
+    /// Get character at a subscript
+    ///
+    /// :param i Index for which the character is returned
+    /// :return Character at index i
     subscript(i: Int) -> Character? {
         if let char = Array(self).get(i) {
             return char
@@ -18,12 +22,20 @@ extension String {
         return nil
     }
     
-    subscript(r: Range<Int>) -> String {
-        var start = Swift.advance(startIndex, r.startIndex)
-        var end = Swift.advance(startIndex, r.endIndex)
+
+    /// Get substring using subscript notation and by passing a range
+    ///
+    /// :param range The range from which to start and end the substring
+    /// :return Substring
+    subscript(range: Range<Int>) -> String {
+        var start = Swift.advance(startIndex, range.startIndex)
+        var end = Swift.advance(startIndex, range.endIndex)
         return self.substringWithRange(Range(start: start, end: end))
     }
-    
+
+    /// Get an array from string split using the delimiter character
+    ///
+    /// :return Array of strings after spliting
     func split(delimiter: Character) -> String[] {
         return Swift.split(self) { (char: Character) -> Bool in
             char == delimiter

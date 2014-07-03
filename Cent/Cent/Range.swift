@@ -11,12 +11,18 @@ import Dollar
 
 extension Range {
     
+    /// For each index in the range invoke the callback by passing the item in range
+    ///
+    /// :param callback The callback function to invoke that take an element
     func eachWithIndex(callback: (T) -> ()) {
         for index in self {
             callback(index)
         }
     }
-    
+
+    /// For each index in the range invoke the callback
+    ///
+    /// :param callback The callback function to invoke
     func each(callback: () -> ()) {
         self.eachWithIndex { (T) -> () in
             callback()
