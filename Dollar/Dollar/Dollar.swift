@@ -267,8 +267,9 @@ class Dollar {
     /// Creates an array of elements from the specified indexes, or keys, of the collection.
     /// Indexes may be specified as individual arguments or as arrays of indexes.
     ///
-    /// :param array The array to wrap.
-    /// :return First element from the array.
+    /// :param array The array to source from
+    /// :param indexes Get elements from these indexes
+    /// :return New array with elements from the indexes specified.
     class func at<T>(array: T[], indexes: Int...) -> T[] {
         return self.at(array, indexes: indexes)
     }
@@ -276,8 +277,9 @@ class Dollar {
     /// Creates an array of elements from the specified indexes, or keys, of the collection.
     /// Indexes may be specified as individual arguments or as arrays of indexes.
     ///
-    /// :param array The array to wrap.
-    /// :return First element from the array.
+    /// :param array The array to source from
+    /// :param indexes Get elements from these indexes
+    /// :return New array with elements from the indexes specified.
     class func at<T>(array: T[], indexes: Int[]) -> T[] {
         var result: T[] = []
         for index in indexes {
