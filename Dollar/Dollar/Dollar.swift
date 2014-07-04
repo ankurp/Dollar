@@ -1194,6 +1194,19 @@ class Dollar {
         return result
     }
     
+    /// Reverses the array
+    ///
+    /// :param array The array to reverse.
+    /// :return an array with the elements reversed.
+    class func reverse(array: AnyObject[]) -> AnyObject[] {
+        var reversed = AnyObject[]()
+        
+        for elem : AnyObject in array {
+            reversed.insert(elem, atIndex: 0)
+        }
+        
+        return reversed
+    }    
 }
 
 typealias $ = Dollar
