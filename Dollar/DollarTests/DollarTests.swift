@@ -54,6 +54,7 @@ class DollarTests: XCTestCase {
         XCTAssertNil($.seventh([NSObject]()), "Returns nil when array is empty")
     }
     /*
+    Won't index
     func testEighth() {
         XCTAssertEqualObjects($.eighth([1, 2, 3, 4, 5, 6, 7, 8, 9])!, 8, "Return eighth element")
         XCTAssertNil($.eighth([NSObject]()), "Returns nil when array is empty")
@@ -296,7 +297,9 @@ class DollarTests: XCTestCase {
         XCTAssertEqualObjects(beatle.name, "Beatle", "Set the car name")
         XCTAssertEqualObjects(beatle.color, "Blue", "Set the car color")
     }
+    
     /*
+    Won't index correctly. Try breaking it apart into seperate cases.
     func testChaining() {
         var chain = $(array: [1, 2, 3])
         XCTAssertEqual(chain.first().invokeAll() as Int, 1, "Returns first element which ends the chain")
@@ -312,9 +315,9 @@ class DollarTests: XCTestCase {
 
         XCTAssertEqual(chain.first().invokeAll() as Int, 10, "Returns first element from mapped value")
         
-        /*
+        
         var elements: [Int] = []
-        chain.each { elements += $0 as Int }
+        chain.each { elements += $0 as Int }.invokeAll()
         XCTAssertEqualObjects(elements as [Int], [10, 20, 30, 40, 50], "Goes through each element in the array")
 
         XCTAssertTrue(chain.all { ( $0 as Int) < 100 }.invokeAll(), "All elements are less than 100")
@@ -322,11 +325,11 @@ class DollarTests: XCTestCase {
         XCTAssertTrue(chain.any { ($0 as Int) < 40 }.invokeAll(), "At least one element is less than 40")
 
         elements = []
-        chain.slice(0, end: 3).each({ elements += $0 as Int})
-        XCTAssertEqualObjects(elements as [Int], [10, 20, 30], "Chained seld")*/
+        chain.slice(0, end: 3).each({ elements += $0 as Int}).invokeAll()
+        XCTAssertEqualObjects(elements as [Int], [10, 20, 30], "Chained seld")
 
-    }*/
-    
+    }
+    */
     func testPartial() {
         let partialFunc = $.partial({(T...) in T[0] + " " + T[1] + " from " + T[2] }, "Hello")
         XCTAssertEqual(partialFunc("World", "Swift"), "Hello World from Swift", "Returns curry function that is evaluated")
@@ -438,4 +441,57 @@ class DollarTests: XCTestCase {
         XCTAssertEqual($.id(1), 1, "Id should return the argument it gets passed")
     }
 
+    /**
+    *  Lazy Evaluation Sectoin
+    */
+    
+    func testLazyChainedMethods(){
+        //Create iterator
+        let iterator:$.Iterator = $.lazy.map([[[[1],2],3],4,[5,[6,[7]]]], function: { return ($0 as Int) + 1 })
+        
+        var resultArray:[Int]
+        var resultBool:Bool
+        var resultInt:Int?
+        
+        //Chain Methods
+        iterator.$.flatten().map{ (element:AnyObject) in
+            return (element as Int) + 1;
+            }.any{
+                return ($0 as Int) < 2;
+            }.all{
+                return ($0 as Int) > 1;}
+            .initial(2).first().second().third().eighth().value();
+        
+        //Evaluate
+        resultArray = iterator.$.step() as [Int];
+        XCTAssertEqualObjects(resultArray, [1,2,3,4,5,6,7], "Array flattened");
+        
+        resultArray = iterator.$.step() as [Int];
+        XCTAssertEqualObjects(resultArray, [2,3,4,5,6,7,8], "Array mapped: increment by 1");
+        
+        resultBool = iterator.$.step() as Bool;
+        XCTAssertFalse(resultBool, "No element less than 2");
+        
+        resultBool = iterator.$.step() as Bool;
+        XCTAssertTrue(resultBool, "All elements are greater than 1");
+        
+        resultArray = iterator.$.step() as [Int];
+        XCTAssertEqualObjects(resultArray, [2,3,4,5,6], "Last 2 elements removed");
+        
+        resultInt = iterator.$.step() as? Int;
+        XCTAssertEqualObjects(resultInt, 2, "First object in array");
+        
+        resultInt = iterator.$.step() as? Int;
+        XCTAssertEqualObjects(resultInt, 3, "Second object in array");
+        
+        resultInt = iterator.$.step() as? Int;
+        XCTAssertEqualObjects(resultInt, 4, "Third object in array");
+        
+        resultInt = iterator.$.step() as? Int;
+        XCTAssertNil(resultInt, "Eight object in array");
+        
+        resultArray = iterator.$.step() as [Int];
+        XCTAssertEqualObjects(resultArray, [2,3,4,5,6], "Final array of chained methods");
+    }
+    
 }
