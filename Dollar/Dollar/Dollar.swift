@@ -30,97 +30,131 @@ class Dollar {
     //     \|_______|\|__|\|__|\|__|\|__|\|__|\|__| \|__|
     //
     
-    var resultArray: AnyObject[] = []
+    var resultArray: [AnyObject] = []
+    var lazyQueue:[(()->AnyObject?)] = [];
     
     /// Initializer of the wrapper object for chaining.
     ///
     /// :param array The array to wrap.
-    init(array: AnyObject[]) {
+    init(array: [AnyObject]) {
         self.resultArray = array
     }
     
     /// Get the first object in the wrapper object.
     ///
     /// :return First element from the array.
-    func first() -> AnyObject? {
-        return Dollar.first(self.resultArray)
+    func first() -> ${
+        lazyQueue.append{
+            return $.first(self.resultArray)
+        }
+        return self
     }
     
     /// Get the second object in the wrapper object.
     ///
     /// :return Second element from the array.
-    func second() -> AnyObject? {
-        return $.second(self.resultArray)
+    func second() -> ${
+        lazyQueue.append{
+            return $.second(self.resultArray)
+        }
+        return self
     }
     
     /// Get the third object in the wrapper object.
     ///
     /// :return Third element from the array.
-    func third() -> AnyObject? {
-        return $.third(self.resultArray)
+    func third() -> ${
+        lazyQueue.append{
+            return $.third(self.resultArray)
+        }
+        return self
     }
     
     /// Get the fourth object in the wrapper object.
     ///
     /// :return Fourth element from the array.
-    func fourth() -> AnyObject? {
-        return $.fourth(self.resultArray)
+    func fourth()-> ${
+        lazyQueue.append{
+            return $.fourth(self.resultArray)
+        }
+        return self
     }
     
     /// Get the fifth object in the wrapper object.
     ///
     /// :return Fifth element from the array.
-    func fifth() -> AnyObject? {
-        return $.fifth(self.resultArray)
+    func fifth() -> ${
+        lazyQueue.append{
+            return $.fifth(self.resultArray)
+        }
+        return self
     }
     
     /// Get the sixth object in the wrapper object.
     ///
     /// :return Sixth element from the array.
-    func sixth() -> AnyObject? {
-        return $.sixth(self.resultArray)
+    func sixth() -> ${
+        lazyQueue.append{
+            return $.sixth(self.resultArray)
+        }
+        return self
     }
     
     /// Get the seventh object in the wrapper object.
     ///
     /// :return Seventh element from the array.
-    func seventh() -> AnyObject? {
-        return $.seventh(self.resultArray)
+    func seventh() -> ${
+        lazyQueue.append{
+            return $.seventh(self.resultArray)
+        }
+        return self
     }
     
     /// Get the eighth object in the wrapper object.
     ///
     /// :return Eighth element from the array.
-    func eighth() -> AnyObject? {
-        return $.eighth(self.resultArray)
+    func eighth() -> ${
+        lazyQueue.append{
+            return $.eighth(self.resultArray)
+        }
+        return self
     }
     
     /// Get the ninth object in the wrapper object.
     ///
     /// :return Ninth element from the array.
-    func ninth() -> AnyObject? {
-        return $.ninth(self.resultArray)
+    func ninth() -> ${
+        lazyQueue.append{
+            return $.ninth(self.resultArray)
+        }
+        return self
     }
     
     /// Get the tenth object in the wrapper object.
     ///
     /// :return Tenth element from the array.
-    func tenth() -> AnyObject? {
-        return $.tenth(self.resultArray)
+    func tenth() -> ${
+        lazyQueue.append{
+            return $.tenth(self.resultArray)
+        }
+        return self
     }
     
     /// Flattens nested array.
     ///
     /// :return The wrapper object.
-    func flatten() -> Self {
-        self.resultArray = Dollar.flatten(self.resultArray)
+    func flatten() -> ${
+        lazyQueue.append{
+            self.resultArray = Dollar.flatten(self.resultArray)
+            return self
+        }
         return self
     }
     
     /// Keeps all the elements except last one.
     ///
     /// :return The wrapper object.
-    func initial() -> Self {
+    func initial() -> ${
         return self.initial(1)
     }
     
@@ -128,8 +162,11 @@ class Dollar {
     ///
     /// :param numElements Number of items to remove from the end of the array.
     /// :return The wrapper object.
-    func initial(numElements: Int) -> Self {
-        self.resultArray = Dollar.initial(self.resultArray, numElements: numElements)
+    func initial(numElements: Int) -> ${
+        lazyQueue.append{
+            self.resultArray = Dollar.initial(self.resultArray, numElements: numElements)
+            return self
+        }
         return self
     }
     
@@ -137,35 +174,14 @@ class Dollar {
     ///
     /// :param function Function to map.
     /// :return The wrapper object.
-    func map(function: (AnyObject) -> AnyObject) -> Self {
-        var result: AnyObject[] = []
-        for elem : AnyObject in self.resultArray {
-            result += function(elem)
-        }
-        self.resultArray = result
-        return self
-    }
-    
-    /// Get the first object in the wrapper object.
-    ///
-    /// :param array The array to wrap.
-    /// :return The wrapper object.
-    func map(function: (Int, AnyObject) -> AnyObject) -> Self {
-        var result: AnyObject[] = []
-        for (index, elem : AnyObject) in enumerate(self.resultArray) {
-            result += function(index, elem)
-        }
-        self.resultArray = result
-        return self
-    }
-    
-    /// Get the first object in the wrapper object.
-    ///
-    /// :param array The array to wrap.
-    /// :return The wrapper object.
-    func each(function: (AnyObject) -> ()) -> Self {
-        for elem : AnyObject in self.resultArray {
-            function(elem)
+    func map(function: (AnyObject) -> AnyObject) -> ${
+        lazyQueue.append{
+            var result: [AnyObject] = []
+            for elem : AnyObject in self.resultArray {
+                result += function(elem)
+            }
+            self.resultArray = result
+            return self
         }
         return self
     }
@@ -174,48 +190,90 @@ class Dollar {
     ///
     /// :param array The array to wrap.
     /// :return The wrapper object.
-    func each(function: (Int, AnyObject) -> ()) -> Self {
-        for (index, elem : AnyObject) in enumerate(self.resultArray) {
-            function(index, elem)
+    func map(function: (Int, AnyObject) -> AnyObject) -> ${
+        lazyQueue.append{
+            var result: [AnyObject] = []
+            for (index, elem : AnyObject) in enumerate(self.resultArray) {
+                result += function(index, elem)
+            }
+            self.resultArray = result
+            return self
         }
         return self
+    }
+    
+    /// Get the first object in the wrapper object.
+    ///
+    /// :param array The array to wrap.
+    /// :return The wrapper object.
+    func each(function: (AnyObject) -> ()) -> ${
+        lazyQueue.append{
+            for elem : AnyObject in self.resultArray {
+                function(elem)
+            }
+            return self
+        }
+        return self;
+    }
+    
+    /// Get the first object in the wrapper object.
+    ///
+    /// :param array The array to wrap.
+    /// :return The wrapper object.
+    func each(function: (Int, AnyObject) -> ()) -> ${
+        lazyQueue.append{
+            for (index, elem : AnyObject) in enumerate(self.resultArray) {
+                function(index, elem)
+            }
+            return self
+        }
+        return self;
     }
     
     /// Filter elements based on the function passed.
     ///
     /// :param function Function to tell whether to keep an element or remove.
     /// :return The wrapper object.
-    func filter(function: (AnyObject) -> Bool) -> Self {
-        self.resultArray = self.resultArray.filter(function)
-        return self
+    func filter(function: (AnyObject) -> Bool) -> ${
+        lazyQueue.append{
+            self.resultArray = self.resultArray.filter(function)
+            return self
+        }
+        return self;
     }
     
     /// Returns if all elements in array are true based on the passed function.
     ///
     /// :param function Function to tell whether element value is true or false.
     /// :return Whether all elements are true according to func function.
-    func all(function: (AnyObject) -> Bool) -> Bool {
-        return Dollar.every(self.resultArray, iterator: function)
+    func all(function: (AnyObject) -> Bool){
+        lazyQueue.append{
+            return Dollar.every(self.resultArray, iterator: function)
+        }
     }
     
     /// Returns if any element in array is true based on the passed function.
     ///
     /// :param function Function to tell whether element value is true or false.
     /// :return Whether any one element is true according to func function in the array.
-    func any(function: (AnyObject) -> Bool) -> Bool {
-        for elem : AnyObject in self.resultArray {
-            if function(elem) {
-                return true
+    func any(function: (AnyObject) -> Bool){
+        lazyQueue.append{
+            for elem : AnyObject in self.resultArray {
+                if function(elem) {
+                    return true
+                }
             }
+            return false
         }
-        return false
     }
     
     /// Get the final result from the wrapper object to terminated the chain.
     ///
     /// :return Final resulting array from applying all functions on it.
-    func value() -> AnyObject[] {
-        return self.resultArray
+    func value(){
+        lazyQueue.append{
+            return self.resultArray
+        }
     }
     
     /// Slice the array into smaller size based on start and end value.
@@ -223,9 +281,36 @@ class Dollar {
     /// :param start Start index to start slicing from.
     /// :param end End index to stop slicing to and not including element at that index.
     /// :return The wrapper object.
-    func slice(start: Int, end: Int = 0) -> Self {
-        self.resultArray =  Dollar.slice(self.resultArray, start: start, end: end);
+    func slice(start: Int, end: Int = 0) -> ${
+        lazyQueue.append{
+            self.resultArray =  Dollar.slice(self.resultArray, start: start, end: end);
+            return self;
+        }
         return self;
+    }
+    
+    /// Invokes subsequent method in chain
+    ///
+    /// :return Result of invoked method in chain, nil if at end of chain
+    func next() -> AnyObject?{
+        if(lazyQueue.isEmpty) { return nil; }
+        
+        lazyQueue[0]()
+        //lazyQueue.removeAtIndex(0)() causes XCode to freak out royally
+        var invoke = lazyQueue.removeAtIndex(0);
+        return invoke();
+    }
+    
+    /// Evaluates entire chain at once
+    ///
+    /// :return Result of chain
+    func invokeAll() -> AnyObject?
+    {
+        var result:AnyObject? = nil
+        for closure in lazyQueue{
+            result = closure()
+        }
+        return result
     }
     
     ///  ___  ___  _______   ___       ________  _______   ________
@@ -263,14 +348,14 @@ class Dollar {
         }
         return { f()? }
     }
-
+    
     /// Creates an array of elements from the specified indexes, or keys, of the collection.
     /// Indexes may be specified as individual arguments or as arrays of indexes.
     ///
     /// :param array The array to source from
     /// :param indexes Get elements from these indexes
     /// :return New array with elements from the indexes specified.
-    class func at<T>(array: T[], indexes: Int...) -> T[] {
+    class func at<T>(array: [T], indexes: Int...) -> [T] {
         return self.at(array, indexes: indexes)
     }
     
@@ -280,8 +365,8 @@ class Dollar {
     /// :param array The array to source from
     /// :param indexes Get elements from these indexes
     /// :return New array with elements from the indexes specified.
-    class func at<T>(array: T[], indexes: Int[]) -> T[] {
-        var result: T[] = []
+    class func at<T>(array: [T], indexes: [Int]) -> [T] {
+        var result: [T] = []
         for index in indexes {
             result += array[index]
         }
@@ -303,8 +388,8 @@ class Dollar {
     ///
     /// :param array Array to be compacted.
     /// :return A new array that doesnt have any nil values.
-    class func compact<T>(array: T?[]) -> T[] {
-        var result: T[] = []
+    class func compact<T>(array: [T?]) -> [T] {
+        var result: [T] = []
         for elem in array {
             if let val = elem {
                 result += val
@@ -318,7 +403,7 @@ class Dollar {
     /// :param array The array to check against.
     /// :param value The value to check.
     /// :return Whether value is in the array.
-    class func contains<T : Equatable>(array: T[], value: T) -> Bool {
+    class func contains<T : Equatable>(array: [T], value: T) -> Bool {
         return Swift.contains(array, value)
     }
     
@@ -326,11 +411,11 @@ class Dollar {
     ///
     /// :param arrays The arrays to difference between.
     /// :return The difference between the first array and all the remaining arrays from the arrays params.
-    class func difference<T : Hashable>(arrays: T[]...) -> T[] {
-        var result : T[] = []
+    class func difference<T : Hashable>(arrays: [T]...) -> [T] {
+        var result : [T] = []
         var map : Dictionary<T, Int> = Dictionary<T, Int>()
-        let firstArr : T[] = self.first(arrays)!
-        let restArr : T[][] = self.rest(arrays) as T[][]
+        let firstArr : [T] = self.first(arrays)!
+        let restArr : [[T]] = self.rest(arrays) as [[T]]
         
         for elem in firstArr {
             if let val = map[elem] {
@@ -345,7 +430,7 @@ class Dollar {
             }
         }
         for (key, count) in map {
-            for _ in 0..count {
+            for _ in 0...count {
                 result += key
             }
         }
@@ -357,7 +442,7 @@ class Dollar {
     /// :param array The array to check.
     /// :param iterator Check whether element value is true or false.
     /// :return First element from the array.
-    class func every<T>(array: T[], iterator: (T) -> Bool) -> Bool {
+    class func every<T>(array: [T], iterator: (T) -> Bool) -> Bool {
         for elem in array {
             if !iterator(elem) {
                 return false
@@ -372,7 +457,7 @@ class Dollar {
     /// :param array The array to search for the element in.
     /// :param iterator The iterator function to tell whether element is found.
     /// :return Optional containing either found element or nil.
-    class func find<T: Equatable>(array: T[], iterator: (T) -> Bool) -> T? {
+    class func find<T: Equatable>(array: [T], iterator: (T) -> Bool) -> T? {
         for elem in array {
             let result = iterator(elem)
             if result {
@@ -388,7 +473,7 @@ class Dollar {
     /// :param array The array to search for the element in.
     /// :param iterator Function used to figure out whether element is the same.
     /// :return First element's index from the array found using the iterator.
-    class func findIndex<T>(array: T[], iterator: (T) -> Bool) -> Int? {
+    class func findIndex<T>(array: [T], iterator: (T) -> Bool) -> Int? {
         for (index, elem : T) in enumerate(array) {
             if iterator(elem) {
                 return index
@@ -403,7 +488,7 @@ class Dollar {
     /// :param array The array to search for the element in.
     /// :param iterator Function used to figure out whether element is the same.
     /// :return Last element's index from the array found using the iterator.
-    class func findLastIndex<T>(array: T[], iterator: (T) -> Bool) -> Int? {
+    class func findLastIndex<T>(array: [T], iterator: (T) -> Bool) -> Int? {
         let count = array.count
         for (index, _) in enumerate(array) {
             let reverseIndex = count - (index + 1)
@@ -419,7 +504,7 @@ class Dollar {
     ///
     /// :param array The array to wrap.
     /// :return First element from the array.
-    class func first<T>(array: T[]) -> T? {
+    class func first<T>(array: [T]) -> T? {
         if array.isEmpty {
             return nil
         } else {
@@ -431,7 +516,7 @@ class Dollar {
     ///
     /// :param array The array to wrap.
     /// :return Second element from the array.
-    class func second<T>(array: T[]) -> T? {
+    class func second<T>(array: [T]) -> T? {
         if array.count < 2 {
             return nil
         } else {
@@ -443,7 +528,7 @@ class Dollar {
     ///
     /// :param array The array to wrap.
     /// :return Third element from the array.
-    class func third<T>(array: T[]) -> T? {
+    class func third<T>(array: [T]) -> T? {
         if array.count < 3 {
             return nil
         } else {
@@ -455,7 +540,7 @@ class Dollar {
     ///
     /// :param array The array to wrap.
     /// :return Fourth element from the array.
-    class func fourth<T>(array: T[]) -> T? {
+    class func fourth<T>(array: [T]) -> T? {
         if array.count < 4 {
             return nil
         } else {
@@ -467,7 +552,7 @@ class Dollar {
     ///
     /// :param array The array to wrap.
     /// :return Fifth element from the array.
-    class func fifth<T>(array: T[]) -> T? {
+    class func fifth<T>(array: [T]) -> T? {
         if array.count < 5 {
             return nil
         } else {
@@ -479,7 +564,7 @@ class Dollar {
     ///
     /// :param array The array to wrap.
     /// :return Sixth element from the array.
-    class func sixth<T>(array: T[]) -> T? {
+    class func sixth<T>(array: [T]) -> T? {
         if array.count < 6 {
             return nil
         } else {
@@ -491,7 +576,7 @@ class Dollar {
     ///
     /// :param array The array to wrap.
     /// :return Seventh element from the array.
-    class func seventh<T>(array: T[]) -> T? {
+    class func seventh<T>(array: [T]) -> T? {
         if array.count < 7 {
             return nil
         } else {
@@ -503,7 +588,7 @@ class Dollar {
     ///
     /// :param array The array to wrap.
     /// :return Eighth element from the array.
-    class func eighth<T>(array: T[]) -> T? {
+    class func eighth<T>(array: [T]) -> T? {
         if array.count < 8 {
             return nil
         } else {
@@ -515,7 +600,7 @@ class Dollar {
     ///
     /// :param array The array to wrap.
     /// :return Ninth element from the array.
-    class func ninth<T>(array: T[]) -> T? {
+    class func ninth<T>(array: [T]) -> T? {
         if array.count < 9 {
             return nil
         } else {
@@ -527,7 +612,7 @@ class Dollar {
     ///
     /// :param array The array to wrap.
     /// :return Tenth element from the array.
-    class func tenth<T>(array: T[]) -> T? {
+    class func tenth<T>(array: [T]) -> T? {
         if array.count < 10 {
             return nil
         } else {
@@ -539,10 +624,10 @@ class Dollar {
     ///
     /// :param array The array to flatten.
     /// :return Flattened array.
-    class func flatten<T>(array: T[]) -> T[] {
-        var resultArr: T[] = []
+    class func flatten<T>(array: [T]) -> [T] {
+        var resultArr: [T] = []
         for elem : T in array {
-            if let val = elem as? T[] {
+            if let val = elem as? [T] {
                 resultArr += self.flatten(val)
             } else {
                 resultArr += elem
@@ -551,8 +636,8 @@ class Dollar {
         return resultArr
     }
     
-    /// This method returns a dictionary of values in an array mapping to the 
-    /// total number of occurrences in the array. 
+    /// This method returns a dictionary of values in an array mapping to the
+    /// total number of occurrences in the array.
     ///
     /// :param array The array to source from.
     /// :return Dictionary that contains the key generated from the element passed in the function.
@@ -593,7 +678,7 @@ class Dollar {
     /// :param array The array to source from.
     /// :param value Value whose index needs to be found.
     /// :return Index of the element otherwise returns nil if not found.
-    class func indexOf<T: Equatable>(array: T[], value: T) -> Int? {
+    class func indexOf<T: Equatable>(array: [T], value: T) -> Int? {
         return self.findIndex(array) { $0 == value }
     }
     
@@ -602,10 +687,10 @@ class Dollar {
     /// :param array The array to source from.
     /// :param numElements The number of elements to ignore in the end.
     /// :return Array of initial values.
-    class func initial<T>(array: T[], numElements: Int = 1) -> T[] {
-        var result: T[] = []
+    class func initial<T>(array: [T], numElements: Int = 1) -> [T] {
+        var result: [T] = []
         if (array.count > numElements) {
-            for index in 0..(array.count - numElements) {
+            for index in 0...(array.count - numElements) {
                 result += array[index]
             }
         }
@@ -616,7 +701,7 @@ class Dollar {
     ///
     /// :param arrays The arrays to perform an intersection on.
     /// :return Intersection of all arrays passed.
-    class func intersection<T : Hashable>(arrays: T[]...) -> T[] {
+    class func intersection<T : Hashable>(arrays: [T]...) -> [T] {
         var map : Dictionary<T, Int> = Dictionary<T, Int>()
         for arr in arrays {
             for elem in arr {
@@ -627,7 +712,7 @@ class Dollar {
                 }
             }
         }
-        var result : T[] = []
+        var result : [T] = []
         let count = arrays.count
         for (key, value) in map {
             if value == count {
@@ -642,16 +727,16 @@ class Dollar {
     /// :param array The array to join the elements of.
     /// :param separator The separator to join the elements with.
     /// :return Joined element from the array of elements.
-    class func join<T: ExtensibleCollection>(array: T[], separator: T) -> T {
-        return Swift.join(separator, reinterpretCast(array) as T[])
+    class func join<T: ExtensibleCollection>(array: [T], separator: T) -> T {
+        return Swift.join(separator, reinterpretCast(array) as [T])
     }
     
     /// Creates an array of keys given a dictionary.
     ///
     /// :param dictionary The dictionary to source from.
     /// :return Array of keys from dictionary.
-    class func keys<T, U>(dictionary: Dictionary<T, U>) -> T[] {
-        var result : T[] = []
+    class func keys<T, U>(dictionary: Dictionary<T, U>) -> [T] {
+        var result : [T] = []
         for (key, _) in dictionary {
             result.insert(key, atIndex: 0)
         }
@@ -662,7 +747,7 @@ class Dollar {
     ///
     /// :param array The array to source from.
     /// :return Last element from the array.
-    class func last<T>(array: T[]) -> T? {
+    class func last<T>(array: [T]) -> T? {
         if array.isEmpty {
             return nil
         } else {
@@ -675,7 +760,7 @@ class Dollar {
     /// param: array:: The array to source from.
     /// :param value The value whose last index needs to be found.
     /// :return Last index of element if found otherwise returns nil.
-    class func lastIndexOf<T: Equatable>(array: T[], value: T) -> Int? {
+    class func lastIndexOf<T: Equatable>(array: [T], value: T) -> Int? {
         return self.findLastIndex(array) { $0 == value }
     }
     
@@ -684,7 +769,7 @@ class Dollar {
     /// :param array The array to source from.
     /// :param transform The mapping function
     /// :return Array of elements mapped using the map function
-    class func map<T, E>(array: T[], transform: (T) -> E) -> E[] {
+    class func map<T, E>(array: [T], transform: (T) -> E) -> [E] {
         return array.map(transform)
     }
     
@@ -692,7 +777,7 @@ class Dollar {
     ///
     /// :param array The array to source from.
     /// :return Maximum element in array.
-    class func max<T : Comparable>(array: T[]) -> T? {
+    class func max<T : Comparable>(array: [T]) -> T? {
         var maxVal = array[0]
         for elem in array {
             if maxVal < elem {
@@ -719,7 +804,7 @@ class Dollar {
         }
         return funcRef
     }
-
+    
     /// Merge dictionaries together, later dictionaries overiding earlier values of keys.
     ///
     /// :param dictionaries The dictionaries to source from.
@@ -750,7 +835,7 @@ class Dollar {
     ///
     /// :param array The array to source from.
     /// :return Minimum value from array.
-    class func min<T : Comparable>(array: T[]) -> T? {
+    class func min<T : Comparable>(array: [T]) -> T? {
         var minVal = array[0]
         for elem in array {
             if minVal > elem {
@@ -808,7 +893,7 @@ class Dollar {
         if n > array.count { return [[]] }
         
         for i in (0...array.count-n).by(step!) {
-            result += Array(array[i..(i+n)] as Slice<T>)
+            result += Array(array[i...(i+n)] as Slice<T>)
         }
         return result
     }
@@ -822,23 +907,23 @@ class Dollar {
     ///            contain n elements. If nil is passed or there are not enough pad elements
     ///            the last partition may less than n elements long.
     /// :return Array partitioned into n element arrays, starting step elements apart.
-    class func partition<T>(var array: Array<T>, var n: Int, var step: Int? = nil, pad: T[]?) -> Array<Array<T>> {
+    class func partition<T>(var array: Array<T>, var n: Int, var step: Int? = nil, pad: [T]?) -> Array<Array<T>> {
         var result = Array<Array<T>>()
         if !step?   { step = n } // If no step is supplied move n each step.
         if step < 1 { step = 1 } // Less than 1 results in an infinite loop.
         if n < 1    { n = 0 }    // Allow 0 if user wants [[],[],[]] for some reason.
         
-        for i in (0..array.count).by(step!) {
+        for i in (0...array.count).by(step!) {
             var end = i+n
             if end > array.count { end = array.count }
-            result += Array(array[i..end] as Slice<T>)
+            result += Array(array[i...end] as Slice<T>)
             if end != i+n { break }
         }
         
         if let padding = pad {
             let remain = array.count%n
             let end = padding.count > remain ? remain : padding.count
-            result[result.count-1] += Array(padding[0..end] as Slice<T>)
+            result[result.count-1] += Array(padding[0...end] as Slice<T>)
         }
         return result
     }
@@ -855,10 +940,10 @@ class Dollar {
         if step < 1 { step = 1 } // Less than 1 results in an infinite loop.
         if n < 1    { n = 0 }    // Allow 0 if user wants [[],[],[]] for some reason.
         
-        for i in (0..array.count).by(step!) {
+        for i in (0...array.count).by(step!) {
             var end = i+n
             if end > array.count { end = array.count }
-            result += Array(array[i..end] as Slice<T>)
+            result += Array(array[i...end] as Slice<T>)
         }
         return result
     }
@@ -903,8 +988,8 @@ class Dollar {
     /// :param array The array to source from.
     /// :param value The property on object to pull out value from.
     /// :return Array of values from array of objects with property of value.
-    class func pluck<T, E>(array: Dictionary<T, E>[], value: T) -> E[] {
-        var result : E[] = []
+    class func pluck<T, E>(array: [Dictionary<T, E>], value: T) -> [E] {
+        var result : [E] = []
         for obj in array {
             if let val = obj[value] {
                 result += val
@@ -917,7 +1002,7 @@ class Dollar {
     ///
     /// :param array The array to source from.
     /// :return Array with values pulled out.
-    class func pull<T : Equatable>(array: T[], values: T...) -> T[] {
+    class func pull<T : Equatable>(array: [T], values: T...) -> [T] {
         return self.pull(array, values: values)
     }
     
@@ -926,7 +1011,7 @@ class Dollar {
     /// :param array The array to source from.
     /// :param values The values to remove.
     /// :return Array with values pulled out.
-    class func pull<T : Equatable>(array: T[], values: T[]) -> T[] {
+    class func pull<T : Equatable>(array: [T], values: [T]) -> [T] {
         return array.filter { !self.contains(values, value: $0) }
     }
     
@@ -934,7 +1019,7 @@ class Dollar {
     ///
     /// :param endVal End value of range.
     /// :return Array of elements based on the sequence starting from 0 to endVal and incremented by 1.
-    class func range<T : ForwardIndex where T : IntegerLiteralConvertible>(endVal: T) -> T[] {
+    class func range<T : ForwardIndex where T : IntegerLiteralConvertible>(endVal: T) -> [T] {
         return self.range(0, endVal: endVal)
     }
     
@@ -943,7 +1028,7 @@ class Dollar {
     /// :param startVal Start value of range
     /// :param endVal End value of range
     /// :return Array of elements based on the sequence that is incremented by 1
-    class func range<T : ForwardIndex where T.DistanceType : IntegerLiteralConvertible>(startVal: T, endVal: T) -> T[] {
+    class func range<T : ForwardIndex where T.DistanceType : IntegerLiteralConvertible>(startVal: T, endVal: T) -> [T] {
         return self.range(startVal, endVal: endVal, incrementBy: 1)
     }
     
@@ -953,8 +1038,8 @@ class Dollar {
     /// :param endVal End value of range.
     /// :param incrementBy Increment sequence by.
     /// :return Array of elements based on the sequence.
-    class func range<T : ForwardIndex>(startVal: T, endVal: T, incrementBy: T.DistanceType) -> T[] {
-        let range = (startVal..endVal).by(incrementBy)
+    class func range<T : ForwardIndex>(startVal: T, endVal: T, incrementBy: T.DistanceType) -> [T] {
+        let range = (startVal...endVal).by(incrementBy)
         return self.sequence(range)
     }
     
@@ -964,7 +1049,7 @@ class Dollar {
     /// :param initial Initial value to seed the reduce function with
     /// :param combine Function that will combine the passed value with element in the array
     /// :return The result of reducing all of the elements in the array into one value
-    class func reduce<U, T>(array: T[], initial: U, combine: (U, T) -> U) -> U {
+    class func reduce<U, T>(array: [T], initial: U, combine: (U, T) -> U) -> U {
         return array.reduce(initial, combine: combine)
     }
     
@@ -972,7 +1057,7 @@ class Dollar {
     ///
     /// :param seq The sequence to generate from.
     /// :return Array of elements generated from the sequence.
-    class func sequence<S : Sequence>(seq: S) -> S.GeneratorType.Element[] {
+    class func sequence<S : Sequence>(seq: S) -> [S.GeneratorType.Element] {
         return Array<S.GeneratorType.Element>(seq)
     }
     
@@ -981,7 +1066,7 @@ class Dollar {
     /// :param array The array to wrap.
     /// :param iterator Remove elements for which iterator returns true.
     /// :return Array with elements filtered out.
-    class func remove<T>(array: T[], iterator: (T) -> Bool) -> T[] {
+    class func remove<T>(array: [T], iterator: (T) -> Bool) -> [T] {
         return array.filter { !iterator($0) }
     }
     
@@ -990,22 +1075,14 @@ class Dollar {
     /// :param array The array to source from.
     /// :param numElements The number of elements to exclude from the beginning.
     /// :return The rest of the elements.
-    class func rest<T>(array: T[], numElements: Int = 1) -> T[] {
-        var result: T[] = []
+    class func rest<T>(array: [T], numElements: Int = 1) -> [T] {
+        var result: [T] = []
         if (numElements < array.count) {
-            for index in numElements..array.count {
+            for index in numElements...array.count {
                 result += array[index]
             }
         }
         return result
-    }
-    
-    /// Returns a sample from the array.
-    ///
-    /// :param array The array to sample from.
-    /// :return Random element from array.
-    class func sample<T>(array: T[]) -> T {
-        return array[random() % array.count]
     }
     
     /// Slices the array based on the start and end position. If an end position is not specified it will slice till the end of the array.
@@ -1014,7 +1091,7 @@ class Dollar {
     /// :param start Start index.
     /// :param end End index.
     /// :return First element from the array.
-    class func slice<T>(array: T[], start: Int, end: Int = 0) -> T[] {
+    class func slice<T>(array: [T], start: Int, end: Int = 0) -> [T] {
         var uend = end;
         if (uend == 0) {
             uend = array.count;
@@ -1023,7 +1100,7 @@ class Dollar {
         if end > array.count || start > array.count || uend < start {
             return [];
         } else {
-            return Array(array[start..uend]);
+            return Array(array[start...uend]);
         }
     }
     
@@ -1032,7 +1109,7 @@ class Dollar {
     /// :param array The array to source from.
     /// :param value Find sorted index of this value.
     /// :return Index of where the elemnt should be inserted.
-    class func sortedIndex<T : Comparable>(array: T[], value: T) -> Int {
+    class func sortedIndex<T : Comparable>(array: [T], value: T) -> Int {
         for (index, elem) in enumerate(array) {
             if elem > value {
                 return index
@@ -1051,13 +1128,13 @@ class Dollar {
         return object
     }
     
-    /// Call a function n times and also passes the index. If a value is returned 
+    /// Call a function n times and also passes the index. If a value is returned
     /// in the function then the times method will return an array of those values.
     ///
     /// :param n Number of times to call function.
     /// :param function The function to be called every time.
     /// :return Values returned from callback function.
-    class func times<T>(n: Int, function: () -> T) -> T[] {
+    class func times<T>(n: Int, function: () -> T) -> [T] {
         return self.times(n) { (index: Int) -> T in
             return function()
         }
@@ -1080,9 +1157,9 @@ class Dollar {
     /// :param n Number of times to call function.
     /// :param function The function to be called every time that takes index.
     /// :return Values returned from callback function.
-    class func times<T>(n: Int, function: (Int) -> T) -> T[] {
-        var result: T[] = []
-        for index in (0..n) {
+    class func times<T>(n: Int, function: (Int) -> T) -> [T] {
+        var result: [T] = []
+        for index in (0...n) {
             result += function(index)
         }
         return result
@@ -1092,14 +1169,14 @@ class Dollar {
     ///
     /// :param arrays The arrays to perform union on.
     /// :return Resulting array after union.
-    class func union<T : Hashable>(arrays: T[]...) -> T[] {
+    class func union<T : Hashable>(arrays: [T]...) -> [T] {
         var map : Dictionary<T, Bool> = Dictionary<T, Bool>()
         for arr in arrays {
             for elem in arr {
                 map[elem] = true
             }
         }
-        var result : T[] = []
+        var result : [T] = []
         for key in map.keys {
             result += key
         }
@@ -1110,12 +1187,12 @@ class Dollar {
     ///
     /// :param array The array to source from.
     /// :return An array with unique values.
-    class func uniq<T : Hashable>(array: T[]) -> T[] {
+    class func uniq<T : Hashable>(array: [T]) -> [T] {
         var map : Dictionary<T, Bool> = Dictionary<T, Bool>()
         for elem in array {
             map[elem] = true
         }
-        var result : T[] = []
+        var result : [T] = []
         for key in map.keys {
             result += key
         }
@@ -1126,8 +1203,8 @@ class Dollar {
     ///
     /// :param dictionary The dictionary to source from.
     /// :return An array of values from the dictionary.
-    class func values<T, U>(dictionary: Dictionary<T, U>) -> U[] {
-        var result : U[] = []
+    class func values<T, U>(dictionary: Dictionary<T, U>) -> [U] {
+        var result : [U] = []
         for (_, value) in dictionary {
             result.insert(value, atIndex: 0)
         }
@@ -1139,7 +1216,7 @@ class Dollar {
     /// :param array The array to source from.
     /// :param values Values to exclude.
     /// :return Array excluding provided values.
-    class func without<T : Equatable>(array: T[], values: T...) -> T[] {
+    class func without<T : Equatable>(array: [T], values: T...) -> [T] {
         return self.pull(array, values: values)
     }
     
@@ -1147,35 +1224,17 @@ class Dollar {
     ///
     /// :param arrays The arrays to perform xor on in order.
     /// :return Resulting array after performing xor.
-    class func xor<T : Hashable>(arrays: T[]...) -> T[] {
+    class func xor<T : Hashable>(arrays: [T]...) -> [T] {
         var map : Dictionary<T, Bool> = Dictionary<T, Bool>()
         for arr in arrays {
             for elem in arr {
                 map[elem] = !map[elem]
             }
         }
-        var result : T[] = []
+        var result : [T] = []
         for (key, value) in map {
             if value {
                 result += key
-            }
-        }
-        return result
-    }
-    
-    /// Creates an array of grouped elements, the first of which contains the first elements 
-    /// of the given arrays.
-    ///
-    /// :param arrays The arrays to be grouped.
-    /// :return An array of grouped elements.
-    class func zip(arrays: AnyObject[]...) -> AnyObject[] {
-        var result: AnyObject[][] = []
-        for _ in self.first(arrays) as AnyObject[] {
-            result += [] as AnyObject[]
-        }
-        for (index, array) in enumerate(arrays) {
-            for (elemIndex, elem : AnyObject) in enumerate(array) {
-                result[elemIndex] += elem
             }
         }
         return result
@@ -1186,14 +1245,14 @@ class Dollar {
     /// :param keys The array of keys.
     /// :param values The array of values.
     /// :return Dictionary based on the keys and values passed in order.
-    class func zipObject<T, E>(keys: T[], values: E[]) -> Dictionary<T, E> {
+    class func zipObject<T, E>(keys: [T], values: [E]) -> Dictionary<T, E> {
         var result = Dictionary<T, E>()
         for (index, key) in enumerate(keys) {
             result[key] = values[index]
         }
+        
         return result
     }
-    
 }
 
 typealias $ = Dollar
