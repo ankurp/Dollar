@@ -33,6 +33,7 @@
 
 /* Begin PBXFileReference section */
 		0419C8411948BEC600B947B3 /* CarExample.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CarExample.swift; sourceTree = "<group>"; };
+		476D5251196B855A00DB66FA /* Lazyground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Lazyground.playground; sourceTree = "<group>"; };
 		92E0D03C19467C67002ACC3D /* Dollar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Dollar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		92E0D04019467C67002ACC3D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		92E0D04119467C67002ACC3D /* Dollar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Dollar.h; sourceTree = "<group>"; };
@@ -103,6 +104,7 @@
 				0419C8411948BEC600B947B3 /* CarExample.swift */,
 				92E0D04E19467C67002ACC3D /* DollarTests.swift */,
 				92E0D04C19467C67002ACC3D /* Supporting Files */,
+				476D5251196B855A00DB66FA /* Lazyground.playground */,
 			);
 			path = DollarTests;
 			sourceTree = "<group>";

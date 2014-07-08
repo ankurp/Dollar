@@ -302,16 +302,33 @@ class Dollar {
         return invoke();
     }
     
+    /// Cycle through method chain
+    ///
+    /// :return Result of invoked method in chain
+    func pedal() -> AnyObject?{
+        if(lazyQueue.isEmpty){ return nil; }
+        
+        let invoke = lazyQueue.removeAtIndex(0);
+        lazyQueue += invoke
+        return invoke();
+    }
+    
     /// Evaluates entire chain at once
     ///
     /// :return Result of chain
-    func invokeAll() -> AnyObject?
-    {
+    func invokeAll() -> AnyObject?{
         var result:AnyObject? = nil
         for _ in lazyQueue{
             result = self.step()
         }
         return result
+    }
+    
+    /// Check if there are anymore chained methods
+    ///
+    /// :return False if at end of chain
+    func hasNext() -> Bool{
+        return lazyQueue.count != 0;
     }
     
     ///  ___  ___  _______   ___       ________  _______   ________
@@ -1265,6 +1282,55 @@ class Dollar {
         }
         
         return result
+    }
+    
+    /// Lazy namespace
+    class lazy{
+        /// Creates Iterator for performing action on collection
+        ///
+        /// :param array The collection to evaluate
+        /// :param function Closure to perform on each element
+        /// :return Iterator for performing lazy evaluation on collection
+        class func map(array: [AnyObject], function: (AnyObject) -> AnyObject) -> $.Iterator{
+            return $.Iterator(array: array, function: function);
+        }
+    }
+    
+    /// Dollar.Iterator for lazy evalution
+    class Iterator{
+        var index:Int = 0
+        var action:(AnyObject) -> AnyObject
+        var $:Dollar
+        
+        init(array:[AnyObject], function:(AnyObject) -> AnyObject){
+            $ = Dollar(array: array);
+            action = function;
+        }
+        
+        /// Invokes action on next element in collection
+        ///
+        /// :return Value of evaluation. Nil if no more elements in collection
+        func next() -> AnyObject?{
+            if(index == $.resultArray.count) { return nil; }
+            
+            let element: AnyObject = $.resultArray[index++]
+            return action(element);
+        }
+        
+        /// Continuously invoke action on collection
+        ///
+        /// :return Value of evaluation
+        func cycle() -> AnyObject?{
+            if(index == $.resultArray.count) { index = 0; }
+            return self.next();
+        }
+        
+        /// Check if there are anymore elements in collection to evaluate
+        ///
+        /// :return False if at end of collection.
+        func hasNext() -> Bool{
+            return index < $.resultArray.count;
+        }
     }
 }
 

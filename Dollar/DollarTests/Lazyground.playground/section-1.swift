@@ -302,6 +302,14 @@ class Dollar {
         return invoke();
     }
     
+    func pedal() -> AnyObject?{
+        if(lazyQueue.isEmpty){ return nil; }
+            
+        let invoke = lazyQueue.removeAtIndex(0);
+        lazyQueue += invoke
+        return invoke();
+    }
+    
     /// Evaluates entire chain at once
     ///
     /// :return Result of chain
@@ -1266,38 +1274,110 @@ class Dollar {
         
         return result
     }
+    
+    class lazy{
+        class func map(array: [AnyObject], function: (AnyObject) -> AnyObject) -> $.Iterator{
+            return $.Iterator(array: array, function: function);
+        }
+    }
+    
+
+    class Iterator{
+        var index:Int = 0
+        var action:(AnyObject) -> AnyObject
+        var $:Dollar
+        
+        init(array:[AnyObject], function:(AnyObject) -> AnyObject){
+            $ = Dollar(array: array);
+            action = function;
+        }
+        
+        func next() -> AnyObject?{
+            if(index == $.resultArray.count) { return nil; }
+            
+            let element: AnyObject = $.resultArray[index++]
+            return action(element);
+        }
+        
+        func cycle() -> AnyObject?{
+            if(index == $.resultArray.count) { index = 0; }
+            return self.next();
+        }
+        
+        func hasNext() -> Bool{
+            return index < $.resultArray.count;
+        }
+    }
 }
 
 typealias $ = Dollar
 
-var test:Dollar = $(array: [[[[1],2],3],4,[5,[6,[7]]]]).flatten()
-    .map{ (element:AnyObject) in
-        return (element as Int) + 1;
+var working = true;
+
+var iterator = $.lazy.map([[[[1],2],3],4,[5,[6,[7]]]], function: { return ($0 as Int) + 1 })
+
+//Access dollar level for method chaining and modifying your collection
+iterator.$.flatten().map{ (element:AnyObject) in
+    return (element as Int) + 1;
     }.any{
         return ($0 as Int) < 2;
     }.all{
-        return ($0 as Int) > 1;
-    }.initial(2).first().second().third().eighth().value();
+        return ($0 as Int) > 1;}
+    .initial(2).first().second().third().eighth().value();
 
-test.step() as [Int]  /// [1,2,3,4,5,6,7]
-test.step() as [Int]  /// [2,3,4,5,6,7,8]
-test.step() as Bool   /// false
-test.step() as Bool   /// true
-test.step() as [Int]  /// [2,3,4,5,6]
-test.step() as Int    /// 2
-test.step() as Int    /// 3
-test.step() as Int    /// 4
-test.step() as? Int   /// nil
-var finalResult = test.step() as [Int]  /// [2,3,4,5,6]
+//Lazy evaluate your chain
+iterator.$.step() as [Int]      /// [1,2,3,4,5,6,7]
+iterator.$.step() as [Int]      /// [2,3,4,5,6,7,8]
+iterator.$.step() as Bool       /// false
+iterator.$.step() as Bool       /// true
+iterator.$.step() as [Int]      /// [2,3,4,5,6]
+iterator.$.step() as Int        /// 2
+iterator.$.step() as Int        /// 3
+iterator.$.step() as Int        /// 4
+iterator.$.step() as? Int       /// nil
+var finalResult1 = iterator.$.step() as [Int]   /// [2,3,4,5,6]
 
+//Lazy evalue your action being performed on each element. Collection values won't change!
+iterator.next() as Int          /// 3
+iterator.next() as Int          /// 4
+iterator.next() as Int          /// 5
+iterator.next() as Int          /// 6
+iterator.next() as Int          /// 7
+iterator.hasNext()              /// false
+iterator.next() as? Int         /// nil
 
-var finalResult2 = $(array: [1,2,3,4,5,6,7]).map{ (element:AnyObject) in
+//Cycle your lazy!
+iterator.cycle() as Int         /// 3
+iterator.cycle() as Int         /// 4
+iterator.cycle() as Int         /// 5
+iterator.cycle() as Int         /// 6
+iterator.cycle() as Int         /// 7
+iterator.hasNext()              /// false
+iterator.cycle() as Int         /// 3
+iterator.cycle() as Int         /// 4
+var finalResult2 = iterator.$.resultArray as [Int]  /// [2,3,4,5,6]
+
+finalResult1 == finalResult2    /// true
+
+//Evaluate entire chain immediately
+var couch = $(array: [1,2,3,4,5,6,7]).map{ (element:AnyObject) in
     return (element as Int) + 1;
     }.any{
         return ($0 as Int) < 2;
     }.all{
         return ($0 as Int) > 1;
-    }.initial(2).first().second().third().eighth().value().invokeAll() as [Int];
+    }.initial(2).value();    /// [2,3,4,5,6,]
 
-finalResult == finalResult2      /// true
+var finalResult3 = couch.invokeAll() as [Int]
+finalResult2 == finalResult3    /// true
 
+//Get lazier
+couch.first().second().third().eighth()
+
+//Cycle your lazy
+couch.pedal() as Int            /// 2
+couch.pedal() as Int            /// 3
+couch.pedal() as Int            /// 4
+couch.pedal() as? Int           /// nil
+couch.pedal() as Int            /// 2
+couch.pedal() as Int            /// 3
