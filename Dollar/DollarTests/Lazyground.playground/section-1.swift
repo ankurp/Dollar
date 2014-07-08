@@ -638,15 +638,15 @@ class Dollar {
     }
     /* ALJCepeda: I could not get this to work no matter what I did.
     class func flatten<T>(array: [T]) -> [T] {
-    var resultArr: [T] = []
-    for elem : T in array {
-    if let val = elem as? [T] {
-    resultArr += self.flatten(val)
-    } else {
-    resultArr += elem
-    }
-    }
-    return resultArr
+        var resultArr: [T] = []
+        for elem : T in array {
+            if let val = elem as? [T] {
+                resultArr += self.flatten(val)
+            } else {
+                resultArr += elem
+            }
+        }
+        return resultArr
     }*/
     
     /// This method returns a dictionary of values in an array mapping to the
@@ -1269,3 +1269,35 @@ class Dollar {
 }
 
 typealias $ = Dollar
+
+var test:Dollar = $(array: [[[[1],2],3],4,[5,[6,[7]]]]).flatten()
+    .map{ (element:AnyObject) in
+        return (element as Int) + 1;
+    }.any{
+        return ($0 as Int) < 2;
+    }.all{
+        return ($0 as Int) > 1;
+    }.initial(2).first().second().third().eighth().value();
+
+test.step() as [Int]  /// [1,2,3,4,5,6,7]
+test.step() as [Int]  /// [2,3,4,5,6,7,8]
+test.step() as Bool   /// false
+test.step() as Bool   /// true
+test.step() as [Int]  /// [2,3,4,5,6]
+test.step() as Int    /// 2
+test.step() as Int    /// 3
+test.step() as Int    /// 4
+test.step() as? Int   /// nil
+var finalResult = test.step() as [Int]  /// [2,3,4,5,6]
+
+
+var finalResult2 = $(array: [1,2,3,4,5,6,7]).map{ (element:AnyObject) in
+    return (element as Int) + 1;
+    }.any{
+        return ($0 as Int) < 2;
+    }.all{
+        return ($0 as Int) > 1;
+    }.initial(2).first().second().third().eighth().value().invokeAll() as [Int];
+
+finalResult == finalResult2      /// true
+

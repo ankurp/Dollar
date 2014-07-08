@@ -145,8 +145,8 @@ class Dollar {
     /// :return The wrapper object.
     func flatten() -> ${
         lazyQueue.append{
-            self.resultArray = $.flatten(self.resultArray)
-            return self.resultArray
+            self.resultArray = Dollar.flatten(self.resultArray)
+            return self
         }
         return self
     }
@@ -165,7 +165,7 @@ class Dollar {
     func initial(numElements: Int) -> ${
         lazyQueue.append{
             self.resultArray = Dollar.initial(self.resultArray, numElements: numElements)
-            return self.resultArray
+            return self
         }
         return self
     }
@@ -181,7 +181,7 @@ class Dollar {
                 result += function(elem)
             }
             self.resultArray = result
-            return self.resultArray
+            return self
         }
         return self
     }
@@ -197,7 +197,7 @@ class Dollar {
                 result += function(index, elem)
             }
             self.resultArray = result
-            return self.resultArray
+            return self
         }
         return self
     }
@@ -211,7 +211,7 @@ class Dollar {
             for elem : AnyObject in self.resultArray {
                 function(elem)
             }
-            return self.resultArray
+            return self
         }
         return self;
     }
@@ -225,7 +225,7 @@ class Dollar {
             for (index, elem : AnyObject) in enumerate(self.resultArray) {
                 function(index, elem)
             }
-            return self.resultArray
+            return self
         }
         return self;
     }
@@ -237,7 +237,7 @@ class Dollar {
     func filter(function: (AnyObject) -> Bool) -> ${
         lazyQueue.append{
             self.resultArray = self.resultArray.filter(function)
-            return self.resultArray
+            return self
         }
         return self;
     }
@@ -246,18 +246,17 @@ class Dollar {
     ///
     /// :param function Function to tell whether element value is true or false.
     /// :return Whether all elements are true according to func function.
-    func all(function: (AnyObject) -> Bool) -> ${
+    func all(function: (AnyObject) -> Bool){
         lazyQueue.append{
             return Dollar.every(self.resultArray, iterator: function)
         }
-        return self;
     }
     
     /// Returns if any element in array is true based on the passed function.
     ///
     /// :param function Function to tell whether element value is true or false.
     /// :return Whether any one element is true according to func function in the array.
-    func any(function: (AnyObject) -> Bool) -> ${
+    func any(function: (AnyObject) -> Bool){
         lazyQueue.append{
             for elem : AnyObject in self.resultArray {
                 if function(elem) {
@@ -266,17 +265,15 @@ class Dollar {
             }
             return false
         }
-        return self;
     }
     
     /// Get the final result from the wrapper object to terminated the chain.
     ///
     /// :return Final resulting array from applying all functions on it.
-    func value() -> ${
+    func value(){
         lazyQueue.append{
             return self.resultArray
         }
-        return self;
     }
     
     /// Slice the array into smaller size based on start and end value.
@@ -287,7 +284,7 @@ class Dollar {
     func slice(start: Int, end: Int = 0) -> ${
         lazyQueue.append{
             self.resultArray =  Dollar.slice(self.resultArray, start: start, end: end);
-            return self.resultArray;
+            return self;
         }
         return self;
     }
@@ -295,9 +292,11 @@ class Dollar {
     /// Invokes subsequent method in chain
     ///
     /// :return Result of invoked method in chain, nil if at end of chain
-    func step() -> AnyObject?{
+    func next() -> AnyObject?{
         if(lazyQueue.isEmpty) { return nil; }
         
+        lazyQueue[0]()
+        //lazyQueue.removeAtIndex(0)() causes XCode to freak out royally
         var invoke = lazyQueue.removeAtIndex(0);
         return invoke();
     }
@@ -308,8 +307,8 @@ class Dollar {
     func invokeAll() -> AnyObject?
     {
         var result:AnyObject? = nil
-        for _ in lazyQueue{
-            result = self.step()
+        for closure in lazyQueue{
+            result = closure()
         }
         return result
     }
@@ -625,29 +624,17 @@ class Dollar {
     ///
     /// :param array The array to flatten.
     /// :return Flattened array.
-    class func flatten(array: [AnyObject]) -> [AnyObject] {
-        var resultArr: [AnyObject] = []
-        for elem : AnyObject in array {
-            if let val = elem as? [AnyObject] {
-                resultArr += flatten(val)
+    class func flatten<T>(array: [T]) -> [T] {
+        var resultArr: [T] = []
+        for elem : T in array {
+            if let val = elem as? [T] {
+                resultArr += self.flatten(val)
             } else {
                 resultArr += elem
             }
         }
         return resultArr
     }
-    /* ALJCepeda: I could not get this to work no matter what I did.
-    class func flatten<T>(array: [T]) -> [T] {
-    var resultArr: [T] = []
-    for elem : T in array {
-    if let val = elem as? [T] {
-    resultArr += self.flatten(val)
-    } else {
-    resultArr += elem
-    }
-    }
-    return resultArr
-    }*/
     
     /// This method returns a dictionary of values in an array mapping to the
     /// total number of occurrences in the array.
@@ -702,8 +689,8 @@ class Dollar {
     /// :return Array of initial values.
     class func initial<T>(array: [T], numElements: Int = 1) -> [T] {
         var result: [T] = []
-        if (array.count > numElements+1) {
-            for index in 0...(array.count - (numElements+1)) {
+        if (array.count > numElements) {
+            for index in 0...(array.count - numElements) {
                 result += array[index]
             }
         }
@@ -1269,3 +1256,4 @@ class Dollar {
 }
 
 typealias $ = Dollar
+
