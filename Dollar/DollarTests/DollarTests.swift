@@ -83,6 +83,11 @@ class DollarTests: XCTestCase {
         XCTAssertEqualObjects($.flatten([[3], "Hello", 5]), [3, "Hello", 5], "Return flat array")
         XCTAssertEqualObjects($.flatten([[[3], 4], 5]), [3, 4, 5], "Return flat array")
     }
+    
+    func testShuffle() {
+        XCTAssertEqualObjects($.shuffle([1]), [1], "Return shuffled array")
+        XCTAssertEqualObjects($.shuffle([1, 2, 3]).length, 3, "Return shuffled array")
+    }
 
     func testIndexOf() {
         XCTAssertEqualObjects($.indexOf(["A", "B", "C"], value: "B"), 1, "Return index of value")

@@ -600,6 +600,24 @@ class Dollar {
         return resultArr
     }
     
+    /// Randomly shuffles the elements of an array.
+    ///
+    /// :param array The array to shuffle.
+    /// :return Shuffled array
+    class func shuffle<T>(array: [T]) -> [T]
+    {
+        // Implementation of Fisher-Yates shuffle
+        // http://en.wikipedia.org/wiki/Fisher-Yates_Shuffle
+        for index in 0..<array.count
+        {
+            var randIndex = Int(arc4random_uniform(UInt32(index)))
+            
+            // We use in-out parameters to swap the internals of the array
+            swap(&array[index], &array[randIndex])
+        }
+        return array
+    }
+
     /// This method returns a dictionary of values in an array mapping to the
     /// total number of occurrences in the array.
     ///
