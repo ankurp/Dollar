@@ -36,7 +36,7 @@ extension String {
     /// Get an array from string split using the delimiter character
     ///
     /// :return Array of strings after spliting
-    func split(delimiter: Character) -> String[] {
+    func split(delimiter: Character) -> [String] {
         return Swift.split(self) { (char: Character) -> Bool in
             char == delimiter
         }
