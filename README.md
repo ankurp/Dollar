@@ -10,18 +10,32 @@ Cent is a library that extends certain Swift object types using the extension fe
 ## Contents ##
 
 - [Setup](#setup)
-- [Usage](#usage)
+- [Dollar Usage](#dollar-usage)
   - [Array](#array-methods)
   - [Dictionary](#dictionary-methods)
   - [Object](#object-methods)
   - [Function](#function-methods)
   - [Chaining](#chaining)
-- [Examples](#examples)
+- [Dollar Examples](#dollar-examples)
   - [Array](#array)
   - [Dictionary](#dictionary)
   - [Object](#object)
   - [Function](#function)
   - [Chaining](#chaining---array-)
+- [Cent Usage](#cent-usage)
+  - [Array](#array-extensions)
+  - [Date](#date-extensions)  
+  - [Dictionary](#dictionary-extensions)
+  - [Int](#int-extensions)
+  - [String](#string-extensions)
+  - [Range](#range-extensions)
+- [Cent Examples](#cent-examples)
+  - [Array](#array-example-usage)
+  - [Date](#date-example-usage)
+  - [Dictionary](#dictionary-example-usage)
+  - [Int](#int-example-usage)
+  - [String](#string-example-usage)
+  - [Range](#range-example-usage)
 - [Contributing](#contributing)
 - [Roadmap](#roadmap)
 - [Dollar or Cent?](#dollar-or-cent)
@@ -33,7 +47,7 @@ OR
 
 Currently there are issues loading the library using `pod 'Dollar', '~> 0.2'` which is pending changes from Cocoapods.
 
-## Usage ##
+## Dollar Usage ##
 
 ### Array Methods ###
 
@@ -50,13 +64,6 @@ Method | Usage
 **`$.first`**|Gets the first element in the array.
 **`$.second`**|Gets the second element in the array.
 **`$.third`**|Gets the third element in the array.
-**`$.fourth`**|Gets the fourth element in the array.
-**`$.fifth`**|Gets the fifth element in the array.
-**`$.sixth`**|Gets the sixth element in the array.
-**`$.seventh`**|Gets the seventh element in the array.
-**`$.eighth`**|Gets the eighth element in the array.
-**`$.ninth`**|Gets the ninth element in the array.
-**`$.tenth`**|Gets the tenth element in the array.
 **`$.flatten`**|Flattens a nested array of any depth.
 **`$.frequencies`**|This method returns a dictionary of values in an array mapping to the total number of occurrences in the array. If passed a function it returns a frequency table of the results of the given function on the arrays elements.
 **`$.indexOf`**|Gets the index at which the first occurrence of value is found.
@@ -128,20 +135,13 @@ Method | Usage
 **`first`**|Returns the first element in the array and terminated the chain
 **`second`**|Returns the second element in the array and terminated the chain
 **`third`**|Returns the third element in the array and terminated the chain
-**`fouth`**|Returns the fourth element in the array and terminated the chain
-**`fifth`**|Returns the fifth element in the array and terminated the chain
-**`sixth`**|Returns the sixth element in the array and terminated the chain
-**`seventh`**|Returns the seventh element in the array and terminated the chain
-**`eighth`**|Returns the eighth element in the array and terminated the chain
-**`ninth`**|Returns the ninth element in the array and terminated the chain
-**`tenth`**|Returns the tenth element in the array and terminated the chain
 **`flatten`**|Flattens a nested array of any depth.
 **`initial`**|Gets all but the last element or last n elements of an array.
 **`map`**|Maps each element to the new value returned in the callback function
 **`slice`**|Slices the array based on the start and end position. If an end position is not specified it will slice till the end of the array.
 **`value`**|Returns the array after applying all of the chained operators on it.
 
-## Examples ##
+## Dollar Examples ##
 
 ### Array ###
 
@@ -605,7 +605,8 @@ Merges all of the dictionaries together and the latter dictionary overrides the 
 let dict: Dictionary<String, Int> = ["Dog": 1, "Cat": 2]
 let dict2: Dictionary<String, Int> = ["Cow": 3]
 let dict3: Dictionary<String, Int> = ["Sheep": 4]
-$.merge(dict, dictionaries: dict2, dict3)
+$.merge(dictionaries: dict, dict2, dict3)
+=> ["Dog": 1, "Cat": 2, "Cow": 3, "Sheep": 4]
 ```
 
 ### pick - `$.pick`
@@ -614,6 +615,7 @@ Creates a shallow clone of a dictionary composed of the specified keys.
 
 ```swift
 $.pick(["Dog": 1, "Cat": 2, "Cow": 3], keys: "Dog", "Cow")
+=> ["Dog": 1, "Cow": 3]
 ```
 
 ### omit - `$.omit`
@@ -622,6 +624,7 @@ Creates a shallow clone of a dictionary excluding the specified keys.
 
 ```swift
 $.omit(["Dog": 1, "Cat": 2, "Cow": 3], keys: "Cat", "Dog")
+=> ["Cow": 3, "Sheep": 4]
 ```
 
 ### Object ###
@@ -764,6 +767,65 @@ chain.all { ($0 as Int) < 40 }
 chain.any { ($0 as Int) < 40 } 
 => true
 ```
+
+
+## Cent Usage ##
+
+### Array Extensions ###
+
+Method | Usage
+---- | ---------
+> TODO: Add methods
+
+### Date Extensions ###
+
+Method | Usage
+---- | ---------
+> TODO: Add methods
+
+### Dictionary Extensions ###
+
+Method | Usage
+---- | ---------
+> TODO: Add methods
+
+### Int Extensions ###
+
+Method | Usage
+---- | ---------
+> TODO: Add methods
+
+### String Extensions ###
+
+Method | Usage
+---- | ---------
+> TODO: Add methods
+
+### Range Extensions ###
+
+Method | Usage
+---- | ---------
+> TODO: Add methods
+
+## Cent Examples ##
+
+### Array Example Usage ###
+> TODO: Add examples
+
+### Date Example Usage ###
+> TODO: Add examples
+
+### Dictionary Example Usage ###
+> TODO: Add examples
+
+### Int Example Usage ###
+> TODO: Add examples
+
+### String Example Usage ###
+> TODO: Add examples
+
+### Range Example Usage ###
+> TODO: Add examples
 
 ## Contributing ##
 If you are interested in contributing checkout [CONTRIBUTING.md](CONTRIBUTING.md)

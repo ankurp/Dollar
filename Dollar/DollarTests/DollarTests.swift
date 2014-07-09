@@ -75,13 +75,13 @@ class DollarTests: XCTestCase {
 
     func testCompact() {
         XCTAssertEqualObjects($.compact([3, nil, 4, 5]), [3, 4, 5], "Return truth array")
-        XCTAssertEqualObjects($.compact([nil, nil]) as NSObject[], [], "Return truth array")
+        XCTAssertEqualObjects($.compact([nil, nil]) as [NSObject], [], "Return truth array")
     }
 
     func testFlatten() {
-        XCTAssertEqualObjects($.flatten([[3], 4, 5]) as Int[], [3, 4, 5], "Return flat array")
-        XCTAssertEqualObjects($.flatten([[3], "Hello", 5]) as NSObject[], [3, "Hello", 5], "Return flat array")
-        XCTAssertEqualObjects($.flatten([[[3], 4], 5]) as Int[], [3, 4, 5], "Return flat array")
+        XCTAssertEqualObjects($.flatten([[3], 4, 5]) as [Int], [3, 4, 5], "Return flat array")
+        XCTAssertEqualObjects($.flatten([[3], "Hello", 5]) as [NSObject], [3, "Hello", 5], "Return flat array")
+        XCTAssertEqualObjects($.flatten([[[3], 4], 5]) as [Int], [3, 4, 5], "Return flat array")
     }
 
     func testIndexOf() {
@@ -167,7 +167,7 @@ class DollarTests: XCTestCase {
     }
 
     func testZip() {
-        XCTAssertEqualObjects($.zip(["fred", "barney"], [30, 40], [true, false]) as NSObject[], [["fred", 30, true], ["barney", 40, false]], "Zip up arrays")
+        XCTAssertEqualObjects($.zip(["fred", "barney"], [30, 40], [true, false]) as [NSObject], [["fred", 30, true], ["barney", 40, false]], "Zip up arrays")
     }
 
     func testZipObject() {
@@ -281,19 +281,19 @@ class DollarTests: XCTestCase {
         XCTAssertEqual(chain.first() as Int, 1, "Returns first element which ends the chain")
 
         chain = $(array: [[1, 2], 3, [[4], 5]])
-        XCTAssertEqualObjects(chain.flatten().initial(2).value() as Int[], [1, 2, 3], "Returns flatten array from chaining")
+        XCTAssertEqualObjects(chain.flatten().initial(2).value() as [Int], [1, 2, 3], "Returns flatten array from chaining")
 
         chain = $(array: [[1, 2], 3, [[4], 5]])
         XCTAssertEqual(chain.initial().flatten().first() as Int, 1, "Returns flatten array from chaining")
 
         chain = $(array: [[1, 2], 3, [[4], 5]])
-        XCTAssertEqualObjects(chain.flatten().map({ (elem) in elem as Int * 10 }).value() as Int[], [10, 20, 30, 40, 50], "Returns mapped values")
+        XCTAssertEqualObjects(chain.flatten().map({ (elem) in elem as Int * 10 }).value() as [Int], [10, 20, 30, 40, 50], "Returns mapped values")
 
         XCTAssertEqual(chain.first() as Int, 10, "Returns first element from mapped value")
 
-        var elements: Int[] = []
+        var elements: [Int] = []
         chain.each { elements += $0 as Int }
-        XCTAssertEqualObjects(elements as Int[], [10, 20, 30, 40, 50], "Goes through each element in the array")
+        XCTAssertEqualObjects(elements as [Int], [10, 20, 30, 40, 50], "Goes through each element in the array")
 
         XCTAssertTrue(chain.all { ( $0 as Int) < 100 }, "All elements are less than 100")
         XCTAssertFalse(chain.all { ($0 as Int) < 40 }, "All elements are not less than 40")
@@ -301,7 +301,7 @@ class DollarTests: XCTestCase {
 
         elements = []
         chain.slice(0, end: 3).each({ elements += $0 as Int})
-        XCTAssertEqualObjects(elements as Int[], [10, 20, 30], "Chained seld")
+        XCTAssertEqualObjects(elements as [Int], [10, 20, 30], "Chained seld")
 
     }
 
@@ -320,7 +320,7 @@ class DollarTests: XCTestCase {
             let people = $.join(names, separator: " from ")
             return "Hello \(people)"
             }, "Ankur", "Swift")
-        XCTAssertEqualObjects($.times(3, function: fun) as String[], ["Hello Ankur from Swift", "Hello Ankur from Swift", "Hello Ankur from Swift"], "Call a function 3 times")
+        XCTAssertEqualObjects($.times(3, function: fun) as [String], ["Hello Ankur from Swift", "Hello Ankur from Swift", "Hello Ankur from Swift"], "Call a function 3 times")
     }
 
     func testAfter() {
