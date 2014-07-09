@@ -32,6 +32,7 @@ class Dollar {
     
     var resultArray: [AnyObject] = []
     var lazyQueue:[(()->AnyObject?)] = [];
+    var lazyIndex:Int = 0;
     
     /// Initializer of the wrapper object for chaining.
     ///
@@ -292,25 +293,55 @@ class Dollar {
         return self;
     }
     
-    /// Invokes subsequent method in chain
+    /// Consumes current method in chain
     ///
-    /// :return Result of invoked method in chain, nil if at end of chain
+    /// :return Result of consuming method, nil if at end of chain or chain is empty
     func step() -> AnyObject?{
-        if(lazyQueue.isEmpty) { return nil; }
+        if(lazyQueue.isEmpty || !self.hasStep()) { return nil; }
+        if(lazyIndex >= lazyQueue.count) { return nil; }
         
-        var invoke = lazyQueue.removeAtIndex(0);
+        var invoke = lazyQueue.removeAtIndex(lazyIndex);
         return invoke();
     }
     
-    /// Cycle through method chain
+    /// Invoke current method in chain and increment
     ///
-    /// :return Result of invoked method in chain
-    func pedal() -> AnyObject?{
-        if(lazyQueue.isEmpty){ return nil; }
+    /// :return Result of invoked method in chain, nil if chain is empty
+    func walk() -> AnyObject?{
+        if(lazyIndex >= lazyQueue.count){ self.resetChain() }
+        if(lazyQueue.isEmpty) { return nil; }
         
-        let invoke = lazyQueue.removeAtIndex(0);
-        lazyQueue += invoke
-        return invoke();
+        return lazyQueue[lazyIndex++]();
+    }
+    
+    /// Decrement chain then consume method
+    ///
+    /// :return Result of consumed method in chain, nil if chain is empty or at beginning of chain
+    func stepBackward() -> AnyObject?{
+        if(lazyIndex == 0 || lazyQueue.isEmpty) { return nil; }
+        lazyIndex--;
+        
+        return self.step();
+    }
+    /// Decrement chain then invoke method
+    ///
+    /// :return Result of invoked method, nile if chain is empty
+    func walkBackward() -> AnyObject?{
+        if(lazyQueue.isEmpty) { return nil; }
+        if(lazyIndex == 0) { lazyIndex == lazyQueue.count-1; }
+        else { lazyIndex--; }
+        
+        return lazyQueue[lazyIndex]();
+    }
+    
+    /// Moves index to beginning of chain
+    func resetChain(){
+        lazyIndex = 0;
+    }
+    
+    /// Moves index to end of chain
+    func endChain(){
+        lazyIndex = lazyQueue.count-1;
     }
     
     /// Evaluates entire chain at once
@@ -318,17 +349,36 @@ class Dollar {
     /// :return Result of chain
     func invokeAll() -> AnyObject?{
         var result:AnyObject? = nil
-        for _ in lazyQueue{
+        
+        self.resetChain();
+        while(self.hasStep()){
             result = self.step()
         }
         return result
     }
     
-    /// Check if there are anymore chained methods
+    /// Check if any steps can be made
     ///
-    /// :return False if at end of chain
-    func hasNext() -> Bool{
-        return lazyQueue.count != 0;
+    /// :return False if at end of chain or chain is empty
+    func hasStep() -> Bool{
+        return lazyIndex < lazyQueue.count && lazyQueue.isEmpty == false;
+    }
+    
+    /// Check if there are any methods that can be consumed
+    func hasChain() -> Bool{
+        return !lazyQueue.isEmpty;
+    }
+    
+    /// :return Returns mathods that need evaluation
+    func countChain() -> Int{
+        return lazyQueue.count;
+    }
+    
+    /// Get the count of remining methods to evaluate
+    ///
+    /// :return Remaining methods to evluate
+    func countSteps() -> Int{
+        return lazyQueue.count - lazyIndex;
     }
     
     ///  ___  ___  _______   ___       ________  _______   ________
@@ -1330,6 +1380,10 @@ class Dollar {
         /// :return False if at end of collection.
         func hasNext() -> Bool{
             return index < $.resultArray.count;
+        }
+        
+        func countNext() -> Int{
+            return $.resultArray.count - index
         }
     }
 }

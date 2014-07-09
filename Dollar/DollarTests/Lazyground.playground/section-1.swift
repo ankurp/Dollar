@@ -322,6 +322,20 @@ class Dollar {
         return result
     }
     
+    /// Check if there are anymore chained methods
+    ///
+    /// :return False if at end of chain
+    func hasStep() -> Bool{
+        return lazyQueue.count != 0;
+    }
+    
+    /// Get the count of remining methods to evaluate
+    ///
+    /// :return Remaining methods to evluate
+    func countSteps() -> Int{
+        return lazyQueue.count;
+    }
+    
     ///  ___  ___  _______   ___       ________  _______   ________
     /// |\  \|\  \|\  ___ \ |\  \     |\   __  \|\  ___ \ |\   __  \
     /// \ \  \\\  \ \   __/|\ \  \    \ \  \|\  \ \   __/|\ \  \|\  \
@@ -1336,7 +1350,6 @@ iterator.$.step() as Int        /// 3
 iterator.$.step() as Int        /// 4
 iterator.$.step() as? Int       /// nil
 var finalResult1 = iterator.$.step() as [Int]   /// [2,3,4,5,6]
-
 //Lazy evalue your action being performed on each element. Collection values won't change!
 iterator.next() as Int          /// 3
 iterator.next() as Int          /// 4
