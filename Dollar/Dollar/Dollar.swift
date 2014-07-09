@@ -345,7 +345,7 @@ class Dollar {
             }
         }
         for (key, count) in map {
-            for _ in 0...count {
+            for _ in 0..<count {
                 result += key
             }
         }
@@ -605,7 +605,7 @@ class Dollar {
     class func initial<T>(array: [T], numElements: Int = 1) -> [T] {
         var result: [T] = []
         if (array.count > numElements) {
-            for index in 0...(array.count - numElements) {
+            for index in 0..<(array.count - numElements) {
                 result += array[index]
             }
         }
@@ -808,7 +808,7 @@ class Dollar {
         if n > array.count { return [[]] }
         
         for i in (0...array.count-n).by(step!) {
-            result += Array(array[i...(i+n)] as Slice<T>)
+            result += Array(array[i..<(i+n)] as Slice<T>)
         }
         return result
     }
@@ -828,7 +828,7 @@ class Dollar {
         if step < 1 { step = 1 } // Less than 1 results in an infinite loop.
         if n < 1    { n = 0 }    // Allow 0 if user wants [[],[],[]] for some reason.
         
-        for i in (0...array.count).by(step!) {
+        for i in (0..<array.count).by(step!) {
             var end = i+n
             if end > array.count { end = array.count }
             result += Array(array[i...end] as Slice<T>)
@@ -838,7 +838,7 @@ class Dollar {
         if let padding = pad {
             let remain = array.count%n
             let end = padding.count > remain ? remain : padding.count
-            result[result.count-1] += Array(padding[0...end] as Slice<T>)
+            result[result.count-1] += Array(padding[0..<end] as Slice<T>)
         }
         return result
     }
@@ -855,10 +855,10 @@ class Dollar {
         if step < 1 { step = 1 } // Less than 1 results in an infinite loop.
         if n < 1    { n = 0 }    // Allow 0 if user wants [[],[],[]] for some reason.
         
-        for i in (0...array.count).by(step!) {
+        for i in (0..<array.count).by(step!) {
             var end = i+n
             if end > array.count { end = array.count }
-            result += Array(array[i...end] as Slice<T>)
+            result += Array(array[i..<end] as Slice<T>)
         }
         return result
     }
@@ -954,7 +954,7 @@ class Dollar {
     /// :param incrementBy Increment sequence by.
     /// :return Array of elements based on the sequence.
     class func range<T : ForwardIndex>(startVal: T, endVal: T, incrementBy: T.DistanceType) -> [T] {
-        let range = (startVal...endVal).by(incrementBy)
+        let range = (startVal..<endVal).by(incrementBy)
         return self.sequence(range)
     }
     
@@ -993,7 +993,7 @@ class Dollar {
     class func rest<T>(array: [T], numElements: Int = 1) -> [T] {
         var result : [T] = []
         if (numElements < array.count) {
-            for index in numElements...array.count {
+            for index in numElements..<array.count {
                 result += array[index]
             }
         }
@@ -1023,7 +1023,7 @@ class Dollar {
         if end > array.count || start > array.count || uend < start {
             return [];
         } else {
-            return Array(array[start...uend]);
+            return Array(array[start..<uend]);
         }
     }
     
@@ -1082,7 +1082,7 @@ class Dollar {
     /// :return Values returned from callback function.
     class func times<T>(n: Int, function: (Int) -> T) -> [T] {
         var result : [T] = []
-        for index in (0...n) {
+        for index in (0..<n) {
             result += function(index)
         }
         return result
