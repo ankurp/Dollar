@@ -17,7 +17,7 @@ extension Array {
     /// :param array The array to source from
     /// :param indexes Get elements from these indexes
     /// :return New array with elements from the indexes specified.
-    func at(indexes: Int...) -> Element[] {
+    func at(indexes: Int...) -> [Element] {
         return $.at(self, indexes: indexes)
     }
 
@@ -62,7 +62,7 @@ extension Array {
     ///
     /// :param array The array to flatten.
     /// :return Flattened array.
-    func flatten() -> Element[] {
+    func flatten() -> [Element] {
         return $.flatten(self)
     }
     
@@ -83,7 +83,7 @@ extension Array {
     /// :param array The array to source from.
     /// :param numElements The number of elements to ignore in the end.
     /// :return Array of initial values.
-    func initial(numElements: Int? = 1) -> Element[] {
+    func initial(numElements: Int? = 1) -> [Element] {
         return $.initial(self, numElements: numElements!)
     }
     
@@ -100,7 +100,7 @@ extension Array {
     /// :param array The array to source from.
     /// :param numElements The number of elements to exclude from the beginning.
     /// :return The rest of the elements.
-    func rest(numElements: Int? = 1) -> Element[] {
+    func rest(numElements: Int? = 1) -> [Element] {
         return $.rest(self, numElements: numElements!)
     }
     
