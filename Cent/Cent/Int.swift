@@ -15,7 +15,7 @@ extension Int {
     ///
     /// :param callback The function to invoke that accepts the index
     func times(callback: (Int) -> ()) {
-        (0...self).eachWithIndex { callback($0) }
+        (0..<self).eachWithIndex { callback($0) }
     }
     
     /// Invoke a callback n times
