@@ -446,16 +446,16 @@ class DollarTests: XCTestCase {
     */
     
     /**
+    *  Lazy evaluation of chained methods
     *  Test done through $ layer of iterator, iterator doesn't undergo testing
     */
     func testLazyChainedMethods(){
         //Create iterator
         let iterator:$.Iterator = $.lazy.map([[[[1],2],3],4,[5,[6,[7]]]], function: { return ($0 as Int) + 1 })
-        
-        var resultArray:[Int]
+
         var resultBool:Bool
         var resultInt:Int?
-        var resultAny:AnyObject?
+        var resultArray:[Int]
         
         //Chain Methods
         iterator.$.flatten().map{ (element:AnyObject) in
@@ -467,57 +467,60 @@ class DollarTests: XCTestCase {
             }.initial(2).first().second().third().eighth().value();
         
         //Step through each chained method
-        for step in 1...iterator.$.countSteps(){
+        while(iterator.$.countSteps() != 0){
             
-            XCTAssertTrue(iterator.hasNext(),                   "\(iterator.$.countSteps()) methods left to evaluate");
-            switch(step){
+            let stepsConsumeChain = (iterator.$.countSteps() == iterator.$.countChain());
+            XCTAssertTrue(stepsConsumeChain,                     "When stepping, chain is consumed.");
+            XCTAssertEqualObjects(iterator.$.lazyIndex, 0,      "Index never changes when stepping");
             
-            case 1:
+            switch(iterator.$.countChain()){
+            
+            case 10:
                 resultArray = iterator.$.step() as [Int];
                 XCTAssertEqualObjects(resultArray,              [1,2,3,4,5,6,7], "Array flattened");
                 break;
                 
-            case 2:
+            case 9:
                 resultArray = iterator.$.step() as [Int];
                 XCTAssertEqualObjects(resultArray,              [2,3,4,5,6,7,8], "Array mapped: increment by 1");
                 break;
             
-            case 3:
+            case 8:
                 resultBool = iterator.$.step() as Bool;
                 XCTAssertFalse(resultBool,                      "No element less than 2");
                 break;
                 
-            case 4:
+            case 7:
                 resultBool = iterator.$.step() as Bool;
                 XCTAssertTrue(resultBool,                       "All elements are greater than 1");
                 break;
                 
-            case 5:
+            case 6:
                 resultArray = iterator.$.step() as [Int];
                 XCTAssertEqualObjects(resultArray,              [2,3,4,5,6], "Last 2 elements removed");
                 break;
                 
-            case 6:
+            case 5:
                 resultInt = iterator.$.step() as? Int;
                 XCTAssertEqualObjects(resultInt,                2, "First object in array");
                 break;
                 
-            case 7:
+            case 4:
                 resultInt = iterator.$.step() as? Int;
                 XCTAssertEqualObjects(resultInt,                3, "Second object in array");
                 break;
                 
-            case 8:
+            case 3:
                 resultInt = iterator.$.step() as? Int;
                 XCTAssertEqualObjects(resultInt,                4, "Third object in array");
                 break;
                 
-            case 9:
+            case 2:
                 resultInt = iterator.$.step() as? Int;
                 XCTAssertNil(resultInt,                         "Eighth object in array");
                 break;
                 
-            case 10:
+            case 1:
                 resultArray = iterator.$.step() as [Int];
                 XCTAssertEqualObjects(resultArray,              [2,3,4,5,6], "Final array of chained methods");
                 break;
@@ -527,13 +530,12 @@ class DollarTests: XCTestCase {
             }
         }
         
-        //All chained methods have been evaluated
-        XCTAssertFalse(iterator.$.hasStep(),                    "No methods left to evaluate")
-        resultAny = iterator.$.step() as? AnyObject
-        XCTAssertNil(resultAny,                                 "Retuns nil when nothing's left to evaluate")
+        //Chain's been consumed
+        XCTAssertChainConsumed(iterator);
     }
     
     /**
+    *  Forced evaluation of chained methods
     *  Test done through $ layer of iterator, iterator doesn't undergo testing
     */
     func testForcedEvaluationOfChain(){
@@ -553,9 +555,25 @@ class DollarTests: XCTestCase {
         var resultArray:[Int] = iterator.$.invokeAll() as [Int];
         
         XCTAssertEqualObjects(resultArray,                      [2,3,4,5,6], "Entire chain is evaluated immediately");
+        
+        //Chain's been consumed
+        XCTAssertChainConsumed(iterator);
+        
+        
+        
+    }
+    
+    func XCTAssertChainConsumed(iterator:Dollar.Iterator){
+        //All chained methods have been evaluated
+        XCTAssertFalse(iterator.$.hasStep(),                    "No more steps available");
+        XCTAssertFalse(iterator.$.hasChain(),                   "Chain has been consumed");
+        XCTAssertFalse(iterator.$.hasStepBackward(),            "Chain has been consumed");
+        var resultAny: AnyObject? = iterator.$.step() as? AnyObject
+        XCTAssertNil(resultAny,                                 "Retuns nil when nothing's left to evaluate");
     }
     
     /**
+    *  Lazy cycling of chained methods
     *  Test done through $ layer of iterator, iterator doesn't undergo testing
     */
     
@@ -610,28 +628,31 @@ class DollarTests: XCTestCase {
             }
         }
         
+        //Go back to beginning of chain
+        iterator.$.resetChain();
+        
         //Walk backwards through chain
-        for walk in 100...0{
+        for walk in 0...100{
             XCTAssertTrue(iterator.$.hasChain(),                "Will always have chain if walking");
             
             switch(walk%4){
-            case 0:
-                resultInt = iterator.$.walkBackwards() as? Int;
+            case 3:
+                resultInt = iterator.$.walkBackward() as? Int;
                 XCTAssertEqualObjects(resultInt,                2, "First object in array");
                 break;
                 
-            case 1:
-                resultInt = iterator.$.walkBackwards() as? Int;
+            case 2:
+                resultInt = iterator.$.walkBackward() as? Int;
                 XCTAssertEqualObjects(resultInt,                3, "Second object in array");
                 break;
                 
-            case 2:
-                resultInt = iterator.$.walkBackwards() as? Int;
+            case 1:
+                resultInt = iterator.$.walkBackward() as? Int;
                 XCTAssertEqualObjects(resultInt,                4, "Third object in array");
                 break;
                 
-            case 3:
-                resultArray = iterator.$.walkBackwards() as [Int];
+            case 0:
+                resultArray = iterator.$.walkBackward() as [Int];
                 XCTAssertEqualObjects(resultArray,              [2,3,4,5,6,7,8], "Value of array");
                 break;
                 
@@ -647,9 +668,8 @@ class DollarTests: XCTestCase {
         var result = iterator.$.invokeAll() as [Int];
         XCTAssertEqualObjects(resultArray,                      [2,3,4,5,6,7,8], "Result of consuming chain");
         
-        XCTAssertFalse(iterator.$.hasStep(),                    "No more steps to evaluate");
-        XCTAssertEqualObjects(iterator.$.countSteps(),          0, "No more steps to evaluate")
-        XCTAssertNil(iterator.$.walk(),                         "Will return nil if no more steps")
+        //Chain's been consumed
+        XCTAssertChainConsumed(iterator);
     }
     
     /**
@@ -657,32 +677,35 @@ class DollarTests: XCTestCase {
     */
     func testLazyMapping(){
         //Create iterator
-        let iterator:$.Iterator = $.lazy.map([1,2,3,4], function: { return ($0 as Int) + 1 });
+        let initialArray = [1,2,3,4]
+        let iterator:$.Iterator = $.lazy.map(initialArray, function: { return ($0 as Int) + 1 });
         
+        var resultArray:[Int]
         var resultInt:Int?
         var resultBool:Bool
         
-        for next in 1...iterator.countNext(){
+        
+        while(iterator.countNext() != 0){
             
-            XCTAssertTrue(iterator.hasNext(),                   "\(iterator.countNext()) objects left to evaluate");
+            XCTAssertTrue(iterator.hasNext(),                   "Objects left to evaluate");
             
-            switch(next){
-            case 1:
+            switch(iterator.index){
+            case 0:
                 resultInt = iterator.next() as? Int;
                 XCTAssertEqualObjects(resultInt,                2, "1 added to first object");
                 break;
                 
-            case 2:
+            case 1:
                 resultInt = iterator.next() as? Int;
                 XCTAssertEqualObjects(resultInt,                3, "1 added to second object");
                 break;
                 
-            case 3:
+            case 2:
                 resultInt = iterator.next() as? Int;
                 XCTAssertEqualObjects(resultInt,                4, "1 added to third element");
                 break;
                 
-            case 4:
+            case 3:
                 resultInt = iterator.next() as? Int;
                 XCTAssertEqualObjects(resultInt,                5, "1 added to fourth element");
                 break;
@@ -695,5 +718,111 @@ class DollarTests: XCTestCase {
         XCTAssertFalse(iterator.hasNext(),                      "No elements left to evaluate");
         resultInt = iterator.next() as? Int;
         XCTAssertNil(resultInt,                                 "Returns nil when no more objects left to evaluate");
+        
+        XCTAssertTrue(iterator.hasPrevious(),                   "Previous objects in collection can be evaluated");
+        
+        while(iterator.countPrevious() != 0){
+            
+            switch(iterator.index){
+            case 1:
+                resultInt = iterator.previous() as? Int;
+                XCTAssertEqualObjects(resultInt,                2, "1 added to first object");
+                break;
+            case 2:
+                resultInt = iterator.previous() as? Int;
+                XCTAssertEqualObjects(resultInt,                3, "1 added to second object");
+                break;
+            case 3:
+                resultInt = iterator.previous() as? Int;
+                XCTAssertEqualObjects(resultInt,                4, "1 added to third element");
+                break;
+            case 4:
+                resultInt = iterator.previous() as? Int;
+                XCTAssertEqualObjects(resultInt,                5, "1 added to fourth element");
+                break;
+            default:
+                XCTAssertTrue(false,                            "Switch is not exhaustive")
+            }
+        }
+        
+        XCTAssertFalse(iterator.hasPrevious(),                  "No elements left to evaluate");
+        resultInt = iterator.previous() as? Int;
+        XCTAssertNil(resultInt,                                 "Returns nil when no more objects left to evaluate");
+        
+        resultArray = iterator.$.resultArray as [Int]
+        XCTAssertEqualObjects(resultArray, initialArray,        "Lazy mapping doesn't change collection values");
+    }
+    
+    /**
+    *  Lazy cycling of iterator
+    */
+    func testLazyCycling(){
+        let initialArray = [1,2,3,4]
+        let iterator:$.Iterator = $.lazy.map(initialArray, function: { return ($0 as Int) + 1 });
+        
+        var resultArray:[Int]
+        var resultInt:Int?
+        var resultBool:Bool
+        
+        for next in 0...100{
+            switch(next%4){
+            case 0:
+                resultInt = iterator.cycle() as? Int;
+                XCTAssertEqualObjects(resultInt,                2, "1 added to first object");
+                break;
+                
+            case 1:
+                resultInt = iterator.cycle() as? Int;
+                XCTAssertEqualObjects(resultInt,                3, "1 added to second object");
+                break;
+                
+            case 2:
+                resultInt = iterator.cycle() as? Int;
+                XCTAssertEqualObjects(resultInt,                4, "1 added to third element");
+                break;
+                
+            case 3:
+                resultInt = iterator.cycle() as? Int;
+                XCTAssertEqualObjects(resultInt,                5, "1 added to fourth element");
+                break;
+                
+            default:
+                XCTAssertTrue(false,                            "Switch is not exhaustive")
+            }
+        }
+        
+        iterator.endIterator();
+        XCTAssertFalse(iterator.hasNext(),                      "At end of collection");
+        XCTAssertTrue(iterator.hasPrevious(),                   "Still able to go backwards");
+        
+        for next in 0...100{
+            switch(next%4){
+            case 3:
+                resultInt = iterator.cycleBackward() as? Int;
+                XCTAssertEqualObjects(resultInt,                2, "1 added to first object");
+                break;
+                
+            case 2:
+                resultInt = iterator.cycleBackward() as? Int;
+                XCTAssertEqualObjects(resultInt,                3, "1 added to second object");
+                break;
+                
+            case 1:
+                resultInt = iterator.cycleBackward() as? Int;
+                XCTAssertEqualObjects(resultInt,                4, "1 added to third element");
+                break;
+            
+            case 0:
+                resultInt = iterator.cycleBackward() as? Int;
+                XCTAssertEqualObjects(resultInt,                5, "1 added to fourth element");
+                break;
+                
+            default:
+                XCTAssertTrue(false,                            "Switch is not exhaustive")
+            }
+        }
+        
+        resultArray = iterator.$.resultArray as [Int]
+        XCTAssertEqualObjects(resultArray, initialArray,        "Lazy mapping doesn't change collection values");
     }
 }

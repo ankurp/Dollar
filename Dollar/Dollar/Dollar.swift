@@ -297,19 +297,18 @@ class Dollar {
     ///
     /// :return Result of consuming method, nil if at end of chain or chain is empty
     func step() -> AnyObject?{
-        if(lazyQueue.isEmpty || !self.hasStep()) { return nil; }
-        if(lazyIndex >= lazyQueue.count) { return nil; }
+        if(!self.hasStep()) { return nil; }
         
-        var invoke = lazyQueue.removeAtIndex(lazyIndex);
-        return invoke();
+        var action = lazyQueue.removeAtIndex(lazyIndex);
+        return action();
     }
     
     /// Invoke current method in chain and increment
     ///
     /// :return Result of invoked method in chain, nil if chain is empty
     func walk() -> AnyObject?{
-        if(lazyIndex >= lazyQueue.count){ self.resetChain() }
         if(lazyQueue.isEmpty) { return nil; }
+        if(!self.hasStep()){ self.resetChain() }
         
         return lazyQueue[lazyIndex++]();
     }
@@ -318,7 +317,7 @@ class Dollar {
     ///
     /// :return Result of consumed method in chain, nil if chain is empty or at beginning of chain
     func stepBackward() -> AnyObject?{
-        if(lazyIndex == 0 || lazyQueue.isEmpty) { return nil; }
+        if(!self.hasStepBackward()) { return nil; }
         lazyIndex--;
         
         return self.step();
@@ -328,10 +327,9 @@ class Dollar {
     /// :return Result of invoked method, nile if chain is empty
     func walkBackward() -> AnyObject?{
         if(lazyQueue.isEmpty) { return nil; }
-        if(lazyIndex == 0) { lazyIndex == lazyQueue.count-1; }
-        else { lazyIndex--; }
+        if(!self.hasStepBackward()) { self.endChain(); }
         
-        return lazyQueue[lazyIndex]();
+        return lazyQueue[--lazyIndex]();
     }
     
     /// Moves index to beginning of chain
@@ -341,7 +339,7 @@ class Dollar {
     
     /// Moves index to end of chain
     func endChain(){
-        lazyIndex = lazyQueue.count-1;
+        lazyIndex = lazyQueue.count;
     }
     
     /// Evaluates entire chain at once
@@ -351,17 +349,28 @@ class Dollar {
         var result:AnyObject? = nil
         
         self.resetChain();
+        return self.invokeRest();
+    }
+    
+    /// Evaluates remainder of chain
+    ///
+    /// :return Result of chain
+    func invokeRest() -> AnyObject?{
+        var result:AnyObject? = nil
+        
         while(self.hasStep()){
-            result = self.step()
+            result = self.step();
         }
-        return result
+        return result;
     }
     
     /// Check if any steps can be made
-    ///
-    /// :return False if at end of chain or chain is empty
     func hasStep() -> Bool{
-        return lazyIndex < lazyQueue.count && lazyQueue.isEmpty == false;
+        return self.countSteps() != 0;
+    }
+    /// Check if a backward step can be made
+    func hasStepBackward() -> Bool{
+        return self.countBackwardSteps() != 0;
     }
     
     /// Check if there are any methods that can be consumed
@@ -378,7 +387,13 @@ class Dollar {
     ///
     /// :return Remaining methods to evluate
     func countSteps() -> Int{
+        if(!self.hasChain()) { return 0; }
         return lazyQueue.count - lazyIndex;
+    }
+    
+    func countBackwardSteps() -> Int{
+        if(!self.hasChain()) { return 0; }
+        return lazyIndex;
     }
     
     ///  ___  ___  _______   ___       ________  _______   ________
@@ -1357,33 +1372,74 @@ class Dollar {
             action = function;
         }
         
-        /// Invokes action on next element in collection
+        /// Invokes action on current object then increments
         ///
         /// :return Value of evaluation. Nil if no more elements in collection
         func next() -> AnyObject?{
-            if(index == $.resultArray.count) { return nil; }
+            if(!self.hasNext()) { return nil; }
             
             let element: AnyObject = $.resultArray[index++]
             return action(element);
         }
         
-        /// Continuously invoke action on collection
+        /// Decrements then invokes action on object
+        ///
+        /// :return Value of evaluation. Nil if  at beginning of collection or if collection is empty
+        func previous() -> AnyObject?{
+            if(!self.hasPrevious()) { return nil; }
+            
+            let element: AnyObject = $.resultArray[--index];
+            return action(element);
+        }
+        
+        /// Continous invocation incremental
         ///
         /// :return Value of evaluation
         func cycle() -> AnyObject?{
-            if(index == $.resultArray.count) { index = 0; }
-            return self.next();
+            if(!self.hasNext()) { self.toFirstObject() }
+            return action($.resultArray[index++]);
+        }
+        
+        /// Continuous invocation decremental
+        ///
+        /// :return Value of evaluation
+        func cycleBackward() -> AnyObject?{
+            if(!self.hasPrevious()) { self.endIterator() }
+            return self.previous();
+        }
+        
+        /// Moves position of incrementor to begnning of collection
+        func toFirstObject(){
+            index = 0;
+        }
+        
+        
+        func toLastObject(){
+            index = $.resultArray.count-1;
+        }
+        
+        /// Moves position of incremento to end of collection
+        func endIterator(){
+            index = $.resultArray.count;
         }
         
         /// Check if there are anymore elements in collection to evaluate
-        ///
-        /// :return False if at end of collection.
         func hasNext() -> Bool{
             return index < $.resultArray.count;
         }
         
+        /// :False if at the beginning of collection or collection is empty
+        func hasPrevious() -> Bool{
+            return index != 0 && !$.resultArray.isEmpty
+        }
+        
+        /// :return Number of objects in collection left to evaluate
         func countNext() -> Int{
             return $.resultArray.count - index
+        }
+        
+        func countPrevious() -> Int{
+            return index;
         }
     }
 }

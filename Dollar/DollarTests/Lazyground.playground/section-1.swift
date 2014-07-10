@@ -32,6 +32,7 @@ class Dollar {
     
     var resultArray: [AnyObject] = []
     var lazyQueue:[(()->AnyObject?)] = [];
+    var lazyIndex:Int = 0;
     
     /// Initializer of the wrapper object for chaining.
     ///
@@ -292,48 +293,107 @@ class Dollar {
         return self;
     }
     
-    /// Invokes subsequent method in chain
+    /// Consumes current method in chain
     ///
-    /// :return Result of invoked method in chain, nil if at end of chain
+    /// :return Result of consuming method, nil if at end of chain or chain is empty
     func step() -> AnyObject?{
-        if(lazyQueue.isEmpty) { return nil; }
+        if(!self.hasStep()) { return nil; }
         
-        var invoke = lazyQueue.removeAtIndex(0);
-        return invoke();
+        var action = lazyQueue.removeAtIndex(lazyIndex);
+        return action();
     }
     
-    func pedal() -> AnyObject?{
-        if(lazyQueue.isEmpty){ return nil; }
-            
-        let invoke = lazyQueue.removeAtIndex(0);
-        lazyQueue += invoke
-        return invoke();
+    /// Invoke current method in chain and increment
+    ///
+    /// :return Result of invoked method in chain, nil if chain is empty
+    func walk() -> AnyObject?{
+        if(lazyQueue.isEmpty) { return nil; }
+        if(!self.hasStep()){ self.resetChain() }
+        
+        return lazyQueue[lazyIndex++]();
+    }
+    
+    /// Decrement chain then consume method
+    ///
+    /// :return Result of consumed method in chain, nil if chain is empty or at beginning of chain
+    func stepBackward() -> AnyObject?{
+        if(!self.hasStepBackward()) { return nil; }
+        lazyIndex--;
+        
+        return self.step();
+    }
+    /// Decrement chain then invoke method
+    ///
+    /// :return Result of invoked method, nile if chain is empty
+    func walkBackward() -> AnyObject?{
+        if(lazyQueue.isEmpty) { return nil; }
+        if(!self.hasStepBackward()) { self.endChain(); }
+        
+        return lazyQueue[--lazyIndex]();
+    }
+    
+    /// Moves index to beginning of chain
+    func resetChain(){
+        lazyIndex = 0;
+    }
+    
+    /// Moves index to end of chain
+    func endChain(){
+        lazyIndex = lazyQueue.count;
     }
     
     /// Evaluates entire chain at once
     ///
     /// :return Result of chain
-    func invokeAll() -> AnyObject?
-    {
+    func invokeAll() -> AnyObject?{
         var result:AnyObject? = nil
-        for _ in lazyQueue{
-            result = self.step()
-        }
-        return result
+        
+        self.resetChain();
+        return self.invokeRest();
     }
     
-    /// Check if there are anymore chained methods
+    /// Evaluates remainder of chain
     ///
-    /// :return False if at end of chain
+    /// :return Result of chain
+    func invokeRest() -> AnyObject?{
+        var result:AnyObject? = nil
+        
+        while(self.hasStep()){
+            result = self.step();
+        }
+        return result;
+    }
+    
+    /// Check if any steps can be made
     func hasStep() -> Bool{
-        return lazyQueue.count != 0;
+        return self.countSteps() != 0;
+    }
+    /// Check if a backward step can be made
+    func hasStepBackward() -> Bool{
+        return self.countBackwardSteps() != 0;
+    }
+    
+    /// Check if there are any methods that can be consumed
+    func hasChain() -> Bool{
+        return !lazyQueue.isEmpty;
+    }
+    
+    /// :return Returns mathods that need evaluation
+    func countChain() -> Int{
+        return lazyQueue.count;
     }
     
     /// Get the count of remining methods to evaluate
     ///
     /// :return Remaining methods to evluate
     func countSteps() -> Int{
-        return lazyQueue.count;
+        if(!self.hasChain()) { return 0; }
+        return lazyQueue.count - lazyIndex;
+    }
+    
+    func countBackwardSteps() -> Int{
+        if(!self.hasChain()) { return 0; }
+        return lazyIndex;
     }
     
     ///  ___  ___  _______   ___       ________  _______   ________
@@ -660,15 +720,15 @@ class Dollar {
     }
     /* ALJCepeda: I could not get this to work no matter what I did.
     class func flatten<T>(array: [T]) -> [T] {
-        var resultArr: [T] = []
-        for elem : T in array {
-            if let val = elem as? [T] {
-                resultArr += self.flatten(val)
-            } else {
-                resultArr += elem
-            }
-        }
-        return resultArr
+    var resultArr: [T] = []
+    for elem : T in array {
+    if let val = elem as? [T] {
+    resultArr += self.flatten(val)
+    } else {
+    resultArr += elem
+    }
+    }
+    return resultArr
     }*/
     
     /// This method returns a dictionary of values in an array mapping to the
@@ -1289,13 +1349,19 @@ class Dollar {
         return result
     }
     
+    /// Lazy namespace
     class lazy{
+        /// Creates Iterator for performing action on collection
+        ///
+        /// :param array The collection to evaluate
+        /// :param function Closure to perform on each element
+        /// :return Iterator for performing lazy evaluation on collection
         class func map(array: [AnyObject], function: (AnyObject) -> AnyObject) -> $.Iterator{
             return $.Iterator(array: array, function: function);
         }
     }
     
-
+    /// Dollar.Iterator for lazy evalution
     class Iterator{
         var index:Int = 0
         var action:(AnyObject) -> AnyObject
@@ -1306,20 +1372,74 @@ class Dollar {
             action = function;
         }
         
+        /// Invokes action on current object then increments
+        ///
+        /// :return Value of evaluation. Nil if no more elements in collection
         func next() -> AnyObject?{
-            if(index == $.resultArray.count) { return nil; }
+            if(!self.hasNext()) { return nil; }
             
             let element: AnyObject = $.resultArray[index++]
             return action(element);
         }
         
+        /// Decrements then invokes action on object
+        ///
+        /// :return Value of evaluation. Nil if  at beginning of collection or if collection is empty
+        func previous() -> AnyObject?{
+            if(!self.hasPrevious()) { return nil; }
+            
+            let element: AnyObject = $.resultArray[--index];
+            return action(element);
+        }
+        
+        /// Continous invocation incremental
+        ///
+        /// :return Value of evaluation
         func cycle() -> AnyObject?{
-            if(index == $.resultArray.count) { index = 0; }
+            if(!self.hasNext()) { self.toFirstObject() }
             return self.next();
         }
         
+        /// Continuous invocation decremental
+        ///
+        /// :return Value of evaluation
+        func cycleBackward() -> AnyObject?{
+            if(!self.hasPrevious()) { self.endIterator() }
+            return self.previous();
+        }
+        
+        /// Moves position of incrementor to begnning of collection
+        func toFirstObject(){
+            index = 0;
+        }
+        
+        
+        func toLastObject(){
+            index = $.resultArray.count-1;
+        }
+        
+        /// Moves position of incremento to end of collection
+        func endIterator(){
+            index = $.resultArray.count;
+        }
+        
+        /// Check if there are anymore elements in collection to evaluate
         func hasNext() -> Bool{
             return index < $.resultArray.count;
+        }
+        
+        /// :False if at the beginning of collection or collection is empty
+        func hasPrevious() -> Bool{
+            return index != 0 && !$.resultArray.isEmpty
+        }
+        
+        /// :return Number of objects in collection left to evaluate
+        func countNext() -> Int{
+            return $.resultArray.count - index
+        }
+        
+        func countPrevious() -> Int{
+            return index;
         }
     }
 }
@@ -1328,69 +1448,14 @@ typealias $ = Dollar
 
 var working = true;
 
-var iterator = $.lazy.map([[[[1],2],3],4,[5,[6,[7]]]], function: { return ($0 as Int) + 1 })
+let iterator:$.Iterator = $.lazy.map([[[[1],2],3],4,[5,[6,[7]]]], function: { return ($0 as Int) + 1 });
 
-//Access dollar level for method chaining and modifying your collection
 iterator.$.flatten().map{ (element:AnyObject) in
     return (element as Int) + 1;
-    }.any{
-        return ($0 as Int) < 2;
-    }.all{
-        return ($0 as Int) > 1;}
-    .initial(2).first().second().third().eighth().value();
-
-//Lazy evaluate your chain
-iterator.$.step() as [Int]      /// [1,2,3,4,5,6,7]
-iterator.$.step() as [Int]      /// [2,3,4,5,6,7,8]
-iterator.$.step() as Bool       /// false
-iterator.$.step() as Bool       /// true
-iterator.$.step() as [Int]      /// [2,3,4,5,6]
-iterator.$.step() as Int        /// 2
-iterator.$.step() as Int        /// 3
-iterator.$.step() as Int        /// 4
-iterator.$.step() as? Int       /// nil
-var finalResult1 = iterator.$.step() as [Int]   /// [2,3,4,5,6]
-//Lazy evalue your action being performed on each element. Collection values won't change!
-iterator.next() as Int          /// 3
-iterator.next() as Int          /// 4
-iterator.next() as Int          /// 5
-iterator.next() as Int          /// 6
-iterator.next() as Int          /// 7
-iterator.hasNext()              /// false
-iterator.next() as? Int         /// nil
-
-//Cycle your lazy!
-iterator.cycle() as Int         /// 3
-iterator.cycle() as Int         /// 4
-iterator.cycle() as Int         /// 5
-iterator.cycle() as Int         /// 6
-iterator.cycle() as Int         /// 7
-iterator.hasNext()              /// false
-iterator.cycle() as Int         /// 3
-iterator.cycle() as Int         /// 4
-var finalResult2 = iterator.$.resultArray as [Int]  /// [2,3,4,5,6]
-
-finalResult1 == finalResult2    /// true
-
-//Evaluate entire chain immediately
-var couch = $(array: [1,2,3,4,5,6,7]).map{ (element:AnyObject) in
-    return (element as Int) + 1;
-    }.any{
-        return ($0 as Int) < 2;
-    }.all{
-        return ($0 as Int) > 1;
-    }.initial(2).value();    /// [2,3,4,5,6,]
-
-var finalResult3 = couch.invokeAll() as [Int]
-finalResult2 == finalResult3    /// true
-
-//Get lazier
-couch.first().second().third().eighth()
-
-//Cycle your lazy
-couch.pedal() as Int            /// 2
-couch.pedal() as Int            /// 3
-couch.pedal() as Int            /// 4
-couch.pedal() as? Int           /// nil
-couch.pedal() as Int            /// 2
-couch.pedal() as Int            /// 3
+    }.first().second().third().value();
+iterator.$.lazyIndex
+iterator.$.step()
+iterator.$.lazyIndex
+iterator.$.step()
+iterator.$.lazyIndex
+iterator.$.step()
