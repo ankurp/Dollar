@@ -513,7 +513,7 @@ class Dollar {
             }
         }
         for (key, count) in map {
-            for _ in 0...count {
+            for _ in 0..<count {
                 result += key
             }
         }
@@ -718,18 +718,6 @@ class Dollar {
         }
         return resultArr
     }
-    /* ALJCepeda: I could not get this to work no matter what I did.
-    class func flatten<T>(array: [T]) -> [T] {
-    var resultArr: [T] = []
-    for elem : T in array {
-    if let val = elem as? [T] {
-    resultArr += self.flatten(val)
-    } else {
-    resultArr += elem
-    }
-    }
-    return resultArr
-    }*/
     
     /// This method returns a dictionary of values in an array mapping to the
     /// total number of occurrences in the array.
@@ -784,8 +772,8 @@ class Dollar {
     /// :return Array of initial values.
     class func initial<T>(array: [T], numElements: Int = 1) -> [T] {
         var result: [T] = []
-        if (array.count > numElements+1) {
-            for index in 0...(array.count - (numElements+1)) {
+        if (array.count > numElements) {
+            for index in 0..<(array.count - numElements) {
                 result += array[index]
             }
         }
@@ -988,7 +976,7 @@ class Dollar {
         if n > array.count { return [[]] }
         
         for i in (0...array.count-n).by(step!) {
-            result += Array(array[i...(i+n)] as Slice<T>)
+            result += Array(array[i..<(i+n)] as Slice<T>)
         }
         return result
     }
@@ -1002,13 +990,13 @@ class Dollar {
     ///            contain n elements. If nil is passed or there are not enough pad elements
     ///            the last partition may less than n elements long.
     /// :return Array partitioned into n element arrays, starting step elements apart.
-    class func partition<T>(var array: Array<T>, var n: Int, var step: Int? = nil, pad: [T]?) -> Array<Array<T>> {
-        var result = Array<Array<T>>()
+    class func partition<T>(var array: [T], var n: Int, var step: Int? = nil, pad: [T]?) -> Array<Array<T>> {
+        var result : [[T]] = []
         if !step?   { step = n } // If no step is supplied move n each step.
         if step < 1 { step = 1 } // Less than 1 results in an infinite loop.
         if n < 1    { n = 0 }    // Allow 0 if user wants [[],[],[]] for some reason.
         
-        for i in (0...array.count).by(step!) {
+        for i in (0..<array.count).by(step!) {
             var end = i+n
             if end > array.count { end = array.count }
             result += Array(array[i...end] as Slice<T>)
@@ -1018,7 +1006,7 @@ class Dollar {
         if let padding = pad {
             let remain = array.count%n
             let end = padding.count > remain ? remain : padding.count
-            result[result.count-1] += Array(padding[0...end] as Slice<T>)
+            result[result.count-1] += Array(padding[0..<end] as Slice<T>)
         }
         return result
     }
@@ -1035,10 +1023,10 @@ class Dollar {
         if step < 1 { step = 1 } // Less than 1 results in an infinite loop.
         if n < 1    { n = 0 }    // Allow 0 if user wants [[],[],[]] for some reason.
         
-        for i in (0...array.count).by(step!) {
+        for i in (0..<array.count).by(step!) {
             var end = i+n
             if end > array.count { end = array.count }
-            result += Array(array[i...end] as Slice<T>)
+            result += Array(array[i..<end] as Slice<T>)
         }
         return result
     }
@@ -1134,7 +1122,7 @@ class Dollar {
     /// :param incrementBy Increment sequence by.
     /// :return Array of elements based on the sequence.
     class func range<T : ForwardIndex>(startVal: T, endVal: T, incrementBy: T.DistanceType) -> [T] {
-        let range = (startVal...endVal).by(incrementBy)
+        let range = (startVal..<endVal).by(incrementBy)
         return self.sequence(range)
     }
     
@@ -1171,13 +1159,21 @@ class Dollar {
     /// :param numElements The number of elements to exclude from the beginning.
     /// :return The rest of the elements.
     class func rest<T>(array: [T], numElements: Int = 1) -> [T] {
-        var result: [T] = []
+        var result : [T] = []
         if (numElements < array.count) {
-            for index in numElements...array.count {
+            for index in numElements..<array.count {
                 result += array[index]
             }
         }
         return result
+    }
+    
+    /// Returns a sample from the array.
+    ///
+    /// :param array The array to sample from.
+    /// :return Random element from array.
+    class func sample<T>(array: [T]) -> T {
+        return array[random() % array.count]
     }
     
     /// Slices the array based on the start and end position. If an end position is not specified it will slice till the end of the array.
@@ -1195,7 +1191,7 @@ class Dollar {
         if end > array.count || start > array.count || uend < start {
             return [];
         } else {
-            return Array(array[start...uend]);
+            return Array(array[start..<uend]);
         }
     }
     
@@ -1253,8 +1249,8 @@ class Dollar {
     /// :param function The function to be called every time that takes index.
     /// :return Values returned from callback function.
     class func times<T>(n: Int, function: (Int) -> T) -> [T] {
-        var result: [T] = []
-        for index in (0...n) {
+        var result : [T] = []
+        for index in (0..<n) {
             result += function(index)
         }
         return result
@@ -1330,6 +1326,24 @@ class Dollar {
         for (key, value) in map {
             if value {
                 result += key
+            }
+        }
+        return result
+    }
+    
+    /// Creates an array of grouped elements, the first of which contains the first elements
+    /// of the given arrays.
+    ///
+    /// :param arrays The arrays to be grouped.
+    /// :return An array of grouped elements.
+    class func zip(arrays: [AnyObject]...) -> [AnyObject] {
+        var result: [[AnyObject]] = []
+        for _ in self.first(arrays) as [AnyObject] {
+            result += [] as [AnyObject]
+        }
+        for (index, array) in enumerate(arrays) {
+            for (elemIndex, elem : AnyObject) in enumerate(array) {
+                result[elemIndex] += elem
             }
         }
         return result
