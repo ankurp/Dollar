@@ -19,7 +19,8 @@
 
 import Foundation
 
-class Dollar {
+class Dollar<D>{
+    typealias $ = Dollar;
     
     //  ________  ___  ___  ________  ___  ________
     // |\   ____\|\  \|\  \|\   __  \|\  \|\   ___  \
@@ -30,21 +31,21 @@ class Dollar {
     //     \|_______|\|__|\|__|\|__|\|__|\|__|\|__| \|__|
     //
     
-    var resultArray: [AnyObject] = []
-    var lazyQueue:[(()->AnyObject?)] = [];
+    var resultArray: [D] = []
+    var lazyQueue:[(()->Any?)] = [];
     var lazyIndex:Int = 0;
     
     /// Initializer of the wrapper object for chaining.
     ///
     /// :param array The array to wrap.
-    init(array: [AnyObject]) {
+    init(array: [D]) {
         self.resultArray = array
     }
     
     /// Get the first object in the wrapper object.
     ///
     /// :return First element from the array.
-    func first() -> ${
+    func first() -> Dollar{
         lazyQueue.append{
             return $.first(self.resultArray)
         }
@@ -54,7 +55,7 @@ class Dollar {
     /// Get the second object in the wrapper object.
     ///
     /// :return Second element from the array.
-    func second() -> ${
+    func second() -> Dollar{
         lazyQueue.append{
             return $.second(self.resultArray)
         }
@@ -64,7 +65,7 @@ class Dollar {
     /// Get the third object in the wrapper object.
     ///
     /// :return Third element from the array.
-    func third() -> ${
+    func third() -> Dollar{
         lazyQueue.append{
             return $.third(self.resultArray)
         }
@@ -74,7 +75,7 @@ class Dollar {
     /// Get the fourth object in the wrapper object.
     ///
     /// :return Fourth element from the array.
-    func fourth()-> ${
+    func fourth()-> Dollar{
         lazyQueue.append{
             return $.fourth(self.resultArray)
         }
@@ -84,7 +85,7 @@ class Dollar {
     /// Get the fifth object in the wrapper object.
     ///
     /// :return Fifth element from the array.
-    func fifth() -> ${
+    func fifth() -> Dollar{
         lazyQueue.append{
             return $.fifth(self.resultArray)
         }
@@ -94,7 +95,7 @@ class Dollar {
     /// Get the sixth object in the wrapper object.
     ///
     /// :return Sixth element from the array.
-    func sixth() -> ${
+    func sixth() -> Dollar{
         lazyQueue.append{
             return $.sixth(self.resultArray)
         }
@@ -104,7 +105,7 @@ class Dollar {
     /// Get the seventh object in the wrapper object.
     ///
     /// :return Seventh element from the array.
-    func seventh() -> ${
+    func seventh() -> Dollar{
         lazyQueue.append{
             return $.seventh(self.resultArray)
         }
@@ -114,7 +115,7 @@ class Dollar {
     /// Get the eighth object in the wrapper object.
     ///
     /// :return Eighth element from the array.
-    func eighth() -> ${
+    func eighth() -> Dollar{
         lazyQueue.append{
             return $.eighth(self.resultArray)
         }
@@ -124,7 +125,7 @@ class Dollar {
     /// Get the ninth object in the wrapper object.
     ///
     /// :return Ninth element from the array.
-    func ninth() -> ${
+    func ninth() -> Dollar{
         lazyQueue.append{
             return $.ninth(self.resultArray)
         }
@@ -134,7 +135,7 @@ class Dollar {
     /// Get the tenth object in the wrapper object.
     ///
     /// :return Tenth element from the array.
-    func tenth() -> ${
+    func tenth() -> Dollar{
         lazyQueue.append{
             return $.tenth(self.resultArray)
         }
@@ -144,29 +145,33 @@ class Dollar {
     /// Flattens nested array.
     ///
     /// :return The wrapper object.
-    func flatten() -> ${
+    func flatten() -> Dollar{
         lazyQueue.append{
-            self.resultArray = $.flatten(self.resultArray)
-            return self.resultArray
+            let originalValue = self.resultArray
+            self.resultArray = $.flatten(originalValue);
+            return $.flatten(self.resultArray);
         }
         return self
     }
     
+    
     /// Keeps all the elements except last one.
     ///
     /// :return The wrapper object.
-    func initial() -> ${
+    func initial() -> Dollar{
         return self.initial(1)
     }
     
     /// Keeps all the elements except last n elements.
     ///
-    /// :param numElements Number of items to remove from the end of the array.
+    /// :param numElements Number of items to remove from the end of the array
     /// :return The wrapper object.
-    func initial(numElements: Int) -> ${
+    
+    func initial(numElements: Int) -> Dollar{
         lazyQueue.append{
-            self.resultArray = Dollar.initial(self.resultArray, numElements: numElements)
-            return self.resultArray
+            let original = self.resultArray
+            self.resultArray = $.initial(original, numElements: numElements);
+            return $.initial(original, numElements: numElements);
         }
         return self
     }
@@ -175,14 +180,17 @@ class Dollar {
     ///
     /// :param function Function to map.
     /// :return The wrapper object.
-    func map(function: (AnyObject) -> AnyObject) -> ${
+    func map(function: (D) -> D) -> Dollar{
         lazyQueue.append{
-            var result: [AnyObject] = []
-            for elem : AnyObject in self.resultArray {
-                result += function(elem)
+            func action() -> [D]{
+                var result: [D] = []
+                for elem in self.resultArray {
+                    result += function(elem)
+                }
+                return result;
             }
-            self.resultArray = result
-            return self.resultArray
+            self.resultArray = action()
+            return action()
         }
         return self
     }
@@ -191,14 +199,17 @@ class Dollar {
     ///
     /// :param array The array to wrap.
     /// :return The wrapper object.
-    func map(function: (Int, AnyObject) -> AnyObject) -> ${
+    func map(function: (Int, D) -> D) -> Dollar{
         lazyQueue.append{
-            var result: [AnyObject] = []
-            for (index, elem : AnyObject) in enumerate(self.resultArray) {
-                result += function(index, elem)
+            func action() -> [D]{
+                var result: [D] = []
+                for (index, elem) in enumerate(self.resultArray) {
+                    result += function(index, elem)
+                }
+                return result;
             }
-            self.resultArray = result
-            return self.resultArray
+            self.resultArray = action()
+            return action();
         }
         return self
     }
@@ -207,12 +218,12 @@ class Dollar {
     ///
     /// :param array The array to wrap.
     /// :return The wrapper object.
-    func each(function: (AnyObject) -> ()) -> ${
+    func each(function: (D) -> ()) -> Dollar{
         lazyQueue.append{
-            for elem : AnyObject in self.resultArray {
+            for elem in self.resultArray {
                 function(elem)
             }
-            return self.resultArray
+            return nil;
         }
         return self;
     }
@@ -221,12 +232,12 @@ class Dollar {
     ///
     /// :param array The array to wrap.
     /// :return The wrapper object.
-    func each(function: (Int, AnyObject) -> ()) -> ${
+    func each(function: (Int, D) -> ()) -> Dollar{
         lazyQueue.append{
-            for (index, elem : AnyObject) in enumerate(self.resultArray) {
+            for (index, elem) in enumerate(self.resultArray) {
                 function(index, elem)
             }
-            return self.resultArray
+            return nil;
         }
         return self;
     }
@@ -235,10 +246,11 @@ class Dollar {
     ///
     /// :param function Function to tell whether to keep an element or remove.
     /// :return The wrapper object.
-    func filter(function: (AnyObject) -> Bool) -> ${
+    func filter(function: (D) -> Bool) -> Dollar{
         lazyQueue.append{
-            self.resultArray = self.resultArray.filter(function)
-            return self.resultArray
+            let original = self.resultArray
+            self.resultArray = original.filter(function)
+            return original.filter(function);
         }
         return self;
     }
@@ -247,9 +259,9 @@ class Dollar {
     ///
     /// :param function Function to tell whether element value is true or false.
     /// :return Whether all elements are true according to func function.
-    func all(function: (AnyObject) -> Bool) -> ${
+    func all(function: (D) -> Bool) -> Dollar{
         lazyQueue.append{
-            return Dollar.every(self.resultArray, iterator: function)
+            return $.every(self.resultArray, iterator: function)
         }
         return self;
     }
@@ -258,9 +270,9 @@ class Dollar {
     ///
     /// :param function Function to tell whether element value is true or false.
     /// :return Whether any one element is true according to func function in the array.
-    func any(function: (AnyObject) -> Bool) -> ${
+    func any(function: (D) -> Bool) -> Dollar{
         lazyQueue.append{
-            for elem : AnyObject in self.resultArray {
+            for elem in self.resultArray {
                 if function(elem) {
                     return true
                 }
@@ -273,9 +285,12 @@ class Dollar {
     /// Get the final result from the wrapper object to terminated the chain.
     ///
     /// :return Final resulting array from applying all functions on it.
-    func value() -> ${
+    func value() -> Dollar{
         lazyQueue.append{
-            return self.resultArray
+            func action() -> [D]{
+                return self.resultArray
+            }
+            return action()
         }
         return self;
     }
@@ -285,10 +300,11 @@ class Dollar {
     /// :param start Start index to start slicing from.
     /// :param end End index to stop slicing to and not including element at that index.
     /// :return The wrapper object.
-    func slice(start: Int, end: Int = 0) -> ${
+    func slice(start: Int, end: Int = 0) -> Dollar{
         lazyQueue.append{
-            self.resultArray =  Dollar.slice(self.resultArray, start: start, end: end);
-            return self.resultArray;
+            let original = self.resultArray
+            self.resultArray =  $.slice(original, start: start, end: end);
+            return $.slice(original, start: start, end: end);
         }
         return self;
     }
@@ -296,7 +312,7 @@ class Dollar {
     /// Consumes current method in chain
     ///
     /// :return Result of consuming method, nil if at end of chain or chain is empty
-    func step() -> AnyObject?{
+    func step() -> Any?{
         if(!self.hasStep()) { return nil; }
         
         var action = lazyQueue.removeAtIndex(lazyIndex);
@@ -306,7 +322,7 @@ class Dollar {
     /// Invoke current method in chain and increment
     ///
     /// :return Result of invoked method in chain, nil if chain is empty
-    func walk() -> AnyObject?{
+    func walk() -> Any?{
         if(lazyQueue.isEmpty) { return nil; }
         if(!self.hasStep()){ self.resetChain() }
         
@@ -316,7 +332,7 @@ class Dollar {
     /// Decrement chain then consume method
     ///
     /// :return Result of consumed method in chain, nil if chain is empty or at beginning of chain
-    func stepBackward() -> AnyObject?{
+    func stepBackward() -> Any?{
         if(!self.hasStepBackward()) { return nil; }
         lazyIndex--;
         
@@ -325,7 +341,7 @@ class Dollar {
     /// Decrement chain then invoke method
     ///
     /// :return Result of invoked method, nile if chain is empty
-    func walkBackward() -> AnyObject?{
+    func walkBackward() -> Any?{
         if(lazyQueue.isEmpty) { return nil; }
         if(!self.hasStepBackward()) { self.endChain(); }
         
@@ -345,7 +361,7 @@ class Dollar {
     /// Evaluates entire chain at once
     ///
     /// :return Result of chain
-    func invokeAll() -> AnyObject?{
+    func invokeAll() -> Any?{
         var result:AnyObject? = nil
         
         self.resetChain();
@@ -355,8 +371,8 @@ class Dollar {
     /// Evaluates remainder of chain
     ///
     /// :return Result of chain
-    func invokeRest() -> AnyObject?{
-        var result:AnyObject? = nil
+    func invokeRest() -> Any?{
+        var result:Any? = nil
         
         while(self.hasStep()){
             result = self.step();
@@ -368,6 +384,7 @@ class Dollar {
     func hasStep() -> Bool{
         return self.countSteps() != 0;
     }
+    
     /// Check if a backward step can be made
     func hasStepBackward() -> Bool{
         return self.countBackwardSteps() != 0;
@@ -395,6 +412,7 @@ class Dollar {
         if(!self.hasChain()) { return 0; }
         return lazyIndex;
     }
+    
     
     ///  ___  ___  _______   ___       ________  _______   ________
     /// |\  \|\  \|\  ___ \ |\  \     |\   __  \|\  ___ \ |\   __  \
@@ -496,7 +514,7 @@ class Dollar {
     /// :return The difference between the first array and all the remaining arrays from the arrays params.
     class func difference<T : Hashable>(arrays: [T]...) -> [T] {
         var result : [T] = []
-        var map : Dictionary<T, Int> = Dictionary<T, Int>()
+        var map : [T : Int] = [T : Int]()
         let firstArr : [T] = self.first(arrays)!
         let restArr : [[T]] = self.rest(arrays) as [[T]]
         
@@ -707,10 +725,10 @@ class Dollar {
     ///
     /// :param array The array to flatten.
     /// :return Flattened array.
-    class func flatten(array: [AnyObject]) -> [AnyObject] {
-        var resultArr: [AnyObject] = []
-        for elem : AnyObject in array {
-            if let val = elem as? [AnyObject] {
+    class func flatten<T>(array: [T]) -> [T] {
+        var resultArr: [T] = []
+        for elem in array {
+            if let val = elem as? [T] {
                 resultArr += flatten(val)
             } else {
                 resultArr += elem
@@ -724,7 +742,7 @@ class Dollar {
     ///
     /// :param array The array to source from.
     /// :return Dictionary that contains the key generated from the element passed in the function.
-    class func frequencies<T>(array: Array<T>) -> Dictionary<T, Int> {
+    class func frequencies<T>(array: [T]) -> [T : Int] {
         return self.frequencies(array) { $0 }
     }
     
@@ -735,7 +753,7 @@ class Dollar {
     /// :param array The array to source from.
     /// :param function The function to get value of the key for each element to group by.
     /// :return Dictionary that contains the key generated from the element passed in the function.
-    class func frequencies<T, U: Equatable>(array: Array<T>, function: (T) -> U) -> Dictionary<U, Int> {
+    class func frequencies<T, U: Equatable>(array: [T], function: (T) -> U) -> [U : Int] {
         var result = Dictionary<U, Int>()
         for elem in array {
             let key = function(elem)
@@ -785,7 +803,7 @@ class Dollar {
     /// :param arrays The arrays to perform an intersection on.
     /// :return Intersection of all arrays passed.
     class func intersection<T : Hashable>(arrays: [T]...) -> [T] {
-        var map : Dictionary<T, Int> = Dictionary<T, Int>()
+        var map : [T : Int] = [T : Int]()
         for arr in arrays {
             for elem in arr {
                 if let val : Int = map[elem] {
@@ -818,7 +836,7 @@ class Dollar {
     ///
     /// :param dictionary The dictionary to source from.
     /// :return Array of keys from dictionary.
-    class func keys<T, U>(dictionary: Dictionary<T, U>) -> [T] {
+    class func keys<T, U>(dictionary: [T : U]) -> [T] {
         var result : [T] = []
         for (key, _) in dictionary {
             result.insert(key, atIndex: 0)
@@ -875,7 +893,7 @@ class Dollar {
     /// :param function The function to memoize.
     /// :return Memoized function
     class func memoize<T: Hashable, U>(function: ((T -> U), T) -> U) -> (T -> U) {
-        var cache = Dictionary<T, U>()
+        var cache = [T : U]()
         var funcRef: (T -> U)!
         funcRef = { (param : T) -> U in
             if let cacheVal = cache[param] {
@@ -892,8 +910,8 @@ class Dollar {
     ///
     /// :param dictionaries The dictionaries to source from.
     /// :return Merged dictionary with all of its keys and values.
-    class func merge<T, U>(#dictionaries: Dictionary<T, U>...) -> Dictionary<T, U> {
-        var result = Dictionary<T, U>()
+    class func merge<T, U>(#dictionaries: [T : U]...) -> Dictionary<T, U> {
+        var result = [T : U]()
         for dict in dictionaries {
             for (key, value) in dict {
                 result[key] = value
@@ -906,8 +924,8 @@ class Dollar {
     ///
     /// :param arrays The arrays to source from.
     /// :return Array with all values merged, including duplicates.
-    class func merge<T>(#arrays: Array<T>...) -> Array<T> {
-        var result = Array<T>()
+    class func merge<T>(#arrays: [T]...) -> [T] {
+        var result = [T]()
         for arr in arrays {
             result += arr
         }
@@ -940,8 +958,8 @@ class Dollar {
     /// :param dictionary The dictionary to source from.
     /// :param keys The keys to omit from returning dictionary.
     /// :return Dictionary with the keys specified omitted.
-    class func omit<T, U>(dictionary: Dictionary<T, U>, keys: T...) -> Dictionary<T, U> {
-        var result : Dictionary<T, U> = Dictionary<T, U>()
+    class func omit<T, U>(dictionary: [T : U], keys: T...) -> [T : U] {
+        var result : [T : U] = [T : U]()
         
         for (key, value) in dictionary {
             if !self.contains(keys, value: key) {
@@ -968,8 +986,8 @@ class Dollar {
     /// :param n The number of elements in each partition.
     /// :param step The number of elements to progress between each partition. Set to n if not supplied.
     /// :return Array partitioned into n element arrays, starting step elements apart.
-    class func partition<T>(array: Array<T>, var n: Int, var step: Int? = nil) -> Array<Array<T>> {
-        var result = Array<Array<T>>()
+    class func partition<T>(array: [T], var n: Int, var step: Int? = nil) -> [[T]] {
+        var result = [[T]]()
         if !step?   { step = n } // If no step is supplied move n each step.
         if step < 1 { step = 1 } // Less than 1 results in an infinite loop.
         if n < 1    { n = 0 }    // Allow 0 if user wants [[],[],[]] for some reason.
@@ -990,7 +1008,7 @@ class Dollar {
     ///            contain n elements. If nil is passed or there are not enough pad elements
     ///            the last partition may less than n elements long.
     /// :return Array partitioned into n element arrays, starting step elements apart.
-    class func partition<T>(var array: [T], var n: Int, var step: Int? = nil, pad: [T]?) -> Array<Array<T>> {
+    class func partition<T>(var array: [T], var n: Int, var step: Int? = nil, pad: [T]?) -> [[T]] {
         var result : [[T]] = []
         if !step?   { step = n } // If no step is supplied move n each step.
         if step < 1 { step = 1 } // Less than 1 results in an infinite loop.
@@ -1017,8 +1035,8 @@ class Dollar {
     /// :param n The number of elements in each partition.
     /// :param step The number of elements to progress between each partition. Set to n if not supplied.
     /// :return Array partitioned into n element arrays, starting step elements apart.
-    class func partitionAll<T>(array: Array<T>, var n: Int, var step: Int? = nil) -> Array<Array<T>> {
-        var result = Array<Array<T>>()
+    class func partitionAll<T>(array: [T], var n: Int, var step: Int? = nil) -> [[T]] {
+        var result = [[T]]()
         if !step?   { step = n } // If no step is supplied move n each step.
         if step < 1 { step = 1 } // Less than 1 results in an infinite loop.
         if n < 1    { n = 0 }    // Allow 0 if user wants [[],[],[]] for some reason.
@@ -1036,8 +1054,8 @@ class Dollar {
     /// :param array The array to partition.
     /// :param function Function which takes an element and produces an equatable result.
     /// :return Array partitioned in order, splitting via results of function.
-    class func partitionBy<T, U: Equatable>(array: Array<T>, function: (T) -> U) -> Array<Array<T>> {
-        var result = Array<Array<T>>()
+    class func partitionBy<T, U: Equatable>(array: [T], function: (T) -> U) -> [[T]] {
+        var result = [[T]]()
         var lastValue: U? = nil
         
         for item in array {
@@ -1058,8 +1076,8 @@ class Dollar {
     /// :param dictionary The dictionary to source from.
     /// :param keys The keys to pick values from.
     /// :return Dictionary with the key and values picked from the keys specified.
-    class func pick<T, U>(dictionary: Dictionary<T, U>, keys: T...) -> Dictionary<T, U> {
-        var result : Dictionary<T, U> = Dictionary<T, U>()
+    class func pick<T, U>(dictionary: [T : U], keys: T...) -> [T : U] {
+        var result : [T : U] = [T : U]()
         for key in keys {
             result[key] = dictionary[key]
         }
@@ -1071,7 +1089,7 @@ class Dollar {
     /// :param array The array to source from.
     /// :param value The property on object to pull out value from.
     /// :return Array of values from array of objects with property of value.
-    class func pluck<T, E>(array: [Dictionary<T, E>], value: T) -> [E] {
+    class func pluck<T, E>(array: [[T : E]], value: T) -> [E] {
         var result : [E] = []
         for obj in array {
             if let val = obj[value] {
@@ -1261,7 +1279,7 @@ class Dollar {
     /// :param arrays The arrays to perform union on.
     /// :return Resulting array after union.
     class func union<T : Hashable>(arrays: [T]...) -> [T] {
-        var map : Dictionary<T, Bool> = Dictionary<T, Bool>()
+        var map : [T : Bool] = [T : Bool]()
         for arr in arrays {
             for elem in arr {
                 map[elem] = true
@@ -1279,7 +1297,7 @@ class Dollar {
     /// :param array The array to source from.
     /// :return An array with unique values.
     class func uniq<T : Hashable>(array: [T]) -> [T] {
-        var map : Dictionary<T, Bool> = Dictionary<T, Bool>()
+        var map : [T : Bool] = [T : Bool]()
         for elem in array {
             map[elem] = true
         }
@@ -1294,7 +1312,7 @@ class Dollar {
     ///
     /// :param dictionary The dictionary to source from.
     /// :return An array of values from the dictionary.
-    class func values<T, U>(dictionary: Dictionary<T, U>) -> [U] {
+    class func values<T, U>(dictionary:[T : U]) -> [U] {
         var result : [U] = []
         for (_, value) in dictionary {
             result.insert(value, atIndex: 0)
@@ -1316,7 +1334,7 @@ class Dollar {
     /// :param arrays The arrays to perform xor on in order.
     /// :return Resulting array after performing xor.
     class func xor<T : Hashable>(arrays: [T]...) -> [T] {
-        var map : Dictionary<T, Bool> = Dictionary<T, Bool>()
+        var map : [T : Bool] = [T : Bool]()
         for arr in arrays {
             for elem in arr {
                 map[elem] = !map[elem]
@@ -1336,13 +1354,13 @@ class Dollar {
     ///
     /// :param arrays The arrays to be grouped.
     /// :return An array of grouped elements.
-    class func zip(arrays: [AnyObject]...) -> [AnyObject] {
-        var result: [[AnyObject]] = []
-        for _ in self.first(arrays) as [AnyObject] {
-            result += [] as [AnyObject]
+    class func zip<T>(arrays: [T]...) -> AnyObject? {
+        var result: [[T]] = []
+        for _ in self.first(arrays) as [T] {
+            result += [] as [T]
         }
         for (index, array) in enumerate(arrays) {
-            for (elemIndex, elem : AnyObject) in enumerate(array) {
+            for (elemIndex, elem) in enumerate(array) {
                 result[elemIndex] += elem
             }
         }
@@ -1354,108 +1372,112 @@ class Dollar {
     /// :param keys The array of keys.
     /// :param values The array of values.
     /// :return Dictionary based on the keys and values passed in order.
-    class func zipObject<T, E>(keys: [T], values: [E]) -> Dictionary<T, E> {
-        var result = Dictionary<T, E>()
+    class func zipObject<T, E>(keys: [T], values: [E]) -> [T : E] {
+        var result = [T : E]()
         for (index, key) in enumerate(keys) {
             result[key] = values[index]
         }
         
         return result
     }
-    
+    /*
     /// Lazy namespace
     class lazy{
-        /// Creates Iterator for performing action on collection
-        ///
-        /// :param array The collection to evaluate
-        /// :param function Closure to perform on each element
-        /// :return Iterator for performing lazy evaluation on collection
-        class func map(array: [AnyObject], function: (AnyObject) -> AnyObject) -> $.Iterator{
-            return $.Iterator(array: array, function: function);
+    /// Creates Iterator for performing action on collection
+    ///
+    /// :param array The collection to evaluate
+    /// :param function Closure to perform on each element
+    /// :return Iterator for performing lazy evaluation on collection
+    class func map(array: [D], function: (D) -> D) -> $.Iterator{
+        return $.Iterator(array: array, function: function);
         }
     }
     
     /// Dollar.Iterator for lazy evalution
     class Iterator{
         var index:Int = 0
-        var action:(AnyObject) -> AnyObject
+        var action:(D) -> D
         var $:Dollar
-        
-        init(array:[AnyObject], function:(AnyObject) -> AnyObject){
-            $ = Dollar(array: array);
+    
+        init(array:[D], function:(D) -> D){
+            $ = Dollar<D>(array: array);
             action = function;
         }
-        
+    
         /// Invokes action on current object then increments
         ///
         /// :return Value of evaluation. Nil if no more elements in collection
-        func next() -> AnyObject?{
-            if(!self.hasNext()) { return nil; }
-            
-            let element: AnyObject = $.resultArray[index++]
+        func next() -> D?{
+            if(index >= $.resultArray.count) { return nil; }
+    
+            let element = $.resultArray[index++]
             return action(element);
         }
-        
+    
         /// Decrements then invokes action on object
         ///
         /// :return Value of evaluation. Nil if  at beginning of collection or if collection is empty
-        func previous() -> AnyObject?{
-            if(!self.hasPrevious()) { return nil; }
-            
-            let element: AnyObject = $.resultArray[--index];
+        
+        func previous() -> D?{
+            if(!(index > ($.resultArray.count-1))) { return nil; }
+    
+            let element = $.resultArray[--index];
             return action(element);
         }
-        
+    
         /// Continous invocation incremental
         ///
         /// :return Value of evaluation
-        func cycle() -> AnyObject?{
-            if(!self.hasNext()) { self.toFirstObject() }
-            return action($.resultArray[index++]);
+      
+        func cycle() -> D?{
+           // if(index >= $.resultArray.count) { index = 0; }
+            let element = $.resultArray[index++];
+            return action(element);
         }
-        
+
         /// Continuous invocation decremental
         ///
         /// :return Value of evaluation
-        func cycleBackward() -> AnyObject?{
-            if(!self.hasPrevious()) { self.endIterator() }
-            return self.previous();
-        }
-        
+      //  func cycleBackward() -> D?{
+            //if(!(index > ($.resultArray.count-1))) { index = $.resultArray.count }
+            //return self.previous();
+       // }
+
+
+
         /// Moves position of incrementor to begnning of collection
         func toFirstObject(){
             index = 0;
         }
-        
-        
+    
+    
         func toLastObject(){
             index = $.resultArray.count-1;
         }
-        
-        /// Moves position of incremento to end of collection
+    
+       /// Moves position of incremento to end of collection
         func endIterator(){
             index = $.resultArray.count;
         }
-        
+
         /// Check if there are anymore elements in collection to evaluate
         func hasNext() -> Bool{
-            return index < $.resultArray.count;
+        //return index < $.resultArray.count;
         }
-        
-        /// :False if at the beginning of collection or collection is empty
+    
+        /// False if at the beginning of collection or collection is empty
         func hasPrevious() -> Bool{
-            return index != 0 && !$.resultArray.isEmpty
+            return index > ($.resultArray.count-1);
         }
         
         /// :return Number of objects in collection left to evaluate
         func countNext() -> Int{
             return $.resultArray.count - index
         }
-        
+    
         func countPrevious() -> Int{
             return index;
         }
-    }
+    }*/
 }
 
-typealias $ = Dollar
