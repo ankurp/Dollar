@@ -775,55 +775,55 @@ chain.any { ($0 as Int) < 40 }
 
 Method | Usage
 ---- | ---------
-at(indexes: Int...) -> [Element] | Creates an array of elements from the specified indexes, or keys, of the collection.
-every(iterator: (Element) -> Bool) -> Bool | Checks if the given callback returns true value for all items in the array.
-findIndex(iterator: (Element) -> Bool) -> Int? | This method is like find except that it returns the index of the first element that passes the callback check.
-findLastIndex(iterator: (Element) -> Bool) -> Int? | This method is like findIndex except that it iterates over elements of the array from right to left.
-first() -> Element? | Gets the first element in the array.
-flatten() -> [Element] | Flattens a nested array of any depth.
-get(index: Int) -> Element? | Get element at index
-initial(numElements: Int? = 1) -> [Element] | Gets all but the last element or last n elements of an array.
-last() -> Element? | Gets the last element from the array.
-rest(numElements: Int? = 1) -> [Element] | The opposite of initial this method gets all but the first element or first n elements of an array.
-min<T: Comparable>() -> T? | Retrieves the minimum value in an array.
-max<T: Comparable>() -> T? | Retrieves the maximum value in an array.
+**`at(indexes: Int...) -> [Element]`**| Creates an array of elements from the specified indexes, or keys, of the collection.
+**`every(iterator: (Element) -> Bool) -> Bool`**| Checks if the given callback returns true value for all items in the array.
+**`findIndex(iterator: (Element) -> Bool) -> Int?`**| This method is like find except that it returns the index of the first element that passes the callback check.
+**`findLastIndex(iterator: (Element) -> Bool) -> Int?`**| This method is like findIndex except that it iterates over elements of the array from right to left.
+**`first() -> Element?`**| Gets the first element in the array.
+**`flatten() -> [Element]`**| Flattens a nested array of any depth.
+**`get(index: Int) -> Element?`**| Get element at index
+**`initial(numElements: Int? = 1) -> [Element]`**| Gets all but the last element or last n elements of an array.
+**`last() -> Element?`**| Gets the last element from the array.
+**`rest(numElements: Int? = 1) -> [Element]`**| The opposite of initial this method gets all but the first element or first n elements of an array.
+**`min<T: Comparable>() -> T?`**| Retrieves the minimum value in an array.
+**`max<T: Comparable>() -> T?`**| Retrieves the maximum value in an array.
 
 ### Date Extensions ###
 
 Method | Usage
 ---- | ---------
-Date.from(#year: Int, month: Int, day: Int) -> NSDate | Returns a new Date given the year month and day
-Date.parse(dateStr: String, format: String = "yyyy-MM-dd") -> NSDate | Parses the date based on the format and return a new Date
+**`Date.from(#year: Int, month: Int, day: Int) -> NSDate`**| Returns a new Date given the year month and day
+**`Date.parse(dateStr: String, format: String = "yyyy-MM-dd") -> NSDate`**| Parses the date based on the format and return a new Date
 
 ### Dictionary Extensions ###
 
 Method | Usage
 ---- | ---------
-isEmpty () -> Bool | Checks whether Dictionary has no keys and hence is empty
-merge<K, V>(dictionaries: Dictionary<K, V>...) | Merges the dictionary with dictionaries passed. The latter dictionaries will override values of the keys that are already set
+**`isEmpty () -> Bool`**| Checks whether Dictionary has no keys and hence is empty
+**`merge<K, V>(dictionaries: Dictionary<K, V>...)`**| Merges the dictionary with dictionaries passed. The latter dictionaries will override values of the keys that are already set
 
 ### Int Extensions ###
 
 Method | Usage
 ---- | ---------
-times(callback: (Int) -> ()) | Invoke a callback n times with callback that takes index
-times (function: () -> ()) | Invoke a callback n times
+**`times(callback: (Int) -> ())`**| Invoke a callback n times with callback that takes index
+**`times (function: () -> ())`**| Invoke a callback n times
 
 ### String Extensions ###
 
 Method | Usage
 ---- | ---------
-[i: Int] -> Character? | Get character at a subscript
-[r: Range<Int>] -> String | Get substring using subscript notation and by passing a range
-split(delimiter: Character) -> [String] | Get an array from string split using the delimiter character
+**`[i: Int] -> Character?`**| Get character at a subscript
+**`[r: Range<Int>] -> String`**| Get substring using subscript notation and by passing a range
+**`split(delimiter: Character) -> [String]`**| Get an array from string split using the delimiter character
 
 ### Range Extensions ###
 
 Method | Usage
 ---- | ---------
-eachWithIndex(callback: (T) -> ()) | For each index in the range invoke the callback by passing the item in range
-each(callback: () -> ()) | For each index in the range invoke the callback
-== | Check the equality of two ranges
+**`eachWithIndex(callback: (T) -> ())`**| For each index in the range invoke the callback by passing the item in range
+**`each(callback: () -> ())`**| For each index in the range invoke the callback
+**`==`**| Check the equality of two ranges
 
 ## Cent Examples ##
 
