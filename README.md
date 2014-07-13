@@ -92,6 +92,7 @@ Method | Usage
 **`$.partition`**|Produces an array of arrays, each containing n elements, each offset by step. Stops after a partition is less than n length.
 **`$.partitionAll`**|Produces an array of arrays, each containing n elements, each offset by step. Continues after a partition is less than n length.
 **`$.partitionBy`**|Applies a function to each element in array, splitting it each time the function returns a new value.
+**`$.reverse`**|Creates an array whose elements are in reverse order of the provided array
 
 
 ### Dictionary Methods ###
@@ -577,6 +578,16 @@ $.partitionBy([1, 7, 3, 6, 10, 12]) { $0 % 3 }
 => [[1, 7], [3, 6], [10], [12]]
 ```
 
+### reverse - `$.reverse`
+
+Produces an array whose elements are in reverse order of the provided array.
+
+```swift
+let arr = [1, 2, 3]
+$.reverse(arr)
+=> [3, 2, 1]
+````
+
 ### Dictionary ###
 
 ### keys - `$.keys`
@@ -767,7 +778,6 @@ chain.all { ($0 as Int) < 40 }
 chain.any { ($0 as Int) < 40 } 
 => true
 ```
-
 
 ## Cent Usage ##
 

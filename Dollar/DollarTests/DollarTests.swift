@@ -404,9 +404,11 @@ class DollarTests: XCTestCase {
         XCTAssertEqualObjects(times, 1, "Function called 1 times due to memoize")
     }
     
-   
     func testId() {
         XCTAssertEqual($.id(1), 1, "Id should return the argument it gets passed")
     }
-
+    
+    func testReverse() {
+        XCTAssertEqualObjects($.reverse([1,2,3]), [3,2,1], "Array should be reversed")
+    }
 }
