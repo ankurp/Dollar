@@ -36,7 +36,7 @@ class DollarTests: XCTestCase {
     
     func testFourth() {
         XCTAssertEqualObjects($.fourth([1, 2, 3, 4, 5, 6, 7, 8, 9, 10])!, 4, "Return fourth element")
-        XCTAssertNil($.fourt([NSObject]()), "Returns nil when array is empty")
+        XCTAssertNil($.fourth([NSObject]()), "Returns nil when array is empty")
     }
     
     func testFifth() {
@@ -278,7 +278,7 @@ class DollarTests: XCTestCase {
     }
 
     func testChaining() {
-        var chain = $(array: [1, 2, 3])
+        var chain = $<Int>(array: [1, 2, 3])
         XCTAssertEqual(chain.first() as Int, 1, "Returns first element which ends the chain")
 
         chain = $(array: [[1, 2], 3, [[4], 5]])
