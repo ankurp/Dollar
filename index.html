@@ -1106,51 +1106,51 @@ $.contains(arr, value: $.sample(arr))
 </tr></thead>
 <tbody>
 <tr>
-<td>at(indexes: Int...) -&gt; [Element]</td>
+<td><strong><code>at(indexes: Int...) -&gt; [Element]</code></strong></td>
 <td>Creates an array of elements from the specified indexes, or keys, of the collection.</td>
 </tr>
 <tr>
-<td>every(iterator: (Element) -&gt; Bool) -&gt; Bool</td>
+<td><strong><code>every(iterator: (Element) -&gt; Bool) -&gt; Bool</code></strong></td>
 <td>Checks if the given callback returns true value for all items in the array.</td>
 </tr>
 <tr>
-<td>findIndex(iterator: (Element) -&gt; Bool) -&gt; Int?</td>
+<td><strong><code>findIndex(iterator: (Element) -&gt; Bool) -&gt; Int?</code></strong></td>
 <td>This method is like find except that it returns the index of the first element that passes the callback check.</td>
 </tr>
 <tr>
-<td>findLastIndex(iterator: (Element) -&gt; Bool) -&gt; Int?</td>
+<td><strong><code>findLastIndex(iterator: (Element) -&gt; Bool) -&gt; Int?</code></strong></td>
 <td>This method is like findIndex except that it iterates over elements of the array from right to left.</td>
 </tr>
 <tr>
-<td>first() -&gt; Element?</td>
+<td><strong><code>first() -&gt; Element?</code></strong></td>
 <td>Gets the first element in the array.</td>
 </tr>
 <tr>
-<td>flatten() -&gt; [Element]</td>
+<td><strong><code>flatten() -&gt; [Element]</code></strong></td>
 <td>Flattens a nested array of any depth.</td>
 </tr>
 <tr>
-<td>get(index: Int) -&gt; Element?</td>
+<td><strong><code>get(index: Int) -&gt; Element?</code></strong></td>
 <td>Get element at index</td>
 </tr>
 <tr>
-<td>initial(numElements: Int? = 1) -&gt; [Element]</td>
+<td><strong><code>initial(numElements: Int? = 1) -&gt; [Element]</code></strong></td>
 <td>Gets all but the last element or last n elements of an array.</td>
 </tr>
 <tr>
-<td>last() -&gt; Element?</td>
+<td><strong><code>last() -&gt; Element?</code></strong></td>
 <td>Gets the last element from the array.</td>
 </tr>
 <tr>
-<td>rest(numElements: Int? = 1) -&gt; [Element]</td>
+<td><strong><code>rest(numElements: Int? = 1) -&gt; [Element]</code></strong></td>
 <td>The opposite of initial this method gets all but the first element or first n elements of an array.</td>
 </tr>
 <tr>
-<td>min() -&gt; T?</td>
+<td><strong><code>min&lt;T: Comparable&gt;() -&gt; T?</code></strong></td>
 <td>Retrieves the minimum value in an array.</td>
 </tr>
 <tr>
-<td>max() -&gt; T?</td>
+<td><strong><code>max&lt;T: Comparable&gt;() -&gt; T?</code></strong></td>
 <td>Retrieves the maximum value in an array.</td>
 </tr>
 </tbody>
@@ -1164,11 +1164,11 @@ $.contains(arr, value: $.sample(arr))
 </tr></thead>
 <tbody>
 <tr>
-<td>Date.from(#year: Int, month: Int, day: Int) -&gt; NSDate</td>
+<td><strong><code>Date.from(#year: Int, month: Int, day: Int) -&gt; NSDate</code></strong></td>
 <td>Returns a new Date given the year month and day</td>
 </tr>
 <tr>
-<td>Date.parse(dateStr: String, format: String = "yyyy-MM-dd") -&gt; NSDate</td>
+<td><strong><code>Date.parse(dateStr: String, format: String = "yyyy-MM-dd") -&gt; NSDate</code></strong></td>
 <td>Parses the date based on the format and return a new Date</td>
 </tr>
 </tbody>
@@ -1182,11 +1182,11 @@ $.contains(arr, value: $.sample(arr))
 </tr></thead>
 <tbody>
 <tr>
-<td>isEmpty () -&gt; Bool</td>
+<td><strong><code>isEmpty () -&gt; Bool</code></strong></td>
 <td>Checks whether Dictionary has no keys and hence is empty</td>
 </tr>
 <tr>
-<td>merge(dictionaries: Dictionary...)</td>
+<td><strong><code>merge&lt;K, V&gt;(dictionaries: Dictionary&lt;K, V&gt;...)</code></strong></td>
 <td>Merges the dictionary with dictionaries passed. The latter dictionaries will override values of the keys that are already set</td>
 </tr>
 </tbody>
@@ -1200,11 +1200,11 @@ $.contains(arr, value: $.sample(arr))
 </tr></thead>
 <tbody>
 <tr>
-<td>times(callback: (Int) -&gt; ())</td>
+<td><strong><code>times(callback: (Int) -&gt; ())</code></strong></td>
 <td>Invoke a callback n times with callback that takes index</td>
 </tr>
 <tr>
-<td>times (function: () -&gt; ())</td>
+<td><strong><code>times (function: () -&gt; ())</code></strong></td>
 <td>Invoke a callback n times</td>
 </tr>
 </tbody>
@@ -1218,15 +1218,15 @@ $.contains(arr, value: $.sample(arr))
 </tr></thead>
 <tbody>
 <tr>
-<td>[i: Int] -&gt; Character?</td>
+<td><strong><code>[i: Int] -&gt; Character?</code></strong></td>
 <td>Get character at a subscript</td>
 </tr>
 <tr>
-<td>[r: Range] -&gt; String</td>
+<td><strong><code>[r: Range&lt;Int&gt;] -&gt; String</code></strong></td>
 <td>Get substring using subscript notation and by passing a range</td>
 </tr>
 <tr>
-<td>split(delimiter: Character) -&gt; [String]</td>
+<td><strong><code>split(delimiter: Character) -&gt; [String]</code></strong></td>
 <td>Get an array from string split using the delimiter character</td>
 </tr>
 </tbody>
@@ -1240,15 +1240,15 @@ $.contains(arr, value: $.sample(arr))
 </tr></thead>
 <tbody>
 <tr>
-<td>eachWithIndex(callback: (T) -&gt; ())</td>
+<td><strong><code>eachWithIndex(callback: (T) -&gt; ())</code></strong></td>
 <td>For each index in the range invoke the callback by passing the item in range</td>
 </tr>
 <tr>
-<td>each(callback: () -&gt; ())</td>
+<td><strong><code>each(callback: () -&gt; ())</code></strong></td>
 <td>For each index in the range invoke the callback</td>
 </tr>
 <tr>
-<td>==</td>
+<td><strong><code>==</code></strong></td>
 <td>Check the equality of two ranges</td>
 </tr>
 </tbody>
