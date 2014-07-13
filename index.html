@@ -156,34 +156,6 @@ OR</li>
 <td>Gets the third element in the array.</td>
 </tr>
 <tr>
-<td><strong><code>$.fourth</code></strong></td>
-<td>Gets the fourth element in the array.</td>
-</tr>
-<tr>
-<td><strong><code>$.fifth</code></strong></td>
-<td>Gets the fifth element in the array.</td>
-</tr>
-<tr>
-<td><strong><code>$.sixth</code></strong></td>
-<td>Gets the sixth element in the array.</td>
-</tr>
-<tr>
-<td><strong><code>$.seventh</code></strong></td>
-<td>Gets the seventh element in the array.</td>
-</tr>
-<tr>
-<td><strong><code>$.eighth</code></strong></td>
-<td>Gets the eighth element in the array.</td>
-</tr>
-<tr>
-<td><strong><code>$.ninth</code></strong></td>
-<td>Gets the ninth element in the array.</td>
-</tr>
-<tr>
-<td><strong><code>$.tenth</code></strong></td>
-<td>Gets the tenth element in the array.</td>
-</tr>
-<tr>
 <td><strong><code>$.flatten</code></strong></td>
 <td>Flattens a nested array of any depth.</td>
 </tr>
@@ -414,34 +386,6 @@ OR</li>
 <tr>
 <td><strong><code>third</code></strong></td>
 <td>Returns the third element in the array and terminated the chain</td>
-</tr>
-<tr>
-<td><strong><code>fouth</code></strong></td>
-<td>Returns the fourth element in the array and terminated the chain</td>
-</tr>
-<tr>
-<td><strong><code>fifth</code></strong></td>
-<td>Returns the fifth element in the array and terminated the chain</td>
-</tr>
-<tr>
-<td><strong><code>sixth</code></strong></td>
-<td>Returns the sixth element in the array and terminated the chain</td>
-</tr>
-<tr>
-<td><strong><code>seventh</code></strong></td>
-<td>Returns the seventh element in the array and terminated the chain</td>
-</tr>
-<tr>
-<td><strong><code>eighth</code></strong></td>
-<td>Returns the eighth element in the array and terminated the chain</td>
-</tr>
-<tr>
-<td><strong><code>ninth</code></strong></td>
-<td>Returns the ninth element in the array and terminated the chain</td>
-</tr>
-<tr>
-<td><strong><code>tenth</code></strong></td>
-<td>Returns the tenth element in the array and terminated the chain</td>
 </tr>
 <tr>
 <td><strong><code>flatten</code></strong></td>
@@ -1160,12 +1104,57 @@ $.contains(arr, value: $.sample(arr))
 <th>Method</th>
 <th>Usage</th>
 </tr></thead>
-<tbody></tbody>
-</table><blockquote>
-<p>TODO: Add methods</p>
-</blockquote>
-
-<h3>
+<tbody>
+<tr>
+<td>at(indexes: Int...) -&gt; [Element]</td>
+<td>Creates an array of elements from the specified indexes, or keys, of the collection.</td>
+</tr>
+<tr>
+<td>every(iterator: (Element) -&gt; Bool) -&gt; Bool</td>
+<td>Checks if the given callback returns true value for all items in the array.</td>
+</tr>
+<tr>
+<td>findIndex(iterator: (Element) -&gt; Bool) -&gt; Int?</td>
+<td>This method is like find except that it returns the index of the first element that passes the callback check.</td>
+</tr>
+<tr>
+<td>findLastIndex(iterator: (Element) -&gt; Bool) -&gt; Int?</td>
+<td>This method is like findIndex except that it iterates over elements of the array from right to left.</td>
+</tr>
+<tr>
+<td>first() -&gt; Element?</td>
+<td>Gets the first element in the array.</td>
+</tr>
+<tr>
+<td>flatten() -&gt; [Element]</td>
+<td>Flattens a nested array of any depth.</td>
+</tr>
+<tr>
+<td>get(index: Int) -&gt; Element?</td>
+<td>Get element at index</td>
+</tr>
+<tr>
+<td>initial(numElements: Int? = 1) -&gt; [Element]</td>
+<td>Gets all but the last element or last n elements of an array.</td>
+</tr>
+<tr>
+<td>last() -&gt; Element?</td>
+<td>Gets the last element from the array.</td>
+</tr>
+<tr>
+<td>rest(numElements: Int? = 1) -&gt; [Element]</td>
+<td>The opposite of initial this method gets all but the first element or first n elements of an array.</td>
+</tr>
+<tr>
+<td>min() -&gt; T?</td>
+<td>Retrieves the minimum value in an array.</td>
+</tr>
+<tr>
+<td>max() -&gt; T?</td>
+<td>Retrieves the maximum value in an array.</td>
+</tr>
+</tbody>
+</table><h3>
 <a name="date-extensions" class="anchor" href="#date-extensions"><span class="octicon octicon-link"></span></a>Date Extensions</h3>
 
 <table>
@@ -1173,12 +1162,17 @@ $.contains(arr, value: $.sample(arr))
 <th>Method</th>
 <th>Usage</th>
 </tr></thead>
-<tbody></tbody>
-</table><blockquote>
-<p>TODO: Add methods</p>
-</blockquote>
-
-<h3>
+<tbody>
+<tr>
+<td>Date.from(#year: Int, month: Int, day: Int) -&gt; NSDate</td>
+<td>Returns a new Date given the year month and day</td>
+</tr>
+<tr>
+<td>Date.parse(dateStr: String, format: String = "yyyy-MM-dd") -&gt; NSDate</td>
+<td>Parses the date based on the format and return a new Date</td>
+</tr>
+</tbody>
+</table><h3>
 <a name="dictionary-extensions" class="anchor" href="#dictionary-extensions"><span class="octicon octicon-link"></span></a>Dictionary Extensions</h3>
 
 <table>
@@ -1186,12 +1180,17 @@ $.contains(arr, value: $.sample(arr))
 <th>Method</th>
 <th>Usage</th>
 </tr></thead>
-<tbody></tbody>
-</table><blockquote>
-<p>TODO: Add methods</p>
-</blockquote>
-
-<h3>
+<tbody>
+<tr>
+<td>isEmpty () -&gt; Bool</td>
+<td>Checks whether Dictionary has no keys and hence is empty</td>
+</tr>
+<tr>
+<td>merge(dictionaries: Dictionary...)</td>
+<td>Merges the dictionary with dictionaries passed. The latter dictionaries will override values of the keys that are already set</td>
+</tr>
+</tbody>
+</table><h3>
 <a name="int-extensions" class="anchor" href="#int-extensions"><span class="octicon octicon-link"></span></a>Int Extensions</h3>
 
 <table>
@@ -1199,12 +1198,17 @@ $.contains(arr, value: $.sample(arr))
 <th>Method</th>
 <th>Usage</th>
 </tr></thead>
-<tbody></tbody>
-</table><blockquote>
-<p>TODO: Add methods</p>
-</blockquote>
-
-<h3>
+<tbody>
+<tr>
+<td>times(callback: (Int) -&gt; ())</td>
+<td>Invoke a callback n times with callback that takes index</td>
+</tr>
+<tr>
+<td>times (function: () -&gt; ())</td>
+<td>Invoke a callback n times</td>
+</tr>
+</tbody>
+</table><h3>
 <a name="string-extensions" class="anchor" href="#string-extensions"><span class="octicon octicon-link"></span></a>String Extensions</h3>
 
 <table>
@@ -1212,12 +1216,21 @@ $.contains(arr, value: $.sample(arr))
 <th>Method</th>
 <th>Usage</th>
 </tr></thead>
-<tbody></tbody>
-</table><blockquote>
-<p>TODO: Add methods</p>
-</blockquote>
-
-<h3>
+<tbody>
+<tr>
+<td>[i: Int] -&gt; Character?</td>
+<td>Get character at a subscript</td>
+</tr>
+<tr>
+<td>[r: Range] -&gt; String</td>
+<td>Get substring using subscript notation and by passing a range</td>
+</tr>
+<tr>
+<td>split(delimiter: Character) -&gt; [String]</td>
+<td>Get an array from string split using the delimiter character</td>
+</tr>
+</tbody>
+</table><h3>
 <a name="range-extensions" class="anchor" href="#range-extensions"><span class="octicon octicon-link"></span></a>Range Extensions</h3>
 
 <table>
@@ -1225,12 +1238,21 @@ $.contains(arr, value: $.sample(arr))
 <th>Method</th>
 <th>Usage</th>
 </tr></thead>
-<tbody></tbody>
-</table><blockquote>
-<p>TODO: Add methods</p>
-</blockquote>
-
-<h2>
+<tbody>
+<tr>
+<td>eachWithIndex(callback: (T) -&gt; ())</td>
+<td>For each index in the range invoke the callback by passing the item in range</td>
+</tr>
+<tr>
+<td>each(callback: () -&gt; ())</td>
+<td>For each index in the range invoke the callback</td>
+</tr>
+<tr>
+<td>==</td>
+<td>Check the equality of two ranges</td>
+</tr>
+</tbody>
+</table><h2>
 <a name="cent-examples" class="anchor" href="#cent-examples"><span class="octicon octicon-link"></span></a>Cent Examples</h2>
 
 <h3>
