@@ -18,19 +18,15 @@
 //
 
 import Foundation
-
-class Dollar<D>{
-    typealias $ = Dollar;
-    
-    //  ________  ___  ___  ________  ___  ________
-    // |\   ____\|\  \|\  \|\   __  \|\  \|\   ___  \
-    // \ \  \___|\ \  \\\  \ \  \|\  \ \  \ \  \\ \  \
-    //  \ \  \    \ \   __  \ \   __  \ \  \ \  \\ \  \
-    //   \ \  \____\ \  \ \  \ \  \ \  \ \  \ \  \\ \  \
-    //    \ \_______\ \__\ \__\ \__\ \__\ \__\ \__\\ \__\
-    //     \|_______|\|__|\|__|\|__|\|__|\|__|\|__| \|__|
-    //
-    
+//  ________  ___  ___  ________  ___  ________
+// |\   ____\|\  \|\  \|\   __  \|\  \|\   ___  \
+// \ \  \___|\ \  \\\  \ \  \|\  \ \  \ \  \\ \  \
+//  \ \  \    \ \   __  \ \   __  \ \  \ \  \\ \  \
+//   \ \  \____\ \  \ \  \ \  \ \  \ \  \ \  \\ \  \
+//    \ \_______\ \__\ \__\ \__\ \__\ \__\ \__\\ \__\
+//     \|_______|\|__|\|__|\|__|\|__|\|__|\|__| \|__|
+//
+class Bank<D>{
     var resultArray: [D] = []
     var lazyQueue:[(()->Any?)] = [];
     var lazyIndex:Int = 0;
@@ -45,7 +41,7 @@ class Dollar<D>{
     /// Get the first object in the wrapper object.
     ///
     /// :return First element from the array.
-    func first() -> Dollar{
+    func first() -> Bank{
         lazyQueue.append{
             return $.first(self.resultArray)
         }
@@ -55,7 +51,7 @@ class Dollar<D>{
     /// Get the second object in the wrapper object.
     ///
     /// :return Second element from the array.
-    func second() -> Dollar{
+    func second() -> Bank{
         lazyQueue.append{
             return $.second(self.resultArray)
         }
@@ -65,7 +61,7 @@ class Dollar<D>{
     /// Get the third object in the wrapper object.
     ///
     /// :return Third element from the array.
-    func third() -> Dollar{
+    func third() -> Bank{
         lazyQueue.append{
             return $.third(self.resultArray)
         }
@@ -75,7 +71,7 @@ class Dollar<D>{
     /// Get the fourth object in the wrapper object.
     ///
     /// :return Fourth element from the array.
-    func fourth()-> Dollar{
+    func fourth()-> Bank{
         lazyQueue.append{
             return $.fourth(self.resultArray)
         }
@@ -85,7 +81,7 @@ class Dollar<D>{
     /// Get the fifth object in the wrapper object.
     ///
     /// :return Fifth element from the array.
-    func fifth() -> Dollar{
+    func fifth() -> Bank{
         lazyQueue.append{
             return $.fifth(self.resultArray)
         }
@@ -95,7 +91,7 @@ class Dollar<D>{
     /// Get the sixth object in the wrapper object.
     ///
     /// :return Sixth element from the array.
-    func sixth() -> Dollar{
+    func sixth() -> Bank{
         lazyQueue.append{
             return $.sixth(self.resultArray)
         }
@@ -105,7 +101,7 @@ class Dollar<D>{
     /// Get the seventh object in the wrapper object.
     ///
     /// :return Seventh element from the array.
-    func seventh() -> Dollar{
+    func seventh() -> Bank{
         lazyQueue.append{
             return $.seventh(self.resultArray)
         }
@@ -115,7 +111,7 @@ class Dollar<D>{
     /// Get the eighth object in the wrapper object.
     ///
     /// :return Eighth element from the array.
-    func eighth() -> Dollar{
+    func eighth() -> Bank{
         lazyQueue.append{
             return $.eighth(self.resultArray)
         }
@@ -125,7 +121,7 @@ class Dollar<D>{
     /// Get the ninth object in the wrapper object.
     ///
     /// :return Ninth element from the array.
-    func ninth() -> Dollar{
+    func ninth() -> Bank{
         lazyQueue.append{
             return $.ninth(self.resultArray)
         }
@@ -135,7 +131,7 @@ class Dollar<D>{
     /// Get the tenth object in the wrapper object.
     ///
     /// :return Tenth element from the array.
-    func tenth() -> Dollar{
+    func tenth() -> Bank{
         lazyQueue.append{
             return $.tenth(self.resultArray)
         }
@@ -145,20 +141,21 @@ class Dollar<D>{
     /// Flattens nested array.
     ///
     /// :return The wrapper object.
-    func flatten() -> Dollar{
+    /*
+    func flatten() -> Bank{
         lazyQueue.append{
             let originalValue = self.resultArray
             self.resultArray = $.flatten(originalValue);
             return $.flatten(self.resultArray);
         }
         return self
-    }
+    }*/
     
     
     /// Keeps all the elements except last one.
     ///
     /// :return The wrapper object.
-    func initial() -> Dollar{
+    func initial() -> Bank{
         return self.initial(1)
     }
     
@@ -166,8 +163,7 @@ class Dollar<D>{
     ///
     /// :param numElements Number of items to remove from the end of the array
     /// :return The wrapper object.
-    
-    func initial(numElements: Int) -> Dollar{
+    func initial(numElements: Int) -> Bank{
         lazyQueue.append{
             let original = self.resultArray
             self.resultArray = $.initial(original, numElements: numElements);
@@ -180,7 +176,7 @@ class Dollar<D>{
     ///
     /// :param function Function to map.
     /// :return The wrapper object.
-    func map(function: (D) -> D) -> Dollar{
+    func map(function: (D) -> D) -> Bank{
         lazyQueue.append{
             func action() -> [D]{
                 var result: [D] = []
@@ -199,7 +195,7 @@ class Dollar<D>{
     ///
     /// :param array The array to wrap.
     /// :return The wrapper object.
-    func map(function: (Int, D) -> D) -> Dollar{
+    func map(function: (Int, D) -> D) -> Bank{
         lazyQueue.append{
             func action() -> [D]{
                 var result: [D] = []
@@ -218,7 +214,7 @@ class Dollar<D>{
     ///
     /// :param array The array to wrap.
     /// :return The wrapper object.
-    func each(function: (D) -> ()) -> Dollar{
+    func each(function: (D) -> ()) -> Bank{
         lazyQueue.append{
             for elem in self.resultArray {
                 function(elem)
@@ -232,7 +228,7 @@ class Dollar<D>{
     ///
     /// :param array The array to wrap.
     /// :return The wrapper object.
-    func each(function: (Int, D) -> ()) -> Dollar{
+    func each(function: (Int, D) -> ()) -> Bank{
         lazyQueue.append{
             for (index, elem) in enumerate(self.resultArray) {
                 function(index, elem)
@@ -246,7 +242,7 @@ class Dollar<D>{
     ///
     /// :param function Function to tell whether to keep an element or remove.
     /// :return The wrapper object.
-    func filter(function: (D) -> Bool) -> Dollar{
+    func filter(function: (D) -> Bool) -> Bank{
         lazyQueue.append{
             let original = self.resultArray
             self.resultArray = original.filter(function)
@@ -259,7 +255,7 @@ class Dollar<D>{
     ///
     /// :param function Function to tell whether element value is true or false.
     /// :return Whether all elements are true according to func function.
-    func all(function: (D) -> Bool) -> Dollar{
+    func all(function: (D) -> Bool) -> Bank{
         lazyQueue.append{
             return $.every(self.resultArray, iterator: function)
         }
@@ -270,7 +266,7 @@ class Dollar<D>{
     ///
     /// :param function Function to tell whether element value is true or false.
     /// :return Whether any one element is true according to func function in the array.
-    func any(function: (D) -> Bool) -> Dollar{
+    func any(function: (D) -> Bool) -> Bank{
         lazyQueue.append{
             for elem in self.resultArray {
                 if function(elem) {
@@ -285,7 +281,7 @@ class Dollar<D>{
     /// Get the final result from the wrapper object to terminated the chain.
     ///
     /// :return Final resulting array from applying all functions on it.
-    func value() -> Dollar{
+    func value() -> Bank{
         lazyQueue.append{
             func action() -> [D]{
                 return self.resultArray
@@ -300,7 +296,7 @@ class Dollar<D>{
     /// :param start Start index to start slicing from.
     /// :param end End index to stop slicing to and not including element at that index.
     /// :return The wrapper object.
-    func slice(start: Int, end: Int = 0) -> Dollar{
+    func slice(start: Int, end: Int = 0) -> Bank{
         lazyQueue.append{
             let original = self.resultArray
             self.resultArray =  $.slice(original, start: start, end: end);
@@ -412,8 +408,9 @@ class Dollar<D>{
         if(!self.hasChain()) { return 0; }
         return lazyIndex;
     }
-    
-    
+}
+
+class Dollar{
     ///  ___  ___  _______   ___       ________  _______   ________
     /// |\  \|\  \|\  ___ \ |\  \     |\   __  \|\  ___ \ |\   __  \
     /// \ \  \\\  \ \   __/|\ \  \    \ \  \|\  \ \   __/|\ \  \|\  \
@@ -1380,104 +1377,7 @@ class Dollar<D>{
         
         return result
     }
-    /*
-    /// Lazy namespace
-    class lazy{
-    /// Creates Iterator for performing action on collection
-    ///
-    /// :param array The collection to evaluate
-    /// :param function Closure to perform on each element
-    /// :return Iterator for performing lazy evaluation on collection
-    class func map(array: [D], function: (D) -> D) -> $.Iterator{
-        return $.Iterator(array: array, function: function);
-        }
-    }
-    
-    /// Dollar.Iterator for lazy evalution
-    class Iterator{
-        var index:Int = 0
-        var action:(D) -> D
-        var $:Dollar
-    
-        init(array:[D], function:(D) -> D){
-            $ = Dollar<D>(array: array);
-            action = function;
-        }
-    
-        /// Invokes action on current object then increments
-        ///
-        /// :return Value of evaluation. Nil if no more elements in collection
-        func next() -> D?{
-            if(index >= $.resultArray.count) { return nil; }
-    
-            let element = $.resultArray[index++]
-            return action(element);
-        }
-    
-        /// Decrements then invokes action on object
-        ///
-        /// :return Value of evaluation. Nil if  at beginning of collection or if collection is empty
-        
-        func previous() -> D?{
-            if(!(index > ($.resultArray.count-1))) { return nil; }
-    
-            let element = $.resultArray[--index];
-            return action(element);
-        }
-    
-        /// Continous invocation incremental
-        ///
-        /// :return Value of evaluation
-      
-        func cycle() -> D?{
-           // if(index >= $.resultArray.count) { index = 0; }
-            let element = $.resultArray[index++];
-            return action(element);
-        }
-
-        /// Continuous invocation decremental
-        ///
-        /// :return Value of evaluation
-      //  func cycleBackward() -> D?{
-            //if(!(index > ($.resultArray.count-1))) { index = $.resultArray.count }
-            //return self.previous();
-       // }
-
-
-
-        /// Moves position of incrementor to begnning of collection
-        func toFirstObject(){
-            index = 0;
-        }
-    
-    
-        func toLastObject(){
-            index = $.resultArray.count-1;
-        }
-    
-       /// Moves position of incremento to end of collection
-        func endIterator(){
-            index = $.resultArray.count;
-        }
-
-        /// Check if there are anymore elements in collection to evaluate
-        func hasNext() -> Bool{
-        //return index < $.resultArray.count;
-        }
-    
-        /// False if at the beginning of collection or collection is empty
-        func hasPrevious() -> Bool{
-            return index > ($.resultArray.count-1);
-        }
-        
-        /// :return Number of objects in collection left to evaluate
-        func countNext() -> Int{
-            return $.resultArray.count - index
-        }
-    
-        func countPrevious() -> Int{
-            return index;
-        }
-    }*/
 }
+
+typealias $ = Dollar;
 
