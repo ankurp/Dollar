@@ -62,9 +62,9 @@ extension Array {
     ///
     /// :param array The array to flatten.
     /// :return Flattened array.
-    func flatten() -> [Element] {
+    /*func flatten() -> [Element] {
         return $.flatten(self)
-    }
+    }*/
     
     /// Get element at index
     ///

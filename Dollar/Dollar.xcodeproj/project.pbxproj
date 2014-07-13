@@ -22,6 +22,20 @@
 			remoteGlobalIDString = 92E0D03B19467C67002ACC3D;
 			remoteInfo = Dollar;
 		};
+		472E792B196C784F00B3EBF2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 92E0D03319467C67002ACC3D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 92E0D03B19467C67002ACC3D;
+			remoteInfo = Dollar;
+		};
+		472E792D196C784F00B3EBF2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 92E0D03319467C67002ACC3D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 92E0D03B19467C67002ACC3D;
+			remoteInfo = Dollar;
+		};
 		92E0D04919467C67002ACC3D /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 92E0D03319467C67002ACC3D /* Project object */;
@@ -160,6 +174,8 @@
 			dependencies = (
 				92E0D04A19467C67002ACC3D /* PBXTargetDependency */,
 				040987051948227200E3997C /* PBXTargetDependency */,
+				472E792C196C784F00B3EBF2 /* PBXTargetDependency */,
+				472E792E196C784F00B3EBF2 /* PBXTargetDependency */,
 			);
 			name = DollarTests;
 			productName = DollarTests;
@@ -244,6 +260,16 @@
 			isa = PBXTargetDependency;
 			target = 92E0D03B19467C67002ACC3D /* Dollar */;
 			targetProxy = 040987041948227200E3997C /* PBXContainerItemProxy */;
+		};
+		472E792C196C784F00B3EBF2 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 92E0D03B19467C67002ACC3D /* Dollar */;
+			targetProxy = 472E792B196C784F00B3EBF2 /* PBXContainerItemProxy */;
+		};
+		472E792E196C784F00B3EBF2 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 92E0D03B19467C67002ACC3D /* Dollar */;
+			targetProxy = 472E792D196C784F00B3EBF2 /* PBXContainerItemProxy */;
 		};
 		92E0D04A19467C67002ACC3D /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
