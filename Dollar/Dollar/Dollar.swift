@@ -11,7 +11,7 @@
 //         \|__|
 //
 //  $.swift
-//  Dollar - A functional tool-belt for Swift Language
+//  $ - A functional tool-belt for Swift Language
 //
 //  Created by Ankur Patel on 6/3/14.
 //  Copyright (c) 2014 Encore Dev Labs LLC. All rights reserved.
@@ -31,6 +31,8 @@ class Dollar {
     //
     
     var resultArray: [AnyObject] = []
+
+    var lazyQueue: [(AnyObject) -> (AnyObject?)] = []
     
     /// Initializer of the wrapper object for chaining.
     ///
@@ -39,88 +41,114 @@ class Dollar {
         self.resultArray = array
     }
     
+    func queue(function: (AnyObject) -> (AnyObject?)) -> Dollar {
+        lazyQueue.append(function)
+        return self
+    }
+    
     /// Get the first object in the wrapper object.
     ///
     /// :return First element from the array.
-    func first() -> AnyObject? {
-        return Dollar.first(self.resultArray)
+    func first() -> Dollar {
+        return self.queue {
+            Dollar.first($0 as Array)
+        }
     }
     
     /// Get the second object in the wrapper object.
     ///
     /// :return Second element from the array.
-    func second() -> AnyObject? {
-        return $.second(self.resultArray)
+    func second() -> Dollar {
+        return self.queue {
+            Dollar.second($0 as Array)
+        }
     }
     
     /// Get the third object in the wrapper object.
     ///
     /// :return Third element from the array.
-    func third() -> AnyObject? {
-        return $.third(self.resultArray)
+    func third() -> Dollar {
+        return self.queue {
+            Dollar.third($0 as Array)
+        }
     }
     
     /// Get the fourth object in the wrapper object.
     ///
     /// :return Fourth element from the array.
-    func fourth() -> AnyObject? {
-        return $.fourth(self.resultArray)
+    func fourth() -> Dollar {
+        return self.queue {
+            Dollar.fourth($0 as Array)
+        }
     }
     
     /// Get the fifth object in the wrapper object.
     ///
     /// :return Fifth element from the array.
-    func fifth() -> AnyObject? {
-        return $.fifth(self.resultArray)
+    func fifth() -> Dollar {
+        return self.queue {
+            Dollar.fifth($0 as Array)
+        }
     }
     
     /// Get the sixth object in the wrapper object.
     ///
     /// :return Sixth element from the array.
-    func sixth() -> AnyObject? {
-        return $.sixth(self.resultArray)
+    func sixth() -> Dollar {
+        return self.queue {
+            Dollar.sixth($0 as Array)
+        }
     }
     
     /// Get the seventh object in the wrapper object.
     ///
     /// :return Seventh element from the array.
-    func seventh() -> AnyObject? {
-        return $.seventh(self.resultArray)
+    func seventh() -> Dollar {
+        return self.queue {
+            Dollar.seventh($0 as Array)
+        }
     }
     
     /// Get the eighth object in the wrapper object.
     ///
     /// :return Eighth element from the array.
-    func eighth() -> AnyObject? {
-        return $.eighth(self.resultArray)
+    func eighth() -> Dollar {
+        return self.queue {
+            Dollar.eighth($0 as Array)
+        }
     }
     
     /// Get the ninth object in the wrapper object.
     ///
     /// :return Ninth element from the array.
-    func ninth() -> AnyObject? {
-        return $.ninth(self.resultArray)
+    func ninth() -> Dollar {
+        return self.queue {
+            Dollar.ninth($0 as Array)
+        }
     }
     
     /// Get the tenth object in the wrapper object.
     ///
     /// :return Tenth element from the array.
-    func tenth() -> AnyObject? {
-        return $.tenth(self.resultArray)
+    func tenth() -> Dollar {
+        return self.queue {
+            Dollar.tenth($0 as Array)
+        }
     }
     
     /// Flattens nested array.
     ///
     /// :return The wrapper object.
-    func flatten() -> Self {
-        self.resultArray = Dollar.flatten(self.resultArray)
-        return self
+    func flatten() -> Dollar {
+        return self.queue {
+            return Dollar.flatten($0 as Array<Any>)
+        }
     }
     
     /// Keeps all the elements except last one.
     ///
     /// :return The wrapper object.
-    func initial() -> Self {
+    func initial() -> Dollar {
         return self.initial(1)
     }
     
@@ -128,94 +156,99 @@ class Dollar {
     ///
     /// :param numElements Number of items to remove from the end of the array.
     /// :return The wrapper object.
-    func initial(numElements: Int) -> Self {
-        self.resultArray = Dollar.initial(self.resultArray, numElements: numElements)
-        return self
+    func initial(numElements: Int) -> Dollar {
+        return self.queue {
+            return Dollar.initial($0 as Array<AnyObject>, numElements: numElements)
+        }
     }
     
     /// Maps elements to new elements.
     ///
     /// :param function Function to map.
     /// :return The wrapper object.
-    func map(function: (AnyObject) -> AnyObject) -> Self {
-        var result: [AnyObject] = []
-        for elem : AnyObject in self.resultArray {
-            result += function(elem)
+    func map(function: (AnyObject) -> AnyObject) -> Dollar {
+        return self.queue {
+            var result: [AnyObject] = []
+            for elem : AnyObject in $0 as Array<AnyObject> {
+                result += function(elem)
+            }
+            return result
         }
-        self.resultArray = result
-        return self
     }
     
     /// Get the first object in the wrapper object.
     ///
     /// :param array The array to wrap.
     /// :return The wrapper object.
-    func map(function: (Int, AnyObject) -> AnyObject) -> Self {
-        var result: [AnyObject] = []
-        for (index, elem : AnyObject) in enumerate(self.resultArray) {
-            result += function(index, elem)
+    func map(function: (Int, AnyObject) -> AnyObject) -> Dollar {
+        return self.queue {
+            var result: [AnyObject] = []
+            for (index, elem : AnyObject) in enumerate($0 as Array<AnyObject>) {
+                result += function(index, elem)
+            }
+            return result
         }
-        self.resultArray = result
-        return self
     }
     
     /// Get the first object in the wrapper object.
     ///
     /// :param array The array to wrap.
     /// :return The wrapper object.
-    func each(function: (AnyObject) -> ()) -> Self {
-        for elem : AnyObject in self.resultArray {
-            function(elem)
+    func each(function: (AnyObject) -> ()) -> Dollar {
+        return self.queue {
+            for elem : AnyObject in $0 as Array<AnyObject> {
+                function(elem)
+            }
+            return $0
         }
-        return self
     }
     
     /// Get the first object in the wrapper object.
     ///
     /// :param array The array to wrap.
     /// :return The wrapper object.
-    func each(function: (Int, AnyObject) -> ()) -> Self {
-        for (index, elem : AnyObject) in enumerate(self.resultArray) {
-            function(index, elem)
+    func each(function: (Int, AnyObject) -> ()) -> Dollar {
+        return self.queue {
+            for (index, elem : AnyObject) in enumerate($0 as Array<AnyObject>) {
+                function(index, elem)
+            }
+            return $0
         }
-        return self
     }
     
     /// Filter elements based on the function passed.
     ///
     /// :param function Function to tell whether to keep an element or remove.
     /// :return The wrapper object.
-    func filter(function: (AnyObject) -> Bool) -> Self {
-        self.resultArray = self.resultArray.filter(function)
-        return self
+    func filter(function: (AnyObject) -> Bool) -> Dollar {
+        return self.queue {
+            return ($0 as Array<AnyObject>).filter(function)
+        }
     }
     
     /// Returns if all elements in array are true based on the passed function.
     ///
     /// :param function Function to tell whether element value is true or false.
     /// :return Whether all elements are true according to func function.
-    func all(function: (AnyObject) -> Bool) -> Bool {
-        return Dollar.every(self.resultArray, iterator: function)
+    func all(function: (AnyObject) -> Bool) -> Dollar {
+        return self.queue {
+            return Dollar.every($0 as Array, iterator: function)
+        }
     }
     
     /// Returns if any element in array is true based on the passed function.
     ///
     /// :param function Function to tell whether element value is true or false.
     /// :return Whether any one element is true according to func function in the array.
-    func any(function: (AnyObject) -> Bool) -> Bool {
-        for elem : AnyObject in self.resultArray {
-            if function(elem) {
-                return true
+    func any(function: (AnyObject) -> Bool) -> Dollar {
+        return self.queue {
+            for elem : AnyObject in $0 as Array<AnyObject> {
+                if function(elem) {
+                    return true
+                }
             }
+            return false
         }
-        return false
-    }
-    
-    /// Get the final result from the wrapper object to terminated the chain.
-    ///
-    /// :return Final resulting array from applying all functions on it.
-    func value() -> [AnyObject] {
-        return self.resultArray
     }
     
     /// Slice the array into smaller size based on start and end value.
@@ -223,9 +256,25 @@ class Dollar {
     /// :param start Start index to start slicing from.
     /// :param end End index to stop slicing to and not including element at that index.
     /// :return The wrapper object.
-    func slice(start: Int, end: Int = 0) -> Self {
-        self.resultArray =  Dollar.slice(self.resultArray, start: start, end: end);
-        return self;
+    func slice(start: Int, end: Int = 0) -> Dollar {
+        return self.queue {
+            return Dollar.slice($0 as Array<AnyObject>, start: start, end: end);
+        }
+    }
+    
+    /// Get the final result from the wrapper object to terminated the chain.
+    ///
+    /// :return Final resulting array from applying all functions on it.
+    func value() -> AnyObject? {
+        var result : AnyObject? = self.resultArray
+        for step in self.lazyQueue {
+            result = step(result!)
+        }
+        if let val: AnyObject = result {
+            return val
+        } else {
+            return self.resultArray
+        }
     }
     
     ///  ___  ___  _______   ___       ________  _______   ________
@@ -1193,8 +1242,8 @@ class Dollar {
         }
         return result
     }
-    
 }
 
 typealias $ = Dollar
+
 
