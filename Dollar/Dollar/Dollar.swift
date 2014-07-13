@@ -19,7 +19,7 @@
 
 import Foundation
 
-class Dollar<A> {
+class Dollar {
     
     //  ________  ___  ___  ________  ___  ________
     // |\   ____\|\  \|\  \|\   __  \|\  \|\   ___  \
@@ -30,18 +30,18 @@ class Dollar<A> {
     //     \|_______|\|__|\|__|\|__|\|__|\|__|\|__| \|__|
     //
     
-    var resultArray: [A] = []
+    var resultArray: [AnyObject] = []
 
-    var lazyQueue: [() -> (Any)] = []
+    var lazyQueue: [(AnyObject) -> (AnyObject?)] = []
     
     /// Initializer of the wrapper object for chaining.
     ///
     /// :param array The array to wrap.
-    init(array: [A]) {
+    init(array: [AnyObject]) {
         self.resultArray = array
     }
     
-    func queue(function: () -> (Any)) -> Dollar {
+    func queue(function: (AnyObject) -> (AnyObject?)) -> Dollar {
         lazyQueue.append(function)
         return self
     }
@@ -51,7 +51,7 @@ class Dollar<A> {
     /// :return First element from the array.
     func first() -> Dollar {
         return self.queue {
-            $.first(self.resultArray)
+            Dollar.first($0 as Array)
         }
     }
     
@@ -60,7 +60,7 @@ class Dollar<A> {
     /// :return Second element from the array.
     func second() -> Dollar {
         return self.queue {
-            $.second(self.resultArray)
+            Dollar.second($0 as Array)
         }
     }
     
@@ -69,7 +69,7 @@ class Dollar<A> {
     /// :return Third element from the array.
     func third() -> Dollar {
         return self.queue {
-            return $.third(self.resultArray)
+            Dollar.third($0 as Array)
         }
     }
     
@@ -78,7 +78,7 @@ class Dollar<A> {
     /// :return Fourth element from the array.
     func fourth() -> Dollar {
         return self.queue {
-            return $.fourth(self.resultArray)
+            Dollar.fourth($0 as Array)
         }
     }
     
@@ -87,7 +87,7 @@ class Dollar<A> {
     /// :return Fifth element from the array.
     func fifth() -> Dollar {
         return self.queue {
-            return $.fifth(self.resultArray)
+            Dollar.fifth($0 as Array)
         }
     }
     
@@ -96,7 +96,7 @@ class Dollar<A> {
     /// :return Sixth element from the array.
     func sixth() -> Dollar {
         return self.queue {
-            return $.sixth(self.resultArray)
+            Dollar.sixth($0 as Array)
         }
     }
     
@@ -105,7 +105,7 @@ class Dollar<A> {
     /// :return Seventh element from the array.
     func seventh() -> Dollar {
         return self.queue {
-            return $.seventh(self.resultArray)
+            Dollar.seventh($0 as Array)
         }
     }
     
@@ -114,7 +114,7 @@ class Dollar<A> {
     /// :return Eighth element from the array.
     func eighth() -> Dollar {
         return self.queue {
-            return $.eighth(self.resultArray)
+            Dollar.eighth($0 as Array)
         }
     }
     
@@ -123,7 +123,7 @@ class Dollar<A> {
     /// :return Ninth element from the array.
     func ninth() -> Dollar {
         return self.queue {
-            return $.ninth(self.resultArray)
+            Dollar.ninth($0 as Array)
         }
     }
     
@@ -132,7 +132,7 @@ class Dollar<A> {
     /// :return Tenth element from the array.
     func tenth() -> Dollar {
         return self.queue {
-            return $.tenth(self.resultArray)
+            Dollar.tenth($0 as Array)
         }
     }
     
@@ -141,7 +141,7 @@ class Dollar<A> {
     /// :return The wrapper object.
     func flatten() -> Dollar {
         return self.queue {
-            self.resultArray = $.flatten(self.resultArray)
+            return Dollar.flatten($0 as Array<Any>)
         }
     }
     
@@ -149,9 +149,7 @@ class Dollar<A> {
     ///
     /// :return The wrapper object.
     func initial() -> Dollar {
-        return self.queue {
-            self.initial(1)
-        }
+        return self.initial(1)
     }
     
     /// Keeps all the elements except last n elements.
@@ -160,7 +158,7 @@ class Dollar<A> {
     /// :return The wrapper object.
     func initial(numElements: Int) -> Dollar {
         return self.queue {
-            self.resultArray = $.initial(self.resultArray, numElements: numElements)
+            return Dollar.initial($0 as Array<AnyObject>, numElements: numElements)
         }
     }
     
@@ -168,13 +166,13 @@ class Dollar<A> {
     ///
     /// :param function Function to map.
     /// :return The wrapper object.
-    func map(function: (A) -> A) -> Dollar {
+    func map(function: (AnyObject) -> AnyObject) -> Dollar {
         return self.queue {
-            var result: [A] = []
-            for elem : A in self.resultArray {
+            var result: [AnyObject] = []
+            for elem : AnyObject in $0 as Array<AnyObject> {
                 result += function(elem)
             }
-            return self.resultArray = result
+            return result
         }
     }
     
@@ -182,13 +180,13 @@ class Dollar<A> {
     ///
     /// :param array The array to wrap.
     /// :return The wrapper object.
-    func map(function: (Int, A) -> A) -> Dollar {
+    func map(function: (Int, AnyObject) -> AnyObject) -> Dollar {
         return self.queue {
-            var result: [A] = []
-            for (index, elem : A) in enumerate(self.resultArray) {
+            var result: [AnyObject] = []
+            for (index, elem : AnyObject) in enumerate($0 as Array<AnyObject>) {
                 result += function(index, elem)
             }
-            return self.resultArray = result
+            return result
         }
     }
     
@@ -196,12 +194,12 @@ class Dollar<A> {
     ///
     /// :param array The array to wrap.
     /// :return The wrapper object.
-    func each(function: (A) -> ()) -> Dollar {
+    func each(function: (AnyObject) -> ()) -> Dollar {
         return self.queue {
-            for elem : A in self.resultArray {
+            for elem : AnyObject in $0 as Array<AnyObject> {
                 function(elem)
             }
-            return self
+            return $0
         }
     }
     
@@ -209,12 +207,12 @@ class Dollar<A> {
     ///
     /// :param array The array to wrap.
     /// :return The wrapper object.
-    func each(function: (Int, A) -> ()) -> Dollar {
+    func each(function: (Int, AnyObject) -> ()) -> Dollar {
         return self.queue {
-            for (index, elem : A) in enumerate(self.resultArray) {
+            for (index, elem : AnyObject) in enumerate($0 as Array<AnyObject>) {
                 function(index, elem)
             }
-            return self
+            return $0
         }
     }
     
@@ -222,9 +220,9 @@ class Dollar<A> {
     ///
     /// :param function Function to tell whether to keep an element or remove.
     /// :return The wrapper object.
-    func filter(function: (A) -> Bool) -> Dollar {
+    func filter(function: (AnyObject) -> Bool) -> Dollar {
         return self.queue {
-            return self.resultArray = self.resultArray.filter(function)
+            return ($0 as Array<AnyObject>).filter(function)
         }
     }
     
@@ -232,9 +230,9 @@ class Dollar<A> {
     ///
     /// :param function Function to tell whether element value is true or false.
     /// :return Whether all elements are true according to func function.
-    func all(function: (A) -> Bool) -> Dollar {
+    func all(function: (AnyObject) -> Bool) -> Dollar {
         return self.queue {
-            return $.every(self.resultArray, iterator: function)
+            return Dollar.every($0 as Array, iterator: function)
         }
     }
     
@@ -242,9 +240,9 @@ class Dollar<A> {
     ///
     /// :param function Function to tell whether element value is true or false.
     /// :return Whether any one element is true according to func function in the array.
-    func any(function: (A) -> Bool) -> Dollar {
+    func any(function: (AnyObject) -> Bool) -> Dollar {
         return self.queue {
-            for elem : A in self.resultArray {
+            for elem : AnyObject in $0 as Array<AnyObject> {
                 if function(elem) {
                     return true
                 }
@@ -260,22 +258,23 @@ class Dollar<A> {
     /// :return The wrapper object.
     func slice(start: Int, end: Int = 0) -> Dollar {
         return self.queue {
-            return self.resultArray =  $.slice(self.resultArray, start: start, end: end);
+            return Dollar.slice($0 as Array<AnyObject>, start: start, end: end);
         }
     }
     
     /// Get the final result from the wrapper object to terminated the chain.
     ///
     /// :return Final resulting array from applying all functions on it.
-    func value() -> Any? {
-        var result : Any?
+    func value() -> AnyObject? {
+        var result : AnyObject? = self.resultArray
         for step in self.lazyQueue {
-            result = step()
-            if !(result is [A]) {
-                return result
-            }
+            result = step(result!)
         }
-        return result
+        if let val: AnyObject = result {
+            return val
+        } else {
+            return self.resultArray
+        }
     }
     
     ///  ___  ___  _______   ___       ________  _______   ________
@@ -1243,7 +1242,8 @@ class Dollar<A> {
         }
         return result
     }
-    
 }
 
-typealias $ = Dollar<AnyObject>
+typealias $ = Dollar
+
+

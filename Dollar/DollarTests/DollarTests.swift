@@ -79,9 +79,9 @@ class DollarTests: XCTestCase {
     }
 
     func testFlatten() {
-        XCTAssertEqualObjects($.flatten([[3], 4, 5]) as [Int], [3, 4, 5], "Return flat array")
-        XCTAssertEqualObjects($.flatten([[3], "Hello", 5]) as [NSObject], [3, "Hello", 5], "Return flat array")
-        XCTAssertEqualObjects($.flatten([[[3], 4], 5]) as [Int], [3, 4, 5], "Return flat array")
+        XCTAssertEqualObjects($.flatten([[3], 4, 5]), [3, 4, 5], "Return flat array")
+        XCTAssertEqualObjects($.flatten([[3], "Hello", 5]), [3, "Hello", 5], "Return flat array")
+        XCTAssertEqualObjects($.flatten([[[3], 4], 5]), [3, 4, 5], "Return flat array")
     }
 
     func testIndexOf() {
@@ -278,27 +278,27 @@ class DollarTests: XCTestCase {
     }
 
     func testChaining() {
-        var chain = $<Int>(array: [1, 2, 3])
-        XCTAssertEqual(chain.first() as Int, 1, "Returns first element which ends the chain")
+        var chain = $(array: [1, 2, 3])
+        XCTAssertEqual(chain.first().value() as Int, 1, "Returns first element which ends the chain")
 
         chain = $(array: [[1, 2], 3, [[4], 5]])
         XCTAssertEqualObjects(chain.flatten().initial(2).value() as [Int], [1, 2, 3], "Returns flatten array from chaining")
 
         chain = $(array: [[1, 2], 3, [[4], 5]])
-        XCTAssertEqual(chain.initial().flatten().first() as Int, 1, "Returns flatten array from chaining")
+        XCTAssertEqual(chain.initial().flatten().first().value() as Int, 1, "Returns flatten array from chaining")
 
         chain = $(array: [[1, 2], 3, [[4], 5]])
         XCTAssertEqualObjects(chain.flatten().map({ (elem) in elem as Int * 10 }).value() as [Int], [10, 20, 30, 40, 50], "Returns mapped values")
 
-        XCTAssertEqual(chain.first() as Int, 10, "Returns first element from mapped value")
+        XCTAssertEqual(chain.first().value() as Int, 10, "Returns first element from mapped value")
 
         var elements: [Int] = []
         chain.each { elements += $0 as Int }
         XCTAssertEqualObjects(elements as [Int], [10, 20, 30, 40, 50], "Goes through each element in the array")
 
-        XCTAssertTrue(chain.all { ( $0 as Int) < 100 }, "All elements are less than 100")
-        XCTAssertFalse(chain.all { ($0 as Int) < 40 }, "All elements are not less than 40")
-        XCTAssertTrue(chain.any { ($0 as Int) < 40 }, "At least one element is less than 40")
+        XCTAssertTrue(chain.all({ $0 < 100 }).value(), "All elements are less than 100")
+        XCTAssertFalse(chain.all({ $0 < 40 }).value(), "All elements are not less than 40")
+        XCTAssertTrue(chain.any({ $0 < 40 }).value(), "At least one element is less than 40")
 
         elements = []
         chain.slice(0, end: 3).each({ elements += $0 as Int})
@@ -372,7 +372,7 @@ class DollarTests: XCTestCase {
     }
     
     func testReduce() {
-        XCTAssertEqual($.reduce([1, 2, 3, 4, 5], initial: 0) { $0 + $1 }, 15, "Reduce function should sum elements in the array")
+        XCTAssertEqual($.reduce([1, 2, 3, 4, 5], initial: 0) { $0 + $1 } as Int, 15, "Reduce function should sum elements in the array")
     }
 
     

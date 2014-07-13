@@ -139,7 +139,7 @@ Method | Usage
 **`initial`**|Gets all but the last element or last n elements of an array.
 **`map`**|Maps each element to the new value returned in the callback function
 **`slice`**|Slices the array based on the start and end position. If an end position is not specified it will slice till the end of the array.
-**`value`**|Returns the array after applying all of the chained operators on it.
+**`value`**|Returns the value after evaluating all callbacks
 
 ## Dollar Examples ##
 
@@ -742,13 +742,13 @@ $.times(2, function: fun) as String[]
 ```swift
 $(array: [1, 2, 3])
 
-$(array: [1, 2, 3]).first() as Int 
+$(array: [1, 2, 3]).first().value()! as Int 
 => 1
 
-$(array: [[1, 2], 3, [[4], 5]]).flatten().initial(2).value() as Int[] 
+$(array: [[1, 2], 3, [[4], 5]]).flatten().initial(2).value()! as Int[] 
 => [1, 2, 3]
 
-$(array: [[1, 2], 3, [[4], 5]]).initial().flatten().first() as Int 
+$(array: [[1, 2], 3, [[4], 5]]).initial().flatten().first().value()! as Int 
 => 1
 
 var chain = $(array: [10, 20, 30, 40, 50])
@@ -758,13 +758,13 @@ elements as Int[]
 => [10, 20, 30, 40, 50]
 
 var chain = $(array: [10, 20, 30, 40, 50])
-chain.all { ($0 as Int) < 100 } 
+chain.all({ ($0 as Int) < 100 }).value()! as Bool
 => true
 
-chain.all { ($0 as Int) < 40 } 
+chain.all({ ($0 as Int) < 40 }).value()! as Bool
 => false
 
-chain.any { ($0 as Int) < 40 } 
+chain.any({ ($0 as Int) < 40 }).value()! as Bool
 => true
 ```
 
