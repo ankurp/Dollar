@@ -405,7 +405,7 @@ OR</li>
 </tr>
 <tr>
 <td><strong><code>value</code></strong></td>
-<td>Returns the array after applying all of the chained operators on it.</td>
+<td>Returns the value after evaluating all callbacks</td>
 </tr>
 </tbody>
 </table><h2>
@@ -1067,13 +1067,13 @@ $.contains(arr, value: $.sample(arr))
 
 <div class="highlight highlight-swift"><pre><span class="err">$</span><span class="p">(</span><span class="nl">array</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
 
-<span class="err">$</span><span class="p">(</span><span class="nl">array</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]).</span><span class="n">first</span><span class="p">()</span> <span class="kt">as</span> <span class="n">Int</span> 
+<span class="err">$</span><span class="p">(</span><span class="nl">array</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]).</span><span class="n">first</span><span class="p">().</span><span class="n">value</span><span class="p">()</span><span class="o">!</span> <span class="kt">as</span> <span class="n">Int</span> 
 <span class="o">=&gt;</span> <span class="mi">1</span>
 
-<span class="err">$</span><span class="p">(</span><span class="nl">array</span><span class="p">:</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="mi">3</span><span class="p">,</span> <span class="p">[[</span><span class="mi">4</span><span class="p">],</span> <span class="mi">5</span><span class="p">]]).</span><span class="n">flatten</span><span class="p">().</span><span class="n">initial</span><span class="p">(</span><span class="mi">2</span><span class="p">).</span><span class="n">value</span><span class="p">()</span> <span class="kt">as</span> <span class="n">Int</span><span class="p">[]</span> 
+<span class="err">$</span><span class="p">(</span><span class="nl">array</span><span class="p">:</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="mi">3</span><span class="p">,</span> <span class="p">[[</span><span class="mi">4</span><span class="p">],</span> <span class="mi">5</span><span class="p">]]).</span><span class="n">flatten</span><span class="p">().</span><span class="n">initial</span><span class="p">(</span><span class="mi">2</span><span class="p">).</span><span class="n">value</span><span class="p">()</span><span class="o">!</span> <span class="kt">as</span> <span class="n">Int</span><span class="p">[]</span> 
 <span class="o">=&gt;</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
 
-<span class="err">$</span><span class="p">(</span><span class="nl">array</span><span class="p">:</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="mi">3</span><span class="p">,</span> <span class="p">[[</span><span class="mi">4</span><span class="p">],</span> <span class="mi">5</span><span class="p">]]).</span><span class="n">initial</span><span class="p">().</span><span class="n">flatten</span><span class="p">().</span><span class="n">first</span><span class="p">()</span> <span class="kt">as</span> <span class="n">Int</span> 
+<span class="err">$</span><span class="p">(</span><span class="nl">array</span><span class="p">:</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="mi">3</span><span class="p">,</span> <span class="p">[[</span><span class="mi">4</span><span class="p">],</span> <span class="mi">5</span><span class="p">]]).</span><span class="n">initial</span><span class="p">().</span><span class="n">flatten</span><span class="p">().</span><span class="n">first</span><span class="p">().</span><span class="n">value</span><span class="p">()</span><span class="o">!</span> <span class="kt">as</span> <span class="n">Int</span> 
 <span class="o">=&gt;</span> <span class="mi">1</span>
 
 <span class="k">var</span> <span class="n">chain</span> <span class="o">=</span> <span class="err">$</span><span class="p">(</span><span class="nl">array</span><span class="p">:</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">50</span><span class="p">])</span>
@@ -1083,13 +1083,13 @@ $.contains(arr, value: $.sample(arr))
 <span class="o">=&gt;</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">50</span><span class="p">]</span>
 
 <span class="k">var</span> <span class="n">chain</span> <span class="o">=</span> <span class="err">$</span><span class="p">(</span><span class="nl">array</span><span class="p">:</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">50</span><span class="p">])</span>
-<span class="n">chain</span><span class="p">.</span><span class="n">all</span> <span class="p">{</span> <span class="p">(</span><span class="err">$</span><span class="mi">0</span> <span class="kt">as</span> <span class="n">Int</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">100</span> <span class="p">}</span> 
+<span class="n">chain</span><span class="p">.</span><span class="n">all</span><span class="p">({</span> <span class="p">(</span><span class="err">$</span><span class="mi">0</span> <span class="kt">as</span> <span class="n">Int</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">100</span> <span class="p">}).</span><span class="n">value</span><span class="p">()</span><span class="o">!</span> <span class="kt">as</span> <span class="n">Bool</span>
 <span class="o">=&gt;</span> <span class="nb">true</span>
 
-<span class="n">chain</span><span class="p">.</span><span class="n">all</span> <span class="p">{</span> <span class="p">(</span><span class="err">$</span><span class="mi">0</span> <span class="kt">as</span> <span class="n">Int</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">40</span> <span class="p">}</span> 
+<span class="n">chain</span><span class="p">.</span><span class="n">all</span><span class="p">({</span> <span class="p">(</span><span class="err">$</span><span class="mi">0</span> <span class="kt">as</span> <span class="n">Int</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">40</span> <span class="p">}).</span><span class="n">value</span><span class="p">()</span><span class="o">!</span> <span class="kt">as</span> <span class="n">Bool</span>
 <span class="o">=&gt;</span> <span class="nb">false</span>
 
-<span class="n">chain</span><span class="p">.</span><span class="n">any</span> <span class="p">{</span> <span class="p">(</span><span class="err">$</span><span class="mi">0</span> <span class="kt">as</span> <span class="n">Int</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">40</span> <span class="p">}</span> 
+<span class="n">chain</span><span class="p">.</span><span class="n">any</span><span class="p">({</span> <span class="p">(</span><span class="err">$</span><span class="mi">0</span> <span class="kt">as</span> <span class="n">Int</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">40</span> <span class="p">}).</span><span class="n">value</span><span class="p">()</span><span class="o">!</span> <span class="kt">as</span> <span class="n">Bool</span>
 <span class="o">=&gt;</span> <span class="nb">true</span>
 </pre></div>
 
