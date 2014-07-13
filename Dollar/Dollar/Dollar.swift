@@ -831,7 +831,7 @@ class Dollar {
         for i in (0..<array.count).by(step!) {
             var end = i+n
             if end > array.count { end = array.count }
-            result += Array(array[i...end] as Slice<T>)
+            result += Array(array[i..<end] as Slice<T>)
             if end != i+n { break }
         }
         
