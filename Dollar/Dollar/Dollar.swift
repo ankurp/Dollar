@@ -600,10 +600,10 @@ class Dollar {
     ///
     /// :param array The array to flatten.
     /// :return Flattened array.
-    class func flatten<T>(array: [T]) -> [T] {
-        var resultArr: [T] = []
-        for elem : T in array {
-            if let val = elem as? [T] {
+    class func flatten(array: [AnyObject]) -> [AnyObject] {
+        var resultArr: [AnyObject] = []
+        for elem : AnyObject in array {
+            if let val = elem as? [AnyObject] {
                 resultArr += self.flatten(val)
             } else {
                 resultArr += elem
