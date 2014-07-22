@@ -23,9 +23,10 @@ extension Dictionary {
     ///
     /// :param dictionaries A comma seperated list of dictionaries
     mutating func merge<K, V>(dictionaries: Dictionary<K, V>...) {
-        let dict : Dictionary<K, V> = $.merge(dictionaries: reinterpretCast(dictionaries))
-        for (key, value) in dict {
-            self.updateValue(value as ValueType, forKey: key as KeyType)
+        for dict in dictionaries {
+            for (key, value) in dict {
+                self.updateValue(value as ValueType, forKey: key as KeyType)
+            }
         }
     }
     
