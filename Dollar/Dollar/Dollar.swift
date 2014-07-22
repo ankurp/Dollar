@@ -141,7 +141,7 @@ class Dollar {
     /// :return The wrapper object.
     func flatten() -> Dollar {
         return self.queue {
-            return Dollar.flatten($0 as [Any])
+            return Dollar.flatten($0 as [AnyObject])
         }
     }
     
@@ -885,7 +885,7 @@ class Dollar {
         if n < 1    { n = 0 }    // Allow 0 if user wants [[],[],[]] for some reason.
         if n > array.count { return [[]] }
         
-        for i in (0...array.count-n).by(step!) {
+        for i in self.range(0, endVal: array.count - n, incrementBy: step!) {
             result += Array(array[i..<(i+n)] as Slice<T>)
         }
         return result
@@ -906,7 +906,7 @@ class Dollar {
         if step < 1 { step = 1 } // Less than 1 results in an infinite loop.
         if n < 1    { n = 0 }    // Allow 0 if user wants [[],[],[]] for some reason.
         
-        for i in (0..<array.count).by(step!) {
+        for i in self.range(0, endVal: array.count, incrementBy: step!) {
             var end = i+n
             if end > array.count { end = array.count }
             result += Array(array[i..<end] as Slice<T>)
@@ -933,7 +933,7 @@ class Dollar {
         if step < 1 { step = 1 } // Less than 1 results in an infinite loop.
         if n < 1    { n = 0 }    // Allow 0 if user wants [[],[],[]] for some reason.
         
-        for i in (0..<array.count).by(step!) {
+        for i in self.range(0, endVal: array.count, incrementBy: step!) {
             var end = i+n
             if end > array.count { end = array.count }
             result += Array(array[i..<end] as Slice<T>)
@@ -1012,7 +1012,7 @@ class Dollar {
     ///
     /// :param endVal End value of range.
     /// :return Array of elements based on the sequence starting from 0 to endVal and incremented by 1.
-    class func range<T : ForwardIndex where T : IntegerLiteralConvertible>(endVal: T) -> [T] {
+    class func range<T : Strideable where T : IntegerLiteralConvertible>(endVal: T) -> [T] {
         return self.range(0, endVal: endVal)
     }
     
@@ -1021,7 +1021,7 @@ class Dollar {
     /// :param startVal Start value of range
     /// :param endVal End value of range
     /// :return Array of elements based on the sequence that is incremented by 1
-    class func range<T : ForwardIndex where T.DistanceType : IntegerLiteralConvertible>(startVal: T, endVal: T) -> [T] {
+    class func range<T : Strideable where T.Stride : IntegerLiteralConvertible>(startVal: T, endVal: T) -> [T] {
         return self.range(startVal, endVal: endVal, incrementBy: 1)
     }
     
@@ -1031,8 +1031,8 @@ class Dollar {
     /// :param endVal End value of range.
     /// :param incrementBy Increment sequence by.
     /// :return Array of elements based on the sequence.
-    class func range<T : ForwardIndex>(startVal: T, endVal: T, incrementBy: T.DistanceType) -> [T] {
-        let range = (startVal..<endVal).by(incrementBy)
+    class func range<T : Strideable>(startVal: T, endVal: T, incrementBy: T.Stride) -> [T] {
+        var range = Swift.stride(from: startVal, through: endVal, by: incrementBy)
         return self.sequence(range)
     }
     
