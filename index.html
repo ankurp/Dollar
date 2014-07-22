@@ -224,6 +224,10 @@ OR</li>
 <td>Removes all elements from an array that the callback returns true.</td>
 </tr>
 <tr>
+<td><strong><code>$.shuffle</code></strong></td>
+<td>Shuffles and returns the new shuffled array.</td>
+</tr>
+<tr>
 <td><strong><code>$.slice</code></strong></td>
 <td>Slices the array based on the start and end position. If an end position is not specified it will slice till the end of the array.</td>
 </tr>
@@ -749,6 +753,17 @@ $.contains(arr, value: $.sample(arr))
 </pre></div>
 
 <h3>
+<a name="shuffle---shuffle" class="anchor" href="#shuffle---shuffle"><span class="octicon octicon-link"></span></a>shuffle - <code>$.shuffle</code>
+</h3>
+
+<p>Shuffles and returns the new shuffled array</p>
+
+<div class="highlight highlight-swift"><pre><span class="k">let</span> <span class="n">result</span> <span class="o">=</span> <span class="err">$</span><span class="p">.</span><span class="n">shuffle</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">])</span>
+<span class="n">result</span>
+<span class="o">=&gt;</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+</pre></div>
+
+<h3>
 <a name="sortedindex---sortedindex" class="anchor" href="#sortedindex---sortedindex"><span class="octicon octicon-link"></span></a>sortedIndex - <code>$.sortedIndex</code>
 </h3>
 
@@ -1258,44 +1273,118 @@ $.contains(arr, value: $.sample(arr))
 <h3>
 <a name="array-example-usage" class="anchor" href="#array-example-usage"><span class="octicon octicon-link"></span></a>Array Example Usage</h3>
 
-<blockquote>
-<p>TODO: Add examples</p>
-</blockquote>
+<div class="highlight highlight-swift"><pre><span class="k">let</span> <span class="n">array</span> <span class="o">=</span> <span class="p">[</span><span class="s">"foo"</span><span class="p">,</span> <span class="s">"spam"</span><span class="p">,</span> <span class="s">"bar"</span><span class="p">,</span> <span class="s">"eggs"</span><span class="p">]</span>
+<span class="k">let</span> <span class="n">some</span> <span class="o">=</span> <span class="n">array</span><span class="p">.</span><span class="n">at</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="o">=&gt;</span> <span class="p">[</span><span class="s">"spam"</span><span class="p">,</span> <span class="s">"eggs"</span><span class="p">]</span>
+
+<span class="p">[</span><span class="s">"angry"</span><span class="p">,</span> <span class="s">"hungry"</span><span class="p">].</span><span class="n">every</span> <span class="p">{</span> <span class="p">(</span><span class="nl">a</span><span class="p">:</span> <span class="n">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">(</span><span class="n">Bool</span><span class="p">)</span> <span class="k">in</span> <span class="n">a</span><span class="p">.</span><span class="n">hasSuffix</span><span class="p">(</span><span class="s">"gry"</span><span class="p">)</span> <span class="p">}</span>
+<span class="o">=&gt;</span> <span class="nb">true</span>
+
+<span class="k">let</span> <span class="nl">ind</span><span class="p">:</span> <span class="kt">int</span><span class="o">?</span> <span class="o">=</span> <span class="p">[</span><span class="s">"foo"</span><span class="p">,</span> <span class="s">"bar"</span><span class="p">,</span> <span class="s">"spam"</span><span class="p">,</span> <span class="s">"eggs"</span><span class="p">].</span><span class="n">findIndex</span><span class="p">({</span> <span class="err">$</span><span class="mf">0.</span><span class="n">length</span> <span class="o">==</span> <span class="mi">4</span> <span class="p">})</span>
+<span class="n">ind</span><span class="o">!</span> <span class="o">==</span> <span class="mi">2</span> 
+<span class="o">=&gt;</span> <span class="nb">true</span>
+
+<span class="k">let</span> <span class="nl">ind</span><span class="p">:</span> <span class="kt">int</span><span class="o">?</span> <span class="o">=</span> <span class="p">[</span><span class="s">"foo"</span><span class="p">,</span> <span class="s">"bar"</span><span class="p">,</span> <span class="s">"spam"</span><span class="p">,</span> <span class="s">"eggs"</span><span class="p">].</span><span class="n">findLastIndex</span><span class="p">({</span> <span class="err">$</span><span class="mf">0.</span><span class="n">length</span> <span class="o">==</span> <span class="mi">4</span> <span class="p">})</span>
+<span class="n">ind</span><span class="o">!</span> <span class="o">==</span> <span class="mi">3</span> 
+<span class="o">=&gt;</span> <span class="nb">true</span>
+
+<span class="k">let</span> <span class="n">first</span> <span class="o">=</span> <span class="p">[</span><span class="s">"foo"</span><span class="p">,</span> <span class="s">"bar"</span><span class="p">].</span><span class="n">first</span><span class="p">()</span>
+<span class="o">=&gt;</span> <span class="s">"foo"</span>
+
+<span class="k">let</span> <span class="n">unFlattened</span> <span class="o">=</span> <span class="p">[</span><span class="s">"foo"</span><span class="p">,</span> <span class="p">[</span><span class="s">"bar"</span><span class="p">],</span> <span class="p">[[</span><span class="s">"spam"</span><span class="p">]],</span> <span class="p">[[[</span><span class="s">"eggs"</span><span class="p">]]]</span> <span class="p">]</span>
+<span class="k">let</span> <span class="n">flattened</span> <span class="o">=</span> <span class="n">unFlattened</span><span class="p">.</span><span class="n">flatten</span><span class="p">()</span> 
+<span class="o">=&gt;</span> <span class="p">[</span><span class="s">"foo"</span><span class="p">,</span> <span class="s">"bar"</span><span class="p">,</span> <span class="s">"spam"</span><span class="p">,</span> <span class="s">"eggs"</span><span class="p">]</span>
+
+<span class="k">let</span> <span class="n">element</span> <span class="o">=</span> <span class="p">[</span><span class="s">"foo"</span><span class="p">,</span> <span class="s">"bar"</span><span class="p">].</span><span class="kr">get</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">element</span><span class="o">!</span>
+<span class="o">=&gt;</span> <span class="s">"foo"</span>
+
+<span class="k">let</span> <span class="n">nothing</span> <span class="o">=</span> <span class="p">[</span><span class="s">"foo"</span><span class="p">,</span> <span class="s">"bar"</span><span class="p">].</span><span class="kr">get</span><span class="p">(</span><span class="mi">1000</span><span class="p">)</span>
+<span class="o">=&gt;</span> <span class="nb">nil</span>
+
+<span class="k">let</span> <span class="n">initial</span> <span class="o">=</span> <span class="p">[</span><span class="s">"foo"</span><span class="p">,</span> <span class="s">"bar"</span><span class="p">,</span> <span class="s">"spam"</span><span class="p">].</span><span class="n">initial</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> 
+<span class="o">=&gt;</span> <span class="p">[</span><span class="s">"foo"</span><span class="p">]</span>
+
+<span class="k">let</span> <span class="n">last</span> <span class="o">=</span> <span class="p">[</span><span class="s">"foo"</span><span class="p">,</span> <span class="s">"bar"</span><span class="p">].</span><span class="n">last</span><span class="p">()</span> 
+<span class="o">=&gt;</span> <span class="s">"bar"</span>
+
+<span class="k">let</span> <span class="n">rest</span> <span class="o">=</span> <span class="p">[</span><span class="s">"foo"</span><span class="p">,</span> <span class="s">"bar"</span><span class="p">,</span> <span class="s">"spam"</span><span class="p">].</span><span class="n">rest</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="o">=&gt;</span> <span class="p">[</span><span class="s">"spam"</span><span class="p">]</span>
+
+<span class="k">let</span> <span class="n">min</span> <span class="o">=</span> <span class="p">[</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span> <span class="p">].</span><span class="n">min</span><span class="p">()</span>
+<span class="o">=&gt;</span> <span class="mi">0</span>
+
+<span class="k">let</span> <span class="n">max</span> <span class="o">=</span> <span class="p">[</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">].</span><span class="n">max</span><span class="p">()</span>
+<span class="o">=&gt;</span> <span class="mi">2</span>
+</pre></div>
 
 <h3>
 <a name="date-example-usage" class="anchor" href="#date-example-usage"><span class="octicon octicon-link"></span></a>Date Example Usage</h3>
 
-<blockquote>
-<p>TODO: Add examples</p>
-</blockquote>
+<div class="highlight highlight-swift"><pre><span class="k">let</span> <span class="n">date</span> <span class="o">=</span> <span class="n">Date</span><span class="p">.</span><span class="n">from</span><span class="p">(</span><span class="mi">2014</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> 
+<span class="o">=&gt;</span> <span class="s">"Jan 1, 2014, 12:00 AM"</span>
+
+<span class="k">let</span> <span class="n">parsedDate</span> <span class="o">=</span> <span class="n">Date</span><span class="p">.</span><span class="n">parse</span><span class="p">(</span><span class="s">"2014-01-01"</span><span class="p">,</span> <span class="nl">format</span><span class="p">:</span> <span class="s">"yyyy-MM-dd"</span><span class="p">)</span>
+<span class="o">=&gt;</span> <span class="s">"Jan 1, 2014, 12:00 AM"</span>
+</pre></div>
 
 <h3>
 <a name="dictionary-example-usage" class="anchor" href="#dictionary-example-usage"><span class="octicon octicon-link"></span></a>Dictionary Example Usage</h3>
 
-<blockquote>
-<p>TODO: Add examples</p>
-</blockquote>
+<div class="highlight highlight-swift"><pre><span class="k">let</span> <span class="n">dictionary</span> <span class="o">=</span> <span class="p">[</span><span class="nl">String</span><span class="p">:</span> <span class="n">String</span><span class="p">]()</span>
+<span class="n">dictionary</span><span class="p">.</span><span class="n">isEmpty</span><span class="p">()</span> 
+<span class="o">=&gt;</span> <span class="nb">true</span>
+
+<span class="p">[</span><span class="s">"foo"</span><span class="o">:</span> <span class="s">"bar"</span><span class="p">].</span><span class="n">isEmpty</span><span class="p">()</span> 
+<span class="o">=&gt;</span> <span class="nb">false</span>
+
+<span class="k">var</span> <span class="n">dic</span> <span class="o">=</span> <span class="p">[</span><span class="s">"foo"</span><span class="o">:</span> <span class="s">"bar"</span><span class="p">]</span> 
+<span class="k">let</span> <span class="n">anotherDic</span> <span class="o">=</span> <span class="p">[</span><span class="s">"foo"</span><span class="o">:</span> <span class="s">"baz"</span><span class="p">,</span> <span class="s">"spam"</span><span class="o">:</span> <span class="s">"eggs"</span><span class="p">]</span>
+<span class="n">dic</span><span class="p">.</span><span class="n">merge</span><span class="p">(</span><span class="n">anotherDic</span><span class="p">)</span>
+<span class="o">=&gt;</span> <span class="p">[</span><span class="s">"foo"</span><span class="o">:</span> <span class="s">"baz"</span><span class="p">,</span> <span class="s">"spam"</span><span class="o">:</span> <span class="s">"eggs"</span><span class="p">]</span>
+</pre></div>
 
 <h3>
 <a name="int-example-usage" class="anchor" href="#int-example-usage"><span class="octicon octicon-link"></span></a>Int Example Usage</h3>
 
-<blockquote>
-<p>TODO: Add examples</p>
-</blockquote>
+<div class="highlight highlight-swift"><pre><span class="mf">5.</span><span class="n">times</span> <span class="p">{</span> <span class="n">print</span><span class="p">(</span><span class="s">"Na"</span><span class="p">)</span> <span class="p">}</span> 
+<span class="o">=&gt;</span> <span class="n">NaNaNaNaNa</span>
+
+<span class="mf">5.</span><span class="n">times</span> <span class="p">{</span> <span class="p">(</span><span class="nl">a</span><span class="p">:</span> <span class="n">Int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">()</span> <span class="k">in</span> <span class="n">print</span><span class="p">(</span><span class="s">"\(a) "</span><span class="p">)</span> <span class="p">}</span> 
+<span class="o">=&gt;</span> <span class="mi">0</span> <span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span> <span class="mi">4</span>  
+</pre></div>
 
 <h3>
 <a name="string-example-usage" class="anchor" href="#string-example-usage"><span class="octicon octicon-link"></span></a>String Example Usage</h3>
 
-<blockquote>
-<p>TODO: Add examples</p>
-</blockquote>
+<div class="highlight highlight-swift"><pre><span class="s">"Hello World"</span><span class="p">[</span><span class="mi">6</span><span class="p">]</span> <span class="o">==</span> <span class="s">"W"</span>
+<span class="o">=&gt;</span> <span class="nb">true</span>
+
+<span class="s">"Hello World"</span><span class="p">[</span><span class="mf">0.</span><span class="p">.</span><span class="o">&lt;</span><span class="mi">5</span><span class="p">]</span> <span class="o">==</span> <span class="s">"Hello"</span> 
+<span class="o">=&gt;</span> <span class="nb">true</span>
+
+<span class="s">"Hello World"</span><span class="p">.</span><span class="n">split</span><span class="p">(</span><span class="s">" "</span><span class="p">)</span> 
+<span class="o">=&gt;</span> <span class="p">[</span><span class="s">"Hello"</span><span class="p">,</span> <span class="s">"World"</span><span class="p">]</span>
+
+<span class="s">"Hi"</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span>
+<span class="o">=&gt;</span> <span class="nb">nil</span>
+</pre></div>
 
 <h3>
 <a name="range-example-usage" class="anchor" href="#range-example-usage"><span class="octicon octicon-link"></span></a>Range Example Usage</h3>
 
-<blockquote>
-<p>TODO: Add examples</p>
-</blockquote>
+<div class="highlight highlight-swift"><pre><span class="p">(</span><span class="mf">1.</span><span class="p">.</span><span class="mf">.5</span><span class="p">).</span><span class="n">eachWithIndex</span> <span class="p">{</span> <span class="p">(</span><span class="nl">a</span><span class="p">:</span> <span class="n">Int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">()</span> <span class="k">in</span> <span class="n">print</span><span class="p">(</span><span class="s">"\(a)"</span><span class="p">)</span> <span class="p">}</span> 
+<span class="o">=&gt;</span> <span class="mi">12345</span>
+
+<span class="p">(</span><span class="mf">1.</span><span class="p">.</span><span class="mf">.5</span><span class="p">).</span><span class="n">each</span> <span class="p">{</span> <span class="n">print</span><span class="p">(</span><span class="err">'</span><span class="n">Na</span><span class="err">'</span><span class="p">)</span> <span class="p">}</span> 
+<span class="o">=&gt;</span> <span class="n">NaNaNaNaNa</span>
+
+<span class="p">(</span><span class="mf">1.</span><span class="p">.</span><span class="mf">.5</span><span class="p">)</span> <span class="o">==</span> <span class="p">(</span><span class="mf">1.</span><span class="p">.</span><span class="mf">.5</span><span class="p">)</span> 
+<span class="o">=&gt;</span> <span class="nb">true</span>
+
+<span class="p">(</span><span class="mf">1.</span><span class="p">.</span><span class="o">&lt;</span><span class="mi">5</span><span class="p">)</span> <span class="o">==</span> <span class="p">(</span><span class="mf">1.</span><span class="p">.</span><span class="mf">.5</span><span class="p">)</span> 
+<span class="o">=&gt;</span> <span class="nb">false</span>
+</pre></div>
 
 <h2>
 <a name="contributing" class="anchor" href="#contributing"><span class="octicon octicon-link"></span></a>Contributing</h2>
