@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		0419C8421948BEC600B947B3 /* CarExample.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0419C8411948BEC600B947B3 /* CarExample.swift */; };
+		924E37D4197DFCDB000086A9 /* Dollar.swift in Resources */ = {isa = PBXBuildFile; fileRef = 92E0D05819467CA2002ACC3D /* Dollar.swift */; };
+		9282C606197DFE1E0095D85A /* Dollar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92E0D05819467CA2002ACC3D /* Dollar.swift */; };
 		92E0D04219467C67002ACC3D /* Dollar.h in Headers */ = {isa = PBXBuildFile; fileRef = 92E0D04119467C67002ACC3D /* Dollar.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		92E0D04819467C67002ACC3D /* Dollar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92E0D03C19467C67002ACC3D /* Dollar.framework */; };
 		92E0D04F19467C67002ACC3D /* DollarTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92E0D04E19467C67002ACC3D /* DollarTests.swift */; };
@@ -207,6 +209,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				924E37D4197DFCDB000086A9 /* Dollar.swift in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -232,6 +235,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9282C606197DFE1E0095D85A /* Dollar.swift in Sources */,
 				92E0D04F19467C67002ACC3D /* DollarTests.swift in Sources */,
 				0419C8421948BEC600B947B3 /* CarExample.swift in Sources */,
 			);

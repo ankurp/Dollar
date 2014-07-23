@@ -1032,7 +1032,7 @@ class Dollar {
     /// :param incrementBy Increment sequence by.
     /// :return Array of elements based on the sequence.
     class func range<T : Strideable>(startVal: T, endVal: T, incrementBy: T.Stride) -> [T] {
-        var range = Swift.stride(from: startVal, through: endVal, by: incrementBy)
+        var range = Swift.stride(from: startVal, to: endVal, by: incrementBy)
         return self.sequence(range)
     }
     
