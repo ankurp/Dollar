@@ -14,7 +14,7 @@ extension Dictionary {
     /// Checks whether Dictionary has no keys and hence is empty
     ///
     /// :return Whether dictionary is empty
-    func isEmpty () -> Bool {
+    public func isEmpty () -> Bool {
         return Array(self.keys).isEmpty
     }
 
@@ -22,7 +22,7 @@ extension Dictionary {
     /// values of the keys that are already set
     ///
     /// :param dictionaries A comma seperated list of dictionaries
-    mutating func merge<K, V>(dictionaries: Dictionary<K, V>...) {
+    public mutating func merge<K, V>(dictionaries: Dictionary<K, V>...) {
         for dict in dictionaries {
             for (key, value) in dict {
                 self.updateValue(value as ValueType, forKey: key as KeyType)
