@@ -16,7 +16,7 @@ extension NSDate {
     /// :param month
     /// :param day
     /// :return Date
-    class func from(#year: Int, month: Int, day: Int) -> NSDate {
+    public class func from(#year: Int, month: Int, day: Int) -> NSDate {
         var c = NSDateComponents()
         c.year = year
         c.month = month
@@ -32,7 +32,7 @@ extension NSDate {
     /// :param dateStr String version of the date
     /// :param format By default it is year month day
     /// :return Date
-    class func parse(dateStr: String, format: String = "yyyy-MM-dd") -> NSDate {
+    public class func parse(dateStr: String, format: String = "yyyy-MM-dd") -> NSDate {
         var dateFmt = NSDateFormatter()
         dateFmt.timeZone = NSTimeZone.defaultTimeZone()
         dateFmt.dateFormat = format
