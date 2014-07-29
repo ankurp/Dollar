@@ -17,7 +17,7 @@ extension Array {
     /// :param array The array to source from
     /// :param indexes Get elements from these indexes
     /// :return New array with elements from the indexes specified.
-    func at(indexes: Int...) -> [Element] {
+    public func at(indexes: Int...) -> [Element] {
         return $.at(self, indexes: indexes)
     }
 
@@ -26,7 +26,7 @@ extension Array {
     /// :param array The array to check.
     /// :param iterator Check whether element value is true or false.
     /// :return First element from the array.
-    func every(iterator: (Element) -> Bool) -> Bool {
+    public func every(iterator: (Element) -> Bool) -> Bool {
         return $.every(self, iterator: iterator)
     }
     
@@ -36,7 +36,7 @@ extension Array {
     /// :param array The array to search for the element in.
     /// :param iterator Function used to figure out whether element is the same.
     /// :return First element's index from the array found using the iterator.
-    func findIndex(iterator: (Element) -> Bool) -> Int? {
+    public func findIndex(iterator: (Element) -> Bool) -> Int? {
         return $.findIndex(self, iterator: iterator)
     }
     
@@ -46,7 +46,7 @@ extension Array {
     /// :param array The array to search for the element in.
     /// :param iterator Function used to figure out whether element is the same.
     /// :return Last element's index from the array found using the iterator.
-    func findLastIndex(iterator: (Element) -> Bool) -> Int? {
+    public func findLastIndex(iterator: (Element) -> Bool) -> Int? {
         return $.findLastIndex(self, iterator: iterator)
     }
 
@@ -54,7 +54,7 @@ extension Array {
     ///
     /// :param array The array to wrap.
     /// :return First element from the array.
-    func first() -> Element? {
+    public func first() -> Element? {
         return $.first(self)
     }
     
@@ -62,7 +62,7 @@ extension Array {
     ///
     /// :param array The array to flatten.
     /// :return Flattened array.
-    func flatten() -> [Element] {
+    public func flatten() -> [Element] {
         return $.flatten(self)
     }
     
@@ -70,7 +70,7 @@ extension Array {
     ///
     /// :param index The index in the array
     /// :return Element at that index
-    func get(index: Int) -> Element? {
+    public func get(index: Int) -> Element? {
         if index < self.count {
             return self[index]
         } else {
@@ -83,7 +83,7 @@ extension Array {
     /// :param array The array to source from.
     /// :param numElements The number of elements to ignore in the end.
     /// :return Array of initial values.
-    func initial(numElements: Int? = 1) -> [Element] {
+    public func initial(numElements: Int? = 1) -> [Element] {
         return $.initial(self, numElements: numElements!)
     }
     
@@ -91,7 +91,7 @@ extension Array {
     ///
     /// :param array The array to source from.
     /// :return Last element from the array.
-    func last() -> Element? {
+    public func last() -> Element? {
         return $.last(self)
     }
     
@@ -100,7 +100,7 @@ extension Array {
     /// :param array The array to source from.
     /// :param numElements The number of elements to exclude from the beginning.
     /// :return The rest of the elements.
-    func rest(numElements: Int? = 1) -> [Element] {
+    public func rest(numElements: Int? = 1) -> [Element] {
         return $.rest(self, numElements: numElements!)
     }
     
@@ -108,7 +108,7 @@ extension Array {
     ///
     /// :param array The array to source from.
     /// :return Minimum value from array.
-    func min<T: Comparable>() -> T? {
+    public func min<T: Comparable>() -> T? {
         return $.min(map { $0 as T })
     }
     
@@ -116,7 +116,7 @@ extension Array {
     ///
     /// :param array The array to source from.
     /// :return Maximum element in array.
-    func max<T: Comparable>() -> T? {
+    public func max<T: Comparable>() -> T? {
         return $.max(map { $0 as T })
     }
         
