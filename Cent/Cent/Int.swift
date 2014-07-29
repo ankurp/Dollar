@@ -14,14 +14,14 @@ extension Int {
     /// Invoke a callback n times
     ///
     /// :param callback The function to invoke that accepts the index
-    func times(callback: (Int) -> ()) {
+    public func times(callback: (Int) -> ()) {
         (0..<self).eachWithIndex { callback($0) }
     }
     
     /// Invoke a callback n times
     ///
     /// :param callback The function to invoke
-    func times (function: () -> ()) {
+    public func times (function: () -> ()) {
         self.times { (index: Int) -> () in
             function()
         }
