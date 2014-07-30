@@ -57,15 +57,7 @@ extension Array {
     public func first() -> Element? {
         return $.first(self)
     }
-    
-    /// Flattens a nested array of any depth.
-    ///
-    /// :param array The array to flatten.
-    /// :return Flattened array.
-    public func flatten() -> [Element] {
-        return $.flatten(self)
-    }
-    
+        
     /// Get element at index
     ///
     /// :param index The index in the array

@@ -22,4 +22,7 @@
    <FileRef
       location = "group:Cent/Cent.podspec">
    </FileRef>
+   <FileRef
+      location = "group:Dollar.playground">
+   </FileRef>
 </Workspace>
