@@ -45,7 +45,9 @@ Cent is a library that extends certain Swift object types using the extension fe
 OR
 * Include the `Cent` framework by dragging it into your project and import the library in your code using `import Cent`
 
-Currently there are issues loading the library using `pod 'Dollar', '~> 0.2'` which is pending changes from Cocoapods.
+Currently there are issues loading the library using `pod 'Dollar'` which is pending changes from Cocoapods.
+
+![How to import library](https://raw.githubusercontent.com/ankurp/Dollar.swift/master/assets/HowToImport.gif)
 
 ## Dollar Usage ##
 
