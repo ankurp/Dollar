@@ -145,7 +145,7 @@ Method | Usage
 **`step`**|Returns value after consuming first method in chain
 **`value`**|Returns the value after evaluating all callbacks
 **`hasStep`**|Returns true if any chained methods remain
-**`revert`**|REstores initial state of array
+**`revert`**|Restores initial state of array
 
 ## Dollar Examples ##
 
