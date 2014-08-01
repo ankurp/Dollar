@@ -142,7 +142,10 @@ Method | Usage
 **`initial`**|Gets all but the last element or last n elements of an array.
 **`map`**|Maps each element to the new value returned in the callback function
 **`slice`**|Slices the array based on the start and end position. If an end position is not specified it will slice till the end of the array.
+**`step`**|Returns value after consuming first method in chain
 **`value`**|Returns the value after evaluating all callbacks
+**`hasStep`**|Returns true if any chained methods remain
+**`revert`**|REstores initial state of array
 
 ## Dollar Examples ##
 
@@ -781,6 +784,29 @@ chain.any({ ($0 as Int) < 40 }).value()! as Bool
 => true
 ```
 
+### Stepping - `$(array: ...)`
+```swift
+vet chain = $(array: [[1, 2], 3, [[4], 5]]);
+chain.flatten().map({ ($0 as Int) * 10 }).initial(2).all({ ($0 as Int) < 40  });
+
+chain.step() as [Int]
+=> [1, 2, 3, 4, 5]
+
+chain.step() as [Int]
+=> [10, 20, 30, 40, 50]
+
+chain.step() as [Int]
+=> [10, 20, 30]
+
+chain.step() as Bool
+=> true
+
+chain.hasStep() as Bool
+=> false
+
+chain.revert().value() as NSArray
+=> [[1, 2], 3, [[4], 5]]
+```
 
 ## Cent Usage ##
 
