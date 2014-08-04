@@ -105,6 +105,8 @@ Method | Usage
 **`$.keys`**|Creates an array of keys given a dictionary.
 **`$.values`**|Creates an array of values given a dictionary
 **`$.merge`**|Merges all of the dictionaries together and the latter dictionary overrides the value at a given key
+**`$.frequencies`**|This method returns a dictionary of values in an dictionary mapping to the total number of occurrences in the dictionary. If passed a function it returns a frequency table of the results of the given function on the dictionary's elements.
+**`$.invert`**|This method is similar to frequencies but returns an array of keys as its value.
 **`$.pick`**|Creates a shallow clone of a dictionary composed of the specified keys.
 **`$.omit`**|Creates a shallow clone of a dictionary excluding the specified keys.
 
@@ -292,24 +294,6 @@ $.frequencies(["a", "a", "b", "c", "a", "b"])
 
 $.frequencies([1, 2, 3, 4, 5]) { $0 % 2 == 0 }
 => [false: 3, true: 2]
-
-$.frequencies(["Cat":4, "Dog":4, "Human":2, "Snake":0, "Ape":2, "Worm":0])
-=> [0:2, 2:2, 4:2]
-
-
-$.frequencies(["Cat":4, "Dog":4, "Human":2, "Snake":0, "Ape":2, "Worm":0]) { $1 <= 2 }
-=> [true:4, false:2]
-```
-
-### invert - `$.invert`
-This method is similar to frequencies but returns an array of keys as its value.
-
-```swift
-$.invert(["Cat":4, "Dog":4, "Human":2, "Snake":0, "Ape":2, "Worm":0])
-=> 0:["Snake","Worm"], 4:["Cat", "Dog"], 2:["Ape", "Human"]]
-
-$.invert(["Cat":4, "Dog":4, "Human":2, "Snake":0, "Ape":2, "Worm":0]) { $1 <= 2 } 
-=> [false:["Cat", "Dog"], true:["Snake", "Worm", "Ape","Human"]]
 ```
 
 ### indexof - `$.indexof`
@@ -642,6 +626,31 @@ let dict2: Dictionary<String, Int> = ["Cow": 3]
 let dict3: Dictionary<String, Int> = ["Sheep": 4]
 $.merge(dictionaries: dict, dict2, dict3)
 => ["Dog": 1, "Cat": 2, "Cow": 3, "Sheep": 4]
+```
+
+### frequencies - `$.frequencies`
+
+This method returns a dictionary of values in an dictionary mapping to the total number of occurrences in the dictionary. If passed a function it returns a frequency table of the results of the given function on the dictionary's elements.
+
+```swift
+$.frequencies(["Cat":4, "Dog":4, "Human":2, "Snake":0, "Ape":2, "Worm":0])
+=> [0:2, 2:2, 4:2]
+
+
+$.frequencies(["Cat":4, "Dog":4, "Human":2, "Snake":0, "Ape":2, "Worm":0]) { $1 <= 2 }
+=> [true:4, false:2]
+```
+
+### invert - `$.invert`
+
+This method is similar to frequencies but returns an array of keys as its value.
+
+```swift
+$.invert(["Cat":4, "Dog":4, "Human":2, "Snake":0, "Ape":2, "Worm":0])
+=> 0:["Snake","Worm"], 4:["Cat", "Dog"], 2:["Ape", "Human"]]
+
+$.invert(["Cat":4, "Dog":4, "Human":2, "Snake":0, "Ape":2, "Worm":0]) { $1 <= 2 } 
+=> [false:["Cat", "Dog"], true:["Snake", "Worm", "Ape","Human"]]
 ```
 
 ### pick - `$.pick`
