@@ -68,6 +68,7 @@ Method | Usage
 **`$.third`**|Gets the third element in the array.
 **`$.flatten`**|Flattens a nested array of any depth.
 **`$.frequencies`**|This method returns a dictionary of values in an array mapping to the total number of occurrences in the array. If passed a function it returns a frequency table of the results of the given function on the arrays elements.
+**`$.invert`**|This method is similar to frequencies but returns an array of keys as its value.
 **`$.indexOf`**|Gets the index at which the first occurrence of value is found.
 **`$.initial`**|Gets all but the last element or last n elements of an array.
 **`$.intersection`**|Creates an array of unique values present in all provided arrays.
@@ -104,6 +105,8 @@ Method | Usage
 **`$.keys`**|Creates an array of keys given a dictionary.
 **`$.values`**|Creates an array of values given a dictionary
 **`$.merge`**|Merges all of the dictionaries together and the latter dictionary overrides the value at a given key
+**`$.frequencies`**|This method returns a dictionary of values in an dictionary mapping to the total number of occurrences in the dictionary. If passed a function it returns a frequency table of the results of the given function on the dictionary's elements.
+**`$.invert`**|This method is similar to frequencies but returns an array of keys as its value.
 **`$.pick`**|Creates a shallow clone of a dictionary composed of the specified keys.
 **`$.omit`**|Creates a shallow clone of a dictionary excluding the specified keys.
 
@@ -142,7 +145,10 @@ Method | Usage
 **`initial`**|Gets all but the last element or last n elements of an array.
 **`map`**|Maps each element to the new value returned in the callback function
 **`slice`**|Slices the array based on the start and end position. If an end position is not specified it will slice till the end of the array.
+**`step`**|Returns value after consuming first method in chain
 **`value`**|Returns the value after evaluating all callbacks
+**`hasStep`**|Returns true if any chained methods remain
+**`revert`**|Restores initial state of array
 
 ## Dollar Examples ##
 
@@ -622,6 +628,31 @@ $.merge(dictionaries: dict, dict2, dict3)
 => ["Dog": 1, "Cat": 2, "Cow": 3, "Sheep": 4]
 ```
 
+### frequencies - `$.frequencies`
+
+This method returns a dictionary of values in an dictionary mapping to the total number of occurrences in the dictionary. If passed a function it returns a frequency table of the results of the given function on the dictionary's elements.
+
+```swift
+$.frequencies(["Cat":4, "Dog":4, "Human":2, "Snake":0, "Ape":2, "Worm":0])
+=> [0:2, 2:2, 4:2]
+
+
+$.frequencies(["Cat":4, "Dog":4, "Human":2, "Snake":0, "Ape":2, "Worm":0]) { $1 <= 2 }
+=> [true:4, false:2]
+```
+
+### invert - `$.invert`
+
+This method is similar to frequencies but returns an array of keys as its value.
+
+```swift
+$.invert(["Cat":4, "Dog":4, "Human":2, "Snake":0, "Ape":2, "Worm":0])
+=> 0:["Snake","Worm"], 4:["Cat", "Dog"], 2:["Ape", "Human"]]
+
+$.invert(["Cat":4, "Dog":4, "Human":2, "Snake":0, "Ape":2, "Worm":0]) { $1 <= 2 } 
+=> [false:["Cat", "Dog"], true:["Snake", "Worm", "Ape","Human"]]
+```
+
 ### pick - `$.pick`
 
 Creates a shallow clone of a dictionary composed of the specified keys.
@@ -781,6 +812,29 @@ chain.any({ ($0 as Int) < 40 }).value()! as Bool
 => true
 ```
 
+### Stepping - `$(array: ...)`
+```swift
+vet chain = $(array: [[1, 2], 3, [[4], 5]]);
+chain.flatten().map({ ($0 as Int) * 10 }).initial(2).all({ ($0 as Int) < 40  });
+
+chain.step() as [Int]
+=> [1, 2, 3, 4, 5]
+
+chain.step() as [Int]
+=> [10, 20, 30, 40, 50]
+
+chain.step() as [Int]
+=> [10, 20, 30]
+
+chain.step() as Bool
+=> true
+
+chain.hasStep() as Bool
+=> false
+
+chain.revert().value() as NSArray
+=> [[1, 2], 3, [[4], 5]]
+```
 
 ## Cent Usage ##
 

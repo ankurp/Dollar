@@ -236,7 +236,13 @@ class DollarTests: XCTestCase {
 
     func testFrequencies() {
         XCTAssertTrue($.frequencies(["a", "a", "b", "c", "a", "b"]) == ["a": 3, "b": 2, "c": 1], "Returns correct frequency dictionary")
-//        XCTAssertTrue($.frequencies([1,2,3,4,5]) { $0 % 2 == 0 } == [false: 3, true: 2], "Returns correct frequency dictionary from cond")
+        XCTAssertTrue($.frequencies(["Cat":4, "Dog":4, "Human":2, "Snake":0, "Ape":2, "Worm":0]) == [0:2, 2:2, 4:2], "Returns frequency of values in dictinoary");
+        XCTAssertTrue($.frequencies(["Cat":4, "Dog":4, "Human":2, "Snake":0, "Ape":2, "Worm":0]) { $1 <= 2 } == [true:4, false:2], "Four animals have 2 or less legs.");
+    }
+    
+    func testInversion() {
+        XCTAssertTrue($.invert(["Cat":4, "Dog":4, "Human":2, "Snake":0, "Ape":2, "Worm":0]) == [0:["Snake","Worm"], 4:["Cat", "Dog"], 2:["Ape", "Human"]], "Returns keys as arrays grouped by their value");
+        XCTAssertTrue($.invert(["Cat":4, "Dog":4, "Human":2, "Snake":0, "Ape":2, "Worm":0]) { $1 <= 2 } == [false:["Cat", "Dog"], true:["Snake", "Worm", "Ape","Human"]], "Returns groups keys based on closure");
     }
 
     func testKeys() {
@@ -281,18 +287,18 @@ class DollarTests: XCTestCase {
 
     func testChaining() {
         var chain = $(array: [1, 2, 3])
-        XCTAssertEqual(chain.first().value()! as Int, 1, "Returns first element which ends the chain")
+        XCTAssertEqual(chain.first().value() as Int, 1, "Returns first element which ends the chain")
 
         chain = $(array: [[1, 2], 3, [[4], 5]])
-        XCTAssertTrue(chain.flatten().initial(2).value()! as [Int] == [1, 2, 3], "Returns flatten array from chaining")
+        XCTAssertTrue(chain.flatten().initial(2).value() as [Int] == [1, 2, 3], "Returns flatten array from chaining")
 
         chain = $(array: [[1, 2], 3, [[4], 5]])
-        XCTAssertEqual(chain.initial().flatten().first().value()! as Int, 1, "Returns flatten array from chaining")
+        XCTAssertEqual(chain.initial().flatten().first().value() as Int, 1, "Returns flatten array from chaining")
 
         chain = $(array: [[1, 2], 3, [[4], 5]])
-        XCTAssertTrue(chain.flatten().map({ (elem) in elem as Int * 10 }).value()! as [Int] == [10, 20, 30, 40, 50], "Returns mapped values")
+        XCTAssertTrue(chain.flatten().map({ (elem) in elem as Int * 10 }).value() as [Int] == [10, 20, 30, 40, 50], "Returns mapped values")
 
-        XCTAssertEqual(chain.flatten().map({ (elem) in elem as Int * 10 }).first().value()! as Int, 100, "Returns first element from mapped value")
+        XCTAssertEqual(chain.flatten().map({ (elem) in elem as Int * 10 }).first().value() as Int, 100, "Returns first element from mapped value")
 
         chain = $(array: [10, 20, 30, 40, 50])
         var elements: [Int] = []
@@ -308,6 +314,20 @@ class DollarTests: XCTestCase {
 //        chain.slice(0, end: 3).each({ elements += $0 as Int})
 //        XCTAssertTrue(elements == [10, 20, 30], "Chained seld")
 
+    }
+    
+    func testStepping() {
+        let chain = $(array: [[1, 2], 3, [[4], 5]]);
+        chain.flatten().map({ ($0 as Int) * 10 }).first().initial(2).all({ ($0 as Int) < 40  }).filter({ ($0 as Int) <= 20 });
+        
+        XCTAssertTrue(chain.step() as [Int] == [1 , 2, 3, 4, 5], "Flattens the array");
+        XCTAssertTrue(chain.step() as [Int] == [10, 20, 30, 40, 50], "Multiply each element by 10");
+        XCTAssertEqual(chain.step() as Int, 10, "First element");
+        XCTAssertTrue(chain.step() as [Int] == [10, 20, 30], "Removed last two elements");
+        XCTAssertTrue(chain.step(), "All elements are less than 40");
+        XCTAssertTrue(chain.step() as [Int] == [10, 20], "30 was filtered out");
+        XCTAssertFalse(chain.hasStep(), "All chained methods have been consumed");
+        XCTAssertTrue(chain.revert().value() as NSArray == [[1, 2], 3, [[4], 5]], "Original state of wrapped object is restored");
     }
 
     func testPartial() {

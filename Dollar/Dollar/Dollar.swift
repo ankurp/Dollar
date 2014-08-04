@@ -30,14 +30,15 @@ public class Dollar {
     //     \|_______|\|__|\|__|\|__|\|__|\|__|\|__| \|__|
     //
     
-    private var resultArray: [AnyObject] = []
-
+    private var resultArray:[AnyObject]
+    private var initialArray:[AnyObject]
     private var lazyQueue: [(AnyObject) -> (AnyObject?)] = []
     
     /// Initializer of the wrapper object for chaining.
     ///
     /// :param array The array to wrap.
     public init(array: [AnyObject]) {
+        self.initialArray = array;
         self.resultArray = array
     }
     
@@ -142,7 +143,8 @@ public class Dollar {
     /// :return The wrapper object.
     public func flatten() -> Dollar {
         return self.queue {
-            return Dollar.flatten($0 as [AnyObject])
+            self.resultArray = Dollar.flatten($0 as [AnyObject])
+            return self.resultArray
         }
     }
     
@@ -159,7 +161,8 @@ public class Dollar {
     /// :return The wrapper object.
     public func initial(numElements: Int) -> Dollar {
         return self.queue {
-            return Dollar.initial($0 as [AnyObject], numElements: numElements)
+            self.resultArray = Dollar.initial($0 as [AnyObject], numElements: numElements);
+            return self.resultArray
         }
     }
     
@@ -173,7 +176,8 @@ public class Dollar {
             for elem : AnyObject in $0 as [AnyObject] {
                 result += function(elem)
             }
-            return result
+            self.resultArray = result;
+            return self.resultArray;
         }
     }
     
@@ -187,7 +191,8 @@ public class Dollar {
             for (index, elem : AnyObject) in enumerate($0 as [AnyObject]) {
                 result += function(index, elem)
             }
-            return result
+            self.resultArray = result;
+            return self.resultArray
         }
     }
     
@@ -259,23 +264,47 @@ public class Dollar {
     /// :return The wrapper object.
     public func slice(start: Int, end: Int = 0) -> Dollar {
         return self.queue {
-            return Dollar.slice($0 as [AnyObject], start: start, end: end);
+            self.resultArray = Dollar.slice($0 as [AnyObject], start: start, end: end);
+            return self.resultArray;
         }
     }
     
     /// Get the final result from the wrapper object to terminated the chain.
     ///
     /// :return Final resulting array from applying all functions on it.
-    public func value() -> AnyObject? {
-        var result : AnyObject? = self.resultArray
-        for step in self.lazyQueue {
-            result = step(result!)
+    public func value() -> AnyObject {
+        var result:AnyObject?
+        while(self.hasStep()){
+            result = self.step();
         }
-        if let val: AnyObject = result {
-            return val
+        
+        if let value:AnyObject = result{
+            return value;
         } else {
-            return self.resultArray
+            return self.resultArray;
         }
+        
+    }
+
+    /// Consumes first method in chain
+    /// :return Result of invoking method on wrapper object
+    public func step() -> AnyObject? {
+        if(!self.hasStep()) { return nil; }
+        
+        let action = self.lazyQueue.removeAtIndex(0);
+        return action(self.resultArray);
+    }
+    
+    /// Check to see if any more chained methods remain
+    /// :return False is all methods have been consumed
+    public func hasStep() -> Bool {
+        return !self.lazyQueue.isEmpty;
+    }
+    
+    /// Restores intital state of wrapped object.
+    public func revert() -> Dollar{
+        self.resultArray = self.initialArray;
+        return self;
     }
     
     ///  ___  ___  _______   ___       ________  _______   ________
@@ -383,7 +412,7 @@ public class Dollar {
         }
         return newArr
     }
-        
+    
     /// Creates an array excluding all values of the provided arrays.
     ///
     /// :param arrays The arrays to difference between.
@@ -635,7 +664,7 @@ public class Dollar {
     ///
     /// :param array The array to source from.
     /// :return Dictionary that contains the key generated from the element passed in the function.
-    public class func frequencies<T>(array: [T]) -> [T: Int] {
+    public class func frequencies<T:Hashable>(array: [T]) -> [T: Int] {
         return self.frequencies(array) { $0 }
     }
     
@@ -646,7 +675,7 @@ public class Dollar {
     /// :param array The array to source from.
     /// :param function The function to get value of the key for each element to group by.
     /// :return Dictionary that contains the key generated from the element passed in the function.
-    public class func frequencies<T, U: Equatable>(array: [T], function: (T) -> U) -> [U: Int] {
+    public class func frequencies<T, U:Hashable>(array: [T], function: (T) -> U) -> [U: Int] {
         var result = [U: Int]()
         for elem in array {
             let key = function(elem)
@@ -657,6 +686,64 @@ public class Dollar {
             }
         }
         return result
+    }
+    
+    
+    /// This method returns a dictionary of values mapping to the
+    /// total number of occurrences in the dictionary.
+    ///
+    /// :param dict The dictionary to source from.
+    /// :return Dictionary that contains the key generated from the element passed in the function.
+    public class func frequencies<T, U:Hashable>(dict: [T:U]) -> [U:Int]{
+        return self.frequencies(dict){ $1 }
+    }
+    
+    
+    /// This method returns a dictionary of values mapping to the
+    /// total number of occurrences in the dictionary. If passed a function it returns
+    /// a frequency table of the results of the given function on the arrays elements.
+    ///
+    /// :param dict The dictionary to source from.
+    /// :param function The function to get value of the key for each element to group by.
+    /// :return Dictionary that contains the key generated from the element passed in the function.
+    public class func frequencies <T, U, E:Hashable>(dict:[T:U], function: (T, U) -> E) -> [E:Int]{
+        var result = [E:Int]();
+        for(key, value) in dict{
+            let resultKey = function(key, value);
+            if var freq = result[resultKey]{
+                result[resultKey] = freq + 1;
+            } else {
+                result[resultKey] = 1;
+            }
+        }
+        return result;
+    }
+    
+    /// Groups keys based on their values
+    /// 
+    /// :param dict The dictionary to source from
+    /// :return Result of inversion where the values are now keys and keys are grouped into arrays as values.
+    public class func invert<T, U>(dict:[T:U]) -> [U:[T]]{
+        return self.invert(dict) { $1; }
+    }
+    
+    /// Groups keys based on the function provided. Arrays are stored based on the return of the closure.
+    ///
+    /// :param dict The dictionary to source from
+    /// :param function Closure upon which the keys are grouped by
+    /// :return Result of apply function on inversion of dictionary.
+    public class func invert<T, U, E:Hashable>(dict:[T:U], function: (T, U) -> E) -> [E:[T]]{
+        var result = [E:[T]]();
+        for(key, value) in dict{
+            let resultKey = function(key, value);
+            if var freq = result[resultKey]{
+                freq += key;
+                result[resultKey] = freq;
+            } else {
+                result[resultKey] = [key];
+            }
+        }
+        return result;
     }
     
     /// The identity function. Returns the argument it is given.
