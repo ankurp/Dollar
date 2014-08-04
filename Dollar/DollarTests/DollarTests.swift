@@ -236,7 +236,9 @@ class DollarTests: XCTestCase {
 
     func testFrequencies() {
         XCTAssertTrue($.frequencies(["a", "a", "b", "c", "a", "b"]) == ["a": 3, "b": 2, "c": 1], "Returns correct frequency dictionary")
-//        XCTAssertTrue($.frequencies([1,2,3,4,5]) { $0 % 2 == 0 } == [false: 3, true: 2], "Returns correct frequency dictionary from cond")
+        XCTAssertTrue($.frequencies(["Cat":4, "Dog":4, "Human":2, "Snake":0, "Ape":2, "Worm":0]) == [0:2, 2:2, 4:2], "Returns frequency of values in dictinoary");
+        XCTAssertTrue($.frequencies(["Cat":4, "Dog":4, "Human":2, "Snake":0, "Ape":2, "Worm":0]) { $1 <= 2 } == [true:4, false:2], "Four animals have 2 or less legs.");
+
     }
 
     func testKeys() {

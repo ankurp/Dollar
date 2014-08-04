@@ -285,12 +285,11 @@ public class Dollar {
         }
         
     }
-    
 
     /// Consumes first method in chain
     /// :return Result of invoking method on wrapper object
     public func step() -> AnyObject? {
-        if(self.hasStep() == false) { return nil; }
+        if(!self.hasStep()) { return nil; }
         
         let action = self.lazyQueue.removeAtIndex(0);
         return action(self.resultArray);
@@ -299,7 +298,7 @@ public class Dollar {
     /// Check to see if any more chained methods remain
     /// :return False is all methods have been consumed
     public func hasStep() -> Bool {
-        return self.lazyQueue.isEmpty == false;
+        return !self.lazyQueue.isEmpty;
     }
     
     /// Restores intital state of wrapped object.
@@ -665,7 +664,7 @@ public class Dollar {
     ///
     /// :param array The array to source from.
     /// :return Dictionary that contains the key generated from the element passed in the function.
-    public class func frequencies<T>(array: [T]) -> [T: Int] {
+    public class func frequencies<T:Hashable>(array: [T]) -> [T: Int] {
         return self.frequencies(array) { $0 }
     }
     
@@ -676,7 +675,7 @@ public class Dollar {
     /// :param array The array to source from.
     /// :param function The function to get value of the key for each element to group by.
     /// :return Dictionary that contains the key generated from the element passed in the function.
-    public class func frequencies<T, U: Equatable>(array: [T], function: (T) -> U) -> [U: Int] {
+    public class func frequencies<T, U:Hashable>(array: [T], function: (T) -> U) -> [U: Int] {
         var result = [U: Int]()
         for elem in array {
             let key = function(elem)
@@ -687,6 +686,37 @@ public class Dollar {
             }
         }
         return result
+    }
+    
+    
+    /// This method returns a dictionary of values mapping to the
+    /// total number of occurrences in the dictionary.
+    ///
+    /// :param dict The dictionary to source from.
+    /// :return Dictionary that contains the key generated from the element passed in the function.
+    public class func frequencies<T, U:Hashable>(dict: [T:U]) -> [U:Int]{
+        return self.frequencies(dict){ $1 }
+    }
+    
+    
+    /// This method returns a dictionary of values mapping to the
+    /// total number of occurrences in the dictionary. If passed a function it returns
+    /// a frequency table of the results of the given function on the arrays elements.
+    ///
+    /// :param dict The dictionary to source from.
+    /// :param function The function to get value of the key for each element to group by.
+    /// :return Dictionary that contains the key generated from the element passed in the function.
+    public class func frequencies <T, U, E:Hashable>(dict:[T:U], function: (T, U) -> E) -> [E:Int]{
+        var result = [E:Int]();
+        for(key, value) in dict{
+            let resultKey = function(key, value);
+            if var freq = result[resultKey]{
+                result[resultKey] = freq + 1;
+            } else {
+                result[resultKey] = 1;
+            }
+        }
+        return result;
     }
     
     /// The identity function. Returns the argument it is given.
