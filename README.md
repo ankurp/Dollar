@@ -68,6 +68,7 @@ Method | Usage
 **`$.third`**|Gets the third element in the array.
 **`$.flatten`**|Flattens a nested array of any depth.
 **`$.frequencies`**|This method returns a dictionary of values in an array mapping to the total number of occurrences in the array. If passed a function it returns a frequency table of the results of the given function on the arrays elements.
+**`$.invert`**|This method is similar to frequencies but returns an array of keys as its value.
 **`$.indexOf`**|Gets the index at which the first occurrence of value is found.
 **`$.initial`**|Gets all but the last element or last n elements of an array.
 **`$.intersection`**|Creates an array of unique values present in all provided arrays.
@@ -298,6 +299,17 @@ $.frequencies(["Cat":4, "Dog":4, "Human":2, "Snake":0, "Ape":2, "Worm":0])
 
 $.frequencies(["Cat":4, "Dog":4, "Human":2, "Snake":0, "Ape":2, "Worm":0]) { $1 <= 2 }
 => [true:4, false:2]
+```
+
+### invert - `$.invert`
+This method is similar to frequencies but returns an array of keys as its value.
+
+```swift
+$.invert(["Cat":4, "Dog":4, "Human":2, "Snake":0, "Ape":2, "Worm":0])
+=> 0:["Snake","Worm"], 4:["Cat", "Dog"], 2:["Ape", "Human"]]
+
+$.invert(["Cat":4, "Dog":4, "Human":2, "Snake":0, "Ape":2, "Worm":0]) { $1 <= 2 } 
+=> [false:["Cat", "Dog"], true:["Snake", "Worm", "Ape","Human"]]
 ```
 
 ### indexof - `$.indexof`

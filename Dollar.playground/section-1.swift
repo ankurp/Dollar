@@ -664,7 +664,7 @@ public class Dollar {
     ///
     /// :param array The array to source from.
     /// :return Dictionary that contains the key generated from the element passed in the function.
-    public class func frequencies<T>(array: [T]) -> [T: Int] {
+    public class func frequencies<T:Hashable>(array: [T]) -> [T: Int] {
         return self.frequencies(array) { $0 }
     }
     
@@ -675,7 +675,7 @@ public class Dollar {
     /// :param array The array to source from.
     /// :param function The function to get value of the key for each element to group by.
     /// :return Dictionary that contains the key generated from the element passed in the function.
-    public class func frequencies<T, U: Equatable>(array: [T], function: (T) -> U) -> [U: Int] {
+    public class func frequencies<T, U:Hashable>(array: [T], function: (T) -> U) -> [U: Int] {
         var result = [U: Int]()
         for elem in array {
             let key = function(elem)
@@ -688,14 +688,25 @@ public class Dollar {
         return result
     }
     
-    /*Error: Extra function in call. Probably a bug.
-    public class func frequencies<T, U:Hashable, E:Hashable>(dict: [T:U]) -> [E:[Int]]{
+    
+    /// This method returns a dictionary of values mapping to the
+    /// total number of occurrences in the dictionary.
+    ///
+    /// :param dict The dictionary to source from.
+    /// :return Dictionary that contains the key generated from the element passed in the function.
+    public class func frequencies<T, U:Hashable>(dict: [T:U]) -> [U:Int]{
         return self.frequencies(dict){ $1 }
-    }*/
+    }
     
     
-    public class func frequencies <T, U, E:Hashable>(dict:[T:U], function: (T, U) -> E) -> [E:Int]
-    {
+    /// This method returns a dictionary of values mapping to the
+    /// total number of occurrences in the dictionary. If passed a function it returns
+    /// a frequency table of the results of the given function on the arrays elements.
+    ///
+    /// :param dict The dictionary to source from.
+    /// :param function The function to get value of the key for each element to group by.
+    /// :return Dictionary that contains the key generated from the element passed in the function.
+    public class func frequencies <T, U, E:Hashable>(dict:[T:U], function: (T, U) -> E) -> [E:Int]{
         var result = [E:Int]();
         for(key, value) in dict{
             let resultKey = function(key, value);
@@ -703,6 +714,33 @@ public class Dollar {
                 result[resultKey] = freq + 1;
             } else {
                 result[resultKey] = 1;
+            }
+        }
+        return result;
+    }
+    
+    /// Groups keys based on their values
+    /// 
+    /// :param dict The dictionary to source from
+    /// :return Result of inversion where the values are now keys and keys are grouped into arrays as values.
+    public class func invert<T, U>(dict:[T:U]) -> [U:[T]]{
+        return self.invert(dict) { $1; }
+    }
+    
+    /// Groups keys based on the function provided. Arrays are stored based on the return of the closure.
+    ///
+    /// :param dict The dictionary to source from
+    /// :param function Closure upon which the keys are grouped by
+    /// :return Result of apply function on inversion of dictionary.
+    public class func invert<T, U, E:Hashable>(dict:[T:U], function: (T, U) -> E) -> [E:[T]]{
+        var result = [E:[T]]();
+        for(key, value) in dict{
+            let resultKey = function(key, value);
+            if var freq = result[resultKey]{
+                freq += key;
+                result[resultKey] = freq;
+            } else {
+                result[resultKey] = [key];
             }
         }
         return result;

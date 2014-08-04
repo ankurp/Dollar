@@ -719,6 +719,33 @@ public class Dollar {
         return result;
     }
     
+    /// Groups keys based on their values
+    /// 
+    /// :param dict The dictionary to source from
+    /// :return Result of inversion where the values are now keys and keys are grouped into arrays as values.
+    public class func invert<T, U>(dict:[T:U]) -> [U:[T]]{
+        return self.invert(dict) { $1; }
+    }
+    
+    /// Groups keys based on the function provided. Arrays are stored based on the return of the closure.
+    ///
+    /// :param dict The dictionary to source from
+    /// :param function Closure upon which the keys are grouped by
+    /// :return Result of apply function on inversion of dictionary.
+    public class func invert<T, U, E:Hashable>(dict:[T:U], function: (T, U) -> E) -> [E:[T]]{
+        var result = [E:[T]]();
+        for(key, value) in dict{
+            let resultKey = function(key, value);
+            if var freq = result[resultKey]{
+                freq += key;
+                result[resultKey] = freq;
+            } else {
+                result[resultKey] = [key];
+            }
+        }
+        return result;
+    }
+    
     /// The identity function. Returns the argument it is given.
     ///
     /// :param arg Value to return

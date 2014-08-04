@@ -238,7 +238,11 @@ class DollarTests: XCTestCase {
         XCTAssertTrue($.frequencies(["a", "a", "b", "c", "a", "b"]) == ["a": 3, "b": 2, "c": 1], "Returns correct frequency dictionary")
         XCTAssertTrue($.frequencies(["Cat":4, "Dog":4, "Human":2, "Snake":0, "Ape":2, "Worm":0]) == [0:2, 2:2, 4:2], "Returns frequency of values in dictinoary");
         XCTAssertTrue($.frequencies(["Cat":4, "Dog":4, "Human":2, "Snake":0, "Ape":2, "Worm":0]) { $1 <= 2 } == [true:4, false:2], "Four animals have 2 or less legs.");
-
+    }
+    
+    func testInversion() {
+        XCTAssertTrue($.invert(["Cat":4, "Dog":4, "Human":2, "Snake":0, "Ape":2, "Worm":0]) == [0:["Snake","Worm"], 4:["Cat", "Dog"], 2:["Ape", "Human"]], "Returns keys as arrays grouped by their value");
+        XCTAssertTrue($.invert(["Cat":4, "Dog":4, "Human":2, "Snake":0, "Ape":2, "Worm":0]) { $1 <= 2 } == [false:["Cat", "Dog"], true:["Snake", "Worm", "Ape","Human"]], "Returns groups keys based on closure");
     }
 
     func testKeys() {
