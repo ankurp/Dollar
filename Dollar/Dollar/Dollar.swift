@@ -171,7 +171,7 @@ public class Dollar {
         return self.queue {
             var result: [AnyObject] = []
             for elem : AnyObject in $0 as [AnyObject] {
-                result += function(elem)
+                result.append(function(elem))
             }
             return result
         }
@@ -185,7 +185,7 @@ public class Dollar {
         return self.queue {
             var result: [AnyObject] = []
             for (index, elem : AnyObject) in enumerate($0 as [AnyObject]) {
-                result += function(index, elem)
+                result.append(function(index, elem))
             }
             return result
         }
@@ -295,8 +295,9 @@ public class Dollar {
     public class func after<T, E>(n: Int, function: (T...) -> E) -> ((T...) -> E?) {
         var counter = n
         return { (params: (T...)) -> E? in
+            typealias TType = (T...)
             if --counter <= 0 {
-                return function(reinterpretCast(params))
+                return function(unsafeBitCast(params, TType.self))
             }
             return nil
         }
@@ -333,7 +334,7 @@ public class Dollar {
     public class func at<T>(array: [T], indexes: [Int]) -> [T] {
         var result: [T] = []
         for index in indexes {
-            result += array[index]
+            result.append(array[index])
         }
         return result
     }
@@ -345,7 +346,8 @@ public class Dollar {
     /// :return A new function that when called will invoked the passed function with the parameters specified.
     public class func bind<T, E>(function: (T...) -> E, _ parameters: T...) -> (() -> E) {
         return { () -> E in
-            return function(reinterpretCast(parameters))
+            typealias TType = (T...)
+            return function(unsafeBitCast(parameters, TType.self))
         }
     }
     
@@ -357,7 +359,7 @@ public class Dollar {
         var result: [T] = []
         for elem in array {
             if let val = elem {
-                result += val
+                result.append(val)
             }
         }
         return result
@@ -408,7 +410,7 @@ public class Dollar {
         }
         for (key, count) in map {
             for _ in 0..<count {
-                result += key
+                result.append(key)
             }
         }
         return result
@@ -607,7 +609,7 @@ public class Dollar {
             if let val = elem as? [AnyObject] {
                 resultArr += self.flatten(val)
             } else {
-                resultArr += elem
+                resultArr.append(elem)
             }
         }
         return resultArr
@@ -685,7 +687,7 @@ public class Dollar {
         var result: [T] = []
         if (array.count > numElements) {
             for index in 0..<(array.count - numElements) {
-                result += array[index]
+                result.append(array[index])
             }
         }
         return result
@@ -710,7 +712,7 @@ public class Dollar {
         let count = arrays.count
         for (key, value) in map {
             if value == count {
-                result += key
+                result.append(key)
             }
         }
         return result
@@ -721,8 +723,8 @@ public class Dollar {
     /// :param array The array to join the elements of.
     /// :param separator The separator to join the elements with.
     /// :return Joined element from the array of elements.
-    public class func join<T: ExtensibleCollection>(array: [T], separator: T) -> T {
-        return Swift.join(separator, reinterpretCast(array) as [T])
+    public class func join<T: ExtensibleCollectionType>(array: [T], separator: T) -> T {
+        return Swift.join(separator, array)
     }
     
     /// Creates an array of keys given a dictionary.
@@ -732,7 +734,7 @@ public class Dollar {
     public class func keys<T, U>(dictionary: [T: U]) -> [T] {
         var result : [T] = []
         for (key, _) in dictionary {
-            result.insert(key, atIndex: 0)
+            result.append(key)
         }
         return result
     }
@@ -868,7 +870,8 @@ public class Dollar {
     /// :return First element from the array.
     public class func partial<T, E> (function: (T...) -> E, _ parameters: T...) -> ((T...) -> E) {
         return { (params: T...) -> E in
-            return function(reinterpretCast(parameters + params))
+            typealias TType = (T...)
+            return function(unsafeBitCast(parameters + params, TType.self))
         }
     }
     
@@ -881,13 +884,13 @@ public class Dollar {
     /// :return Array partitioned into n element arrays, starting step elements apart.
     public class func partition<T>(array: [T], var n: Int, var step: Int? = nil) -> [[T]] {
         var result = [[T]]()
-        if !step?   { step = n } // If no step is supplied move n each step.
+        if step != .None   { step = n } // If no step is supplied move n each step.
         if step < 1 { step = 1 } // Less than 1 results in an infinite loop.
         if n < 1    { n = 0 }    // Allow 0 if user wants [[],[],[]] for some reason.
         if n > array.count { return [[]] }
         
         for i in self.range(0, endVal: array.count - n, incrementBy: step!) {
-            result += Array(array[i..<(i+n)] as Slice<T>)
+            result.append(Array(array[i..<(i+n)] as Slice<T>))
         }
         return result
     }
@@ -903,21 +906,21 @@ public class Dollar {
     /// :return Array partitioned into n element arrays, starting step elements apart.
     public class func partition<T>(var array: [T], var n: Int, var step: Int? = nil, pad: [T]?) -> [[T]] {
         var result : [[T]] = []
-        if !step?   { step = n } // If no step is supplied move n each step.
+        if step? != .None   { step = n } // If no step is supplied move n each step.
         if step < 1 { step = 1 } // Less than 1 results in an infinite loop.
         if n < 1    { n = 0 }    // Allow 0 if user wants [[],[],[]] for some reason.
         
         for i in self.range(0, endVal: array.count, incrementBy: step!) {
             var end = i+n
             if end > array.count { end = array.count }
-            result += Array(array[i..<end] as Slice<T>)
+            result.append(Array(array[i..<end] as Slice<T>))
             if end != i+n { break }
         }
         
         if let padding = pad {
-            let remain = array.count%n
+            let remain = array.count % n
             let end = padding.count > remain ? remain : padding.count
-            result[result.count-1] += Array(padding[0..<end] as Slice<T>)
+            result[result.count - 1] += Array(padding[0..<end] as Slice<T>)
         }
         return result
     }
@@ -930,14 +933,14 @@ public class Dollar {
     /// :return Array partitioned into n element arrays, starting step elements apart.
     public class func partitionAll<T>(array: [T], var n: Int, var step: Int? = nil) -> [[T]] {
         var result = [[T]]()
-        if !step?   { step = n } // If no step is supplied move n each step.
+        if step? != .None { step = n } // If no step is supplied move n each step.
         if step < 1 { step = 1 } // Less than 1 results in an infinite loop.
         if n < 1    { n = 0 }    // Allow 0 if user wants [[],[],[]] for some reason.
         
         for i in self.range(0, endVal: array.count, incrementBy: step!) {
             var end = i+n
             if end > array.count { end = array.count }
-            result += Array(array[i..<end] as Slice<T>)
+            result.append(Array(array[i..<end] as Slice<T>))
         }
         return result
     }
@@ -955,7 +958,7 @@ public class Dollar {
             let value = function(item)
             
             if value == lastValue? {
-                result[result.count-1] += item
+                result[result.count-1].append(item)
             } else {
                 result.append([item])
                 lastValue = value
@@ -986,7 +989,7 @@ public class Dollar {
         var result : [E] = []
         for obj in array {
             if let val = obj[value] {
-                result += val
+                result.append(val)
             }
         }
         return result
@@ -1051,8 +1054,8 @@ public class Dollar {
     ///
     /// :param seq The sequence to generate from.
     /// :return Array of elements generated from the sequence.
-    public class func sequence<S : Sequence>(seq: S) -> [S.GeneratorType.Element] {
-        return Array<S.GeneratorType.Element>(seq)
+    public class func sequence<S : SequenceType>(seq: S) -> [S.Generator.Element] {
+        return Array<S.Generator.Element>(seq)
     }
     
     /// Removes all elements from an array that the callback returns true.
@@ -1073,7 +1076,7 @@ public class Dollar {
         var result : [T] = []
         if (numElements < array.count) {
             for index in numElements..<array.count {
-                result += array[index]
+                result.append(array[index])
             }
         }
         return result
@@ -1162,7 +1165,7 @@ public class Dollar {
     public class func times<T>(n: Int, function: (Int) -> T) -> [T] {
         var result : [T] = []
         for index in (0..<n) {
-            result += function(index)
+            result.append(function(index))
         }
         return result
     }
@@ -1180,7 +1183,7 @@ public class Dollar {
         }
         var result : [T] = []
         for key in map.keys {
-            result += key
+            result.append(key)
         }
         return result
     }
@@ -1196,7 +1199,7 @@ public class Dollar {
         }
         var result : [T] = []
         for key in map.keys {
-            result += key
+            result.append(key)
         }
         return result
     }
@@ -1208,7 +1211,7 @@ public class Dollar {
     public class func values<T, U>(dictionary: [T: U]) -> [U] {
         var result : [U] = []
         for (_, value) in dictionary {
-            result.insert(value, atIndex: 0)
+            result.append(value)
         }
         return result
     }
@@ -1230,13 +1233,13 @@ public class Dollar {
         var map : [T: Bool] = [T: Bool]()
         for arr in arrays {
             for elem in arr {
-                map[elem] = !map[elem]
+                map[elem] = !(map[elem] ?? false)
             }
         }
         var result : [T] = []
         for (key, value) in map {
             if value {
-                result += key
+                result.append(key)
             }
         }
         return result
@@ -1249,12 +1252,12 @@ public class Dollar {
     /// :return An array of grouped elements.
     public class func zip(arrays: [AnyObject]...) -> [AnyObject] {
         var result: [[AnyObject]] = []
-        for _ in self.first(arrays) as [AnyObject] {
-            result += [] as [AnyObject]
+        for _ in self.first(arrays)! as [AnyObject] {
+            result.append([] as [AnyObject])
         }
         for (index, array) in enumerate(arrays) {
             for (elemIndex, elem : AnyObject) in enumerate(array) {
-                result[elemIndex] += elem
+                result[elemIndex].append(elem)
             }
         }
         return result
