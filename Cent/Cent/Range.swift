@@ -31,6 +31,6 @@ extension Range {
     
 }
 
-@infix func ==<T: ForwardIndex>(left: Range<T>, right: Range<T>) -> Bool {
+func ==<T: ForwardIndexType>(left: Range<T>, right: Range<T>) -> Bool {
     return left.startIndex == right.startIndex && left.endIndex == right.endIndex
 }
