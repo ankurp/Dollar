@@ -17,12 +17,12 @@ extension XCTestCase {
         XCTAssertTrue(diff.count == 0, test)
     }
     
-    func XCTAssertNotEqualArrays <S, T> (first: [S], _ second: [T]) {
-        XCTAssertNotEqual(first._bridgeToObjectiveC(), second._bridgeToObjectiveC())
+    func XCTAssertNotEqualArrays<S, T>(first: [S], _ second: [T], _ test: String) {
+        XCTAssertNotEqual(first._bridgeToObjectiveC(), second._bridgeToObjectiveC(), test)
     }
     
-    func XCTAssertEqualDictionaries <S, T> (first: [S:T], _ second: [S:T]) {
-        XCTAssertEqual(first._bridgeToObjectiveC(), second._bridgeToObjectiveC())
+    func XCTAssertEqualDictionaries<S, T>(first: [S:T], _ second: [S:T], _ test: String) {
+        XCTAssertEqual(first._bridgeToObjectiveC(), second._bridgeToObjectiveC(), test)
     }
     
 }
@@ -160,9 +160,6 @@ class DollarTests: XCTestCase {
     }
 
     func testSequence() {
-//        XCTAssertEqualArrays($.sequence(0...4), [0, 1, 2, 3, 4], "Generates array of integers")
-//        XCTAssertEqualArrays($.sequence(-2.0...2.0), [-2.0, -1.0, 0.0, 1.0, 2.0], "Generates array of doubles")
-//        XCTAssertEqualArrays($.sequence((0...20).by(5)), [0, 5, 10, 15], "Generates array with offset")
         XCTAssertEqualArrays($.sequence("abc"), ["a", "b", "c"], "Generates array of characters")
     }
 
@@ -254,6 +251,7 @@ class DollarTests: XCTestCase {
 
     func testFrequencies() {
         XCTAssertTrue($.frequencies(["a", "a", "b", "c", "a", "b"]) == ["a": 3, "b": 2, "c": 1], "Returns correct frequency dictionary")
+// Bug in Swift compiler returns closure and cannot do equality check
 //        XCTAssertTrue($.frequencies([1,2,3,4,5]) { $0 % 2 == 0 } == [false: 3, true: 2], "Returns correct frequency dictionary from cond")
     }
 
@@ -318,13 +316,14 @@ class DollarTests: XCTestCase {
         chain.value()
         XCTAssertEqualArrays(elements as [Int], [10, 20, 30, 40, 50], "Goes through each element in the array")
 
-//        XCTAssertTrue(chain.all({ $0 < 100 }).value()!, "All elements are less than 100")
-//        XCTAssertFalse(chain.all({ $0 < 40 }).value()!, "All elements are not less than 40")
-//        XCTAssertTrue(chain.any({ $0 < 40 }).value()!, "At least one element is less than 40")
+// Test given seg fault for some reason
+//        XCTAssertTrue(chain.all({ ($0 as Int) < 100 }).value()! as Bool, "All elements are less than 100")
+//        XCTAssertFalse(chain.all({ ($0 as Int) < 40 }).value()! as Bool, "All elements are not less than 40")
+//        XCTAssertTrue(chain.any({ ($0 as Int) < 40 }).value()! as Bool, "At least one element is less than 40")
 
-//        elements = []
-//        chain.slice(0, end: 3).each({ elements += $0 as Int})
-//        XCTAssertTrue(elements == [10, 20, 30], "Chained seld")
+        elements = [Int]()
+        chain.slice(0, end: 3).each { elements.append($0 as Int) }
+        XCTAssertEqualArrays(elements, [10, 20, 30], "Chained seld")
 
     }
 
@@ -361,18 +360,20 @@ class DollarTests: XCTestCase {
         XCTAssertTrue(isDone, "Should be done")
     }
     
+    
+// TODO Fix Partition Methods
 //    func testPartition() {
 //        var array = [1, 2, 3, 4, 5]
-//        
-//        XCTAssertTrue($.partition(array, n: 2) == [[1, 2], [3, 4]], "Partition uses n for step if not supplied.")
-////        XCTAssertTrue($.partition(array, n: 2, step: 1) == [[1, 2], [2, 3], [3, 4], [4, 5]], "Partition allows specifying a custom step.")
-//        XCTAssertTrue($.partition(array, n: 2, step: 1, pad: nil) == [[1, 2], [2, 3], [3, 4], [4, 5], [5]], "Partition with nil pad allows the last partition to be less than n length")
-//        XCTAssertTrue($.partition(array, n: 4, step: 1, pad: nil) == [[1, 2, 3, 4], [2, 3, 4, 5], [3, 4, 5]], "Partition with nil pad stops at the first partition less than n length.")
-//        XCTAssertTrue($.partition(array, n: 2, step: 1, pad: [6,7,8]) == [[1, 2], [2, 3], [3, 4], [4, 5], [5, 6]], "Partition pads the last partition to the right length.")
-//        XCTAssertTrue($.partition(array, n: 4, step: 3, pad: [6]) == [[1, 2, 3, 4], [4, 5, 6]], "Partition doesn't add more elements than pad has.")
-//        XCTAssertTrue($.partition([1, 2, 3, 4, 5], n: 2, pad: [6]) == [[1, 2], [3, 4], [5, 6]], "Partition with pad and no step uses n as step.")
-////        XCTAssertTrue($.partition([1, 2, 3, 4, 5, 6], n: 2, step: 4) == [[1, 2], [5, 6]], "Partition step length works.")
-//        XCTAssertTrue($.partition(array, n: 10) == [[]], "Partition without pad returns [[]] if n is longer than array.")
+        
+//        XCTAssertEqualArrays($.partition(array, n: 2), [[1, 2], [3, 4]], "Partition uses n for step if not supplied.")
+//        XCTAssertTrue($.partition(array, n: 2, step: 1) == [[1, 2], [2, 3], [3, 4], [4, 5]], "Partition allows specifying a custom step.")
+//        XCTAssertEqualArrays($.partition(array, n: 2, step: 1, pad: nil), [[1, 2], [2, 3], [3, 4], [4, 5], [5]], "Partition with nil pad allows the last partition to be less than n length")
+//        XCTAssertEqualArrays($.partition(array, n: 4, step: 1, pad: nil), [[1, 2, 3, 4], [2, 3, 4, 5], [3, 4, 5]], "Partition with nil pad stops at the first partition less than n length.")
+//        XCTAssertEqualArrays($.partition(array, n: 2, step: 1, pad: [6,7,8]), [[1, 2], [2, 3], [3, 4], [4, 5], [5, 6]], "Partition pads the last partition to the right length.")
+//        XCTAssertEqualArrays($.partition(array, n: 4, step: 3, pad: [6]), [[1, 2, 3, 4], [4, 5, 6]], "Partition doesn't add more elements than pad has.")
+//        XCTAssertEqualArrays($.partition([1, 2, 3, 4, 5], n: 2, pad: [6]), [[1, 2], [3, 4], [5, 6]], "Partition with pad and no step uses n as step.")
+//        XCTAssertTrue($.partition([1, 2, 3, 4, 5, 6], n: 2, step: 4) == [[1, 2], [5, 6]], "Partition step length works.")
+//        XCTAssertEqualArrays($.partition(array, n: 10), [[]], "Partition without pad returns [[]] if n is longer than array.")
 //    }
     
 //    func testPartitionAll() {
@@ -388,7 +389,7 @@ class DollarTests: XCTestCase {
 //        XCTAssertTrue($.partitionBy([1, 2, 4, 3, 5, 6]) { $0 % 2 == 0 } == [[1], [2, 4], [3, 5], [6]], "PartitionBy splits appropriately on Bool.")
 //        XCTAssertTrue($.partitionBy([1, 7, 3, 6, 10, 12]) { $0 % 3 } == [[1, 7], [3, 6], [10], [12]], "PartitionBy can split on functions other than Bool.")
 //    }
-//    
+    
     func testMap() {
         XCTAssertEqualArrays($.map([1, 2, 3, 4, 5]) { $0 * 2 }, [2, 4, 6, 8, 10], "Map function should double values in the array")
     }
