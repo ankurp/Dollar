@@ -292,28 +292,30 @@ public class Dollar {
     /// :param n Number of times after which to call function.
     /// :param function Function to be called that takes params.
     /// :return Function that can be called n times after which the callback function is called.
-    public class func after<T, E>(n: Int, function: (T...) -> E) -> ((T...) -> E?) {
-        var counter = n
-        return { (params: (T...)) -> E? in
-            typealias TType = (T...)
-            if --counter <= 0 {
-                return function(unsafeBitCast(params, TType.self))
-            }
-            return nil
-        }
-    }
-    
+    // FIXME
+//    public class func after<T, E>(n: Int, function: (T...) -> E) -> ((T...) -> E?) {
+//        var counter = n
+//        return { (params: T...) -> E? in
+//            typealias TType = (T...)
+//            if --counter <= 0 {
+//                return function(unsafeBitCast(params, TType.self))
+//            }
+//            return nil
+//        }
+//    }
+//    
     /// Creates a function that executes passed function only after being called n times.
     ///
     /// :param n Number of times after which to call function.
     /// :param function Function to be called that does not take any params.
     /// :return Function that can be called n times after which the callback function is called.
-    public class func after<T>(n: Int, function: () -> T) -> (() -> T?) {
-        let f = self.after(n) { (params: (Any?...)) -> T? in
-            return function()
-        }
-        return { f()? }
-    }
+    // FIXME
+//    public class func after<T>(n: Int, function: () -> T) -> (() -> T?) {
+//        let f = self.after(n) { (params: Any?...) -> T? in
+//            return function()
+//        }
+//        return { f()? }
+//    }
     
     /// Creates an array of elements from the specified indexes, or keys, of the collection.
     /// Indexes may be specified as individual arguments or as arrays of indexes.
@@ -344,12 +346,13 @@ public class Dollar {
     /// :param function Function to be bound.
     /// :param parameters Parameters to be passed into the function when being invoked.
     /// :return A new function that when called will invoked the passed function with the parameters specified.
-    public class func bind<T, E>(function: (T...) -> E, _ parameters: T...) -> (() -> E) {
-        return { () -> E in
-            typealias TType = (T...)
-            return function(unsafeBitCast(parameters, TType.self))
-        }
-    }
+    // FIXME
+//    public class func bind<T, E>(function: (T...) -> E, _ parameters: T...) -> (() -> E) {
+//        return { () -> E in
+//            typealias TType = (T...)
+//            return function(unsafeBitCast(parameters, TType.self))
+//        }
+//    }
     
     /// Creates an array with all nil values removed.
     ///
@@ -868,12 +871,13 @@ public class Dollar {
     ///
     /// :param array The array to wrap.
     /// :return First element from the array.
-    public class func partial<T, E> (function: (T...) -> E, _ parameters: T...) -> ((T...) -> E) {
-        return { (params: T...) -> E in
-            typealias TType = (T...)
-            return function(unsafeBitCast(parameters + params, TType.self))
-        }
-    }
+    // FIXME
+//    public class func partial<T, E> (function: (T...) -> E, _ parameters: T...) -> ((T...) -> E) {
+//        return { (params: T...) -> E in
+//            typealias TType = (T...)
+//            return function(unsafeBitCast(parameters + params, TType.self))
+//        }
+//    }
     
     /// Produces an array of arrays, each containing n elements, each offset by step.
     /// If the final partition is not n elements long it is dropped.
