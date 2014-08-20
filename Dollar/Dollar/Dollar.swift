@@ -294,7 +294,7 @@ public class Dollar {
     /// :return Function that can be called n times after which the callback function is called.
     public class func after<T, E>(n: Int, function: (T...) -> E) -> ((T...) -> E?) {
         var counter = n
-        return { (params: (T...)) -> E? in
+        return { (params: T...) -> E? in
             typealias TType = (T...)
             if --counter <= 0 {
                 return function(unsafeBitCast(params, TType.self))
@@ -309,7 +309,7 @@ public class Dollar {
     /// :param function Function to be called that does not take any params.
     /// :return Function that can be called n times after which the callback function is called.
     public class func after<T>(n: Int, function: () -> T) -> (() -> T?) {
-        let f = self.after(n) { (params: (Any?...)) -> T? in
+        let f = self.after(n) { (params: Any?...) -> T? in
             return function()
         }
         return { f()? }
