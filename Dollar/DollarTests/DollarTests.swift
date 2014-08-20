@@ -9,24 +9,6 @@
 import XCTest
 import Dollar
 
-extension XCTestCase {
-    
-    func XCTAssertEqualArrays<S, T>(first: [S], _ second: [T], _ test: String) {
-        let diff: NSMutableArray = NSMutableArray(array: first._bridgeToObjectiveC())
-        diff.removeObjectsInArray(second._bridgeToObjectiveC())
-        XCTAssertTrue(diff.count == 0, test)
-    }
-    
-    func XCTAssertNotEqualArrays<S, T>(first: [S], _ second: [T], _ test: String) {
-        XCTAssertNotEqual(first._bridgeToObjectiveC(), second._bridgeToObjectiveC(), test)
-    }
-    
-    func XCTAssertEqualDictionaries<S, T>(first: [S:T], _ second: [S:T], _ test: String) {
-        XCTAssertEqual(first._bridgeToObjectiveC(), second._bridgeToObjectiveC(), test)
-    }
-    
-}
-
 class DollarTests: XCTestCase {
 
     override func setUp() {
@@ -93,17 +75,17 @@ class DollarTests: XCTestCase {
 
     func testCompact() {
         XCTAssert($.compact([3, nil, 4, 5]) == [3, 4, 5], "Return truth array")
-        XCTAssertEqualArrays($.compact([nil, nil]) as [NSObject], [], "Return truth array")
+        XCTAssertEqual($.compact([nil, nil]) as [NSObject], [], "Return truth array")
     }
 
     func testFlatten() {
-        XCTAssertEqualArrays($.flatten([[3], 4, 5]), [3, 4, 5], "Return flat array")
-        XCTAssertEqualArrays($.flatten([[3], "Hello", 5]), [3, "Hello", 5], "Return flat array")
-        XCTAssertEqualArrays($.flatten([[[3], 4], 5]), [3, 4, 5], "Return flat array")
+        XCTAssertEqual($.flatten([[3], 4, 5]) as [Int], [3, 4, 5], "Return flat array")
+        XCTAssertEqual($.flatten([[3], "Hello", 5]) as [NSObject], [3, "Hello", 5], "Return flat array")
+        XCTAssertEqual($.flatten([[[3], 4], 5]) as [Int], [3, 4, 5], "Return flat array")
     }
     
     func testShuffle() {
-        XCTAssertEqualArrays($.shuffle([1]), [1], "Return shuffled array")
+        XCTAssertEqual($.shuffle([1]), [1], "Return shuffled array")
         XCTAssertEqual($.shuffle([1, 2, 3]).count, 3, "Return shuffled array")
     }
 
@@ -115,15 +97,15 @@ class DollarTests: XCTestCase {
     }
 
     func testInitial() {
-        XCTAssertEqualArrays($.initial([3, 4, 5]), [3, 4], "Return all values except for last")
-        XCTAssertEqualArrays($.initial([3, 4, 5], numElements: 2), [3], "Return all values except for last")
-        XCTAssertEqualArrays($.initial([3, 4, 5], numElements: 4), [], "Return all values except for last")
+        XCTAssertEqual($.initial([3, 4, 5]), [3, 4], "Return all values except for last")
+        XCTAssertEqual($.initial([3, 4, 5], numElements: 2), [3], "Return all values except for last")
+        XCTAssertEqual($.initial([3, 4, 5], numElements: 4), [], "Return all values except for last")
     }
 
     func testRest() {
-        XCTAssertEqualArrays($.rest([3, 4, 5]), [4, 5], "Returns all value except for first")
-        XCTAssertEqualArrays($.rest([3, 4, 5], numElements: 2), [5], "Returns all value except for first")
-        XCTAssertEqualArrays($.rest([3, 4, 5], numElements: 4), [], "Returns all value except for first")
+        XCTAssertEqual($.rest([3, 4, 5]), [4, 5], "Returns all value except for first")
+        XCTAssertEqual($.rest([3, 4, 5], numElements: 2), [5], "Returns all value except for first")
+        XCTAssertEqual($.rest([3, 4, 5], numElements: 4), [], "Returns all value except for first")
     }
 
     func testLast() {
@@ -151,20 +133,20 @@ class DollarTests: XCTestCase {
     }
 
     func testRange() {
-        XCTAssertEqualArrays($.range(4), [0, 1, 2, 3], "Generates range")
-        XCTAssertEqualArrays($.range(1, endVal: 5), [1, 2, 3, 4], "Generates range")
-        XCTAssertEqualArrays($.range(0, endVal: 20, incrementBy: 5), [0, 5, 10, 15], "Generates range")
-        XCTAssertEqualArrays($.range(4.0), [0.0, 1.0, 2.0, 3.0], "Generates range of doubles")
-        XCTAssertEqualArrays($.range(-2.0, endVal: 2.0), [-2.0, -1.0, 0.0, 1.0], "Generates range of doubles")
-        XCTAssertEqualArrays($.range(-10.0, endVal: 10.0, incrementBy: 5), [-10.0, -5.0, 0.0, 5.0], "Generates range of doubles")
+        XCTAssertEqual($.range(4), [0, 1, 2, 3], "Generates range")
+        XCTAssertEqual($.range(1, endVal: 5), [1, 2, 3, 4], "Generates range")
+        XCTAssertEqual($.range(0, endVal: 20, incrementBy: 5), [0, 5, 10, 15], "Generates range")
+        XCTAssertEqual($.range(4.0), [0.0, 1.0, 2.0, 3.0], "Generates range of doubles")
+        XCTAssertEqual($.range(-2.0, endVal: 2.0), [-2.0, -1.0, 0.0, 1.0], "Generates range of doubles")
+        XCTAssertEqual($.range(-10.0, endVal: 10.0, incrementBy: 5), [-10.0, -5.0, 0.0, 5.0], "Generates range of doubles")
     }
 
     func testSequence() {
-        XCTAssertEqualArrays($.sequence("abc"), ["a", "b", "c"], "Generates array of characters")
+        XCTAssertEqual($.sequence("abc"), ["a", "b", "c"], "Generates array of characters")
     }
 
     func testRemove() {
-        XCTAssertEqualArrays($.remove([1, 2, 3, 4, 5, 6], iterator: { $0 == 2 || $0 == 3 }), [1, 4, 5, 6], "Remove based on callback")
+        XCTAssertEqual($.remove([1, 2, 3, 4, 5, 6], iterator: { $0 == 2 || $0 == 3 }), [1, 4, 5, 6], "Remove based on callback")
     }
 
     func testSortedIndex() {
@@ -173,15 +155,15 @@ class DollarTests: XCTestCase {
     }
 
     func testWithout() {
-        XCTAssertEqualArrays($.without([3, 4, 5, 3, 5], values: 3, 5), [4], "Removes elements passed after the array")
-        XCTAssertEqualArrays($.without([3, 4, 5, 3, 5], values: 4), [3, 5, 3, 5], "Removes elements passed after the array")
-        XCTAssertEqualArrays($.without([3, 4, 5, 3, 5], values: 3, 4, 5), [], "Removes elements passed after the array")
+        XCTAssertEqual($.without([3, 4, 5, 3, 5], values: 3, 5), [4], "Removes elements passed after the array")
+        XCTAssertEqual($.without([3, 4, 5, 3, 5], values: 4), [3, 5, 3, 5], "Removes elements passed after the array")
+        XCTAssertEqual($.without([3, 4, 5, 3, 5], values: 3, 4, 5), [], "Removes elements passed after the array")
     }
 
     func testPull() {
-        XCTAssertEqualArrays($.pull([3, 4, 5, 3, 5], values: 3, 5), [4], "Removes elements passed after the array")
-        XCTAssertEqualArrays($.pull([3, 4, 5, 3, 5], values: 4), [3, 5, 3, 5], "Removes elements passed after the array")
-        XCTAssertEqualArrays($.pull([3, 4, 5, 3, 5], values: 3, 4, 5), [], "Removes elements passed after the array")
+        XCTAssertEqual($.pull([3, 4, 5, 3, 5], values: 3, 5), [4], "Removes elements passed after the array")
+        XCTAssertEqual($.pull([3, 4, 5, 3, 5], values: 4), [3, 5, 3, 5], "Removes elements passed after the array")
+        XCTAssertEqual($.pull([3, 4, 5, 3, 5], values: 3, 4, 5), [], "Removes elements passed after the array")
     }
 
     func testZip() {
@@ -193,32 +175,32 @@ class DollarTests: XCTestCase {
     }
 
     func testIntersection() {
-        XCTAssertEqualArrays($.intersection([1, 2, 3], [5, 2, 1, 4], [2, 1]), [1, 2], "Intersection of arrays")
+        XCTAssertEqual($.intersection([1, 2, 3], [5, 2, 1, 4], [2, 1]), [1, 2], "Intersection of arrays")
     }
 
     func testDifference() {
-        XCTAssertEqualArrays($.difference([1, 2, 3, 4, 5], [5, 2, 10]), [1, 3, 4], "Difference of arrays")
-        XCTAssertEqualArrays($.difference([1, 1, 1, 2, 2], [], [3]), [1, 1, 1, 2, 2], "Difference of arrays")
-        XCTAssertEqualArrays($.difference([1, 1, 1, 2, 2], [1, 1], [3]), [2, 2], "Difference of arrays")
-        XCTAssertEqualArrays($.difference([1, 1, 1, 2, 2], [1, 1], [1, 2, 2]), [], "Difference of arrays")
-        XCTAssertEqualArrays($.difference([1, 1, 1, 2, 2], [1, 1, 1], [1, 2, 2]), [], "Difference of arrays")
-        XCTAssertEqualArrays($.difference([1, 1, 1, 2, 2], []), [1, 1, 1, 2, 2], "Difference of arrays")
+        XCTAssertEqual($.difference([1, 2, 3, 4, 5], [5, 2, 10]), [1, 3, 4], "Difference of arrays")
+        XCTAssertEqual($.difference([1, 1, 1, 2, 2], [], [3]), [1, 1, 1, 2, 2], "Difference of arrays")
+        XCTAssertEqual($.difference([1, 1, 1, 2, 2], [1, 1], [3]), [2, 2], "Difference of arrays")
+        XCTAssertEqual($.difference([1, 1, 1, 2, 2], [1, 1], [1, 2, 2]), [], "Difference of arrays")
+        XCTAssertEqual($.difference([1, 1, 1, 2, 2], [1, 1, 1], [1, 2, 2]), [], "Difference of arrays")
+        XCTAssertEqual($.difference([1, 1, 1, 2, 2], []), [1, 1, 1, 2, 2], "Difference of arrays")
     }
 
     func testUniq() {
-        XCTAssertEqualArrays($.uniq([1, 2, 1, 3, 1]), [1, 2, 3], "Uniq of arrays")
+        XCTAssertEqual($.uniq([1, 2, 1, 3, 1]), [1, 2, 3], "Uniq of arrays")
     }
 
     func testUnion() {
-        XCTAssertEqualArrays($.union([1, 2, 3], [5, 2, 1, 4], [2, 1]), [1, 2, 3, 4, 5], "Union of arrays")
+        XCTAssertEqual($.union([1, 2, 3], [5, 2, 1, 4], [2, 1]), [1, 2, 3, 4, 5], "Union of arrays")
     }
 
     func testXOR() {
-        XCTAssertEqualArrays($.xor([1, 2, 3], [5, 2, 1, 4]), [3, 4, 5], "Xor of arrays")
+        XCTAssertEqual($.xor([1, 2, 3], [5, 2, 1, 4]), [3, 4, 5], "Xor of arrays")
     }
 
     func testAt() {
-        XCTAssertEqualArrays($.at(["ant", "bat", "cat", "dog", "egg"], indexes: 0, 2, 4), ["ant", "cat", "egg"], "At of arrays")
+        XCTAssertEqual($.at(["ant", "bat", "cat", "dog", "egg"], indexes: 0, 2, 4), ["ant", "cat", "egg"], "At of arrays")
     }
 
     func testEvery() {
@@ -246,7 +228,7 @@ class DollarTests: XCTestCase {
 
     func testPluck() {
         let arr = [["age": 20], ["age": 30], ["age": 40]]
-        XCTAssertEqualArrays($.pluck(arr, value: "age"), [20, 30, 40], "Returns values from the object where they key is the value")
+        XCTAssertEqual($.pluck(arr, value: "age"), [20, 30, 40], "Returns values from the object where they key is the value")
     }
 
     func testFrequencies() {
@@ -257,12 +239,12 @@ class DollarTests: XCTestCase {
 
     func testKeys() {
         let dict = ["Dog": 1, "Cat": 2]
-        XCTAssertEqualArrays($.keys(dict), ["Dog", "Cat"], "Returns correct array with keys")
+        XCTAssertEqual($.keys(dict), ["Dog", "Cat"], "Returns correct array with keys")
     }
 
     func testValues() {
         let dict = ["Dog": 1, "Cat": 2]
-        XCTAssertEqualArrays($.values(dict), [1, 2], "Returns correct array with values")
+        XCTAssertEqual($.values(dict), [1, 2], "Returns correct array with values")
     }
     
     func testMerge() {
@@ -274,7 +256,7 @@ class DollarTests: XCTestCase {
         let arr  = [1, 5]
         let arr2 = [2, 4]
         let arr3 = [5, 6]
-        XCTAssertEqualArrays($.merge(arrays: arr, arr2, arr3), [1, 5, 2, 4, 5, 6], "Returns correct merged array")
+        XCTAssertEqual($.merge(arrays: arr, arr2, arr3), [1, 5, 2, 4, 5, 6], "Returns correct merged array")
     }
 
     func testPick() {
@@ -300,13 +282,13 @@ class DollarTests: XCTestCase {
         XCTAssertEqual(chain.first().value()! as Int, 1, "Returns first element which ends the chain")
 
         chain = $(array: [[1, 2], 3, [[4], 5]])
-        XCTAssertEqualArrays(chain.flatten().initial(2).value()! as [Int], [1, 2, 3], "Returns flatten array from chaining")
+        XCTAssertEqual(chain.flatten().initial(2).value()! as [Int], [1, 2, 3], "Returns flatten array from chaining")
 
         chain = $(array: [[1, 2], 3, [[4], 5]])
         XCTAssertEqual(chain.initial().flatten().first().value()! as Int, 1, "Returns flatten array from chaining")
 
         chain = $(array: [[1, 2], 3, [[4], 5]])
-        XCTAssertEqualArrays(chain.flatten().map({ (elem) in elem as Int * 10 }).value()! as [Int], [10, 20, 30, 40, 50], "Returns mapped values")
+        XCTAssertEqual(chain.flatten().map({ (elem) in elem as Int * 10 }).value()! as [Int], [10, 20, 30, 40, 50], "Returns mapped values")
 
         XCTAssertEqual(chain.flatten().map({ (elem) in elem as Int * 10 }).first().value()! as Int, 100, "Returns first element from mapped value")
 
@@ -314,7 +296,7 @@ class DollarTests: XCTestCase {
         var elements: [Int] = []
         chain.each { elements.append($0 as Int) }
         chain.value()
-        XCTAssertEqualArrays(elements as [Int], [10, 20, 30, 40, 50], "Goes through each element in the array")
+        XCTAssertEqual(elements as [Int], [10, 20, 30, 40, 50], "Goes through each element in the array")
 
 // Test given seg fault for some reason
 //        XCTAssertTrue(chain.all({ ($0 as Int) < 100 }).value()! as Bool, "All elements are less than 100")
@@ -323,17 +305,18 @@ class DollarTests: XCTestCase {
 
         elements = [Int]()
         chain.slice(0, end: 3).each { elements.append($0 as Int) }
-        XCTAssertEqualArrays(elements, [10, 20, 30], "Chained seld")
+        XCTAssertEqual(elements, [10, 20, 30], "Chained seld")
 
     }
 
     func testPartial() {
-        let partialFunc = $.partial({(T...) in T[0] + " " + T[1] + " from " + T[2] }, "Hello")
+        let s = "ABCD"
+        let partialFunc = $.partial({(T: String...) in T[0] + " " + T[1] + " from " + T[2] }, "Hello")
         XCTAssertEqual(partialFunc("World", "Swift"), "Hello World from Swift", "Returns curry function that is evaluated")
     }
 
     func testBind() {
-        let helloWorldFunc = $.bind({(T...) in T[0] + " " + T[1] + " from " + T[2] }, "Hello", "World", "Swift")
+        let helloWorldFunc = $.bind({(T: String...) in T[0] + " " + T[1] + " from " + T[2] }, "Hello", "World", "Swift")
         XCTAssertEqual(helloWorldFunc(), "Hello World from Swift", "Returns curry function that is evaluated")
     }
 
@@ -342,7 +325,7 @@ class DollarTests: XCTestCase {
             let people = $.join(names, separator: " from ")
             return "Hello \(people)"
             }, "Ankur", "Swift")
-        XCTAssertEqualArrays($.times(3, function: fun) as [String], ["Hello Ankur from Swift", "Hello Ankur from Swift", "Hello Ankur from Swift"], "Call a function 3 times")
+        XCTAssertEqual($.times(3, function: fun) as [String], ["Hello Ankur from Swift", "Hello Ankur from Swift", "Hello Ankur from Swift"], "Call a function 3 times")
     }
 
     func testAfter() {
@@ -365,15 +348,15 @@ class DollarTests: XCTestCase {
 //    func testPartition() {
 //        var array = [1, 2, 3, 4, 5]
         
-//        XCTAssertEqualArrays($.partition(array, n: 2), [[1, 2], [3, 4]], "Partition uses n for step if not supplied.")
+//        XCTAssertEqual($.partition(array, n: 2), [[1, 2], [3, 4]], "Partition uses n for step if not supplied.")
 //        XCTAssertTrue($.partition(array, n: 2, step: 1) == [[1, 2], [2, 3], [3, 4], [4, 5]], "Partition allows specifying a custom step.")
-//        XCTAssertEqualArrays($.partition(array, n: 2, step: 1, pad: nil), [[1, 2], [2, 3], [3, 4], [4, 5], [5]], "Partition with nil pad allows the last partition to be less than n length")
-//        XCTAssertEqualArrays($.partition(array, n: 4, step: 1, pad: nil), [[1, 2, 3, 4], [2, 3, 4, 5], [3, 4, 5]], "Partition with nil pad stops at the first partition less than n length.")
-//        XCTAssertEqualArrays($.partition(array, n: 2, step: 1, pad: [6,7,8]), [[1, 2], [2, 3], [3, 4], [4, 5], [5, 6]], "Partition pads the last partition to the right length.")
-//        XCTAssertEqualArrays($.partition(array, n: 4, step: 3, pad: [6]), [[1, 2, 3, 4], [4, 5, 6]], "Partition doesn't add more elements than pad has.")
-//        XCTAssertEqualArrays($.partition([1, 2, 3, 4, 5], n: 2, pad: [6]), [[1, 2], [3, 4], [5, 6]], "Partition with pad and no step uses n as step.")
+//        XCTAssertEqual($.partition(array, n: 2, step: 1, pad: nil), [[1, 2], [2, 3], [3, 4], [4, 5], [5]], "Partition with nil pad allows the last partition to be less than n length")
+//        XCTAssertEqual($.partition(array, n: 4, step: 1, pad: nil), [[1, 2, 3, 4], [2, 3, 4, 5], [3, 4, 5]], "Partition with nil pad stops at the first partition less than n length.")
+//        XCTAssertEqual($.partition(array, n: 2, step: 1, pad: [6,7,8]), [[1, 2], [2, 3], [3, 4], [4, 5], [5, 6]], "Partition pads the last partition to the right length.")
+//        XCTAssertEqual($.partition(array, n: 4, step: 3, pad: [6]), [[1, 2, 3, 4], [4, 5, 6]], "Partition doesn't add more elements than pad has.")
+//        XCTAssertEqual($.partition([1, 2, 3, 4, 5], n: 2, pad: [6]), [[1, 2], [3, 4], [5, 6]], "Partition with pad and no step uses n as step.")
 //        XCTAssertTrue($.partition([1, 2, 3, 4, 5, 6], n: 2, step: 4) == [[1, 2], [5, 6]], "Partition step length works.")
-//        XCTAssertEqualArrays($.partition(array, n: 10), [[]], "Partition without pad returns [[]] if n is longer than array.")
+//        XCTAssertEqual($.partition(array, n: 10), [[]], "Partition without pad returns [[]] if n is longer than array.")
 //    }
     
 //    func testPartitionAll() {
@@ -391,7 +374,7 @@ class DollarTests: XCTestCase {
 //    }
     
     func testMap() {
-        XCTAssertEqualArrays($.map([1, 2, 3, 4, 5]) { $0 * 2 }, [2, 4, 6, 8, 10], "Map function should double values in the array")
+        XCTAssertEqual($.map([1, 2, 3, 4, 5]) { $0 * 2 }, [2, 4, 6, 8, 10], "Map function should double values in the array")
     }
     
     func testReduce() {
@@ -400,14 +383,14 @@ class DollarTests: XCTestCase {
 
     
     func testSlice() {
-        XCTAssertEqualArrays($.slice([1,2,3,4,5], start: 0, end: 2), [1, 2], "Slice subarray 0..2")
-        XCTAssertEqualArrays($.slice([1,2,3,4,5], start: 0), [1, 2, 3, 4, 5], "Slice at 0 is whole array")
-        XCTAssertEqualArrays($.slice([1,2,3,4,5], start: 3), [4, 5], "Slice with start goes till end")
-        XCTAssertEqualArrays($.slice([1,2,3,4,5], start: 8), [], "Slice out of bounds is empty")
-        XCTAssertEqualArrays($.slice([1,2,3,4,5], start: 8, end: 10), [], "Slice out of bounds is empty")
-        XCTAssertEqualArrays($.slice([1,2,3,4,5], start: 8 , end: 2), [], "Slice with end < start is empty")
-        XCTAssertEqualArrays($.slice([1,2,3,4,5], start: 3, end: 3), [], "Slice at x and x is empty")
-        XCTAssertEqualArrays($.slice([1,2,3,4,5], start: 2, end: 5), [3,4,5], "Slice at x and x is subarray")
+        XCTAssertEqual($.slice([1,2,3,4,5], start: 0, end: 2), [1, 2], "Slice subarray 0..2")
+        XCTAssertEqual($.slice([1,2,3,4,5], start: 0), [1, 2, 3, 4, 5], "Slice at 0 is whole array")
+        XCTAssertEqual($.slice([1,2,3,4,5], start: 3), [4, 5], "Slice with start goes till end")
+        XCTAssertEqual($.slice([1,2,3,4,5], start: 8), [], "Slice out of bounds is empty")
+        XCTAssertEqual($.slice([1,2,3,4,5], start: 8, end: 10), [], "Slice out of bounds is empty")
+        XCTAssertEqual($.slice([1,2,3,4,5], start: 8 , end: 2), [], "Slice with end < start is empty")
+        XCTAssertEqual($.slice([1,2,3,4,5], start: 3, end: 3), [], "Slice at x and x is empty")
+        XCTAssertEqual($.slice([1,2,3,4,5], start: 2, end: 5), [3,4,5], "Slice at x and x is subarray")
     }
     
     func testFib() {
