@@ -295,9 +295,10 @@ public class Dollar {
     public class func after<T, E>(n: Int, function: (T...) -> E) -> ((T...) -> E?) {
         var counter = n
         return { (params: T...) -> E? in
-            typealias TType = (T...)
+            typealias Function = [T] -> E
             if --counter <= 0 {
-                return function(unsafeBitCast(params, TType.self))
+                let f = unsafeBitCast(function, Function.self)
+                return f(params)
             }
             return nil
         }
@@ -346,8 +347,9 @@ public class Dollar {
     /// :return A new function that when called will invoked the passed function with the parameters specified.
     public class func bind<T, E>(function: (T...) -> E, _ parameters: T...) -> (() -> E) {
         return { () -> E in
-            typealias TType = (T...)
-            return function(unsafeBitCast(parameters, TType.self))
+            typealias Function = [T] -> E
+            let f = unsafeBitCast(function, Function.self)
+            return f(parameters)
         }
     }
     
@@ -870,8 +872,9 @@ public class Dollar {
     /// :return First element from the array.
     public class func partial<T, E> (function: (T...) -> E, _ parameters: T...) -> ((T...) -> E) {
         return { (params: T...) -> E in
-            typealias TType = (T...)
-            return function(unsafeBitCast(parameters + params, TType.self))
+            typealias Function = [T] -> E
+            let f = unsafeBitCast(function, Function.self)
+            return f(parameters + params)
         }
     }
     
