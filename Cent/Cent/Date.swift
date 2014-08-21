@@ -24,7 +24,7 @@ extension NSDate {
         
         var gregorian = NSCalendar(identifier:NSGregorianCalendar)
         var date = gregorian.dateFromComponents(c)
-        return date
+        return date!
     }
 
     /// Parses the date based on the format and return a new Date
@@ -36,7 +36,7 @@ extension NSDate {
         var dateFmt = NSDateFormatter()
         dateFmt.timeZone = NSTimeZone.defaultTimeZone()
         dateFmt.dateFormat = format
-        return dateFmt.dateFromString(dateStr)
+        return dateFmt.dateFromString(dateStr)!
     }
 }
 
