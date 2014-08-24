@@ -31,7 +31,7 @@ public class Dollar {
     //
     
     private var resultArray: [AnyObject] = []
-    
+
     private var lazyQueue: [(AnyObject) -> (AnyObject?)] = []
     
     /// Initializer of the wrapper object for chaining.
@@ -294,10 +294,11 @@ public class Dollar {
     /// :return Function that can be called n times after which the callback function is called.
     public class func after<T, E>(n: Int, function: (T...) -> E) -> ((T...) -> E?) {
         var counter = n
-        return { (params: (T...)) -> E? in
-            typealias TType = (T...)
+        return { (params: T...) -> E? in
+            typealias Function = [T] -> E
             if --counter <= 0 {
-                return function(unsafeBitCast(params, TType.self))
+                let f = unsafeBitCast(function, Function.self)
+                return f(params)
             }
             return nil
         }
@@ -309,7 +310,7 @@ public class Dollar {
     /// :param function Function to be called that does not take any params.
     /// :return Function that can be called n times after which the callback function is called.
     public class func after<T>(n: Int, function: () -> T) -> (() -> T?) {
-        let f = self.after(n) { (params: (Any?...)) -> T? in
+        let f = self.after(n) { (params: Any?...) -> T? in
             return function()
         }
         return { f()? }
@@ -346,8 +347,9 @@ public class Dollar {
     /// :return A new function that when called will invoked the passed function with the parameters specified.
     public class func bind<T, E>(function: (T...) -> E, _ parameters: T...) -> (() -> E) {
         return { () -> E in
-            typealias TType = (T...)
-            return function(unsafeBitCast(parameters, TType.self))
+            typealias Function = [T] -> E
+            let f = unsafeBitCast(function, Function.self)
+            return f(parameters)
         }
     }
     
@@ -385,7 +387,7 @@ public class Dollar {
         }
         return newArr
     }
-    
+        
     /// Creates an array excluding all values of the provided arrays.
     ///
     /// :param arrays The arrays to difference between.
@@ -734,7 +736,7 @@ public class Dollar {
     public class func keys<T, U>(dictionary: [T: U]) -> [T] {
         var result : [T] = []
         for (key, _) in dictionary {
-            result.insert(key, atIndex: 0)
+            result.append(key)
         }
         return result
     }
@@ -870,8 +872,9 @@ public class Dollar {
     /// :return First element from the array.
     public class func partial<T, E> (function: (T...) -> E, _ parameters: T...) -> ((T...) -> E) {
         return { (params: T...) -> E in
-            typealias TType = (T...)
-            return function(unsafeBitCast(parameters + params, TType.self))
+            typealias Function = [T] -> E
+            let f = unsafeBitCast(function, Function.self)
+            return f(parameters + params)
         }
     }
     
@@ -1211,7 +1214,7 @@ public class Dollar {
     public class func values<T, U>(dictionary: [T: U]) -> [U] {
         var result : [U] = []
         for (_, value) in dictionary {
-            result.insert(value, atIndex: 0)
+            result.append(value)
         }
         return result
     }
@@ -1278,4 +1281,5 @@ public class Dollar {
 }
 
 public typealias $ = Dollar
+
 
