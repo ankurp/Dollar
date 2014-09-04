@@ -305,7 +305,8 @@ class DollarTests: XCTestCase {
 
         elements = [Int]()
         chain.slice(0, end: 3).each { elements.append($0 as Int) }
-        XCTAssertEqual(elements, [10, 20, 30], "Chained seld")
+        chain.value()
+        XCTAssertEqual(elements, [10, 20, 30, 40, 50, 10, 20, 30], "Chained seld")
 
     }
 
