@@ -53,6 +53,8 @@ Currently there are issues loading the library using `pod 'Dollar'` which is pen
 5. Expand the "Link Binary with Libraries" group, and add Dollar.framework.
 6. In your project file `import Dollar` and you can call all of the helper functions.
 
+![How to import library](https://raw.githubusercontent.com/ankurp/Dollar.swift/master/assets/HowToImport.gif)
+
 ## Dollar Usage ##
 
 ### Array Methods ###
