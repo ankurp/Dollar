@@ -43,13 +43,15 @@ Cent is a library that extends certain Swift object types using the extension fe
 - [Dollar or Cent?](#dollar-or-cent)
 
 ## Setup ##
-* Include the `Dollar` framework by dragging it into your project and import the library in your code using `import Dollar`
-OR
-* Include the `Cent` framework by dragging it into your project and import the library in your code using `import Cent`
 
-Currently there are issues loading the library using `pod 'Dollar'` which is pending changes from Cocoapods.
+Currently there are issues loading the library using `pod 'Dollar'` which is pending changes from Cocoapods. In the mean time follow these steps
 
-![How to import library](https://raw.githubusercontent.com/ankurp/Dollar.swift/master/assets/HowToImport.gif)
+1. Add Dollar as a submodule using the Terminal. In your top level project directory add Dollar project using `git submodule add https://github.com/ankurp/Dollar.swift.git`
+2. Open the Dollar folder, and drag Dollar.xcodeproj into the file navigator of your Xcode project.
+3. In Xcode, navigate to the target configuration window by clicking on the blue project icon, and selecting the application target under the "Targets" heading in the sidebar.
+4. In the tab bar at the top of that window, open the "Build Phases" panel.
+5. Expand the "Link Binary with Libraries" group, and add Dollar.framework.
+6. In your project file `import Dollar` and you can call all of the helper functions.
 
 ## Dollar Usage ##
 
