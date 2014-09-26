@@ -381,11 +381,7 @@ public class Dollar {
     /// :param array The array to copy
     /// :return New copy of array
     public class func copy<T>(array: [T]) -> [T] {
-        var newArr : [T] = []
-        for elem in array {
-            newArr.append(elem)
-        }
-        return newArr
+        return array
     }
         
     /// Creates an array excluding all values of the provided arrays.
