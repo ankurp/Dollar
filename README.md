@@ -46,8 +46,8 @@ Cent is a library that extends certain Swift object types using the extension fe
 
 Currently there are issues loading the library using `pod 'Dollar'` which is pending changes from Cocoapods. In the mean time follow these steps
 
-1. Add Dollar as a submodule using the Terminal. In your top level project directory add Dollar project using `git submodule add https://github.com/ankurp/Dollar.swift.git`
-2. Open the Dollar folder, and drag Dollar.xcodeproj into the file navigator of your Xcode project.
+1. If you are using git then add Dollar as a submodule using `git submodule add https://github.com/ankurp/Dollar.swift.git` otherwise download the project using `git clone https://github.com/ankurp/Dollar.swift.git` in your project folder.
+2. Open the Dollar.swift folder. Drag Dollar.xcodeproj, inside the Dollar folder, into the file navigator of your Xcode project.
 3. In Xcode, navigate to the target configuration window by clicking on the blue project icon, and selecting the application target under the "Targets" heading in the sidebar.
 4. In the tab bar at the top of that window, open the "Build Phases" panel.
 5. Expand the "Link Binary with Libraries" group, and add Dollar.framework.
