@@ -105,14 +105,15 @@
 <p>Currently there are issues loading the library using <code>pod 'Dollar'</code> which is pending changes from Cocoapods. In the mean time follow these steps</p>
 
 <ol>
-<li>Add Dollar as a submodule using the Terminal. In your top level project directory add Dollar project using <code>git submodule add https://github.com/ankurp/Dollar.swift.git</code>
-</li>
-<li>Open the Dollar folder, and drag Dollar.xcodeproj into the file navigator of your Xcode project.</li>
+<li>If you are using git then add Dollar as a submodule using <code>git submodule add https://github.com/ankurp/Dollar.swift.git</code> otherwise download the project using <code>git clone https://github.com/ankurp/Dollar.swift.git</code> in your project folder.</li>
+<li>Open the Dollar.swift folder. Drag Dollar.xcodeproj, inside the Dollar folder, into the file navigator of your Xcode project.</li>
 <li>In Xcode, navigate to the target configuration window by clicking on the blue project icon, and selecting the application target under the "Targets" heading in the sidebar.</li>
 <li>In the tab bar at the top of that window, open the "Build Phases" panel.</li>
 <li>Expand the "Link Binary with Libraries" group, and add Dollar.framework.</li>
 <li>In your project file <code>import Dollar</code> and you can call all of the helper functions.</li>
-</ol><h2>
+</ol><p><img src="https://raw.githubusercontent.com/ankurp/Dollar.swift/master/assets/HowToImport.gif" alt="How to import library"></p>
+
+<h2>
 <a name="dollar-usage" class="anchor" href="#dollar-usage"><span class="octicon octicon-link"></span></a>Dollar Usage</h2>
 
 <h3>
