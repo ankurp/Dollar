@@ -38,6 +38,15 @@ extension NSDate {
         dateFmt.dateFormat = format
         return dateFmt.dateFromString(dateStr)!
     }
+    
+    /// Returns the unix timestamp of the date passed in or
+    /// the current unix timestamp
+    ///
+    /// :param date
+    /// :return Double
+    public class func unix(_ date: NSDate = NSDate()) -> Double {
+       return date.timeIntervalSince1970 as Double
+    }
 }
 
 typealias Date = NSDate
