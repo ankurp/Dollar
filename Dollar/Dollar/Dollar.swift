@@ -438,7 +438,7 @@ public class Dollar {
     /// :param array The array to search for the element in.
     /// :param iterator The iterator function to tell whether element is found.
     /// :return Optional containing either found element or nil.
-    public class func find<T: Equatable>(array: [T], iterator: (T) -> Bool) -> T? {
+    public class func find<T>(array: [T], iterator: (T) -> Bool) -> T? {
         for elem in array {
             let result = iterator(elem)
             if result {
