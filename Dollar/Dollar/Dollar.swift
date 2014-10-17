@@ -885,14 +885,14 @@ public class Dollar {
     /// :param n The number of elements in each partition.
     /// :param step The number of elements to progress between each partition. Set to n if not supplied.
     /// :return Array partitioned into n element arrays, starting step elements apart.
-    public class func partition<T>(array: [T], var n: Int, var step: Int? = nil) -> [[T]] {
+    public class func partition<T>(array: [T], var n: Int, var step: Int? = .None) -> [[T]] {
         var result = [[T]]()
-        if step != .None   { step = n } // If no step is supplied move n each step.
-        if step < 1 { step = 1 } // Less than 1 results in an infinite loop.
-        if n < 1    { n = 0 }    // Allow 0 if user wants [[],[],[]] for some reason.
-        if n > array.count { return [[]] }
+        if step == .None    { step = n } // If no step is supplied move n each step.
+        if step < 1         { step = 1 } // Less than 1 results in an infinite loop.
+        if n < 1            { n = 0 }    // Allow 0 if user wants [[],[],[]] for some reason.
+        if n > array.count  { return [[]] }
         
-        for i in self.range(0, endVal: array.count - n, incrementBy: step!) {
+        for i in self.range(from: 0, through: array.count - n, incrementBy: step!) {
             result.append(Array(array[i..<(i+n)] as Slice<T>))
         }
         return result
@@ -907,14 +907,14 @@ public class Dollar {
     ///            contain n elements. If nil is passed or there are not enough pad elements
     ///            the last partition may less than n elements long.
     /// :return Array partitioned into n element arrays, starting step elements apart.
-    public class func partition<T>(var array: [T], var n: Int, var step: Int? = nil, pad: [T]?) -> [[T]] {
+    public class func partition<T>(var array: [T], var n: Int, var step: Int? = .None, pad: [T]?) -> [[T]] {
         var result : [[T]] = []
-        if step? != .None   { step = n } // If no step is supplied move n each step.
+        if step? == .None   { step = n } // If no step is supplied move n each step.
         if step < 1 { step = 1 } // Less than 1 results in an infinite loop.
         if n < 1    { n = 0 }    // Allow 0 if user wants [[],[],[]] for some reason.
         
-        for i in self.range(0, endVal: array.count, incrementBy: step!) {
-            var end = i+n
+        for i in self.range(from: 0, to: array.count, incrementBy: step!) {
+            var end = i + n
             if end > array.count { end = array.count }
             result.append(Array(array[i..<end] as Slice<T>))
             if end != i+n { break }
@@ -934,14 +934,14 @@ public class Dollar {
     /// :param n The number of elements in each partition.
     /// :param step The number of elements to progress between each partition. Set to n if not supplied.
     /// :return Array partitioned into n element arrays, starting step elements apart.
-    public class func partitionAll<T>(array: [T], var n: Int, var step: Int? = nil) -> [[T]] {
+    public class func partitionAll<T>(array: [T], var n: Int, var step: Int? = .None) -> [[T]] {
         var result = [[T]]()
-        if step? != .None { step = n } // If no step is supplied move n each step.
+        if step? == .None { step = n } // If no step is supplied move n each step.
         if step < 1 { step = 1 } // Less than 1 results in an infinite loop.
         if n < 1    { n = 0 }    // Allow 0 if user wants [[],[],[]] for some reason.
         
-        for i in self.range(0, endVal: array.count, incrementBy: step!) {
-            var end = i+n
+        for i in self.range(from: 0, to: array.count, incrementBy: step!) {
+            var end = i + n
             if end > array.count { end = array.count }
             result.append(Array(array[i..<end] as Slice<T>))
         }
@@ -955,7 +955,7 @@ public class Dollar {
     /// :return Array partitioned in order, splitting via results of function.
     public class func partitionBy<T, U: Equatable>(array: [T], function: (T) -> U) -> [[T]] {
         var result = [[T]]()
-        var lastValue: U? = nil
+        var lastValue: U? = .None
         
         for item in array {
             let value = function(item)
@@ -1020,27 +1020,46 @@ public class Dollar {
     /// :param endVal End value of range.
     /// :return Array of elements based on the sequence starting from 0 to endVal and incremented by 1.
     public class func range<T : Strideable where T : IntegerLiteralConvertible>(endVal: T) -> [T] {
-        return self.range(0, endVal: endVal)
+        return self.range(from: 0, to: endVal)
     }
     
     /// Creates an array of numbers (positive and/or negative) progressing from start up to but not including end.
     ///
-    /// :param startVal Start value of range
-    /// :param endVal End value of range
+    /// :param from Start value of range
+    /// :param to End value of range
     /// :return Array of elements based on the sequence that is incremented by 1
-    public class func range<T : Strideable where T.Stride : IntegerLiteralConvertible>(startVal: T, endVal: T) -> [T] {
-        return self.range(startVal, endVal: endVal, incrementBy: 1)
+    public class func range<T : Strideable where T.Stride : IntegerLiteralConvertible>(from startVal: T, to endVal: T) -> [T] {
+        return self.range(from: startVal, to: endVal, incrementBy: 1)
     }
     
     /// Creates an array of numbers (positive and/or negative) progressing from start up to but not including end.
     ///
-    /// :param startVal Start value of range.
-    /// :param endVal End value of range.
+    /// :param from Start value of range.
+    /// :param to End value of range.
     /// :param incrementBy Increment sequence by.
     /// :return Array of elements based on the sequence.
-    public class func range<T : Strideable>(startVal: T, endVal: T, incrementBy: T.Stride) -> [T] {
+    public class func range<T : Strideable>(from startVal: T, to endVal: T, incrementBy: T.Stride) -> [T] {
         var range = Swift.stride(from: startVal, to: endVal, by: incrementBy)
         return self.sequence(range)
+    }
+    
+    /// Creates an array of numbers (positive and/or negative) progressing from start up to but not including end.
+    ///
+    /// :param from Start value of range
+    /// :param through End value of range
+    /// :return Array of elements based on the sequence that is incremented by 1
+    public class func range<T : Strideable where T.Stride : IntegerLiteralConvertible>(from startVal: T, through endVal: T) -> [T] {
+        return self.range(from: startVal, to: endVal + 1, incrementBy: 1)
+    }
+    
+    /// Creates an array of numbers (positive and/or negative) progressing from start up to but not including end.
+    ///
+    /// :param from Start value of range.
+    /// :param through End value of range.
+    /// :param incrementBy Increment sequence by.
+    /// :return Array of elements based on the sequence.
+    public class func range<T : Strideable>(from startVal: T, through endVal: T, incrementBy: T.Stride) -> [T] {
+        return self.range(from: startVal, to: endVal + 1, incrementBy: incrementBy)
     }
     
     /// Reduce function that will resolve to one value after performing combine function on all elements
