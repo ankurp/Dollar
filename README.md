@@ -419,11 +419,17 @@ Creates an array of numbers (positive and/or negative) progressing from start up
 $.range(4) 
 => [0, 1, 2, 3]
 
-$.range(1, endVal: 5) 
+$.range(from: 1, to: 5) 
 => [1, 2, 3, 4]
 
-$.range(0, endVal: 20, incrementBy: 5) 
+$.range(from: 0, to: 20, incrementBy: 5) 
 => [0, 5, 10, 15]
+
+$.range(from: 1, through: 5)
+=> [1, 2, 3, 4, 5]
+
+$.range(from: 0, through: 20, incrementBy: 5)
+=> [0, 5, 10, 15, 20]
 ```
 
 ### sample - `$.sample`
