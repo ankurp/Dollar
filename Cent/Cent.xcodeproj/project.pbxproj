@@ -13,11 +13,8 @@
 		920C56A419625401009D5129 /* Range.swift in Sources */ = {isa = PBXBuildFile; fileRef = 920C56A319625401009D5129 /* Range.swift */; };
 		920C56A8196255E6009D5129 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 920C56A7196255E6009D5129 /* Date.swift */; };
 		924F92E2195F8338003DBB60 /* Cent.h in Headers */ = {isa = PBXBuildFile; fileRef = 924F92E1195F8338003DBB60 /* Cent.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		924F92E8195F8338003DBB60 /* Cent.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 924F92DC195F8338003DBB60 /* Cent.framework */; };
-		924F92EF195F8338003DBB60 /* CentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 924F92EE195F8338003DBB60 /* CentTests.swift */; };
 		924F92F9195F8530003DBB60 /* Dollar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 924F92F8195F8530003DBB60 /* Dollar.framework */; };
 		924F92FB195F854B003DBB60 /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = 924F92FA195F854B003DBB60 /* Array.swift */; };
-		924F92FC195F88D7003DBB60 /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = 924F92FA195F854B003DBB60 /* Array.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,11 +26,11 @@
 		924F92DC195F8338003DBB60 /* Cent.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Cent.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		924F92E0195F8338003DBB60 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		924F92E1195F8338003DBB60 /* Cent.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Cent.h; sourceTree = "<group>"; };
-		924F92E7195F8338003DBB60 /* CentTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CentTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		924F92ED195F8338003DBB60 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		924F92EE195F8338003DBB60 /* CentTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CentTests.swift; sourceTree = "<group>"; };
 		924F92F8195F8530003DBB60 /* Dollar.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Dollar.framework; path = "../../../Library/Developer/Xcode/DerivedData/Dollar-cnpzzqqzcseuvucrfghsizcweovz/Build/Products/Debug/Dollar.framework"; sourceTree = "<group>"; };
 		924F92FA195F854B003DBB60 /* Array.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Array.swift; sourceTree = "<group>"; };
+		92E6688119F0B89600BB4FB8 /* CentTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CentTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -45,11 +42,10 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		924F92E4195F8338003DBB60 /* Frameworks */ = {
+		92E6687E19F0B89600BB4FB8 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				924F92E8195F8338003DBB60 /* Cent.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -70,7 +66,7 @@
 			isa = PBXGroup;
 			children = (
 				924F92DC195F8338003DBB60 /* Cent.framework */,
-				924F92E7195F8338003DBB60 /* CentTests.xctest */,
+				92E6688119F0B89600BB4FB8 /* CentTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -147,13 +143,13 @@
 			productReference = 924F92DC195F8338003DBB60 /* Cent.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		924F92E6195F8338003DBB60 /* CentTests */ = {
+		92E6688019F0B89600BB4FB8 /* CentTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 924F92F5195F8338003DBB60 /* Build configuration list for PBXNativeTarget "CentTests" */;
+			buildConfigurationList = 92E6688719F0B89700BB4FB8 /* Build configuration list for PBXNativeTarget "CentTests" */;
 			buildPhases = (
-				924F92E3195F8338003DBB60 /* Sources */,
-				924F92E4195F8338003DBB60 /* Frameworks */,
-				924F92E5195F8338003DBB60 /* Resources */,
+				92E6687D19F0B89600BB4FB8 /* Sources */,
+				92E6687E19F0B89600BB4FB8 /* Frameworks */,
+				92E6687F19F0B89600BB4FB8 /* Resources */,
 			);
 			buildRules = (
 			);
@@ -161,7 +157,7 @@
 			);
 			name = CentTests;
 			productName = CentTests;
-			productReference = 924F92E7195F8338003DBB60 /* CentTests.xctest */;
+			productReference = 92E6688119F0B89600BB4FB8 /* CentTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -176,9 +172,8 @@
 					924F92DB195F8338003DBB60 = {
 						CreatedOnToolsVersion = 6.0;
 					};
-					924F92E6195F8338003DBB60 = {
-						CreatedOnToolsVersion = 6.0;
-						TestTargetID = 924F92DB195F8338003DBB60;
+					92E6688019F0B89600BB4FB8 = {
+						CreatedOnToolsVersion = 6.0.1;
 					};
 				};
 			};
@@ -195,7 +190,7 @@
 			projectRoot = "";
 			targets = (
 				924F92DB195F8338003DBB60 /* Cent */,
-				924F92E6195F8338003DBB60 /* CentTests */,
+				92E6688019F0B89600BB4FB8 /* CentTests */,
 			);
 		};
 /* End PBXProject section */
@@ -208,7 +203,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		924F92E5195F8338003DBB60 /* Resources */ = {
+		92E6687F19F0B89600BB4FB8 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -231,12 +226,10 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		924F92E3195F8338003DBB60 /* Sources */ = {
+		92E6687D19F0B89600BB4FB8 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				924F92FC195F88D7003DBB60 /* Array.swift in Sources */,
-				924F92EF195F8338003DBB60 /* CentTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -369,12 +362,11 @@
 			};
 			name = Release;
 		};
-		924F92F6195F8338003DBB60 /* Debug */ = {
+		92E6688819F0B89700BB4FB8 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
 				);
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -382,24 +374,26 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = CentTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
-				METAL_ENABLE_DEBUG_INFO = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MTL_ENABLE_DEBUG_INFO = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
 		};
-		924F92F7195F8338003DBB60 /* Release */ = {
+		92E6688919F0B89700BB4FB8 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = CentTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
-				METAL_ENABLE_DEBUG_INFO = NO;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MTL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
 		};
@@ -424,14 +418,13 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		924F92F5195F8338003DBB60 /* Build configuration list for PBXNativeTarget "CentTests" */ = {
+		92E6688719F0B89700BB4FB8 /* Build configuration list for PBXNativeTarget "CentTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				924F92F6195F8338003DBB60 /* Debug */,
-				924F92F7195F8338003DBB60 /* Release */,
+				92E6688819F0B89700BB4FB8 /* Debug */,
+				92E6688919F0B89700BB4FB8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
