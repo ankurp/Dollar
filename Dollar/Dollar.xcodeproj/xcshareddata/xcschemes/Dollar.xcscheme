@@ -32,7 +32,7 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "92E0D04619467C67002ACC3D"
+               BlueprintIdentifier = "92E6686E19F09C6400BB4FB8"
                BuildableName = "DollarTests.xctest"
                BlueprintName = "DollarTests"
                ReferencedContainer = "container:Dollar.xcodeproj">
@@ -49,6 +49,15 @@
       ignoresPersistentStateOnLaunch = "NO"
       debugDocumentVersioning = "YES"
       allowLocationSimulation = "YES">
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "92E0D03B19467C67002ACC3D"
+            BuildableName = "Dollar.framework"
+            BlueprintName = "Dollar"
+            ReferencedContainer = "container:Dollar.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </LaunchAction>
