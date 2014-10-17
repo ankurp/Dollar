@@ -99,7 +99,9 @@
 <li><a href="#contributing">Contributing</a></li>
 <li><a href="#roadmap">Roadmap</a></li>
 <li><a href="#dollar-or-cent">Dollar or Cent?</a></li>
-</ul><h2>
+</ul>
+
+<h2>
 <a name="setup" class="anchor" href="#setup"><span class="octicon octicon-link"></span></a>Setup</h2>
 
 <p>Currently there are issues loading the library using <code>pod 'Dollar'</code> which is pending changes from Cocoapods. In the mean time follow these steps</p>
@@ -111,7 +113,9 @@
 <li>In the tab bar at the top of that window, open the "Build Phases" panel.</li>
 <li>Expand the "Link Binary with Libraries" group, and add Dollar.framework.</li>
 <li>In your project file <code>import Dollar</code> and you can call all of the helper functions.</li>
-</ol><p><img src="https://raw.githubusercontent.com/ankurp/Dollar.swift/master/assets/HowToImport.gif" alt="How to import library"></p>
+</ol>
+
+<p><img src="https://raw.githubusercontent.com/ankurp/Dollar.swift/master/assets/HowToImport.gif" alt="How to import library"></p>
 
 <h2>
 <a name="dollar-usage" class="anchor" href="#dollar-usage"><span class="octicon octicon-link"></span></a>Dollar Usage</h2>
@@ -120,10 +124,12 @@
 <a name="array-methods" class="anchor" href="#array-methods"><span class="octicon octicon-link"></span></a>Array Methods</h3>
 
 <table>
-<thead><tr>
+<thead>
+<tr>
 <th>Method</th>
 <th>Usage</th>
-</tr></thead>
+</tr>
+</thead>
 <tbody>
 <tr>
 <td><strong><code>$.at</code></strong></td>
@@ -286,14 +292,18 @@
 <td>Applies a function to each element in array, splitting it each time the function returns a new value.</td>
 </tr>
 </tbody>
-</table><h3>
+</table>
+
+<h3>
 <a name="dictionary-methods" class="anchor" href="#dictionary-methods"><span class="octicon octicon-link"></span></a>Dictionary Methods</h3>
 
 <table>
-<thead><tr>
+<thead>
+<tr>
 <th>Method</th>
 <th>Usage</th>
-</tr></thead>
+</tr>
+</thead>
 <tbody>
 <tr>
 <td><strong><code>$.keys</code></strong></td>
@@ -316,26 +326,36 @@
 <td>Creates a shallow clone of a dictionary excluding the specified keys.</td>
 </tr>
 </tbody>
-</table><h3>
+</table>
+
+<h3>
 <a name="object-methods" class="anchor" href="#object-methods"><span class="octicon octicon-link"></span></a>Object Methods</h3>
 
 <table>
-<thead><tr>
+<thead>
+<tr>
 <th>Method</th>
 <th>Usage</th>
-</tr></thead>
-<tbody><tr>
+</tr>
+</thead>
+<tbody>
+<tr>
 <td><strong><code>$.tap</code></strong></td>
 <td>Invokes interceptor with the object and then returns object.</td>
-</tr></tbody>
-</table><h3>
+</tr>
+</tbody>
+</table>
+
+<h3>
 <a name="function-methods" class="anchor" href="#function-methods"><span class="octicon octicon-link"></span></a>Function Methods</h3>
 
 <table>
-<thead><tr>
+<thead>
+<tr>
 <th>Method</th>
 <th>Usage</th>
-</tr></thead>
+</tr>
+</thead>
 <tbody>
 <tr>
 <td><strong><code>$.after</code></strong></td>
@@ -366,16 +386,20 @@
 <td>Call a function n times and also passes the index. If a value is returned in the function then the times method will return an array of those values.</td>
 </tr>
 </tbody>
-</table><h3>
+</table>
+
+<h3>
 <a name="chaining" class="anchor" href="#chaining"><span class="octicon octicon-link"></span></a>Chaining</h3>
 
 <p><strong><code>$(array: ...)</code></strong></p>
 
 <table>
-<thead><tr>
+<thead>
+<tr>
 <th>Method</th>
 <th>Usage</th>
-</tr></thead>
+</tr>
+</thead>
 <tbody>
 <tr>
 <td><strong><code>any</code></strong></td>
@@ -426,7 +450,9 @@
 <td>Returns the value after evaluating all callbacks</td>
 </tr>
 </tbody>
-</table><h2>
+</table>
+
+<h2>
 <a name="dollar-examples" class="anchor" href="#dollar-examples"><span class="octicon octicon-link"></span></a>Dollar Examples</h2>
 
 <h3>
@@ -720,11 +746,17 @@ $.second([])
 <div class="highlight highlight-swift"><pre><span class="err">$</span><span class="p">.</span><span class="n">range</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span> 
 <span class="o">=&gt;</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
 
-<span class="err">$</span><span class="p">.</span><span class="n">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nl">endVal</span><span class="p">:</span> <span class="mi">5</span><span class="p">)</span> 
+<span class="err">$</span><span class="p">.</span><span class="n">range</span><span class="p">(</span><span class="nl">from</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="nl">to</span><span class="p">:</span> <span class="mi">5</span><span class="p">)</span> 
 <span class="o">=&gt;</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
 
-<span class="err">$</span><span class="p">.</span><span class="n">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nl">endVal</span><span class="p">:</span> <span class="mi">20</span><span class="p">,</span> <span class="nl">incrementBy</span><span class="p">:</span> <span class="mi">5</span><span class="p">)</span> 
+<span class="err">$</span><span class="p">.</span><span class="n">range</span><span class="p">(</span><span class="nl">from</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="nl">to</span><span class="p">:</span> <span class="mi">20</span><span class="p">,</span> <span class="nl">incrementBy</span><span class="p">:</span> <span class="mi">5</span><span class="p">)</span> 
 <span class="o">=&gt;</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">15</span><span class="p">]</span>
+
+<span class="err">$</span><span class="p">.</span><span class="n">range</span><span class="p">(</span><span class="nl">from</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="nl">through</span><span class="p">:</span> <span class="mi">5</span><span class="p">)</span>
+<span class="o">=&gt;</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
+
+<span class="err">$</span><span class="p">.</span><span class="n">range</span><span class="p">(</span><span class="nl">from</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="nl">through</span><span class="p">:</span> <span class="mi">20</span><span class="p">,</span> <span class="nl">incrementBy</span><span class="p">:</span> <span class="mi">5</span><span class="p">)</span>
+<span class="o">=&gt;</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">20</span><span class="p">]</span>
 </pre></div>
 
 <h3>
@@ -1129,10 +1161,12 @@ $.contains(arr, value: $.sample(arr))
 <a name="array-extensions" class="anchor" href="#array-extensions"><span class="octicon octicon-link"></span></a>Array Extensions</h3>
 
 <table>
-<thead><tr>
+<thead>
+<tr>
 <th>Method</th>
 <th>Usage</th>
-</tr></thead>
+</tr>
+</thead>
 <tbody>
 <tr>
 <td><strong><code>at(indexes: Int...) -&gt; [Element]</code></strong></td>
@@ -1183,14 +1217,18 @@ $.contains(arr, value: $.sample(arr))
 <td>Retrieves the maximum value in an array.</td>
 </tr>
 </tbody>
-</table><h3>
+</table>
+
+<h3>
 <a name="date-extensions" class="anchor" href="#date-extensions"><span class="octicon octicon-link"></span></a>Date Extensions</h3>
 
 <table>
-<thead><tr>
+<thead>
+<tr>
 <th>Method</th>
 <th>Usage</th>
-</tr></thead>
+</tr>
+</thead>
 <tbody>
 <tr>
 <td><strong><code>Date.from(#year: Int, month: Int, day: Int) -&gt; NSDate</code></strong></td>
@@ -1200,15 +1238,23 @@ $.contains(arr, value: $.sample(arr))
 <td><strong><code>Date.parse(dateStr: String, format: String = "yyyy-MM-dd") -&gt; NSDate</code></strong></td>
 <td>Parses the date based on the format and return a new Date</td>
 </tr>
+<tr>
+<td><strong><code>Date.unix(date: NSDate = NSDate()) -&gt; Double</code></strong></td>
+<td>Returns the unix timestamp of the date passed in or the current unix timestamp</td>
+</tr>
 </tbody>
-</table><h3>
+</table>
+
+<h3>
 <a name="dictionary-extensions" class="anchor" href="#dictionary-extensions"><span class="octicon octicon-link"></span></a>Dictionary Extensions</h3>
 
 <table>
-<thead><tr>
+<thead>
+<tr>
 <th>Method</th>
 <th>Usage</th>
-</tr></thead>
+</tr>
+</thead>
 <tbody>
 <tr>
 <td><strong><code>isEmpty () -&gt; Bool</code></strong></td>
@@ -1219,14 +1265,18 @@ $.contains(arr, value: $.sample(arr))
 <td>Merges the dictionary with dictionaries passed. The latter dictionaries will override values of the keys that are already set</td>
 </tr>
 </tbody>
-</table><h3>
+</table>
+
+<h3>
 <a name="int-extensions" class="anchor" href="#int-extensions"><span class="octicon octicon-link"></span></a>Int Extensions</h3>
 
 <table>
-<thead><tr>
+<thead>
+<tr>
 <th>Method</th>
 <th>Usage</th>
-</tr></thead>
+</tr>
+</thead>
 <tbody>
 <tr>
 <td><strong><code>times(callback: (Int) -&gt; ())</code></strong></td>
@@ -1237,14 +1287,18 @@ $.contains(arr, value: $.sample(arr))
 <td>Invoke a callback n times</td>
 </tr>
 </tbody>
-</table><h3>
+</table>
+
+<h3>
 <a name="string-extensions" class="anchor" href="#string-extensions"><span class="octicon octicon-link"></span></a>String Extensions</h3>
 
 <table>
-<thead><tr>
+<thead>
+<tr>
 <th>Method</th>
 <th>Usage</th>
-</tr></thead>
+</tr>
+</thead>
 <tbody>
 <tr>
 <td><strong><code>[i: Int] -&gt; Character?</code></strong></td>
@@ -1259,14 +1313,18 @@ $.contains(arr, value: $.sample(arr))
 <td>Get an array from string split using the delimiter character</td>
 </tr>
 </tbody>
-</table><h3>
+</table>
+
+<h3>
 <a name="range-extensions" class="anchor" href="#range-extensions"><span class="octicon octicon-link"></span></a>Range Extensions</h3>
 
 <table>
-<thead><tr>
+<thead>
+<tr>
 <th>Method</th>
 <th>Usage</th>
-</tr></thead>
+</tr>
+</thead>
 <tbody>
 <tr>
 <td><strong><code>eachWithIndex(callback: (T) -&gt; ())</code></strong></td>
@@ -1281,7 +1339,9 @@ $.contains(arr, value: $.sample(arr))
 <td>Check the equality of two ranges</td>
 </tr>
 </tbody>
-</table><h2>
+</table>
+
+<h2>
 <a name="cent-examples" class="anchor" href="#cent-examples"><span class="octicon octicon-link"></span></a>Cent Examples</h2>
 
 <h3>
@@ -1340,6 +1400,13 @@ $.contains(arr, value: $.sample(arr))
 
 <span class="k">let</span> <span class="n">parsedDate</span> <span class="o">=</span> <span class="n">Date</span><span class="p">.</span><span class="n">parse</span><span class="p">(</span><span class="s">"2014-01-01"</span><span class="p">,</span> <span class="nl">format</span><span class="p">:</span> <span class="s">"yyyy-MM-dd"</span><span class="p">)</span>
 <span class="o">=&gt;</span> <span class="s">"Jan 1, 2014, 12:00 AM"</span>
+
+<span class="k">let</span> <span class="n">currentUnix</span> <span class="o">=</span> <span class="n">Date</span><span class="p">.</span><span class="n">unix</span><span class="p">()</span>
+<span class="o">=&gt;</span> <span class="mi">1</span><span class="p">,</span><span class="mi">412</span><span class="p">,</span><span class="mi">829</span><span class="p">,</span><span class="mf">874.07114</span>
+
+<span class="k">var</span> <span class="n">otherNSDate</span> <span class="o">=</span> <span class="n">Date</span><span class="p">()</span>
+<span class="k">let</span> <span class="n">otherUnix</span> <span class="o">=</span> <span class="n">Date</span><span class="p">.</span><span class="n">unix</span><span class="p">(</span><span class="n">otherDate</span><span class="p">)</span>
+<span class="o">=&gt;</span> <span class="mi">1</span><span class="p">,</span><span class="mi">412</span><span class="p">,</span><span class="mi">829</span><span class="p">,</span><span class="mf">938.92399</span>
 </pre></div>
 
 <h3>
@@ -1411,7 +1478,9 @@ $.contains(arr, value: $.sample(arr))
 <ul>
 <li>More functions such as curry function and then ability to lazily evaluate chained expressions.</li>
 <li>Add extention functions to the Cent library</li>
-</ul><h3>
+</ul>
+
+<h3>
 <a name="dollar-or-cent" class="anchor" href="#dollar-or-cent"><span class="octicon octicon-link"></span></a>Dollar or Cent</h3>
 
 <p>If you are interested only in pure functional programming <code>import Dollar</code> otherwise <code>import Cent</code> which includes extensions for certain object type such as Array for now but more will be added.</p>
