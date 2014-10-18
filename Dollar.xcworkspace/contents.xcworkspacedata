@@ -23,7 +23,7 @@
       location = "group:Cent/Cent.podspec">
    </FileRef>
    <FileRef
-      location = "group:Dollar.playground">
+      location = "group:Try.playground">
    </FileRef>
    <FileRef
       location = "group:DemoApp/DemoApp.xcodeproj">

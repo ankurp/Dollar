@@ -13,8 +13,8 @@
 		920C56A419625401009D5129 /* Range.swift in Sources */ = {isa = PBXBuildFile; fileRef = 920C56A319625401009D5129 /* Range.swift */; };
 		920C56A8196255E6009D5129 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 920C56A7196255E6009D5129 /* Date.swift */; };
 		924F92E2195F8338003DBB60 /* Cent.h in Headers */ = {isa = PBXBuildFile; fileRef = 924F92E1195F8338003DBB60 /* Cent.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		924F92F9195F8530003DBB60 /* Dollar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 924F92F8195F8530003DBB60 /* Dollar.framework */; };
 		924F92FB195F854B003DBB60 /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = 924F92FA195F854B003DBB60 /* Array.swift */; };
+		928F258F19F290B9006D21DB /* Dollar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 928F258E19F290B9006D21DB /* Dollar.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,8 +28,8 @@
 		924F92E1195F8338003DBB60 /* Cent.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Cent.h; sourceTree = "<group>"; };
 		924F92ED195F8338003DBB60 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		924F92EE195F8338003DBB60 /* CentTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CentTests.swift; sourceTree = "<group>"; };
-		924F92F8195F8530003DBB60 /* Dollar.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Dollar.framework; path = "../../../Library/Developer/Xcode/DerivedData/Dollar-cnpzzqqzcseuvucrfghsizcweovz/Build/Products/Debug/Dollar.framework"; sourceTree = "<group>"; };
 		924F92FA195F854B003DBB60 /* Array.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Array.swift; sourceTree = "<group>"; };
+		928F258E19F290B9006D21DB /* Dollar.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Dollar.framework; path = "../../../Library/Developer/Xcode/DerivedData/Dollar-cnpzzqqzcseuvucrfghsizcweovz/Build/Products/Debug-iphoneos/Dollar.framework"; sourceTree = "<group>"; };
 		92E6688119F0B89600BB4FB8 /* CentTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CentTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -38,7 +38,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				924F92F9195F8530003DBB60 /* Dollar.framework in Frameworks */,
+				928F258F19F290B9006D21DB /* Dollar.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -55,7 +55,7 @@
 		924F92D2195F8338003DBB60 = {
 			isa = PBXGroup;
 			children = (
-				924F92F8195F8530003DBB60 /* Dollar.framework */,
+				928F258E19F290B9006D21DB /* Dollar.framework */,
 				924F92DE195F8338003DBB60 /* Cent */,
 				924F92EB195F8338003DBB60 /* CentTests */,
 				924F92DD195F8338003DBB60 /* Products */,
@@ -329,6 +329,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(USER_LIBRARY_DIR)/Developer/Xcode/DerivedData/Dollar-cnpzzqqzcseuvucrfghsizcweovz/Build/Products/Debug",
+					"$(USER_LIBRARY_DIR)/Developer/Xcode/DerivedData/Dollar-cnpzzqqzcseuvucrfghsizcweovz/Build/Products/Debug-iphoneos",
 				);
 				FRAMEWORK_VERSION = A;
 				INFOPLIST_FILE = Cent/Info.plist;
@@ -352,6 +353,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(USER_LIBRARY_DIR)/Developer/Xcode/DerivedData/Dollar-cnpzzqqzcseuvucrfghsizcweovz/Build/Products/Debug",
+					"$(USER_LIBRARY_DIR)/Developer/Xcode/DerivedData/Dollar-cnpzzqqzcseuvucrfghsizcweovz/Build/Products/Debug-iphoneos",
 				);
 				FRAMEWORK_VERSION = A;
 				INFOPLIST_FILE = Cent/Info.plist;
@@ -425,6 +427,7 @@
 				92E6688919F0B89700BB4FB8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
