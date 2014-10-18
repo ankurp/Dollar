@@ -776,6 +776,9 @@ public class Dollar {
     /// :param array The array to source from.
     /// :return Maximum element in array.
     public class func max<T : Comparable>(array: [T]) -> T? {
+        if array.isEmpty {
+            return nil
+        }
         var maxVal = array[0]
         for elem in array {
             if maxVal < elem {
