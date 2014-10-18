@@ -784,7 +784,7 @@ public class Dollar {
             }
             return maxVal
         }
-        return nil
+        return .None
     }
     
     /// Get memoized function to improve performance
@@ -836,13 +836,15 @@ public class Dollar {
     /// :param array The array to source from.
     /// :return Minimum value from array.
     public class func min<T : Comparable>(array: [T]) -> T? {
-        var minVal = array[0]
-        for elem in array {
-            if minVal > elem {
-                minVal = elem
+        if var minVal = array.first {
+            for elem in array {
+                if minVal > elem {
+                    minVal = elem
+                }
             }
+            return minVal
         }
-        return minVal
+        return .None
     }
     
     /// A no-operation function.
