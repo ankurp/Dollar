@@ -218,7 +218,7 @@ class DollarTests: XCTestCase {
 
     func testMax() {
         XCTAssert($.max([1, 2, 3, 4, 2, 1]) == 4, "Returns maximum element")
-        XCTAssertNil($.max([NSObject]()), "Returns nil when array is empty")
+        XCTAssertNil($.max([Int]()), "Returns nil when array is empty")
     }
     
 
