@@ -735,7 +735,7 @@ public class Dollar {
     /// :return Array of keys from dictionary.
     public class func keys<T, U>(dictionary: [T: U]) -> [T] {
         var result : [T] = []
-        for (key, _) in dictionary {
+        for key in dictionary.keys {
             result.append(key)
         }
         return result
@@ -748,9 +748,10 @@ public class Dollar {
     public class func last<T>(array: [T]) -> T? {
         if array.isEmpty {
             return nil
-        } else {
-            return array[array.count - 1]
         }
+        
+        return array[array.count - 1]
+        
     }
     
     /// Gets the index at which the last occurrence of value is found.
@@ -837,6 +838,9 @@ public class Dollar {
     /// :param array The array to source from.
     /// :return Minimum value from array.
     public class func min<T : Comparable>(array: [T]) -> T? {
+        if array.isEmpty {
+            return nil
+        }
         var minVal = array[0]
         for elem in array {
             if minVal > elem {
@@ -1200,16 +1204,14 @@ public class Dollar {
     /// :param arrays The arrays to perform union on.
     /// :return Resulting array after union.
     public class func union<T : Hashable>(arrays: [T]...) -> [T] {
-        var map : [T: Bool] = [T: Bool]()
-        for arr in arrays {
-            for elem in arr {
-                map[elem] = true
-            }
-        }
         var result : [T] = []
-        for key in map.keys {
-            result.append(key)
+        
+        for arr in arrays {
+            result += arr
         }
+        
+        result = self.uniq(result)
+
         return result
     }
     
@@ -1229,13 +1231,33 @@ public class Dollar {
         return result
     }
     
+    /// :param array The array to source from.
+    /// :param condition Called per iteration
+    /// :return An array with unique values.
+    public class func uniq<T : Hashable, T2 : Hashable>(array: [T], by condition: (T) -> T2) -> [T] {
+        var map : [T2: Bool] = [:]
+        var map2 : [T2: T] = [:]
+        for elem in array {
+            let elemKey = condition(elem)
+            if map[elemKey] == nil {
+                map[elemKey] = true
+                map2[elemKey] = elem
+            }
+        }
+        var result : [T] = []
+        for key in map.keys {
+            result.append(map2[key]!)
+        }
+        return result
+    }
+    
     /// Creates an array of values of a given dictionary.
     ///
     /// :param dictionary The dictionary to source from.
     /// :return An array of values from the dictionary.
     public class func values<T, U>(dictionary: [T: U]) -> [U] {
         var result : [U] = []
-        for (_, value) in dictionary {
+        for value in dictionary.values {
             result.append(value)
         }
         return result
