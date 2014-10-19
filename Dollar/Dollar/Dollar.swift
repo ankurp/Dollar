@@ -1217,11 +1217,7 @@ public class Dollar {
         for elem in array {
             map[elem] = true
         }
-        var result : [T] = []
-        for key in map.keys {
-            result.append(key)
-        }
-        return result
+        return Array(map.keys)
     }
     
     /// Create a duplicate-value-free version of an array based on the condition. 
@@ -1235,11 +1231,7 @@ public class Dollar {
         for elem in array {
             map[condition(elem)] = elem
         }
-        var result : [T] = []
-        for elem in map.values {
-            result.append(elem)
-        }
-        return result
+        return Array(map.values)
     }
     
     /// Creates an array of values of a given dictionary.
