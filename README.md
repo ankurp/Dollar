@@ -518,6 +518,11 @@ Creates a duplicate-value-free version of an array.
 ```swift
 $.uniq([1, 2, 1, 3, 1])
 => [1, 2, 3]
+
+$.uniq([1, 2.5, 3, 1.5, 2, 3.5]) {
+  floor($0)
+}
+=> [1.5, 2.0, 3.5]
 ```
 
 ### without - `$.without`

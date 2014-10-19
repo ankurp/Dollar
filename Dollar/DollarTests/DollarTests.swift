@@ -87,6 +87,7 @@ class DollarTests: XCTestCase {
     func testShuffle() {
         XCTAssertEqual($.shuffle([1]), [1], "Return shuffled array")
         XCTAssertEqual($.shuffle([1, 2, 3]).count, 3, "Return shuffled array")
+        XCTAssertEqual($.shuffle([Int]()), [], "Return empty array")
     }
 
     func testIndexOf() {
@@ -192,6 +193,7 @@ class DollarTests: XCTestCase {
 
     func testUniq() {
         XCTAssertEqual($.uniq([1, 2, 1, 3, 1]), [1, 2, 3], "Uniq of arrays")
+        XCTAssertEqual($.uniq([1, 2.5, 3, 1.5, 2, 3.5], by: {floor($0)}), [1.5, 2, 3.5], "Uniq numbers by condition")
     }
 
     func testUnion() {
@@ -221,9 +223,9 @@ class DollarTests: XCTestCase {
         XCTAssertNil($.max([Int]()), "Returns nil when array is empty")
     }
     
-
     func testMin() {
         XCTAssert($.min([2, 1, 2, 3, 4]) == 1, "Returns minumum element")
+        XCTAssertNil($.min([Int]()), "Returns nil when array is empty")
     }
 
     func testSample() {
