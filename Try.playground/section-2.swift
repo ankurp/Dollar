@@ -1,4 +1,5 @@
 import Dollar
+import Cent
 
 $.map([1, 2, 3]) {
     $0 * 2
@@ -14,13 +15,6 @@ $.uniq([1, 2.5, 3, 1.5, 2, 3.5]) {
     floor($0)
 }
 
-
-
-
-
-
-
-
-
-
-
+3.times {
+    println("Hello World!")
+}

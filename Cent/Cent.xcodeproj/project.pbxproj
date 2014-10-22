@@ -15,7 +15,27 @@
 		924F92E2195F8338003DBB60 /* Cent.h in Headers */ = {isa = PBXBuildFile; fileRef = 924F92E1195F8338003DBB60 /* Cent.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		924F92FB195F854B003DBB60 /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = 924F92FA195F854B003DBB60 /* Array.swift */; };
 		928F258F19F290B9006D21DB /* Dollar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 928F258E19F290B9006D21DB /* Dollar.framework */; };
+		9299310319F747AA00150D45 /* Cent.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 924F92DC195F8338003DBB60 /* Cent.framework */; };
+		9299310519F747B700150D45 /* CentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 924F92EE195F8338003DBB60 /* CentTests.swift */; };
+		9299310819F747F600150D45 /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = 924F92FA195F854B003DBB60 /* Array.swift */; };
+		9299310919F747F600150D45 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 920C56A7196255E6009D5129 /* Date.swift */; };
+		9299310A19F747F600150D45 /* Dictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 920C569B1962514E009D5129 /* Dictionary.swift */; };
+		9299310B19F747F600150D45 /* Int.swift in Sources */ = {isa = PBXBuildFile; fileRef = 920C569D196251B5009D5129 /* Int.swift */; };
+		9299310C19F747F600150D45 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 920C569F196251D7009D5129 /* String.swift */; };
+		9299310D19F747F600150D45 /* Regex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92D0253F19F73F6B00A8F5E3 /* Regex.swift */; };
+		9299310E19F747F600150D45 /* Range.swift in Sources */ = {isa = PBXBuildFile; fileRef = 920C56A319625401009D5129 /* Range.swift */; };
+		92D0254019F73F6B00A8F5E3 /* Regex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92D0253F19F73F6B00A8F5E3 /* Regex.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		9299310619F747BC00150D45 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 924F92D3195F8338003DBB60 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 924F92DB195F8338003DBB60;
+			remoteInfo = Cent;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		920C569B1962514E009D5129 /* Dictionary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dictionary.swift; sourceTree = "<group>"; };
@@ -30,6 +50,7 @@
 		924F92EE195F8338003DBB60 /* CentTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CentTests.swift; sourceTree = "<group>"; };
 		924F92FA195F854B003DBB60 /* Array.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Array.swift; sourceTree = "<group>"; };
 		928F258E19F290B9006D21DB /* Dollar.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Dollar.framework; path = "../../../Library/Developer/Xcode/DerivedData/Dollar-cnpzzqqzcseuvucrfghsizcweovz/Build/Products/Debug-iphoneos/Dollar.framework"; sourceTree = "<group>"; };
+		92D0253F19F73F6B00A8F5E3 /* Regex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Regex.swift; sourceTree = "<group>"; };
 		92E6688119F0B89600BB4FB8 /* CentTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CentTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -46,6 +67,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9299310319F747AA00150D45 /* Cent.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -80,6 +102,7 @@
 				920C569B1962514E009D5129 /* Dictionary.swift */,
 				920C569D196251B5009D5129 /* Int.swift */,
 				920C569F196251D7009D5129 /* String.swift */,
+				92D0253F19F73F6B00A8F5E3 /* Regex.swift */,
 				920C56A319625401009D5129 /* Range.swift */,
 				924F92DF195F8338003DBB60 /* Supporting Files */,
 			);
@@ -154,6 +177,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				9299310719F747BC00150D45 /* PBXTargetDependency */,
 			);
 			name = CentTests;
 			productName = CentTests;
@@ -220,6 +244,7 @@
 				920C569E196251B5009D5129 /* Int.swift in Sources */,
 				920C56A8196255E6009D5129 /* Date.swift in Sources */,
 				924F92FB195F854B003DBB60 /* Array.swift in Sources */,
+				92D0254019F73F6B00A8F5E3 /* Regex.swift in Sources */,
 				920C56A419625401009D5129 /* Range.swift in Sources */,
 				920C56A0196251D7009D5129 /* String.swift in Sources */,
 				920C569C1962514E009D5129 /* Dictionary.swift in Sources */,
@@ -230,10 +255,26 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9299310819F747F600150D45 /* Array.swift in Sources */,
+				9299310919F747F600150D45 /* Date.swift in Sources */,
+				9299310A19F747F600150D45 /* Dictionary.swift in Sources */,
+				9299310B19F747F600150D45 /* Int.swift in Sources */,
+				9299310C19F747F600150D45 /* String.swift in Sources */,
+				9299310D19F747F600150D45 /* Regex.swift in Sources */,
+				9299310E19F747F600150D45 /* Range.swift in Sources */,
+				9299310519F747B700150D45 /* CentTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		9299310719F747BC00150D45 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 924F92DB195F8338003DBB60 /* Cent */;
+			targetProxy = 9299310619F747BC00150D45 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		924F92F0195F8338003DBB60 /* Debug */ = {
@@ -326,11 +367,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(USER_LIBRARY_DIR)/Developer/Xcode/DerivedData/Dollar-cnpzzqqzcseuvucrfghsizcweovz/Build/Products/Debug",
-					"$(USER_LIBRARY_DIR)/Developer/Xcode/DerivedData/Dollar-cnpzzqqzcseuvucrfghsizcweovz/Build/Products/Debug-iphoneos",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				FRAMEWORK_VERSION = A;
 				INFOPLIST_FILE = Cent/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
@@ -350,11 +387,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(USER_LIBRARY_DIR)/Developer/Xcode/DerivedData/Dollar-cnpzzqqzcseuvucrfghsizcweovz/Build/Products/Debug",
-					"$(USER_LIBRARY_DIR)/Developer/Xcode/DerivedData/Dollar-cnpzzqqzcseuvucrfghsizcweovz/Build/Products/Debug-iphoneos",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				FRAMEWORK_VERSION = A;
 				INFOPLIST_FILE = Cent/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";

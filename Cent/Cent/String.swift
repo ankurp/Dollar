@@ -19,7 +19,7 @@ extension String {
         if let char = Array(self).get(i) {
             return char
         }
-        return nil
+        return .None
     }
     
 
@@ -32,7 +32,7 @@ extension String {
         var end = Swift.advance(startIndex, range.endIndex)
         return self.substringWithRange(Range(start: start, end: end))
     }
-
+    
     /// Get an array from string split using the delimiter character
     ///
     /// :return Array of strings after spliting
@@ -41,5 +41,12 @@ extension String {
             char == delimiter
         }
     }
-    
+
 }
+
+infix operator =~ {}
+
+func =~(input: String, pattern: String) -> Bool {
+    return Regex(pattern).test(input)
+}
+

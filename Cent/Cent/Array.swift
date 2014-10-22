@@ -66,7 +66,7 @@ extension Array {
         if index < self.count {
             return self[index]
         } else {
-            return nil
+            return .None
         }
     }
     
