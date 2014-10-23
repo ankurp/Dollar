@@ -9,7 +9,7 @@
 import Foundation
 import Dollar
 
-extension Range {
+public extension Range {
     
     /// For each index in the range invoke the callback by passing the item in range
     ///
@@ -31,6 +31,6 @@ extension Range {
     
 }
 
-func ==<T: ForwardIndexType>(left: Range<T>, right: Range<T>) -> Bool {
+public func ==<T: ForwardIndexType>(left: Range<T>, right: Range<T>) -> Bool {
     return left.startIndex == right.startIndex && left.endIndex == right.endIndex
 }

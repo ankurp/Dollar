@@ -300,7 +300,7 @@ public class Dollar {
                 let f = unsafeBitCast(function, Function.self)
                 return f(params)
             }
-            return nil
+            return .None
         }
     }
     
@@ -445,7 +445,7 @@ public class Dollar {
                 return elem
             }
         }
-        return nil
+        return .None
     }
     
     /// This method is like find except that it returns the index of the first element
@@ -460,7 +460,7 @@ public class Dollar {
                 return index
             }
         }
-        return nil
+        return .None
     }
     
     /// This method is like findIndex except that it iterates over elements of the array
@@ -478,7 +478,7 @@ public class Dollar {
                 return reverseIndex
             }
         }
-        return nil
+        return .None
     }
     
     /// Gets the first element in the array.
@@ -487,7 +487,7 @@ public class Dollar {
     /// :return First element from the array.
     public class func first<T>(array: [T]) -> T? {
         if array.isEmpty {
-            return nil
+            return .None
         } else {
             return array[0]
         }
@@ -499,7 +499,7 @@ public class Dollar {
     /// :return Second element from the array.
     public class func second<T>(array: [T]) -> T? {
         if array.count < 2 {
-            return nil
+            return .None
         } else {
             return array[1]
         }
@@ -511,7 +511,7 @@ public class Dollar {
     /// :return Third element from the array.
     public class func third<T>(array: [T]) -> T? {
         if array.count < 3 {
-            return nil
+            return .None
         } else {
             return array[2]
         }
@@ -523,7 +523,7 @@ public class Dollar {
     /// :return Fourth element from the array.
     public class func fourth<T>(array: [T]) -> T? {
         if array.count < 4 {
-            return nil
+            return .None
         } else {
             return array[3]
         }
@@ -535,7 +535,7 @@ public class Dollar {
     /// :return Fifth element from the array.
     public class func fifth<T>(array: [T]) -> T? {
         if array.count < 5 {
-            return nil
+            return .None
         } else {
             return array[4]
         }
@@ -547,7 +547,7 @@ public class Dollar {
     /// :return Sixth element from the array.
     public class func sixth<T>(array: [T]) -> T? {
         if array.count < 6 {
-            return nil
+            return .None
         } else {
             return array[5]
         }
@@ -559,7 +559,7 @@ public class Dollar {
     /// :return Seventh element from the array.
     public class func seventh<T>(array: [T]) -> T? {
         if array.count < 7 {
-            return nil
+            return .None
         } else {
             return array[6]
         }
@@ -571,7 +571,7 @@ public class Dollar {
     /// :return Eighth element from the array.
     public class func eighth<T>(array: [T]) -> T? {
         if array.count < 8 {
-            return nil
+            return .None
         } else {
             return array[7]
         }
@@ -583,7 +583,7 @@ public class Dollar {
     /// :return Ninth element from the array.
     public class func ninth<T>(array: [T]) -> T? {
         if array.count < 9 {
-            return nil
+            return .None
         } else {
             return array[8]
         }
@@ -595,7 +595,7 @@ public class Dollar {
     /// :return Tenth element from the array.
     public class func tenth<T>(array: [T]) -> T? {
         if array.count < 10 {
-            return nil
+            return .None
         } else {
             return array[9]
         }
@@ -851,7 +851,7 @@ public class Dollar {
     ///
     /// :return nil.
     public class func noop() -> AnyObject? {
-        return nil
+        return .None
     }
     
     /// Creates a shallow clone of a dictionary excluding the specified keys.

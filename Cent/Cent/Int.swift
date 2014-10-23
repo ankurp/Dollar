@@ -9,7 +9,7 @@
 import Foundation
 import Dollar
 
-extension Int {
+public extension Int {
     
     /// Invoke a callback n times
     ///
