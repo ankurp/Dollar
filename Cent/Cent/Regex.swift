@@ -9,7 +9,7 @@
 import Foundation
 import Dollar
 
-class Regex {
+public class Regex {
     
     let expression: NSRegularExpression
     let pattern: String
@@ -20,12 +20,16 @@ class Regex {
         self.expression = NSRegularExpression(pattern: pattern, options: .CaseInsensitive, error: &error)
     }
     
-    func matches(testStr: String) -> [AnyObject] {
+    public func matches(testStr: String) -> [AnyObject] {
         let matches = self.expression.matchesInString(testStr, options: nil, range:NSMakeRange(0, countElements(testStr)))
         return matches
     }
     
-    func test(testStr: String) -> Bool {
+    public func rangeOfFirstMatch(testStr: String) -> NSRange {
+        return self.expression.rangeOfFirstMatchInString(testStr, options: nil, range:NSMakeRange(0, countElements(testStr)))
+    }
+    
+    public func test(testStr: String) -> Bool {
         let matches = self.matches(testStr)
         return matches.count > 0
     }

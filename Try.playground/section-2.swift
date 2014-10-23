@@ -18,3 +18,8 @@ $.uniq([1, 2.5, 3, 1.5, 2, 3.5]) {
 3.times {
     println("Hello World!")
 }
+
+"Dollar" =~ "oll"
+var x = "Dollar and Cent"
+x["^.+[^and Cent]"]
+
