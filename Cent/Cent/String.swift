@@ -52,6 +52,27 @@ public extension String {
         }
     }
 
+    /// Remove leading whitespace characters
+    ///
+    /// :return String without leading whitespace
+    public func lstrip() -> String {
+        return self["[^\\s]+.*$"]!
+    }
+    
+    /// Remove trailing whitespace characters
+    ///
+    /// :return String without trailing whitespace
+    public func rstrip() -> String {
+        return self["^.*[^\\s]+"]!
+    }
+
+    /// Remove leading and trailing whitespace characters
+    ///
+    /// :return String without leading or trailing whitespace
+    public func strip() -> String {
+        return self.stringByTrimmingCharactersInSet(.whitespaceCharacterSet())
+    }
+    
 }
 
 infix operator =~ {}

@@ -20,6 +20,16 @@ $.uniq([1, 2.5, 3, 1.5, 2, 3.5]) {
 }
 
 "Dollar" =~ "oll"
-var x = "Dollar and Cent"
-x["^.+[^and Cent]"]
+let proj = "Dollar and Cent"
+proj["^.+[^and Cent]"]
+
+let leadingSpace = "  Hello"
+leadingSpace.lstrip()
+
+let trailingSpace = "Hello   "
+trailingSpace.rstrip()
+
+let spaces = "   Hello   "
+spaces.strip()
+
 
