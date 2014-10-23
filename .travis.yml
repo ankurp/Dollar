@@ -1,4 +1,4 @@
 language: objective-c
 xcode_project: Dollar/Dollar.xcodeproj
-xcode_schema: DollarTests
+xcode_scheme: DollarTests
 xcode_sdk: iphonesimulator8.0
