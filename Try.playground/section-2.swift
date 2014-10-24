@@ -32,4 +32,4 @@ trailingSpace.rstrip()
 let spaces = "   Hello   "
 spaces.strip()
 
-
+("Hi Swift! " * 3).rstrip()
