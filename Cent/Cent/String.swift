@@ -77,7 +77,15 @@ public extension String {
 
 infix operator =~ {}
 
-public func =~(input: String, pattern: String) -> Bool {
-    return Regex(pattern).test(input)
+public func =~(str: String, pattern: String) -> Bool {
+    return Regex(pattern).test(str)
+}
+
+public func * (str: String, n: Int) -> String {
+    var stringBuilder = [String]()
+    n.times {
+        stringBuilder.append(str)
+    }
+    return Swift.join("", stringBuilder)
 }
 
