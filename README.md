@@ -966,7 +966,7 @@ spaces.strip()
 ```
 
 ## Contributing ##
-If you are interested in contributing checkout [CONTRIBUTING.md](CONTRIBUTING.md)
+If you are interested in contributing checkout [CONTRIBUTING.md](https://github.com/ankurp/Dollar.swift/blob/master/CONTRIBUTING.md)
 
 ## Roadmap ##
 
