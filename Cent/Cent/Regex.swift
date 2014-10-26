@@ -17,7 +17,7 @@ public class Regex {
     init(_ pattern: String) {
         self.pattern = pattern
         var error: NSError?
-        self.expression = NSRegularExpression(pattern: pattern, options: .CaseInsensitive, error: &error)
+        self.expression = NSRegularExpression(pattern: pattern, options: .CaseInsensitive, error: &error)!
     }
     
     public func matches(testStr: String) -> [AnyObject] {

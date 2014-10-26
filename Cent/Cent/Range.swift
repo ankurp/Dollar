@@ -9,12 +9,12 @@
 import Foundation
 import Dollar
 
-public extension Range {
+extension Range {
     
     /// For each index in the range invoke the callback by passing the item in range
     ///
     /// :param callback The callback function to invoke that take an element
-    public func eachWithIndex(callback: (T) -> ()) {
+    func eachWithIndex(callback: (T) -> ()) {
         for index in self {
             callback(index)
         }
@@ -23,7 +23,7 @@ public extension Range {
     /// For each index in the range invoke the callback
     ///
     /// :param callback The callback function to invoke
-    public func each(callback: () -> ()) {
+    func each(callback: () -> ()) {
         self.eachWithIndex { (T) -> () in
             callback()
         }

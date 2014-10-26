@@ -9,7 +9,7 @@
 import Foundation
 import Dollar
 
-public extension String {
+extension String {
     
     /// Get character at a subscript
     ///

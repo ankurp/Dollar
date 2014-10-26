@@ -31,5 +31,3 @@ trailingSpace.rstrip()
 
 let spaces = "   Hello   "
 spaces.strip()
-
-

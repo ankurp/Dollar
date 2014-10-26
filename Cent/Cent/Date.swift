@@ -8,7 +8,7 @@
 
 import Foundation
 
-public extension NSDate {
+extension NSDate {
     
     /// Returns a new Date given the year month and day
     ///
@@ -16,15 +16,17 @@ public extension NSDate {
     /// :param month
     /// :param day
     /// :return Date
-    public class func from(#year: Int, month: Int, day: Int) -> NSDate {
+    public class func from(#year: Int, month: Int, day: Int) -> NSDate? {
         var c = NSDateComponents()
         c.year = year
         c.month = month
         c.day = day
         
-        var gregorian = NSCalendar(identifier:NSGregorianCalendar)
-        var date = gregorian.dateFromComponents(c)
-        return date!
+        if let gregorian = NSCalendar(identifier:NSGregorianCalendar) {
+            return gregorian.dateFromComponents(c)
+        } else {
+            return .None
+        }
     }
 
     /// Parses the date based on the format and return a new Date

@@ -9,7 +9,7 @@
 import Foundation
 import Dollar
 
-public extension Array {
+extension Array {
 
     /// Creates an array of elements from the specified indexes, or keys, of the collection.
     /// Indexes may be specified as individual arguments or as arrays of indexes.
@@ -17,7 +17,7 @@ public extension Array {
     /// :param array The array to source from
     /// :param indexes Get elements from these indexes
     /// :return New array with elements from the indexes specified.
-    public func at(indexes: Int...) -> [Element] {
+    func at(indexes: Int...) -> [Element] {
         return $.at(self, indexes: indexes)
     }
 
@@ -26,7 +26,7 @@ public extension Array {
     /// :param array The array to check.
     /// :param iterator Check whether element value is true or false.
     /// :return First element from the array.
-    public func every(iterator: (Element) -> Bool) -> Bool {
+    func every(iterator: (Element) -> Bool) -> Bool {
         return $.every(self, iterator: iterator)
     }
     
@@ -36,7 +36,7 @@ public extension Array {
     /// :param array The array to search for the element in.
     /// :param iterator Function used to figure out whether element is the same.
     /// :return First element's index from the array found using the iterator.
-    public func findIndex(iterator: (Element) -> Bool) -> Int? {
+    func findIndex(iterator: (Element) -> Bool) -> Int? {
         return $.findIndex(self, iterator: iterator)
     }
     
@@ -46,7 +46,7 @@ public extension Array {
     /// :param array The array to search for the element in.
     /// :param iterator Function used to figure out whether element is the same.
     /// :return Last element's index from the array found using the iterator.
-    public func findLastIndex(iterator: (Element) -> Bool) -> Int? {
+    func findLastIndex(iterator: (Element) -> Bool) -> Int? {
         return $.findLastIndex(self, iterator: iterator)
     }
 
@@ -54,7 +54,7 @@ public extension Array {
     ///
     /// :param array The array to wrap.
     /// :return First element from the array.
-    public func first() -> Element? {
+    func first() -> Element? {
         return $.first(self)
     }
         
@@ -62,7 +62,7 @@ public extension Array {
     ///
     /// :param index The index in the array
     /// :return Element at that index
-    public func get(index: Int) -> Element? {
+    func get(index: Int) -> Element? {
         if index < self.count {
             return self[index]
         } else {
@@ -75,7 +75,7 @@ public extension Array {
     /// :param array The array to source from.
     /// :param numElements The number of elements to ignore in the end.
     /// :return Array of initial values.
-    public func initial(numElements: Int? = 1) -> [Element] {
+    func initial(numElements: Int? = 1) -> [Element] {
         return $.initial(self, numElements: numElements!)
     }
     
@@ -83,7 +83,7 @@ public extension Array {
     ///
     /// :param array The array to source from.
     /// :return Last element from the array.
-    public func last() -> Element? {
+    func last() -> Element? {
         return $.last(self)
     }
     
@@ -92,7 +92,7 @@ public extension Array {
     /// :param array The array to source from.
     /// :param numElements The number of elements to exclude from the beginning.
     /// :return The rest of the elements.
-    public func rest(numElements: Int? = 1) -> [Element] {
+    func rest(numElements: Int? = 1) -> [Element] {
         return $.rest(self, numElements: numElements!)
     }
     
@@ -100,7 +100,7 @@ public extension Array {
     ///
     /// :param array The array to source from.
     /// :return Minimum value from array.
-    public func min<T: Comparable>() -> T? {
+    func min<T: Comparable>() -> T? {
         return $.min(map { $0 as T })
     }
     
@@ -108,7 +108,7 @@ public extension Array {
     ///
     /// :param array The array to source from.
     /// :return Maximum element in array.
-    public func max<T: Comparable>() -> T? {
+    func max<T: Comparable>() -> T? {
         return $.max(map { $0 as T })
     }
         
