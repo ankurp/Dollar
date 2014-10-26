@@ -10,6 +10,7 @@ Cent is a library that extends certain Swift object types using the extension fe
 ## Contents ##
 
 - [Setup](#setup)
+  - [Demo App](#demo-app)
 - Dollar
   - [Usage](#dollar-usage)
     - [Array](#array-methods)
@@ -54,6 +55,9 @@ Currently there are issues loading the library using `pod 'Dollar'` which is pen
 6. In your project file `import Dollar` and you can call all of the helper functions.
 
 ![How to import library](https://raw.githubusercontent.com/ankurp/Dollar.swift/master/assets/HowToImport.gif)
+
+### Demo App ###
+To see how to integrate this library into an iOS App checkout this [repo](https://github.com/ankurp/DollarAndCentDemoApp).
 
 ## Dollar Usage ##
 
@@ -823,6 +827,7 @@ Method | Usage
 Method | Usage
 ---- | ---------
 **`Date.from(#year: Int, month: Int, day: Int) -> NSDate`**| Returns a new Date given the year month and day
+**`Date.from(#unix: Double) -> NSDate`**| Returns a new Date given the unix timestamp (timeIntervalSince1970)
 **`Date.parse(dateStr: String, format: String = "yyyy-MM-dd") -> NSDate`**| Parses the date based on the format and return a new Date
 **`Date.unix(date: NSDate = NSDate()) -> Double`**| Returns the unix timestamp of the date passed in or the current unix timestamp
 
@@ -915,15 +920,18 @@ let max = [ 0, 1, 2].max()
 let date = Date.from(2014, 1, 1) 
 => "Jan 1, 2014, 12:00 AM"
 
+let date = Date.from(unix: 1_388_552_400.0)
+=> "Jan 1, 2014, 12:00 AM"
+
 let parsedDate = Date.parse("2014-01-01", format: "yyyy-MM-dd")
 => "Jan 1, 2014, 12:00 AM"
 
 let currentUnix = Date.unix()
-=> 1,412,829,874.07114
+=> 1,388,552,400.0
 
 var otherNSDate = Date()
 let otherUnix = Date.unix(otherDate)
-=> 1,412,829,938.92399
+=> 1,388,552,400.0
 ```
 
 ### Dictionary Example Usage ###
@@ -1013,3 +1021,4 @@ If you are interested in contributing checkout [CONTRIBUTING.md](CONTRIBUTING.md
 
 ### Dollar or Cent ###
 If you are interested only in pure functional programming `import Dollar` otherwise `import Cent` which includes extensions for certain object type such as Array for now but more will be added.
+
