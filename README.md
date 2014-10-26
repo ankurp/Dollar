@@ -823,6 +823,7 @@ Method | Usage
 Method | Usage
 ---- | ---------
 **`Date.from(#year: Int, month: Int, day: Int) -> NSDate`**| Returns a new Date given the year month and day
+**`Date.from(#unix: Double) -> NSDate`**| Returns a new Date given the unix timestamp (timeIntervalSince1970)
 **`Date.parse(dateStr: String, format: String = "yyyy-MM-dd") -> NSDate`**| Parses the date based on the format and return a new Date
 **`Date.unix(date: NSDate = NSDate()) -> Double`**| Returns the unix timestamp of the date passed in or the current unix timestamp
 
@@ -915,15 +916,18 @@ let max = [ 0, 1, 2].max()
 let date = Date.from(2014, 1, 1) 
 => "Jan 1, 2014, 12:00 AM"
 
+let date = Date.from(unix: 1_388_552_400.0)
+=> "Jan 1, 2014, 12:00 AM"
+
 let parsedDate = Date.parse("2014-01-01", format: "yyyy-MM-dd")
 => "Jan 1, 2014, 12:00 AM"
 
 let currentUnix = Date.unix()
-=> 1,412,829,874.07114
+=> 1,388,552,400.0
 
 var otherNSDate = Date()
 let otherUnix = Date.unix(otherDate)
-=> 1,412,829,938.92399
+=> 1,388,552,400.0
 ```
 
 ### Dictionary Example Usage ###
