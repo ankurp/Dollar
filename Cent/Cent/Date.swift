@@ -29,6 +29,14 @@ extension NSDate {
         }
     }
 
+    /// Returns a new Date given the unix timestamp
+    ///
+    /// :param unix timestamp
+    /// :return Date
+    public class func from(#unix: Double) -> NSDate {
+        return NSDate(timeIntervalSince1970: unix)
+    }
+
     /// Parses the date based on the format and return a new Date
     ///
     /// :param dateStr String version of the date
