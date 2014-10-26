@@ -25,7 +25,4 @@
    <FileRef
       location = "group:Try.playground">
    </FileRef>
-   <FileRef
-      location = "group:DemoApp/DemoApp.xcodeproj">
-   </FileRef>
 </Workspace>

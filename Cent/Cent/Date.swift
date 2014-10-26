@@ -51,4 +51,4 @@ extension NSDate {
     }
 }
 
-typealias Date = NSDate
+public typealias Date = NSDate
