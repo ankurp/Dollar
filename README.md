@@ -10,6 +10,7 @@ Cent is a library that extends certain Swift object types using the extension fe
 ## Contents ##
 
 - [Setup](#setup)
+  - [Demo App](#demo-app)
 - Dollar
   - [Usage](#dollar-usage)
     - [Array](#array-methods)
@@ -54,6 +55,9 @@ Currently there are issues loading the library using `pod 'Dollar'` which is pen
 6. In your project file `import Dollar` and you can call all of the helper functions.
 
 ![How to import library](https://raw.githubusercontent.com/ankurp/Dollar.swift/master/assets/HowToImport.gif)
+
+### Demo App ###
+To see how to integrate this library into an iOS App checkout this [repo](https://github.com/ankurp/DollarAndCentDemoApp).
 
 ## Dollar Usage ##
 
@@ -1013,3 +1017,4 @@ If you are interested in contributing checkout [CONTRIBUTING.md](CONTRIBUTING.md
 
 ### Dollar or Cent ###
 If you are interested only in pure functional programming `import Dollar` otherwise `import Cent` which includes extensions for certain object type such as Array for now but more will be added.
+
