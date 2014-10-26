@@ -844,9 +844,14 @@ Method | Usage
 
 Method | Usage
 ---- | ---------
+**`* n: Int -> String`**| Get string concatenated `n` times
 **`[i: Int] -> Character?`**| Get character at a subscript
+**`[str: String] -> String?`**| Returns the substring based on the first regex match passed in the subscript
 **`[r: Range<Int>] -> String`**| Get substring using subscript notation and by passing a range
 **`split(delimiter: Character) -> [String]`**| Get an array from string split using the delimiter character
+**`lstring() -> String`**| Get string without leading spaces
+**`lstring() -> String`**| Get string without trailing spaces
+**`strip() -> String`**| Get string without leading or trailing spaces
 
 ### Range Extensions ###
 
@@ -958,6 +963,28 @@ dic.merge(anotherDic)
 
 "Hi"[5]
 => nil
+
+"Dollar" =~ "oll"
+=> true
+
+let proj = "Dollar and Cent"
+proj["^.+[^and Cent]"]
+=> {Some: "Dollar"}
+
+let leadingSpace = "  Hello"
+leadingSpace.lstrip()
+=> "Hello"
+
+let trailingSpace = "Hello   "
+trailingSpace.rstrip()
+=> "Hello"
+
+let spaces = "   Hello   "
+spaces.strip()
+=> "Hello"
+
+("Hi Swift! " * 3).rstrip()
+=> "Hi Swift! Hi Swift! Hi Swift!"
 ```
 
 ### Range Example Usage ###
