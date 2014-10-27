@@ -1,5 +1,6 @@
 Dollar and Cent
 ===========
+[![Gitter](https://badges.gitter.im/Join Chat.svg)](https://gitter.im/ankurp/Dollar.swift?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 ![Introducing Dollar and Cent](https://raw.githubusercontent.com/ankurp/Dollar.swift/master/assets/hero.png)
 
