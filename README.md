@@ -1073,7 +1073,7 @@ spaces.strip()
 
 ### Range Extensions ###
 
-### `==`
+### equals - `==`
 
 Check the equality of two ranges
 
