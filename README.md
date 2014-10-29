@@ -18,7 +18,7 @@ Cent is a library that extends certain Swift object types using the extension fe
     - [Dictionary](#dictionary)
     - [Object](#object)
     - [Function](#function)
-    - [Chaining](#chaining---array-)
+    - [Chaining](#chaining)
 - Cent
   - [Usage](#cent-usage)
     - [Array](#array-extensions)
@@ -800,7 +800,7 @@ $(array: [[1, 2], 3, [[4], 5]]).initial().flatten().first().value()! as Int
 
 ## Cent Usage ##
 
-### Array Extension ###
+### Array Extensions ###
 
 ### `at(indexes: Int...) -> [Element]`
 
@@ -918,7 +918,7 @@ let max = [ 0, 1, 2].max()
 => 2
 ```
 
-### Date Extension ###
+### Date Extensions ###
 
 ### `Date.from(#year: Int, month: Int, day: Int) -> NSDate`
 
@@ -960,7 +960,7 @@ let otherUnix = Date.unix(otherDate)
 => 1,388,552,400.0
 ```
 
-### Dictionary Extension ###
+### Dictionary Extensions ###
 
 ### `isEmpty () -> Bool`
 
@@ -986,7 +986,7 @@ dic.merge(anotherDic)
 => ["foo": "baz", "spam": "eggs"]
 ```
 
-### Int Extension ###
+### Int Extensions ###
 
 ### `times(callback: (Int) -> ())`
 
@@ -1006,7 +1006,7 @@ Invoke a callback n times
 => 0 1 2 3 4  
 ```
 
-### String Extension ###
+### String Extensions ###
 
 ### `=~ str: String -> Bool`
 
@@ -1097,7 +1097,7 @@ spaces.strip()
 => "Hello"
 ```
 
-### Range Extension ###
+### Range Extensions ###
 
 ### `==`
 
