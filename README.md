@@ -156,7 +156,7 @@ $.first([])
 
 Gets the second element in the array.
 
-```
+```swift
 $.second([1, 2, 3, 4])
 => 2
 
@@ -288,7 +288,7 @@ $.max([1, 2, 3, 4, 2, 1])
 Retrieves the value of a specified property from all elements in the array.
 
 ```swift
-let arr : Dictionary<String, Int>[] = [["age": 20], ["age": 30], ["age": 40]]
+let arr = [["age": 20], ["age": 30], ["age": 40]]
 $.pluck(arr, value: "age") 
 => [20, 30, 40]
 ```
@@ -330,7 +330,10 @@ $.range(from: 0, through: 20, incrementBy: 5)
 ```
 
 ### sample - `$.sample`
-```
+
+Returns a sample item from the array
+
+```swift
 let arr : Int[] = [2, 1, 2, 3, 4]
 $.contains(arr, value: $.sample(arr))
 => true
@@ -359,7 +362,9 @@ $.sequence("abc")
 Removes all elements from an array that the callback returns true.
 
 ```swift
-let result = $.remove([1, 2, 3, 4, 5, 6]) { $0 == 2 || $0 == 3 }
+let result = $.remove([1, 2, 3, 4, 5, 6]) { 
+  $0 == 2 || $0 == 3 
+}
 result
 => [1, 4, 5, 6]
 ```
@@ -451,7 +456,7 @@ $.xor([1, 2, 3], [5, 2, 1, 4])
 Creates an array of grouped elements, the first of which contains the first elements of the given arrays.
 
 ```swift
-$.zip(["fred", "barney"], [30, 40], [true, false]) as NSObject[] 
+$.zip(["fred", "barney"], [30, 40], [true, false]) as [NSObject] 
 => [["fred", 30, true], ["barney", 40, false]]
 ```
 
@@ -460,7 +465,7 @@ $.zip(["fred", "barney"], [30, 40], [true, false]) as NSObject[]
 Creates an object composed from arrays of keys and values.
 
 ```swift
-$.zipObject(["fred", "barney"], values: [30, 40]) as Dictionary<String, Int> 
+$.zipObject(["fred", "barney"], values: [30, 40])
 => ["fred": 30, "barney": 40]
 ```
 
@@ -574,7 +579,9 @@ Creates a function that executes passed function only after being called n times
 ```swift
 var saves = ["profile", "settings"];
 let asyncSave = { (function: () -> ()?) in
-   function() // Saving right away for testing but in real world would be async
+   function() 
+   // Saving right away for testing 
+   // but in real world would be async
 }
 var isDone = false
 var completeCallback = $.after(saves.count) {
@@ -592,7 +599,9 @@ isDone
 Creates a function that, when called, invokes func with the binding of arguments provided.
 
 ```swift
-let helloWorldFunc = $.bind({(T...) in T[0] + " " + T[1] + " from " + T[2] }, "Hello", "World", "Swift")
+let helloWorldFunc = $.bind({(T...) in 
+  T[0] + " " + T[1] + " from " + T[2] 
+}, "Hello", "World", "Swift")
 helloWorldFunc() 
 => "Hello World from Swift"
 ```
@@ -614,8 +623,8 @@ Returns a memoized function to improve performance by caching recursive function
 var times = 0 // to test memoization
 
 let fibMemo = $.memoize { (fib: (Int -> Int), val: Int) -> Int in
-times += 1
-return val == 1 || val == 0 ? 1 : fib(val - 1) + fib(val - 2)
+  times += 1
+  return val == 1 || val == 0 ? 1 : fib(val - 1) + fib(val - 2)
 }
 
 let x = fibMemo(5)
@@ -647,7 +656,9 @@ $.noop()
 Creates a function that, when called, invokes func with any additional partial arguments prepended to those provided to the new function.
 
 ```swift
-let partialFunc = $.partial({(T...) in T[0] + " " + T[1] + " from " + T[2] }, "Hello")
+let partialFunc = $.partial({(T...) in 
+  T[0] + " " + T[1] + " from " + T[2] 
+}, "Hello")
 partialFunc("World", "Swift") 
 => "Hello World from Swift"
 ```
@@ -794,7 +805,11 @@ $chain.value()!
 **Chaining more than one method**
 
 ```swift
-$(array: [[1, 2], 3, [[4], 5]]).initial().flatten().first().value()! as Int 
+$(array: [[1, 2], 3, [[4], 5]])
+  .initial()
+  .flatten()
+  .first()
+  .value()! as Int 
 => 1
 ```
 
@@ -817,7 +832,9 @@ let some = array.at(1, 3)
 Checks if the given callback returns true value for all items in the array.
 
 ```swift
-["angry", "hungry"].every { (a: String) -> (Bool) in a.hasSuffix("gry") }
+["angry", "hungry"].every { (a: String) -> (Bool) in 
+  a.hasSuffix("gry") 
+}
 => true
 ```
 
@@ -826,7 +843,9 @@ Checks if the given callback returns true value for all items in the array.
 This method is like find except that it returns the index of the first element that passes the callback check.
 
 ```swift
-let ind: int? = ["foo", "bar", "spam", "eggs"].findIndex({ $0.length == 4 })
+let ind: int? = ["foo", "bar", "spam", "eggs"].findIndex {
+  $0.length == 4
+}
 ind! == 2 
 => true
 ```
@@ -836,7 +855,9 @@ ind! == 2
 This method is like findIndex except that it iterates over elements of the array from right to left.
 
 ```swift
-let ind: int? = ["foo", "bar", "spam", "eggs"].findLastIndex({ $0.length == 4 })
+let ind: int? = ["foo", "bar", "spam", "eggs"].findLastIndex {
+  $0.length == 4 
+}
 ind! == 3 
 => true
 ```
@@ -994,7 +1015,7 @@ Invoke a callback n times with callback that takes index
 
 ```swift
 5.times { print("Na") } 
-=> NaNaNaNaNa
+=> "NaNaNaNaNa"
 ```
 
 ### `times (function: () -> ())`
@@ -1099,7 +1120,7 @@ spaces.strip()
 
 ### Range Extensions ###
 
-### `==`
+### equals - `==`
 
 Check the equality of two ranges
 
@@ -1125,12 +1146,12 @@ For each index in the range invoke the callback by passing the item in range
 For each index in the range invoke the callback
 
 ```swift
-(1...5).each { print('Na') } 
-=> NaNaNaNaNa
+(1...5).each { print("Na") } 
+=> "NaNaNaNaNa"
 ```
 
 ## Contributing ##
-If you are interested in contributing checkout [CONTRIBUTING.md](CONTRIBUTING.md)
+If you are interested in contributing checkout [CONTRIBUTING.md](https://github.com/ankurp/Dollar.swift/blob/master/CONTRIBUTING.md)
 
 ## Roadmap ##
 
@@ -1140,4 +1161,3 @@ If you are interested in contributing checkout [CONTRIBUTING.md](CONTRIBUTING.md
 
 ### Dollar or Cent ###
 If you are interested only in pure functional programming `import Dollar` otherwise `import Cent` which includes extensions for certain object type such as Array for now but more will be added.
-
