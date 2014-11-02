@@ -1155,8 +1155,8 @@ If you are interested in contributing checkout [CONTRIBUTING.md](https://github.
 
 # Roadmap #
 
-* More functions such as curry function and then ability to lazily evaluate chained expressions.
-* Add extention functions to the Cent library
+* Add more extention functions to the Cent library
+* Benchmark and improve performance if applicable
 
 # Dollar or Cent #
 If you are interested only in pure functional programming `import Dollar` otherwise `import Cent` which includes extensions for certain object type such as Array for now but more will be added.
