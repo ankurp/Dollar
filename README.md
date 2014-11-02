@@ -31,7 +31,7 @@ Cent is a library that extends certain Swift object types using the extension fe
 - [Roadmap](#roadmap)
 - [Dollar or Cent?](#dollar-or-cent)
 
-## Setup ##
+# Setup #
 
 Currently there are issues loading the library using `pod 'Dollar'` which is pending changes from Cocoapods. In the mean time follow these steps
 
@@ -42,14 +42,14 @@ Currently there are issues loading the library using `pod 'Dollar'` which is pen
 5. Expand the "Link Binary with Libraries" group, and add Dollar.framework.
 6. In your project file `import Dollar` and you can call all of the helper functions.
 
-![How to import library](https://raw.githubusercontent.com/ankurp/Dollar.swift/master/assets/HowToImport.gif)
+Still stuck. Then checkout this screencast on [how to import](http://recordit.co/0gQiCSEREF)
 
-### Demo App ###
+## Demo App ##
 To see how to integrate this library into an iOS App checkout this [repo](https://github.com/ankurp/DollarAndCentDemoApp).
 
-## Dollar Usage ##
+# Dollar Usage #
 
-### Array ###
+## Array ##
 
 ### at - `$.at`
 
@@ -509,7 +509,7 @@ $.partitionBy([1, 7, 3, 6, 10, 12]) { $0 % 3 }
 => [[1, 7], [3, 6], [10], [12]]
 ```
 
-### Dictionary ###
+## Dictionary ##
 
 ### keys - `$.keys`
 
@@ -559,7 +559,7 @@ $.omit(["Dog": 1, "Cat": 2, "Cow": 3], keys: "Cat", "Dog")
 => ["Cow": 3, "Sheep": 4]
 ```
 
-### Object ###
+## Object ##
 
 ### tap - `$.tap`
 
@@ -570,7 +570,7 @@ var beatle = Car(name: "Fusca")
 $.tap(beatle, {$0.name = "Beatle"}).color = "Blue"
 ```
 
-### Function ###
+## Function ##
 
 ### after - `$.after`
 
@@ -676,7 +676,7 @@ $.times(2, function: fun) as String[]
 => ["Hello Ankur from Swift", "Hello Ankur from Swift"]
 ```
 
-### Chaining ###
+## Chaining ##
 
 **`$(array: ...)`**
 
@@ -813,9 +813,9 @@ $(array: [[1, 2], 3, [[4], 5]])
 => 1
 ```
 
-## Cent Usage ##
+# Cent Usage #
 
-### Array Extensions ###
+## Array Extensions ##
 
 ### `at(indexes: Int...) -> [Element]`
 
@@ -939,7 +939,7 @@ let max = [ 0, 1, 2].max()
 => 2
 ```
 
-### Date Extensions ###
+## Date Extensions ##
 
 ### `Date.from(#year: Int, month: Int, day: Int) -> NSDate`
 
@@ -981,7 +981,7 @@ let otherUnix = Date.unix(otherDate)
 => 1,388,552,400.0
 ```
 
-### Dictionary Extensions ###
+## Dictionary Extensions ##
 
 ### `isEmpty () -> Bool`
 
@@ -1007,7 +1007,7 @@ dic.merge(anotherDic)
 => ["foo": "baz", "spam": "eggs"]
 ```
 
-### Int Extensions ###
+## Int Extensions ##
 
 ### `times(callback: (Int) -> ())`
 
@@ -1027,7 +1027,7 @@ Invoke a callback n times
 => 0 1 2 3 4  
 ```
 
-### String Extensions ###
+## String Extensions ##
 
 ### `=~ str: String -> Bool`
 
@@ -1118,7 +1118,7 @@ spaces.strip()
 => "Hello"
 ```
 
-### Range Extensions ###
+## Range Extensions ##
 
 ### equals - `==`
 
@@ -1150,14 +1150,13 @@ For each index in the range invoke the callback
 => "NaNaNaNaNa"
 ```
 
-## Contributing ##
+# Contributing #
 If you are interested in contributing checkout [CONTRIBUTING.md](https://github.com/ankurp/Dollar.swift/blob/master/CONTRIBUTING.md)
 
-## Roadmap ##
+# Roadmap #
 
 * More functions such as curry function and then ability to lazily evaluate chained expressions.
 * Add extention functions to the Cent library
 
-
-### Dollar or Cent ###
+# Dollar or Cent #
 If you are interested only in pure functional programming `import Dollar` otherwise `import Cent` which includes extensions for certain object type such as Array for now but more will be added.
