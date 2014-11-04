@@ -20,52 +20,72 @@ class DollarTests: XCTestCase {
     }
 
     func testFirst() {
-        XCTAssertEqual($.first([1, 2, 3, 4])!, 1, "Return first element")
+        if let result = $.first([1, 2, 3, 4]) {
+            XCTAssertEqual(result, 1, "Return first element")
+        }
         XCTAssertNil($.first([NSObject]()), "Returns nil when array is empty")
     }
 
     func testSecond() {
-        XCTAssertEqual($.second([1, 2, 3, 4, 5, 6, 7, 8, 9, 10])!, 2, "Return second element")
+        if let result = $.second([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]) {
+            XCTAssertEqual(result, 2, "Return second element")
+        }
         XCTAssertNil($.second([NSObject]()), "Returns nil when array is empty")
     }
     
     func testThird() {
-        XCTAssertEqual($.third([1, 2, 3, 4, 5, 6, 7, 8, 9, 10])!, 3, "Return third element")
+        if let result = $.third([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]) {
+            XCTAssertEqual(result, 3, "Return third element")
+        }
         XCTAssertNil($.third([NSObject]()), "Returns nil when array is empty")
     }
     
     func testFourth() {
-        XCTAssertEqual($.fourth([1, 2, 3, 4, 5, 6, 7, 8, 9, 10])!, 4, "Return fourth element")
+        if let result = $.fourth([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]) {
+            XCTAssertEqual(result, 4, "Return fourth element")
+        }
         XCTAssertNil($.fourth([NSObject]()), "Returns nil when array is empty")
     }
     
     func testFifth() {
-        XCTAssertEqual($.fifth([1, 2, 3, 4, 5, 6, 7, 8, 9, 10])!, 5, "Return fifth element")
+        if let result = $.fifth([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]) {
+            XCTAssertEqual(result, 5, "Return fifth element")
+        }
         XCTAssertNil($.fifth([NSObject]()), "Returns nil when array is empty")
     }
     
     func testSixth() {
-        XCTAssertEqual($.sixth([1, 2, 3, 4, 5, 6, 7, 8, 9, 10])!, 6, "Return sixth element")
+        if let result = $.sixth([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]) {
+            XCTAssertEqual(result, 6, "Return sixth element")
+        }
         XCTAssertNil($.sixth([NSObject]()), "Returns nil when array is empty")
     }
     
     func testSeventh() {
-        XCTAssertEqual($.seventh([1, 2, 3, 4, 5, 6, 7, 8, 9, 10])!, 7, "Return seventh element")
+        if let result = $.seventh([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]) {
+            XCTAssertEqual(result, 7, "Return seventh element")
+        }
         XCTAssertNil($.seventh([NSObject]()), "Returns nil when array is empty")
     }
     
     func testEighth() {
-        XCTAssertEqual($.eighth([1, 2, 3, 4, 5, 6, 7, 8, 9, 10])!, 8, "Return eighth element")
+        if let result = $.eighth([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]) {
+            XCTAssertEqual(result, 8, "Return eighth element")
+        }
         XCTAssertNil($.eighth([NSObject]()), "Returns nil when array is empty")
     }
     
     func testNinth() {
-        XCTAssertEqual($.ninth([1, 2, 3, 4, 5, 6, 7, 8, 9, 10])!, 9, "Return ninth element")
+        if let result = $.ninth([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]) {
+            XCTAssertEqual(result, 9, "Return ninth element")
+        }
         XCTAssertNil($.ninth([NSObject]()), "Returns nil when array is empty")
     }
     
     func testTenth() {
-        XCTAssertEqual($.tenth([1, 2, 3, 4, 5, 6, 7, 8, 9, 10])!, 10, "Return tenth element")
+        if let result = $.tenth([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]) {
+            XCTAssertEqual(result, 10, "Return tenth element")
+        }
         XCTAssertNil($.tenth([NSObject]()), "Returns nil when array is empty")
     }
 
@@ -110,7 +130,9 @@ class DollarTests: XCTestCase {
     }
 
     func testLast() {
-        XCTAssertEqual($.last([3, 4, 5])!, 5, "Returns last element in array")
+        if let result = $.last([3, 4, 5]) {
+            XCTAssertEqual(result, 5, "Returns last element in array")
+        }
         XCTAssertNil($.last([NSObject]()), "Returns nil when array is empty")
     }
 
@@ -179,29 +201,29 @@ class DollarTests: XCTestCase {
     }
 
     func testIntersection() {
-        XCTAssertEqual($.intersection([1, 2, 3], [5, 2, 1, 4], [2, 1]), [1, 2], "Intersection of arrays")
+        XCTAssertEqual($.intersection([1, 2, 3], [5, 2, 1, 4], [2, 1]).sorted({$0<$1}), [1, 2], "Intersection of arrays")
     }
 
     func testDifference() {
-        XCTAssertEqual($.difference([1, 2, 3, 4, 5], [5, 2, 10]), [1, 3, 4], "Difference of arrays")
-        XCTAssertEqual($.difference([1, 1, 1, 2, 2], [], [3]), [1, 1, 1, 2, 2], "Difference of arrays")
-        XCTAssertEqual($.difference([1, 1, 1, 2, 2], [1, 1], [3]), [2, 2], "Difference of arrays")
+        XCTAssertEqual($.difference([1, 2, 3, 4, 5], [5, 2, 10]).sorted({$0<$1}), [1, 3, 4], "Difference of arrays")
+        XCTAssertEqual($.difference([1, 1, 1, 2, 2], [], [3]).sorted({$0<$1}), [1, 1, 1, 2, 2], "Difference of arrays")
+        XCTAssertEqual($.difference([1, 1, 1, 2, 2], [1, 1], [3]).sorted({$0<$1}), [2, 2], "Difference of arrays")
         XCTAssertEqual($.difference([1, 1, 1, 2, 2], [1, 1], [1, 2, 2]), [], "Difference of arrays")
         XCTAssertEqual($.difference([1, 1, 1, 2, 2], [1, 1, 1], [1, 2, 2]), [], "Difference of arrays")
-        XCTAssertEqual($.difference([1, 1, 1, 2, 2], []), [1, 1, 1, 2, 2], "Difference of arrays")
+        XCTAssertEqual($.difference([1, 1, 1, 2, 2], []).sorted({$0<$1}), [1, 1, 1, 2, 2], "Difference of arrays")
     }
 
     func testUniq() {
-        XCTAssertEqual($.uniq([1, 2, 1, 3, 1]), [1, 2, 3], "Uniq of arrays")
-        XCTAssertEqual($.uniq([1, 2.5, 3, 1.5, 2, 3.5], by: {floor($0)}), [1.5, 2, 3.5], "Uniq numbers by condition")
+        XCTAssertEqual($.uniq([1, 2, 1, 3, 1]).sorted({$0<$1}), [1, 2, 3], "Uniq of arrays")
+        XCTAssertEqual($.uniq([1, 2.5, 3, 1.5, 2, 3.5], by: {floor($0)}).sorted({$0<$1}), [1.5, 2, 3.5], "Uniq numbers by condition")
     }
 
     func testUnion() {
-        XCTAssertEqual($.union([1, 2, 3], [5, 2, 1, 4], [2, 1]), [1, 2, 3, 4, 5], "Union of arrays")
+        XCTAssertEqual($.union([1, 2, 3], [5, 2, 1, 4], [2, 1]).sorted({$0<$1}), [1, 2, 3, 4, 5], "Union of arrays")
     }
 
     func testXOR() {
-        XCTAssertEqual($.xor([1, 2, 3], [5, 2, 1, 4]), [3, 4, 5], "Xor of arrays")
+        XCTAssertEqual($.xor([1, 2, 3], [5, 2, 1, 4]).sorted({$0<$1}), [3, 4, 5], "Xor of arrays")
     }
 
     func testAt() {
