@@ -764,11 +764,20 @@ public class Dollar {
     
     /// Maps each element to new value based on the map function passed
     ///
-    /// :param array The array to source from.
+    /// :param collection The collection to source from
     /// :param transform The mapping function
     /// :return Array of elements mapped using the map function
-    public class func map<T, E>(array: [T], transform: (T) -> E) -> [E] {
-        return array.map(transform)
+    public class func map<T : CollectionType, E>(collection: T, transform: (T.Generator.Element) -> E) -> [E] {
+        return Swift.map(collection, transform)
+    }
+
+    /// Maps each element to new value based on the map function passed
+    ///
+    /// :param sequence The sequence to source from
+    /// :param transform The mapping function
+    /// :return Array of elements mapped using the map function
+    public class func map<T : SequenceType, E>(sequence: T, transform: (T.Generator.Element) -> E) -> [E] {
+        return Swift.map(sequence, transform)
     }
     
     /// Retrieves the maximum value in an array.
