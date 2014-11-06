@@ -72,7 +72,7 @@ $.compact([nil, nil]) as NSObject[]
 => []
 ```
 
-### compact - `$.compose`
+### compose - `$.compose`
 
 Compose two or more functions where the return value of the first function is passed into the next function. Useful when chaing functions and returns a function that can be called with variadic argument values or an array of values as input
 
