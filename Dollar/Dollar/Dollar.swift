@@ -367,6 +367,38 @@ public class Dollar {
         return result
     }
     
+    /// Compose two or more functions passing result of the first function
+    /// into the next function until all the functions have been evaluated
+    ///
+    /// :param functions - list of functions
+    /// :return A function that can be called with variadic parameters of values
+    public class func compose<T>(functions: ((T...) -> [T])...) -> ((T...) -> [T]) {
+        typealias Function = [T] -> [T]
+        return {
+            var result = $0
+            for fun in functions {
+                let f = unsafeBitCast(fun, Function.self)
+                result = f(result)
+            }
+            return result
+        }
+    }
+
+    /// Compose two or more functions passing result of the first function
+    /// into the next function until all the functions have been evaluated
+    ///
+    /// :param functions - list of functions
+    /// :return A function that can be called with array of values
+    public class func compose<T>(functions: ([T] -> [T])...) -> ([T] -> [T]) {
+        return {
+            var result = $0
+            for fun in functions {
+                result = fun(result)
+            }
+            return result
+        }
+    }
+    
     /// Checks if a given value is present in the array.
     ///
     /// :param array The array to check against.

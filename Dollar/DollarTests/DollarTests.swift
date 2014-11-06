@@ -441,10 +441,31 @@ class DollarTests: XCTestCase {
         let z = fibMemo(6)
         XCTAssertEqual(times, 1, "Function called 1 times due to memoize")
     }
-    
-   
+
     func testId() {
         XCTAssertEqual($.id(1), 1, "Id should return the argument it gets passed")
     }
 
+    func testComposeVariadic() {
+        let double = { (params: Int...) -> [Int] in
+            return $.map(params) { $0 * 2 }
+        }
+        let subtractTen = { (params: Int...) -> [Int] in
+            return $.map(params) { $0 - 10 }
+        }
+        let doubleSubtractTen = $.compose(double, subtractTen)
+        XCTAssertEqual(doubleSubtractTen(5, 6, 7), [0, 2, 4], "Should double value and then subtract 10")
+    }
+
+    func testComposeArray() {
+        let double = { (params: [Int]) -> [Int] in
+            return $.map(params) { $0 * 2 }
+        }
+        let subtractTen = { (params: [Int]) -> [Int] in
+            return $.map(params) { $0 - 10 }
+        }
+        let doubleSubtractTen = $.compose(double, subtractTen)
+        XCTAssertEqual(doubleSubtractTen([5, 6, 7]), [0, 2, 4], "Should double value and then subtract 10")
+    }
+    
 }
