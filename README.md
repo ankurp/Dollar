@@ -74,7 +74,7 @@ $.compact([nil, nil]) as NSObject[]
 
 ### compose - `$.compose`
 
-Compose two or more functions where the return value of the first function is passed into the next function. Useful when chaing functions and returns a function that can be called with variadic argument values or an array of values as input
+Compose two or more functions where the return value of the first function is passed into the next function. Useful when chaining functions and returns a function that can be called with variadic argument values or an array of values as input
 
 ```swift
 let double = { (params: Int...) -> [Int] in
