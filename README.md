@@ -72,30 +72,6 @@ $.compact([nil, nil]) as NSObject[]
 => []
 ```
 
-### compose - `$.compose`
-
-Compose two or more functions where the return value of the first function is passed into the next function. Useful when chaining functions and returns a function that can be called with variadic argument values or an array of values as input
-
-```swift
-let double = { (params: Int...) -> [Int] in
-  return $.map(params) { $0 * 2 }
-}
-let subtractTen = { (params: Int...) -> [Int] in
-  return $.map(params) { $0 - 10 }
-}
-let doubleSubtractTen = $.compose(double, subtractTen)
-doubleSubtractTen(5, 6, 7)
-=> [0, 2, 4]
-
-let f = $.compose({ (arr: [Int]) -> [Int] in
-  $.map(arr) { $0 + 1 }
-}, { (arr: [Int]) -> [Int] in
-  $.map(arr) { $0 * 2 }
-})
-f([1, 2])
-=> [4, 6]
-```
-
 ### contains - `$.contains`
 
 Checks if a given value is present in the array.
@@ -628,6 +604,30 @@ let helloWorldFunc = $.bind({(T...) in
 }, "Hello", "World", "Swift")
 helloWorldFunc() 
 => "Hello World from Swift"
+```
+
+### compose - `$.compose`
+
+Compose two or more functions where the return value of the first function is passed into the next function. Useful when chaining functions and returns a function that can be called with variadic argument values or an array of values as input
+
+```swift
+let double = { (params: Int...) -> [Int] in
+  return $.map(params) { $0 * 2 }
+}
+let subtractTen = { (params: Int...) -> [Int] in
+  return $.map(params) { $0 - 10 }
+}
+let doubleSubtractTen = $.compose(double, subtractTen)
+doubleSubtractTen(5, 6, 7)
+=> [0, 2, 4]
+
+let f = $.compose({ (arr: [Int]) -> [Int] in
+  $.map(arr) { $0 + 1 }
+}, { (arr: [Int]) -> [Int] in
+  $.map(arr) { $0 * 2 }
+})
+f([1, 2])
+=> [4, 6]
 ```
 
 ### id - `$.id`
