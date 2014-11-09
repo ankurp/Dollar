@@ -24,7 +24,9 @@
     <meta content="Dollar is a Swift library that provides useful functional programming helper methods without extending any built in objects. It is similar to Lo-Dash or Underscore in Javascript." name="description">
 
     <script>
-    // Flatdoc.run({fetcher: Flatdoc.file('README.md')});
+    Flatdoc.run({
+        // fetcher: Flatdoc.file('README.md')
+    });
     </script>
 </head>
 
@@ -176,6 +178,8 @@
                                             <li id="bind-bind-item" class="level-3"><a id="bind-bind-link" href="#bind-bind" class="level-3">bind - $.bind</a>
                                             </li>
                                             <li id="compose-compose-item" class="level-3"><a id="compose-compose-link" href="#compose-compose" class="level-3">compose - $.compose</a>
+                                            </li>
+                                            <li id="curry-curry-item" class="level-3"><a id="curry-curry-link" href="#curry-curry" class="level-3">curry - $.curry</a>
                                             </li>
                                             <li id="id-id-item" class="level-3"><a id="id-id-link" href="#id-id" class="level-3">id - $.id</a>
                                             </li>
@@ -734,6 +738,24 @@ doubleSubtractTen(<span class="number">5</span>, <span class="number">6</span>, 
 })
 f([<span class="number">1</span>, <span class="number">2</span>])
 =&gt; [<span class="number">4</span>, <span class="number">6</span>]</code></pre>
+            <h3 id="curry-curry">curry -
+                <code>$.curry</code>
+            </h3>
+            <p>Returns a function which when invoked either executes the function returning its result, if all function arguments have been provided, or returns another function that accepts one more argument of the remaining function arguments until all arguments are supplied. This is useful for making partial function as seen in these examples.</p><pre><code class="lang-swift">func adder(x: Int, y: Int, z: Int) -&gt; Int {
+return x + y + z
+}
+
+<span class="keyword">let</span> curriedAdder = <span class="keyword">$</span>.curry(adder)
+<span class="keyword">let</span> addTenAnd = curriedAdder(<span class="number">10</span>)
+<span class="keyword">let</span> addThirtyAnd = addTenAnd(<span class="number">20</span>)
+addThirtyAnd(<span class="number">1</span>)
+=&gt; <span class="number">31</span>
+
+addThirtyAnd(<span class="number">50</span>)
+=&gt; <span class="number">80</span>
+
+addTenAnd(<span class="number">10</span>)(<span class="number">10</span>)
+=&gt; <span class="number">30</span></code></pre>
             <h3 id="id-id">id -
                 <code>$.id</code>
             </h3>
