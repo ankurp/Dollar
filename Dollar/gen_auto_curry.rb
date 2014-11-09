@@ -8,7 +8,7 @@ def curry_generator(n)
   closures = (1..n).map{|i| "{ t#{i}"}.join(" in ")
   closing_braces = (1..n).map{ "}" }.join(" ")
   [
-    "    public class func autoCurry<#{types}, R>(f: (#{types}) -> R) -> #{return_type} -> R {",
+    "    public class func curry<#{types}, R>(f: (#{types}) -> R) -> #{return_type} -> R {",
     "        return #{closures} in f(#{types.downcase}) #{closing_braces}",
     "    }"
   ].join("\n")
