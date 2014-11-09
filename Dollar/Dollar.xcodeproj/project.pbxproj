@@ -9,11 +9,13 @@
 /* Begin PBXBuildFile section */
 		924CB6291A0888910047D7CA /* DollarPerformanceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 924CB6281A0888910047D7CA /* DollarPerformanceTests.swift */; };
 		924E37D4197DFCDB000086A9 /* Dollar.swift in Resources */ = {isa = PBXBuildFile; fileRef = 92E0D05819467CA2002ACC3D /* Dollar.swift */; };
+		9252FCD21A0F26F6002E85A4 /* AutoCurry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9252FCD11A0F26F6002E85A4 /* AutoCurry.swift */; };
 		92E0D04219467C67002ACC3D /* Dollar.h in Headers */ = {isa = PBXBuildFile; fileRef = 92E0D04119467C67002ACC3D /* Dollar.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		92E0D05919467CA2002ACC3D /* Dollar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92E0D05819467CA2002ACC3D /* Dollar.swift */; };
 		92E6687A19F09D2A00BB4FB8 /* CarExample.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0419C8411948BEC600B947B3 /* CarExample.swift */; };
 		92E6687B19F09D2A00BB4FB8 /* DollarTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92E0D04E19467C67002ACC3D /* DollarTests.swift */; };
 		92E6687C19F09D3000BB4FB8 /* Dollar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92E0D03C19467C67002ACC3D /* Dollar.framework */; };
+		92F1389D1A0F28C000B72258 /* gen_auto_curry.rb in Resources */ = {isa = PBXBuildFile; fileRef = 92F1389C1A0F28C000B72258 /* gen_auto_curry.rb */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,6 +31,7 @@
 /* Begin PBXFileReference section */
 		0419C8411948BEC600B947B3 /* CarExample.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CarExample.swift; sourceTree = "<group>"; };
 		924CB6281A0888910047D7CA /* DollarPerformanceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DollarPerformanceTests.swift; sourceTree = "<group>"; };
+		9252FCD11A0F26F6002E85A4 /* AutoCurry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoCurry.swift; sourceTree = "<group>"; };
 		92E0D03C19467C67002ACC3D /* Dollar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Dollar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		92E0D04019467C67002ACC3D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		92E0D04119467C67002ACC3D /* Dollar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Dollar.h; sourceTree = "<group>"; };
@@ -36,6 +39,7 @@
 		92E0D04E19467C67002ACC3D /* DollarTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DollarTests.swift; sourceTree = "<group>"; };
 		92E0D05819467CA2002ACC3D /* Dollar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dollar.swift; sourceTree = "<group>"; };
 		92E6686F19F09C6400BB4FB8 /* DollarTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DollarTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		92F1389C1A0F28C000B72258 /* gen_auto_curry.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = gen_auto_curry.rb; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +84,8 @@
 			children = (
 				92E0D04119467C67002ACC3D /* Dollar.h */,
 				92E0D05819467CA2002ACC3D /* Dollar.swift */,
+				9252FCD11A0F26F6002E85A4 /* AutoCurry.swift */,
+				92F138971A0F283400B72258 /* Pre Build Script */,
 				92E0D03F19467C67002ACC3D /* Supporting Files */,
 			);
 			path = Dollar;
@@ -112,6 +118,14 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		92F138971A0F283400B72258 /* Pre Build Script */ = {
+			isa = PBXGroup;
+			children = (
+				92F1389C1A0F28C000B72258 /* gen_auto_curry.rb */,
+			);
+			name = "Pre Build Script";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -134,6 +148,7 @@
 				92E0D03819467C67002ACC3D /* Frameworks */,
 				92E0D03919467C67002ACC3D /* Headers */,
 				92E0D03A19467C67002ACC3D /* Resources */,
+				9252FCC81A0F2464002E85A4 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -203,6 +218,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				924E37D4197DFCDB000086A9 /* Dollar.swift in Resources */,
+				92F1389D1A0F28C000B72258 /* gen_auto_curry.rb in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -215,11 +231,29 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		9252FCC81A0F2464002E85A4 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(PROJECT_DIR)/Dollar/AutoCurry.swift",
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/bash;
+			shellScript = "ruby ${PROJECT_DIR}/gen_auto_curry.rb\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		92E0D03719467C67002ACC3D /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9252FCD21A0F26F6002E85A4 /* AutoCurry.swift in Sources */,
 				92E0D05919467CA2002ACC3D /* Dollar.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

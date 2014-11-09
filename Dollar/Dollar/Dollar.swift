@@ -1351,3 +1351,6 @@ public class Dollar {
 public typealias $ = Dollar
 
 
+extension Dollar {
+    
+}
