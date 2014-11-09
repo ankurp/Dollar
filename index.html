@@ -22,11 +22,15 @@
     <!-- Meta -->
     <meta content="Dollar and Cent" property="og:title">
     <meta content="Dollar is a Swift library that provides useful functional programming helper methods without extending any built in objects. It is similar to Lo-Dash or Underscore in Javascript." name="description">
+
+    <script>
+    // Flatdoc.run({fetcher: Flatdoc.file('README.md')});
+    </script>
 </head>
 
 <body role="flatdoc">
 
-    <div class="title-area title-card" style="height: 650px; background-image: url(https://raw.githubusercontent.com/ankurp/Dollar.swift/master/assets/hero.png); background-position: 50% 50%; background-repeat: no-repeat;">
+    <div class="title-area title-card" style="background-image: url(https://raw.githubusercontent.com/ankurp/Dollar.swift/master/assets/hero.png); background-position: 50% 50%; background-repeat: no-repeat;">
         <div class="in">
             <div class="headline">
             </div>
@@ -50,7 +54,7 @@
     </div>
 
     <div class="content-root">
-        <div class="menubar fixed">
+        <div class="menubar">
             <div class="menu section" role="flatdoc-menu">
                 <ul>
                     <li id="root-item" class="level-0">
@@ -170,6 +174,8 @@
                                             <li id="after-after-item" class="level-3"><a id="after-after-link" href="#after-after" class="level-3">after - $.after</a>
                                             </li>
                                             <li id="bind-bind-item" class="level-3"><a id="bind-bind-link" href="#bind-bind" class="level-3">bind - $.bind</a>
+                                            </li>
+                                            <li id="compose-compose-item" class="level-3"><a id="compose-compose-link" href="#compose-compose" class="level-3">compose - $.compose</a>
                                             </li>
                                             <li id="id-id-item" class="level-3"><a id="id-id-link" href="#id-id" class="level-3">id - $.id</a>
                                             </li>
@@ -299,7 +305,7 @@
                                             </li>
                                             <li id="eachwithindex-callback-t-item" class="level-3"><a id="eachwithindex-callback-t-link" href="#eachwithindex-callback-t" class="level-3">eachWithIndex(callback: (T) -&gt; ())</a>
                                             </li>
-                                            <li id="each-callback-item" class="level-3"><a id="each-callback-link" href="#each-callback" class="level-3 active">each(callback: () -&gt; ())</a>
+                                            <li id="each-callback-item" class="level-3"><a id="each-callback-link" href="#each-callback" class="level-3">each(callback: () -&gt; ())</a>
                                             </li>
                                         </ul>
                                     </li>
@@ -708,6 +714,26 @@ isDone
 }, <span class="string">"Hello"</span>, <span class="string">"World"</span>, <span class="string">"Swift"</span>)
 helloWorldFunc() 
 =&gt; <span class="string">"Hello World from Swift"</span></code></pre>
+            <h3 id="compose-compose">compose -
+                <code>$.compose</code>
+            </h3>
+            <p>Compose two or more functions where the return value of the first function is passed into the next function. Useful when chaining functions and returns a function that can be called with variadic argument values or an array of values as input</p><pre><code class="lang-swift"><span class="keyword">let</span> double = { (params: Int...) -&gt; [Int] in
+  return <span class="keyword">$</span>.map(params) { <span class="keyword">$</span><span class="number">0</span> * <span class="number">2</span> }
+}
+<span class="keyword">let</span> subtractTen = { (params: Int...) -&gt; [Int] in
+  return <span class="keyword">$</span>.map(params) { <span class="keyword">$</span><span class="number">0</span> - <span class="number">10</span> }
+}
+<span class="keyword">let</span> doubleSubtractTen = <span class="keyword">$</span>.compose(double, subtractTen)
+doubleSubtractTen(<span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>)
+=&gt; [<span class="number">0</span>, <span class="number">2</span>, <span class="number">4</span>]
+
+<span class="keyword">let</span> f = <span class="keyword">$</span>.compose({ (arr: [Int]) -&gt; [Int] in
+  <span class="keyword">$</span>.map(arr) { <span class="keyword">$</span><span class="number">0</span> + <span class="number">1</span> }
+}, { (arr: [Int]) -&gt; [Int] in
+  <span class="keyword">$</span>.map(arr) { <span class="keyword">$</span><span class="number">0</span> * <span class="number">2</span> }
+})
+f([<span class="number">1</span>, <span class="number">2</span>])
+=&gt; [<span class="number">4</span>, <span class="number">6</span>]</code></pre>
             <h3 id="id-id">id -
                 <code>$.id</code>
             </h3>
