@@ -244,7 +244,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/bash;
-			shellScript = "ruby ${PROJECT_DIR}/gen_auto_curry.rb\n";
+			shellScript = "";
 		};
 /* End PBXShellScriptBuildPhase section */
 
