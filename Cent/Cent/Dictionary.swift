@@ -9,7 +9,7 @@
 import Foundation
 import Dollar
 
-extension Dictionary {
+internal extension Dictionary {
     
     /// Checks whether Dictionary has no keys and hence is empty
     ///

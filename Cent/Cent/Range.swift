@@ -9,7 +9,7 @@
 import Foundation
 import Dollar
 
-extension Range {
+internal extension Range {
     
     /// For each index in the range invoke the callback by passing the item in range
     ///

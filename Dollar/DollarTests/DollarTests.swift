@@ -39,58 +39,9 @@ class DollarTests: XCTestCase {
         }
         XCTAssertNil($.third([NSObject]()), "Returns nil when array is empty")
     }
-    
-    func testFourth() {
-        if let result = $.fourth([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]) {
-            XCTAssertEqual(result, 4, "Return fourth element")
-        }
-        XCTAssertNil($.fourth([NSObject]()), "Returns nil when array is empty")
-    }
-    
-    func testFifth() {
-        if let result = $.fifth([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]) {
-            XCTAssertEqual(result, 5, "Return fifth element")
-        }
-        XCTAssertNil($.fifth([NSObject]()), "Returns nil when array is empty")
-    }
-    
-    func testSixth() {
-        if let result = $.sixth([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]) {
-            XCTAssertEqual(result, 6, "Return sixth element")
-        }
-        XCTAssertNil($.sixth([NSObject]()), "Returns nil when array is empty")
-    }
-    
-    func testSeventh() {
-        if let result = $.seventh([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]) {
-            XCTAssertEqual(result, 7, "Return seventh element")
-        }
-        XCTAssertNil($.seventh([NSObject]()), "Returns nil when array is empty")
-    }
-    
-    func testEighth() {
-        if let result = $.eighth([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]) {
-            XCTAssertEqual(result, 8, "Return eighth element")
-        }
-        XCTAssertNil($.eighth([NSObject]()), "Returns nil when array is empty")
-    }
-    
-    func testNinth() {
-        if let result = $.ninth([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]) {
-            XCTAssertEqual(result, 9, "Return ninth element")
-        }
-        XCTAssertNil($.ninth([NSObject]()), "Returns nil when array is empty")
-    }
-    
-    func testTenth() {
-        if let result = $.tenth([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]) {
-            XCTAssertEqual(result, 10, "Return tenth element")
-        }
-        XCTAssertNil($.tenth([NSObject]()), "Returns nil when array is empty")
-    }
 
     func testNoop() {
-        XCTAssertNil($.noop(), "No op returns nothing")
+        $.noop()
     }
 
     func testCompact() {
@@ -99,9 +50,8 @@ class DollarTests: XCTestCase {
     }
 
     func testFlatten() {
-        XCTAssertEqual($.flatten([[3], 4, 5]) as [Int], [3, 4, 5], "Return flat array")
-        XCTAssertEqual($.flatten([[3], "Hello", 5]) as [NSObject], [3, "Hello", 5], "Return flat array")
-        XCTAssertEqual($.flatten([[[3], 4], 5]) as [Int], [3, 4, 5], "Return flat array")
+        XCTAssertEqual($.flatten([[3], 4, 5]), [3, 4, 5], "Return flat array")
+        XCTAssertEqual($.flatten([[[3], 4], 5]), [3, 4, 5], "Return flat array")
     }
     
     func testShuffle() {

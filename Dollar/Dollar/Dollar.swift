@@ -72,70 +72,7 @@ public class Dollar {
             Dollar.third($0 as Array)
         }
     }
-    
-    /// Get the fourth object in the wrapper object.
-    ///
-    /// :return Fourth element from the array.
-    public func fourth() -> Dollar {
-        return self.queue {
-            Dollar.fourth($0 as Array)
-        }
-    }
-    
-    /// Get the fifth object in the wrapper object.
-    ///
-    /// :return Fifth element from the array.
-    public func fifth() -> Dollar {
-        return self.queue {
-            Dollar.fifth($0 as Array)
-        }
-    }
-    
-    /// Get the sixth object in the wrapper object.
-    ///
-    /// :return Sixth element from the array.
-    public func sixth() -> Dollar {
-        return self.queue {
-            Dollar.sixth($0 as Array)
-        }
-    }
-    
-    /// Get the seventh object in the wrapper object.
-    ///
-    /// :return Seventh element from the array.
-    public func seventh() -> Dollar {
-        return self.queue {
-            Dollar.seventh($0 as Array)
-        }
-    }
-    
-    /// Get the eighth object in the wrapper object.
-    ///
-    /// :return Eighth element from the array.
-    public func eighth() -> Dollar {
-        return self.queue {
-            Dollar.eighth($0 as Array)
-        }
-    }
-    
-    /// Get the ninth object in the wrapper object.
-    ///
-    /// :return Ninth element from the array.
-    public func ninth() -> Dollar {
-        return self.queue {
-            Dollar.ninth($0 as Array)
-        }
-    }
-    
-    /// Get the tenth object in the wrapper object.
-    ///
-    /// :return Tenth element from the array.
-    public func tenth() -> Dollar {
-        return self.queue {
-            Dollar.tenth($0 as Array)
-        }
-    }
-    
+        
     /// Another comment
     /// Flattens nested array.
     ///
@@ -549,98 +486,14 @@ public class Dollar {
         }
     }
     
-    /// Gets the fourth element in the array.
-    ///
-    /// :param array The array to wrap.
-    /// :return Fourth element from the array.
-    public class func fourth<T>(array: [T]) -> T? {
-        if array.count < 4 {
-            return .None
-        } else {
-            return array[3]
-        }
-    }
-    
-    /// Gets the fifth element in the array.
-    ///
-    /// :param array The array to wrap.
-    /// :return Fifth element from the array.
-    public class func fifth<T>(array: [T]) -> T? {
-        if array.count < 5 {
-            return .None
-        } else {
-            return array[4]
-        }
-    }
-    
-    /// Gets the sixth element in the array.
-    ///
-    /// :param array The array to wrap.
-    /// :return Sixth element from the array.
-    public class func sixth<T>(array: [T]) -> T? {
-        if array.count < 6 {
-            return .None
-        } else {
-            return array[5]
-        }
-    }
-    
-    /// Gets the seventh element in the array.
-    ///
-    /// :param array The array to wrap.
-    /// :return Seventh element from the array.
-    public class func seventh<T>(array: [T]) -> T? {
-        if array.count < 7 {
-            return .None
-        } else {
-            return array[6]
-        }
-    }
-    
-    /// Gets the eighth element in the array.
-    ///
-    /// :param array The array to wrap.
-    /// :return Eighth element from the array.
-    public class func eighth<T>(array: [T]) -> T? {
-        if array.count < 8 {
-            return .None
-        } else {
-            return array[7]
-        }
-    }
-    
-    /// Gets the ninth element in the array.
-    ///
-    /// :param array The array to wrap.
-    /// :return Ninth element from the array.
-    public class func ninth<T>(array: [T]) -> T? {
-        if array.count < 9 {
-            return .None
-        } else {
-            return array[8]
-        }
-    }
-    
-    /// Gets the tenth element in the array.
-    ///
-    /// :param array The array to wrap.
-    /// :return Tenth element from the array.
-    public class func tenth<T>(array: [T]) -> T? {
-        if array.count < 10 {
-            return .None
-        } else {
-            return array[9]
-        }
-    }
-    
     /// Flattens a nested array of any depth.
     ///
     /// :param array The array to flatten.
     /// :return Flattened array.
-    public class func flatten(array: [AnyObject]) -> [AnyObject] {
-        var resultArr: [AnyObject] = []
-        for elem : AnyObject in array {
-            if let val = elem as? [AnyObject] {
+    public class func flatten<T>(array: [T]) -> [T] {
+        var resultArr: [T] = []
+        for elem : T in array {
+            if let val = elem as? [T] {
                 resultArr += self.flatten(val)
             } else {
                 resultArr.append(elem)
@@ -891,8 +744,7 @@ public class Dollar {
     /// A no-operation function.
     ///
     /// :return nil.
-    public class func noop() -> AnyObject? {
-        return .None
+    public class func noop() -> () {
     }
     
     /// Creates a shallow clone of a dictionary excluding the specified keys.
@@ -1321,13 +1173,13 @@ public class Dollar {
     ///
     /// :param arrays The arrays to be grouped.
     /// :return An array of grouped elements.
-    public class func zip(arrays: [AnyObject]...) -> [AnyObject] {
-        var result: [[AnyObject]] = []
-        for _ in self.first(arrays)! as [AnyObject] {
-            result.append([] as [AnyObject])
+    public class func zip<T>(arrays: [T]...) -> [[T]] {
+        var result: [[T]] = []
+        for _ in self.first(arrays)! as [T] {
+            result.append([] as [T])
         }
         for (index, array) in enumerate(arrays) {
-            for (elemIndex, elem : AnyObject) in enumerate(array) {
+            for (elemIndex, elem : T) in enumerate(array) {
                 result[elemIndex].append(elem)
             }
         }

@@ -9,7 +9,7 @@
 import Foundation
 import Dollar
 
-extension Array {
+internal extension Array {
 
     /// Creates an array of elements from the specified indexes, or keys, of the collection.
     /// Indexes may be specified as individual arguments or as arrays of indexes.
@@ -57,7 +57,14 @@ extension Array {
     func first() -> Element? {
         return $.first(self)
     }
-        
+    
+    /// Flattens the array
+    ///
+    /// :return Flatten array of elements
+    func flatten() -> [Element] {
+        return $.flatten(self)
+    }
+    
     /// Get element at index
     ///
     /// :param index The index in the array
