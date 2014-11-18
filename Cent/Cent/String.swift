@@ -72,7 +72,14 @@ extension String {
     public func strip() -> String {
         return self.stringByTrimmingCharactersInSet(.whitespaceCharacterSet())
     }
-    
+}
+
+extension Character {
+    public var description: String {
+        get {
+            return String(self)
+        }
+    }
 }
 
 infix operator =~ {}

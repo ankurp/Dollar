@@ -1006,6 +1006,18 @@ let max = [ 0, 1, 2].max()
 => 2
 ```
 
+## Character Extensions ##
+
+### `"A".description -> String`
+
+Get string description of Character
+
+```swift
+let ch: Character = "A"
+let str = ch.description
+=> "A"
+```
+
 ## Date Extensions ##
 
 ### `Date.from(#year: Int, month: Int, day: Int) -> NSDate`
