@@ -72,8 +72,7 @@ public class Dollar {
             Dollar.third($0 as Array)
         }
     }
-        
-    /// Another comment
+    
     /// Flattens nested array.
     ///
     /// :return The wrapper object.
@@ -761,6 +760,44 @@ public class Dollar {
             }
         }
         return result
+    }
+    
+    /// Get a wrapper function that executes the passed function only once
+    ///
+    /// :param function That takes variadic arguments and return nil or some value
+    /// :return Wrapper function that executes the passed function only once
+    /// Consecutive calls will return the value returned when calling the function first time
+    public class func once<T, U>(function: (T...) -> U) -> (T...) -> U {
+        var result: U?
+        var onceFunc = { (params: T...) -> U in
+            typealias Function = [T] -> U
+            if let returnVal = result {
+                return returnVal
+            } else {
+                var f = unsafeBitCast(function, Function.self)
+                result = f(params)
+                return result!
+            }
+        }
+        return onceFunc
+    }
+
+    /// Get a wrapper function that executes the passed function only once
+    ///
+    /// :param function That takes variadic arguments and return nil or some value
+    /// :return Wrapper function that executes the passed function only once
+    /// Consecutive calls will return the value returned when calling the function first time
+    public class func once<U>(function: () -> U) -> () -> U {
+        var result: U?
+        var onceFunc = { () -> U in
+            if let returnVal = result {
+                return returnVal
+            } else {
+                result = function()
+                return result!
+            }
+        }
+        return onceFunc
     }
     
     /// Get the first object in the wrapper object.
