@@ -688,13 +688,34 @@ times
 => 1
 ```
 
-### noop - `$.noop()`
+### noop - `$.noop`
 
 A no-operation function.
 
 ```swift
 $.noop() 
 => nil
+```
+
+### once - `$.once`
+
+Get a wrapper function that executes the passed function only once. Useful for getting shared config or creating singleton objects.
+
+```swift
+func createConfig() -> [String: String] {
+  var i = 1
+  return [
+    "App ID": "\(i++)",
+    "URL": "https://someurl"
+  ]
+}
+
+let getConfig = $.once(createConfig)
+getConfig()
+=> ["App ID": "1", "URL": "https://someurl"]
+
+getConfig()
+=> ["App ID": "1", "URL": "https://someurl"]
 ```
 
 ### partial - `$.partial`
