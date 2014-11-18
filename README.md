@@ -4,7 +4,7 @@ Dollar and Cent
 
 ![Introducing Dollar and Cent](https://raw.githubusercontent.com/ankurp/Dollar.swift/master/assets/hero.png)
 
-Dollar is a Swift library that provides useful functional programming helper methods without extending any built in objects. It is similar to Lo-Dash or Underscore in Javascript.
+Dollar is a Swift library that provides useful functional programming helper methods without extending any built in objects. It is similar to [Lo-Dash](https://lodash.com) or [Underscore.js](http://underscorejs.org) in Javascript.
 
 Cent is a library that extends certain Swift object types using the extension feature and gives its two cents to Swift language.
 
