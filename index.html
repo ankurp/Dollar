@@ -185,7 +185,9 @@
                                             </li>
                                             <li id="memoize-memoize-item" class="level-3"><a id="memoize-memoize-link" href="#memoize-memoize" class="level-3">memoize - $.memoize</a>
                                             </li>
-                                            <li id="noop-noop-item" class="level-3"><a id="noop-noop-link" href="#noop-noop" class="level-3">noop - $.noop()</a>
+                                            <li id="noop-noop-item" class="level-3"><a id="noop-noop-link" href="#noop-noop" class="level-3">noop - $.noop</a>
+                                            </li>
+                                            <li id="once-once-item" class="level-3"><a id="once-once-link" href="#once-once" class="level-3">once - $.once</a>
                                             </li>
                                             <li id="partial-partial-item" class="level-3"><a id="partial-partial-link" href="#partial-partial" class="level-3">partial - $.partial</a>
                                             </li>
@@ -328,6 +330,7 @@
         </div>
         <div role="flatdoc-content" class="content">
             <h1 id="dollar-and-cent">Dollar and Cent</h1>
+            <p><a href="https://gitter.im/ankurp/Dollar.swift?utm_source=badge&amp;utm_medium=badge&amp;utm_campaign=pr-badge&amp;utm_content=badge">![Gitter](</a><a href="https://badges.gitter.im/Join">https://badges.gitter.im/Join</a> Chat.svg)</p>
             <p>Dollar is a Swift library that provides useful functional programming helper methods without extending any built in objects. It is similar to <a href="https://lodash.com">Lo-Dash</a> or <a href="http://underscorejs.org">Underscore.js</a> in Javascript.</p>
             <p>Cent is a library that extends certain Swift object types using the extension feature and gives its two cents to Swift language.</p>
             <h1 id="setup">Setup</h1>
@@ -785,10 +788,27 @@ times = <span class="number">0</span>
 times
 =&gt; <span class="number">1</span></code></pre>
             <h3 id="noop-noop">noop -
-                <code>$.noop()</code>
+                <code>$.noop</code>
             </h3>
             <p>A no-operation function.</p><pre><code class="lang-swift"><span class="keyword">$</span>.noop() 
 =&gt; nil</code></pre>
+            <h3 id="once-once">once -
+                <code>$.once</code>
+            </h3>
+            <p>Get a wrapper function that executes the passed function only once. Useful for getting shared config or creating singleton objects.</p><pre><code class="lang-swift">func createConfig() -&gt; [String: String] {
+  var i = <span class="number">1</span>
+  return [
+    <span class="string">"App ID"</span>: <span class="string">"\(i++)"</span>,
+    <span class="string">"URL"</span>: <span class="string">"https:<span class="comment">//someurl"</span></span>
+  ]
+}
+
+<span class="keyword">let</span> getConfig = <span class="keyword">$</span>.once(createConfig)
+getConfig()
+=&gt; [<span class="string">"App ID"</span>: <span class="string">"<span class="number">1</span>"</span>, <span class="string">"URL"</span>: <span class="string">"https:<span class="comment">//someurl"</span>]</span>
+
+getConfig()
+=&gt; [<span class="string">"App ID"</span>: <span class="string">"<span class="number">1</span>"</span>, <span class="string">"URL"</span>: <span class="string">"https:<span class="comment">//someurl"</span>]</span></code></pre>
             <h3 id="partial-partial">partial -
                 <code>$.partial</code>
             </h3>
@@ -1121,6 +1141,9 @@ spaces.strip()
         pageTracker._trackPageview();
     } catch (err) {}
     </script>
+
+
+
 
 </body>
 

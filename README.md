@@ -1,5 +1,6 @@
 Dollar and Cent
 ===========
+[![Gitter](https://badges.gitter.im/Join Chat.svg)](https://gitter.im/ankurp/Dollar.swift?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 Dollar is a Swift library that provides useful functional programming helper methods without extending any built in objects. It is similar to [Lo-Dash](https://lodash.com) or [Underscore.js](http://underscorejs.org) in Javascript.
 
@@ -662,13 +663,34 @@ times
 => 1
 ```
 
-### noop - `$.noop()`
+### noop - `$.noop`
 
 A no-operation function.
 
 ```swift
 $.noop() 
 => nil
+```
+
+### once - `$.once`
+
+Get a wrapper function that executes the passed function only once. Useful for getting shared config or creating singleton objects.
+
+```swift
+func createConfig() -> [String: String] {
+  var i = 1
+  return [
+    "App ID": "\(i++)",
+    "URL": "https://someurl"
+  ]
+}
+
+let getConfig = $.once(createConfig)
+getConfig()
+=> ["App ID": "1", "URL": "https://someurl"]
+
+getConfig()
+=> ["App ID": "1", "URL": "https://someurl"]
 ```
 
 ### partial - `$.partial`
