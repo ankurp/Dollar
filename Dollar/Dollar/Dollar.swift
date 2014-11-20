@@ -355,6 +355,32 @@ public class Dollar {
         }
         return newArr
     }
+
+    /// Cycles through the array indefinetly passing each element into the callback function
+    ///
+    /// :param array to cycle through
+    /// :param callback function to call with the element
+    public class func cycle<T, U>(array: [T], callback: (T) -> (U)) {
+        while true {
+            for elem in array {
+                callback(elem)
+            }
+        }
+    }
+    
+    /// Cycles through the array n times passing each element into the callback function
+    ///
+    /// :param array to cycle through
+    /// :param times Number of times to cycle through the array
+    /// :param callback function to call with the element
+    public class func cycle<T, U>(array: [T], _ times: Int, callback: (T) -> (U)) {
+        var i = 0
+        while i++ < times {
+            for elem in array {
+                callback(elem)
+            }
+        }
+    }
         
     /// Creates an array excluding all values of the provided arrays.
     ///
@@ -398,6 +424,23 @@ public class Dollar {
             }
         }
         return true
+    }
+    
+    /// Get element from an array at the given index which can be negative
+    /// to find elements from the end of the array
+    ///
+    /// :param array The array to fetch from
+    /// :param index Can be positive or negative to find from end of the array
+    /// :param orElse Default value to use if index is out of bounds
+    /// :return Element fetched from the array or the default value passed in orElse
+    public class func fetch<T>(array: [T], _ index: Int, orElse: T? = .None) -> T! {
+        if index < 0 && -index < array.count {
+            return array[array.count + index]
+        } else if index < array.count {
+            return array[index]
+        } else {
+            return orElse
+        }
     }
     
     /// Iterates over elements of an array and returning the first element

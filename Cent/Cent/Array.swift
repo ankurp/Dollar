@@ -21,6 +21,21 @@ internal extension Array {
         return $.at(self, indexes: indexes)
     }
 
+    /// Cycles through the array n times passing each element into the callback function
+    ///
+    /// :param times Number of times to cycle through the array
+    /// :param callback function to call with the element
+    func cycle<U>(times: Int, callback: (Element) -> U) {
+        $.cycle(self, times, callback: callback)
+    }
+
+    /// Cycles through the array indefinetly passing each element into the callback function
+    ///
+    /// :param callback function to call with the element
+    func cycle<U>(callback: (Element) -> U) {
+        $.cycle(self, callback: callback)
+    }
+
     /// Checks if the given callback returns true value for all items in the array.
     ///
     /// :param array The array to check.
@@ -28,6 +43,16 @@ internal extension Array {
     /// :return First element from the array.
     func every(iterator: (Element) -> Bool) -> Bool {
         return $.every(self, iterator: iterator)
+    }
+
+    /// Get element from an array at the given index which can be negative
+    /// to find elements from the end of the array
+    ///
+    /// :param index Can be positive or negative to find from end of the array
+    /// :param orElse Default value to use if index is out of bounds
+    /// :return Element fetched from the array or the default value passed in orElse
+    func fetch(index: Int, orElse: Element? = .None) -> Element! {
+        return $.fetch(self, index, orElse: orElse)
     }
     
     /// This method is like find except that it returns the index of the first element
@@ -69,12 +94,8 @@ internal extension Array {
     ///
     /// :param index The index in the array
     /// :return Element at that index
-    func get(index: Int) -> Element? {
-        if index < self.count {
-            return self[index]
-        } else {
-            return .None
-        }
+    func get(index: Int) -> Element! {
+        return self.fetch(index)
     }
     
     /// Gets all but the last element or last n elements of an array.
