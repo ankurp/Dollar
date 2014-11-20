@@ -32,7 +32,7 @@
 
 <body role="flatdoc">
 
-    <div class="title-area title-card" style="background-image: url(https://raw.githubusercontent.com/ankurp/Dollar.swift/master/assets/hero.png); background-position: 50% 50%; background-repeat: no-repeat;">
+    <div class="title-area title-card" style="background-image: url(https://raw.githubusercontent.com/ankurp/Dollar.swift/master/assets/hero.png); background-position: 50% 50%; background-repeat: no-repeat no-repeat;">
         <div class="in">
             <div class="headline">
             </div>
@@ -79,9 +79,13 @@
                                             </li>
                                             <li id="contains-contains-item" class="level-3"><a id="contains-contains-link" href="#contains-contains" class="level-3">contains - $.contains</a>
                                             </li>
+                                            <li id="cycle-cycle-item" class="level-3"><a id="cycle-cycle-link" href="#cycle-cycle" class="level-3">cycle - $.cycle</a>
+                                            </li>
                                             <li id="difference-difference-item" class="level-3"><a id="difference-difference-link" href="#difference-difference" class="level-3">difference - $.difference</a>
                                             </li>
                                             <li id="every-every-item" class="level-3"><a id="every-every-link" href="#every-every" class="level-3">every - $.every</a>
+                                            </li>
+                                            <li id="fetch-fetch-item" class="level-3"><a id="fetch-fetch-link" href="#fetch-fetch" class="level-3">fetch - $.fetch</a>
                                             </li>
                                             <li id="find-find-item" class="level-3"><a id="find-find-link" href="#find-find" class="level-3">find - $.find</a>
                                             </li>
@@ -231,7 +235,11 @@
                                         <ul class="level-3" id="array-extensions-list">
                                             <li id="at-indexes-int-element-item" class="level-3"><a id="at-indexes-int-element-link" href="#at-indexes-int-element" class="level-3">at(indexes: Int...) -&gt; [Element]</a>
                                             </li>
+                                            <li id="cycle-u-times-int-callback-element-u-item" class="level-3"><a id="cycle-u-times-int-callback-element-u-link" href="#cycle-u-times-int-callback-element-u" class="level-3">cycle<u>(times: Int, callback: (Element) -&gt; U)</u></a>
+                                            </li>
                                             <li id="every-iterator-element-bool-bool-item" class="level-3"><a id="every-iterator-element-bool-bool-link" href="#every-iterator-element-bool-bool" class="level-3">every(iterator: (Element) -&gt; Bool) -&gt; Bool</a>
+                                            </li>
+                                            <li id="fetch-index-int-orelse-t-none-t-item" class="level-3"><a id="fetch-index-int-orelse-t-none-t-link" href="#fetch-index-int-orelse-t-none-t" class="level-3">fetch(index: Int, orElse: T? = .None) -&gt; T!</a>
                                             </li>
                                             <li id="findindex-iterator-element-bool-int-item" class="level-3"><a id="findindex-iterator-element-bool-int-link" href="#findindex-iterator-element-bool-int" class="level-3">findIndex(iterator: (Element) -&gt; Bool) -&gt; Int?</a>
                                             </li>
@@ -252,6 +260,12 @@
                                             <li id="min-t-comparable-t-item" class="level-3"><a id="min-t-comparable-t-link" href="#min-t-comparable-t" class="level-3">min<t: comparable="">() -&gt; T?</t:></a>
                                             </li>
                                             <li id="max-t-comparable-t-item" class="level-3"><a id="max-t-comparable-t-link" href="#max-t-comparable-t" class="level-3">max<t: comparable="">() -&gt; T?</t:></a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li id="character-extensions-item" class="level-2"><a id="character-extensions-link" href="#character-extensions" class="level-2">Character Extensions</a>
+                                        <ul class="level-3" id="character-extensions-list">
+                                            <li id="a-description-string-item" class="level-3"><a id="a-description-string-link" href="#a-description-string" class="level-3">"A".description -&gt; String</a>
                                             </li>
                                         </ul>
                                     </li>
@@ -330,7 +344,11 @@
         </div>
         <div role="flatdoc-content" class="content">
             <h1 id="dollar-and-cent">Dollar and Cent</h1>
-            <p><a href="https://gitter.im/ankurp/Dollar.swift?utm_source=badge&amp;utm_medium=badge&amp;utm_campaign=pr-badge&amp;utm_content=badge">![Gitter](</a><a href="https://badges.gitter.im/Join">https://badges.gitter.im/Join</a> Chat.svg)</p>
+            <p>
+                <a href="https://gitter.im/ankurp/Dollar.swift?utm_source=badge&amp;utm_medium=badge&amp;utm_campaign=pr-badge&amp;utm_content=badge">
+                    <img src="https://badges.gitter.im/Join%20Chat.svg" alt="Gitter">
+                </a>
+            </p>
             <p>Dollar is a Swift library that provides useful functional programming helper methods without extending any built in objects. It is similar to <a href="https://lodash.com">Lo-Dash</a> or <a href="http://underscorejs.org">Underscore.js</a> in Javascript.</p>
             <p>Cent is a library that extends certain Swift object types using the extension feature and gives its two cents to Swift language.</p>
             <h1 id="setup">Setup</h1>
@@ -374,6 +392,14 @@
 
 <span class="keyword">$</span>.contains([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>], value: <span class="number">10</span>) 
 =&gt; <span class="keyword">false</span></code></pre>
+            <h3 id="cycle-cycle">cycle -
+                <code>$.cycle</code>
+            </h3>
+            <p>Cycles through the array definetly or indefinetly passing each element into the callback function. The second parameter is to specify how many times to cycle through the array. If left out it will cycle indefinetly.</p><pre><code class="lang-swift"><span class="keyword">$</span>.cycle([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>], <span class="number">2</span>) {
+  print(<span class="keyword">$</span><span class="number">0</span>)
+}
+<span class="comment">// Prints the following</span>
+<span class="number">123123</span></code></pre>
             <h3 id="difference-difference">difference -
                 <code>$.difference</code>
             </h3>
@@ -387,6 +413,18 @@
 
 <span class="keyword">$</span>.every([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>]) { <span class="keyword">$</span><span class="number">0</span> == <span class="number">1</span> } 
 =&gt; <span class="keyword">false</span></code></pre>
+            <h3 id="fetch-fetch">fetch -
+                <code>$.fetch</code>
+            </h3>
+            <p>Get element from an array at the given index which can be negative to find elements from the end of the array. A default value can be returned if indexing out of bounds.</p><pre><code class="lang-swift"><span class="keyword">let</span> arr = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>]
+<span class="keyword">$</span>.fetch(arr, <span class="number">100</span>)
+=&gt; nil
+
+<span class="keyword">$</span>.fetch(arr, <span class="number">100</span>, orElse: <span class="number">42</span>)
+=&gt; <span class="number">42</span>
+
+<span class="keyword">$</span>.fetch(arr, -<span class="number">1</span>)
+=&gt; <span class="number">8</span></code></pre>
             <h3 id="find-find">find -
                 <code>$.find</code>
             </h3>
@@ -922,6 +960,19 @@ strBuilder
             <p>Creates an array of elements from the specified indexes, or keys, of the collection.</p><pre><code class="lang-swift"><span class="keyword">let</span> array = [<span class="string">"foo"</span>, <span class="string">"spam"</span>, <span class="string">"bar"</span>, <span class="string">"eggs"</span>]
 <span class="keyword">let</span> some = array.at(<span class="number">1</span>, <span class="number">3</span>)
 =&gt; [<span class="string">"spam"</span>, <span class="string">"eggs"</span>]</code></pre>
+            <h3 id="cycle-u-times-int-callback-element-u">
+                <code>cycle&lt;U&gt;(times: Int, callback: (Element) -&gt; U)</code>
+            </h3>
+            <p>Cycles through the array definetly or indefinetly passing each element into the callback function. The second parameter is to specify how many times to cycle through the array. If left out it will cycle indefinetly.</p><pre><code class="lang-swift">[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>].cycle(<span class="number">2</span>) {
+  print(<span class="keyword">$</span><span class="number">0</span>)
+}
+<span class="comment">// Prints the following</span>
+<span class="number">123123</span>
+
+[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>].cycle {
+  print(<span class="keyword">$</span><span class="number">0</span>)
+}
+<span class="comment">// Cycles in an infinite loop</span></code></pre>
             <h3 id="every-iterator-element-bool-bool">
                 <code>every(iterator: (Element) -&gt; Bool) -&gt; Bool</code>
             </h3>
@@ -929,6 +980,18 @@ strBuilder
   a.hasSuffix(<span class="string">"gry"</span>) 
 }
 =&gt; <span class="keyword">true</span></code></pre>
+            <h3 id="fetch-index-int-orelse-t-none-t">
+                <code>fetch(index: Int, orElse: T? = .None) -&gt; T!</code>
+            </h3>
+            <p>Get element from an array at the given index which can be negative to find elements from the end of the array. A default value can be returned if indexing out of bounds.</p><pre><code class="lang-swift"><span class="keyword">let</span> arr = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>]
+arr.fetch(<span class="number">100</span>)
+=&gt; nil
+
+arr.fetch(<span class="number">100</span>, orElse: <span class="number">42</span>)
+=&gt; <span class="number">42</span>
+
+arr.fetch(-<span class="number">1</span>)
+=&gt; <span class="number">8</span></code></pre>
             <h3 id="findindex-iterator-element-bool-int">
                 <code>findIndex(iterator: (Element) -&gt; Bool) -&gt; Int?</code>
             </h3>
@@ -990,6 +1053,13 @@ element!
             </h3>
             <p>Retrieves the maximum value in an array.</p><pre><code class="lang-swift"><span class="keyword">let</span> max = [ <span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>].max()
 =&gt; <span class="number">2</span></code></pre>
+            <h2 id="character-extensions">Character Extensions</h2>
+            <h3 id="a-description-string">
+                <code>"A".description -&gt; String</code>
+            </h3>
+            <p>Get string description of Character</p><pre><code class="lang-swift"><span class="keyword">let</span> ch: Character = <span class="string">"A"</span>
+<span class="keyword">let</span> str = ch.description
+=&gt; <span class="string">"A"</span></code></pre>
             <h2 id="date-extensions">Date Extensions</h2>
             <h3 id="date-from-year-int-month-int-day-int-nsdate">
                 <code>Date.from(#year: Int, month: Int, day: Int) -&gt; NSDate</code>
@@ -1130,10 +1200,6 @@ spaces.strip()
                 <code>import Cent</code>which includes extensions for certain object type such as Array for now but more will be added.</p>
         </div>
     </div>
-    <script type="text/javascript">
-    var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
-    document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
-    </script>
     <script src="http://www.google-analytics.com/ga.js" type="text/javascript"></script>
     <script type="text/javascript">
     try {

@@ -1,6 +1,6 @@
 Dollar and Cent
 ===========
-[![Gitter](https://badges.gitter.im/Join Chat.svg)](https://gitter.im/ankurp/Dollar.swift?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+[![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/ankurp/Dollar.swift?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 Dollar is a Swift library that provides useful functional programming helper methods without extending any built in objects. It is similar to [Lo-Dash](https://lodash.com) or [Underscore.js](http://underscorejs.org) in Javascript.
 
@@ -59,6 +59,18 @@ $.contains([1, 2, 3, 1, 2, 3], value: 10)
 => false
 ```
 
+### cycle - `$.cycle`
+
+Cycles through the array definetly or indefinetly passing each element into the callback function. The second parameter is to specify how many times to cycle through the array. If left out it will cycle indefinetly.
+
+```swift
+$.cycle([1, 2, 3], 2) {
+  print($0)
+}
+// Prints the following
+123123
+```
+
 ### difference - `$.difference`
 
 Creates an array excluding all values of the provided arrays
@@ -79,6 +91,23 @@ $.every([1, 2, 3, 4], iterator: { $0 < 20 })
 
 $.every([1, 2, 3, 4]) { $0 == 1 } 
 => false
+```
+
+### fetch - `$.fetch`
+
+Get element from an array at the given index which can be negative to find elements from the end of the array. A default value can be returned if indexing out of bounds.
+
+
+```swift
+let arr = [1, 2, 3, 4, 5, 6, 7, 8]
+$.fetch(arr, 100)
+=> nil
+
+$.fetch(arr, 100, orElse: 42)
+=> 42
+
+$.fetch(arr, -1)
+=> 8
 ```
 
 ### find - `$.find`
@@ -869,6 +898,23 @@ let some = array.at(1, 3)
 => ["spam", "eggs"]
 ```
 
+### `cycle<U>(times: Int, callback: (Element) -> U)`
+
+Cycles through the array definetly or indefinetly passing each element into the callback function. The second parameter is to specify how many times to cycle through the array. If left out it will cycle indefinetly.
+
+```swift
+[1, 2, 3].cycle(2) {
+  print($0)
+}
+// Prints the following
+123123
+
+[1, 2, 3].cycle {
+  print($0)
+}
+// Cycles in an infinite loop
+```
+
 ### `every(iterator: (Element) -> Bool) -> Bool`
 
 Checks if the given callback returns true value for all items in the array.
@@ -878,6 +924,23 @@ Checks if the given callback returns true value for all items in the array.
   a.hasSuffix("gry") 
 }
 => true
+```
+
+### `fetch(index: Int, orElse: T? = .None) -> T!`
+
+Get element from an array at the given index which can be negative to find elements from the end of the array. A default value can be returned if indexing out of bounds.
+
+
+```swift
+let arr = [1, 2, 3, 4, 5, 6, 7, 8]
+arr.fetch(100)
+=> nil
+
+arr.fetch(100, orElse: 42)
+=> 42
+
+arr.fetch(-1)
+=> 8
 ```
 
 ### `findIndex(iterator: (Element) -> Bool) -> Int?`
@@ -979,6 +1042,18 @@ Retrieves the maximum value in an array.
 ```swift
 let max = [ 0, 1, 2].max()
 => 2
+```
+
+## Character Extensions ##
+
+### `"A".description -> String`
+
+Get string description of Character
+
+```swift
+let ch: Character = "A"
+let str = ch.description
+=> "A"
 ```
 
 ## Date Extensions ##
