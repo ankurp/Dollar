@@ -65,7 +65,7 @@
                             </li>
                             <li id="setup-item" class="level-1"><a id="setup-link" href="#setup" class="level-1">Setup</a>
                                 <ul class="level-2" id="setup-list">
-                                    <li id="demo-app-item" class="level-2"><a id="demo-app-link" href="#demo-app" class="level-2">Demo App</a>
+                                    <li id="demo-app-item" class="level-2"><a id="demo-app-link" href="#demo-app" class="level-2 active">Demo App</a>
                                     </li>
                                 </ul>
                             </li>
@@ -233,6 +233,8 @@
                                 <ul class="level-2" id="cent-usage-list">
                                     <li id="array-extensions-item" class="level-2"><a id="array-extensions-link" href="#array-extensions" class="level-2">Array Extensions</a>
                                         <ul class="level-3" id="array-extensions-list">
+                                            <li id="elem-element-element-item" class="level-3"><a id="elem-element-element-link" href="#elem-element-element" class="level-3">&lt;&lt; elem: Element -&gt; [Element]</a>
+                                            </li>
                                             <li id="at-indexes-int-element-item" class="level-3"><a id="at-indexes-int-element-link" href="#at-indexes-int-element" class="level-3">at(indexes: Int...) -&gt; [Element]</a>
                                             </li>
                                             <li id="cycle-u-times-int-callback-element-u-item" class="level-3"><a id="cycle-u-times-int-callback-element-u-link" href="#cycle-u-times-int-callback-element-u" class="level-3">cycle<u>(times: Int, callback: (Element) -&gt; U)</u></a>
@@ -954,6 +956,14 @@ strBuilder
 =&gt; <span class="number">1</span></code></pre>
             <h1 id="cent-usage">Cent Usage</h1>
             <h2 id="array-extensions">Array Extensions</h2>
+            <h3 id="elem-element-element">
+                <code>&lt;&lt; elem: Element -&gt; [Element]</code>
+            </h3>
+            <p>Overloaded operator to append element to an array or append elements from another array into the first array. Return array with the element appended in the end.</p><pre><code class="lang-swift">var array = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]
+array &lt;&lt; <span class="number">4</span>
+=&gt; [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>]
+array &lt;&lt; [<span class="number">5</span>, <span class="number">6</span>]
+=&gt; [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>]</code></pre>
             <h3 id="at-indexes-int-element">
                 <code>at(indexes: Int...) -&gt; [Element]</code>
             </h3>
