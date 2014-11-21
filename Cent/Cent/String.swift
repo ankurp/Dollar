@@ -84,10 +84,16 @@ extension Character {
 
 infix operator =~ {}
 
+/// Regex match the string on the left with the string pattern on the right
+///
+/// :return true if string matches the pattern otherwise false
 public func =~(str: String, pattern: String) -> Bool {
     return Regex(pattern).test(str)
 }
 
+/// Concat the string to itself n times
+///
+/// :return concatenated string
 public func * (str: String, n: Int) -> String {
     var stringBuilder = [String]()
     n.times {

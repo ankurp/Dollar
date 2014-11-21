@@ -139,5 +139,21 @@ internal extension Array {
     func max<T: Comparable>() -> T? {
         return $.max(map { $0 as T })
     }
-        
 }
+
+/// Overloaded operator to appends another array to an array
+///
+/// :return array with the element appended in the end
+public func <<<T>(inout left: [T], right: [T]) -> [T] {
+    left += right
+    return left
+}
+
+/// Overloaded operator to append element to an array
+///
+/// :return array with the element appended in the end
+public func <<<T>(inout array: [T], elem: T) -> [T] {
+    array.append(elem)
+    return array
+}
+

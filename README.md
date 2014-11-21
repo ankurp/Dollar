@@ -913,6 +913,18 @@ $(array: [[1, 2], 3, [[4], 5]])
 
 ## Array Extensions ##
 
+### `<< elem: Element -> [Element]`
+
+Overloaded operator to append element to an array or append elements from another array into the first array. Return array with the element appended in the end.
+
+```swift
+var array = [1, 2, 3]
+array << 4
+=> [1, 2, 3, 4]
+array << [5, 6]
+=> [1, 2, 3, 4, 5, 6]
+```
+
 ### `at(indexes: Int...) -> [Element]`
 
 Creates an array of elements from the specified indexes, or keys, of the collection.
