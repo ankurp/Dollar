@@ -320,14 +320,6 @@ body.big-h3 .content h3 {
 .content .big-heading:before,
 body.big-h3 .content h3:before {
   display: block;
-  content: '';
-  background: -webkit-linear-gradient(left, #dfe2e7 80%, rgba(223,226,231,0));
-  background: -moz-linear-gradient(left, #dfe2e7 80%, rgba(223,226,231,0));
-  background: -o-linear-gradient(left, #dfe2e7 80%, rgba(223,226,231,0));
-  background: -ms-linear-gradient(left, #dfe2e7 80%, rgba(223,226,231,0));
-  background: linear-gradient(to right, #dfe2e7 80%, rgba(223,226,231,0));
-  -webkit-box-shadow: 0 1px 0 rgba(255,255,255,0.4);
-  box-shadow: 0 1px 0 rgba(255,255,255,0.4);
   height: 1px;
   position: relative;
   top: -40px;
@@ -395,14 +387,15 @@ body:not(.big-h3) .content h3 {
   }
 }
 body.no-literate .content pre > code {
-  background: #f8f8ff;
-  border: solid 1px #ececf2;
-  border-top: solid 1px #dfdfe6;
-  border-left: solid 1px #e7e7ed;
+  background: #2c3e50;
+  border: solid 1px #2a3b4c;
+  border-top: solid 1px #283848;
+  border-left: solid 1px #293a4a;
   display: block;
   padding: 10px;
   -webkit-border-radius: 2px;
   border-radius: 2px;
+  font-size: 14px;
   overflow: auto;
 }
 body.no-literate .content pre > code {
@@ -416,7 +409,7 @@ body.no-literate .content pre > code::-webkit-scrollbar-thumb {
   background: #ddd;
   -webkit-border-radius: 8px;
   border-radius: 8px;
-  border: solid 4px #f8f8ff;
+  border: solid 4px #2c3e50;
 }
 body.no-literate .content pre > code:hover::-webkit-scrollbar-thumb {
   background: #999;
@@ -425,14 +418,15 @@ body.no-literate .content pre > code:hover::-webkit-scrollbar-thumb {
 }
 @media (max-width: 1180px) {
   .content pre > code {
-    background: #f8f8ff;
-    border: solid 1px #ececf2;
-    border-top: solid 1px #dfdfe6;
-    border-left: solid 1px #e7e7ed;
+    background: #2c3e50;
+    border: solid 1px #2a3b4c;
+    border-top: solid 1px #283848;
+    border-left: solid 1px #293a4a;
     display: block;
     padding: 10px;
     -webkit-border-radius: 2px;
     border-radius: 2px;
+    font-size: 14px;
     overflow: auto;
   }
   .content pre > code {
@@ -446,7 +440,7 @@ body.no-literate .content pre > code:hover::-webkit-scrollbar-thumb {
     background: #ddd;
     -webkit-border-radius: 8px;
     border-radius: 8px;
-    border: solid 4px #f8f8ff;
+    border: solid 4px #2c3e50;
   }
   .content pre > code:hover::-webkit-scrollbar-thumb {
     background: #999;
@@ -495,7 +489,7 @@ body.no-literate .content pre > code:hover::-webkit-scrollbar-thumb {
 }
 @media (min-width: 1180px) {
   body:not(.no-literate) .content-root {
-    background-color: #f8f8ff;
+    background-color: #2c3e50;
     -webkit-box-shadow: inset 780px 0 #fff, inset 781px 0 #dfe2e7, inset 790px 0 5px -10px rgba(0,0,0,0.1);
     box-shadow: inset 780px 0 #fff, inset 781px 0 #dfe2e7, inset 790px 0 5px -10px rgba(0,0,0,0.1);
   }
@@ -805,21 +799,24 @@ a.big.button:hover:visited {
   font-size: 0.9em;
   padding-left: 10px;
 }
+code {
+  color: #8fa1b3;
+}
 code .string {
-  color: #458;
+  color: #a3be8c;
 }
 code .number {
-  color: #40a070;
+  color: #d08770;
 }
 code .init {
   color: #219161;
 }
 code .keyword {
-  color: #954121;
+  color: #bf616a;
   font-weight: bold;
 }
 code .comment {
-  color: #408080;
+  color: #65737e;
   font-style: italic;
 }
 .large-brief .content > h1:first-child + p,

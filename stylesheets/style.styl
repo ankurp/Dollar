@@ -14,6 +14,7 @@ $vmargin = 10px  // Margin between blocks
 
 // Colors
 $offwhite = #f8f8ff
+$codebg = #2C3E50
 $grey = #9090aa
 $txt = #505050
 $accent = #4c7731
@@ -229,9 +230,6 @@ a
     padding-top: $pad * 2
     &:before
       display: block
-      content: ''
-      background: linear-gradient(left, rgba($line, 1.0) 80%, rgba($line, 0.0))
-      box-shadow: 0 1px 0 rgba(white, 0.4)
       height: 1px
       position: relative
       top: $pad * -1
@@ -284,16 +282,17 @@ a
 // Code blocks
 
 inset-box()
-  background: $offwhite
-  border: solid 1px $offwhite*0.95
-  border-top: solid 1px $offwhite*0.9
-  border-left: solid 1px $offwhite*0.93
+  background: $codebg
+  border: solid 1px $codebg*0.95
+  border-top: solid 1px $codebg*0.9
+  border-left: solid 1px $codebg*0.93
   display: block
   padding: 10px
   border-radius: 2px
+  font-size: 14px
 
   overflow: auto
-  scrollbar($offwhite)
+  scrollbar($codebg)
 
 body.no-literate .content pre > code
   inset-box()
@@ -352,7 +351,7 @@ body.no-literate .content pre > code
 @media (min-width: 1180px) /* Big desktop */
   body:not(.no-literate)
     .content-root
-      background-color: $offwhite
+      background-color: $codebg
       $w = ($sidebar-width + $content-width)
       box-shadow: inset $w 0 white, inset ($w + 1) 0 $line, inset ($w + 10) 0 5px -10px rgba(black, $shadow-str)
 
@@ -593,17 +592,18 @@ a.big.button
 // Syntax highlighting
 
 code
+  color: #8fa1b3
   .string
-    color: #458
+    color: #a3be8c
   .number
-    color: #40a070
+    color: #d08770
   .init
     color: #219161
   .keyword
-    color: #954121
+    color: #bf616a
     font-weight: bold
   .comment
-    color: #408080
+    color: #65737e
     font-style: italic
 
 // ----------------------------------------------------------------------------
