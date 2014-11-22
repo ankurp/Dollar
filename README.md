@@ -1183,6 +1183,15 @@ Invoke a callback n times
 
 ## String Extensions ##
 
+### `.length`
+
+Get the length of the string
+
+```swift
+"Hello".length
+=> 5
+```
+
 ### `=~ str: String -> Bool`
 
 Does a regex match of whether regex string on the right is matches the string on the left
@@ -1233,6 +1242,37 @@ Get substring using subscript notation and by passing a range
 => true
 ```
 
+### `indexOf(char: Character) -> Int?`
+
+Get the start index of character
+
+```swift
+"hello world".indexOf(Character("0"))!
+=> 4
+```
+
+
+### `indexOf(str: String) -> Int?`
+
+Get the start index of string
+
+```swift
+"hello world".indexOf("llo")!
+=> 2
+
+"hello world".indexOf("illo")
+=> nil
+```
+
+### `indexOf(pattern: String) -> Int?`
+
+Get the start index of regex pattern inside the string
+
+```swift
+"hello world".indexOf(".llo")!
+=> 1
+```
+
 ### `split(delimiter: Character) -> [String]`
 
 Get an array from string split using the delimiter character
@@ -1270,6 +1310,45 @@ Get string without leading or trailing spaces
 let spaces = "   Hello   "
 spaces.strip()
 => "Hello"
+```
+
+### Regex ###
+
+### `init`
+
+Init with regex pattern as string
+
+```swift
+Regex.init("^Hello.World$") // Regex that matches "Hello World"
+```
+
+### `matches(testStr: String) -> [AnyObject]`
+
+Return matches based on String passed.
+
+```swift
+let re = Regex.init("^Hello.World$")
+re.matches("Hello World")
+```
+
+### `test(testStr: String) -> Bool`
+
+```swift
+let re = Regex.init("^Hello.World$")
+re.matches("Hello World")
+=> true
+
+re.matches("Str")
+=> false
+```
+
+### `escapeStr(str: String) -> String`
+
+Escape string with regex characters
+
+```swift
+Regex.escape("Hello.World")
+=> "Hello\.World"
 ```
 
 ## Range Extensions ##

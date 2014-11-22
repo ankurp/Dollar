@@ -11,6 +11,12 @@ import Dollar
 
 extension String {
     
+    var length: Int {
+        get {
+            return countElements(self)
+        }
+    }
+    
     /// Get character at a subscript
     ///
     /// :param i Index for which the character is returned
@@ -41,6 +47,30 @@ extension String {
         var start = Swift.advance(startIndex, range.startIndex)
         var end = Swift.advance(startIndex, range.endIndex)
         return self.substringWithRange(Range(start: start, end: end))
+    }
+    
+    /// Get the start index of Charcter
+    ///
+    /// :return start index of .None if not found
+    public func indexOf(char: Character) -> Int? {
+        return self.indexOf(char.description)
+    }
+    
+    /// Get the start index of string
+    ///
+    /// :return start index of .None if not found
+    public func indexOf(str: String) -> Int? {
+        return self.indexOfRegex(Regex.escapeStr(str))
+    }
+    
+    /// Get the start index of regex pattern
+    ///
+    /// :return start index of .None if not found
+    public func indexOfRegex(pattern: String) -> Int? {
+        if let range = Regex(pattern).rangeOfFirstMatch(self).toRange() {
+            return range.startIndex
+        }
+        return .None
     }
     
     /// Get an array from string split using the delimiter character
