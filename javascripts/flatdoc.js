@@ -397,15 +397,19 @@ Also includes:
   Runner.prototype.run = function() {
     var doc = this;
     $(doc.root).trigger('flatdoc:loading');
-    doc.fetcher(function(err, markdown) {
-      if (err) {
-        console.error('[Flatdoc] fetching Markdown data failed.', err);
-        return;
-      }
-      var data = Flatdoc.parser.parse(markdown);
-      doc.applyData(data, doc);
+    if (doc.fetcher) {
+      doc.fetcher(function(err, markdown) {
+        if (err) {
+          console.error('[Flatdoc] fetching Markdown data failed.', err);
+          return;
+        }
+        var data = Flatdoc.parser.parse(markdown);
+        doc.applyData(data, doc);
+        $(doc.root).trigger('flatdoc:ready');
+      });  
+    } else {
       $(doc.root).trigger('flatdoc:ready');
-    });
+    }
   };
 
   /**

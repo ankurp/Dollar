@@ -32,12 +32,14 @@
 
 <body role="flatdoc">
 
-    <div class="title-area title-card" style="background-image: url(https://raw.githubusercontent.com/ankurp/Dollar.swift/master/assets/hero.png); background-position: 50% 50%; background-repeat: no-repeat no-repeat;">
-        <div class="in">
-            <div class="headline">
+    <a style="display:block;" href="#dollar-and-cent">
+        <div class="title-area title-card" style="background-image: url(https://raw.githubusercontent.com/ankurp/Dollar.swift/master/assets/hero.png); background-position: 50% 50%; background-repeat: no-repeat;">
+            <div class="in">
+                <div class="headline">
+                </div>
             </div>
         </div>
-    </div>
+    </a>
 
     <div class="header">
         <div class="left">
@@ -56,7 +58,7 @@
     </div>
 
     <div class="content-root">
-        <div class="menubar fixed">
+        <div class="menubar">
             <div class="menu section" role="flatdoc-menu">
                 <ul>
                     <li id="root-item" class="level-0">
@@ -1046,9 +1048,9 @@ ind! == <span class="number">3</span>
             <h3 id="flatten-element">
                 <code>flatten() -&gt; [Element]</code>
             </h3>
-            <p>Flattens a nested array of any depth.</p><pre><code>let unFlattened = ["foo", ["bar"], [["spam"]], [[["eggs"]]] ]
-let flattened = unFlattened.flatten() 
-=&gt; ["foo", "bar", "spam", "eggs"]</code></pre>
+            <p>Flattens a nested array of any depth.</p><pre><code class="lang-swift"><span class="keyword">let</span> unFlattened = [<span class="string">"foo"</span>, [<span class="string">"bar"</span>], [[<span class="string">"spam"</span>]], [[[<span class="string">"eggs"</span>]]] ]
+<span class="keyword">let</span> flattened = unFlattened.flatten() 
+=&gt; [<span class="string">"foo"</span>, <span class="string">"bar"</span>, <span class="string">"spam"</span>, <span class="string">"eggs"</span>]</code></pre>
             <h3 id="get-index-int-element">
                 <code>get(index: Int) -&gt; Element?</code>
             </h3>
