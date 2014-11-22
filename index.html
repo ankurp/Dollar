@@ -56,7 +56,7 @@
     </div>
 
     <div class="content-root">
-        <div class="menubar">
+        <div class="menubar fixed">
             <div class="menu section" role="flatdoc-menu">
                 <ul>
                     <li id="root-item" class="level-0">
@@ -65,7 +65,7 @@
                             </li>
                             <li id="setup-item" class="level-1"><a id="setup-link" href="#setup" class="level-1">Setup</a>
                                 <ul class="level-2" id="setup-list">
-                                    <li id="demo-app-item" class="level-2"><a id="demo-app-link" href="#demo-app" class="level-2 active">Demo App</a>
+                                    <li id="demo-app-item" class="level-2"><a id="demo-app-link" href="#demo-app" class="level-2">Demo App</a>
                                     </li>
                                 </ul>
                             </li>
@@ -301,6 +301,8 @@
                                     </li>
                                     <li id="string-extensions-item" class="level-2"><a id="string-extensions-link" href="#string-extensions" class="level-2">String Extensions</a>
                                         <ul class="level-3" id="string-extensions-list">
+                                            <li id="length-item" class="level-3"><a id="length-link" href="#length" class="level-3">.length</a>
+                                            </li>
                                             <li id="str-string-bool-item" class="level-3"><a id="str-string-bool-link" href="#str-string-bool" class="level-3">=~ str: String -&gt; Bool</a>
                                             </li>
                                             <li id="n-int-string-item" class="level-3"><a id="n-int-string-link" href="#n-int-string" class="level-3">* n: Int -&gt; String</a>
@@ -311,6 +313,12 @@
                                             </li>
                                             <li id="r-range-int-string-item" class="level-3"><a id="r-range-int-string-link" href="#r-range-int-string" class="level-3">[r: Range<int>] -&gt; String</int></a>
                                             </li>
+                                            <li id="indexof-char-character-int-item" class="level-3"><a id="indexof-char-character-int-link" href="#indexof-char-character-int" class="level-3">indexOf(char: Character) -&gt; Int?</a>
+                                            </li>
+                                            <li id="indexof-str-string-int-item" class="level-3"><a id="indexof-str-string-int-link" href="#indexof-str-string-int" class="level-3">indexOf(str: String) -&gt; Int?</a>
+                                            </li>
+                                            <li id="indexof-pattern-string-int-item" class="level-3"><a id="indexof-pattern-string-int-link" href="#indexof-pattern-string-int" class="level-3">indexOf(pattern: String) -&gt; Int?</a>
+                                            </li>
                                             <li id="split-delimiter-character-string-item" class="level-3"><a id="split-delimiter-character-string-link" href="#split-delimiter-character-string" class="level-3">split(delimiter: Character) -&gt; [String]</a>
                                             </li>
                                             <li id="lstring-string-item" class="level-3"><a id="lstring-string-link" href="#lstring-string" class="level-3">lstring() -&gt; String</a>
@@ -318,6 +326,16 @@
                                             <li id="rstring-string-item" class="level-3"><a id="rstring-string-link" href="#rstring-string" class="level-3">rstring() -&gt; String</a>
                                             </li>
                                             <li id="strip-string-item" class="level-3"><a id="strip-string-link" href="#strip-string" class="level-3">strip() -&gt; String</a>
+                                            </li>
+                                            <li id="regex-item" class="level-3"><a id="regex-link" href="#regex" class="level-3">Regex</a>
+                                            </li>
+                                            <li id="init-item" class="level-3"><a id="init-link" href="#init" class="level-3">init</a>
+                                            </li>
+                                            <li id="matches-teststr-string-anyobject-item" class="level-3"><a id="matches-teststr-string-anyobject-link" href="#matches-teststr-string-anyobject" class="level-3">matches(testStr: String) -&gt; [AnyObject]</a>
+                                            </li>
+                                            <li id="test-teststr-string-bool-item" class="level-3"><a id="test-teststr-string-bool-link" href="#test-teststr-string-bool" class="level-3">test(testStr: String) -&gt; Bool</a>
+                                            </li>
+                                            <li id="escapestr-str-string-string-item" class="level-3"><a id="escapestr-str-string-string-link" href="#escapestr-str-string-string" class="level-3">escapeStr(str: String) -&gt; String</a>
                                             </li>
                                         </ul>
                                     </li>
@@ -355,17 +373,17 @@
             <p>Cent is a library that extends certain Swift object types using the extension feature and gives its two cents to Swift language.</p>
             <h1 id="setup">Setup</h1>
             <p>Currently there are issues loading the library using
-                <code>pod 'Dollar'</code>which is pending changes from Cocoapods. In the mean time follow these steps</p>
+                <code>pod 'Dollar'</code> which is pending changes from Cocoapods. In the mean time follow these steps</p>
             <ol>
                 <li>If you are using git then add Dollar as a submodule using
-                    <code>git submodule add https://github.com/ankurp/Dollar.swift.git</code>otherwise download the project using
-                    <code>git clone https://github.com/ankurp/Dollar.swift.git</code>in your project folder.</li>
+                    <code>git submodule add https://github.com/ankurp/Dollar.swift.git</code> otherwise download the project using
+                    <code>git clone https://github.com/ankurp/Dollar.swift.git</code> in your project folder.</li>
                 <li>Open the Dollar.swift folder. Drag Dollar.xcodeproj, inside the Dollar folder, into the file navigator of your Xcode project.</li>
                 <li>In Xcode, navigate to the target configuration window by clicking on the blue project icon, and selecting the application target under the “Targets” heading in the sidebar.</li>
                 <li>In the tab bar at the top of that window, open the “Build Phases” panel.</li>
                 <li>Expand the “Link Binary with Libraries” group, and add Dollar.framework.</li>
                 <li>In your project file
-                    <code>import Dollar</code>and you can call all of the helper functions.</li>
+                    <code>import Dollar</code> and you can call all of the helper functions.</li>
             </ol>
             <p>Still stuck. Then checkout this screencast on <a href="http://recordit.co/0gQiCSEREF">how to import</a>
             </p>
@@ -1124,6 +1142,11 @@ dic.merge(anotherDic)
             <p>Invoke a callback n times</p><pre><code class="lang-swift"><span class="number">5</span>.times { (a: Int) -&gt; () in print(<span class="string">"\(a) "</span>) } 
 =&gt; <span class="number">0</span> <span class="number">1</span> <span class="number">2</span> <span class="number">3</span> <span class="number">4</span></code></pre>
             <h2 id="string-extensions">String Extensions</h2>
+            <h3 id="length">
+                <code>.length</code>
+            </h3>
+            <p>Get the length of the string</p><pre><code class="lang-swift"><span class="string">"Hello"</span>.length
+=&gt; <span class="number">5</span></code></pre>
             <h3 id="str-string-bool">
                 <code>=~ str: String -&gt; Bool</code>
             </h3>
@@ -1154,6 +1177,24 @@ proj[<span class="string">"^.+[^and Cent]"</span>]
             </h3>
             <p>Get substring using subscript notation and by passing a range</p><pre><code class="lang-swift"><span class="string">"Hello World"</span>[<span class="number">0</span>..&lt;<span class="number">5</span>] == <span class="string">"Hello"</span> 
 =&gt; <span class="keyword">true</span></code></pre>
+            <h3 id="indexof-char-character-int">
+                <code>indexOf(char: Character) -&gt; Int?</code>
+            </h3>
+            <p>Get the start index of character</p><pre><code class="lang-swift"><span class="string">"hello world"</span>.indexOf(Character(<span class="string">"<span class="number">0</span>"</span>))!
+=&gt; <span class="number">4</span></code></pre>
+            <h3 id="indexof-str-string-int">
+                <code>indexOf(str: String) -&gt; Int?</code>
+            </h3>
+            <p>Get the start index of string</p><pre><code class="lang-swift"><span class="string">"hello world"</span>.indexOf(<span class="string">"llo"</span>)!
+=&gt; <span class="number">2</span>
+
+<span class="string">"hello world"</span>.indexOf(<span class="string">"illo"</span>)
+=&gt; nil</code></pre>
+            <h3 id="indexof-pattern-string-int">
+                <code>indexOf(pattern: String) -&gt; Int?</code>
+            </h3>
+            <p>Get the start index of regex pattern inside the string</p><pre><code class="lang-swift"><span class="string">"hello world"</span>.indexOf(<span class="string">".llo"</span>)!
+=&gt; <span class="number">1</span></code></pre>
             <h3 id="split-delimiter-character-string">
                 <code>split(delimiter: Character) -&gt; [String]</code>
             </h3>
@@ -1177,6 +1218,29 @@ trailingSpace.rstrip()
             <p>Get string without leading or trailing spaces</p><pre><code class="lang-swift"><span class="keyword">let</span> spaces = <span class="string">"   Hello   "</span>
 spaces.strip()
 =&gt; <span class="string">"Hello"</span></code></pre>
+            <h3 id="regex">Regex</h3>
+            <h3 id="init">
+                <code>init</code>
+            </h3>
+            <p>Init with regex pattern as string</p><pre><code class="lang-swift">Regex.init(<span class="string">"^Hello.World<span class="keyword">$</span>"</span>) <span class="comment">// Regex that matches <span class="string">"Hello World"</span></span></code></pre>
+            <h3 id="matches-teststr-string-anyobject">
+                <code>matches(testStr: String) -&gt; [AnyObject]</code>
+            </h3>
+            <p>Return matches based on String passed.</p><pre><code class="lang-swift"><span class="keyword">let</span> re = Regex.init(<span class="string">"^Hello.World<span class="keyword">$</span>"</span>)
+re.matches(<span class="string">"Hello World"</span>)</code></pre>
+            <h3 id="test-teststr-string-bool">
+                <code>test(testStr: String) -&gt; Bool</code>
+            </h3><pre><code class="lang-swift"><span class="keyword">let</span> re = Regex.init(<span class="string">"^Hello.World<span class="keyword">$</span>"</span>)
+re.matches(<span class="string">"Hello World"</span>)
+=&gt; <span class="keyword">true</span>
+
+re.matches(<span class="string">"Str"</span>)
+=&gt; <span class="keyword">false</span></code></pre>
+            <h3 id="escapestr-str-string-string">
+                <code>escapeStr(str: String) -&gt; String</code>
+            </h3>
+            <p>Escape string with regex characters</p><pre><code class="lang-swift">Regex.escape(<span class="string">"Hello.World"</span>)
+=&gt; <span class="string">"Hello\.World"</span></code></pre>
             <h2 id="range-extensions">Range Extensions</h2>
             <h3 id="equals">equals -
                 <code>==</code>
