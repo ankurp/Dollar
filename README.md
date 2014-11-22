@@ -1017,7 +1017,7 @@ let first = ["foo", "bar"].first()
 
 Flattens a nested array of any depth.
 
-```
+```swift
 let unFlattened = ["foo", ["bar"], [["spam"]], [[["eggs"]]] ]
 let flattened = unFlattened.flatten() 
 => ["foo", "bar", "spam", "eggs"]
