@@ -1312,7 +1312,7 @@ spaces.strip()
 => "Hello"
 ```
 
-### Regex ###
+## Regex ##
 
 ### `init`
 
