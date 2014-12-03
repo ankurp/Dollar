@@ -164,16 +164,16 @@ class DollarTests: XCTestCase {
     }
 
     func testUniq() {
-        XCTAssertEqual($.uniq([1, 2, 1, 3, 1]).sorted({$0<$1}), [1, 2, 3], "Uniq of arrays")
-        XCTAssertEqual($.uniq([1, 2.5, 3, 1.5, 2, 3.5], by: {floor($0)}).sorted({$0<$1}), [1.5, 2, 3.5], "Uniq numbers by condition")
+        XCTAssertEqual($.uniq([1, 2, 1, 3, 1]), [1, 2, 3], "Uniq of arrays")
+        XCTAssertEqual($.uniq([1, 2.5, 3, 1.5, 2, 3.5], by: {floor($0)}), [1, 2.5, 3], "Uniq numbers by condition")
     }
 
     func testUnion() {
-        XCTAssertEqual($.union([1, 2, 3], [5, 2, 1, 4], [2, 1]).sorted({$0<$1}), [1, 2, 3, 4, 5], "Union of arrays")
+        XCTAssertEqual($.union([1, 2, 3], [5, 2, 1, 4], [2, 1]), [1, 2, 3, 5, 4], "Union of arrays")
     }
 
     func testXOR() {
-        XCTAssertEqual($.xor([1, 2, 3], [5, 2, 1, 4]).sorted({$0<$1}), [3, 4, 5], "Xor of arrays")
+        XCTAssertEqual($.xor([1, 2, 3], [5, 2, 1, 4]).sorted{$0<$1}, [3, 4, 5], "Xor of arrays")
     }
 
     func testAt() {
