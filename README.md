@@ -426,7 +426,7 @@ Creates an array of unique values, in order, of the provided arrays.
 
 ```swift
 $.union([1, 2, 3], [5, 2, 1, 4], [2, 1]) 
-=> [1, 2, 3, 4, 5]
+=> [1, 2, 3, 5, 4]
 ```
 
 ### merge - `$.merge`
@@ -453,7 +453,7 @@ $.uniq([1, 2, 1, 3, 1])
 $.uniq([1, 2.5, 3, 1.5, 2, 3.5]) {
   floor($0)
 }
-=> [1.5, 2.0, 3.5]
+=> [1, 2.5, 3]
 ```
 
 ### without - `$.without`
