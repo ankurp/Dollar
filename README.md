@@ -294,6 +294,17 @@ $.rest([3, 4, 5], numElements: 2)
 => [5]
 ```
 
+### map - `$.map`
+
+Maps each element to new value based on the map function passed
+
+```swift
+$.map([1, 2, 3, 4]) { 
+  $0 * 2
+}
+=> [2, 4, 6, 8]
+```
+
 ### min - `$.min`
 
 Retrieves the minimum value in an array.
@@ -356,6 +367,17 @@ $.range(from: 1, through: 5)
 
 $.range(from: 0, through: 20, incrementBy: 5)
 => [0, 5, 10, 15, 20]
+```
+
+### reduce - `$.reduce`
+
+Reduce function that will resolve to one value after performing combine function on all elements
+
+```swift
+$.reduce([1, 2, 3], initial: 0) { (total, element) in
+    total + element
+}
+=> 6
 ```
 
 ### sample - `$.sample`
