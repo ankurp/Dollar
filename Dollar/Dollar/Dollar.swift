@@ -1186,11 +1186,15 @@ public class Dollar {
     /// :param array The array to source from.
     /// :return An array with unique values.
     public class func uniq<T : Hashable>(array: [T]) -> [T] {
-        var map : [T: Bool] = [T: Bool]()
+        var result: [T] = []
+        var map: [T: Bool] = [T: Bool]()
         for elem in array {
+            if map[elem] == .None {
+                result.append(elem)
+            }
             map[elem] = true
         }
-        return Array(map.keys)
+        return result
     }
     
     /// Create a duplicate-value-free version of an array based on the condition. 
@@ -1200,11 +1204,16 @@ public class Dollar {
     /// :param condition Called per iteration
     /// :return An array with unique values.
     public class func uniq<T: Hashable, U: Hashable>(array: [T], by condition: (T) -> U) -> [T] {
-        var map : [U: T] = [U: T]()
+        var result: [T] = []
+        var map : [U: Bool] = [U: Bool]()
         for elem in array {
-            map[condition(elem)] = elem
+            let val = condition(elem)
+            if map[val] == .None {
+                result.append(elem)
+            }
+            map[val] = true
         }
-        return Array(map.values)
+        return result
     }
     
     /// Creates an array of values of a given dictionary.

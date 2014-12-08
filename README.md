@@ -2,8 +2,6 @@ Dollar and Cent
 ===========
 [![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/ankurp/Dollar.swift?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
-![Introducing Dollar and Cent](https://raw.githubusercontent.com/ankurp/Dollar.swift/master/assets/hero.png)
-
 Dollar is a Swift library that provides useful functional programming helper methods without extending any built in objects. It is similar to [Lo-Dash](https://lodash.com) or [Underscore.js](http://underscorejs.org) in Javascript.
 
 Cent is a library that extends certain Swift object types using the extension feature and gives its two cents to Swift language.
@@ -448,7 +446,7 @@ Creates an array of unique values, in order, of the provided arrays.
 
 ```swift
 $.union([1, 2, 3], [5, 2, 1, 4], [2, 1]) 
-=> [1, 2, 3, 4, 5]
+=> [1, 2, 3, 5, 4]
 ```
 
 ### merge - `$.merge`
@@ -475,7 +473,7 @@ $.uniq([1, 2, 1, 3, 1])
 $.uniq([1, 2.5, 3, 1.5, 2, 3.5]) {
   floor($0)
 }
-=> [1.5, 2.0, 3.5]
+=> [1, 2.5, 3]
 ```
 
 ### without - `$.without`
@@ -1039,7 +1037,7 @@ let first = ["foo", "bar"].first()
 
 Flattens a nested array of any depth.
 
-```
+```swift
 let unFlattened = ["foo", ["bar"], [["spam"]], [[["eggs"]]] ]
 let flattened = unFlattened.flatten() 
 => ["foo", "bar", "spam", "eggs"]
