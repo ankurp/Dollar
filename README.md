@@ -269,6 +269,17 @@ $.rest([3, 4, 5], numElements: 2)
 => [5]
 ```
 
+### map - `$.map`
+
+Maps each element to new value based on the map function passed
+
+```swift
+$.map([1, 2, 3, 4]) { 
+  $0 * 2
+}
+=> [2, 4, 6, 8]
+```
+
 ### min - `$.min`
 
 Retrieves the minimum value in an array.
@@ -331,6 +342,17 @@ $.range(from: 1, through: 5)
 
 $.range(from: 0, through: 20, incrementBy: 5)
 => [0, 5, 10, 15, 20]
+```
+
+### reduce - `$.reduce`
+
+Reduce function that will resolve to one value after performing combine function on all elements
+
+```swift
+$.reduce([1, 2, 3], initial: 0) { (total, element) in
+    total + element
+}
+=> 6
 ```
 
 ### sample - `$.sample`
@@ -401,7 +423,7 @@ Creates an array of unique values, in order, of the provided arrays.
 
 ```swift
 $.union([1, 2, 3], [5, 2, 1, 4], [2, 1]) 
-=> [1, 2, 3, 4, 5]
+=> [1, 2, 3, 5, 4]
 ```
 
 ### merge - `$.merge`
@@ -428,7 +450,7 @@ $.uniq([1, 2, 1, 3, 1])
 $.uniq([1, 2.5, 3, 1.5, 2, 3.5]) {
   floor($0)
 }
-=> [1.5, 2.0, 3.5]
+=> [1, 2.5, 3]
 ```
 
 ### without - `$.without`
