@@ -1201,6 +1201,79 @@ Invoke a callback n times
 => 0 1 2 3 4  
 ```
 
+### `isEven`
+
+Check if int is even
+
+```swift
+2.isEven
+=> true
+
+1.isEven
+=> false
+```
+
+### `isOdd`
+
+Check if int is odd
+
+```swift
+3.isOdd
+=> true
+
+2.isOdd
+=> false
+```
+
+### `digits() -> [Int]`
+
+Splits the int into array of digits
+
+```swift
+4208.digits()
+=> [4, 2, 0, 8]
+```
+
+### `next() -> Int`
+
+Get the next int
+
+```swift
+10.next()
+=> 11
+```
+
+### `prev() -> Int`
+
+Get the previous int
+
+```swift
+10.prev()
+=> 9
+```
+
+### `upTo(limit: Int, callback: () -> ())`
+
+Invoke the callback from int up to and including limit
+
+```swift
+3.upTo(5) {
+  print("Hi")
+}
+Prints "HiHiHi"
+```
+
+### `downTo(limit: Int, callback: () -> ())`
+
+Invoke the callback from int down to and including limit
+
+```swift
+3.upTo(0) {
+  print("Hi")
+}
+Prints "HiHiHiHi"
+```
+
 ## String Extensions ##
 
 ### `.length`
