@@ -28,13 +28,13 @@
         // fetcher: Flatdoc.file('README.md')
     });
     </script>
-    <meta name="google-site-verification" content="2Yw-KMIr81XtjxhQ2CpnN_bmfU4TX41-rX0hbFE28Bo" />
+    <meta name="google-site-verification" content="2Yw-KMIr81XtjxhQ2CpnN_bmfU4TX41-rX0hbFE28Bo">
 </head>
 
 <body role="flatdoc">
 
     <a style="display:block;" href="#dollar-and-cent">
-        <div class="title-area title-card" style="background-image: url(https://raw.githubusercontent.com/ankurp/Dollar.swift/master/assets/hero.png); background-position: 50% 50%; background-repeat: no-repeat;">
+        <div class="title-area title-card" style="background-image: url(https://raw.githubusercontent.com/ankurp/Dollar.swift/master/assets/hero.png); background-position: 50% 50%; background-repeat: no-repeat no-repeat;">
             <div class="in">
                 <div class="headline">
                 </div>
@@ -116,6 +116,8 @@
                                             </li>
                                             <li id="rest-rest-item" class="level-3"><a id="rest-rest-link" href="#rest-rest" class="level-3">rest - $.rest</a>
                                             </li>
+                                            <li id="map-map-item" class="level-3"><a id="map-map-link" href="#map-map" class="level-3">map - $.map</a>
+                                            </li>
                                             <li id="min-min-item" class="level-3"><a id="min-min-link" href="#min-min" class="level-3">min - $.min</a>
                                             </li>
                                             <li id="max-max-item" class="level-3"><a id="max-max-link" href="#max-max" class="level-3">max - $.max</a>
@@ -125,6 +127,8 @@
                                             <li id="pull-pull-item" class="level-3"><a id="pull-pull-link" href="#pull-pull" class="level-3">pull - $.pull</a>
                                             </li>
                                             <li id="range-range-item" class="level-3"><a id="range-range-link" href="#range-range" class="level-3">range - $.range</a>
+                                            </li>
+                                            <li id="reduce-reduce-item" class="level-3"><a id="reduce-reduce-link" href="#reduce-reduce" class="level-3">reduce - $.reduce</a>
                                             </li>
                                             <li id="sample-sample-item" class="level-3"><a id="sample-sample-link" href="#sample-sample" class="level-3">sample - $.sample</a>
                                             </li>
@@ -300,6 +304,20 @@
                                             </li>
                                             <li id="times-function-item" class="level-3"><a id="times-function-link" href="#times-function" class="level-3">times (function: () -&gt; ())</a>
                                             </li>
+                                            <li id="iseven-item" class="level-3"><a id="iseven-link" href="#iseven" class="level-3">isEven</a>
+                                            </li>
+                                            <li id="isodd-item" class="level-3"><a id="isodd-link" href="#isodd" class="level-3">isOdd</a>
+                                            </li>
+                                            <li id="digits-int-item" class="level-3"><a id="digits-int-link" href="#digits-int" class="level-3">digits() -&gt; [Int]</a>
+                                            </li>
+                                            <li id="next-int-item" class="level-3"><a id="next-int-link" href="#next-int" class="level-3">next() -&gt; Int</a>
+                                            </li>
+                                            <li id="prev-int-item" class="level-3"><a id="prev-int-link" href="#prev-int" class="level-3">prev() -&gt; Int</a>
+                                            </li>
+                                            <li id="upto-limit-int-callback-item" class="level-3"><a id="upto-limit-int-callback-link" href="#upto-limit-int-callback" class="level-3">upTo(limit: Int, callback: () -&gt; ())</a>
+                                            </li>
+                                            <li id="downto-limit-int-callback-item" class="level-3"><a id="downto-limit-int-callback-link" href="#downto-limit-int-callback" class="level-3">downTo(limit: Int, callback: () -&gt; ())</a>
+                                            </li>
                                         </ul>
                                     </li>
                                     <li id="string-extensions-item" class="level-2"><a id="string-extensions-link" href="#string-extensions" class="level-2">String Extensions</a>
@@ -370,25 +388,20 @@
         <div role="flatdoc-content" class="content">
             <h1 id="dollar-and-cent">Dollar and Cent</h1>
             <p>
-                <a href="https://gitter.im/ankurp/Dollar.swift?utm_source=badge&amp;utm_medium=badge&amp;utm_campaign=pr-badge&amp;utm_content=badge">
-                    <img src="https://badges.gitter.im/Join%20Chat.svg" alt="Gitter">
+                <a href="https://gitter.im/ankurp/Dollar.swift?utm_source=badge&amp;utm_medium=badge&amp;utm_campaign=pr-badge&amp;utm_content=badge"><img src="https://badges.gitter.im/Join%20Chat.svg" alt="Gitter">
                 </a>
             </p>
             <p>Dollar is a Swift library that provides useful functional programming helper methods without extending any built in objects. It is similar to <a href="https://lodash.com">Lo-Dash</a> or <a href="http://underscorejs.org">Underscore.js</a> in Javascript.</p>
             <p>Cent is a library that extends certain Swift object types using the extension feature and gives its two cents to Swift language.</p>
             <h1 id="setup">Setup</h1>
-            <p>Currently there are issues loading the library using
-                <code>pod 'Dollar'</code> which is pending changes from Cocoapods. In the mean time follow these steps</p>
+            <p>Currently there are issues loading the library using <code>pod 'Dollar'</code> which is pending changes from Cocoapods. In the mean time follow these steps</p>
             <ol>
-                <li>If you are using git then add Dollar as a submodule using
-                    <code>git submodule add https://github.com/ankurp/Dollar.swift.git</code> otherwise download the project using
-                    <code>git clone https://github.com/ankurp/Dollar.swift.git</code> in your project folder.</li>
+                <li>If you are using git then add Dollar as a submodule using <code>git submodule add https://github.com/ankurp/Dollar.swift.git</code> otherwise download the project using <code>git clone https://github.com/ankurp/Dollar.swift.git</code> in your project folder.</li>
                 <li>Open the Dollar.swift folder. Drag Dollar.xcodeproj, inside the Dollar folder, into the file navigator of your Xcode project.</li>
                 <li>In Xcode, navigate to the target configuration window by clicking on the blue project icon, and selecting the application target under the “Targets” heading in the sidebar.</li>
                 <li>In the tab bar at the top of that window, open the “Build Phases” panel.</li>
                 <li>Expand the “Link Binary with Libraries” group, and add Dollar.framework.</li>
-                <li>In your project file
-                    <code>import Dollar</code> and you can call all of the helper functions.</li>
+                <li>In your project file <code>import Dollar</code> and you can call all of the helper functions.</li>
             </ol>
             <p>Still stuck. Then checkout this screencast on <a href="http://recordit.co/0gQiCSEREF">how to import</a>
             </p>
@@ -396,51 +409,37 @@
             <p>To see how to integrate this library into an iOS App checkout this <a href="https://github.com/ankurp/DollarAndCentDemoApp">repo</a>.</p>
             <h1 id="dollar-usage">Dollar Usage</h1>
             <h2 id="array">Array</h2>
-            <h3 id="at-at">at -
-                <code>$.at</code>
-            </h3>
+            <h3 id="at-at">at - <code>$.at</code></h3>
             <p>Creates an array of elements from the specified indexes, or keys, of the collection. Indexes may be specified as individual arguments or as arrays of indexes.</p><pre><code class="lang-swift"><span class="keyword">$</span>.at([<span class="string">"ant"</span>, <span class="string">"bat"</span>, <span class="string">"cat"</span>, <span class="string">"dog"</span>, <span class="string">"egg"</span>], indexes: <span class="number">0</span>, <span class="number">2</span>, <span class="number">4</span>) 
 =&gt; [<span class="string">"ant"</span>, <span class="string">"cat"</span>, <span class="string">"egg"</span>]</code></pre>
-            <h3 id="compact-compact">compact -
-                <code>$.compact</code>
-            </h3>
+            <h3 id="compact-compact">compact - <code>$.compact</code></h3>
             <p>Creates an array with all nil values removed.</p><pre><code class="lang-swift"><span class="keyword">$</span>.compact([<span class="number">3</span>, nil, <span class="number">4</span>, <span class="number">5</span>]) 
 =&gt; [<span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]
 
 <span class="keyword">$</span>.compact([nil, nil]) as NSObject[] 
 =&gt; []</code></pre>
-            <h3 id="contains-contains">contains -
-                <code>$.contains</code>
-            </h3>
+            <h3 id="contains-contains">contains - <code>$.contains</code></h3>
             <p>Checks if a given value is present in the array.</p><pre><code class="lang-swift"><span class="keyword">$</span>.contains([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>], value: <span class="number">2</span>) 
 =&gt; <span class="keyword">true</span>
 
 <span class="keyword">$</span>.contains([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>], value: <span class="number">10</span>) 
 =&gt; <span class="keyword">false</span></code></pre>
-            <h3 id="cycle-cycle">cycle -
-                <code>$.cycle</code>
-            </h3>
+            <h3 id="cycle-cycle">cycle - <code>$.cycle</code></h3>
             <p>Cycles through the array definetly or indefinetly passing each element into the callback function. The second parameter is to specify how many times to cycle through the array. If left out it will cycle indefinetly.</p><pre><code class="lang-swift"><span class="keyword">$</span>.cycle([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>], <span class="number">2</span>) {
   print(<span class="keyword">$</span><span class="number">0</span>)
 }
 <span class="comment">// Prints the following</span>
 <span class="number">123123</span></code></pre>
-            <h3 id="difference-difference">difference -
-                <code>$.difference</code>
-            </h3>
+            <h3 id="difference-difference">difference - <code>$.difference</code></h3>
             <p>Creates an array excluding all values of the provided arrays</p><pre><code class="lang-swift"><span class="keyword">$</span>.difference([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>], [<span class="number">5</span>, <span class="number">2</span>, <span class="number">10</span>]) 
 =&gt; [<span class="number">1</span>, <span class="number">3</span>, <span class="number">4</span>]</code></pre>
-            <h3 id="every-every">every -
-                <code>$.every</code>
-            </h3>
+            <h3 id="every-every">every - <code>$.every</code></h3>
             <p>Checks if the given callback returns true value for all items in the array.</p><pre><code class="lang-swift"><span class="keyword">$</span>.every([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>], iterator: { <span class="keyword">$</span><span class="number">0</span> &lt; <span class="number">20</span> }) 
 =&gt; <span class="keyword">true</span>
 
 <span class="keyword">$</span>.every([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>]) { <span class="keyword">$</span><span class="number">0</span> == <span class="number">1</span> } 
 =&gt; <span class="keyword">false</span></code></pre>
-            <h3 id="fetch-fetch">fetch -
-                <code>$.fetch</code>
-            </h3>
+            <h3 id="fetch-fetch">fetch - <code>$.fetch</code></h3>
             <p>Get element from an array at the given index which can be negative to find elements from the end of the array. A default value can be returned if indexing out of bounds.</p><pre><code class="lang-swift"><span class="keyword">let</span> arr = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>]
 <span class="keyword">$</span>.fetch(arr, <span class="number">100</span>)
 =&gt; nil
@@ -450,39 +449,29 @@
 
 <span class="keyword">$</span>.fetch(arr, -<span class="number">1</span>)
 =&gt; <span class="number">8</span></code></pre>
-            <h3 id="find-find">find -
-                <code>$.find</code>
-            </h3>
+            <h3 id="find-find">find - <code>$.find</code></h3>
             <p>Iterates over elements of an array and returning the first element that the callback returns true for.</p><pre><code class="lang-swift"><span class="keyword">$</span>.find([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>], iterator: { <span class="keyword">$</span><span class="number">0</span> == <span class="number">2</span> }) 
 =&gt; <span class="number">2</span>
 
 <span class="keyword">$</span>.find([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>]) { <span class="keyword">$</span><span class="number">0</span> == <span class="number">10</span> } 
 =&gt; nil</code></pre>
-            <h3 id="findindex-findindex">findIndex -
-                <code>$.findIndex</code>
-            </h3>
+            <h3 id="findindex-findindex">findIndex - <code>$.findIndex</code></h3>
             <p>This method is like find except that it returns the index of the first element that passes the callback check.</p><pre><code class="lang-swift"><span class="keyword">let</span> arr = [[<span class="string">"age"</span>: <span class="number">36</span>], [<span class="string">"age"</span>: <span class="number">40</span>], [<span class="string">"age"</span>: <span class="number">1</span>]]
 <span class="keyword">let</span> result = <span class="keyword">$</span>.findIndex(arr) { <span class="keyword">$</span><span class="number">0</span>[<span class="string">"age"</span>] &lt; <span class="number">20</span> }
 result 
 =&gt; <span class="number">2</span></code></pre>
-            <h3 id="findlastindex-findlastindex">findLastIndex -
-                <code>$.findLastIndex</code>
-            </h3>
+            <h3 id="findlastindex-findlastindex">findLastIndex - <code>$.findLastIndex</code></h3>
             <p>This method is like findIndex except that it iterates over elements of the array from right to left.</p><pre><code class="lang-swift"><span class="keyword">let</span> arr = [[<span class="string">"age"</span>: <span class="number">36</span>], [<span class="string">"age"</span>: <span class="number">40</span>], [<span class="string">"age"</span>: <span class="number">1</span>]]
 <span class="keyword">let</span> result = <span class="keyword">$</span>.findLastIndex(arr) { <span class="keyword">$</span><span class="number">0</span>[<span class="string">"age"</span>] &gt; <span class="number">30</span> }
 result
 =&gt; <span class="number">1</span></code></pre>
-            <h3 id="first-first-array-anyobject">first -
-                <code>$.first(array: AnyObject[])</code>
-            </h3>
+            <h3 id="first-first-array-anyobject">first - <code>$.first(array: AnyObject[])</code></h3>
             <p>Gets the first element in the array.</p><pre><code class="lang-swift"><span class="keyword">$</span>.first([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>])
 =&gt; <span class="number">1</span>
 
 <span class="keyword">$</span>.first([]) 
 =&gt; nil</code></pre>
-            <h3 id="second-second-array-anyobject">second -
-                <code>$.second(array: AnyObject[])</code>
-            </h3>
+            <h3 id="second-second-array-anyobject">second - <code>$.second(array: AnyObject[])</code></h3>
             <p>Gets the second element in the array.</p><pre><code class="lang-swift"><span class="keyword">$</span>.second([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>])
 =&gt; <span class="number">2</span>
 
@@ -491,9 +480,7 @@ result
 
 <span class="keyword">$</span>.second([])
 =&gt; nil</code></pre>
-            <h3 id="flatten-flatten">flatten -
-                <code>$.flatten</code>
-            </h3>
+            <h3 id="flatten-flatten">flatten - <code>$.flatten</code></h3>
             <p>Flattens a nested array of any depth.</p><pre><code class="lang-swift"><span class="keyword">$</span>.flatten([[<span class="number">3</span>], <span class="number">4</span>, <span class="number">5</span>]) as Int[] 
 =&gt; [<span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]
 
@@ -502,17 +489,13 @@ result
 
 <span class="keyword">$</span>.flatten([[[<span class="number">3</span>], <span class="number">4</span>], <span class="number">5</span>]) as Int[] 
 =&gt; [<span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]</code></pre>
-            <h3 id="frequencies-frequencies">frequencies -
-                <code>$.frequencies</code>
-            </h3>
+            <h3 id="frequencies-frequencies">frequencies - <code>$.frequencies</code></h3>
             <p>This method returns a dictionary of values in an array mapping to the total number of occurrences in the array. If passed a function it returns a frequency table of the results of the given function on the arrays elements.</p><pre><code class="lang-swift"><span class="keyword">$</span>.frequencies([<span class="string">"a"</span>, <span class="string">"a"</span>, <span class="string">"b"</span>, <span class="string">"c"</span>, <span class="string">"a"</span>, <span class="string">"b"</span>]) 
 =&gt; [<span class="string">"a"</span>: <span class="number">3</span>, <span class="string">"b"</span>: <span class="number">2</span>, <span class="string">"c"</span>: <span class="number">1</span>]
 
 <span class="keyword">$</span>.frequencies([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]) { <span class="keyword">$</span><span class="number">0</span> % <span class="number">2</span> == <span class="number">0</span> }
 =&gt; [<span class="keyword">false</span>: <span class="number">3</span>, <span class="keyword">true</span>: <span class="number">2</span>]</code></pre>
-            <h3 id="indexof-indexof">indexof -
-                <code>$.indexof</code>
-            </h3>
+            <h3 id="indexof-indexof">indexof - <code>$.indexof</code></h3>
             <p>Gets the index at which the first occurrence of value is found.</p><pre><code class="lang-swift"><span class="keyword">$</span>.indexOf([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>], value: <span class="number">2</span>) 
 =&gt; <span class="number">1</span>
 
@@ -527,56 +510,43 @@ result
 
 <span class="keyword">$</span>.indexOf([<span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>], value: <span class="number">2</span>) 
 =&gt; nil</code></pre>
-            <h3 id="initial-initial">initial -
-                <code>$.initial</code>
-            </h3>
+            <h3 id="initial-initial">initial - <code>$.initial</code></h3>
             <p>Gets all but the last element or last n elements of an array.</p><pre><code class="lang-swift"><span class="keyword">$</span>.initial([<span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]) 
 =&gt; [<span class="number">3</span>, <span class="number">4</span>]
 
 <span class="keyword">$</span>.initial([<span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>], numElements: <span class="number">2</span>) 
 =&gt; [<span class="number">3</span>]</code></pre>
-            <h3 id="intersection-intersection">intersection -
-                <code>$.intersection</code>
-            </h3>
+            <h3 id="intersection-intersection">intersection - <code>$.intersection</code></h3>
             <p>Creates an array of unique values present in all provided arrays.</p><pre><code class="lang-swift"><span class="keyword">$</span>.intersection([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>], [<span class="number">5</span>, <span class="number">2</span>, <span class="number">1</span>, <span class="number">4</span>], [<span class="number">2</span>, <span class="number">1</span>]) 
 =&gt; [<span class="number">1</span>, <span class="number">2</span>]</code></pre>
-            <h3 id="last-last">last -
-                <code>$.last</code>
-            </h3>
+            <h3 id="last-last">last - <code>$.last</code></h3>
             <p>Gets the last element from the array.</p><pre><code class="lang-swift"><span class="keyword">$</span>.last([<span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]) 
 =&gt; <span class="number">5</span></code></pre>
-            <h3 id="lastindexof-lastindexof">lastIndexOf -
-                <code>$.lastIndexOf</code>
-            </h3>
+            <h3 id="lastindexof-lastindexof">lastIndexOf - <code>$.lastIndexOf</code></h3>
             <p>Gets the index at which the last occurrence of value is found.</p><pre><code class="lang-swift"><span class="keyword">$</span>.lastIndexOf([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>], value: <span class="number">2</span>) 
 =&gt; <span class="number">4</span></code></pre>
-            <h3 id="rest-rest">rest -
-                <code>$.rest</code>
-            </h3>
+            <h3 id="rest-rest">rest - <code>$.rest</code></h3>
             <p>The opposite of initial this method gets all but the first element or first n elements of an array.</p><pre><code class="lang-swift"><span class="keyword">$</span>.rest([<span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]) 
 =&gt; [<span class="number">4</span>, <span class="number">5</span>]
 
 <span class="keyword">$</span>.rest([<span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>], numElements: <span class="number">2</span>) 
 =&gt; [<span class="number">5</span>]</code></pre>
-            <h3 id="min-min">min -
-                <code>$.min</code>
-            </h3>
+            <h3 id="map-map">map - <code>$.map</code></h3>
+            <p>Maps each element to new value based on the map function passed</p><pre><code class="lang-swift"><span class="keyword">$</span>.map([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>]) { 
+  <span class="keyword">$</span><span class="number">0</span> * <span class="number">2</span>
+}
+=&gt; [<span class="number">2</span>, <span class="number">4</span>, <span class="number">6</span>, <span class="number">8</span>]</code></pre>
+            <h3 id="min-min">min - <code>$.min</code></h3>
             <p>Retrieves the minimum value in an array.</p><pre><code class="lang-swift"><span class="keyword">$</span>.min([<span class="number">2</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>]) 
 =&gt; <span class="number">1</span></code></pre>
-            <h3 id="max-max">max -
-                <code>$.max</code>
-            </h3>
+            <h3 id="max-max">max - <code>$.max</code></h3>
             <p>Retrieves the maximum value in an array.</p><pre><code class="lang-swift"><span class="keyword">$</span>.max([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">2</span>, <span class="number">1</span>]) 
 =&gt; <span class="number">4</span></code></pre>
-            <h3 id="pluck-pluck">pluck -
-                <code>$.pluck</code>
-            </h3>
+            <h3 id="pluck-pluck">pluck - <code>$.pluck</code></h3>
             <p>Retrieves the value of a specified property from all elements in the array.</p><pre><code class="lang-swift"><span class="keyword">let</span> arr = [[<span class="string">"age"</span>: <span class="number">20</span>], [<span class="string">"age"</span>: <span class="number">30</span>], [<span class="string">"age"</span>: <span class="number">40</span>]]
 <span class="keyword">$</span>.pluck(arr, value: <span class="string">"age"</span>) 
 =&gt; [<span class="number">20</span>, <span class="number">30</span>, <span class="number">40</span>]</code></pre>
-            <h3 id="pull-pull">pull -
-                <code>$.pull</code>
-            </h3>
+            <h3 id="pull-pull">pull - <code>$.pull</code></h3>
             <p>Removes all provided values from the given array.</p><pre><code class="lang-swift"><span class="keyword">$</span>.pull([<span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">3</span>, <span class="number">5</span>], values: <span class="number">3</span>, <span class="number">5</span>) 
 =&gt; [<span class="number">4</span>]
 
@@ -585,9 +555,7 @@ result
 
 <span class="keyword">$</span>.pull([<span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">3</span>, <span class="number">5</span>], values: <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>) 
 =&gt; []</code></pre>
-            <h3 id="range-range">range -
-                <code>$.range</code>
-            </h3>
+            <h3 id="range-range">range - <code>$.range</code></h3>
             <p>Creates an array of numbers (positive and/or negative) progressing from start up to but not including end.</p><pre><code class="lang-swift"><span class="keyword">$</span>.range(<span class="number">4</span>) 
 =&gt; [<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]
 
@@ -602,15 +570,16 @@ result
 
 <span class="keyword">$</span>.range(from: <span class="number">0</span>, through: <span class="number">20</span>, incrementBy: <span class="number">5</span>)
 =&gt; [<span class="number">0</span>, <span class="number">5</span>, <span class="number">10</span>, <span class="number">15</span>, <span class="number">20</span>]</code></pre>
-            <h3 id="sample-sample">sample -
-                <code>$.sample</code>
-            </h3>
+            <h3 id="reduce-reduce">reduce - <code>$.reduce</code></h3>
+            <p>Reduce function that will resolve to one value after performing combine function on all elements</p><pre><code class="lang-swift"><span class="keyword">$</span>.reduce([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>], initial: <span class="number">0</span>) { (total, element) in
+    total + element
+}
+=&gt; <span class="number">6</span></code></pre>
+            <h3 id="sample-sample">sample - <code>$.sample</code></h3>
             <p>Returns a sample item from the array</p><pre><code class="lang-swift"><span class="keyword">let</span> arr : Int[] = [<span class="number">2</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>]
 <span class="keyword">$</span>.contains(arr, value: <span class="keyword">$</span>.sample(arr))
 =&gt; <span class="keyword">true</span></code></pre>
-            <h3 id="sequence-sequence">sequence -
-                <code>$.sequence</code>
-            </h3>
+            <h3 id="sequence-sequence">sequence - <code>$.sequence</code></h3>
             <p>Creates an array of an arbitrary sequence. Especially useful with builtin ranges.</p><pre><code class="lang-swift"><span class="keyword">$</span>.sequence(<span class="number">0</span>..<span class="number">4</span>) 
 =&gt; [<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]
 
@@ -622,55 +591,41 @@ result
 
 <span class="keyword">$</span>.sequence(<span class="string">"abc"</span>) 
 =&gt; [<span class="string">"a"</span>, <span class="string">"b"</span>, <span class="string">"c"</span>]</code></pre>
-            <h3 id="remove-remove">remove -
-                <code>$.remove</code>
-            </h3>
+            <h3 id="remove-remove">remove - <code>$.remove</code></h3>
             <p>Removes all elements from an array that the callback returns true.</p><pre><code class="lang-swift"><span class="keyword">let</span> result = <span class="keyword">$</span>.remove([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>]) { 
   <span class="keyword">$</span><span class="number">0</span> == <span class="number">2</span> || <span class="keyword">$</span><span class="number">0</span> == <span class="number">3</span> 
 }
 result
 =&gt; [<span class="number">1</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>]</code></pre>
-            <h3 id="shuffle-shuffle">shuffle -
-                <code>$.shuffle</code>
-            </h3>
+            <h3 id="shuffle-shuffle">shuffle - <code>$.shuffle</code></h3>
             <p>Shuffles and returns the new shuffled array</p><pre><code class="lang-swift"><span class="keyword">let</span> result = <span class="keyword">$</span>.shuffle([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>])
 result
 =&gt; [<span class="number">4</span>, <span class="number">1</span>, <span class="number">3</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">2</span>]</code></pre>
-            <h3 id="sortedindex-sortedindex">sortedIndex -
-                <code>$.sortedIndex</code>
-            </h3>
+            <h3 id="sortedindex-sortedindex">sortedIndex - <code>$.sortedIndex</code></h3>
             <p>Gives the smallest index at which a value should be inserted into a given the array is sorted.</p><pre><code class="lang-swift"><span class="keyword">$</span>.sortedIndex([<span class="number">3</span>, <span class="number">4</span>, <span class="number">6</span>, <span class="number">10</span>], value: <span class="number">5</span>)
 =&gt; <span class="number">2</span>
 
 <span class="keyword">$</span>.sortedIndex([<span class="number">10</span>, <span class="number">20</span>, <span class="number">30</span>, <span class="number">50</span>], value: <span class="number">40</span>)
 =&gt; <span class="number">3</span></code></pre>
-            <h3 id="union-union">union -
-                <code>$.union</code>
-            </h3>
+            <h3 id="union-union">union - <code>$.union</code></h3>
             <p>Creates an array of unique values, in order, of the provided arrays.</p><pre><code class="lang-swift"><span class="keyword">$</span>.union([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>], [<span class="number">5</span>, <span class="number">2</span>, <span class="number">1</span>, <span class="number">4</span>], [<span class="number">2</span>, <span class="number">1</span>]) 
-=&gt; [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]</code></pre>
-            <h3 id="merge-merge">merge -
-                <code>$.merge</code>
-            </h3>
+=&gt; [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">5</span>, <span class="number">4</span>]</code></pre>
+            <h3 id="merge-merge">merge - <code>$.merge</code></h3>
             <p>Creates an array of all values, including duplicates, of the arrays in the order they are provided.</p><pre><code class="lang-swift"><span class="keyword">let</span> arr  = [<span class="number">1</span>, <span class="number">5</span>]
 <span class="keyword">let</span> arr<span class="number">2</span> = [<span class="number">2</span>, <span class="number">4</span>]
 <span class="keyword">let</span> arr<span class="number">3</span> = [<span class="number">5</span>, <span class="number">6</span>]
 <span class="keyword">let</span> result = <span class="keyword">$</span>.merge(arrays: arr, arr<span class="number">2</span>, arr<span class="number">3</span>)
 result
 =&gt; [<span class="number">1</span>, <span class="number">5</span>, <span class="number">2</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>]</code></pre>
-            <h3 id="uniq-uniq">uniq -
-                <code>$.uniq</code>
-            </h3>
+            <h3 id="uniq-uniq">uniq - <code>$.uniq</code></h3>
             <p>Creates a duplicate-value-free version of an array.</p><pre><code class="lang-swift"><span class="keyword">$</span>.uniq([<span class="number">1</span>, <span class="number">2</span>, <span class="number">1</span>, <span class="number">3</span>, <span class="number">1</span>])
 =&gt; [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]
 
 <span class="keyword">$</span>.uniq([<span class="number">1</span>, <span class="number"><span class="number">2</span>.<span class="number">5</span></span>, <span class="number">3</span>, <span class="number"><span class="number">1</span>.<span class="number">5</span></span>, <span class="number">2</span>, <span class="number"><span class="number">3</span>.<span class="number">5</span></span>]) {
   floor(<span class="keyword">$</span><span class="number">0</span>)
 }
-=&gt; [<span class="number"><span class="number">1</span>.<span class="number">5</span></span>, <span class="number"><span class="number">2</span>.<span class="number">0</span></span>, <span class="number"><span class="number">3</span>.<span class="number">5</span></span>]</code></pre>
-            <h3 id="without-without">without -
-                <code>$.without</code>
-            </h3>
+=&gt; [<span class="number">1</span>, <span class="number"><span class="number">2</span>.<span class="number">5</span></span>, <span class="number">3</span>]</code></pre>
+            <h3 id="without-without">without - <code>$.without</code></h3>
             <p>Creates an array excluding all provided values.</p><pre><code class="lang-swift"><span class="keyword">$</span>.without([<span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">3</span>, <span class="number">5</span>], values: <span class="number">3</span>, <span class="number">5</span>)
 =&gt; [<span class="number">4</span>]
 
@@ -679,24 +634,16 @@ result
 
 <span class="keyword">$</span>.without([<span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">3</span>, <span class="number">5</span>], values: <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>)
 =&gt; []</code></pre>
-            <h3 id="xor-xor">xor -
-                <code>$.xor</code>
-            </h3>
+            <h3 id="xor-xor">xor - <code>$.xor</code></h3>
             <p>Creates an array that is the symmetric difference of the provided arrays.</p><pre><code class="lang-swift"><span class="keyword">$</span>.xor([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>], [<span class="number">5</span>, <span class="number">2</span>, <span class="number">1</span>, <span class="number">4</span>])
 =&gt; [<span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]</code></pre>
-            <h3 id="zip-zip">zip -
-                <code>$.zip</code>
-            </h3>
+            <h3 id="zip-zip">zip - <code>$.zip</code></h3>
             <p>Creates an array of grouped elements, the first of which contains the first elements of the given arrays.</p><pre><code class="lang-swift"><span class="keyword">$</span>.zip([<span class="string">"fred"</span>, <span class="string">"barney"</span>], [<span class="number">30</span>, <span class="number">40</span>], [<span class="keyword">true</span>, <span class="keyword">false</span>]) as [NSObject] 
 =&gt; [[<span class="string">"fred"</span>, <span class="number">30</span>, <span class="keyword">true</span>], [<span class="string">"barney"</span>, <span class="number">40</span>, <span class="keyword">false</span>]]</code></pre>
-            <h3 id="zipobject-zipobject">zipObject -
-                <code>$.zipObject</code>
-            </h3>
+            <h3 id="zipobject-zipobject">zipObject - <code>$.zipObject</code></h3>
             <p>Creates an object composed from arrays of keys and values.</p><pre><code class="lang-swift"><span class="keyword">$</span>.zipObject([<span class="string">"fred"</span>, <span class="string">"barney"</span>], values: [<span class="number">30</span>, <span class="number">40</span>])
 =&gt; [<span class="string">"fred"</span>: <span class="number">30</span>, <span class="string">"barney"</span>: <span class="number">40</span>]</code></pre>
-            <h3 id="partition-partition">partition -
-                <code>$.partition</code>
-            </h3>
+            <h3 id="partition-partition">partition - <code>$.partition</code></h3>
             <p>Produces an array of arrays, each containing n elements, each offset by step. Stops after a partition is less than n length.</p><pre><code class="lang-swift"><span class="keyword">let</span> arr = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]
 <span class="keyword">$</span>.partition(arr, n: <span class="number">2</span>)
 =&gt; [[<span class="number">1</span>, <span class="number">2</span>], [<span class="number">3</span>, <span class="number">4</span>]]
@@ -709,58 +656,40 @@ result
 
 <span class="keyword">$</span>.partition(arr, n: <span class="number">4</span>, step: <span class="number">1</span>, pad: [<span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>])
 =&gt; [[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>], [<span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>], [<span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>]]</code></pre>
-            <h3 id="partitionall-partitionall">partitionAll -
-                <code>$.partitionAll</code>
-            </h3>
+            <h3 id="partitionall-partitionall">partitionAll - <code>$.partitionAll</code></h3>
             <p>Produces an array of arrays, each containing n elements, each offset by step. Continues after a partition is less than n length.</p><pre><code class="lang-swift"><span class="keyword">$</span>.partitionAll([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>], n:<span class="number">4</span>, step: <span class="number">1</span>)
 =&gt; [[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>], [<span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>], [<span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>], [<span class="number">4</span>, <span class="number">5</span>], [<span class="number">5</span>]]</code></pre>
-            <h3 id="partitionby-partitionby">partitionBy -
-                <code>$.partitionBy</code>
-            </h3>
+            <h3 id="partitionby-partitionby">partitionBy - <code>$.partitionBy</code></h3>
             <p>Applies a function to each element in array, splitting it each time the function returns a new value.</p><pre><code class="lang-swift"><span class="keyword">$</span>.partitionBy([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]) { <span class="keyword">$</span><span class="number">0</span> % <span class="number">2</span> == <span class="number">0</span> }
 =&gt; [[<span class="number">1</span>], [<span class="number">2</span>, <span class="number">4</span>], [<span class="number">3</span>, <span class="number">5</span>], [<span class="number">6</span>]]
 
 <span class="keyword">$</span>.partitionBy([<span class="number">1</span>, <span class="number">7</span>, <span class="number">3</span>, <span class="number">6</span>, <span class="number">10</span>, <span class="number">12</span>]) { <span class="keyword">$</span><span class="number">0</span> % <span class="number">3</span> }
 =&gt; [[<span class="number">1</span>, <span class="number">7</span>], [<span class="number">3</span>, <span class="number">6</span>], [<span class="number">10</span>], [<span class="number">12</span>]]</code></pre>
             <h2 id="dictionary">Dictionary</h2>
-            <h3 id="keys-keys">keys -
-                <code>$.keys</code>
-            </h3>
+            <h3 id="keys-keys">keys - <code>$.keys</code></h3>
             <p>Creates an array of keys given a dictionary.</p><pre><code class="lang-swift"><span class="keyword">$</span>.keys([<span class="string">"Dog"</span>: <span class="number">1</span>, <span class="string">"Cat"</span>: <span class="number">2</span>])
 =&gt; [<span class="string">"Dog"</span>, <span class="string">"Cat"</span>]</code></pre>
-            <h3 id="values-values">values -
-                <code>$.values</code>
-            </h3>
+            <h3 id="values-values">values - <code>$.values</code></h3>
             <p>Creates an array of values given a dictionary</p><pre><code class="lang-swift"><span class="keyword">$</span>.values([<span class="string">"Dog"</span>: <span class="number">1</span>, <span class="string">"Cat"</span>: <span class="number">2</span>])
 =&gt; [<span class="number">1</span>, <span class="number">2</span>]</code></pre>
-            <h3 id="merge-merge">merge -
-                <code>$.merge</code>
-            </h3>
+            <h3 id="merge-merge">merge - <code>$.merge</code></h3>
             <p>Merges all of the dictionaries together and the latter dictionary overrides the value at a given key</p><pre><code class="lang-swift"><span class="keyword">let</span> dict: Dictionary&lt;String, Int&gt; = [<span class="string">"Dog"</span>: <span class="number">1</span>, <span class="string">"Cat"</span>: <span class="number">2</span>]
 <span class="keyword">let</span> dict<span class="number">2</span>: Dictionary&lt;String, Int&gt; = [<span class="string">"Cow"</span>: <span class="number">3</span>]
 <span class="keyword">let</span> dict<span class="number">3</span>: Dictionary&lt;String, Int&gt; = [<span class="string">"Sheep"</span>: <span class="number">4</span>]
 <span class="keyword">$</span>.merge(dictionaries: dict, dict<span class="number">2</span>, dict<span class="number">3</span>)
 =&gt; [<span class="string">"Dog"</span>: <span class="number">1</span>, <span class="string">"Cat"</span>: <span class="number">2</span>, <span class="string">"Cow"</span>: <span class="number">3</span>, <span class="string">"Sheep"</span>: <span class="number">4</span>]</code></pre>
-            <h3 id="pick-pick">pick -
-                <code>$.pick</code>
-            </h3>
+            <h3 id="pick-pick">pick - <code>$.pick</code></h3>
             <p>Creates a shallow clone of a dictionary composed of the specified keys.</p><pre><code class="lang-swift"><span class="keyword">$</span>.pick([<span class="string">"Dog"</span>: <span class="number">1</span>, <span class="string">"Cat"</span>: <span class="number">2</span>, <span class="string">"Cow"</span>: <span class="number">3</span>], keys: <span class="string">"Dog"</span>, <span class="string">"Cow"</span>)
 =&gt; [<span class="string">"Dog"</span>: <span class="number">1</span>, <span class="string">"Cow"</span>: <span class="number">3</span>]</code></pre>
-            <h3 id="omit-omit">omit -
-                <code>$.omit</code>
-            </h3>
+            <h3 id="omit-omit">omit - <code>$.omit</code></h3>
             <p>Creates a shallow clone of a dictionary excluding the specified keys.</p><pre><code class="lang-swift"><span class="keyword">$</span>.omit([<span class="string">"Dog"</span>: <span class="number">1</span>, <span class="string">"Cat"</span>: <span class="number">2</span>, <span class="string">"Cow"</span>: <span class="number">3</span>], keys: <span class="string">"Cat"</span>, <span class="string">"Dog"</span>)
 =&gt; [<span class="string">"Cow"</span>: <span class="number">3</span>, <span class="string">"Sheep"</span>: <span class="number">4</span>]</code></pre>
             <h2 id="object">Object</h2>
-            <h3 id="tap-tap">tap -
-                <code>$.tap</code>
-            </h3>
+            <h3 id="tap-tap">tap - <code>$.tap</code></h3>
             <p>Invokes interceptor with the object and then returns object.</p><pre><code class="lang-swift">var beatle = Car(name: <span class="string">"Fusca"</span>)
 <span class="keyword">$</span>.tap(beatle, {<span class="keyword">$</span><span class="number">0</span>.name = <span class="string">"Beatle"</span>}).color = <span class="string">"Blue"</span></code></pre>
             <h2 id="function">Function</h2>
-            <h3 id="after-after">after -
-                <code>$.after</code>
-            </h3>
+            <h3 id="after-after">after - <code>$.after</code></h3>
             <p>Creates a function that executes passed function only after being called n times.</p><pre><code class="lang-swift">var saves = [<span class="string">"profile"</span>, <span class="string">"settings"</span>];
 <span class="keyword">let</span> asyncSave = { (function: () -&gt; ()?) in
    function() 
@@ -776,17 +705,13 @@ for elem in saves {
 }
 isDone 
 =&gt; <span class="keyword">true</span></code></pre>
-            <h3 id="bind-bind">bind -
-                <code>$.bind</code>
-            </h3>
+            <h3 id="bind-bind">bind - <code>$.bind</code></h3>
             <p>Creates a function that, when called, invokes func with the binding of arguments provided.</p><pre><code class="lang-swift"><span class="keyword">let</span> helloWorldFunc = <span class="keyword">$</span>.bind({(T...) in 
   T[<span class="number">0</span>] + <span class="string">" "</span> + T[<span class="number">1</span>] + <span class="string">" from "</span> + T[<span class="number">2</span>] 
 }, <span class="string">"Hello"</span>, <span class="string">"World"</span>, <span class="string">"Swift"</span>)
 helloWorldFunc() 
 =&gt; <span class="string">"Hello World from Swift"</span></code></pre>
-            <h3 id="compose-compose">compose -
-                <code>$.compose</code>
-            </h3>
+            <h3 id="compose-compose">compose - <code>$.compose</code></h3>
             <p>Compose two or more functions where the return value of the first function is passed into the next function. Useful when chaining functions and returns a function that can be called with variadic argument values or an array of values as input</p><pre><code class="lang-swift"><span class="keyword">let</span> double = { (params: Int...) -&gt; [Int] in
   return <span class="keyword">$</span>.map(params) { <span class="keyword">$</span><span class="number">0</span> * <span class="number">2</span> }
 }
@@ -804,9 +729,7 @@ doubleSubtractTen(<span class="number">5</span>, <span class="number">6</span>, 
 })
 f([<span class="number">1</span>, <span class="number">2</span>])
 =&gt; [<span class="number">4</span>, <span class="number">6</span>]</code></pre>
-            <h3 id="curry-curry">curry -
-                <code>$.curry</code>
-            </h3>
+            <h3 id="curry-curry">curry - <code>$.curry</code></h3>
             <p>Returns a function which when invoked either executes the function returning its result, if all function arguments have been provided, or returns another function that accepts one more argument of the remaining function arguments until all arguments are supplied. This is useful for making partial function as seen in these examples.</p><pre><code class="lang-swift">func adder(x: Int, y: Int, z: Int) -&gt; Int {
 return x + y + z
 }
@@ -822,14 +745,10 @@ addThirtyAnd(<span class="number">50</span>)
 
 addTenAnd(<span class="number">10</span>)(<span class="number">10</span>)
 =&gt; <span class="number">30</span></code></pre>
-            <h3 id="id-id">id -
-                <code>$.id</code>
-            </h3>
+            <h3 id="id-id">id - <code>$.id</code></h3>
             <p>The identify function which simply returns the argument its given.</p><pre><code class="lang-swift"><span class="keyword">$</span>.id(<span class="string">"Hello World from Swift"</span>)
 =&gt; <span class="string">"Hello World from Swift"</span></code></pre>
-            <h3 id="memoize-memoize">memoize -
-                <code>$.memoize</code>
-            </h3>
+            <h3 id="memoize-memoize">memoize - <code>$.memoize</code></h3>
             <p>Returns a memoized function to improve performance by caching recursive function values.</p><pre><code class="lang-swift">var times = <span class="number">0</span> <span class="comment">// to test memoization</span>
 
 <span class="keyword">let</span> fibMemo = <span class="keyword">$</span>.memoize { (fib: (Int -&gt; Int), val: Int) -&gt; Int in
@@ -850,14 +769,10 @@ times = <span class="number">0</span>
 <span class="keyword">let</span> z = fibMemo(<span class="number">6</span>)
 times
 =&gt; <span class="number">1</span></code></pre>
-            <h3 id="noop-noop">noop -
-                <code>$.noop</code>
-            </h3>
+            <h3 id="noop-noop">noop - <code>$.noop</code></h3>
             <p>A no-operation function.</p><pre><code class="lang-swift"><span class="keyword">$</span>.noop() 
 =&gt; nil</code></pre>
-            <h3 id="once-once">once -
-                <code>$.once</code>
-            </h3>
+            <h3 id="once-once">once - <code>$.once</code></h3>
             <p>Get a wrapper function that executes the passed function only once. Useful for getting shared config or creating singleton objects.</p><pre><code class="lang-swift">func createConfig() -&gt; [String: String] {
   var i = <span class="number">1</span>
   return [
@@ -872,17 +787,13 @@ getConfig()
 
 getConfig()
 =&gt; [<span class="string">"App ID"</span>: <span class="string">"<span class="number">1</span>"</span>, <span class="string">"URL"</span>: <span class="string">"https:<span class="comment">//someurl"</span>]</span></code></pre>
-            <h3 id="partial-partial">partial -
-                <code>$.partial</code>
-            </h3>
+            <h3 id="partial-partial">partial - <code>$.partial</code></h3>
             <p>Creates a function that, when called, invokes func with any additional partial arguments prepended to those provided to the new function.</p><pre><code class="lang-swift"><span class="keyword">let</span> partialFunc = <span class="keyword">$</span>.partial({(T...) in 
   T[<span class="number">0</span>] + <span class="string">" "</span> + T[<span class="number">1</span>] + <span class="string">" from "</span> + T[<span class="number">2</span>] 
 }, <span class="string">"Hello"</span>)
 partialFunc(<span class="string">"World"</span>, <span class="string">"Swift"</span>) 
 =&gt; <span class="string">"Hello World from Swift"</span></code></pre>
-            <h3 id="times-times">times -
-                <code>$.times</code>
-            </h3>
+            <h3 id="times-times">times - <code>$.times</code></h3>
             <p>Call a function n times and also passes the index. If a value is returned in the function then the times method will return an array of those values.</p><pre><code class="lang-swift"><span class="keyword">let</span> fun = <span class="keyword">$</span>.bind({ (names: String...) -&gt; String in
    <span class="keyword">let</span> people = <span class="keyword">$</span>.join(names, separator: <span class="string">" from "</span>)
    return <span class="string">"Hello \(people)"</span>
@@ -890,87 +801,59 @@ partialFunc(<span class="string">"World"</span>, <span class="string">"Swift"</s
 <span class="keyword">$</span>.times(<span class="number">2</span>, function: fun) as String[] 
 =&gt; [<span class="string">"Hello Ankur from Swift"</span>, <span class="string">"Hello Ankur from Swift"</span>]</code></pre>
             <h2 id="chaining">Chaining</h2>
-            <p>
-                <strong>
-                    <code>$(array: ...)</code>
-                </strong>
+            <p><strong><code>$(array: ...)</code></strong>
             </p>
-            <h3 id="any">
-                <code>any</code>
-            </h3>
+            <h3 id="any"><code>any</code></h3>
             <p>Returns true if callback function returns true for at least one element in the array</p><pre><code class="lang-swift"><span class="keyword">$</span>chain = <span class="keyword">$</span>(array: [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>])
 <span class="keyword">$</span>chain.any({ (<span class="keyword">$</span><span class="number">0</span> as Int) &lt; <span class="number">2</span> }).value()! as Bool
 =&gt; <span class="keyword">true</span></code></pre>
-            <h3 id="all">
-                <code>all</code>
-            </h3>
+            <h3 id="all"><code>all</code></h3>
             <p>Returns true if callback function returns true for all elements in the array</p><pre><code class="lang-swift"><span class="keyword">$</span>chain = <span class="keyword">$</span>(array: [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>])
 <span class="keyword">$</span>chain.all({ (<span class="keyword">$</span><span class="number">0</span> as Int) &lt; <span class="number">10</span> }).value()! as Bool
 =&gt; <span class="keyword">true</span></code></pre>
-            <h3 id="each">
-                <code>each</code>
-            </h3>
+            <h3 id="each"><code>each</code></h3>
             <p>Passes each element value to the callback function</p><pre><code class="lang-swift"><span class="keyword">$</span>chain = <span class="keyword">$</span>(array: [<span class="string">"Hello"</span>, <span class="string">"World"</span>])
 var strBuilder = <span class="string">""</span>
 <span class="keyword">$</span>chain.each({ strBuilder += (<span class="keyword">$</span><span class="number">0</span> as String) }).value()!
 strBuilder
 =&gt; <span class="string">"HelloWorld"</span></code></pre>
-            <h3 id="filter">
-                <code>filter</code>
-            </h3>
+            <h3 id="filter"><code>filter</code></h3>
             <p>Filters the arrary to elements for which the callback function returns true</p><pre><code class="lang-swift"><span class="keyword">$</span>chain = <span class="keyword">$</span>(array: [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>])
 <span class="keyword">$</span>chain.filter({ (<span class="keyword">$</span><span class="number">0</span> as Int) &lt; <span class="number">3</span> }).value()!
 =&gt; [<span class="number">1</span>, <span class="number">2</span>]</code></pre>
-            <h3 id="first">
-                <code>first</code>
-            </h3>
+            <h3 id="first"><code>first</code></h3>
             <p>Returns the first element in the array and terminated the chain</p><pre><code class="lang-swift"><span class="keyword">$</span>chain = <span class="keyword">$</span>(array: [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>])
 <span class="keyword">$</span>chain.first().value()!
 =&gt; <span class="number">1</span></code></pre>
-            <h3 id="second">
-                <code>second</code>
-            </h3>
+            <h3 id="second"><code>second</code></h3>
             <p>Returns the second element in the array and terminated the chain</p><pre><code class="lang-swift"><span class="keyword">$</span>chain = <span class="keyword">$</span>(array: [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>])
 <span class="keyword">$</span>chain.second().value()!
 =&gt; <span class="number">2</span></code></pre>
-            <h3 id="third">
-                <code>third</code>
-            </h3>
+            <h3 id="third"><code>third</code></h3>
             <p>Returns the third element in the array and terminated the chain</p><pre><code class="lang-swift"><span class="keyword">$</span>chain = <span class="keyword">$</span>(array: [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>])
 <span class="keyword">$</span>chain.third().value()!
 =&gt; <span class="number">3</span></code></pre>
-            <h3 id="flatten">
-                <code>flatten</code>
-            </h3>
+            <h3 id="flatten"><code>flatten</code></h3>
             <p>Flattens a nested array of any depth.</p><pre><code class="lang-swift"><span class="keyword">$</span>chain = <span class="keyword">$</span>(array: [[<span class="number">1</span>, [<span class="number">2</span>]], [<span class="number">3</span>], <span class="number">4</span>])
 <span class="keyword">$</span>chain.flatten().value()!
 =&gt; [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>]</code></pre>
-            <h3 id="initial">
-                <code>initial</code>
-            </h3>
+            <h3 id="initial"><code>initial</code></h3>
             <p>Gets all but the last element or last n elements of an array.</p><pre><code class="lang-swift"><span class="keyword">$</span>chain = <span class="keyword">$</span>(array: [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>])
 <span class="keyword">$</span>chain.initial(<span class="number">2</span>).value()!
 =&gt; [<span class="number">1</span>, <span class="number">2</span>]</code></pre>
-            <h3 id="map">
-                <code>map</code>
-            </h3>
+            <h3 id="map"><code>map</code></h3>
             <p>Maps each element to the new value returned in the callback function</p><pre><code class="lang-swift"><span class="keyword">$</span>chain = <span class="keyword">$</span>(array: [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>])
 <span class="keyword">$</span>chain.map({ (<span class="keyword">$</span><span class="number">0</span> as Int) * <span class="number">2</span> }).value()!
 =&gt; [<span class="number">2</span>, <span class="number">4</span>, <span class="number">6</span>, <span class="number">8</span>]</code></pre>
-            <h3 id="slice">
-                <code>slice</code>
-            </h3>
+            <h3 id="slice"><code>slice</code></h3>
             <p>Slices the array based on the start and end position. If an end position is not specified it will slice till the end of the array.</p><pre><code class="lang-swift"><span class="keyword">$</span>chain = <span class="keyword">$</span>(array: [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>])
 <span class="keyword">$</span>chain.slice(<span class="number">2</span>, end: <span class="number">4</span>).value()!
 =&gt; [<span class="number">3</span>, <span class="number">4</span>]</code></pre>
-            <h3 id="value">
-                <code>value</code>
-            </h3>
+            <h3 id="value"><code>value</code></h3>
             <p>Returns the value after evaluating all callbacks</p><pre><code class="lang-swift"><span class="keyword">$</span>chain = <span class="keyword">$</span>(array: [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>])
 <span class="keyword">$</span>chain.value()!
 =&gt; [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>]</code></pre>
-            <p>
-                <strong>Chaining more than one method</strong>
+            <p><strong>Chaining more than one method</strong>
             </p><pre><code class="lang-swift"><span class="keyword">$</span>(array: [[<span class="number">1</span>, <span class="number">2</span>], <span class="number">3</span>, [[<span class="number">4</span>], <span class="number">5</span>]])
   .initial()
   .flatten()
@@ -979,23 +862,17 @@ strBuilder
 =&gt; <span class="number">1</span></code></pre>
             <h1 id="cent-usage">Cent Usage</h1>
             <h2 id="array-extensions">Array Extensions</h2>
-            <h3 id="elem-element-element">
-                <code>&lt;&lt; elem: Element -&gt; [Element]</code>
-            </h3>
+            <h3 id="elem-element-element"><code>&lt;&lt; elem: Element -&gt; [Element]</code></h3>
             <p>Overloaded operator to append element to an array or append elements from another array into the first array. Return array with the element appended in the end.</p><pre><code class="lang-swift">var array = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]
 array &lt;&lt; <span class="number">4</span>
 =&gt; [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>]
 array &lt;&lt; [<span class="number">5</span>, <span class="number">6</span>]
 =&gt; [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>]</code></pre>
-            <h3 id="at-indexes-int-element">
-                <code>at(indexes: Int...) -&gt; [Element]</code>
-            </h3>
+            <h3 id="at-indexes-int-element"><code>at(indexes: Int...) -&gt; [Element]</code></h3>
             <p>Creates an array of elements from the specified indexes, or keys, of the collection.</p><pre><code class="lang-swift"><span class="keyword">let</span> array = [<span class="string">"foo"</span>, <span class="string">"spam"</span>, <span class="string">"bar"</span>, <span class="string">"eggs"</span>]
 <span class="keyword">let</span> some = array.at(<span class="number">1</span>, <span class="number">3</span>)
 =&gt; [<span class="string">"spam"</span>, <span class="string">"eggs"</span>]</code></pre>
-            <h3 id="cycle-u-times-int-callback-element-u">
-                <code>cycle&lt;U&gt;(times: Int, callback: (Element) -&gt; U)</code>
-            </h3>
+            <h3 id="cycle-u-times-int-callback-element-u"><code>cycle&lt;U&gt;(times: Int, callback: (Element) -&gt; U)</code></h3>
             <p>Cycles through the array definetly or indefinetly passing each element into the callback function. The second parameter is to specify how many times to cycle through the array. If left out it will cycle indefinetly.</p><pre><code class="lang-swift">[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>].cycle(<span class="number">2</span>) {
   print(<span class="keyword">$</span><span class="number">0</span>)
 }
@@ -1006,16 +883,12 @@ array &lt;&lt; [<span class="number">5</span>, <span class="number">6</span>]
   print(<span class="keyword">$</span><span class="number">0</span>)
 }
 <span class="comment">// Cycles in an infinite loop</span></code></pre>
-            <h3 id="every-iterator-element-bool-bool">
-                <code>every(iterator: (Element) -&gt; Bool) -&gt; Bool</code>
-            </h3>
+            <h3 id="every-iterator-element-bool-bool"><code>every(iterator: (Element) -&gt; Bool) -&gt; Bool</code></h3>
             <p>Checks if the given callback returns true value for all items in the array.</p><pre><code class="lang-swift">[<span class="string">"angry"</span>, <span class="string">"hungry"</span>].every { (a: String) -&gt; (Bool) in 
   a.hasSuffix(<span class="string">"gry"</span>) 
 }
 =&gt; <span class="keyword">true</span></code></pre>
-            <h3 id="fetch-index-int-orelse-t-none-t">
-                <code>fetch(index: Int, orElse: T? = .None) -&gt; T!</code>
-            </h3>
+            <h3 id="fetch-index-int-orelse-t-none-t"><code>fetch(index: Int, orElse: T? = .None) -&gt; T!</code></h3>
             <p>Get element from an array at the given index which can be negative to find elements from the end of the array. A default value can be returned if indexing out of bounds.</p><pre><code class="lang-swift"><span class="keyword">let</span> arr = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>]
 arr.fetch(<span class="number">100</span>)
 =&gt; nil
@@ -1025,93 +898,63 @@ arr.fetch(<span class="number">100</span>, orElse: <span class="number">42</span
 
 arr.fetch(-<span class="number">1</span>)
 =&gt; <span class="number">8</span></code></pre>
-            <h3 id="findindex-iterator-element-bool-int">
-                <code>findIndex(iterator: (Element) -&gt; Bool) -&gt; Int?</code>
-            </h3>
+            <h3 id="findindex-iterator-element-bool-int"><code>findIndex(iterator: (Element) -&gt; Bool) -&gt; Int?</code></h3>
             <p>This method is like find except that it returns the index of the first element that passes the callback check.</p><pre><code class="lang-swift"><span class="keyword">let</span> ind: int? = [<span class="string">"foo"</span>, <span class="string">"bar"</span>, <span class="string">"spam"</span>, <span class="string">"eggs"</span>].findIndex {
   <span class="keyword">$</span><span class="number">0</span>.length == <span class="number">4</span>
 }
 ind! == <span class="number">2</span> 
 =&gt; <span class="keyword">true</span></code></pre>
-            <h3 id="findlastindex-iterator-element-bool-int">
-                <code>findLastIndex(iterator: (Element) -&gt; Bool) -&gt; Int?</code>
-            </h3>
+            <h3 id="findlastindex-iterator-element-bool-int"><code>findLastIndex(iterator: (Element) -&gt; Bool) -&gt; Int?</code></h3>
             <p>This method is like findIndex except that it iterates over elements of the array from right to left.</p><pre><code class="lang-swift"><span class="keyword">let</span> ind: int? = [<span class="string">"foo"</span>, <span class="string">"bar"</span>, <span class="string">"spam"</span>, <span class="string">"eggs"</span>].findLastIndex {
   <span class="keyword">$</span><span class="number">0</span>.length == <span class="number">4</span> 
 }
 ind! == <span class="number">3</span> 
 =&gt; <span class="keyword">true</span></code></pre>
-            <h3 id="first-element">
-                <code>first() -&gt; Element?</code>
-            </h3>
+            <h3 id="first-element"><code>first() -&gt; Element?</code></h3>
             <p>Gets the first element in the array.</p><pre><code class="lang-swift"><span class="keyword">let</span> first = [<span class="string">"foo"</span>, <span class="string">"bar"</span>].first()
 =&gt; <span class="string">"foo"</span></code></pre>
-            <h3 id="flatten-element">
-                <code>flatten() -&gt; [Element]</code>
-            </h3>
+            <h3 id="flatten-element"><code>flatten() -&gt; [Element]</code></h3>
             <p>Flattens a nested array of any depth.</p><pre><code class="lang-swift"><span class="keyword">let</span> unFlattened = [<span class="string">"foo"</span>, [<span class="string">"bar"</span>], [[<span class="string">"spam"</span>]], [[[<span class="string">"eggs"</span>]]] ]
 <span class="keyword">let</span> flattened = unFlattened.flatten() 
 =&gt; [<span class="string">"foo"</span>, <span class="string">"bar"</span>, <span class="string">"spam"</span>, <span class="string">"eggs"</span>]</code></pre>
-            <h3 id="get-index-int-element">
-                <code>get(index: Int) -&gt; Element?</code>
-            </h3>
+            <h3 id="get-index-int-element"><code>get(index: Int) -&gt; Element?</code></h3>
             <p>Get element at index</p><pre><code class="lang-swift"><span class="keyword">let</span> element = [<span class="string">"foo"</span>, <span class="string">"bar"</span>].get(<span class="number">0</span>)
 element!
 =&gt; <span class="string">"foo"</span>
 
 <span class="keyword">let</span> nothing = [<span class="string">"foo"</span>, <span class="string">"bar"</span>].get(<span class="number">1000</span>)
 =&gt; nil</code></pre>
-            <h3 id="initial-numelements-int-1-element">
-                <code>initial(numElements: Int? = 1) -&gt; [Element]</code>
-            </h3>
+            <h3 id="initial-numelements-int-1-element"><code>initial(numElements: Int? = 1) -&gt; [Element]</code></h3>
             <p>Gets all but the last element or last n elements of an array.</p><pre><code class="lang-swift"><span class="keyword">let</span> initial = [<span class="string">"foo"</span>, <span class="string">"bar"</span>, <span class="string">"spam"</span>].initial(<span class="number">2</span>) 
 =&gt; [<span class="string">"foo"</span>]</code></pre>
-            <h3 id="last-element">
-                <code>last() -&gt; Element?</code>
-            </h3>
+            <h3 id="last-element"><code>last() -&gt; Element?</code></h3>
             <p>Gets the last element from the array.</p><pre><code class="lang-swift"><span class="keyword">let</span> last = [<span class="string">"foo"</span>, <span class="string">"bar"</span>].last() 
 =&gt; <span class="string">"bar"</span></code></pre>
-            <h3 id="rest-numelements-int-1-element">
-                <code>rest(numElements: Int? = 1) -&gt; [Element]</code>
-            </h3>
+            <h3 id="rest-numelements-int-1-element"><code>rest(numElements: Int? = 1) -&gt; [Element]</code></h3>
             <p>The opposite of initial this method gets all but the first element or first n elements of an array.</p><pre><code class="lang-swift"><span class="keyword">let</span> rest = [<span class="string">"foo"</span>, <span class="string">"bar"</span>, <span class="string">"spam"</span>].rest(<span class="number">2</span>)
 =&gt; [<span class="string">"spam"</span>]</code></pre>
-            <h3 id="min-t-comparable-t">
-                <code>min&lt;T: Comparable&gt;() -&gt; T?</code>
-            </h3>
+            <h3 id="min-t-comparable-t"><code>min&lt;T: Comparable&gt;() -&gt; T?</code></h3>
             <p>Retrieves the minimum value in an array.</p><pre><code class="lang-swift"><span class="keyword">let</span> min = [ <span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span> ].min()
 =&gt; <span class="number">0</span></code></pre>
-            <h3 id="max-t-comparable-t">
-                <code>max&lt;T: Comparable&gt;() -&gt; T?</code>
-            </h3>
+            <h3 id="max-t-comparable-t"><code>max&lt;T: Comparable&gt;() -&gt; T?</code></h3>
             <p>Retrieves the maximum value in an array.</p><pre><code class="lang-swift"><span class="keyword">let</span> max = [ <span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>].max()
 =&gt; <span class="number">2</span></code></pre>
             <h2 id="character-extensions">Character Extensions</h2>
-            <h3 id="a-description-string">
-                <code>"A".description -&gt; String</code>
-            </h3>
+            <h3 id="a-description-string"><code>"A".description -&gt; String</code></h3>
             <p>Get string description of Character</p><pre><code class="lang-swift"><span class="keyword">let</span> ch: Character = <span class="string">"A"</span>
 <span class="keyword">let</span> str = ch.description
 =&gt; <span class="string">"A"</span></code></pre>
             <h2 id="date-extensions">Date Extensions</h2>
-            <h3 id="date-from-year-int-month-int-day-int-nsdate">
-                <code>Date.from(#year: Int, month: Int, day: Int) -&gt; NSDate</code>
-            </h3>
+            <h3 id="date-from-year-int-month-int-day-int-nsdate"><code>Date.from(#year: Int, month: Int, day: Int) -&gt; NSDate</code></h3>
             <p>Returns a new Date given the year month and day</p><pre><code class="lang-swift"><span class="keyword">let</span> date = Date.from(<span class="number">2014</span>, <span class="number">1</span>, <span class="number">1</span>) 
 =&gt; <span class="string">"Jan <span class="number">1</span>, <span class="number">2014</span>, <span class="number">12</span>:<span class="number">00</span> AM"</span></code></pre>
-            <h3 id="date-from-unix-double-nsdate">
-                <code>Date.from(#unix: Double) -&gt; NSDate</code>
-            </h3>
+            <h3 id="date-from-unix-double-nsdate"><code>Date.from(#unix: Double) -&gt; NSDate</code></h3>
             <p>Returns a new Date given the unix timestamp (timeIntervalSince1970)</p><pre><code class="lang-swift"><span class="keyword">let</span> date = Date.from(unix: <span class="number">1</span>_<span class="number">388</span>_<span class="number">552</span>_<span class="number"><span class="number">400</span>.<span class="number">0</span></span>)
 =&gt; <span class="string">"Jan <span class="number">1</span>, <span class="number">2014</span>, <span class="number">12</span>:<span class="number">00</span> AM"</span></code></pre>
-            <h3 id="date-parse-datestr-string-format-string-yyyy-mm-dd-nsdate">
-                <code>Date.parse(dateStr: String, format: String = "yyyy-MM-dd") -&gt; NSDate</code>
-            </h3>
+            <h3 id="date-parse-datestr-string-format-string-yyyy-mm-dd-nsdate"><code>Date.parse(dateStr: String, format: String = "yyyy-MM-dd") -&gt; NSDate</code></h3>
             <p>Parses the date based on the format and return a new Date</p><pre><code class="lang-swift"><span class="keyword">let</span> parsedDate = Date.parse(<span class="string">"<span class="number">2014</span>-<span class="number">01</span>-<span class="number">01</span>"</span>, format: <span class="string">"yyyy-MM-dd"</span>)
 =&gt; <span class="string">"Jan <span class="number">1</span>, <span class="number">2014</span>, <span class="number">12</span>:<span class="number">00</span> AM"</span></code></pre>
-            <h3 id="date-unix-date-nsdate-nsdate-double">
-                <code>Date.unix(date: NSDate = NSDate()) -&gt; Double</code>
-            </h3>
+            <h3 id="date-unix-date-nsdate-nsdate-double"><code>Date.unix(date: NSDate = NSDate()) -&gt; Double</code></h3>
             <p>Returns the unix timestamp of the date passed in or the current unix timestamp</p><pre><code class="lang-swift"><span class="keyword">let</span> currentUnix = Date.unix()
 =&gt; <span class="number">1</span>,<span class="number">388</span>,<span class="number">552</span>,<span class="number"><span class="number">400</span>.<span class="number">0</span></span>
 
@@ -1119,150 +962,132 @@ var otherNSDate = Date()
 <span class="keyword">let</span> otherUnix = Date.unix(otherDate)
 =&gt; <span class="number">1</span>,<span class="number">388</span>,<span class="number">552</span>,<span class="number"><span class="number">400</span>.<span class="number">0</span></span></code></pre>
             <h2 id="dictionary-extensions">Dictionary Extensions</h2>
-            <h3 id="isempty-bool">
-                <code>isEmpty () -&gt; Bool</code>
-            </h3>
+            <h3 id="isempty-bool"><code>isEmpty () -&gt; Bool</code></h3>
             <p>Checks whether Dictionary has no keys and hence is empty</p><pre><code class="lang-swift"><span class="keyword">let</span> dictionary = [String: String]()
 dictionary.isEmpty() 
 =&gt; <span class="keyword">true</span>
 
 [<span class="string">"foo"</span>: <span class="string">"bar"</span>].isEmpty() 
 =&gt; <span class="keyword">false</span></code></pre>
-            <h3 id="merge-k-v-dictionaries-dictionary-k-v">
-                <code>merge&lt;K, V&gt;(dictionaries: Dictionary&lt;K, V&gt;...)</code>
-            </h3>
+            <h3 id="merge-k-v-dictionaries-dictionary-k-v"><code>merge&lt;K, V&gt;(dictionaries: Dictionary&lt;K, V&gt;...)</code></h3>
             <p>Merges the dictionary with dictionaries passed. The latter dictionaries will override values of the keys that are already set</p><pre><code class="lang-swift">var dic = [<span class="string">"foo"</span>: <span class="string">"bar"</span>] 
 <span class="keyword">let</span> anotherDic = [<span class="string">"foo"</span>: <span class="string">"baz"</span>, <span class="string">"spam"</span>: <span class="string">"eggs"</span>]
 dic.merge(anotherDic)
 =&gt; [<span class="string">"foo"</span>: <span class="string">"baz"</span>, <span class="string">"spam"</span>: <span class="string">"eggs"</span>]</code></pre>
             <h2 id="int-extensions">Int Extensions</h2>
-            <h3 id="times-callback-int">
-                <code>times(callback: (Int) -&gt; ())</code>
-            </h3>
+            <h3 id="times-callback-int"><code>times(callback: (Int) -&gt; ())</code></h3>
             <p>Invoke a callback n times with callback that takes index</p><pre><code class="lang-swift"><span class="number">5</span>.times { print(<span class="string">"Na"</span>) } 
 =&gt; <span class="string">"NaNaNaNaNa"</span></code></pre>
-            <h3 id="times-function">
-                <code>times (function: () -&gt; ())</code>
-            </h3>
+            <h3 id="times-function"><code>times (function: () -&gt; ())</code></h3>
             <p>Invoke a callback n times</p><pre><code class="lang-swift"><span class="number">5</span>.times { (a: Int) -&gt; () in print(<span class="string">"\(a) "</span>) } 
 =&gt; <span class="number">0</span> <span class="number">1</span> <span class="number">2</span> <span class="number">3</span> <span class="number">4</span></code></pre>
+            <h3 id="iseven"><code>isEven</code></h3>
+            <p>Check if int is even</p><pre><code class="lang-swift"><span class="number">2</span>.isEven
+=&gt; <span class="keyword">true</span>
+
+<span class="number">1</span>.isEven
+=&gt; <span class="keyword">false</span></code></pre>
+            <h3 id="isodd"><code>isOdd</code></h3>
+            <p>Check if int is odd</p><pre><code class="lang-swift"><span class="number">3</span>.isOdd
+=&gt; <span class="keyword">true</span>
+
+<span class="number">2</span>.isOdd
+=&gt; <span class="keyword">false</span></code></pre>
+            <h3 id="digits-int"><code>digits() -&gt; [Int]</code></h3>
+            <p>Splits the int into array of digits</p><pre><code class="lang-swift"><span class="number">4208</span>.digits()
+=&gt; [<span class="number">4</span>, <span class="number">2</span>, <span class="number">0</span>, <span class="number">8</span>]</code></pre>
+            <h3 id="next-int"><code>next() -&gt; Int</code></h3>
+            <p>Get the next int</p><pre><code class="lang-swift"><span class="number">10</span>.next()
+=&gt; <span class="number">11</span></code></pre>
+            <h3 id="prev-int"><code>prev() -&gt; Int</code></h3>
+            <p>Get the previous int</p><pre><code class="lang-swift"><span class="number">10</span>.prev()
+=&gt; <span class="number">9</span></code></pre>
+            <h3 id="upto-limit-int-callback"><code>upTo(limit: Int, callback: () -&gt; ())</code></h3>
+            <p>Invoke the callback from int up to and including limit</p><pre><code class="lang-swift"><span class="number">3</span>.upTo(<span class="number">5</span>) {
+  print(<span class="string">"Hi"</span>)
+}
+Prints <span class="string">"HiHiHi"</span></code></pre>
+            <h3 id="downto-limit-int-callback"><code>downTo(limit: Int, callback: () -&gt; ())</code></h3>
+            <p>Invoke the callback from int down to and including limit</p><pre><code class="lang-swift"><span class="number">3</span>.upTo(<span class="number">0</span>) {
+  print(<span class="string">"Hi"</span>)
+}
+Prints <span class="string">"HiHiHiHi"</span></code></pre>
             <h2 id="string-extensions">String Extensions</h2>
-            <h3 id="length">
-                <code>.length</code>
-            </h3>
+            <h3 id="length"><code>.length</code></h3>
             <p>Get the length of the string</p><pre><code class="lang-swift"><span class="string">"Hello"</span>.length
 =&gt; <span class="number">5</span></code></pre>
-            <h3 id="str-string-bool">
-                <code>=~ str: String -&gt; Bool</code>
-            </h3>
+            <h3 id="str-string-bool"><code>=~ str: String -&gt; Bool</code></h3>
             <p>Does a regex match of whether regex string on the right is matches the string on the left</p><pre><code class="lang-swift"><span class="string">"Dollar"</span> =~ <span class="string">"oll"</span>
 =&gt; <span class="keyword">true</span></code></pre>
-            <h3 id="n-int-string">
-                <code>* n: Int -&gt; String</code>
-            </h3>
-            <p>Get string concatenated
-                <code>n</code>times</p><pre><code class="lang-swift"><span class="string">"Hi Swift! "</span> * <span class="number">3</span>
+            <h3 id="n-int-string"><code>* n: Int -&gt; String</code></h3>
+            <p>Get string concatenated <code>n</code> times</p><pre><code class="lang-swift"><span class="string">"Hi Swift! "</span> * <span class="number">3</span>
 =&gt; <span class="string">"Hi Swift! Hi Swift! Hi Swift! "</span></code></pre>
-            <h3 id="i-int-character">
-                <code>[i: Int] -&gt; Character?</code>
-            </h3>
+            <h3 id="i-int-character"><code>[i: Int] -&gt; Character?</code></h3>
             <p>Get character at a subscript</p><pre><code class="lang-swift"><span class="string">"Hello World"</span>[<span class="number">6</span>] == <span class="string">"W"</span>
 =&gt; <span class="keyword">true</span>
 
 <span class="string">"Hi"</span>[<span class="number">5</span>]
 =&gt; nil</code></pre>
-            <h3 id="str-string-string">
-                <code>[str: String] -&gt; String?</code>
-            </h3>
+            <h3 id="str-string-string"><code>[str: String] -&gt; String?</code></h3>
             <p>Returns the substring based on the first regex match passed in the subscript</p><pre><code class="lang-swift"><span class="keyword">let</span> proj = <span class="string">"Dollar and Cent"</span>
 proj[<span class="string">"^.+[^and Cent]"</span>]
 =&gt; {Some: <span class="string">"Dollar"</span>}</code></pre>
-            <h3 id="r-range-int-string">
-                <code>[r: Range&lt;Int&gt;] -&gt; String</code>
-            </h3>
+            <h3 id="r-range-int-string"><code>[r: Range&lt;Int&gt;] -&gt; String</code></h3>
             <p>Get substring using subscript notation and by passing a range</p><pre><code class="lang-swift"><span class="string">"Hello World"</span>[<span class="number">0</span>..&lt;<span class="number">5</span>] == <span class="string">"Hello"</span> 
 =&gt; <span class="keyword">true</span></code></pre>
-            <h3 id="indexof-char-character-int">
-                <code>indexOf(char: Character) -&gt; Int?</code>
-            </h3>
+            <h3 id="indexof-char-character-int"><code>indexOf(char: Character) -&gt; Int?</code></h3>
             <p>Get the start index of character</p><pre><code class="lang-swift"><span class="string">"hello world"</span>.indexOf(Character(<span class="string">"<span class="number">0</span>"</span>))!
 =&gt; <span class="number">4</span></code></pre>
-            <h3 id="indexof-str-string-int">
-                <code>indexOf(str: String) -&gt; Int?</code>
-            </h3>
+            <h3 id="indexof-str-string-int"><code>indexOf(str: String) -&gt; Int?</code></h3>
             <p>Get the start index of string</p><pre><code class="lang-swift"><span class="string">"hello world"</span>.indexOf(<span class="string">"llo"</span>)!
 =&gt; <span class="number">2</span>
 
 <span class="string">"hello world"</span>.indexOf(<span class="string">"illo"</span>)
 =&gt; nil</code></pre>
-            <h3 id="indexof-pattern-string-int">
-                <code>indexOf(pattern: String) -&gt; Int?</code>
-            </h3>
+            <h3 id="indexof-pattern-string-int"><code>indexOf(pattern: String) -&gt; Int?</code></h3>
             <p>Get the start index of regex pattern inside the string</p><pre><code class="lang-swift"><span class="string">"hello world"</span>.indexOf(<span class="string">".llo"</span>)!
 =&gt; <span class="number">1</span></code></pre>
-            <h3 id="split-delimiter-character-string">
-                <code>split(delimiter: Character) -&gt; [String]</code>
-            </h3>
+            <h3 id="split-delimiter-character-string"><code>split(delimiter: Character) -&gt; [String]</code></h3>
             <p>Get an array from string split using the delimiter character</p><pre><code class="lang-swift"><span class="string">"Hello World"</span>.split(<span class="string">" "</span>) 
 =&gt; [<span class="string">"Hello"</span>, <span class="string">"World"</span>]</code></pre>
-            <h3 id="lstring-string">
-                <code>lstring() -&gt; String</code>
-            </h3>
+            <h3 id="lstring-string"><code>lstring() -&gt; String</code></h3>
             <p>Get string without leading spaces</p><pre><code class="lang-swift"><span class="keyword">let</span> leadingSpace = <span class="string">"  Hello"</span>
 leadingSpace.lstrip()
 =&gt; <span class="string">"Hello"</span></code></pre>
-            <h3 id="rstring-string">
-                <code>rstring() -&gt; String</code>
-            </h3>
+            <h3 id="rstring-string"><code>rstring() -&gt; String</code></h3>
             <p>Get string without trailing spaces</p><pre><code class="lang-swift"><span class="keyword">let</span> trailingSpace = <span class="string">"Hello   "</span>
 trailingSpace.rstrip()
 =&gt; <span class="string">"Hello"</span></code></pre>
-            <h3 id="strip-string">
-                <code>strip() -&gt; String</code>
-            </h3>
+            <h3 id="strip-string"><code>strip() -&gt; String</code></h3>
             <p>Get string without leading or trailing spaces</p><pre><code class="lang-swift"><span class="keyword">let</span> spaces = <span class="string">"   Hello   "</span>
 spaces.strip()
 =&gt; <span class="string">"Hello"</span></code></pre>
             <h2 id="regex">Regex</h2>
-            <h3 id="init">
-                <code>init</code>
-            </h3>
+            <h3 id="init"><code>init</code></h3>
             <p>Init with regex pattern as string</p><pre><code class="lang-swift">Regex.init(<span class="string">"^Hello.World<span class="keyword">$</span>"</span>) <span class="comment">// Regex that matches <span class="string">"Hello World"</span></span></code></pre>
-            <h3 id="matches-teststr-string-anyobject">
-                <code>matches(testStr: String) -&gt; [AnyObject]</code>
-            </h3>
+            <h3 id="matches-teststr-string-anyobject"><code>matches(testStr: String) -&gt; [AnyObject]</code></h3>
             <p>Return matches based on String passed.</p><pre><code class="lang-swift"><span class="keyword">let</span> re = Regex.init(<span class="string">"^Hello.World<span class="keyword">$</span>"</span>)
 re.matches(<span class="string">"Hello World"</span>)</code></pre>
-            <h3 id="test-teststr-string-bool">
-                <code>test(testStr: String) -&gt; Bool</code>
-            </h3><pre><code class="lang-swift"><span class="keyword">let</span> re = Regex.init(<span class="string">"^Hello.World<span class="keyword">$</span>"</span>)
+            <h3 id="test-teststr-string-bool"><code>test(testStr: String) -&gt; Bool</code></h3><pre><code class="lang-swift"><span class="keyword">let</span> re = Regex.init(<span class="string">"^Hello.World<span class="keyword">$</span>"</span>)
 re.matches(<span class="string">"Hello World"</span>)
 =&gt; <span class="keyword">true</span>
 
 re.matches(<span class="string">"Str"</span>)
 =&gt; <span class="keyword">false</span></code></pre>
-            <h3 id="escapestr-str-string-string">
-                <code>escapeStr(str: String) -&gt; String</code>
-            </h3>
+            <h3 id="escapestr-str-string-string"><code>escapeStr(str: String) -&gt; String</code></h3>
             <p>Escape string with regex characters</p><pre><code class="lang-swift">Regex.escape(<span class="string">"Hello.World"</span>)
 =&gt; <span class="string">"Hello\.World"</span></code></pre>
             <h2 id="range-extensions">Range Extensions</h2>
-            <h3 id="equals">equals -
-                <code>==</code>
-            </h3>
+            <h3 id="equals">equals - <code>==</code></h3>
             <p>Check the equality of two ranges</p><pre><code class="lang-swift">(<span class="number">1</span>...<span class="number">5</span>) == (<span class="number">1</span>...<span class="number">5</span>) 
 =&gt; <span class="keyword">true</span>
 
 (<span class="number">1</span>..&lt;<span class="number">5</span>) == (<span class="number">1</span>...<span class="number">5</span>) 
 =&gt; <span class="keyword">false</span></code></pre>
-            <h3 id="eachwithindex-callback-t">
-                <code>eachWithIndex(callback: (T) -&gt; ())</code>
-            </h3>
+            <h3 id="eachwithindex-callback-t"><code>eachWithIndex(callback: (T) -&gt; ())</code></h3>
             <p>For each index in the range invoke the callback by passing the item in range</p><pre><code class="lang-swift">(<span class="number">1</span>...<span class="number">5</span>).eachWithIndex { (a: Int) -&gt; () in print(<span class="string">"\(a)"</span>) } 
 =&gt; <span class="number">12345</span></code></pre>
-            <h3 id="each-callback">
-                <code>each(callback: () -&gt; ())</code>
-            </h3>
+            <h3 id="each-callback"><code>each(callback: () -&gt; ())</code></h3>
             <p>For each index in the range invoke the callback</p><pre><code class="lang-swift">(<span class="number">1</span>...<span class="number">5</span>).each { print(<span class="string">"Na"</span>) } 
 =&gt; <span class="string">"NaNaNaNaNa"</span></code></pre>
             <h1 id="contributing">Contributing</h1>
@@ -1274,9 +1099,7 @@ re.matches(<span class="string">"Str"</span>)
                 <li>Benchmark and improve performance if applicable</li>
             </ul>
             <h1 id="dollar-or-cent">Dollar or Cent</h1>
-            <p>If you are interested only in pure functional programming
-                <code>import Dollar</code>otherwise
-                <code>import Cent</code>which includes extensions for certain object type such as Array for now but more will be added.</p>
+            <p>If you are interested only in pure functional programming <code>import Dollar</code> otherwise <code>import Cent</code> which includes extensions for certain object type such as Array for now but more will be added.</p>
         </div>
     </div>
     <script src="http://www.google-analytics.com/ga.js" type="text/javascript"></script>
