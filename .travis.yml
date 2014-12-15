@@ -1,3 +1,6 @@
 language: objective-c
-xcode_project: Dollar/Dollar.xcodeproj
-xcode_scheme: Dollar
+osx_image: xcode61
+
+script:
+- xctool -project Dollar/Dollar.xcodeproj -scheme Dollar -sdk iphonesimulator8.1 ONLY_ACTIVE_ARCH=NO build test
+- xctool -project Cent/Cent.xcodeproj -scheme Cent -sdk iphonesimulator8.1 ONLY_ACTIVE_ARCH=NO build test
