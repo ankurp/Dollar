@@ -3,5 +3,5 @@ osx_image: xcode61
 
 script:
 - xctool -project Dollar/Dollar.xcodeproj -scheme Dollar -sdk iphonesimulator8.1 ONLY_ACTIVE_ARCH=NO build
-- xctool -project Dollar/Dollar.xcodeproj -scheme DollarTest -sdk iphonesimulator8.1 ONLY_ACTIVE_ARCH=NO test
+- xctool -project Dollar/Dollar.xcodeproj -scheme DollarTests -sdk iphonesimulator8.1 ONLY_ACTIVE_ARCH=NO test
 - xctool -project Cent/Cent.xcodeproj -scheme Cent -sdk iphonesimulator8.1 ONLY_ACTIVE_ARCH=NO build test
