@@ -21,6 +21,20 @@
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
+      <BuildActionEntry
+         buildForTesting = "YES"
+         buildForRunning = "YES"
+         buildForProfiling = "NO"
+         buildForArchiving = "NO"
+         buildForAnalyzing = "YES">
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "92E6686E19F09C6400BB4FB8"
+            BuildableName = "DollarTests.xctest"
+            BlueprintName = "DollarTests"
+            ReferencedContainer = "container:Dollar.xcodeproj">
+         </BuildableReference>
+      </BuildActionEntry>
    </BuildAction>
    <TestAction
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
