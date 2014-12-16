@@ -15,7 +15,7 @@
 		924F92E2195F8338003DBB60 /* Cent.h in Headers */ = {isa = PBXBuildFile; fileRef = 924F92E1195F8338003DBB60 /* Cent.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		924F92FB195F854B003DBB60 /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = 924F92FA195F854B003DBB60 /* Array.swift */; };
 		925CB1EB1A3FE717004F1319 /* Cent.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 924F92DC195F8338003DBB60 /* Cent.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		928F258F19F290B9006D21DB /* Dollar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 928F258E19F290B9006D21DB /* Dollar.framework */; };
+		925CB1FD1A3FEA08004F1319 /* Dollar.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 925CB1F71A3FE9ED004F1319 /* Dollar.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		9299310319F747AA00150D45 /* Cent.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 924F92DC195F8338003DBB60 /* Cent.framework */; };
 		9299310519F747B700150D45 /* CentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 924F92EE195F8338003DBB60 /* CentTests.swift */; };
 		9299310819F747F600150D45 /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = 924F92FA195F854B003DBB60 /* Array.swift */; };
@@ -29,6 +29,27 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		925CB1F61A3FE9ED004F1319 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 925CB1F11A3FE9ED004F1319 /* Dollar.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 92E0D03C19467C67002ACC3D;
+			remoteInfo = Dollar;
+		};
+		925CB1F81A3FE9ED004F1319 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 925CB1F11A3FE9ED004F1319 /* Dollar.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 92E6686F19F09C6400BB4FB8;
+			remoteInfo = DollarTests;
+		};
+		925CB1FA1A3FE9F5004F1319 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 925CB1F11A3FE9ED004F1319 /* Dollar.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 92E0D03B19467C67002ACC3D;
+			remoteInfo = Dollar;
+		};
 		9299310619F747BC00150D45 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 924F92D3195F8338003DBB60 /* Project object */;
@@ -45,6 +66,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				925CB1FD1A3FEA08004F1319 /* Dollar.framework in CopyFiles */,
 				925CB1EB1A3FE717004F1319 /* Cent.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -63,7 +85,7 @@
 		924F92ED195F8338003DBB60 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		924F92EE195F8338003DBB60 /* CentTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CentTests.swift; sourceTree = "<group>"; };
 		924F92FA195F854B003DBB60 /* Array.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Array.swift; sourceTree = "<group>"; };
-		928F258E19F290B9006D21DB /* Dollar.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Dollar.framework; path = "../../../Library/Developer/Xcode/DerivedData/Dollar-cnpzzqqzcseuvucrfghsizcweovz/Build/Products/Debug-iphoneos/Dollar.framework"; sourceTree = "<group>"; };
+		925CB1F11A3FE9ED004F1319 /* Dollar.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Dollar.xcodeproj; path = ../Dollar/Dollar.xcodeproj; sourceTree = "<group>"; };
 		92D0253F19F73F6B00A8F5E3 /* Regex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Regex.swift; sourceTree = "<group>"; };
 		92E6688119F0B89600BB4FB8 /* CentTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CentTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -73,7 +95,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				928F258F19F290B9006D21DB /* Dollar.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -91,7 +112,7 @@
 		924F92D2195F8338003DBB60 = {
 			isa = PBXGroup;
 			children = (
-				928F258E19F290B9006D21DB /* Dollar.framework */,
+				925CB1F11A3FE9ED004F1319 /* Dollar.xcodeproj */,
 				924F92DE195F8338003DBB60 /* Cent */,
 				924F92EB195F8338003DBB60 /* CentTests */,
 				924F92DD195F8338003DBB60 /* Products */,
@@ -148,6 +169,15 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		925CB1F21A3FE9ED004F1319 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				925CB1F71A3FE9ED004F1319 /* Dollar.framework */,
+				925CB1F91A3FE9ED004F1319 /* DollarTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -174,6 +204,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				925CB1FB1A3FE9F5004F1319 /* PBXTargetDependency */,
 			);
 			name = Cent;
 			productName = Cent;
@@ -226,6 +257,12 @@
 			mainGroup = 924F92D2195F8338003DBB60;
 			productRefGroup = 924F92DD195F8338003DBB60 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 925CB1F21A3FE9ED004F1319 /* Products */;
+					ProjectRef = 925CB1F11A3FE9ED004F1319 /* Dollar.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				924F92DB195F8338003DBB60 /* Cent */,
@@ -233,6 +270,23 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		925CB1F71A3FE9ED004F1319 /* Dollar.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Dollar.framework;
+			remoteRef = 925CB1F61A3FE9ED004F1319 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		925CB1F91A3FE9ED004F1319 /* DollarTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = DollarTests.xctest;
+			remoteRef = 925CB1F81A3FE9ED004F1319 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		924F92DA195F8338003DBB60 /* Resources */ = {
@@ -284,6 +338,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		925CB1FB1A3FE9F5004F1319 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = Dollar;
+			targetProxy = 925CB1FA1A3FE9F5004F1319 /* PBXContainerItemProxy */;
+		};
 		9299310719F747BC00150D45 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 924F92DB195F8338003DBB60 /* Cent */;
@@ -382,7 +441,10 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(USER_LIBRARY_DIR)/Developer/Xcode/DerivedData/Dollar-cnpzzqqzcseuvucrfghsizcweovz/Build/Products/Debug-iphoneos",
+				);
 				FRAMEWORK_VERSION = A;
 				INFOPLIST_FILE = Cent/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
@@ -402,7 +464,10 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(USER_LIBRARY_DIR)/Developer/Xcode/DerivedData/Dollar-cnpzzqqzcseuvucrfghsizcweovz/Build/Products/Debug-iphoneos",
+				);
 				FRAMEWORK_VERSION = A;
 				INFOPLIST_FILE = Cent/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
