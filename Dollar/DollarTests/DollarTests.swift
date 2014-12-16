@@ -217,7 +217,7 @@ class DollarTests: XCTestCase {
 
     func testKeys() {
         let dict = ["Dog": 1, "Cat": 2]
-        XCTAssertEqual($.keys(dict).sorted({$0<$1}), ["Dog", "Cat"], "Returns correct array with keys")
+        XCTAssertEqual($.keys(dict).sorted({$0<$1}), ["Cat", "Dog"], "Returns correct array with keys")
     }
 
     func testValues() {
