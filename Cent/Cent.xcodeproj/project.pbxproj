@@ -14,6 +14,7 @@
 		920C56A8196255E6009D5129 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 920C56A7196255E6009D5129 /* Date.swift */; };
 		924F92E2195F8338003DBB60 /* Cent.h in Headers */ = {isa = PBXBuildFile; fileRef = 924F92E1195F8338003DBB60 /* Cent.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		924F92FB195F854B003DBB60 /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = 924F92FA195F854B003DBB60 /* Array.swift */; };
+		925CB1EB1A3FE717004F1319 /* Cent.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 924F92DC195F8338003DBB60 /* Cent.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		928F258F19F290B9006D21DB /* Dollar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 928F258E19F290B9006D21DB /* Dollar.framework */; };
 		9299310319F747AA00150D45 /* Cent.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 924F92DC195F8338003DBB60 /* Cent.framework */; };
 		9299310519F747B700150D45 /* CentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 924F92EE195F8338003DBB60 /* CentTests.swift */; };
@@ -36,6 +37,19 @@
 			remoteInfo = Cent;
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		925CB1EA1A3FE70E004F1319 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				925CB1EB1A3FE717004F1319 /* Cent.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		920C569B1962514E009D5129 /* Dictionary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dictionary.swift; sourceTree = "<group>"; };
@@ -173,6 +187,7 @@
 				92E6687D19F0B89600BB4FB8 /* Sources */,
 				92E6687E19F0B89600BB4FB8 /* Frameworks */,
 				92E6687F19F0B89600BB4FB8 /* Resources */,
+				925CB1EA1A3FE70E004F1319 /* CopyFiles */,
 			);
 			buildRules = (
 			);
