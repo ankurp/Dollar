@@ -10,6 +10,7 @@
 		924CB6291A0888910047D7CA /* DollarPerformanceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 924CB6281A0888910047D7CA /* DollarPerformanceTests.swift */; };
 		924E37D4197DFCDB000086A9 /* Dollar.swift in Resources */ = {isa = PBXBuildFile; fileRef = 92E0D05819467CA2002ACC3D /* Dollar.swift */; };
 		9252FCD21A0F26F6002E85A4 /* AutoCurry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9252FCD11A0F26F6002E85A4 /* AutoCurry.swift */; };
+		925CB1E11A3FDCA4004F1319 /* Dollar.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 92E0D03C19467C67002ACC3D /* Dollar.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		92E0D04219467C67002ACC3D /* Dollar.h in Headers */ = {isa = PBXBuildFile; fileRef = 92E0D04119467C67002ACC3D /* Dollar.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		92E0D05919467CA2002ACC3D /* Dollar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92E0D05819467CA2002ACC3D /* Dollar.swift */; };
 		92E6687A19F09D2A00BB4FB8 /* CarExample.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0419C8411948BEC600B947B3 /* CarExample.swift */; };
@@ -27,6 +28,19 @@
 			remoteInfo = Dollar;
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		925CB1E01A3FDC89004F1319 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				925CB1E11A3FDCA4004F1319 /* Dollar.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		0419C8411948BEC600B947B3 /* CarExample.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CarExample.swift; sourceTree = "<group>"; };
@@ -166,6 +180,7 @@
 				92E6686B19F09C6400BB4FB8 /* Sources */,
 				92E6686C19F09C6400BB4FB8 /* Frameworks */,
 				92E6686D19F09C6400BB4FB8 /* Resources */,
+				925CB1E01A3FDC89004F1319 /* CopyFiles */,
 			);
 			buildRules = (
 			);
