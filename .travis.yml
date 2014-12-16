@@ -1,6 +1,6 @@
 language: objective-c
 osx_image: xcode61
 
-script:
-- xctool -project Dollar/Dollar.xcodeproj -scheme Dollar -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO build test
-- xctool -project Cent/Cent.xcodeproj -scheme Cent -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO build test
+script: 
+- xctool -workspace Dollar.xcworkspace -scheme Dollar -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO build test
+- xctool -workspace Dollar.xcworkspace -scheme Cent -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO build test
