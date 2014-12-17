@@ -34,7 +34,7 @@
 <body role="flatdoc">
 
     <a style="display:block;" href="#dollar-and-cent">
-        <div class="title-area title-card" style="background-image: url(https://raw.githubusercontent.com/ankurp/Dollar.swift/master/assets/hero.png); background-position: 50% 50%; background-repeat: no-repeat no-repeat;">
+        <div class="title-area title-card" style="background-image: url(https://raw.githubusercontent.com/ankurp/Dollar.swift/master/assets/hero.png); background-position: 50% 50%; background-repeat: no-repeat;">
             <div class="in">
                 <div class="headline">
                 </div>
@@ -386,7 +386,7 @@
             </div>
         </div>
         <div role="flatdoc-content" class="content">
-            <h1 id="dollar-and-cent">Dollar and Cent</h1>
+            <h1 id="dollar-and-cent">Dollar and Cent <a href="https://travis-ci.org/ankurp/Dollar.swift"><img src="https://travis-ci.org/ankurp/Dollar.swift.svg?branch=master" alt="Build Status"></a></h1>
             <p>
                 <a href="https://gitter.im/ankurp/Dollar.swift?utm_source=badge&amp;utm_medium=badge&amp;utm_campaign=pr-badge&amp;utm_content=badge"><img src="https://badges.gitter.im/Join%20Chat.svg" alt="Gitter">
                 </a>
@@ -801,65 +801,76 @@ partialFunc(<span class="string">"World"</span>, <span class="string">"Swift"</s
 <span class="keyword">$</span>.times(<span class="number">2</span>, function: fun) as String[] 
 =&gt; [<span class="string">"Hello Ankur from Swift"</span>, <span class="string">"Hello Ankur from Swift"</span>]</code></pre>
             <h2 id="chaining">Chaining</h2>
-            <p><strong><code>$(array: ...)</code></strong>
+            <p><strong><code>Chain(...)</code></strong>
             </p>
             <h3 id="any"><code>any</code></h3>
-            <p>Returns true if callback function returns true for at least one element in the array</p><pre><code class="lang-swift"><span class="keyword">$</span>chain = <span class="keyword">$</span>(array: [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>])
-<span class="keyword">$</span>chain.any({ (<span class="keyword">$</span><span class="number">0</span> as Int) &lt; <span class="number">2</span> }).value()! as Bool
+            <p>Returns true if callback function returns true for at least one element in the array</p><pre><code class="lang-swift">var chain = Chain([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>])
+chain.any({ (<span class="keyword">$</span><span class="number">0</span> as Int) &lt; <span class="number">2</span> })
 =&gt; <span class="keyword">true</span></code></pre>
             <h3 id="all"><code>all</code></h3>
-            <p>Returns true if callback function returns true for all elements in the array</p><pre><code class="lang-swift"><span class="keyword">$</span>chain = <span class="keyword">$</span>(array: [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>])
-<span class="keyword">$</span>chain.all({ (<span class="keyword">$</span><span class="number">0</span> as Int) &lt; <span class="number">10</span> }).value()! as Bool
+            <p>Returns true if callback function returns true for all elements in the array</p><pre><code class="lang-swift">var chain = Chain([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>])
+chain.all({ (<span class="keyword">$</span><span class="number">0</span> as Int) &lt; <span class="number">10</span> }) as Bool
 =&gt; <span class="keyword">true</span></code></pre>
             <h3 id="each"><code>each</code></h3>
-            <p>Passes each element value to the callback function</p><pre><code class="lang-swift"><span class="keyword">$</span>chain = <span class="keyword">$</span>(array: [<span class="string">"Hello"</span>, <span class="string">"World"</span>])
+            <p>Passes each element value to the callback function</p><pre><code class="lang-swift">var chain = Chain([<span class="string">"Hello"</span>, <span class="string">"World"</span>])
 var strBuilder = <span class="string">""</span>
-<span class="keyword">$</span>chain.each({ strBuilder += (<span class="keyword">$</span><span class="number">0</span> as String) }).value()!
+chain.each({ strBuilder += (<span class="keyword">$</span><span class="number">0</span> as String) }).value
 strBuilder
 =&gt; <span class="string">"HelloWorld"</span></code></pre>
             <h3 id="filter"><code>filter</code></h3>
-            <p>Filters the arrary to elements for which the callback function returns true</p><pre><code class="lang-swift"><span class="keyword">$</span>chain = <span class="keyword">$</span>(array: [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>])
-<span class="keyword">$</span>chain.filter({ (<span class="keyword">$</span><span class="number">0</span> as Int) &lt; <span class="number">3</span> }).value()!
+            <p>Filters the arrary to elements for which the callback function returns true</p><pre><code class="lang-swift">var chain = Chain([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>])
+chain.filter({ (<span class="keyword">$</span><span class="number">0</span> as Int) &lt; <span class="number">3</span> }).value
 =&gt; [<span class="number">1</span>, <span class="number">2</span>]</code></pre>
             <h3 id="first"><code>first</code></h3>
-            <p>Returns the first element in the array and terminated the chain</p><pre><code class="lang-swift"><span class="keyword">$</span>chain = <span class="keyword">$</span>(array: [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>])
-<span class="keyword">$</span>chain.first().value()!
+            <p>Returns the first element in the array and terminated the chain</p><pre><code class="lang-swift">var chain = Chain([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>])
+chain.first()
 =&gt; <span class="number">1</span></code></pre>
             <h3 id="second"><code>second</code></h3>
-            <p>Returns the second element in the array and terminated the chain</p><pre><code class="lang-swift"><span class="keyword">$</span>chain = <span class="keyword">$</span>(array: [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>])
-<span class="keyword">$</span>chain.second().value()!
+            <p>Returns the second element in the array and terminated the chain</p><pre><code class="lang-swift">var chain = Chain([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>])
+chain.second()
 =&gt; <span class="number">2</span></code></pre>
             <h3 id="third"><code>third</code></h3>
-            <p>Returns the third element in the array and terminated the chain</p><pre><code class="lang-swift"><span class="keyword">$</span>chain = <span class="keyword">$</span>(array: [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>])
-<span class="keyword">$</span>chain.third().value()!
+            <p>Returns the third element in the array and terminated the chain</p><pre><code class="lang-swift">var chain = Chain([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>])
+chain.third()
 =&gt; <span class="number">3</span></code></pre>
             <h3 id="flatten"><code>flatten</code></h3>
-            <p>Flattens a nested array of any depth.</p><pre><code class="lang-swift"><span class="keyword">$</span>chain = <span class="keyword">$</span>(array: [[<span class="number">1</span>, [<span class="number">2</span>]], [<span class="number">3</span>], <span class="number">4</span>])
-<span class="keyword">$</span>chain.flatten().value()!
+            <p>Flattens a nested array of any depth.</p><pre><code class="lang-swift">chain = Chain([[<span class="number">1</span>, [<span class="number">2</span>]], [<span class="number">3</span>], <span class="number">4</span>])
+chain.flatten().value
 =&gt; [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>]</code></pre>
             <h3 id="initial"><code>initial</code></h3>
-            <p>Gets all but the last element or last n elements of an array.</p><pre><code class="lang-swift"><span class="keyword">$</span>chain = <span class="keyword">$</span>(array: [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>])
-<span class="keyword">$</span>chain.initial(<span class="number">2</span>).value()!
+            <p>Gets all but the last element or last n elements of an array.</p><pre><code class="lang-swift">varchain = Chain([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>])
+chain.initial(<span class="number">2</span>).value
 =&gt; [<span class="number">1</span>, <span class="number">2</span>]</code></pre>
             <h3 id="map"><code>map</code></h3>
-            <p>Maps each element to the new value returned in the callback function</p><pre><code class="lang-swift"><span class="keyword">$</span>chain = <span class="keyword">$</span>(array: [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>])
-<span class="keyword">$</span>chain.map({ (<span class="keyword">$</span><span class="number">0</span> as Int) * <span class="number">2</span> }).value()!
+            <p>Maps each element to the new value returned in the callback function</p><pre><code class="lang-swift">var chain = Chain([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>])
+chain.map({ (<span class="keyword">$</span><span class="number">0</span> as Int) * <span class="number">2</span> }).value
 =&gt; [<span class="number">2</span>, <span class="number">4</span>, <span class="number">6</span>, <span class="number">8</span>]</code></pre>
             <h3 id="slice"><code>slice</code></h3>
-            <p>Slices the array based on the start and end position. If an end position is not specified it will slice till the end of the array.</p><pre><code class="lang-swift"><span class="keyword">$</span>chain = <span class="keyword">$</span>(array: [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>])
-<span class="keyword">$</span>chain.slice(<span class="number">2</span>, end: <span class="number">4</span>).value()!
+            <p>Slices the array based on the start and end position. If an end position is not specified it will slice till the end of the array.</p><pre><code class="lang-swift">var chain = Chain([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>])
+chain.slice(<span class="number">2</span>, end: <span class="number">4</span>).value
 =&gt; [<span class="number">3</span>, <span class="number">4</span>]</code></pre>
             <h3 id="value"><code>value</code></h3>
-            <p>Returns the value after evaluating all callbacks</p><pre><code class="lang-swift"><span class="keyword">$</span>chain = <span class="keyword">$</span>(array: [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>])
-<span class="keyword">$</span>chain.value()!
+            <p>Returns the value after evaluating all callbacks</p><pre><code class="lang-swift">var chain = Chain([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>])
+chain.value
 =&gt; [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>]</code></pre>
             <p><strong>Chaining more than one method</strong>
-            </p><pre><code class="lang-swift"><span class="keyword">$</span>(array: [[<span class="number">1</span>, <span class="number">2</span>], <span class="number">3</span>, [[<span class="number">4</span>], <span class="number">5</span>]])
+            </p><pre><code class="lang-swift">Chain([[<span class="number">1</span>, <span class="number">2</span>], <span class="number">3</span>, [[<span class="number">4</span>], <span class="number">5</span>]])
   .initial()
   .flatten()
   .first()
-  .value()! as Int 
-=&gt; <span class="number">1</span></code></pre>
+=&gt; <span class="number">1</span>
+
+Chain([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>])
+  .filter { <span class="keyword">$</span><span class="number">0</span> % <span class="number">1</span> == <span class="number">0</span> }
+  .map { <span class="keyword">$</span><span class="number">0</span> * <span class="number">2</span> }
+  .all {<span class="keyword">$</span><span class="number">0</span> &lt; <span class="number">10</span>}
+=&gt; <span class="keyword">false</span>
+
+Chain([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>])
+  .map({ <span class="keyword">$</span><span class="number">0</span> * <span class="number">2</span> })
+  .flatten()
+  .initial(<span class="number">2</span>).value
+=&gt; [<span class="number">2</span>, <span class="number">4</span>, <span class="number">6</span>]</code></pre>
             <h1 id="cent-usage">Cent Usage</h1>
             <h2 id="array-extensions">Array Extensions</h2>
             <h3 id="elem-element-element"><code>&lt;&lt; elem: Element -&gt; [Element]</code></h3>
@@ -1109,10 +1120,6 @@ re.matches(<span class="string">"Str"</span>)
         pageTracker._trackPageview();
     } catch (err) {}
     </script>
-
-
-
-
 </body>
 
 </html>
