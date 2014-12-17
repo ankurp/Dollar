@@ -23,21 +23,21 @@ class DollarTests: XCTestCase {
         if let result = $.first([1, 2, 3, 4]) {
             XCTAssertEqual(result, 1, "Return first element")
         }
-        XCTAssertNil($.first([NSObject]()), "Returns nil when array is empty")
+        XCTAssertNil($.first([Int]()), "Returns nil when array is empty")
     }
 
     func testSecond() {
         if let result = $.second([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]) {
             XCTAssertEqual(result, 2, "Return second element")
         }
-        XCTAssertNil($.second([NSObject]()), "Returns nil when array is empty")
+        XCTAssertNil($.second([Int]()), "Returns nil when array is empty")
     }
     
     func testThird() {
         if let result = $.third([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]) {
             XCTAssertEqual(result, 3, "Return third element")
         }
-        XCTAssertNil($.third([NSObject]()), "Returns nil when array is empty")
+        XCTAssertNil($.third([Int]()), "Returns nil when array is empty")
     }
 
     func testNoop() {
@@ -256,40 +256,41 @@ class DollarTests: XCTestCase {
     }
 
     func testChaining() {
-        var chain = $(array: [1, 2, 3])
-        XCTAssertEqual(chain.first().value()! as Int, 1, "Returns first element which ends the chain")
-
-        chain = $(array: [[1, 2], 3, [[4], 5]])
-        XCTAssertEqual(chain.flatten().initial(2).value()! as [Int], [1, 2, 3], "Returns flatten array from chaining")
-
-        chain = $(array: [[1, 2], 3, [[4], 5]])
-        XCTAssertEqual(chain.initial().flatten().first().value()! as Int, 1, "Returns flatten array from chaining")
-
-        chain = $(array: [[1, 2], 3, [[4], 5]])
-        XCTAssertEqual(chain.flatten().map({ (elem) in elem as Int * 10 }).value()! as [Int], [10, 20, 30, 40, 50], "Returns mapped values")
-
-        XCTAssertEqual(chain.flatten().map({ (elem) in elem as Int * 10 }).first().value()! as Int, 100, "Returns first element from mapped value")
-
-        chain = $(array: [10, 20, 30, 40, 50])
+        var chain = Chain([1, 2, 3])
+        XCTAssertEqual(chain.first()!, 1, "Returns first element which ends the chain")
+        
+        chain = Chain([10, 20, 30, 40, 50])
         var elements: [Int] = []
         chain.each { elements.append($0 as Int) }
-        chain.value()
-        XCTAssertEqual(elements as [Int], [10, 20, 30, 40, 50], "Goes through each element in the array")
-
-        XCTAssertTrue(chain.all({ ($0 as Int) < 100 }).value()! as Bool, "All elements are less than 100")
+        chain.value
+        XCTAssertEqual(elements, [10, 20, 30, 40, 50], "Goes through each element in the array")
         
-        chain = $(array: [10, 20, 30, 40, 50])
-        XCTAssertFalse(chain.all({ ($0 as Int) < 40 }).value()! as Bool, "All elements are not less than 40")
+        XCTAssertTrue(chain.all({ ($0 as Int) < 100 }), "All elements are less than 100")
         
-        chain = $(array: [10, 20, 30, 40, 50])
-        XCTAssertTrue(chain.any({ ($0 as Int) < 40 }).value()! as Bool, "At least one element is less than 40")
-
-        chain = $(array: [10, 20, 30, 40, 50])
+        chain = Chain([10, 20, 30, 40, 50])
+        XCTAssertFalse(chain.all({ ($0 as Int) < 40 }), "All elements are not less than 40")
+        
+        chain = Chain([10, 20, 30, 40, 50])
+        XCTAssertTrue(chain.any({ ($0 as Int) < 40 }), "At least one element is less than 40")
+        
+        chain = Chain([10, 20, 30, 40, 50])
         elements = [Int]()
         chain.slice(0, end: 3).each { elements.append($0 as Int) }
-        chain.value()
+        chain.value
         XCTAssertEqual(elements, [10, 20, 30], "Chained seld")
 
+        
+        let testarr = [[[1, 2]], 3, [[4], 5]]
+        
+        let chainA = Chain(testarr)
+        XCTAssertEqual(chainA.flatten().initial(2).value, [1, 2, 3], "Returns flatten array from chaining")
+
+        let chainB = Chain(testarr)
+        XCTAssertEqual(chainB.initial().flatten().first()!, 1, "Returns flatten array from chaining")
+
+        let chainC = Chain(testarr)
+        XCTAssertEqual(chainC.flatten().map({ (elem) in elem as Int * 10 }).value, [10, 20, 30, 40, 50], "Returns mapped values")
+        XCTAssertEqual(chainC.flatten().map({ (elem) in elem as Int * 10 }).first()!, 100, "Returns first element from mapped value")
     }
 
     func testPartial() {

@@ -794,15 +794,15 @@ $.times(2, function: fun) as String[]
 
 ## Chaining ##
 
-**`$(array: ...)`**
+**`Chain(...)`**
 
 ### `any`
 
 Returns true if callback function returns true for at least one element in the array
 
 ```swift
-$chain = $(array: [1, 2, 3])
-$chain.any({ ($0 as Int) < 2 }).value()! as Bool
+var chain = Chain([1, 2, 3])
+chain.any({ ($0 as Int) < 2 })
 => true
 ```
 
@@ -811,8 +811,8 @@ $chain.any({ ($0 as Int) < 2 }).value()! as Bool
 Returns true if callback function returns true for all elements in the array
 
 ```swift
-$chain = $(array: [1, 2, 3])
-$chain.all({ ($0 as Int) < 10 }).value()! as Bool
+var chain = Chain([1, 2, 3])
+chain.all({ ($0 as Int) < 10 }) as Bool
 => true
 ```
 
@@ -821,9 +821,9 @@ $chain.all({ ($0 as Int) < 10 }).value()! as Bool
 Passes each element value to the callback function
 
 ```swift
-$chain = $(array: ["Hello", "World"])
+var chain = Chain(["Hello", "World"])
 var strBuilder = ""
-$chain.each({ strBuilder += ($0 as String) }).value()!
+chain.each({ strBuilder += ($0 as String) }).value
 strBuilder
 => "HelloWorld"
 ```
@@ -833,8 +833,8 @@ strBuilder
 Filters the arrary to elements for which the callback function returns true
 
 ```swift
-$chain = $(array: [1, 2, 3, 4])
-$chain.filter({ ($0 as Int) < 3 }).value()!
+var chain = Chain([1, 2, 3, 4])
+chain.filter({ ($0 as Int) < 3 }).value
 => [1, 2]
 ```
 
@@ -843,8 +843,8 @@ $chain.filter({ ($0 as Int) < 3 }).value()!
 Returns the first element in the array and terminated the chain
 
 ```swift
-$chain = $(array: [1, 2, 3, 4])
-$chain.first().value()!
+var chain = Chain([1, 2, 3, 4])
+chain.first()
 => 1
 ```
 
@@ -853,8 +853,8 @@ $chain.first().value()!
 Returns the second element in the array and terminated the chain
 
 ```swift
-$chain = $(array: [1, 2, 3, 4])
-$chain.second().value()!
+var chain = Chain([1, 2, 3, 4])
+chain.second()
 => 2
 ```
 
@@ -863,8 +863,8 @@ $chain.second().value()!
 Returns the third element in the array and terminated the chain
 
 ```swift
-$chain = $(array: [1, 2, 3, 4])
-$chain.third().value()!
+var chain = Chain([1, 2, 3, 4])
+chain.third()
 => 3
 ```
 
@@ -873,8 +873,8 @@ $chain.third().value()!
 Flattens a nested array of any depth.
 
 ```swift
-$chain = $(array: [[1, [2]], [3], 4])
-$chain.flatten().value()!
+chain = Chain([[1, [2]], [3], 4])
+chain.flatten().value
 => [1, 2, 3, 4]
 ```
 
@@ -883,8 +883,8 @@ $chain.flatten().value()!
 Gets all but the last element or last n elements of an array.
 
 ```swift
-$chain = $(array: [1, 2, 3, 4])
-$chain.initial(2).value()!
+varchain = Chain([1, 2, 3, 4])
+chain.initial(2).value
 => [1, 2]
 ```
 
@@ -893,8 +893,8 @@ $chain.initial(2).value()!
 Maps each element to the new value returned in the callback function
 
 ```swift
-$chain = $(array: [1, 2, 3, 4])
-$chain.map({ ($0 as Int) * 2 }).value()!
+var chain = Chain([1, 2, 3, 4])
+chain.map({ ($0 as Int) * 2 }).value
 => [2, 4, 6, 8]
 ```
 
@@ -903,8 +903,8 @@ $chain.map({ ($0 as Int) * 2 }).value()!
 Slices the array based on the start and end position. If an end position is not specified it will slice till the end of the array.
 
 ```swift
-$chain = $(array: [1, 2, 3, 4, 5, 6, 7])
-$chain.slice(2, end: 4).value()!
+var chain = Chain([1, 2, 3, 4, 5, 6, 7])
+chain.slice(2, end: 4).value
 => [3, 4]
 ```
 
@@ -913,20 +913,31 @@ $chain.slice(2, end: 4).value()!
 Returns the value after evaluating all callbacks
 
 ```swift
-$chain = $(array: [1, 2, 3, 4, 5, 6, 7])
-$chain.value()!
+var chain = Chain([1, 2, 3, 4, 5, 6, 7])
+chain.value
 => [1, 2, 3, 4, 5, 6, 7]
 ```
 
 **Chaining more than one method**
 
 ```swift
-$(array: [[1, 2], 3, [[4], 5]])
+Chain([[1, 2], 3, [[4], 5]])
   .initial()
   .flatten()
   .first()
-  .value()! as Int 
 => 1
+
+Chain([1, 2, 3, 4, 5])
+  .filter { $0 % 1 == 0 }
+  .map { $0 * 2 }
+  .all {$0 < 10}
+=> false
+
+Chain([1, 2, 3, 4, 5])
+  .map({ $0 * 2 })
+  .flatten()
+  .initial(2).value
+=> [2, 4, 6]
 ```
 
 # Cent Usage #
