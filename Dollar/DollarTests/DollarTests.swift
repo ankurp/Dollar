@@ -256,10 +256,10 @@ class DollarTests: XCTestCase {
     }
 
     func testChaining() {
-        var chain = $.Chain([1, 2, 3])
+        var chain = $.chain([1, 2, 3])
         XCTAssertEqual(chain.first()!, 1, "Returns first element which ends the chain")
         
-        chain = $.Chain([10, 20, 30, 40, 50])
+        chain = $.chain([10, 20, 30, 40, 50])
         var elements: [Int] = []
         chain.each { elements.append($0 as Int) }
         chain.value
@@ -267,13 +267,13 @@ class DollarTests: XCTestCase {
         
         XCTAssertTrue(chain.all({ ($0 as Int) < 100 }), "All elements are less than 100")
         
-        chain = $.Chain([10, 20, 30, 40, 50])
+        chain = $.chain([10, 20, 30, 40, 50])
         XCTAssertFalse(chain.all({ ($0 as Int) < 40 }), "All elements are not less than 40")
         
-        chain = $.Chain([10, 20, 30, 40, 50])
+        chain = $.chain([10, 20, 30, 40, 50])
         XCTAssertTrue(chain.any({ ($0 as Int) < 40 }), "At least one element is less than 40")
         
-        chain = $.Chain([10, 20, 30, 40, 50])
+        chain = $.chain([10, 20, 30, 40, 50])
         elements = [Int]()
         chain.slice(0, end: 3).each { elements.append($0 as Int) }
         chain.value
@@ -282,13 +282,13 @@ class DollarTests: XCTestCase {
         
         let testarr = [[[1, 2]], 3, [[4], 5]]
         
-        let chainA = $.Chain(testarr)
+        let chainA = $.chain(testarr)
         XCTAssertEqual(chainA.flatten().initial(2).value, [1, 2, 3], "Returns flatten array from chaining")
 
-        let chainB = $.Chain(testarr)
+        let chainB = $.chain(testarr)
         XCTAssertEqual(chainB.initial().flatten().first()!, 1, "Returns flatten array from chaining")
 
-        let chainC = $.Chain(testarr)
+        let chainC = $.chain(testarr)
         XCTAssertEqual(chainC.flatten().map({ (elem) in elem as Int * 10 }).value, [10, 20, 30, 40, 50], "Returns mapped values")
         XCTAssertEqual(chainC.flatten().map({ (elem) in elem as Int * 10 }).first()!, 100, "Returns first element from mapped value")
     }
