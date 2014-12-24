@@ -10,7 +10,7 @@
 //    \|___|\__\_|
 //         \|__|
 //
-//  $.swift
+//  Dollar.swift
 //  $ - A functional tool-belt for Swift Language
 //
 //  Created by Ankur Patel on 6/3/14.
@@ -18,195 +18,6 @@
 //
 
 import Foundation
-
-private struct Wrapper<V> {
-    let value: V
-
-    init(_ value: V) {
-        self.value = value
-    }
-}
-
-public class Chain<C> {
-    
-    //  ________  ___  ___  ________  ___  ________
-    // |\   ____\|\  \|\  \|\   __  \|\  \|\   ___  \
-    // \ \  \___|\ \  \\\  \ \  \|\  \ \  \ \  \\ \  \
-    //  \ \  \    \ \   __  \ \   __  \ \  \ \  \\ \  \
-    //   \ \  \____\ \  \ \  \ \  \ \  \ \  \ \  \\ \  \
-    //    \ \_______\ \__\ \__\ \__\ \__\ \__\ \__\\ \__\
-    //     \|_______|\|__|\|__|\|__|\|__|\|__|\|__| \|__|
-    //
-    
-    private var result: Wrapper<[C]>
-    private var funcQueue: [Wrapper<[C]> -> Wrapper<[C]>] = []
-    public var value: [C] {
-        get {
-            var result: Wrapper<[C]> = self.result
-            for function in self.funcQueue {
-                result = function(result)
-            }
-            return result.value
-        }
-    }
-    
-    /// Initializer of the wrapper object for chaining.
-    ///
-    /// :param array The array to wrap.
-    public init(_ collection: [C]) {
-        self.result = Wrapper(collection)
-    }
-    
-    /// Get the first object in the wrapper object.
-    ///
-    /// :return First element from the array.
-    public func first() -> C? {
-        return $.first(self.value)
-    }
-    
-    /// Get the second object in the wrapper object.
-    ///
-    /// :return Second element from the array.
-    public func second() -> C? {
-        return $.first(self.value)
-    }
-    
-    /// Get the third object in the wrapper object.
-    ///
-    /// :return Third element from the array.
-    public func third() -> C? {
-        return $.first(self.value)
-    }
-    
-    /// Flattens nested array.
-    ///
-    /// :return The wrapper object.
-    public func flatten() -> Chain {
-        return self.queue {
-            return Wrapper($.flatten($0.value))
-        }
-    }
-    
-    /// Keeps all the elements except last one.
-    ///
-    /// :return The wrapper object.
-    public func initial() -> Chain {
-        return self.initial(1)
-    }
-    
-    /// Keeps all the elements except last n elements.
-    ///
-    /// :param numElements Number of items to remove from the end of the array.
-    /// :return The wrapper object.
-    public func initial(numElements: Int) -> Chain {
-        return self.queue {
-            return Wrapper($.initial($0.value, numElements: numElements))
-        }
-    }
-    
-    /// Maps elements to new elements.
-    ///
-    /// :param function Function to map.
-    /// :return The wrapper object.
-    public func map(function: C -> C) -> Chain {
-        return self.queue {
-            var result: [C] = []
-            for elem: C in $0.value {
-                result.append(function(elem))
-            }
-            return Wrapper(result)
-        }
-    }
-    
-    /// Get the first object in the wrapper object.
-    ///
-    /// :param array The array to wrap.
-    /// :return The wrapper object.
-    public func map(function: (Int, C) -> C) -> Chain {
-        return self.queue {
-            var result: [C] = []
-            for (index, elem) in enumerate($0.value) {
-                result.append(function(index, elem))
-            }
-            return Wrapper(result)
-        }
-    }
-    
-    /// Get the first object in the wrapper object.
-    ///
-    /// :param array The array to wrap.
-    /// :return The wrapper object.
-    public func each(function: (C) -> ()) -> Chain {
-        return self.queue {
-            for elem in $0.value {
-                function(elem)
-            }
-            return $0
-        }
-    }
-    
-    /// Get the first object in the wrapper object.
-    ///
-    /// :param array The array to wrap.
-    /// :return The wrapper object.
-    public func each(function: (Int, C) -> ()) -> Chain {
-        return self.queue {
-            for (index, elem) in enumerate($0.value) {
-                function(index, elem)
-            }
-            return $0
-        }
-    }
-    
-    /// Filter elements based on the function passed.
-    ///
-    /// :param function Function to tell whether to keep an element or remove.
-    /// :return The wrapper object.
-    public func filter(function: (C) -> Bool) -> Chain {
-        return self.queue {
-            return Wrapper(($0.value).filter(function))
-        }
-    }
-    
-    /// Returns if all elements in array are true based on the passed function.
-    ///
-    /// :param function Function to tell whether element value is true or false.
-    /// :return Whether all elements are true according to func function.
-    public func all(function: (C) -> Bool) -> Bool {
-        return $.every(self.value, iterator: function)
-    }
-    
-    /// Returns if any element in array is true based on the passed function.
-    ///
-    /// :param function Function to tell whether element value is true or false.
-    /// :return Whether any one element is true according to func function in the array.
-    public func any(function: (C) -> Bool) -> Bool {
-        var resultArr = self.value
-        for elem in resultArr {
-            if function(elem) {
-                return true
-            }
-        }
-        return false
-    }
-    
-    /// Slice the array into smaller size based on start and end value.
-    ///
-    /// :param start Start index to start slicing from.
-    /// :param end End index to stop slicing to and not including element at that index.
-    /// :return The wrapper object.
-    public func slice(start: Int, end: Int = 0) -> Chain {
-        return self.queue {
-            return Wrapper($.slice($0.value, start: start, end: end))
-        }
-    }
-    
-    private func queue(function: Wrapper<[C]> -> Wrapper<[C]>) -> Chain {
-        funcQueue.append(function)
-        return self
-    }
-
-}
 
 public class $ {
     ///  ___  ___  _______   ___       ________  _______   ________
@@ -1282,4 +1093,192 @@ public class $ {
         }
         return result
     }
+    
+    //  ________  ___  ___  ________  ___  ________
+    // |\   ____\|\  \|\  \|\   __  \|\  \|\   ___  \
+    // \ \  \___|\ \  \\\  \ \  \|\  \ \  \ \  \\ \  \
+    //  \ \  \    \ \   __  \ \   __  \ \  \ \  \\ \  \
+    //   \ \  \____\ \  \ \  \ \  \ \  \ \  \ \  \\ \  \
+    //    \ \_______\ \__\ \__\ \__\ \__\ \__\ \__\\ \__\
+    //     \|_______|\|__|\|__|\|__|\|__|\|__|\|__| \|__|
+    //
+    public class Chain<C> {
+
+        private struct Wrapper<V> {
+            let value: V
+            init(_ value: V) {
+                self.value = value
+            }
+        }
+    
+        private var result: Wrapper<[C]>
+        private var funcQueue: [Wrapper<[C]> -> Wrapper<[C]>] = []
+        public var value: [C] {
+            get {
+                var result: Wrapper<[C]> = self.result
+                for function in self.funcQueue {
+                    result = function(result)
+                }
+                return result.value
+            }
+        }
+        
+        /// Initializer of the wrapper object for chaining.
+        ///
+        /// :param array The array to wrap.
+        public init(_ collection: [C]) {
+            self.result = Wrapper(collection)
+        }
+        
+        /// Get the first object in the wrapper object.
+        ///
+        /// :return First element from the array.
+        public func first() -> C? {
+            return $.first(self.value)
+        }
+        
+        /// Get the second object in the wrapper object.
+        ///
+        /// :return Second element from the array.
+        public func second() -> C? {
+            return $.first(self.value)
+        }
+        
+        /// Get the third object in the wrapper object.
+        ///
+        /// :return Third element from the array.
+        public func third() -> C? {
+            return $.first(self.value)
+        }
+        
+        /// Flattens nested array.
+        ///
+        /// :return The wrapper object.
+        public func flatten() -> Chain {
+            return self.queue {
+                return Wrapper($.flatten($0.value))
+            }
+        }
+        
+        /// Keeps all the elements except last one.
+        ///
+        /// :return The wrapper object.
+        public func initial() -> Chain {
+            return self.initial(1)
+        }
+        
+        /// Keeps all the elements except last n elements.
+        ///
+        /// :param numElements Number of items to remove from the end of the array.
+        /// :return The wrapper object.
+        public func initial(numElements: Int) -> Chain {
+            return self.queue {
+                return Wrapper($.initial($0.value, numElements: numElements))
+            }
+        }
+        
+        /// Maps elements to new elements.
+        ///
+        /// :param function Function to map.
+        /// :return The wrapper object.
+        public func map(function: C -> C) -> Chain {
+            return self.queue {
+                var result: [C] = []
+                for elem: C in $0.value {
+                    result.append(function(elem))
+                }
+                return Wrapper(result)
+            }
+        }
+        
+        /// Get the first object in the wrapper object.
+        ///
+        /// :param array The array to wrap.
+        /// :return The wrapper object.
+        public func map(function: (Int, C) -> C) -> Chain {
+            return self.queue {
+                var result: [C] = []
+                for (index, elem) in enumerate($0.value) {
+                    result.append(function(index, elem))
+                }
+                return Wrapper(result)
+            }
+        }
+        
+        /// Get the first object in the wrapper object.
+        ///
+        /// :param array The array to wrap.
+        /// :return The wrapper object.
+        public func each(function: (C) -> ()) -> Chain {
+            return self.queue {
+                for elem in $0.value {
+                    function(elem)
+                }
+                return $0
+            }
+        }
+        
+        /// Get the first object in the wrapper object.
+        ///
+        /// :param array The array to wrap.
+        /// :return The wrapper object.
+        public func each(function: (Int, C) -> ()) -> Chain {
+            return self.queue {
+                for (index, elem) in enumerate($0.value) {
+                    function(index, elem)
+                }
+                return $0
+            }
+        }
+        
+        /// Filter elements based on the function passed.
+        ///
+        /// :param function Function to tell whether to keep an element or remove.
+        /// :return The wrapper object.
+        public func filter(function: (C) -> Bool) -> Chain {
+            return self.queue {
+                return Wrapper(($0.value).filter(function))
+            }
+        }
+        
+        /// Returns if all elements in array are true based on the passed function.
+        ///
+        /// :param function Function to tell whether element value is true or false.
+        /// :return Whether all elements are true according to func function.
+        public func all(function: (C) -> Bool) -> Bool {
+            return $.every(self.value, iterator: function)
+        }
+        
+        /// Returns if any element in array is true based on the passed function.
+        ///
+        /// :param function Function to tell whether element value is true or false.
+        /// :return Whether any one element is true according to func function in the array.
+        public func any(function: (C) -> Bool) -> Bool {
+            var resultArr = self.value
+            for elem in resultArr {
+                if function(elem) {
+                    return true
+                }
+            }
+            return false
+        }
+        
+        /// Slice the array into smaller size based on start and end value.
+        ///
+        /// :param start Start index to start slicing from.
+        /// :param end End index to stop slicing to and not including element at that index.
+        /// :return The wrapper object.
+        public func slice(start: Int, end: Int = 0) -> Chain {
+            return self.queue {
+                return Wrapper($.slice($0.value, start: start, end: end))
+            }
+        }
+        
+        private func queue(function: Wrapper<[C]> -> Wrapper<[C]>) -> Chain {
+            funcQueue.append(function)
+            return self
+        }
+    
+    }
+
 }
