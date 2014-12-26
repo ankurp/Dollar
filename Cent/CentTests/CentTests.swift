@@ -22,6 +22,9 @@ class CentTests: XCTestCase {
     func testSubscript() {
         XCTAssertEqual("Dollar and Cent"[0...5], "Dollar", "Return substring")
         XCTAssertEqual("Dollar and Cent"[7..<10], "and", "Return substring")
+        
+        let sub = "Dollar and Cent"[" [a-z]{3,} "]!
+        XCTAssertEqual(sub, " and ", "Return substring based on regex")
     }
 
     func testRegex() {
@@ -30,5 +33,4 @@ class CentTests: XCTestCase {
         XCTAssertEqual("Dollar and Cent" =~ "\\sand\\s", true, "Should pattern match with regex string")
         XCTAssertEqual("Dollar and Cent" =~ "and Cent\\s+", false, "Should pattern match with regex string")
     }
-    
 }
