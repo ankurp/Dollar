@@ -812,7 +812,7 @@ Returns true if callback function returns true for all elements in the array
 
 ```swift
 var chain = $.chain([1, 2, 3])
-chain.all({ ($0 as Int) < 10 }) as Bool
+chain.all({ ($0 as Int) < 10 })
 => true
 ```
 
