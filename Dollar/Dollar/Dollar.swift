@@ -217,15 +217,39 @@ public class $ {
         }
         return result
     }
+
+    /// Call the callback passing each element in the array
+    ///
+    /// :param array The array to iterate over
+    /// :param callback function that gets called with each item in the array
+    /// :return The array passed
+    public class func each<T>(array: [T], callback: (T) -> ()) -> [T] {
+        for elem in array {
+            callback(elem)
+        }
+        return array
+    }
+
+    /// Call the callback passing index of the element and each element in the array
+    ///
+    /// :param array The array to iterate over
+    /// :param callback function that gets called with each item in the array with its index
+    /// :return The array passed
+    public class func each<T>(array: [T], callback: (Int, T) -> ()) -> [T] {
+        for (index, elem : T) in enumerate(array) {
+            callback(index, elem)
+        }
+        return array
+    }
     
     /// Checks if the given callback returns true value for all items in the array.
     ///
     /// :param array The array to check.
-    /// :param iterator Check whether element value is true or false.
+    /// :param callback Check whether element value is true or false.
     /// :return First element from the array.
-    public class func every<T>(array: [T], iterator: (T) -> Bool) -> Bool {
+    public class func every<T>(array: [T], callback: (T) -> Bool) -> Bool {
         for elem in array {
-            if !iterator(elem) {
+            if !callback(elem) {
                 return false
             }
         }
@@ -253,11 +277,11 @@ public class $ {
     /// that the callback returns true for.
     ///
     /// :param array The array to search for the element in.
-    /// :param iterator The iterator function to tell whether element is found.
+    /// :param callback The callback function to tell whether element is found.
     /// :return Optional containing either found element or nil.
-    public class func find<T>(array: [T], iterator: (T) -> Bool) -> T? {
+    public class func find<T>(array: [T], callback: (T) -> Bool) -> T? {
         for elem in array {
-            let result = iterator(elem)
+            let result = callback(elem)
             if result {
                 return elem
             }
@@ -269,11 +293,11 @@ public class $ {
     /// that passes the callback check.
     ///
     /// :param array The array to search for the element in.
-    /// :param iterator Function used to figure out whether element is the same.
-    /// :return First element's index from the array found using the iterator.
-    public class func findIndex<T>(array: [T], iterator: (T) -> Bool) -> Int? {
+    /// :param callback Function used to figure out whether element is the same.
+    /// :return First element's index from the array found using the callback.
+    public class func findIndex<T>(array: [T], callback: (T) -> Bool) -> Int? {
         for (index, elem : T) in enumerate(array) {
-            if iterator(elem) {
+            if callback(elem) {
                 return index
             }
         }
@@ -284,14 +308,14 @@ public class $ {
     /// from right to left.
     ///
     /// :param array The array to search for the element in.
-    /// :param iterator Function used to figure out whether element is the same.
-    /// :return Last element's index from the array found using the iterator.
-    public class func findLastIndex<T>(array: [T], iterator: (T) -> Bool) -> Int? {
+    /// :param callback Function used to figure out whether element is the same.
+    /// :return Last element's index from the array found using the callback.
+    public class func findLastIndex<T>(array: [T], callback: (T) -> Bool) -> Int? {
         let count = array.count
         for (index, _) in enumerate(array) {
             let reverseIndex = count - (index + 1)
             let elem : T = array[reverseIndex]
-            if iterator(elem) {
+            if callback(elem) {
                 return reverseIndex
             }
         }
@@ -866,10 +890,10 @@ public class $ {
     /// Removes all elements from an array that the callback returns true.
     ///
     /// :param array The array to wrap.
-    /// :param iterator Remove elements for which iterator returns true.
+    /// :param callback Remove elements for which callback returns true.
     /// :return Array with elements filtered out.
-    public class func remove<T>(array: [T], iterator: (T) -> Bool) -> [T] {
-        return array.filter { !iterator($0) }
+    public class func remove<T>(array: [T], callback: (T) -> Bool) -> [T] {
+        return array.filter { !callback($0) }
     }
     
     /// The opposite of initial this method gets all but the first element or first n elements of an array.
@@ -1248,7 +1272,7 @@ public class Chain<C> {
     /// :param function Function to tell whether element value is true or false.
     /// :return Whether all elements are true according to func function.
     public func all(function: (C) -> Bool) -> Bool {
-        return $.every(self.value, iterator: function)
+        return $.every(self.value, callback: function)
     }
     
     /// Returns if any element in array is true based on the passed function.

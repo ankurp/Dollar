@@ -31,4 +31,10 @@ class CentTests: XCTestCase {
         XCTAssertEqual("Dollar and Cent" =~ "and Cent\\s+", false, "Should pattern match with regex string")
     }
     
+    func testEach() {
+        var arr: [String] = []
+        XCTAssertEqual(["A", "B", "C"].each({ arr.append($0) }), ["A", "B", "C"], "Return array itself")
+        XCTAssertEqual(Swift.join("", arr), "ABC", "Return string concatenated")
+    }
+    
 }

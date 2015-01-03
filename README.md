@@ -103,13 +103,28 @@ $.difference([1, 2, 3, 4, 5], [5, 2, 10])
 => [1, 3, 4]
 ```
 
+### each - `$.each`
+
+Passes each element in the array to the callback
+
+```swift
+$.each(["A", "B"]) { 
+  println("Value \($0)")
+}
+=> ["A", "B"]
+
+$.each(["A", "B"]) { (index, elem) in
+  println("\(index) - \(elem)")
+}
+=> ["A", "B"]
+```
 
 ### every - `$.every`
 
 Checks if the given callback returns true value for all items in the array.
 
 ```swift
-$.every([1, 2, 3, 4], iterator: { $0 < 20 }) 
+$.every([1, 2, 3, 4], callback: { $0 < 20 }) 
 => true
 
 $.every([1, 2, 3, 4]) { $0 == 1 } 
@@ -138,7 +153,7 @@ $.fetch(arr, -1)
 Iterates over elements of an array and returning the first element that the callback returns true for.
 
 ```swift
-$.find([1, 2, 3, 4], iterator: { $0 == 2 }) 
+$.find([1, 2, 3, 4], callback: { $0 == 2 }) 
 => 2
 
 $.find([1, 2, 3, 4]) { $0 == 10 } 
@@ -966,6 +981,30 @@ let some = array.at(1, 3)
 => ["spam", "eggs"]
 ```
 
+### `each(callback: (Element) -> ()) -> [Element]`
+
+For each item in the array invoke the callback by passing the elem
+
+```swift
+let array = ["foo", "spam", "bar", "eggs"]
+array.each {
+  println($0)
+}
+=> ["foo", "spam", "bar", "eggs"]
+```
+
+### `eachWithIndex(callback: (Int, Element) -> ()) -> [Element]`
+
+For each item in the array invoke the callback by passing the elem along with the index
+
+```swift
+let array = ["foo", "spam", "bar", "eggs"]
+array.each { (index, elem)
+  println("\(index) - \(elem)")
+}
+=> ["foo", "spam", "bar", "eggs"]
+```
+
 ### `cycle<U>(times: Int, callback: (Element) -> U)`
 
 Cycles through the array definetly or indefinetly passing each element into the callback function. The second parameter is to specify how many times to cycle through the array. If left out it will cycle indefinetly.
@@ -983,7 +1022,7 @@ Cycles through the array definetly or indefinetly passing each element into the 
 // Cycles in an infinite loop
 ```
 
-### `every(iterator: (Element) -> Bool) -> Bool`
+### `every(callback: (Element) -> Bool) -> Bool`
 
 Checks if the given callback returns true value for all items in the array.
 
@@ -1011,7 +1050,7 @@ arr.fetch(-1)
 => 8
 ```
 
-### `findIndex(iterator: (Element) -> Bool) -> Int?`
+### `findIndex(callback: (Element) -> Bool) -> Int?`
 
 This method is like find except that it returns the index of the first element that passes the callback check.
 
@@ -1023,7 +1062,7 @@ ind! == 2
 => true
 ```
 
-### `findLastIndex(iterator: (Element) -> Bool) -> Int?`
+### `findLastIndex(callback: (Element) -> Bool) -> Int?`
 
 This method is like findIndex except that it iterates over elements of the array from right to left.
 
