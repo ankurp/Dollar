@@ -36,13 +36,33 @@ internal extension Array {
         $.cycle(self, callback: callback)
     }
 
+    /// For each item in the array invoke the callback by passing the elem
+    ///
+    /// :param callback The callback function to invoke that take an element
+    func eachWithIndex(callback: (Int, Element) -> ()) -> [Element] {
+        for (index, elem) in enumerate(self) {
+            callback(index, elem)
+        }
+        return self
+    }
+    
+    /// For each item in the array invoke the callback by passing the elem
+    ///
+    /// :param callback The callback function to invoke
+    func each(callback: (Element) -> ()) -> [Element] {
+        self.eachWithIndex { (index, elem) -> () in
+            callback(elem)
+        }
+        return self
+    }
+    
     /// Checks if the given callback returns true value for all items in the array.
     ///
     /// :param array The array to check.
     /// :param iterator Check whether element value is true or false.
     /// :return First element from the array.
     func every(iterator: (Element) -> Bool) -> Bool {
-        return $.every(self, iterator: iterator)
+        return $.every(self, callback: iterator)
     }
 
     /// Get element from an array at the given index which can be negative
@@ -62,7 +82,7 @@ internal extension Array {
     /// :param iterator Function used to figure out whether element is the same.
     /// :return First element's index from the array found using the iterator.
     func findIndex(iterator: (Element) -> Bool) -> Int? {
-        return $.findIndex(self, iterator: iterator)
+        return $.findIndex(self, callback: iterator)
     }
     
     /// This method is like findIndex except that it iterates over elements of the array
@@ -72,7 +92,7 @@ internal extension Array {
     /// :param iterator Function used to figure out whether element is the same.
     /// :return Last element's index from the array found using the iterator.
     func findLastIndex(iterator: (Element) -> Bool) -> Int? {
-        return $.findLastIndex(self, iterator: iterator)
+        return $.findLastIndex(self, callback: iterator)
     }
 
     /// Gets the first element in the array.

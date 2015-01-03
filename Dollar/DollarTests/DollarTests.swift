@@ -48,6 +48,12 @@ class DollarTests: XCTestCase {
         XCTAssert($.compact([3, nil, 4, 5]) == [3, 4, 5], "Return truth array")
         XCTAssertEqual($.compact([nil, nil]) as [NSObject], [], "Return truth array")
     }
+    
+    func testEach() {
+        var arr: [Int] = []
+        XCTAssert($.each([1, 3, 4, 5], { arr.append($0 * 2) }) == [1, 3, 4, 5], "Return the array itself")
+        XCTAssert(arr == [2, 6, 8, 10], "Return array with doubled numbers")
+    }
 
     func testFlatten() {
         XCTAssertEqual($.flatten([[3], 4, 5]), [3, 4, 5], "Return flat array")
@@ -122,7 +128,7 @@ class DollarTests: XCTestCase {
     }
 
     func testRemove() {
-        XCTAssertEqual($.remove([1, 2, 3, 4, 5, 6], iterator: { $0 == 2 || $0 == 3 }), [1, 4, 5, 6], "Remove based on callback")
+        XCTAssertEqual($.remove([1, 2, 3, 4, 5, 6], callback: { $0 == 2 || $0 == 3 }), [1, 4, 5, 6], "Remove based on callback")
     }
 
     func testSortedIndex() {
@@ -186,8 +192,8 @@ class DollarTests: XCTestCase {
     }
 
     func testFind() {
-        XCTAssertEqual($.find([1, 2, 3, 4], iterator: { $0 == 2 })!, 2, "Return element when object is found")
-        XCTAssertNil($.find([1, 2, 3, 4], iterator: { $0 == 10 }) as Int?, "Return nil when object not found")
+        XCTAssertEqual($.find([1, 2, 3, 4], callback: { $0 == 2 })!, 2, "Return element when object is found")
+        XCTAssertNil($.find([1, 2, 3, 4], callback: { $0 == 10 }) as Int?, "Return nil when object not found")
     }
 
     func testMax() {
