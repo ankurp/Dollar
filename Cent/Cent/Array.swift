@@ -59,10 +59,10 @@ internal extension Array {
     /// Checks if the given callback returns true value for all items in the array.
     ///
     /// :param array The array to check.
-    /// :param iterator Check whether element value is true or false.
+    /// :param callback Check whether element value is true or false.
     /// :return First element from the array.
-    func every(iterator: (Element) -> Bool) -> Bool {
-        return $.every(self, callback: iterator)
+    func every(callback: (Element) -> Bool) -> Bool {
+        return $.every(self, callback: callback)
     }
 
     /// Get element from an array at the given index which can be negative
@@ -79,20 +79,20 @@ internal extension Array {
     /// that passes the callback check.
     ///
     /// :param array The array to search for the element in.
-    /// :param iterator Function used to figure out whether element is the same.
-    /// :return First element's index from the array found using the iterator.
-    func findIndex(iterator: (Element) -> Bool) -> Int? {
-        return $.findIndex(self, callback: iterator)
+    /// :param callback Function used to figure out whether element is the same.
+    /// :return First element's index from the array found using the callback.
+    func findIndex(callback: (Element) -> Bool) -> Int? {
+        return $.findIndex(self, callback: callback)
     }
     
     /// This method is like findIndex except that it iterates over elements of the array
     /// from right to left.
     ///
     /// :param array The array to search for the element in.
-    /// :param iterator Function used to figure out whether element is the same.
-    /// :return Last element's index from the array found using the iterator.
-    func findLastIndex(iterator: (Element) -> Bool) -> Int? {
-        return $.findLastIndex(self, callback: iterator)
+    /// :param callback Function used to figure out whether element is the same.
+    /// :return Last element's index from the array found using the callback.
+    func findLastIndex(callback: (Element) -> Bool) -> Int? {
+        return $.findLastIndex(self, callback: callback)
     }
 
     /// Gets the first element in the array.

@@ -109,7 +109,7 @@ $.difference([1, 2, 3, 4, 5], [5, 2, 10])
 Checks if the given callback returns true value for all items in the array.
 
 ```swift
-$.every([1, 2, 3, 4], iterator: { $0 < 20 }) 
+$.every([1, 2, 3, 4], callback: { $0 < 20 }) 
 => true
 
 $.every([1, 2, 3, 4]) { $0 == 1 } 
@@ -138,7 +138,7 @@ $.fetch(arr, -1)
 Iterates over elements of an array and returning the first element that the callback returns true for.
 
 ```swift
-$.find([1, 2, 3, 4], iterator: { $0 == 2 }) 
+$.find([1, 2, 3, 4], callback: { $0 == 2 }) 
 => 2
 
 $.find([1, 2, 3, 4]) { $0 == 10 } 
@@ -983,7 +983,7 @@ Cycles through the array definetly or indefinetly passing each element into the 
 // Cycles in an infinite loop
 ```
 
-### `every(iterator: (Element) -> Bool) -> Bool`
+### `every(callback: (Element) -> Bool) -> Bool`
 
 Checks if the given callback returns true value for all items in the array.
 
@@ -1011,7 +1011,7 @@ arr.fetch(-1)
 => 8
 ```
 
-### `findIndex(iterator: (Element) -> Bool) -> Int?`
+### `findIndex(callback: (Element) -> Bool) -> Int?`
 
 This method is like find except that it returns the index of the first element that passes the callback check.
 
@@ -1023,7 +1023,7 @@ ind! == 2
 => true
 ```
 
-### `findLastIndex(iterator: (Element) -> Bool) -> Int?`
+### `findLastIndex(callback: (Element) -> Bool) -> Int?`
 
 This method is like findIndex except that it iterates over elements of the array from right to left.
 
