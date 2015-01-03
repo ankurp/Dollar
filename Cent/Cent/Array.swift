@@ -46,7 +46,7 @@ internal extension Array {
         return self
     }
     
-    /// For each item in the array invoke the callback by passing the elem
+    /// For each item in the array invoke the callback by passing the elem along with the index
     ///
     /// :param callback The callback function to invoke
     func each(callback: (Element) -> ()) -> [Element] {

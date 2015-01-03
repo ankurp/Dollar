@@ -103,6 +103,21 @@ $.difference([1, 2, 3, 4, 5], [5, 2, 10])
 => [1, 3, 4]
 ```
 
+### each - `$.each`
+
+Passes each element in the array to the callback
+
+```swift
+$.each(["A", "B"]) { 
+  println("Value \($0)")
+}
+=> ["A", "B"]
+
+$.each(["A", "B"]) { (index, elem) in
+  println("\(index) - \(elem)")
+}
+=> ["A", "B"]
+```
 
 ### every - `$.every`
 
@@ -964,6 +979,30 @@ Creates an array of elements from the specified indexes, or keys, of the collect
 let array = ["foo", "spam", "bar", "eggs"]
 let some = array.at(1, 3)
 => ["spam", "eggs"]
+```
+
+### `each(callback: (Element) -> ()) -> [Element]`
+
+For each item in the array invoke the callback by passing the elem
+
+```swift
+let array = ["foo", "spam", "bar", "eggs"]
+array.each {
+  println($0)
+}
+=> ["foo", "spam", "bar", "eggs"]
+```
+
+### `eachWithIndex(callback: (Int, Element) -> ()) -> [Element]`
+
+For each item in the array invoke the callback by passing the elem along with the index
+
+```swift
+let array = ["foo", "spam", "bar", "eggs"]
+array.each { (index, elem)
+  println("\(index) - \(elem)")
+}
+=> ["foo", "spam", "bar", "eggs"]
 ```
 
 ### `cycle<U>(times: Int, callback: (Element) -> U)`
