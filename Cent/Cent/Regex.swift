@@ -17,7 +17,7 @@ public class Regex {
     let expression: NSRegularExpression
     let pattern: String
     
-    init(_ pattern: String) {
+    public init(_ pattern: String) {
         self.pattern = pattern
         var error: NSError?
         self.expression = NSRegularExpression(pattern: pattern, options: .CaseInsensitive, error: &error)!
