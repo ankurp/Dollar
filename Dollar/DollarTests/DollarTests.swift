@@ -366,6 +366,21 @@ class DollarTests: XCTestCase {
         XCTAssertEqual($.map([1, 2, 3, 4, 5]) { $0 * 2 }, [2, 4, 6, 8, 10], "Map function should double values in the array")
     }
     
+    func testFlatMap() {
+        let values: [Int?] = [2, 3, 4, nil, 5, 6, 7]
+        let expected: [Int?] = [4, 6, 8, nil, 10, 12, 14]
+        let result: [Int?] = $.flatMap(values) { $0 * 2 }
+        func equals(first: [Int?], second: [Int?]) -> Bool {
+            for numbers in $.zip(first, second) {
+                if (numbers.first!)? != (numbers.last!)? {
+                    return false
+                }
+            }
+            return true
+        }
+        XCTAssert(equals(result, expected), "FlatMap should double every non-nil item in the array")
+    }
+    
     func testReduce() {
         XCTAssertEqual($.reduce([1, 2, 3, 4, 5], initial: 0) { $0 + $1 } as Int, 15, "Reduce function should sum elements in the array")
     }

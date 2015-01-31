@@ -374,6 +374,10 @@ public class $ {
         return resultArr
     }
     
+    public class func flatMap<T, U>(array: [T?], f: (T) -> (U)) -> [U?] {
+        return array.map { $0.map(f) }
+    }
+    
     /// Randomly shuffles the elements of an array.
     ///
     /// :param array The array to shuffle.
