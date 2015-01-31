@@ -374,6 +374,10 @@ public class $ {
         return resultArr
     }
     
+    /// Applies a transform to all non-nil elements of an array.
+    ///
+    /// :param array The array to map.
+    /// :return The array with all non-nil elements transformed given a transform.
     public class func flatMap<T, U>(array: [T?], f: (T) -> (U)) -> [U?] {
         return array.map { $0.map(f) }
     }
