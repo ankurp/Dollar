@@ -372,6 +372,8 @@ class DollarTests: XCTestCase {
         let result: [Int?] = $.flatMap(values) { $0 * 2 }
         func equals(first: [Int?], second: [Int?]) -> Bool {
             for numbers in $.zip(first, second) {
+                // Must conditionally unwrap optionals when attempting to
+                // compare them.
                 if (numbers.first!)? != (numbers.last!)? {
                     return false
                 }

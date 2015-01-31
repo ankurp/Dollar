@@ -209,6 +209,16 @@ $.second([])
 => nil
 ```
 
+### flatMap - `$.flatMap`
+
+Applies a transform to every non-`nil` element in an array.
+
+```swift
+let values: [Int?] = [2, 3, 4, nil, 5, 6, 7]
+$.flatMap(values) { $0 * 2 }
+=> [4, 6, nil, 10, 12, 14]
+```
+
 ### flatten - `$.flatten`
 
 Flattens a nested array of any depth.
