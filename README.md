@@ -211,12 +211,12 @@ $.second([])
 
 ### flatMap - `$.flatMap`
 
-Applies a transform to every non-`nil` element in an array.
+Maps a function that converts elements to a list and then concatenates them.
 
 ```swift
-let values: [Int?] = [2, 3, 4, nil, 5, 6, 7]
-$.flatMap(values) { $0 * 2 }
-=> [4, 6, nil, 10, 12, 14]
+let values = [2, 3, 4, 5, 6, 7]
+$.flatMap(values) { [$0, $0] }
+=> [2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7]
 ```
 
 ### flatten - `$.flatten`

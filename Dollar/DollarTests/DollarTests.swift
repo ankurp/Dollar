@@ -367,20 +367,7 @@ class DollarTests: XCTestCase {
     }
     
     func testFlatMap() {
-        let values: [Int?] = [2, 3, 4, nil, 5, 6, 7]
-        let expected: [Int?] = [4, 6, 8, nil, 10, 12, 14]
-        let result: [Int?] = $.flatMap(values) { $0 * 2 }
-        func equals(first: [Int?], second: [Int?]) -> Bool {
-            for numbers in $.zip(first, second) {
-                // Must conditionally unwrap optionals when attempting to
-                // compare them.
-                if (numbers.first!)? != (numbers.last!)? {
-                    return false
-                }
-            }
-            return true
-        }
-        XCTAssert(equals(result, expected), "FlatMap should double every non-nil item in the array")
+        XCTAssertEqual($.flatMap([1, 2, 3]) { [$0, $0] }, [1, 1, 2, 2, 3, 3], "FlatMap should double every item in the array and concatenate them.")
     }
     
     func testReduce() {
