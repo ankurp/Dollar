@@ -14,8 +14,8 @@ internal extension Dictionary {
     /// Checks whether Dictionary has no keys and hence is empty
     ///
     /// :return Whether dictionary is empty
-    func isEmpty () -> Bool {
-        return Array(self.keys).isEmpty
+    func isEmpty() -> Bool {
+        return self.isEmpty
     }
 
     /// Merges the dictionary with dictionaries passed. The latter dictionaries will override
