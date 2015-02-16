@@ -575,7 +575,7 @@ public class $ {
     ///
     /// :param dictionaries The dictionaries to source from.
     /// :return Merged dictionary with all of its keys and values.
-    public class func merge<T, U>(#dictionaries: [T: U]...) -> [T: U] {
+    public class func merge<T, U>(dictionaries: [T: U]...) -> [T: U] {
         var result = [T: U]()
         for dict in dictionaries {
             for (key, value) in dict {
@@ -589,7 +589,7 @@ public class $ {
     ///
     /// :param arrays The arrays to source from.
     /// :return Array with all values merged, including duplicates.
-    public class func merge<T>(#arrays: [T]...) -> [T] {
+    public class func merge<T>(arrays: [T]...) -> [T] {
         var result = [T]()
         for arr in arrays {
             result += arr
