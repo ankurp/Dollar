@@ -149,7 +149,7 @@ internal extension Array {
     /// :param array The array to source from.
     /// :return Minimum value from array.
     func min<T: Comparable>() -> T? {
-        return $.min(map { $0 as T })
+        return $.min(map { $0 as! T })
     }
     
     /// Retrieves the maximum value in an array.
@@ -157,7 +157,7 @@ internal extension Array {
     /// :param array The array to source from.
     /// :return Maximum element in array.
     func max<T: Comparable>() -> T? {
-        return $.max(map { $0 as T })
+        return $.max(map { $0 as! T })
     }
 }
 

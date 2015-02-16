@@ -13,7 +13,7 @@ extension String {
     
     public var length: Int {
         get {
-            return countElements(self)
+            return count(self)
         }
     }
     
@@ -77,9 +77,7 @@ extension String {
     ///
     /// :return Array of strings after spliting
     public func split(delimiter: Character) -> [String] {
-        return Swift.split(self) { (char: Character) -> Bool in
-            char == delimiter
-        }
+        return self.componentsSeparatedByString(String(delimiter))
     }
 
     /// Remove leading whitespace characters

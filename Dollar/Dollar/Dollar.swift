@@ -55,7 +55,7 @@ public class $ {
         let f = self.after(n) { (params: Any?...) -> T? in
             return function()
         }
-        return { f()? }
+        return { f()! }
     }
     
     /// Creates an array of elements from the specified indexes, or keys, of the collection.
@@ -716,7 +716,7 @@ public class $ {
     /// :return Array partitioned into n element arrays, starting step elements apart.
     public class func partition<T>(var array: [T], var n: Int, var step: Int? = .None, pad: [T]?) -> [[T]] {
         var result : [[T]] = []
-        if step? == .None   { step = n } // If no step is supplied move n each step.
+        if step! == .None   { step = n } // If no step is supplied move n each step.
         if step < 1 { step = 1 } // Less than 1 results in an infinite loop.
         if n < 1    { n = 0 }    // Allow 0 if user wants [[],[],[]] for some reason.
         
@@ -743,7 +743,7 @@ public class $ {
     /// :return Array partitioned into n element arrays, starting step elements apart.
     public class func partitionAll<T>(array: [T], var n: Int, var step: Int? = .None) -> [[T]] {
         var result = [[T]]()
-        if step? == .None { step = n } // If no step is supplied move n each step.
+        if step! == .None { step = n } // If no step is supplied move n each step.
         if step < 1 { step = 1 } // Less than 1 results in an infinite loop.
         if n < 1    { n = 0 }    // Allow 0 if user wants [[],[],[]] for some reason.
         
@@ -767,7 +767,7 @@ public class $ {
         for item in array {
             let value = function(item)
             
-            if value == lastValue? {
+            if let lastValue = lastValue where value == lastValue {
                 result[result.count-1].append(item)
             } else {
                 result.append([item])
