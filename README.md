@@ -472,7 +472,7 @@ Creates an array of all values, including duplicates, of the arrays in the order
 let arr  = [1, 5]
 let arr2 = [2, 4]
 let arr3 = [5, 6]
-let result = $.merge(arrays: arr, arr2, arr3)
+let result = $.merge(arr, arr2, arr3)
 result
 => [1, 5, 2, 4, 5, 6]
 ```
@@ -601,7 +601,7 @@ Merges all of the dictionaries together and the latter dictionary overrides the 
 let dict: Dictionary<String, Int> = ["Dog": 1, "Cat": 2]
 let dict2: Dictionary<String, Int> = ["Cow": 3]
 let dict3: Dictionary<String, Int> = ["Sheep": 4]
-$.merge(dictionaries: dict, dict2, dict3)
+$.merge(dict, dict2, dict3)
 => ["Dog": 1, "Cat": 2, "Cow": 3, "Sheep": 4]
 ```
 
