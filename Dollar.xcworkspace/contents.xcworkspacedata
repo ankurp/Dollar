@@ -2,10 +2,10 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:Cent/Cent.xcodeproj">
+      location = "group:Dollar/Dollar.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:Dollar/Dollar.xcodeproj">
+      location = "group:Cent/Cent.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:LICENSE">

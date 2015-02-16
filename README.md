@@ -1539,4 +1539,3 @@ If you are interested only in pure functional programming `import Dollar` otherw
 
 
 [![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/ankurp/dollar.swift/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
-
