@@ -31,9 +31,13 @@ Cent is a library that extends certain Swift object types using the extension fe
 
 # Setup #
 
-Currently there are issues loading the library using `pod 'Dollar'` which is pending changes from Cocoapods. In the mean time follow these steps
+## Using [Carthage](https://github.com/Carthage/Carthage)
 
-1. If you are using git then add Dollar as a submodule using `git submodule add https://github.com/ankurp/Dollar.swift.git` otherwise download the project using `git clone https://github.com/ankurp/Dollar.swift.git` in your project folder.
+Add `github "ankurp/Dollar.swift" ~> 2.1.1` to your `Cartfile` and run `carthage update`. If unfamiliar with Carthage then checkout their [Getting Started section](https://github.com/Carthage/Carthage#getting-started) or this [sample app](https://github.com/ankurp/DollarCarthageApp)
+
+## Using `git submodule`
+
+1. If you are using git then add Dollar as a submodule using `git submodule add https://github.com/ankurp/Dollar.swift.git`. If not using git download the project using `git clone https://github.com/ankurp/Dollar.swift.git` in your project folder.
 2. Open the Dollar.swift folder. Drag Dollar.xcodeproj, inside the Dollar folder, into the file navigator of your Xcode project.
 3. In Xcode, navigate to the target configuration window by clicking on the blue project icon, and selecting the application target under the "Targets" heading in the sidebar.
 4. In the tab bar at the top of that window, open the "Build Phases" panel.
@@ -42,8 +46,9 @@ Currently there are issues loading the library using `pod 'Dollar'` which is pen
 
 Still stuck. Then checkout this screencast on [how to import](http://recordit.co/0gQiCSEREF)
 
-## Demo App ##
-To see how to integrate this library into an iOS App checkout this [repo](https://github.com/ankurp/DollarAndCentDemoApp).
+## Demo Apps ##
+[Using `carthage`](https://github.com/ankurp/DollarCarthageApp)
+[Using `git submodule`](https://github.com/ankurp/DollarAndCentDemoApp)
 
 # Dollar Usage #
 
