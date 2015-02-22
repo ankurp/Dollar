@@ -47,8 +47,9 @@ Add `github "ankurp/Dollar.swift" ~> 2.1.1` to your `Cartfile` and run `carthage
 Still stuck. Then checkout this screencast on [how to import](http://recordit.co/0gQiCSEREF)
 
 ## Demo Apps ##
-[Using `carthage`](https://github.com/ankurp/DollarCarthageApp)
-[Using `git submodule`](https://github.com/ankurp/DollarAndCentDemoApp)
+Using
+* [`carthage`](https://github.com/ankurp/DollarCarthageApp)
+* [`git submodule`](https://github.com/ankurp/DollarAndCentDemoApp)
 
 # Dollar Usage #
 
