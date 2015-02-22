@@ -1213,19 +1213,6 @@ let otherUnix = Date.unix(otherDate)
 
 ## Dictionary Extensions ##
 
-### `isEmpty () -> Bool`
-
-Checks whether Dictionary has no keys and hence is empty
-
-```swift
-let dictionary = [String: String]()
-dictionary.isEmpty() 
-=> true
-
-["foo": "bar"].isEmpty() 
-=> false
-```
-
 ### `merge<K, V>(dictionaries: Dictionary<K, V>...)`
 
 Merges the dictionary with dictionaries passed. The latter dictionaries will override values of the keys that are already set
