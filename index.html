@@ -302,8 +302,6 @@
                                     </li>
                                     <li id="dictionary-extensions-item" class="level-2"><a id="dictionary-extensions-link" href="#dictionary-extensions" class="level-2">Dictionary Extensions</a>
                                         <ul class="level-3" id="dictionary-extensions-list">
-                                            <li id="isempty-bool-item" class="level-3"><a id="isempty-bool-link" href="#isempty-bool" class="level-3">isEmpty () -&gt; Bool</a>
-                                            </li>
                                             <li id="merge-k-v-dictionaries-dictionary-k-v-item" class="level-3"><a id="merge-k-v-dictionaries-dictionary-k-v-link" href="#merge-k-v-dictionaries-dictionary-k-v" class="level-3">merge<k, v="">(dictionaries: Dictionary<k, v="">...)</k,></k,></a>
                                             </li>
                                         </ul>
@@ -1011,13 +1009,6 @@ var otherNSDate = Date()
 <span class="keyword">let</span> otherUnix = Date.unix(otherDate)
 =&gt; <span class="number">1</span>,<span class="number">388</span>,<span class="number">552</span>,<span class="number"><span class="number">400</span>.<span class="number">0</span></span></code></pre>
             <h2 id="dictionary-extensions">Dictionary Extensions</h2>
-            <h3 id="isempty-bool"><code>isEmpty () -&gt; Bool</code></h3>
-            <p>Checks whether Dictionary has no keys and hence is empty</p><pre><code class="lang-swift"><span class="keyword">let</span> dictionary = [String: String]()
-dictionary.isEmpty() 
-=&gt; <span class="keyword">true</span>
-
-[<span class="string">"foo"</span>: <span class="string">"bar"</span>].isEmpty() 
-=&gt; <span class="keyword">false</span></code></pre>
             <h3 id="merge-k-v-dictionaries-dictionary-k-v"><code>merge&lt;K, V&gt;(dictionaries: Dictionary&lt;K, V&gt;...)</code></h3>
             <p>Merges the dictionary with dictionaries passed. The latter dictionaries will override values of the keys that are already set</p><pre><code class="lang-swift">var dic = [<span class="string">"foo"</span>: <span class="string">"bar"</span>] 
 <span class="keyword">let</span> anotherDic = [<span class="string">"foo"</span>: <span class="string">"baz"</span>, <span class="string">"spam"</span>: <span class="string">"eggs"</span>]
