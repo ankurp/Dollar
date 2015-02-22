@@ -638,7 +638,7 @@ result
             <p>Creates an array of all values, including duplicates, of the arrays in the order they are provided.</p><pre><code class="lang-swift"><span class="keyword">let</span> arr  = [<span class="number">1</span>, <span class="number">5</span>]
 <span class="keyword">let</span> arr<span class="number">2</span> = [<span class="number">2</span>, <span class="number">4</span>]
 <span class="keyword">let</span> arr<span class="number">3</span> = [<span class="number">5</span>, <span class="number">6</span>]
-<span class="keyword">let</span> result = <span class="keyword">$</span>.merge(arrays: arr, arr<span class="number">2</span>, arr<span class="number">3</span>)
+<span class="keyword">let</span> result = <span class="keyword">$</span>.merge(arr, arr<span class="number">2</span>, arr<span class="number">3</span>)
 result
 =&gt; [<span class="number">1</span>, <span class="number">5</span>, <span class="number">2</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>]</code></pre>
             <h3 id="uniq-uniq">uniq - <code>$.uniq</code></h3>
@@ -700,7 +700,7 @@ result
             <p>Merges all of the dictionaries together and the latter dictionary overrides the value at a given key</p><pre><code class="lang-swift"><span class="keyword">let</span> dict: Dictionary&lt;String, Int&gt; = [<span class="string">"Dog"</span>: <span class="number">1</span>, <span class="string">"Cat"</span>: <span class="number">2</span>]
 <span class="keyword">let</span> dict<span class="number">2</span>: Dictionary&lt;String, Int&gt; = [<span class="string">"Cow"</span>: <span class="number">3</span>]
 <span class="keyword">let</span> dict<span class="number">3</span>: Dictionary&lt;String, Int&gt; = [<span class="string">"Sheep"</span>: <span class="number">4</span>]
-<span class="keyword">$</span>.merge(dictionaries: dict, dict<span class="number">2</span>, dict<span class="number">3</span>)
+<span class="keyword">$</span>.merge(dict, dict<span class="number">2</span>, dict<span class="number">3</span>)
 =&gt; [<span class="string">"Dog"</span>: <span class="number">1</span>, <span class="string">"Cat"</span>: <span class="number">2</span>, <span class="string">"Cow"</span>: <span class="number">3</span>, <span class="string">"Sheep"</span>: <span class="number">4</span>]</code></pre>
             <h3 id="pick-pick">pick - <code>$.pick</code></h3>
             <p>Creates a shallow clone of a dictionary composed of the specified keys.</p><pre><code class="lang-swift"><span class="keyword">$</span>.pick([<span class="string">"Dog"</span>: <span class="number">1</span>, <span class="string">"Cat"</span>: <span class="number">2</span>, <span class="string">"Cow"</span>: <span class="number">3</span>], keys: <span class="string">"Dog"</span>, <span class="string">"Cow"</span>)
