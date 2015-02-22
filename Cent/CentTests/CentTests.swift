@@ -6,7 +6,6 @@
 //  Copyright (c) 2014 Encore Dev Labs LLC. All rights reserved.
 //
 
-import UIKit
 import XCTest
 
 class CentTests: XCTestCase {
