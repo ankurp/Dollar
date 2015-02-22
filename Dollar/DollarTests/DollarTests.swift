@@ -235,12 +235,12 @@ class DollarTests: XCTestCase {
         let dict  = ["Dog": 1, "Cat": 2]
         let dict2 = ["Cow": 3]
         let dict3 = ["Sheep": 4]
-        XCTAssertTrue($.merge(dictionaries: dict, dict2, dict3) == ["Dog": 1, "Cat": 2, "Cow": 3, "Sheep": 4], "Returns correct merged dictionary")
+        XCTAssertTrue($.merge(dict, dict2, dict3) == ["Dog": 1, "Cat": 2, "Cow": 3, "Sheep": 4], "Returns correct merged dictionary")
 
         let arr  = [1, 5]
         let arr2 = [2, 4]
         let arr3 = [5, 6]
-        XCTAssertEqual($.merge(arrays: arr, arr2, arr3), [1, 5, 2, 4, 5, 6], "Returns correct merged array")
+        XCTAssertEqual($.merge(arr, arr2, arr3), [1, 5, 2, 4, 5, 6], "Returns correct merged array")
     }
 
     func testPick() {
