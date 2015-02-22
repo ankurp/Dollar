@@ -8,9 +8,13 @@ Cent is a library that extends certain Swift object types using the extension fe
 
 # Setup #
 
-Currently there are issues loading the library using `pod 'Dollar'` which is pending changes from Cocoapods. In the mean time follow these steps
+## Using [Carthage](https://github.com/Carthage/Carthage)
 
-1. If you are using git then add Dollar as a submodule using `git submodule add https://github.com/ankurp/Dollar.swift.git` otherwise download the project using `git clone https://github.com/ankurp/Dollar.swift.git` in your project folder.
+Add `github "ankurp/Dollar.swift" ~> 2.1.1` to your `Cartfile` and run `carthage update`. If unfamiliar with Carthage then checkout their [Getting Started section](https://github.com/Carthage/Carthage#getting-started) or this [sample app](https://github.com/ankurp/DollarCarthageApp)
+
+## Using `git submodule`
+
+1. If you are using git then add Dollar as a submodule using `git submodule add https://github.com/ankurp/Dollar.swift.git`. If not using git download the project using `git clone https://github.com/ankurp/Dollar.swift.git` in your project folder.
 2. Open the Dollar.swift folder. Drag Dollar.xcodeproj, inside the Dollar folder, into the file navigator of your Xcode project.
 3. In Xcode, navigate to the target configuration window by clicking on the blue project icon, and selecting the application target under the "Targets" heading in the sidebar.
 4. In the tab bar at the top of that window, open the "Build Phases" panel.
@@ -19,8 +23,10 @@ Currently there are issues loading the library using `pod 'Dollar'` which is pen
 
 Still stuck. Then checkout this screencast on [how to import](http://recordit.co/0gQiCSEREF)
 
-## Demo App ##
-To see how to integrate this library into an iOS App checkout this [repo](https://github.com/ankurp/DollarAndCentDemoApp).
+## Demo Apps ##
+Using
+* [`carthage`](https://github.com/ankurp/DollarCarthageApp)
+* [`git submodule`](https://github.com/ankurp/DollarAndCentDemoApp)
 
 # Dollar Usage #
 
@@ -80,13 +86,28 @@ $.difference([1, 2, 3, 4, 5], [5, 2, 10])
 => [1, 3, 4]
 ```
 
+### each - `$.each`
+
+Passes each element in the array to the callback
+
+```swift
+$.each(["A", "B"]) { 
+  println("Value \($0)")
+}
+=> ["A", "B"]
+
+$.each(["A", "B"]) { (index, elem) in
+  println("\(index) - \(elem)")
+}
+=> ["A", "B"]
+```
 
 ### every - `$.every`
 
 Checks if the given callback returns true value for all items in the array.
 
 ```swift
-$.every([1, 2, 3, 4], iterator: { $0 < 20 }) 
+$.every([1, 2, 3, 4], callback: { $0 < 20 }) 
 => true
 
 $.every([1, 2, 3, 4]) { $0 == 1 } 
@@ -115,7 +136,7 @@ $.fetch(arr, -1)
 Iterates over elements of an array and returning the first element that the callback returns true for.
 
 ```swift
-$.find([1, 2, 3, 4], iterator: { $0 == 2 }) 
+$.find([1, 2, 3, 4], callback: { $0 == 2 }) 
 => 2
 
 $.find([1, 2, 3, 4]) { $0 == 10 } 
@@ -771,14 +792,14 @@ $.times(2, function: fun) as String[]
 
 ## Chaining ##
 
-**`Chain(...)`**
+**`$.chain(...)`**
 
 ### `any`
 
 Returns true if callback function returns true for at least one element in the array
 
 ```swift
-var chain = Chain([1, 2, 3])
+var chain = $.chain([1, 2, 3])
 chain.any({ ($0 as Int) < 2 })
 => true
 ```
@@ -788,8 +809,8 @@ chain.any({ ($0 as Int) < 2 })
 Returns true if callback function returns true for all elements in the array
 
 ```swift
-var chain = Chain([1, 2, 3])
-chain.all({ ($0 as Int) < 10 }) as Bool
+var chain = $.chain([1, 2, 3])
+chain.all({ ($0 as Int) < 10 })
 => true
 ```
 
@@ -798,7 +819,7 @@ chain.all({ ($0 as Int) < 10 }) as Bool
 Passes each element value to the callback function
 
 ```swift
-var chain = Chain(["Hello", "World"])
+var chain = $.chain(["Hello", "World"])
 var strBuilder = ""
 chain.each({ strBuilder += ($0 as String) }).value
 strBuilder
@@ -810,7 +831,7 @@ strBuilder
 Filters the arrary to elements for which the callback function returns true
 
 ```swift
-var chain = Chain([1, 2, 3, 4])
+var chain = $.chain([1, 2, 3, 4])
 chain.filter({ ($0 as Int) < 3 }).value
 => [1, 2]
 ```
@@ -820,7 +841,7 @@ chain.filter({ ($0 as Int) < 3 }).value
 Returns the first element in the array and terminated the chain
 
 ```swift
-var chain = Chain([1, 2, 3, 4])
+var chain = $.chain([1, 2, 3, 4])
 chain.first()
 => 1
 ```
@@ -830,7 +851,7 @@ chain.first()
 Returns the second element in the array and terminated the chain
 
 ```swift
-var chain = Chain([1, 2, 3, 4])
+var chain = $.chain([1, 2, 3, 4])
 chain.second()
 => 2
 ```
@@ -840,7 +861,7 @@ chain.second()
 Returns the third element in the array and terminated the chain
 
 ```swift
-var chain = Chain([1, 2, 3, 4])
+var chain = $.chain([1, 2, 3, 4])
 chain.third()
 => 3
 ```
@@ -850,7 +871,7 @@ chain.third()
 Flattens a nested array of any depth.
 
 ```swift
-chain = Chain([[1, [2]], [3], 4])
+chain = $.chain([[1, [2]], [3], 4])
 chain.flatten().value
 => [1, 2, 3, 4]
 ```
@@ -860,7 +881,7 @@ chain.flatten().value
 Gets all but the last element or last n elements of an array.
 
 ```swift
-varchain = Chain([1, 2, 3, 4])
+varchain = $.chain([1, 2, 3, 4])
 chain.initial(2).value
 => [1, 2]
 ```
@@ -870,7 +891,7 @@ chain.initial(2).value
 Maps each element to the new value returned in the callback function
 
 ```swift
-var chain = Chain([1, 2, 3, 4])
+var chain = $.chain([1, 2, 3, 4])
 chain.map({ ($0 as Int) * 2 }).value
 => [2, 4, 6, 8]
 ```
@@ -880,7 +901,7 @@ chain.map({ ($0 as Int) * 2 }).value
 Slices the array based on the start and end position. If an end position is not specified it will slice till the end of the array.
 
 ```swift
-var chain = Chain([1, 2, 3, 4, 5, 6, 7])
+var chain = $.chain([1, 2, 3, 4, 5, 6, 7])
 chain.slice(2, end: 4).value
 => [3, 4]
 ```
@@ -890,7 +911,7 @@ chain.slice(2, end: 4).value
 Returns the value after evaluating all callbacks
 
 ```swift
-var chain = Chain([1, 2, 3, 4, 5, 6, 7])
+var chain = $.chain([1, 2, 3, 4, 5, 6, 7])
 chain.value
 => [1, 2, 3, 4, 5, 6, 7]
 ```
@@ -898,19 +919,19 @@ chain.value
 **Chaining more than one method**
 
 ```swift
-Chain([[1, 2], 3, [[4], 5]])
+$.chain([[1, 2], 3, [[4], 5]])
   .initial()
   .flatten()
   .first()
 => 1
 
-Chain([1, 2, 3, 4, 5])
+$.chain([1, 2, 3, 4, 5])
   .filter { $0 % 1 == 0 }
   .map { $0 * 2 }
   .all {$0 < 10}
 => false
 
-Chain([1, 2, 3, 4, 5])
+$.chain([1, 2, 3, 4, 5])
   .map({ $0 * 2 })
   .flatten()
   .initial(2).value
@@ -943,6 +964,30 @@ let some = array.at(1, 3)
 => ["spam", "eggs"]
 ```
 
+### `each(callback: (Element) -> ()) -> [Element]`
+
+For each item in the array invoke the callback by passing the elem
+
+```swift
+let array = ["foo", "spam", "bar", "eggs"]
+array.each {
+  println($0)
+}
+=> ["foo", "spam", "bar", "eggs"]
+```
+
+### `eachWithIndex(callback: (Int, Element) -> ()) -> [Element]`
+
+For each item in the array invoke the callback by passing the elem along with the index
+
+```swift
+let array = ["foo", "spam", "bar", "eggs"]
+array.each { (index, elem)
+  println("\(index) - \(elem)")
+}
+=> ["foo", "spam", "bar", "eggs"]
+```
+
 ### `cycle<U>(times: Int, callback: (Element) -> U)`
 
 Cycles through the array definetly or indefinetly passing each element into the callback function. The second parameter is to specify how many times to cycle through the array. If left out it will cycle indefinetly.
@@ -960,7 +1005,7 @@ Cycles through the array definetly or indefinetly passing each element into the 
 // Cycles in an infinite loop
 ```
 
-### `every(iterator: (Element) -> Bool) -> Bool`
+### `every(callback: (Element) -> Bool) -> Bool`
 
 Checks if the given callback returns true value for all items in the array.
 
@@ -988,7 +1033,7 @@ arr.fetch(-1)
 => 8
 ```
 
-### `findIndex(iterator: (Element) -> Bool) -> Int?`
+### `findIndex(callback: (Element) -> Bool) -> Int?`
 
 This method is like find except that it returns the index of the first element that passes the callback check.
 
@@ -1000,7 +1045,7 @@ ind! == 2
 => true
 ```
 
-### `findLastIndex(iterator: (Element) -> Bool) -> Int?`
+### `findLastIndex(callback: (Element) -> Bool) -> Int?`
 
 This method is like findIndex except that it iterates over elements of the array from right to left.
 

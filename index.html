@@ -64,11 +64,15 @@
                 <ul>
                     <li id="root-item" class="level-0">
                         <ul class="level-1" id="root-list">
-                            <li id="dollar-and-cent-item" class="level-1"><a id="dollar-and-cent-link" href="#dollar-and-cent" class="level-1">Dollar and Cent</a>
+                            <li id="dollar-and-cent-item" class="level-1"><a id="dollar-and-cent-link" href="#dollar-and-cent" class="level-1">Dollar and Cent </a>
                             </li>
                             <li id="setup-item" class="level-1"><a id="setup-link" href="#setup" class="level-1">Setup</a>
                                 <ul class="level-2" id="setup-list">
-                                    <li id="demo-app-item" class="level-2"><a id="demo-app-link" href="#demo-app" class="level-2">Demo App</a>
+                                    <li id="using-carthage-item" class="level-2"><a id="using-carthage-link" href="#using-carthage" class="level-2">Using Carthage</a>
+                                    </li>
+                                    <li id="using-git-submodule-item" class="level-2"><a id="using-git-submodule-link" href="#using-git-submodule" class="level-2">Using git submodule</a>
+                                    </li>
+                                    <li id="demo-apps-item" class="level-2"><a id="demo-apps-link" href="#demo-apps" class="level-2">Demo Apps</a>
                                     </li>
                                 </ul>
                             </li>
@@ -85,6 +89,8 @@
                                             <li id="cycle-cycle-item" class="level-3"><a id="cycle-cycle-link" href="#cycle-cycle" class="level-3">cycle - $.cycle</a>
                                             </li>
                                             <li id="difference-difference-item" class="level-3"><a id="difference-difference-link" href="#difference-difference" class="level-3">difference - $.difference</a>
+                                            </li>
+                                            <li id="each-each-item" class="level-3"><a id="each-each-link" href="#each-each" class="level-3">each - $.each</a>
                                             </li>
                                             <li id="every-every-item" class="level-3"><a id="every-every-link" href="#every-every" class="level-3">every - $.every</a>
                                             </li>
@@ -244,15 +250,19 @@
                                             </li>
                                             <li id="at-indexes-int-element-item" class="level-3"><a id="at-indexes-int-element-link" href="#at-indexes-int-element" class="level-3">at(indexes: Int...) -&gt; [Element]</a>
                                             </li>
+                                            <li id="each-callback-element-element-item" class="level-3"><a id="each-callback-element-element-link" href="#each-callback-element-element" class="level-3">each(callback: (Element) -&gt; ()) -&gt; [Element]</a>
+                                            </li>
+                                            <li id="eachwithindex-callback-int-element-element-item" class="level-3"><a id="eachwithindex-callback-int-element-element-link" href="#eachwithindex-callback-int-element-element" class="level-3">eachWithIndex(callback: (Int, Element) -&gt; ()) -&gt; [Element]</a>
+                                            </li>
                                             <li id="cycle-u-times-int-callback-element-u-item" class="level-3"><a id="cycle-u-times-int-callback-element-u-link" href="#cycle-u-times-int-callback-element-u" class="level-3">cycle<u>(times: Int, callback: (Element) -&gt; U)</u></a>
                                             </li>
-                                            <li id="every-iterator-element-bool-bool-item" class="level-3"><a id="every-iterator-element-bool-bool-link" href="#every-iterator-element-bool-bool" class="level-3">every(iterator: (Element) -&gt; Bool) -&gt; Bool</a>
+                                            <li id="every-callback-element-bool-bool-item" class="level-3"><a id="every-callback-element-bool-bool-link" href="#every-callback-element-bool-bool" class="level-3">every(callback: (Element) -&gt; Bool) -&gt; Bool</a>
                                             </li>
                                             <li id="fetch-index-int-orelse-t-none-t-item" class="level-3"><a id="fetch-index-int-orelse-t-none-t-link" href="#fetch-index-int-orelse-t-none-t" class="level-3">fetch(index: Int, orElse: T? = .None) -&gt; T!</a>
                                             </li>
-                                            <li id="findindex-iterator-element-bool-int-item" class="level-3"><a id="findindex-iterator-element-bool-int-link" href="#findindex-iterator-element-bool-int" class="level-3">findIndex(iterator: (Element) -&gt; Bool) -&gt; Int?</a>
+                                            <li id="findindex-callback-element-bool-int-item" class="level-3"><a id="findindex-callback-element-bool-int-link" href="#findindex-callback-element-bool-int" class="level-3">findIndex(callback: (Element) -&gt; Bool) -&gt; Int?</a>
                                             </li>
-                                            <li id="findlastindex-iterator-element-bool-int-item" class="level-3"><a id="findlastindex-iterator-element-bool-int-link" href="#findlastindex-iterator-element-bool-int" class="level-3">findLastIndex(iterator: (Element) -&gt; Bool) -&gt; Int?</a>
+                                            <li id="findlastindex-callback-element-bool-int-item" class="level-3"><a id="findlastindex-callback-element-bool-int-link" href="#findlastindex-callback-element-bool-int" class="level-3">findLastIndex(callback: (Element) -&gt; Bool) -&gt; Int?</a>
                                             </li>
                                             <li id="first-element-item" class="level-3"><a id="first-element-link" href="#first-element" class="level-3">first() -&gt; Element?</a>
                                             </li>
@@ -394,9 +404,12 @@
             <p>Dollar is a Swift library that provides useful functional programming helper methods without extending any built in objects. It is similar to <a href="https://lodash.com">Lo-Dash</a> or <a href="http://underscorejs.org">Underscore.js</a> in Javascript.</p>
             <p>Cent is a library that extends certain Swift object types using the extension feature and gives its two cents to Swift language.</p>
             <h1 id="setup">Setup</h1>
-            <p>Currently there are issues loading the library using <code>pod 'Dollar'</code> which is pending changes from Cocoapods. In the mean time follow these steps</p>
+            <h2 id="using-carthage">Using <a href="https://github.com/Carthage/Carthage">Carthage</a></h2>
+            <p>Add <code>github "ankurp/Dollar.swift" ~&gt; 2.1.1</code> to your <code>Cartfile</code> and run <code>carthage update</code>. If unfamiliar with Carthage then checkout their <a href="https://github.com/Carthage/Carthage#getting-started">Getting Started section</a> or this <a href="https://github.com/ankurp/DollarCarthageApp">sample app</a>
+            </p>
+            <h2 id="using-git-submodule">Using <code>git submodule</code></h2>
             <ol>
-                <li>If you are using git then add Dollar as a submodule using <code>git submodule add https://github.com/ankurp/Dollar.swift.git</code> otherwise download the project using <code>git clone https://github.com/ankurp/Dollar.swift.git</code> in your project folder.</li>
+                <li>If you are using git then add Dollar as a submodule using <code>git submodule add https://github.com/ankurp/Dollar.swift.git</code>. If not using git download the project using <code>git clone https://github.com/ankurp/Dollar.swift.git</code> in your project folder.</li>
                 <li>Open the Dollar.swift folder. Drag Dollar.xcodeproj, inside the Dollar folder, into the file navigator of your Xcode project.</li>
                 <li>In Xcode, navigate to the target configuration window by clicking on the blue project icon, and selecting the application target under the “Targets” heading in the sidebar.</li>
                 <li>In the tab bar at the top of that window, open the “Build Phases” panel.</li>
@@ -405,8 +418,11 @@
             </ol>
             <p>Still stuck. Then checkout this screencast on <a href="http://recordit.co/0gQiCSEREF">how to import</a>
             </p>
-            <h2 id="demo-app">Demo App</h2>
-            <p>To see how to integrate this library into an iOS App checkout this <a href="https://github.com/ankurp/DollarAndCentDemoApp">repo</a>.</p>
+            <h2 id="demo-apps">Demo Apps</h2>
+            <p>Using
+                <em> <a href="https://github.com/ankurp/DollarCarthageApp"><code>carthage</code></a>
+</em> <a href="https://github.com/ankurp/DollarAndCentDemoApp"><code>git submodule</code></a>
+            </p>
             <h1 id="dollar-usage">Dollar Usage</h1>
             <h2 id="array">Array</h2>
             <h3 id="at-at">at - <code>$.at</code></h3>
@@ -433,8 +449,18 @@
             <h3 id="difference-difference">difference - <code>$.difference</code></h3>
             <p>Creates an array excluding all values of the provided arrays</p><pre><code class="lang-swift"><span class="keyword">$</span>.difference([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>], [<span class="number">5</span>, <span class="number">2</span>, <span class="number">10</span>]) 
 =&gt; [<span class="number">1</span>, <span class="number">3</span>, <span class="number">4</span>]</code></pre>
+            <h3 id="each-each">each - <code>$.each</code></h3>
+            <p>Passes each element in the array to the callback</p><pre><code class="lang-swift"><span class="keyword">$</span>.each([<span class="string">"A"</span>, <span class="string">"B"</span>]) { 
+  println(<span class="string">"Value \(<span class="keyword">$</span><span class="number">0</span>)"</span>)
+}
+=&gt; [<span class="string">"A"</span>, <span class="string">"B"</span>]
+
+<span class="keyword">$</span>.each([<span class="string">"A"</span>, <span class="string">"B"</span>]) { (index, elem) in
+  println(<span class="string">"\(index) - \(elem)"</span>)
+}
+=&gt; [<span class="string">"A"</span>, <span class="string">"B"</span>]</code></pre>
             <h3 id="every-every">every - <code>$.every</code></h3>
-            <p>Checks if the given callback returns true value for all items in the array.</p><pre><code class="lang-swift"><span class="keyword">$</span>.every([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>], iterator: { <span class="keyword">$</span><span class="number">0</span> &lt; <span class="number">20</span> }) 
+            <p>Checks if the given callback returns true value for all items in the array.</p><pre><code class="lang-swift"><span class="keyword">$</span>.every([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>], callback: { <span class="keyword">$</span><span class="number">0</span> &lt; <span class="number">20</span> }) 
 =&gt; <span class="keyword">true</span>
 
 <span class="keyword">$</span>.every([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>]) { <span class="keyword">$</span><span class="number">0</span> == <span class="number">1</span> } 
@@ -450,7 +476,7 @@
 <span class="keyword">$</span>.fetch(arr, -<span class="number">1</span>)
 =&gt; <span class="number">8</span></code></pre>
             <h3 id="find-find">find - <code>$.find</code></h3>
-            <p>Iterates over elements of an array and returning the first element that the callback returns true for.</p><pre><code class="lang-swift"><span class="keyword">$</span>.find([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>], iterator: { <span class="keyword">$</span><span class="number">0</span> == <span class="number">2</span> }) 
+            <p>Iterates over elements of an array and returning the first element that the callback returns true for.</p><pre><code class="lang-swift"><span class="keyword">$</span>.find([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>], callback: { <span class="keyword">$</span><span class="number">0</span> == <span class="number">2</span> }) 
 =&gt; <span class="number">2</span>
 
 <span class="keyword">$</span>.find([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>]) { <span class="keyword">$</span><span class="number">0</span> == <span class="number">10</span> } 
@@ -804,69 +830,69 @@ partialFunc(<span class="string">"World"</span>, <span class="string">"Swift"</s
             <p><strong><code>$.chain(...)</code></strong>
             </p>
             <h3 id="any"><code>any</code></h3>
-            <p>Returns true if callback function returns true for at least one element in the array</p><pre><code class="lang-swift">var chain = $.chain([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>])
+            <p>Returns true if callback function returns true for at least one element in the array</p><pre><code class="lang-swift">var chain = <span class="keyword">$</span>.chain([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>])
 chain.any({ (<span class="keyword">$</span><span class="number">0</span> as Int) &lt; <span class="number">2</span> })
 =&gt; <span class="keyword">true</span></code></pre>
             <h3 id="all"><code>all</code></h3>
-            <p>Returns true if callback function returns true for all elements in the array</p><pre><code class="lang-swift">var chain = $.chain([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>])
+            <p>Returns true if callback function returns true for all elements in the array</p><pre><code class="lang-swift">var chain = <span class="keyword">$</span>.chain([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>])
 chain.all({ (<span class="keyword">$</span><span class="number">0</span> as Int) &lt; <span class="number">10</span> })
 =&gt; <span class="keyword">true</span></code></pre>
             <h3 id="each"><code>each</code></h3>
-            <p>Passes each element value to the callback function</p><pre><code class="lang-swift">var chain = $.chain([<span class="string">"Hello"</span>, <span class="string">"World"</span>])
+            <p>Passes each element value to the callback function</p><pre><code class="lang-swift">var chain = <span class="keyword">$</span>.chain([<span class="string">"Hello"</span>, <span class="string">"World"</span>])
 var strBuilder = <span class="string">""</span>
 chain.each({ strBuilder += (<span class="keyword">$</span><span class="number">0</span> as String) }).value
 strBuilder
 =&gt; <span class="string">"HelloWorld"</span></code></pre>
             <h3 id="filter"><code>filter</code></h3>
-            <p>Filters the arrary to elements for which the callback function returns true</p><pre><code class="lang-swift">var chain = $.chain([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>])
+            <p>Filters the arrary to elements for which the callback function returns true</p><pre><code class="lang-swift">var chain = <span class="keyword">$</span>.chain([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>])
 chain.filter({ (<span class="keyword">$</span><span class="number">0</span> as Int) &lt; <span class="number">3</span> }).value
 =&gt; [<span class="number">1</span>, <span class="number">2</span>]</code></pre>
             <h3 id="first"><code>first</code></h3>
-            <p>Returns the first element in the array and terminated the chain</p><pre><code class="lang-swift">var chain = $.chain([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>])
+            <p>Returns the first element in the array and terminated the chain</p><pre><code class="lang-swift">var chain = <span class="keyword">$</span>.chain([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>])
 chain.first()
 =&gt; <span class="number">1</span></code></pre>
             <h3 id="second"><code>second</code></h3>
-            <p>Returns the second element in the array and terminated the chain</p><pre><code class="lang-swift">var chain = $.chain([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>])
+            <p>Returns the second element in the array and terminated the chain</p><pre><code class="lang-swift">var chain = <span class="keyword">$</span>.chain([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>])
 chain.second()
 =&gt; <span class="number">2</span></code></pre>
             <h3 id="third"><code>third</code></h3>
-            <p>Returns the third element in the array and terminated the chain</p><pre><code class="lang-swift">var chain = $.chain([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>])
+            <p>Returns the third element in the array and terminated the chain</p><pre><code class="lang-swift">var chain = <span class="keyword">$</span>.chain([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>])
 chain.third()
 =&gt; <span class="number">3</span></code></pre>
             <h3 id="flatten"><code>flatten</code></h3>
-            <p>Flattens a nested array of any depth.</p><pre><code class="lang-swift">chain = $.chain([[<span class="number">1</span>, [<span class="number">2</span>]], [<span class="number">3</span>], <span class="number">4</span>])
+            <p>Flattens a nested array of any depth.</p><pre><code class="lang-swift">chain = <span class="keyword">$</span>.chain([[<span class="number">1</span>, [<span class="number">2</span>]], [<span class="number">3</span>], <span class="number">4</span>])
 chain.flatten().value
 =&gt; [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>]</code></pre>
             <h3 id="initial"><code>initial</code></h3>
-            <p>Gets all but the last element or last n elements of an array.</p><pre><code class="lang-swift">varchain = $.chain([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>])
+            <p>Gets all but the last element or last n elements of an array.</p><pre><code class="lang-swift">varchain = <span class="keyword">$</span>.chain([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>])
 chain.initial(<span class="number">2</span>).value
 =&gt; [<span class="number">1</span>, <span class="number">2</span>]</code></pre>
             <h3 id="map"><code>map</code></h3>
-            <p>Maps each element to the new value returned in the callback function</p><pre><code class="lang-swift">var chain = $.chain([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>])
+            <p>Maps each element to the new value returned in the callback function</p><pre><code class="lang-swift">var chain = <span class="keyword">$</span>.chain([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>])
 chain.map({ (<span class="keyword">$</span><span class="number">0</span> as Int) * <span class="number">2</span> }).value
 =&gt; [<span class="number">2</span>, <span class="number">4</span>, <span class="number">6</span>, <span class="number">8</span>]</code></pre>
             <h3 id="slice"><code>slice</code></h3>
-            <p>Slices the array based on the start and end position. If an end position is not specified it will slice till the end of the array.</p><pre><code class="lang-swift">var chain = $.chain([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>])
+            <p>Slices the array based on the start and end position. If an end position is not specified it will slice till the end of the array.</p><pre><code class="lang-swift">var chain = <span class="keyword">$</span>.chain([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>])
 chain.slice(<span class="number">2</span>, end: <span class="number">4</span>).value
 =&gt; [<span class="number">3</span>, <span class="number">4</span>]</code></pre>
             <h3 id="value"><code>value</code></h3>
-            <p>Returns the value after evaluating all callbacks</p><pre><code class="lang-swift">var chain = $.chain([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>])
+            <p>Returns the value after evaluating all callbacks</p><pre><code class="lang-swift">var chain = <span class="keyword">$</span>.chain([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>])
 chain.value
 =&gt; [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>]</code></pre>
             <p><strong>Chaining more than one method</strong>
-            </p><pre><code class="lang-swift">$.chain([[<span class="number">1</span>, <span class="number">2</span>], <span class="number">3</span>, [[<span class="number">4</span>], <span class="number">5</span>]])
+            </p><pre><code class="lang-swift"><span class="keyword">$</span>.chain([[<span class="number">1</span>, <span class="number">2</span>], <span class="number">3</span>, [[<span class="number">4</span>], <span class="number">5</span>]])
   .initial()
   .flatten()
   .first()
 =&gt; <span class="number">1</span>
 
-$.chain([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>])
+<span class="keyword">$</span>.chain([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>])
   .filter { <span class="keyword">$</span><span class="number">0</span> % <span class="number">1</span> == <span class="number">0</span> }
   .map { <span class="keyword">$</span><span class="number">0</span> * <span class="number">2</span> }
   .all {<span class="keyword">$</span><span class="number">0</span> &lt; <span class="number">10</span>}
 =&gt; <span class="keyword">false</span>
 
-$.chain([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>])
+<span class="keyword">$</span>.chain([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>])
   .map({ <span class="keyword">$</span><span class="number">0</span> * <span class="number">2</span> })
   .flatten()
   .initial(<span class="number">2</span>).value
@@ -883,6 +909,18 @@ array &lt;&lt; [<span class="number">5</span>, <span class="number">6</span>]
             <p>Creates an array of elements from the specified indexes, or keys, of the collection.</p><pre><code class="lang-swift"><span class="keyword">let</span> array = [<span class="string">"foo"</span>, <span class="string">"spam"</span>, <span class="string">"bar"</span>, <span class="string">"eggs"</span>]
 <span class="keyword">let</span> some = array.at(<span class="number">1</span>, <span class="number">3</span>)
 =&gt; [<span class="string">"spam"</span>, <span class="string">"eggs"</span>]</code></pre>
+            <h3 id="each-callback-element-element"><code>each(callback: (Element) -&gt; ()) -&gt; [Element]</code></h3>
+            <p>For each item in the array invoke the callback by passing the elem</p><pre><code class="lang-swift"><span class="keyword">let</span> array = [<span class="string">"foo"</span>, <span class="string">"spam"</span>, <span class="string">"bar"</span>, <span class="string">"eggs"</span>]
+array.each {
+  println(<span class="keyword">$</span><span class="number">0</span>)
+}
+=&gt; [<span class="string">"foo"</span>, <span class="string">"spam"</span>, <span class="string">"bar"</span>, <span class="string">"eggs"</span>]</code></pre>
+            <h3 id="eachwithindex-callback-int-element-element"><code>eachWithIndex(callback: (Int, Element) -&gt; ()) -&gt; [Element]</code></h3>
+            <p>For each item in the array invoke the callback by passing the elem along with the index</p><pre><code class="lang-swift"><span class="keyword">let</span> array = [<span class="string">"foo"</span>, <span class="string">"spam"</span>, <span class="string">"bar"</span>, <span class="string">"eggs"</span>]
+array.each { (index, elem)
+  println(<span class="string">"\(index) - \(elem)"</span>)
+}
+=&gt; [<span class="string">"foo"</span>, <span class="string">"spam"</span>, <span class="string">"bar"</span>, <span class="string">"eggs"</span>]</code></pre>
             <h3 id="cycle-u-times-int-callback-element-u"><code>cycle&lt;U&gt;(times: Int, callback: (Element) -&gt; U)</code></h3>
             <p>Cycles through the array definetly or indefinetly passing each element into the callback function. The second parameter is to specify how many times to cycle through the array. If left out it will cycle indefinetly.</p><pre><code class="lang-swift">[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>].cycle(<span class="number">2</span>) {
   print(<span class="keyword">$</span><span class="number">0</span>)
@@ -894,7 +932,7 @@ array &lt;&lt; [<span class="number">5</span>, <span class="number">6</span>]
   print(<span class="keyword">$</span><span class="number">0</span>)
 }
 <span class="comment">// Cycles in an infinite loop</span></code></pre>
-            <h3 id="every-iterator-element-bool-bool"><code>every(iterator: (Element) -&gt; Bool) -&gt; Bool</code></h3>
+            <h3 id="every-callback-element-bool-bool"><code>every(callback: (Element) -&gt; Bool) -&gt; Bool</code></h3>
             <p>Checks if the given callback returns true value for all items in the array.</p><pre><code class="lang-swift">[<span class="string">"angry"</span>, <span class="string">"hungry"</span>].every { (a: String) -&gt; (Bool) in 
   a.hasSuffix(<span class="string">"gry"</span>) 
 }
@@ -909,13 +947,13 @@ arr.fetch(<span class="number">100</span>, orElse: <span class="number">42</span
 
 arr.fetch(-<span class="number">1</span>)
 =&gt; <span class="number">8</span></code></pre>
-            <h3 id="findindex-iterator-element-bool-int"><code>findIndex(iterator: (Element) -&gt; Bool) -&gt; Int?</code></h3>
+            <h3 id="findindex-callback-element-bool-int"><code>findIndex(callback: (Element) -&gt; Bool) -&gt; Int?</code></h3>
             <p>This method is like find except that it returns the index of the first element that passes the callback check.</p><pre><code class="lang-swift"><span class="keyword">let</span> ind: int? = [<span class="string">"foo"</span>, <span class="string">"bar"</span>, <span class="string">"spam"</span>, <span class="string">"eggs"</span>].findIndex {
   <span class="keyword">$</span><span class="number">0</span>.length == <span class="number">4</span>
 }
 ind! == <span class="number">2</span> 
 =&gt; <span class="keyword">true</span></code></pre>
-            <h3 id="findlastindex-iterator-element-bool-int"><code>findLastIndex(iterator: (Element) -&gt; Bool) -&gt; Int?</code></h3>
+            <h3 id="findlastindex-callback-element-bool-int"><code>findLastIndex(callback: (Element) -&gt; Bool) -&gt; Int?</code></h3>
             <p>This method is like findIndex except that it iterates over elements of the array from right to left.</p><pre><code class="lang-swift"><span class="keyword">let</span> ind: int? = [<span class="string">"foo"</span>, <span class="string">"bar"</span>, <span class="string">"spam"</span>, <span class="string">"eggs"</span>].findLastIndex {
   <span class="keyword">$</span><span class="number">0</span>.length == <span class="number">4</span> 
 }
