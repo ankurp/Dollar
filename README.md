@@ -215,6 +215,16 @@ $.second([])
 => nil
 ```
 
+### flatMap - `$.flatMap`
+
+Maps a function that converts elements to a list and then concatenates them.
+
+```swift
+let values = [2, 3, 4, 5, 6, 7]
+$.flatMap(values) { [$0, $0] }
+=> [2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7]
+```
+
 ### flatten - `$.flatten`
 
 Flattens a nested array of any depth.

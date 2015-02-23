@@ -374,6 +374,14 @@ public class $ {
         return resultArr
     }
     
+    /// Maps a function that converts elements to a list and then concatenates them.
+    ///
+    /// :param array The array to map.
+    /// :return The array with the transformed values concatenated together.
+    public class func flatMap<T, U>(array: [T], f: (T) -> ([U])) -> [U] {
+        return array.map(f).reduce([], combine: { $0 + $1 })
+    }
+    
     /// Randomly shuffles the elements of an array.
     ///
     /// :param array The array to shuffle.
