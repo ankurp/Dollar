@@ -54,6 +54,12 @@ class DollarTests: XCTestCase {
         XCTAssert($.each([1, 3, 4, 5], { arr.append($0 * 2) }) == [1, 3, 4, 5], "Return the array itself")
         XCTAssert(arr == [2, 6, 8, 10], "Return array with doubled numbers")
     }
+    
+    func testEqual() {
+        XCTAssert($.equal(Optional("hello"), Optional("hello")), "optionalString and otherOptionalString should be equal.")
+        XCTAssertFalse($.equal(Optional("hello"), Optional("goodbye")), "optionalString and thirdOptionalString should not be equal.")
+        XCTAssert($.equal(nil as String?, nil as String?), "Nil optionals should be equal.")
+    }
 
     func testFlatten() {
         XCTAssertEqual($.flatten([[3], 4, 5]), [3, 4, 5], "Return flat array")
@@ -368,6 +374,10 @@ class DollarTests: XCTestCase {
     
     func testFlatMap() {
         XCTAssertEqual($.flatMap([1, 2, 3]) { [$0, $0] }, [1, 1, 2, 2, 3, 3], "FlatMap should double every item in the array and concatenate them.")
+        let expected: String? = "swift"
+        let url = NSURL(string: "https://apple.com/swift/")?.lastPathComponent
+        let actual = $.flatMap(NSURL(string: "https://apple.com/swift/")) { $0.lastPathComponent }
+        XCTAssert($.equal(actual, expected), "FlatMap on optionals should run the function and produce a single-level optional containing the last path component of the url.")
     }
     
     func testReduce() {
