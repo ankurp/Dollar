@@ -225,6 +225,24 @@ $.flatMap(values) { [$0, $0] }
 => [2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7]
 ```
 
+### flatMap - `$.flatMap`
+
+Maps a function that converts a type to an Optional over an Optional, and then returns a single-level Optional.
+
+
+```swift
+let url = NSURL(string: "https://apple.com/swift")
+$.flatMap(url) { $0.lastPathComponent }
+=> Optional("swift")
+```
+
+*Note*: This is the same behavior as Optional chaining.
+The code above translates to
+```swift
+NSURL(string: "https://apple.com/swift/")?.lastPathComponent
+=> Optional("swift")
+```
+
 ### flatten - `$.flatten`
 
 Flattens a nested array of any depth.
@@ -971,6 +989,28 @@ $.chain([1, 2, 3, 4, 5])
 => [2, 4, 6]
 ```
 
+## Optional ##
+
+### `equal`
+
+Tells whether two optionals containing Equatable types are equal.
+
+```swift
+let optionalString: String? = "hello"
+let otherOptionalString: String? = "hello"
+$.equal(optionalString, otherOptionalString)
+=> true
+
+let thirdOptionalString: String? = "goodbye"
+$.equal(optionalString, thirdOptionalString)
+=> false
+
+let nilOptionalString: String? = nil
+let otherNilOptionalString: String? = nil
+$.equal(nilOptionalString, otherNilOptionalString)
+=> true
+```
+
 # Cent Usage #
 
 ## Array Extensions ##
@@ -1527,6 +1567,23 @@ For each index in the range invoke the callback
 ```swift
 (1...5).each { print("Na") } 
 => "NaNaNaNaNa"
+```
+
+## Optional Extensions ##
+
+### equals - `==`
+
+Check the equality of two Equatable Optionals
+
+```swift
+Optional("hello") == Optional("hello")
+=> true
+
+Optional("hello") == Optional("goodbye")
+=> false
+
+nil as String? == nil as String?
+=> true
 ```
 
 # Contributing #

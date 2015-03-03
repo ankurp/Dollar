@@ -242,6 +242,24 @@ public class $ {
         return array
     }
     
+    /// Checks if two optionals containing Equatable types are equal.
+    ///
+    /// :param value The first optional to check.
+    /// :param other The second optional to check.
+    /// :return: true if the optionals contain two equal values, or both are nil; false otherwise.
+    public class func equal<T: Equatable>(value: T?, _ other: T?) -> Bool {
+        switch (value, other) {
+        case (.None, .None):
+            return true
+        case (.None, .Some(_)):
+            return false
+        case (.Some(_), .None):
+            return false
+        case (.Some(let unwrappedValue), .Some(let otherUnwrappedValue)):
+            return unwrappedValue == otherUnwrappedValue
+        }
+    }
+    
     /// Checks if the given callback returns true value for all items in the array.
     ///
     /// :param array The array to check.
@@ -379,7 +397,19 @@ public class $ {
     /// :param array The array to map.
     /// :return The array with the transformed values concatenated together.
     public class func flatMap<T, U>(array: [T], f: (T) -> ([U])) -> [U] {
-        return array.map(f).reduce([], combine: { $0 + $1 })
+        return array.map(f).reduce([], +)
+    }
+    
+    /// Maps a function that converts a type to an Optional over an Optional, and then returns a single-level Optional.
+    ///
+    /// :param array The array to map.
+    /// :return The array with the transformed values concatenated together.
+    public class func flatMap<T, U>(value: T?, f: (T) -> (U?)) -> U? {
+        if let unwrapped = value.map(f) {
+            return unwrapped
+        } else {
+            return .None
+        }
     }
     
     /// Randomly shuffles the elements of an array.
