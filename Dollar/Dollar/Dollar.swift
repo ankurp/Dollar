@@ -408,7 +408,7 @@ public class $ {
         if let unwrapped = value.map(f) {
             return unwrapped
         } else {
-            return nil
+            return .None
         }
     }
     
