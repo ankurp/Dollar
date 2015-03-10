@@ -421,7 +421,7 @@ public class $ {
         // Implementation of Fisher-Yates shuffle
         // http://en.wikipedia.org/wiki/Fisher-Yates_Shuffle
         for index in 0..<array.count {
-            var randIndex = Int(arc4random_uniform(UInt32(index)))
+            var randIndex = self.random(index)
             
             // We use in-out parameters to swap the internals of the array
             Swift.swap(&newArr[index], &newArr[randIndex])
@@ -860,6 +860,11 @@ public class $ {
         return array.filter { !self.contains(values, value: $0) }
     }
     
+    public class func random(upperBound: Int) -> Int
+    {
+        return Int(arc4random_uniform(UInt32(upperBound)))
+    }
+    
     /// Creates an array of numbers (positive and/or negative) progressing from start up to but not including end.
     ///
     /// :param endVal End value of range.
@@ -954,7 +959,7 @@ public class $ {
     /// :param array The array to sample from.
     /// :return Random element from array.
     public class func sample<T>(array: [T]) -> T {
-        return array[random() % array.count]
+        return array[self.random(array.count)]
     }
     
     /// Slices the array based on the start and end position. If an end position is not specified it will slice till the end of the array.
