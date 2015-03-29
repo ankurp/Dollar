@@ -397,7 +397,7 @@ public class $ {
     /// :param array The array to map.
     /// :return The array with the transformed values concatenated together.
     public class func flatMap<T, U>(array: [T], f: (T) -> ([U])) -> [U] {
-        return array.map(f).reduce([], +)
+        return array.map(f).reduce([], combine: +)
     }
     
     /// Maps a function that converts a type to an Optional over an Optional, and then returns a single-level Optional.
@@ -738,7 +738,7 @@ public class $ {
         if n > array.count  { return [[]] }
         
         for i in self.range(from: 0, through: array.count - n, incrementBy: step!) {
-            result.append(Array(array[i..<(i+n)] as Slice<T>))
+            result.append(Array(array[i..<(i+n)] as ArraySlice<T>))
         }
         return result
     }
@@ -761,14 +761,14 @@ public class $ {
         for i in self.range(from: 0, to: array.count, incrementBy: step!) {
             var end = i + n
             if end > array.count { end = array.count }
-            result.append(Array(array[i..<end] as Slice<T>))
+            result.append(Array(array[i..<end] as ArraySlice<T>))
             if end != i+n { break }
         }
         
         if let padding = pad {
             let remain = array.count % n
             let end = padding.count > remain ? remain : padding.count
-            result[result.count - 1] += Array(padding[0..<end] as Slice<T>)
+            result[result.count - 1] += Array(padding[0..<end] as ArraySlice<T>)
         }
         return result
     }
@@ -788,7 +788,7 @@ public class $ {
         for i in self.range(from: 0, to: array.count, incrementBy: step!) {
             var end = i + n
             if end > array.count { end = array.count }
-            result.append(Array(array[i..<end] as Slice<T>))
+            result.append(Array(array[i..<end] as ArraySlice<T>))
         }
         return result
     }
