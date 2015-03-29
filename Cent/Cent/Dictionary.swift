@@ -10,14 +10,6 @@ import Foundation
 import Dollar
 
 internal extension Dictionary {
-    
-    /// Checks whether Dictionary has no keys and hence is empty
-    ///
-    /// :return Whether dictionary is empty
-    func isEmpty() -> Bool {
-        return self.isEmpty
-    }
-
     /// Merges the dictionary with dictionaries passed. The latter dictionaries will override
     /// values of the keys that are already set
     ///
@@ -29,5 +21,4 @@ internal extension Dictionary {
             }
         }
     }
-    
 }

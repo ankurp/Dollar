@@ -242,6 +242,24 @@ public class $ {
         return array
     }
     
+    /// Checks if two optionals containing Equatable types are equal.
+    ///
+    /// :param value The first optional to check.
+    /// :param other The second optional to check.
+    /// :return: true if the optionals contain two equal values, or both are nil; false otherwise.
+    public class func equal<T: Equatable>(value: T?, _ other: T?) -> Bool {
+        switch (value, other) {
+        case (.None, .None):
+            return true
+        case (.None, .Some(_)):
+            return false
+        case (.Some(_), .None):
+            return false
+        case (.Some(let unwrappedValue), .Some(let otherUnwrappedValue)):
+            return unwrappedValue == otherUnwrappedValue
+        }
+    }
+    
     /// Checks if the given callback returns true value for all items in the array.
     ///
     /// :param array The array to check.
@@ -374,6 +392,26 @@ public class $ {
         return resultArr
     }
     
+    /// Maps a function that converts elements to a list and then concatenates them.
+    ///
+    /// :param array The array to map.
+    /// :return The array with the transformed values concatenated together.
+    public class func flatMap<T, U>(array: [T], f: (T) -> ([U])) -> [U] {
+        return array.map(f).reduce([], +)
+    }
+    
+    /// Maps a function that converts a type to an Optional over an Optional, and then returns a single-level Optional.
+    ///
+    /// :param array The array to map.
+    /// :return The array with the transformed values concatenated together.
+    public class func flatMap<T, U>(value: T?, f: (T) -> (U?)) -> U? {
+        if let unwrapped = value.map(f) {
+            return unwrapped
+        } else {
+            return .None
+        }
+    }
+    
     /// Randomly shuffles the elements of an array.
     ///
     /// :param array The array to shuffle.
@@ -383,7 +421,7 @@ public class $ {
         // Implementation of Fisher-Yates shuffle
         // http://en.wikipedia.org/wiki/Fisher-Yates_Shuffle
         for index in 0..<array.count {
-            var randIndex = Int(arc4random_uniform(UInt32(index)))
+            var randIndex = self.random(index)
             
             // We use in-out parameters to swap the internals of the array
             Swift.swap(&newArr[index], &newArr[randIndex])
@@ -575,7 +613,7 @@ public class $ {
     ///
     /// :param dictionaries The dictionaries to source from.
     /// :return Merged dictionary with all of its keys and values.
-    public class func merge<T, U>(#dictionaries: [T: U]...) -> [T: U] {
+    public class func merge<T, U>(dictionaries: [T: U]...) -> [T: U] {
         var result = [T: U]()
         for dict in dictionaries {
             for (key, value) in dict {
@@ -589,7 +627,7 @@ public class $ {
     ///
     /// :param arrays The arrays to source from.
     /// :return Array with all values merged, including duplicates.
-    public class func merge<T>(#arrays: [T]...) -> [T] {
+    public class func merge<T>(arrays: [T]...) -> [T] {
         var result = [T]()
         for arr in arrays {
             result += arr
@@ -822,6 +860,11 @@ public class $ {
         return array.filter { !self.contains(values, value: $0) }
     }
     
+    public class func random(upperBound: Int) -> Int
+    {
+        return Int(arc4random_uniform(UInt32(upperBound)))
+    }
+    
     /// Creates an array of numbers (positive and/or negative) progressing from start up to but not including end.
     ///
     /// :param endVal End value of range.
@@ -916,7 +959,7 @@ public class $ {
     /// :param array The array to sample from.
     /// :return Random element from array.
     public class func sample<T>(array: [T]) -> T {
-        return array[random() % array.count]
+        return array[self.random(array.count)]
     }
     
     /// Slices the array based on the start and end position. If an end position is not specified it will slice till the end of the array.

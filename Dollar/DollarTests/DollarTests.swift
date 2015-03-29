@@ -54,6 +54,12 @@ class DollarTests: XCTestCase {
         XCTAssert($.each([1, 3, 4, 5], callback: { arr.append($0 * 2) }) == [1, 3, 4, 5], "Return the array itself")
         XCTAssert(arr == [2, 6, 8, 10], "Return array with doubled numbers")
     }
+    
+    func testEqual() {
+        XCTAssert($.equal(Optional("hello"), Optional("hello")), "optionalString and otherOptionalString should be equal.")
+        XCTAssertFalse($.equal(Optional("hello"), Optional("goodbye")), "optionalString and thirdOptionalString should not be equal.")
+        XCTAssert($.equal(nil as String?, nil as String?), "Nil optionals should be equal.")
+    }
 
     func testFlatten() {
         XCTAssertEqual($.flatten([[3], 4, 5]), [3, 4, 5], "Return flat array")
@@ -235,12 +241,12 @@ class DollarTests: XCTestCase {
         let dict  = ["Dog": 1, "Cat": 2]
         let dict2 = ["Cow": 3]
         let dict3 = ["Sheep": 4]
-        XCTAssertTrue($.merge(dictionaries: dict, dict2, dict3) == ["Dog": 1, "Cat": 2, "Cow": 3, "Sheep": 4], "Returns correct merged dictionary")
+        XCTAssertTrue($.merge(dict, dict2, dict3) == ["Dog": 1, "Cat": 2, "Cow": 3, "Sheep": 4], "Returns correct merged dictionary")
 
         let arr  = [1, 5]
         let arr2 = [2, 4]
         let arr3 = [5, 6]
-        XCTAssertEqual($.merge(arrays: arr, arr2, arr3), [1, 5, 2, 4, 5, 6], "Returns correct merged array")
+        XCTAssertEqual($.merge(arr, arr2, arr3), [1, 5, 2, 4, 5, 6], "Returns correct merged array")
     }
 
     func testPick() {
@@ -364,6 +370,13 @@ class DollarTests: XCTestCase {
 
     func testMap() {
         XCTAssertEqual($.map([1, 2, 3, 4, 5]) { $0 * 2 }, [2, 4, 6, 8, 10], "Map function should double values in the array")
+    }
+    
+    func testFlatMap() {
+        XCTAssertEqual($.flatMap([1, 2, 3]) { [$0, $0] }, [1, 1, 2, 2, 3, 3], "FlatMap should double every item in the array and concatenate them.")
+        let expected: String? = "swift"
+        let actual = $.flatMap(NSURL(string: "https://apple.com/swift/")) { $0.lastPathComponent }
+        XCTAssert($.equal(actual, expected), "FlatMap on optionals should run the function and produce a single-level optional containing the last path component of the url.")
     }
     
     func testReduce() {
