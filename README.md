@@ -35,6 +35,10 @@ Cent is a library that extends certain Swift object types using the extension fe
 
 Add `github "ankurp/Dollar.swift" ~> 2.1.1` to your `Cartfile` and run `carthage update`. If unfamiliar with Carthage then checkout their [Getting Started section](https://github.com/Carthage/Carthage#getting-started) or this [sample app](https://github.com/ankurp/DollarCarthageApp)
 
+## Using [cocoapods](http://cocoapods.org/) version 0.36.1
+
+Add `pod 'Dollar'` to your `Podfile` and run `pod install`. Add `use_frameworks!` to the end of the `Podfile`. Also checkout this [sample app](https://github.com/ankurp/DollarPodApp). Requires cocoapod version 0.36.1.
+
 ## Using `git submodule`
 
 1. If you are using git then add Dollar as a submodule using `git submodule add https://github.com/ankurp/Dollar.swift.git`. If not using git download the project using `git clone https://github.com/ankurp/Dollar.swift.git` in your project folder.
@@ -49,7 +53,8 @@ Still stuck. Then checkout this screencast on [how to import](http://recordit.co
 ## Demo Apps ##
 Using
 * [`carthage`](https://github.com/ankurp/DollarCarthageApp)
-* [`git submodule`](https://github.com/ankurp/DollarAndCentDemoApp)
+* [`cocoapods`](https://github.com/ankurp/DollarPodApp)
+* [`git submodule`](https://github.com/ankurp/DollarSubmoduleApp)
 
 # Dollar Usage #
 
