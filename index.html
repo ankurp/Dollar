@@ -1,28 +1,21 @@
-<!doctype html>
 <html>
 
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width">
-
     <title>Dollar and Cent</title>
-
     <link rel="shortcut icon" href="/favicon.ico?v1">
-
     <!-- Flatdoc -->
     <script src="./javascripts/jquery.min.js"></script>
     <script src="./javascripts/legacy.js"></script>
     <script src="./javascripts/flatdoc.js"></script>
-
     <!-- Flatdoc theme -->
     <link href="./stylesheets/style.css" rel="stylesheet">
     <script src="./javascripts/script.js"></script>
-
     <!-- Meta -->
     <meta content="Dollar and Cent" property="og:title">
     <meta content="Dollar is a Swift library that provides useful functional programming helper methods without extending any built in objects. It is similar to Lo-Dash or Underscore in Javascript." name="description">
-
     <script>
     Flatdoc.run({
         // fetcher: Flatdoc.file('README.md')
@@ -32,16 +25,6 @@
 </head>
 
 <body role="flatdoc">
-
-    <a style="display:block;" href="#dollar-and-cent">
-        <div class="title-area title-card" style="background-image: url(https://raw.githubusercontent.com/ankurp/Dollar.swift/master/assets/hero.png); background-position: 50% 50%; background-repeat: no-repeat;">
-            <div class="in">
-                <div class="headline">
-                </div>
-            </div>
-        </div>
-    </a>
-
     <div class="header">
         <div class="left">
             <h1>Dollar and Cent</h1>
@@ -57,187 +40,119 @@
             <iframe src="http://ghbtns.com/github-btn.html?user=ankurp&amp;repo=Dollar.swift&amp;type=watch&amp;count=true" allowtransparency="true" frameborder="0" scrolling="0" width="110" height="20"></iframe>
         </div>
     </div>
-
     <div class="content-root">
         <div class="menubar">
             <div class="menu section" role="flatdoc-menu">
                 <ul>
                     <li id="root-item" class="level-0">
                         <ul class="level-1" id="root-list">
-                            <li id="dollar-and-cent-item" class="level-1"><a id="dollar-and-cent-link" href="#dollar-and-cent" class="level-1">Dollar and Cent </a>
-                            </li>
+                            <li id="dollar-and-cent-item" class="level-1"><a id="dollar-and-cent-link" href="#dollar-and-cent" class="level-1">Dollar and Cent </a></li>
                             <li id="setup-item" class="level-1"><a id="setup-link" href="#setup" class="level-1">Setup</a>
                                 <ul class="level-2" id="setup-list">
-                                    <li id="using-carthage-item" class="level-2"><a id="using-carthage-link" href="#using-carthage" class="level-2">Using Carthage</a>
-                                    </li>
-                                    <li id="using-git-submodule-item" class="level-2"><a id="using-git-submodule-link" href="#using-git-submodule" class="level-2">Using git submodule</a>
-                                    </li>
-                                    <li id="demo-apps-item" class="level-2"><a id="demo-apps-link" href="#demo-apps" class="level-2">Demo Apps</a>
-                                    </li>
+                                    <li id="using-carthage-item" class="level-2"><a id="using-carthage-link" href="#using-carthage" class="level-2 active">Using Carthage</a></li>
+                                    <li id="using-cocoapods-version-0-36-1-item" class="level-2"><a id="using-cocoapods-version-0-36-1-link" href="#using-cocoapods-version-0-36-1" class="level-2">Using cocoapods version 0.36.1</a></li>
+                                    <li id="using-git-submodule-item" class="level-2"><a id="using-git-submodule-link" href="#using-git-submodule" class="level-2">Using git submodule</a></li>
+                                    <li id="demo-apps-item" class="level-2"><a id="demo-apps-link" href="#demo-apps" class="level-2">Demo Apps</a></li>
                                 </ul>
                             </li>
                             <li id="dollar-usage-item" class="level-1"><a id="dollar-usage-link" href="#dollar-usage" class="level-1">Dollar Usage</a>
                                 <ul class="level-2" id="dollar-usage-list">
                                     <li id="array-item" class="level-2"><a id="array-link" href="#array" class="level-2">Array</a>
                                         <ul class="level-3" id="array-list">
-                                            <li id="at-at-item" class="level-3"><a id="at-at-link" href="#at-at" class="level-3">at - $.at</a>
-                                            </li>
-                                            <li id="compact-compact-item" class="level-3"><a id="compact-compact-link" href="#compact-compact" class="level-3">compact - $.compact</a>
-                                            </li>
-                                            <li id="contains-contains-item" class="level-3"><a id="contains-contains-link" href="#contains-contains" class="level-3">contains - $.contains</a>
-                                            </li>
-                                            <li id="cycle-cycle-item" class="level-3"><a id="cycle-cycle-link" href="#cycle-cycle" class="level-3">cycle - $.cycle</a>
-                                            </li>
-                                            <li id="difference-difference-item" class="level-3"><a id="difference-difference-link" href="#difference-difference" class="level-3">difference - $.difference</a>
-                                            </li>
-                                            <li id="each-each-item" class="level-3"><a id="each-each-link" href="#each-each" class="level-3">each - $.each</a>
-                                            </li>
-                                            <li id="every-every-item" class="level-3"><a id="every-every-link" href="#every-every" class="level-3">every - $.every</a>
-                                            </li>
-                                            <li id="fetch-fetch-item" class="level-3"><a id="fetch-fetch-link" href="#fetch-fetch" class="level-3">fetch - $.fetch</a>
-                                            </li>
-                                            <li id="find-find-item" class="level-3"><a id="find-find-link" href="#find-find" class="level-3">find - $.find</a>
-                                            </li>
-                                            <li id="findindex-findindex-item" class="level-3"><a id="findindex-findindex-link" href="#findindex-findindex" class="level-3">findIndex - $.findIndex</a>
-                                            </li>
-                                            <li id="findlastindex-findlastindex-item" class="level-3"><a id="findlastindex-findlastindex-link" href="#findlastindex-findlastindex" class="level-3">findLastIndex - $.findLastIndex</a>
-                                            </li>
-                                            <li id="first-first-array-anyobject-item" class="level-3"><a id="first-first-array-anyobject-link" href="#first-first-array-anyobject" class="level-3">first - $.first(array: AnyObject[])</a>
-                                            </li>
-                                            <li id="second-second-array-anyobject-item" class="level-3"><a id="second-second-array-anyobject-link" href="#second-second-array-anyobject" class="level-3">second - $.second(array: AnyObject[])</a>
-                                            </li>
-                                            <li id="flatten-flatten-item" class="level-3"><a id="flatten-flatten-link" href="#flatten-flatten" class="level-3">flatten - $.flatten</a>
-                                            </li>
-                                            <li id="frequencies-frequencies-item" class="level-3"><a id="frequencies-frequencies-link" href="#frequencies-frequencies" class="level-3">frequencies - $.frequencies</a>
-                                            </li>
-                                            <li id="indexof-indexof-item" class="level-3"><a id="indexof-indexof-link" href="#indexof-indexof" class="level-3">indexof - $.indexof</a>
-                                            </li>
-                                            <li id="initial-initial-item" class="level-3"><a id="initial-initial-link" href="#initial-initial" class="level-3">initial - $.initial</a>
-                                            </li>
-                                            <li id="intersection-intersection-item" class="level-3"><a id="intersection-intersection-link" href="#intersection-intersection" class="level-3">intersection - $.intersection</a>
-                                            </li>
-                                            <li id="last-last-item" class="level-3"><a id="last-last-link" href="#last-last" class="level-3">last - $.last</a>
-                                            </li>
-                                            <li id="lastindexof-lastindexof-item" class="level-3"><a id="lastindexof-lastindexof-link" href="#lastindexof-lastindexof" class="level-3">lastIndexOf - $.lastIndexOf</a>
-                                            </li>
-                                            <li id="rest-rest-item" class="level-3"><a id="rest-rest-link" href="#rest-rest" class="level-3">rest - $.rest</a>
-                                            </li>
-                                            <li id="map-map-item" class="level-3"><a id="map-map-link" href="#map-map" class="level-3">map - $.map</a>
-                                            </li>
-                                            <li id="min-min-item" class="level-3"><a id="min-min-link" href="#min-min" class="level-3">min - $.min</a>
-                                            </li>
-                                            <li id="max-max-item" class="level-3"><a id="max-max-link" href="#max-max" class="level-3">max - $.max</a>
-                                            </li>
-                                            <li id="pluck-pluck-item" class="level-3"><a id="pluck-pluck-link" href="#pluck-pluck" class="level-3">pluck - $.pluck</a>
-                                            </li>
-                                            <li id="pull-pull-item" class="level-3"><a id="pull-pull-link" href="#pull-pull" class="level-3">pull - $.pull</a>
-                                            </li>
-                                            <li id="range-range-item" class="level-3"><a id="range-range-link" href="#range-range" class="level-3">range - $.range</a>
-                                            </li>
-                                            <li id="reduce-reduce-item" class="level-3"><a id="reduce-reduce-link" href="#reduce-reduce" class="level-3">reduce - $.reduce</a>
-                                            </li>
-                                            <li id="sample-sample-item" class="level-3"><a id="sample-sample-link" href="#sample-sample" class="level-3">sample - $.sample</a>
-                                            </li>
-                                            <li id="sequence-sequence-item" class="level-3"><a id="sequence-sequence-link" href="#sequence-sequence" class="level-3">sequence - $.sequence</a>
-                                            </li>
-                                            <li id="remove-remove-item" class="level-3"><a id="remove-remove-link" href="#remove-remove" class="level-3">remove - $.remove</a>
-                                            </li>
-                                            <li id="shuffle-shuffle-item" class="level-3"><a id="shuffle-shuffle-link" href="#shuffle-shuffle" class="level-3">shuffle - $.shuffle</a>
-                                            </li>
-                                            <li id="sortedindex-sortedindex-item" class="level-3"><a id="sortedindex-sortedindex-link" href="#sortedindex-sortedindex" class="level-3">sortedIndex - $.sortedIndex</a>
-                                            </li>
-                                            <li id="union-union-item" class="level-3"><a id="union-union-link" href="#union-union" class="level-3">union - $.union</a>
-                                            </li>
-                                            <li id="merge-merge-item" class="level-3"><a id="merge-merge-link" href="#merge-merge" class="level-3">merge - $.merge</a>
-                                            </li>
-                                            <li id="uniq-uniq-item" class="level-3"><a id="uniq-uniq-link" href="#uniq-uniq" class="level-3">uniq - $.uniq</a>
-                                            </li>
-                                            <li id="without-without-item" class="level-3"><a id="without-without-link" href="#without-without" class="level-3">without - $.without</a>
-                                            </li>
-                                            <li id="xor-xor-item" class="level-3"><a id="xor-xor-link" href="#xor-xor" class="level-3">xor - $.xor</a>
-                                            </li>
-                                            <li id="zip-zip-item" class="level-3"><a id="zip-zip-link" href="#zip-zip" class="level-3">zip - $.zip</a>
-                                            </li>
-                                            <li id="zipobject-zipobject-item" class="level-3"><a id="zipobject-zipobject-link" href="#zipobject-zipobject" class="level-3">zipObject - $.zipObject</a>
-                                            </li>
-                                            <li id="partition-partition-item" class="level-3"><a id="partition-partition-link" href="#partition-partition" class="level-3">partition - $.partition</a>
-                                            </li>
-                                            <li id="partitionall-partitionall-item" class="level-3"><a id="partitionall-partitionall-link" href="#partitionall-partitionall" class="level-3">partitionAll - $.partitionAll</a>
-                                            </li>
-                                            <li id="partitionby-partitionby-item" class="level-3"><a id="partitionby-partitionby-link" href="#partitionby-partitionby" class="level-3">partitionBy - $.partitionBy</a>
-                                            </li>
+                                            <li id="at-at-item" class="level-3"><a id="at-at-link" href="#at-at" class="level-3">at - $.at</a></li>
+                                            <li id="compact-compact-item" class="level-3"><a id="compact-compact-link" href="#compact-compact" class="level-3">compact - $.compact</a></li>
+                                            <li id="contains-contains-item" class="level-3"><a id="contains-contains-link" href="#contains-contains" class="level-3">contains - $.contains</a></li>
+                                            <li id="cycle-cycle-item" class="level-3"><a id="cycle-cycle-link" href="#cycle-cycle" class="level-3">cycle - $.cycle</a></li>
+                                            <li id="difference-difference-item" class="level-3"><a id="difference-difference-link" href="#difference-difference" class="level-3">difference - $.difference</a></li>
+                                            <li id="each-each-item" class="level-3"><a id="each-each-link" href="#each-each" class="level-3">each - $.each</a></li>
+                                            <li id="every-every-item" class="level-3"><a id="every-every-link" href="#every-every" class="level-3">every - $.every</a></li>
+                                            <li id="fetch-fetch-item" class="level-3"><a id="fetch-fetch-link" href="#fetch-fetch" class="level-3">fetch - $.fetch</a></li>
+                                            <li id="find-find-item" class="level-3"><a id="find-find-link" href="#find-find" class="level-3">find - $.find</a></li>
+                                            <li id="findindex-findindex-item" class="level-3"><a id="findindex-findindex-link" href="#findindex-findindex" class="level-3">findIndex - $.findIndex</a></li>
+                                            <li id="findlastindex-findlastindex-item" class="level-3"><a id="findlastindex-findlastindex-link" href="#findlastindex-findlastindex" class="level-3">findLastIndex - $.findLastIndex</a></li>
+                                            <li id="first-first-array-anyobject-item" class="level-3"><a id="first-first-array-anyobject-link" href="#first-first-array-anyobject" class="level-3">first - $.first(array: AnyObject[])</a></li>
+                                            <li id="second-second-array-anyobject-item" class="level-3"><a id="second-second-array-anyobject-link" href="#second-second-array-anyobject" class="level-3">second - $.second(array: AnyObject[])</a></li>
+                                            <li id="flatmap-flatmap-item" class="level-3"><a id="flatmap-flatmap-link" href="#flatmap-flatmap" class="level-3">flatMap - $.flatMap</a></li>
+                                            <li id="flatmap-flatmap-item" class="level-3"><a id="flatmap-flatmap-link" href="#flatmap-flatmap" class="level-3">flatMap - $.flatMap</a></li>
+                                            <li id="flatten-flatten-item" class="level-3"><a id="flatten-flatten-link" href="#flatten-flatten" class="level-3">flatten - $.flatten</a></li>
+                                            <li id="frequencies-frequencies-item" class="level-3"><a id="frequencies-frequencies-link" href="#frequencies-frequencies" class="level-3">frequencies - $.frequencies</a></li>
+                                            <li id="indexof-indexof-item" class="level-3"><a id="indexof-indexof-link" href="#indexof-indexof" class="level-3">indexof - $.indexof</a></li>
+                                            <li id="initial-initial-item" class="level-3"><a id="initial-initial-link" href="#initial-initial" class="level-3">initial - $.initial</a></li>
+                                            <li id="intersection-intersection-item" class="level-3"><a id="intersection-intersection-link" href="#intersection-intersection" class="level-3">intersection - $.intersection</a></li>
+                                            <li id="last-last-item" class="level-3"><a id="last-last-link" href="#last-last" class="level-3">last - $.last</a></li>
+                                            <li id="lastindexof-lastindexof-item" class="level-3"><a id="lastindexof-lastindexof-link" href="#lastindexof-lastindexof" class="level-3">lastIndexOf - $.lastIndexOf</a></li>
+                                            <li id="rest-rest-item" class="level-3"><a id="rest-rest-link" href="#rest-rest" class="level-3">rest - $.rest</a></li>
+                                            <li id="map-map-item" class="level-3"><a id="map-map-link" href="#map-map" class="level-3">map - $.map</a></li>
+                                            <li id="min-min-item" class="level-3"><a id="min-min-link" href="#min-min" class="level-3">min - $.min</a></li>
+                                            <li id="max-max-item" class="level-3"><a id="max-max-link" href="#max-max" class="level-3">max - $.max</a></li>
+                                            <li id="pluck-pluck-item" class="level-3"><a id="pluck-pluck-link" href="#pluck-pluck" class="level-3">pluck - $.pluck</a></li>
+                                            <li id="pull-pull-item" class="level-3"><a id="pull-pull-link" href="#pull-pull" class="level-3">pull - $.pull</a></li>
+                                            <li id="range-range-item" class="level-3"><a id="range-range-link" href="#range-range" class="level-3">range - $.range</a></li>
+                                            <li id="reduce-reduce-item" class="level-3"><a id="reduce-reduce-link" href="#reduce-reduce" class="level-3">reduce - $.reduce</a></li>
+                                            <li id="sample-sample-item" class="level-3"><a id="sample-sample-link" href="#sample-sample" class="level-3">sample - $.sample</a></li>
+                                            <li id="sequence-sequence-item" class="level-3"><a id="sequence-sequence-link" href="#sequence-sequence" class="level-3">sequence - $.sequence</a></li>
+                                            <li id="remove-remove-item" class="level-3"><a id="remove-remove-link" href="#remove-remove" class="level-3">remove - $.remove</a></li>
+                                            <li id="shuffle-shuffle-item" class="level-3"><a id="shuffle-shuffle-link" href="#shuffle-shuffle" class="level-3">shuffle - $.shuffle</a></li>
+                                            <li id="sortedindex-sortedindex-item" class="level-3"><a id="sortedindex-sortedindex-link" href="#sortedindex-sortedindex" class="level-3">sortedIndex - $.sortedIndex</a></li>
+                                            <li id="union-union-item" class="level-3"><a id="union-union-link" href="#union-union" class="level-3">union - $.union</a></li>
+                                            <li id="merge-merge-item" class="level-3"><a id="merge-merge-link" href="#merge-merge" class="level-3">merge - $.merge</a></li>
+                                            <li id="uniq-uniq-item" class="level-3"><a id="uniq-uniq-link" href="#uniq-uniq" class="level-3">uniq - $.uniq</a></li>
+                                            <li id="without-without-item" class="level-3"><a id="without-without-link" href="#without-without" class="level-3">without - $.without</a></li>
+                                            <li id="xor-xor-item" class="level-3"><a id="xor-xor-link" href="#xor-xor" class="level-3">xor - $.xor</a></li>
+                                            <li id="zip-zip-item" class="level-3"><a id="zip-zip-link" href="#zip-zip" class="level-3">zip - $.zip</a></li>
+                                            <li id="zipobject-zipobject-item" class="level-3"><a id="zipobject-zipobject-link" href="#zipobject-zipobject" class="level-3">zipObject - $.zipObject</a></li>
+                                            <li id="partition-partition-item" class="level-3"><a id="partition-partition-link" href="#partition-partition" class="level-3">partition - $.partition</a></li>
+                                            <li id="partitionall-partitionall-item" class="level-3"><a id="partitionall-partitionall-link" href="#partitionall-partitionall" class="level-3">partitionAll - $.partitionAll</a></li>
+                                            <li id="partitionby-partitionby-item" class="level-3"><a id="partitionby-partitionby-link" href="#partitionby-partitionby" class="level-3">partitionBy - $.partitionBy</a></li>
                                         </ul>
                                     </li>
                                     <li id="dictionary-item" class="level-2"><a id="dictionary-link" href="#dictionary" class="level-2">Dictionary</a>
                                         <ul class="level-3" id="dictionary-list">
-                                            <li id="keys-keys-item" class="level-3"><a id="keys-keys-link" href="#keys-keys" class="level-3">keys - $.keys</a>
-                                            </li>
-                                            <li id="values-values-item" class="level-3"><a id="values-values-link" href="#values-values" class="level-3">values - $.values</a>
-                                            </li>
-                                            <li id="merge-merge-item" class="level-3"><a id="merge-merge-link" href="#merge-merge" class="level-3">merge - $.merge</a>
-                                            </li>
-                                            <li id="pick-pick-item" class="level-3"><a id="pick-pick-link" href="#pick-pick" class="level-3">pick - $.pick</a>
-                                            </li>
-                                            <li id="omit-omit-item" class="level-3"><a id="omit-omit-link" href="#omit-omit" class="level-3">omit - $.omit</a>
-                                            </li>
+                                            <li id="keys-keys-item" class="level-3"><a id="keys-keys-link" href="#keys-keys" class="level-3">keys - $.keys</a></li>
+                                            <li id="values-values-item" class="level-3"><a id="values-values-link" href="#values-values" class="level-3">values - $.values</a></li>
+                                            <li id="merge-merge-item" class="level-3"><a id="merge-merge-link" href="#merge-merge" class="level-3">merge - $.merge</a></li>
+                                            <li id="pick-pick-item" class="level-3"><a id="pick-pick-link" href="#pick-pick" class="level-3">pick - $.pick</a></li>
+                                            <li id="omit-omit-item" class="level-3"><a id="omit-omit-link" href="#omit-omit" class="level-3">omit - $.omit</a></li>
                                         </ul>
                                     </li>
                                     <li id="object-item" class="level-2"><a id="object-link" href="#object" class="level-2">Object</a>
                                         <ul class="level-3" id="object-list">
-                                            <li id="tap-tap-item" class="level-3"><a id="tap-tap-link" href="#tap-tap" class="level-3">tap - $.tap</a>
-                                            </li>
+                                            <li id="tap-tap-item" class="level-3"><a id="tap-tap-link" href="#tap-tap" class="level-3">tap - $.tap</a></li>
                                         </ul>
                                     </li>
                                     <li id="function-item" class="level-2"><a id="function-link" href="#function" class="level-2">Function</a>
                                         <ul class="level-3" id="function-list">
-                                            <li id="after-after-item" class="level-3"><a id="after-after-link" href="#after-after" class="level-3">after - $.after</a>
-                                            </li>
-                                            <li id="bind-bind-item" class="level-3"><a id="bind-bind-link" href="#bind-bind" class="level-3">bind - $.bind</a>
-                                            </li>
-                                            <li id="compose-compose-item" class="level-3"><a id="compose-compose-link" href="#compose-compose" class="level-3">compose - $.compose</a>
-                                            </li>
-                                            <li id="curry-curry-item" class="level-3"><a id="curry-curry-link" href="#curry-curry" class="level-3">curry - $.curry</a>
-                                            </li>
-                                            <li id="id-id-item" class="level-3"><a id="id-id-link" href="#id-id" class="level-3">id - $.id</a>
-                                            </li>
-                                            <li id="memoize-memoize-item" class="level-3"><a id="memoize-memoize-link" href="#memoize-memoize" class="level-3">memoize - $.memoize</a>
-                                            </li>
-                                            <li id="noop-noop-item" class="level-3"><a id="noop-noop-link" href="#noop-noop" class="level-3">noop - $.noop</a>
-                                            </li>
-                                            <li id="once-once-item" class="level-3"><a id="once-once-link" href="#once-once" class="level-3">once - $.once</a>
-                                            </li>
-                                            <li id="partial-partial-item" class="level-3"><a id="partial-partial-link" href="#partial-partial" class="level-3">partial - $.partial</a>
-                                            </li>
-                                            <li id="times-times-item" class="level-3"><a id="times-times-link" href="#times-times" class="level-3">times - $.times</a>
-                                            </li>
+                                            <li id="after-after-item" class="level-3"><a id="after-after-link" href="#after-after" class="level-3">after - $.after</a></li>
+                                            <li id="bind-bind-item" class="level-3"><a id="bind-bind-link" href="#bind-bind" class="level-3">bind - $.bind</a></li>
+                                            <li id="compose-compose-item" class="level-3"><a id="compose-compose-link" href="#compose-compose" class="level-3">compose - $.compose</a></li>
+                                            <li id="curry-curry-item" class="level-3"><a id="curry-curry-link" href="#curry-curry" class="level-3">curry - $.curry</a></li>
+                                            <li id="id-id-item" class="level-3"><a id="id-id-link" href="#id-id" class="level-3">id - $.id</a></li>
+                                            <li id="memoize-memoize-item" class="level-3"><a id="memoize-memoize-link" href="#memoize-memoize" class="level-3">memoize - $.memoize</a></li>
+                                            <li id="noop-noop-item" class="level-3"><a id="noop-noop-link" href="#noop-noop" class="level-3">noop - $.noop</a></li>
+                                            <li id="once-once-item" class="level-3"><a id="once-once-link" href="#once-once" class="level-3">once - $.once</a></li>
+                                            <li id="partial-partial-item" class="level-3"><a id="partial-partial-link" href="#partial-partial" class="level-3">partial - $.partial</a></li>
+                                            <li id="times-times-item" class="level-3"><a id="times-times-link" href="#times-times" class="level-3">times - $.times</a></li>
                                         </ul>
                                     </li>
                                     <li id="chaining-item" class="level-2"><a id="chaining-link" href="#chaining" class="level-2">Chaining</a>
                                         <ul class="level-3" id="chaining-list">
-                                            <li id="any-item" class="level-3"><a id="any-link" href="#any" class="level-3">any</a>
-                                            </li>
-                                            <li id="all-item" class="level-3"><a id="all-link" href="#all" class="level-3">all</a>
-                                            </li>
-                                            <li id="each-item" class="level-3"><a id="each-link" href="#each" class="level-3">each</a>
-                                            </li>
-                                            <li id="filter-item" class="level-3"><a id="filter-link" href="#filter" class="level-3">filter</a>
-                                            </li>
-                                            <li id="first-item" class="level-3"><a id="first-link" href="#first" class="level-3">first</a>
-                                            </li>
-                                            <li id="second-item" class="level-3"><a id="second-link" href="#second" class="level-3">second</a>
-                                            </li>
-                                            <li id="third-item" class="level-3"><a id="third-link" href="#third" class="level-3">third</a>
-                                            </li>
-                                            <li id="flatten-item" class="level-3"><a id="flatten-link" href="#flatten" class="level-3">flatten</a>
-                                            </li>
-                                            <li id="initial-item" class="level-3"><a id="initial-link" href="#initial" class="level-3">initial</a>
-                                            </li>
-                                            <li id="map-item" class="level-3"><a id="map-link" href="#map" class="level-3">map</a>
-                                            </li>
-                                            <li id="slice-item" class="level-3"><a id="slice-link" href="#slice" class="level-3">slice</a>
-                                            </li>
-                                            <li id="value-item" class="level-3"><a id="value-link" href="#value" class="level-3">value</a>
-                                            </li>
+                                            <li id="any-item" class="level-3"><a id="any-link" href="#any" class="level-3">any</a></li>
+                                            <li id="all-item" class="level-3"><a id="all-link" href="#all" class="level-3">all</a></li>
+                                            <li id="each-item" class="level-3"><a id="each-link" href="#each" class="level-3">each</a></li>
+                                            <li id="filter-item" class="level-3"><a id="filter-link" href="#filter" class="level-3">filter</a></li>
+                                            <li id="first-item" class="level-3"><a id="first-link" href="#first" class="level-3">first</a></li>
+                                            <li id="second-item" class="level-3"><a id="second-link" href="#second" class="level-3">second</a></li>
+                                            <li id="third-item" class="level-3"><a id="third-link" href="#third" class="level-3">third</a></li>
+                                            <li id="flatten-item" class="level-3"><a id="flatten-link" href="#flatten" class="level-3">flatten</a></li>
+                                            <li id="initial-item" class="level-3"><a id="initial-link" href="#initial" class="level-3">initial</a></li>
+                                            <li id="map-item" class="level-3"><a id="map-link" href="#map" class="level-3">map</a></li>
+                                            <li id="slice-item" class="level-3"><a id="slice-link" href="#slice" class="level-3">slice</a></li>
+                                            <li id="value-item" class="level-3"><a id="value-link" href="#value" class="level-3">value</a></li>
+                                        </ul>
+                                    </li>
+                                    <li id="optional-item" class="level-2"><a id="optional-link" href="#optional" class="level-2">Optional</a>
+                                        <ul class="level-3" id="optional-list">
+                                            <li id="equal-item" class="level-3"><a id="equal-link" href="#equal" class="level-3">equal</a></li>
                                         </ul>
                                     </li>
                                 </ul>
@@ -246,148 +161,98 @@
                                 <ul class="level-2" id="cent-usage-list">
                                     <li id="array-extensions-item" class="level-2"><a id="array-extensions-link" href="#array-extensions" class="level-2">Array Extensions</a>
                                         <ul class="level-3" id="array-extensions-list">
-                                            <li id="elem-element-element-item" class="level-3"><a id="elem-element-element-link" href="#elem-element-element" class="level-3">&lt;&lt; elem: Element -&gt; [Element]</a>
-                                            </li>
-                                            <li id="at-indexes-int-element-item" class="level-3"><a id="at-indexes-int-element-link" href="#at-indexes-int-element" class="level-3">at(indexes: Int...) -&gt; [Element]</a>
-                                            </li>
-                                            <li id="each-callback-element-element-item" class="level-3"><a id="each-callback-element-element-link" href="#each-callback-element-element" class="level-3">each(callback: (Element) -&gt; ()) -&gt; [Element]</a>
-                                            </li>
-                                            <li id="eachwithindex-callback-int-element-element-item" class="level-3"><a id="eachwithindex-callback-int-element-element-link" href="#eachwithindex-callback-int-element-element" class="level-3">eachWithIndex(callback: (Int, Element) -&gt; ()) -&gt; [Element]</a>
-                                            </li>
-                                            <li id="cycle-u-times-int-callback-element-u-item" class="level-3"><a id="cycle-u-times-int-callback-element-u-link" href="#cycle-u-times-int-callback-element-u" class="level-3">cycle<u>(times: Int, callback: (Element) -&gt; U)</u></a>
-                                            </li>
-                                            <li id="every-callback-element-bool-bool-item" class="level-3"><a id="every-callback-element-bool-bool-link" href="#every-callback-element-bool-bool" class="level-3">every(callback: (Element) -&gt; Bool) -&gt; Bool</a>
-                                            </li>
-                                            <li id="fetch-index-int-orelse-t-none-t-item" class="level-3"><a id="fetch-index-int-orelse-t-none-t-link" href="#fetch-index-int-orelse-t-none-t" class="level-3">fetch(index: Int, orElse: T? = .None) -&gt; T!</a>
-                                            </li>
-                                            <li id="findindex-callback-element-bool-int-item" class="level-3"><a id="findindex-callback-element-bool-int-link" href="#findindex-callback-element-bool-int" class="level-3">findIndex(callback: (Element) -&gt; Bool) -&gt; Int?</a>
-                                            </li>
-                                            <li id="findlastindex-callback-element-bool-int-item" class="level-3"><a id="findlastindex-callback-element-bool-int-link" href="#findlastindex-callback-element-bool-int" class="level-3">findLastIndex(callback: (Element) -&gt; Bool) -&gt; Int?</a>
-                                            </li>
-                                            <li id="first-element-item" class="level-3"><a id="first-element-link" href="#first-element" class="level-3">first() -&gt; Element?</a>
-                                            </li>
-                                            <li id="flatten-element-item" class="level-3"><a id="flatten-element-link" href="#flatten-element" class="level-3">flatten() -&gt; [Element]</a>
-                                            </li>
-                                            <li id="get-index-int-element-item" class="level-3"><a id="get-index-int-element-link" href="#get-index-int-element" class="level-3">get(index: Int) -&gt; Element?</a>
-                                            </li>
-                                            <li id="initial-numelements-int-1-element-item" class="level-3"><a id="initial-numelements-int-1-element-link" href="#initial-numelements-int-1-element" class="level-3">initial(numElements: Int? = 1) -&gt; [Element]</a>
-                                            </li>
-                                            <li id="last-element-item" class="level-3"><a id="last-element-link" href="#last-element" class="level-3">last() -&gt; Element?</a>
-                                            </li>
-                                            <li id="rest-numelements-int-1-element-item" class="level-3"><a id="rest-numelements-int-1-element-link" href="#rest-numelements-int-1-element" class="level-3">rest(numElements: Int? = 1) -&gt; [Element]</a>
-                                            </li>
-                                            <li id="min-t-comparable-t-item" class="level-3"><a id="min-t-comparable-t-link" href="#min-t-comparable-t" class="level-3">min<t: comparable="">() -&gt; T?</t:></a>
-                                            </li>
-                                            <li id="max-t-comparable-t-item" class="level-3"><a id="max-t-comparable-t-link" href="#max-t-comparable-t" class="level-3">max<t: comparable="">() -&gt; T?</t:></a>
-                                            </li>
+                                            <li id="elem-element-element-item" class="level-3"><a id="elem-element-element-link" href="#elem-element-element" class="level-3">&lt;&lt; elem: Element -&gt; [Element]</a></li>
+                                            <li id="at-indexes-int-element-item" class="level-3"><a id="at-indexes-int-element-link" href="#at-indexes-int-element" class="level-3">at(indexes: Int...) -&gt; [Element]</a></li>
+                                            <li id="each-callback-element-element-item" class="level-3"><a id="each-callback-element-element-link" href="#each-callback-element-element" class="level-3">each(callback: (Element) -&gt; ()) -&gt; [Element]</a></li>
+                                            <li id="eachwithindex-callback-int-element-element-item" class="level-3"><a id="eachwithindex-callback-int-element-element-link" href="#eachwithindex-callback-int-element-element" class="level-3">eachWithIndex(callback: (Int, Element) -&gt; ()) -&gt; [Element]</a></li>
+                                            <li id="cycle-u-times-int-callback-element-u-item" class="level-3"><a id="cycle-u-times-int-callback-element-u-link" href="#cycle-u-times-int-callback-element-u" class="level-3">cycle<u>(times: Int, callback: (Element) -&gt; U)</u></a></li>
+                                            <li id="every-callback-element-bool-bool-item" class="level-3"><a id="every-callback-element-bool-bool-link" href="#every-callback-element-bool-bool" class="level-3">every(callback: (Element) -&gt; Bool) -&gt; Bool</a></li>
+                                            <li id="fetch-index-int-orelse-t-none-t-item" class="level-3"><a id="fetch-index-int-orelse-t-none-t-link" href="#fetch-index-int-orelse-t-none-t" class="level-3">fetch(index: Int, orElse: T? = .None) -&gt; T!</a></li>
+                                            <li id="findindex-callback-element-bool-int-item" class="level-3"><a id="findindex-callback-element-bool-int-link" href="#findindex-callback-element-bool-int" class="level-3">findIndex(callback: (Element) -&gt; Bool) -&gt; Int?</a></li>
+                                            <li id="findlastindex-callback-element-bool-int-item" class="level-3"><a id="findlastindex-callback-element-bool-int-link" href="#findlastindex-callback-element-bool-int" class="level-3">findLastIndex(callback: (Element) -&gt; Bool) -&gt; Int?</a></li>
+                                            <li id="first-element-item" class="level-3"><a id="first-element-link" href="#first-element" class="level-3">first() -&gt; Element?</a></li>
+                                            <li id="flatten-element-item" class="level-3"><a id="flatten-element-link" href="#flatten-element" class="level-3">flatten() -&gt; [Element]</a></li>
+                                            <li id="get-index-int-element-item" class="level-3"><a id="get-index-int-element-link" href="#get-index-int-element" class="level-3">get(index: Int) -&gt; Element?</a></li>
+                                            <li id="initial-numelements-int-1-element-item" class="level-3"><a id="initial-numelements-int-1-element-link" href="#initial-numelements-int-1-element" class="level-3">initial(numElements: Int? = 1) -&gt; [Element]</a></li>
+                                            <li id="last-element-item" class="level-3"><a id="last-element-link" href="#last-element" class="level-3">last() -&gt; Element?</a></li>
+                                            <li id="rest-numelements-int-1-element-item" class="level-3"><a id="rest-numelements-int-1-element-link" href="#rest-numelements-int-1-element" class="level-3">rest(numElements: Int? = 1) -&gt; [Element]</a></li>
+                                            <li id="min-t-comparable-t-item" class="level-3"><a id="min-t-comparable-t-link" href="#min-t-comparable-t" class="level-3">min<t: comparable="">() -&gt; T?</t:></a></li>
+                                            <li id="max-t-comparable-t-item" class="level-3"><a id="max-t-comparable-t-link" href="#max-t-comparable-t" class="level-3">max<t: comparable="">() -&gt; T?</t:></a></li>
                                         </ul>
                                     </li>
                                     <li id="character-extensions-item" class="level-2"><a id="character-extensions-link" href="#character-extensions" class="level-2">Character Extensions</a>
                                         <ul class="level-3" id="character-extensions-list">
-                                            <li id="a-description-string-item" class="level-3"><a id="a-description-string-link" href="#a-description-string" class="level-3">"A".description -&gt; String</a>
-                                            </li>
+                                            <li id="a-description-string-item" class="level-3"><a id="a-description-string-link" href="#a-description-string" class="level-3">"A".description -&gt; String</a></li>
                                         </ul>
                                     </li>
                                     <li id="date-extensions-item" class="level-2"><a id="date-extensions-link" href="#date-extensions" class="level-2">Date Extensions</a>
                                         <ul class="level-3" id="date-extensions-list">
-                                            <li id="date-from-year-int-month-int-day-int-nsdate-item" class="level-3"><a id="date-from-year-int-month-int-day-int-nsdate-link" href="#date-from-year-int-month-int-day-int-nsdate" class="level-3">Date.from(#year: Int, month: Int, day: Int) -&gt; NSDate</a>
-                                            </li>
-                                            <li id="date-from-unix-double-nsdate-item" class="level-3"><a id="date-from-unix-double-nsdate-link" href="#date-from-unix-double-nsdate" class="level-3">Date.from(#unix: Double) -&gt; NSDate</a>
-                                            </li>
-                                            <li id="date-parse-datestr-string-format-string-yyyy-mm-dd-nsdate-item" class="level-3"><a id="date-parse-datestr-string-format-string-yyyy-mm-dd-nsdate-link" href="#date-parse-datestr-string-format-string-yyyy-mm-dd-nsdate" class="level-3">Date.parse(dateStr: String, format: String = "yyyy-MM-dd") -&gt; NSDate</a>
-                                            </li>
-                                            <li id="date-unix-date-nsdate-nsdate-double-item" class="level-3"><a id="date-unix-date-nsdate-nsdate-double-link" href="#date-unix-date-nsdate-nsdate-double" class="level-3">Date.unix(date: NSDate = NSDate()) -&gt; Double</a>
-                                            </li>
+                                            <li id="date-from-year-int-month-int-day-int-nsdate-item" class="level-3"><a id="date-from-year-int-month-int-day-int-nsdate-link" href="#date-from-year-int-month-int-day-int-nsdate" class="level-3">Date.from(#year: Int, month: Int, day: Int) -&gt; NSDate</a></li>
+                                            <li id="date-from-unix-double-nsdate-item" class="level-3"><a id="date-from-unix-double-nsdate-link" href="#date-from-unix-double-nsdate" class="level-3">Date.from(#unix: Double) -&gt; NSDate</a></li>
+                                            <li id="date-parse-datestr-string-format-string-yyyy-mm-dd-nsdate-item" class="level-3"><a id="date-parse-datestr-string-format-string-yyyy-mm-dd-nsdate-link" href="#date-parse-datestr-string-format-string-yyyy-mm-dd-nsdate" class="level-3">Date.parse(dateStr: String, format: String = "yyyy-MM-dd") -&gt; NSDate</a></li>
+                                            <li id="date-unix-date-nsdate-nsdate-double-item" class="level-3"><a id="date-unix-date-nsdate-nsdate-double-link" href="#date-unix-date-nsdate-nsdate-double" class="level-3">Date.unix(date: NSDate = NSDate()) -&gt; Double</a></li>
                                         </ul>
                                     </li>
                                     <li id="dictionary-extensions-item" class="level-2"><a id="dictionary-extensions-link" href="#dictionary-extensions" class="level-2">Dictionary Extensions</a>
                                         <ul class="level-3" id="dictionary-extensions-list">
-                                            <li id="merge-k-v-dictionaries-dictionary-k-v-item" class="level-3"><a id="merge-k-v-dictionaries-dictionary-k-v-link" href="#merge-k-v-dictionaries-dictionary-k-v" class="level-3">merge<k, v="">(dictionaries: Dictionary<k, v="">...)</k,></k,></a>
-                                            </li>
+                                            <li id="merge-k-v-dictionaries-dictionary-k-v-item" class="level-3"><a id="merge-k-v-dictionaries-dictionary-k-v-link" href="#merge-k-v-dictionaries-dictionary-k-v" class="level-3">merge<k, v="">(dictionaries: Dictionary<k, v="">...)</k,></k,></a></li>
                                         </ul>
                                     </li>
                                     <li id="int-extensions-item" class="level-2"><a id="int-extensions-link" href="#int-extensions" class="level-2">Int Extensions</a>
                                         <ul class="level-3" id="int-extensions-list">
-                                            <li id="times-callback-int-item" class="level-3"><a id="times-callback-int-link" href="#times-callback-int" class="level-3">times(callback: (Int) -&gt; ())</a>
-                                            </li>
-                                            <li id="times-function-item" class="level-3"><a id="times-function-link" href="#times-function" class="level-3">times (function: () -&gt; ())</a>
-                                            </li>
-                                            <li id="iseven-item" class="level-3"><a id="iseven-link" href="#iseven" class="level-3">isEven</a>
-                                            </li>
-                                            <li id="isodd-item" class="level-3"><a id="isodd-link" href="#isodd" class="level-3">isOdd</a>
-                                            </li>
-                                            <li id="digits-int-item" class="level-3"><a id="digits-int-link" href="#digits-int" class="level-3">digits() -&gt; [Int]</a>
-                                            </li>
-                                            <li id="next-int-item" class="level-3"><a id="next-int-link" href="#next-int" class="level-3">next() -&gt; Int</a>
-                                            </li>
-                                            <li id="prev-int-item" class="level-3"><a id="prev-int-link" href="#prev-int" class="level-3">prev() -&gt; Int</a>
-                                            </li>
-                                            <li id="upto-limit-int-callback-item" class="level-3"><a id="upto-limit-int-callback-link" href="#upto-limit-int-callback" class="level-3">upTo(limit: Int, callback: () -&gt; ())</a>
-                                            </li>
-                                            <li id="downto-limit-int-callback-item" class="level-3"><a id="downto-limit-int-callback-link" href="#downto-limit-int-callback" class="level-3">downTo(limit: Int, callback: () -&gt; ())</a>
-                                            </li>
+                                            <li id="times-callback-int-item" class="level-3"><a id="times-callback-int-link" href="#times-callback-int" class="level-3">times(callback: (Int) -&gt; ())</a></li>
+                                            <li id="times-function-item" class="level-3"><a id="times-function-link" href="#times-function" class="level-3">times (function: () -&gt; ())</a></li>
+                                            <li id="iseven-item" class="level-3"><a id="iseven-link" href="#iseven" class="level-3">isEven</a></li>
+                                            <li id="isodd-item" class="level-3"><a id="isodd-link" href="#isodd" class="level-3">isOdd</a></li>
+                                            <li id="digits-int-item" class="level-3"><a id="digits-int-link" href="#digits-int" class="level-3">digits() -&gt; [Int]</a></li>
+                                            <li id="next-int-item" class="level-3"><a id="next-int-link" href="#next-int" class="level-3">next() -&gt; Int</a></li>
+                                            <li id="prev-int-item" class="level-3"><a id="prev-int-link" href="#prev-int" class="level-3">prev() -&gt; Int</a></li>
+                                            <li id="upto-limit-int-callback-item" class="level-3"><a id="upto-limit-int-callback-link" href="#upto-limit-int-callback" class="level-3">upTo(limit: Int, callback: () -&gt; ())</a></li>
+                                            <li id="downto-limit-int-callback-item" class="level-3"><a id="downto-limit-int-callback-link" href="#downto-limit-int-callback" class="level-3">downTo(limit: Int, callback: () -&gt; ())</a></li>
                                         </ul>
                                     </li>
                                     <li id="string-extensions-item" class="level-2"><a id="string-extensions-link" href="#string-extensions" class="level-2">String Extensions</a>
                                         <ul class="level-3" id="string-extensions-list">
-                                            <li id="length-item" class="level-3"><a id="length-link" href="#length" class="level-3">.length</a>
-                                            </li>
-                                            <li id="str-string-bool-item" class="level-3"><a id="str-string-bool-link" href="#str-string-bool" class="level-3">=~ str: String -&gt; Bool</a>
-                                            </li>
-                                            <li id="n-int-string-item" class="level-3"><a id="n-int-string-link" href="#n-int-string" class="level-3">* n: Int -&gt; String</a>
-                                            </li>
-                                            <li id="i-int-character-item" class="level-3"><a id="i-int-character-link" href="#i-int-character" class="level-3">[i: Int] -&gt; Character?</a>
-                                            </li>
-                                            <li id="str-string-string-item" class="level-3"><a id="str-string-string-link" href="#str-string-string" class="level-3">[str: String] -&gt; String?</a>
-                                            </li>
-                                            <li id="r-range-int-string-item" class="level-3"><a id="r-range-int-string-link" href="#r-range-int-string" class="level-3">[r: Range<int>] -&gt; String</int></a>
-                                            </li>
-                                            <li id="indexof-char-character-int-item" class="level-3"><a id="indexof-char-character-int-link" href="#indexof-char-character-int" class="level-3">indexOf(char: Character) -&gt; Int?</a>
-                                            </li>
-                                            <li id="indexof-str-string-int-item" class="level-3"><a id="indexof-str-string-int-link" href="#indexof-str-string-int" class="level-3">indexOf(str: String) -&gt; Int?</a>
-                                            </li>
-                                            <li id="indexof-pattern-string-int-item" class="level-3"><a id="indexof-pattern-string-int-link" href="#indexof-pattern-string-int" class="level-3">indexOf(pattern: String) -&gt; Int?</a>
-                                            </li>
-                                            <li id="split-delimiter-character-string-item" class="level-3"><a id="split-delimiter-character-string-link" href="#split-delimiter-character-string" class="level-3">split(delimiter: Character) -&gt; [String]</a>
-                                            </li>
-                                            <li id="lstring-string-item" class="level-3"><a id="lstring-string-link" href="#lstring-string" class="level-3">lstring() -&gt; String</a>
-                                            </li>
-                                            <li id="rstring-string-item" class="level-3"><a id="rstring-string-link" href="#rstring-string" class="level-3">rstring() -&gt; String</a>
-                                            </li>
-                                            <li id="strip-string-item" class="level-3"><a id="strip-string-link" href="#strip-string" class="level-3">strip() -&gt; String</a>
-                                            </li>
+                                            <li id="length-item" class="level-3"><a id="length-link" href="#length" class="level-3">.length</a></li>
+                                            <li id="str-string-bool-item" class="level-3"><a id="str-string-bool-link" href="#str-string-bool" class="level-3">=~ str: String -&gt; Bool</a></li>
+                                            <li id="n-int-string-item" class="level-3"><a id="n-int-string-link" href="#n-int-string" class="level-3">* n: Int -&gt; String</a></li>
+                                            <li id="i-int-character-item" class="level-3"><a id="i-int-character-link" href="#i-int-character" class="level-3">[i: Int] -&gt; Character?</a></li>
+                                            <li id="str-string-string-item" class="level-3"><a id="str-string-string-link" href="#str-string-string" class="level-3">[str: String] -&gt; String?</a></li>
+                                            <li id="r-range-int-string-item" class="level-3"><a id="r-range-int-string-link" href="#r-range-int-string" class="level-3">[r: Range<int>] -&gt; String</int></a></li>
+                                            <li id="indexof-char-character-int-item" class="level-3"><a id="indexof-char-character-int-link" href="#indexof-char-character-int" class="level-3">indexOf(char: Character) -&gt; Int?</a></li>
+                                            <li id="indexof-str-string-int-item" class="level-3"><a id="indexof-str-string-int-link" href="#indexof-str-string-int" class="level-3">indexOf(str: String) -&gt; Int?</a></li>
+                                            <li id="indexof-pattern-string-int-item" class="level-3"><a id="indexof-pattern-string-int-link" href="#indexof-pattern-string-int" class="level-3">indexOf(pattern: String) -&gt; Int?</a></li>
+                                            <li id="split-delimiter-character-string-item" class="level-3"><a id="split-delimiter-character-string-link" href="#split-delimiter-character-string" class="level-3">split(delimiter: Character) -&gt; [String]</a></li>
+                                            <li id="lstring-string-item" class="level-3"><a id="lstring-string-link" href="#lstring-string" class="level-3">lstring() -&gt; String</a></li>
+                                            <li id="rstring-string-item" class="level-3"><a id="rstring-string-link" href="#rstring-string" class="level-3">rstring() -&gt; String</a></li>
+                                            <li id="strip-string-item" class="level-3"><a id="strip-string-link" href="#strip-string" class="level-3">strip() -&gt; String</a></li>
                                         </ul>
                                     </li>
                                     <li id="regex-item" class="level-2"><a id="regex-link" href="#regex" class="level-2">Regex</a>
                                         <ul class="level-3" id="regex-list">
-                                            <li id="init-item" class="level-3"><a id="init-link" href="#init" class="level-3">init</a>
-                                            </li>
-                                            <li id="matches-teststr-string-anyobject-item" class="level-3"><a id="matches-teststr-string-anyobject-link" href="#matches-teststr-string-anyobject" class="level-3">matches(testStr: String) -&gt; [AnyObject]</a>
-                                            </li>
-                                            <li id="test-teststr-string-bool-item" class="level-3"><a id="test-teststr-string-bool-link" href="#test-teststr-string-bool" class="level-3">test(testStr: String) -&gt; Bool</a>
-                                            </li>
-                                            <li id="escapestr-str-string-string-item" class="level-3"><a id="escapestr-str-string-string-link" href="#escapestr-str-string-string" class="level-3">escapeStr(str: String) -&gt; String</a>
-                                            </li>
+                                            <li id="init-item" class="level-3"><a id="init-link" href="#init" class="level-3">init</a></li>
+                                            <li id="matches-teststr-string-anyobject-item" class="level-3"><a id="matches-teststr-string-anyobject-link" href="#matches-teststr-string-anyobject" class="level-3">matches(testStr: String) -&gt; [AnyObject]</a></li>
+                                            <li id="test-teststr-string-bool-item" class="level-3"><a id="test-teststr-string-bool-link" href="#test-teststr-string-bool" class="level-3">test(testStr: String) -&gt; Bool</a></li>
+                                            <li id="escapestr-str-string-string-item" class="level-3"><a id="escapestr-str-string-string-link" href="#escapestr-str-string-string" class="level-3">escapeStr(str: String) -&gt; String</a></li>
                                         </ul>
                                     </li>
                                     <li id="range-extensions-item" class="level-2"><a id="range-extensions-link" href="#range-extensions" class="level-2">Range Extensions</a>
                                         <ul class="level-3" id="range-extensions-list">
-                                            <li id="equals-item" class="level-3"><a id="equals-link" href="#equals" class="level-3">equals - ==</a>
-                                            </li>
-                                            <li id="eachwithindex-callback-t-item" class="level-3"><a id="eachwithindex-callback-t-link" href="#eachwithindex-callback-t" class="level-3">eachWithIndex(callback: (T) -&gt; ())</a>
-                                            </li>
-                                            <li id="each-callback-item" class="level-3"><a id="each-callback-link" href="#each-callback" class="level-3">each(callback: () -&gt; ())</a>
-                                            </li>
+                                            <li id="equals-item" class="level-3"><a id="equals-link" href="#equals" class="level-3">equals - ==</a></li>
+                                            <li id="eachwithindex-callback-t-item" class="level-3"><a id="eachwithindex-callback-t-link" href="#eachwithindex-callback-t" class="level-3">eachWithIndex(callback: (T) -&gt; ())</a></li>
+                                            <li id="each-callback-item" class="level-3"><a id="each-callback-link" href="#each-callback" class="level-3">each(callback: () -&gt; ())</a></li>
+                                        </ul>
+                                    </li>
+                                    <li id="optional-extensions-item" class="level-2"><a id="optional-extensions-link" href="#optional-extensions" class="level-2">Optional Extensions</a>
+                                        <ul class="level-3" id="optional-extensions-list">
+                                            <li id="equals-item" class="level-3"><a id="equals-link" href="#equals" class="level-3">equals - ==</a></li>
                                         </ul>
                                     </li>
                                 </ul>
                             </li>
-                            <li id="contributing-item" class="level-1"><a id="contributing-link" href="#contributing" class="level-1">Contributing</a>
-                            </li>
-                            <li id="roadmap-item" class="level-1"><a id="roadmap-link" href="#roadmap" class="level-1">Roadmap</a>
-                            </li>
-                            <li id="dollar-or-cent-item" class="level-1"><a id="dollar-or-cent-link" href="#dollar-or-cent" class="level-1">Dollar or Cent</a>
-                            </li>
+                            <li id="contributing-item" class="level-1"><a id="contributing-link" href="#contributing" class="level-1">Contributing</a></li>
+                            <li id="roadmap-item" class="level-1"><a id="roadmap-link" href="#roadmap" class="level-1">Roadmap</a></li>
+                            <li id="dollar-or-cent-item" class="level-1"><a id="dollar-or-cent-link" href="#dollar-or-cent" class="level-1">Dollar or Cent</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -396,15 +261,15 @@
         <div role="flatdoc-content" class="content">
             <h1 id="dollar-and-cent">Dollar and Cent <a href="https://travis-ci.org/ankurp/Dollar.swift"><img src="https://travis-ci.org/ankurp/Dollar.swift.svg?branch=master" alt="Build Status"></a></h1>
             <p>
-                <a href="https://gitter.im/ankurp/Dollar.swift?utm_source=badge&amp;utm_medium=badge&amp;utm_campaign=pr-badge&amp;utm_content=badge"><img src="https://badges.gitter.im/Join%20Chat.svg" alt="Gitter">
-                </a>
+                <a href="https://gitter.im/ankurp/Dollar.swift?utm_source=badge&amp;utm_medium=badge&amp;utm_campaign=pr-badge&amp;utm_content=badge"><img src="https://badges.gitter.im/Join%20Chat.svg" alt="Gitter"></a>
             </p>
             <p>Dollar is a Swift library that provides useful functional programming helper methods without extending any built in objects. It is similar to <a href="https://lodash.com">Lo-Dash</a> or <a href="http://underscorejs.org">Underscore.js</a> in Javascript.</p>
             <p>Cent is a library that extends certain Swift object types using the extension feature and gives its two cents to Swift language.</p>
             <h1 id="setup">Setup</h1>
             <h2 id="using-carthage">Using <a href="https://github.com/Carthage/Carthage">Carthage</a></h2>
-            <p>Add <code>github "ankurp/Dollar.swift" ~&gt; 2.1.1</code> to your <code>Cartfile</code> and run <code>carthage update</code>. If unfamiliar with Carthage then checkout their <a href="https://github.com/Carthage/Carthage#getting-started">Getting Started section</a> or this <a href="https://github.com/ankurp/DollarCarthageApp">sample app</a>
-            </p>
+            <p>Add <code>github "ankurp/Dollar.swift" ~&gt; 2.1.1</code> to your <code>Cartfile</code> and run <code>carthage update</code>. If unfamiliar with Carthage then checkout their <a href="https://github.com/Carthage/Carthage#getting-started">Getting Started section</a> or this <a href="https://github.com/ankurp/DollarCarthageApp">sample app</a></p>
+            <h2 id="using-cocoapods-version-0-36-1">Using <a href="http://cocoapods.org/">cocoapods</a> version 0.36.1</h2>
+            <p>Add <code>pod 'Dollar'</code> to your <code>Podfile</code> and run <code>pod install</code>. Add <code>use_frameworks!</code> to the end of the <code>Podfile</code>. Also checkout this <a href="https://github.com/ankurp/DollarPodApp">sample app</a>. Requires cocoapod version 0.36.1.</p>
             <h2 id="using-git-submodule">Using <code>git submodule</code></h2>
             <ol>
                 <li>If you are using git then add Dollar as a submodule using <code>git submodule add https://github.com/ankurp/Dollar.swift.git</code>. If not using git download the project using <code>git clone https://github.com/ankurp/Dollar.swift.git</code> in your project folder.</li>
@@ -414,13 +279,10 @@
                 <li>Expand the “Link Binary with Libraries” group, and add Dollar.framework.</li>
                 <li>In your project file <code>import Dollar</code> and you can call all of the helper functions.</li>
             </ol>
-            <p>Still stuck. Then checkout this screencast on <a href="http://recordit.co/0gQiCSEREF">how to import</a>
-            </p>
+            <p>Still stuck. Then checkout this screencast on <a href="http://recordit.co/0gQiCSEREF">how to import</a></p>
             <h2 id="demo-apps">Demo Apps</h2>
-            <p>Using
-                <em> <a href="https://github.com/ankurp/DollarCarthageApp"><code>carthage</code></a>
-</em> <a href="https://github.com/ankurp/DollarAndCentDemoApp"><code>git submodule</code></a>
-            </p>
+            <p>Using<br/>
+                <a href="https://github.com/ankurp/DollarCarthageApp"><code>carthage</code></a> <br/> <a href="https://github.com/ankurp/DollarPodApp"><code>cocoapods</code></a><br/> <a href="https://github.com/ankurp/DollarSubmoduleApp"><code>git submodule</code></a></p>
             <h1 id="dollar-usage">Dollar Usage</h1>
             <h2 id="array">Array</h2>
             <h3 id="at-at">at - <code>$.at</code></h3>
@@ -504,6 +366,16 @@ result
 
 <span class="keyword">$</span>.second([])
 =&gt; nil</code></pre>
+            <h3 id="flatmap-flatmap">flatMap - <code>$.flatMap</code></h3>
+            <p>Maps a function that converts elements to a list and then concatenates them.</p><pre><code class="lang-swift"><span class="keyword">let</span> values = [<span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>]
+<span class="keyword">$</span>.flatMap(values) { [<span class="keyword">$</span><span class="number">0</span>, <span class="keyword">$</span><span class="number">0</span>] }
+=&gt; [<span class="number">2</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">7</span>]</code></pre>
+            <h3 id="flatmap-flatmap">flatMap - <code>$.flatMap</code></h3>
+            <p>Maps a function that converts a type to an Optional over an Optional, and then returns a single-level Optional.</p><pre><code class="lang-swift"><span class="keyword">let</span> url = NSURL(string: <span class="string">"https:<span class="comment">//apple.com/swift"</span>)</span>
+<span class="keyword">$</span>.flatMap(url) { <span class="keyword">$</span><span class="number">0</span>.lastPathComponent }
+=&gt; Optional(<span class="string">"swift"</span>)</code></pre>
+            <p><em>Note</em>: This is the same behavior as Optional chaining. The code above translates to</p><pre><code class="lang-swift">NSURL(string: <span class="string">"https:<span class="comment">//apple.com/swift/"</span>)?.lastPathComponent</span>
+=&gt; Optional(<span class="string">"swift"</span>)</code></pre>
             <h3 id="flatten-flatten">flatten - <code>$.flatten</code></h3>
             <p>Flattens a nested array of any depth.</p><pre><code class="lang-swift"><span class="keyword">$</span>.flatten([[<span class="number">3</span>], <span class="number">4</span>, <span class="number">5</span>]) as Int[] 
 =&gt; [<span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]
@@ -825,8 +697,7 @@ partialFunc(<span class="string">"World"</span>, <span class="string">"Swift"</s
 <span class="keyword">$</span>.times(<span class="number">2</span>, function: fun) as String[] 
 =&gt; [<span class="string">"Hello Ankur from Swift"</span>, <span class="string">"Hello Ankur from Swift"</span>]</code></pre>
             <h2 id="chaining">Chaining</h2>
-            <p><strong><code>$.chain(...)</code></strong>
-            </p>
+            <p><strong><code>$.chain(...)</code></strong></p>
             <h3 id="any"><code>any</code></h3>
             <p>Returns true if callback function returns true for at least one element in the array</p><pre><code class="lang-swift">var chain = <span class="keyword">$</span>.chain([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>])
 chain.any({ (<span class="keyword">$</span><span class="number">0</span> as Int) &lt; <span class="number">2</span> })
@@ -877,8 +748,7 @@ chain.slice(<span class="number">2</span>, end: <span class="number">4</span>).v
             <p>Returns the value after evaluating all callbacks</p><pre><code class="lang-swift">var chain = <span class="keyword">$</span>.chain([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>])
 chain.value
 =&gt; [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>]</code></pre>
-            <p><strong>Chaining more than one method</strong>
-            </p><pre><code class="lang-swift"><span class="keyword">$</span>.chain([[<span class="number">1</span>, <span class="number">2</span>], <span class="number">3</span>, [[<span class="number">4</span>], <span class="number">5</span>]])
+            <p><strong>Chaining more than one method</strong></p><pre><code class="lang-swift"><span class="keyword">$</span>.chain([[<span class="number">1</span>, <span class="number">2</span>], <span class="number">3</span>, [[<span class="number">4</span>], <span class="number">5</span>]])
   .initial()
   .flatten()
   .first()
@@ -895,6 +765,21 @@ chain.value
   .flatten()
   .initial(<span class="number">2</span>).value
 =&gt; [<span class="number">2</span>, <span class="number">4</span>, <span class="number">6</span>]</code></pre>
+            <h2 id="optional">Optional</h2>
+            <h3 id="equal"><code>equal</code></h3>
+            <p>Tells whether two optionals containing Equatable types are equal.</p><pre><code class="lang-swift"><span class="keyword">let</span> optionalString: String? = <span class="string">"hello"</span>
+<span class="keyword">let</span> otherOptionalString: String? = <span class="string">"hello"</span>
+<span class="keyword">$</span>.equal(optionalString, otherOptionalString)
+=&gt; <span class="keyword">true</span>
+
+<span class="keyword">let</span> thirdOptionalString: String? = <span class="string">"goodbye"</span>
+<span class="keyword">$</span>.equal(optionalString, thirdOptionalString)
+=&gt; <span class="keyword">false</span>
+
+<span class="keyword">let</span> nilOptionalString: String? = nil
+<span class="keyword">let</span> otherNilOptionalString: String? = nil
+<span class="keyword">$</span>.equal(nilOptionalString, otherNilOptionalString)
+=&gt; <span class="keyword">true</span></code></pre>
             <h1 id="cent-usage">Cent Usage</h1>
             <h2 id="array-extensions">Array Extensions</h2>
             <h3 id="elem-element-element"><code>&lt;&lt; elem: Element -&gt; [Element]</code></h3>
@@ -1130,9 +1015,18 @@ re.matches(<span class="string">"Str"</span>)
             <h3 id="each-callback"><code>each(callback: () -&gt; ())</code></h3>
             <p>For each index in the range invoke the callback</p><pre><code class="lang-swift">(<span class="number">1</span>...<span class="number">5</span>).each { print(<span class="string">"Na"</span>) } 
 =&gt; <span class="string">"NaNaNaNaNa"</span></code></pre>
+            <h2 id="optional-extensions">Optional Extensions</h2>
+            <h3 id="equals">equals - <code>==</code></h3>
+            <p>Check the equality of two Equatable Optionals</p><pre><code class="lang-swift">Optional(<span class="string">"hello"</span>) == Optional(<span class="string">"hello"</span>)
+=&gt; <span class="keyword">true</span>
+
+Optional(<span class="string">"hello"</span>) == Optional(<span class="string">"goodbye"</span>)
+=&gt; <span class="keyword">false</span>
+
+nil as String? == nil as String?
+=&gt; <span class="keyword">true</span></code></pre>
             <h1 id="contributing">Contributing</h1>
-            <p>If you are interested in contributing checkout <a href="https://github.com/ankurp/Dollar.swift/blob/master/CONTRIBUTING.md">CONTRIBUTING.md</a>
-            </p>
+            <p>If you are interested in contributing checkout <a href="https://github.com/ankurp/Dollar.swift/blob/master/CONTRIBUTING.md">CONTRIBUTING.md</a></p>
             <h1 id="roadmap">Roadmap</h1>
             <ul>
                 <li>Add more extention functions to the Cent library</li>
