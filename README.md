@@ -31,9 +31,17 @@ Cent is a library that extends certain Swift object types using the extension fe
 
 # Setup #
 
-Currently there are issues loading the library using `pod 'Dollar'` which is pending changes from Cocoapods. In the mean time follow these steps
+## Using [Carthage](https://github.com/Carthage/Carthage)
 
-1. If you are using git then add Dollar as a submodule using `git submodule add https://github.com/ankurp/Dollar.swift.git` otherwise download the project using `git clone https://github.com/ankurp/Dollar.swift.git` in your project folder.
+Add `github "ankurp/Dollar.swift" ~> 2.1.1` to your `Cartfile` and run `carthage update`. If unfamiliar with Carthage then checkout their [Getting Started section](https://github.com/Carthage/Carthage#getting-started) or this [sample app](https://github.com/ankurp/DollarCarthageApp)
+
+## Using [cocoapods](http://cocoapods.org/) version 0.36.1
+
+Add `pod 'Dollar'` to your `Podfile` and run `pod install`. Add `use_frameworks!` to the end of the `Podfile`. Also checkout this [sample app](https://github.com/ankurp/DollarPodApp). Requires cocoapod version 0.36.1.
+
+## Using `git submodule`
+
+1. If you are using git then add Dollar as a submodule using `git submodule add https://github.com/ankurp/Dollar.swift.git`. If not using git download the project using `git clone https://github.com/ankurp/Dollar.swift.git` in your project folder.
 2. Open the Dollar.swift folder. Drag Dollar.xcodeproj, inside the Dollar folder, into the file navigator of your Xcode project.
 3. In Xcode, navigate to the target configuration window by clicking on the blue project icon, and selecting the application target under the "Targets" heading in the sidebar.
 4. In the tab bar at the top of that window, open the "Build Phases" panel.
@@ -42,8 +50,11 @@ Currently there are issues loading the library using `pod 'Dollar'` which is pen
 
 Still stuck. Then checkout this screencast on [how to import](http://recordit.co/0gQiCSEREF)
 
-## Demo App ##
-To see how to integrate this library into an iOS App checkout this [repo](https://github.com/ankurp/DollarAndCentDemoApp).
+## Demo Apps ##
+Using
+* [`carthage`](https://github.com/ankurp/DollarCarthageApp)
+* [`cocoapods`](https://github.com/ankurp/DollarPodApp)
+* [`git submodule`](https://github.com/ankurp/DollarSubmoduleApp)
 
 # Dollar Usage #
 
@@ -207,6 +218,34 @@ $.second([1])
 
 $.second([])
 => nil
+```
+
+### flatMap - `$.flatMap`
+
+Maps a function that converts elements to a list and then concatenates them.
+
+```swift
+let values = [2, 3, 4, 5, 6, 7]
+$.flatMap(values) { [$0, $0] }
+=> [2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7]
+```
+
+### flatMap - `$.flatMap`
+
+Maps a function that converts a type to an Optional over an Optional, and then returns a single-level Optional.
+
+
+```swift
+let url = NSURL(string: "https://apple.com/swift")
+$.flatMap(url) { $0.lastPathComponent }
+=> Optional("swift")
+```
+
+*Note*: This is the same behavior as Optional chaining.
+The code above translates to
+```swift
+NSURL(string: "https://apple.com/swift/")?.lastPathComponent
+=> Optional("swift")
 ```
 
 ### flatten - `$.flatten`
@@ -472,7 +511,7 @@ Creates an array of all values, including duplicates, of the arrays in the order
 let arr  = [1, 5]
 let arr2 = [2, 4]
 let arr3 = [5, 6]
-let result = $.merge(arrays: arr, arr2, arr3)
+let result = $.merge(arr, arr2, arr3)
 result
 => [1, 5, 2, 4, 5, 6]
 ```
@@ -601,7 +640,7 @@ Merges all of the dictionaries together and the latter dictionary overrides the 
 let dict: Dictionary<String, Int> = ["Dog": 1, "Cat": 2]
 let dict2: Dictionary<String, Int> = ["Cow": 3]
 let dict3: Dictionary<String, Int> = ["Sheep": 4]
-$.merge(dictionaries: dict, dict2, dict3)
+$.merge(dict, dict2, dict3)
 => ["Dog": 1, "Cat": 2, "Cow": 3, "Sheep": 4]
 ```
 
@@ -955,6 +994,28 @@ $.chain([1, 2, 3, 4, 5])
 => [2, 4, 6]
 ```
 
+## Optional ##
+
+### `equal`
+
+Tells whether two optionals containing Equatable types are equal.
+
+```swift
+let optionalString: String? = "hello"
+let otherOptionalString: String? = "hello"
+$.equal(optionalString, otherOptionalString)
+=> true
+
+let thirdOptionalString: String? = "goodbye"
+$.equal(optionalString, thirdOptionalString)
+=> false
+
+let nilOptionalString: String? = nil
+let otherNilOptionalString: String? = nil
+$.equal(nilOptionalString, otherNilOptionalString)
+=> true
+```
+
 # Cent Usage #
 
 ## Array Extensions ##
@@ -1206,19 +1267,6 @@ let otherUnix = Date.unix(otherDate)
 ```
 
 ## Dictionary Extensions ##
-
-### `isEmpty () -> Bool`
-
-Checks whether Dictionary has no keys and hence is empty
-
-```swift
-let dictionary = [String: String]()
-dictionary.isEmpty() 
-=> true
-
-["foo": "bar"].isEmpty() 
-=> false
-```
 
 ### `merge<K, V>(dictionaries: Dictionary<K, V>...)`
 
@@ -1524,6 +1572,23 @@ For each index in the range invoke the callback
 ```swift
 (1...5).each { print("Na") } 
 => "NaNaNaNaNa"
+```
+
+## Optional Extensions ##
+
+### equals - `==`
+
+Check the equality of two Equatable Optionals
+
+```swift
+Optional("hello") == Optional("hello")
+=> true
+
+Optional("hello") == Optional("goodbye")
+=> false
+
+nil as String? == nil as String?
+=> true
 ```
 
 # Contributing #

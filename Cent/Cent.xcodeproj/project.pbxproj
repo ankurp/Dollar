@@ -26,6 +26,7 @@
 		9299310D19F747F600150D45 /* Regex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92D0253F19F73F6B00A8F5E3 /* Regex.swift */; };
 		9299310E19F747F600150D45 /* Range.swift in Sources */ = {isa = PBXBuildFile; fileRef = 920C56A319625401009D5129 /* Range.swift */; };
 		92D0254019F73F6B00A8F5E3 /* Regex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92D0253F19F73F6B00A8F5E3 /* Regex.swift */; };
+		C9035E0E1AA614FF008F36EA /* Optional.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9035E0D1AA614FF008F36EA /* Optional.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -88,6 +89,7 @@
 		925CB1F11A3FE9ED004F1319 /* Dollar.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Dollar.xcodeproj; path = ../Dollar/Dollar.xcodeproj; sourceTree = "<group>"; };
 		92D0253F19F73F6B00A8F5E3 /* Regex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Regex.swift; sourceTree = "<group>"; };
 		92E6688119F0B89600BB4FB8 /* CentTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CentTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		C9035E0D1AA614FF008F36EA /* Optional.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Optional.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -139,6 +141,7 @@
 				920C569F196251D7009D5129 /* String.swift */,
 				92D0253F19F73F6B00A8F5E3 /* Regex.swift */,
 				920C56A319625401009D5129 /* Range.swift */,
+				C9035E0D1AA614FF008F36EA /* Optional.swift */,
 				924F92DF195F8338003DBB60 /* Supporting Files */,
 			);
 			path = Cent;
@@ -317,6 +320,7 @@
 				920C56A419625401009D5129 /* Range.swift in Sources */,
 				920C56A0196251D7009D5129 /* String.swift in Sources */,
 				920C569C1962514E009D5129 /* Dictionary.swift in Sources */,
+				C9035E0E1AA614FF008F36EA /* Optional.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -488,6 +492,8 @@
 		92E6688819F0B89700BB4FB8 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -507,6 +513,8 @@
 		92E6688919F0B89700BB4FB8 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
