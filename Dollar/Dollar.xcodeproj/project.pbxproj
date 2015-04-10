@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		924CB6291A0888910047D7CA /* DollarPerformanceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 924CB6281A0888910047D7CA /* DollarPerformanceTests.swift */; };
 		924E37D4197DFCDB000086A9 /* Dollar.swift in Resources */ = {isa = PBXBuildFile; fileRef = 92E0D05819467CA2002ACC3D /* Dollar.swift */; };
 		9252FCD21A0F26F6002E85A4 /* AutoCurry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9252FCD11A0F26F6002E85A4 /* AutoCurry.swift */; };
 		925CB1E11A3FDCA4004F1319 /* Dollar.framework in Copy Files */ = {isa = PBXBuildFile; fileRef = 92E0D03C19467C67002ACC3D /* Dollar.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -45,7 +44,6 @@
 
 /* Begin PBXFileReference section */
 		0419C8411948BEC600B947B3 /* CarExample.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CarExample.swift; sourceTree = "<group>"; };
-		924CB6281A0888910047D7CA /* DollarPerformanceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DollarPerformanceTests.swift; sourceTree = "<group>"; };
 		9252FCD11A0F26F6002E85A4 /* AutoCurry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoCurry.swift; sourceTree = "<group>"; };
 		92E0D03C19467C67002ACC3D /* Dollar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Dollar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		92E0D04019467C67002ACC3D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -118,7 +116,6 @@
 			isa = PBXGroup;
 			children = (
 				0419C8411948BEC600B947B3 /* CarExample.swift */,
-				924CB6281A0888910047D7CA /* DollarPerformanceTests.swift */,
 				92E0D04E19467C67002ACC3D /* DollarTests.swift */,
 				92E0D04C19467C67002ACC3D /* Supporting Files */,
 			);
@@ -279,7 +276,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				92E6687A19F09D2A00BB4FB8 /* CarExample.swift in Sources */,
-				924CB6291A0888910047D7CA /* DollarPerformanceTests.swift in Sources */,
 				92E6687B19F09D2A00BB4FB8 /* DollarTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -329,6 +325,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				METAL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -370,6 +367,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				METAL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;

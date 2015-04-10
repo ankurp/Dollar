@@ -51,7 +51,8 @@ class DollarTests: XCTestCase {
     
     func testEach() {
         var arr: [Int] = []
-        XCTAssert($.each([1, 3, 4, 5], callback: { arr.append($0 * 2) }) == [1, 3, 4, 5], "Return the array itself")
+        var result = $.each([1, 3, 4, 5], callback: { arr.append($0 * 2) })
+        XCTAssert(result == [1, 3, 4, 5], "Return the array itself")
         XCTAssert(arr == [2, 6, 8, 10], "Return array with doubled numbers")
     }
     
@@ -63,7 +64,7 @@ class DollarTests: XCTestCase {
 
     func testFlatten() {
         XCTAssertEqual($.flatten([[3], 4, 5]), [3, 4, 5], "Return flat array")
-//        XCTAssertEqual($.flatten([[[3], 4], 5]), [3, 4, 5], "Return flat array")
+        XCTAssertEqual($.flatten([[[3], 4], 5]), [3, 4, 5], "Return flat array")
     }
     
     func testShuffle() {
@@ -199,7 +200,7 @@ class DollarTests: XCTestCase {
 
     func testFind() {
         XCTAssertEqual($.find([1, 2, 3, 4], callback: { $0 == 2 })!, 2, "Return element when object is found")
-        XCTAssertNil($.find([1, 2, 3, 4], callback: { $0 == 10 })!, "Return nil when object not found")
+        XCTAssertNil($.find([1, 2, 3, 4], callback: { $0 as! Int == 10 }), "Return nil when object not found")
     }
 
     func testMax() {
