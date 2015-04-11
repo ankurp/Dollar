@@ -1266,6 +1266,17 @@ let otherUnix = Date.unix(otherDate)
 => 1,388,552,400.0
 ```
 
+### `Int.hour.fromNow` et al.
+
+Use the following syntax to calculate dates and times based on the user's current calendar. 
+
+```swift
+1.day.ago
+=> "Apr 10, 2015, 11:51 AM"
+4.hours.fromNow
+=> "Apr 11, 2015, 3:51 PM"
+```
+
 ## Dictionary Extensions ##
 
 ### `merge<K, V>(dictionaries: Dictionary<K, V>...)`
