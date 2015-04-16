@@ -22,7 +22,7 @@ extension NSDate {
         c.month = month
         c.day = day
         
-        if let gregorian = NSCalendar(identifier:NSGregorianCalendar) {
+        if let gregorian = NSCalendar(identifier: NSCalendarIdentifierGregorian) {
             return gregorian.dateFromComponents(c)
         } else {
             return .None
