@@ -37,12 +37,6 @@ class CentTests: XCTestCase {
         XCTAssertEqual(Swift.join("", arr), "ABC", "Return string concatenated")
     }
     
-    func testEqual() {
-        XCTAssert(Optional("hello") == Optional("hello"), "optionalString and otherOptionalString should be equal.")
-        XCTAssert(Optional("hello") != Optional("goodbye"), "optionalString and thirdOptionalString should not be equal.")
-        XCTAssert(nil as String? == nil as String?, "Nil optionals should be equal.")
-    }
-
     func testDateMath() {
         struct TestDate {
             let unit: NSCalendarUnit
