@@ -998,28 +998,6 @@ $.chain([1, 2, 3, 4, 5])
 => [2, 4, 6]
 ```
 
-## Optional ##
-
-### `equal`
-
-Tells whether two optionals containing Equatable types are equal.
-
-```swift
-let optionalString: String? = "hello"
-let otherOptionalString: String? = "hello"
-$.equal(optionalString, otherOptionalString)
-=> true
-
-let thirdOptionalString: String? = "goodbye"
-$.equal(optionalString, thirdOptionalString)
-=> false
-
-let nilOptionalString: String? = nil
-let otherNilOptionalString: String? = nil
-$.equal(nilOptionalString, otherNilOptionalString)
-=> true
-```
-
 # Cent Usage #
 
 ## Array Extensions ##
@@ -1587,23 +1565,6 @@ For each index in the range invoke the callback
 ```swift
 (1...5).each { print("Na") } 
 => "NaNaNaNaNa"
-```
-
-## Optional Extensions ##
-
-### equals - `==`
-
-Check the equality of two Equatable Optionals
-
-```swift
-Optional("hello") == Optional("hello")
-=> true
-
-Optional("hello") == Optional("goodbye")
-=> false
-
-nil as String? == nil as String?
-=> true
 ```
 
 # Contributing #
