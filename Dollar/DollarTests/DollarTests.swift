@@ -64,7 +64,7 @@ class DollarTests: XCTestCase {
 
     func testFlatten() {
         XCTAssertEqual($.flatten([[3], 4, 5]), [3, 4, 5], "Return flat array")
-        XCTAssertEqual($.flatten([[[3], 4], 5]), [3, 4, 5], "Return flat array")
+        XCTAssertEqual($.flatten([[[3], 4], 5] as! [NSObject]), [3, 4, 5], "Return flat array")
     }
     
     func testShuffle() {
