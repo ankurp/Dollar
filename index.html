@@ -49,9 +49,10 @@
                             <li id="dollar-and-cent-item" class="level-1"><a id="dollar-and-cent-link" href="#dollar-and-cent" class="level-1">Dollar and Cent </a></li>
                             <li id="setup-item" class="level-1"><a id="setup-link" href="#setup" class="level-1">Setup</a>
                                 <ul class="level-2" id="setup-list">
-                                    <li id="using-carthage-item" class="level-2"><a id="using-carthage-link" href="#using-carthage" class="level-2 active">Using Carthage</a></li>
+                                    <li id="using-carthage-item" class="level-2"><a id="using-carthage-link" href="#using-carthage" class="level-2">Using Carthage</a></li>
                                     <li id="using-cocoapods-version-0-36-1-item" class="level-2"><a id="using-cocoapods-version-0-36-1-link" href="#using-cocoapods-version-0-36-1" class="level-2">Using cocoapods version 0.36.1</a></li>
                                     <li id="using-git-submodule-item" class="level-2"><a id="using-git-submodule-link" href="#using-git-submodule" class="level-2">Using git submodule</a></li>
+                                    <li id="support-for-older-xcode-and-swift-item" class="level-2"><a id="support-for-older-xcode-and-swift-link" href="#support-for-older-xcode-and-swift" class="level-2">Support for Older Xcode and Swift</a></li>
                                     <li id="demo-apps-item" class="level-2"><a id="demo-apps-link" href="#demo-apps" class="level-2">Demo Apps</a></li>
                                 </ul>
                             </li>
@@ -191,6 +192,7 @@
                                             <li id="date-from-unix-double-nsdate-item" class="level-3"><a id="date-from-unix-double-nsdate-link" href="#date-from-unix-double-nsdate" class="level-3">Date.from(#unix: Double) -&gt; NSDate</a></li>
                                             <li id="date-parse-datestr-string-format-string-yyyy-mm-dd-nsdate-item" class="level-3"><a id="date-parse-datestr-string-format-string-yyyy-mm-dd-nsdate-link" href="#date-parse-datestr-string-format-string-yyyy-mm-dd-nsdate" class="level-3">Date.parse(dateStr: String, format: String = "yyyy-MM-dd") -&gt; NSDate</a></li>
                                             <li id="date-unix-date-nsdate-nsdate-double-item" class="level-3"><a id="date-unix-date-nsdate-nsdate-double-link" href="#date-unix-date-nsdate-nsdate-double" class="level-3">Date.unix(date: NSDate = NSDate()) -&gt; Double</a></li>
+                                            <li id="int-hour-fromnow-et-al-item" class="level-3"><a id="int-hour-fromnow-et-al-link" href="#int-hour-fromnow-et-al" class="level-3">Int.hour.fromNow et al.</a></li>
                                         </ul>
                                     </li>
                                     <li id="dictionary-extensions-item" class="level-2"><a id="dictionary-extensions-link" href="#dictionary-extensions" class="level-2">Dictionary Extensions</a>
@@ -267,7 +269,7 @@
             <p>Cent is a library that extends certain Swift object types using the extension feature and gives its two cents to Swift language.</p>
             <h1 id="setup">Setup</h1>
             <h2 id="using-carthage">Using <a href="https://github.com/Carthage/Carthage">Carthage</a></h2>
-            <p>Add <code>github "ankurp/Dollar.swift" ~&gt; 2.1.1</code> to your <code>Cartfile</code> and run <code>carthage update</code>. If unfamiliar with Carthage then checkout their <a href="https://github.com/Carthage/Carthage#getting-started">Getting Started section</a> or this <a href="https://github.com/ankurp/DollarCarthageApp">sample app</a></p>
+            <p>Add <code>github "ankurp/Dollar.swift" ~&gt; 3.0.0</code> to your <code>Cartfile</code> and run <code>carthage update</code>. If unfamiliar with Carthage then checkout their <a href="https://github.com/Carthage/Carthage#getting-started">Getting Started section</a> or this <a href="https://github.com/ankurp/DollarCarthageApp">sample app</a></p>
             <h2 id="using-cocoapods-version-0-36-1">Using <a href="http://cocoapods.org/">cocoapods</a> version 0.36.1</h2>
             <p>Add <code>pod 'Dollar'</code> to your <code>Podfile</code> and run <code>pod install</code>. Add <code>use_frameworks!</code> to the end of the <code>Podfile</code>. Also checkout this <a href="https://github.com/ankurp/DollarPodApp">sample app</a>. Requires cocoapod version 0.36.1.</p>
             <h2 id="using-git-submodule">Using <code>git submodule</code></h2>
@@ -280,9 +282,12 @@
                 <li>In your project file <code>import Dollar</code> and you can call all of the helper functions.</li>
             </ol>
             <p>Still stuck. Then checkout this screencast on <a href="http://recordit.co/0gQiCSEREF">how to import</a></p>
+            <h2 id="support-for-older-xcode-and-swift">Support for Older Xcode and Swift</h2>
+            <p>Use version <code>2.2.0</code> or older for Xcode 6.1 and 6.2.</p>
             <h2 id="demo-apps">Demo Apps</h2>
-            <p>Using<br/>
-                <a href="https://github.com/ankurp/DollarCarthageApp"><code>carthage</code></a> <br/> <a href="https://github.com/ankurp/DollarPodApp"><code>cocoapods</code></a><br/> <a href="https://github.com/ankurp/DollarSubmoduleApp"><code>git submodule</code></a></p>
+            <p>Using
+                <em> <a href="https://github.com/ankurp/DollarCarthageApp"><code>carthage</code></a>
+</em> <a href="https://github.com/ankurp/DollarPodApp"><code>cocoapods</code></a> * <a href="https://github.com/ankurp/DollarSubmoduleApp"><code>git submodule</code></a></p>
             <h1 id="dollar-usage">Dollar Usage</h1>
             <h2 id="array">Array</h2>
             <h3 id="at-at">at - <code>$.at</code></h3>
@@ -893,6 +898,11 @@ element!
 var otherNSDate = Date()
 <span class="keyword">let</span> otherUnix = Date.unix(otherDate)
 =&gt; <span class="number">1</span>,<span class="number">388</span>,<span class="number">552</span>,<span class="number"><span class="number">400</span>.<span class="number">0</span></span></code></pre>
+            <h3 id="int-hour-fromnow-et-al"><code>Int.hour.fromNow</code> et al.</h3>
+            <p>Use the following syntax to calculate dates and times based on the user’s current calendar. </p><pre><code class="lang-swift"><span class="number">1</span>.day.ago
+=&gt; <span class="string">"Apr <span class="number">10</span>, <span class="number">2015</span>, <span class="number">11</span>:<span class="number">51</span> AM"</span>
+<span class="number">4</span>.hours.fromNow
+=&gt; <span class="string">"Apr <span class="number">11</span>, <span class="number">2015</span>, <span class="number">3</span>:<span class="number">51</span> PM"</span></code></pre>
             <h2 id="dictionary-extensions">Dictionary Extensions</h2>
             <h3 id="merge-k-v-dictionaries-dictionary-k-v"><code>merge&lt;K, V&gt;(dictionaries: Dictionary&lt;K, V&gt;...)</code></h3>
             <p>Merges the dictionary with dictionaries passed. The latter dictionaries will override values of the keys that are already set</p><pre><code class="lang-swift">var dic = [<span class="string">"foo"</span>: <span class="string">"bar"</span>] 

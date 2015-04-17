@@ -10,7 +10,7 @@ Cent is a library that extends certain Swift object types using the extension fe
 
 ## Using [Carthage](https://github.com/Carthage/Carthage)
 
-Add `github "ankurp/Dollar.swift" ~> 2.1.1` to your `Cartfile` and run `carthage update`. If unfamiliar with Carthage then checkout their [Getting Started section](https://github.com/Carthage/Carthage#getting-started) or this [sample app](https://github.com/ankurp/DollarCarthageApp)
+Add `github "ankurp/Dollar.swift" ~> 3.0.0` to your `Cartfile` and run `carthage update`. If unfamiliar with Carthage then checkout their [Getting Started section](https://github.com/Carthage/Carthage#getting-started) or this [sample app](https://github.com/ankurp/DollarCarthageApp)
 
 ## Using [cocoapods](http://cocoapods.org/) version 0.36.1
 
@@ -26,6 +26,10 @@ Add `pod 'Dollar'` to your `Podfile` and run `pod install`. Add `use_frameworks!
 6. In your project file `import Dollar` and you can call all of the helper functions.
 
 Still stuck. Then checkout this screencast on [how to import](http://recordit.co/0gQiCSEREF)
+
+## Support for Older Xcode and Swift
+
+Use version `2.2.0` or older for Xcode 6.1 and 6.2.
 
 ## Demo Apps ##
 Using
@@ -1241,6 +1245,17 @@ let currentUnix = Date.unix()
 var otherNSDate = Date()
 let otherUnix = Date.unix(otherDate)
 => 1,388,552,400.0
+```
+
+### `Int.hour.fromNow` et al.
+
+Use the following syntax to calculate dates and times based on the user's current calendar. 
+
+```swift
+1.day.ago
+=> "Apr 10, 2015, 11:51 AM"
+4.hours.fromNow
+=> "Apr 11, 2015, 3:51 PM"
 ```
 
 ## Dictionary Extensions ##
