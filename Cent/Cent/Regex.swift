@@ -24,12 +24,12 @@ public class Regex {
     }
     
     public func matches(testStr: String) -> [AnyObject] {
-        let matches = self.expression.matchesInString(testStr, options: nil, range:NSMakeRange(0, countElements(testStr)))
+        let matches = self.expression.matchesInString(testStr, options: nil, range:NSMakeRange(0, count(testStr)))
         return matches
     }
     
     public func rangeOfFirstMatch(testStr: String) -> NSRange {
-        return self.expression.rangeOfFirstMatchInString(testStr, options: nil, range:NSMakeRange(0, countElements(testStr)))
+        return self.expression.rangeOfFirstMatchInString(testStr, options: nil, range:NSMakeRange(0, count(testStr)))
     }
     
     public func test(testStr: String) -> Bool {

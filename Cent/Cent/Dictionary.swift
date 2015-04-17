@@ -17,7 +17,7 @@ internal extension Dictionary {
     mutating func merge<K, V>(dictionaries: Dictionary<K, V>...) {
         for dict in dictionaries {
             for (key, value) in dict {
-                self.updateValue(value as Value, forKey: key as Key)
+                self.updateValue(value as! Value, forKey: key as! Key)
             }
         }
     }
