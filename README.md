@@ -50,6 +50,10 @@ Add `pod 'Dollar'` to your `Podfile` and run `pod install`. Add `use_frameworks!
 
 Still stuck. Then checkout this screencast on [how to import](http://recordit.co/0gQiCSEREF)
 
+## Swift 1.2 Support
+
+Use `xcode-6.3-beta-swift-1.2` branch in your Cartfile or Podfile if using Swift 1.2. This will be merged into master and will be released in a `3.0.0` release.
+
 ## Demo Apps ##
 Using
 * [`carthage`](https://github.com/ankurp/DollarCarthageApp)
