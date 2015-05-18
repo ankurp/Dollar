@@ -95,6 +95,25 @@ public class $ {
         }
     }
     
+    /// Creates an array of elements split into groups the length of size.
+    /// If array can’t be split evenly, the final chunk will be the remaining elements.
+    ///
+    /// :param array to chunk
+    /// :param size size of each chunk
+    /// :return array elements chunked
+    public class func chunk<T>(array: [T], size: Int = 1) -> [[T]] {
+        var result = [[T]]()
+        var chunk = -1
+        for (index, elem) in enumerate(array) {
+            if index % size == 0 {
+                result.append([T]())
+                chunk += 1
+            }
+            result[chunk].append(elem)
+        }
+        return result
+    }
+    
     /// Creates an array with all nil values removed.
     ///
     /// :param array Array to be compacted.
@@ -290,6 +309,22 @@ public class $ {
             return orElse
         }
     }
+
+    /// Fills elements of array with value from start up to, but not including, end.
+    ///
+    /// :param array to fill
+    /// :param elem the element to replace
+    /// :return array elements chunked
+    public class func fill<T>(inout array: [T], withElem elem: T, startIndex: Int = 0, endIndex: Int? = .None) -> [T] {
+        let endIndex = endIndex ?? array.count
+        for (index, _) in enumerate(array) {
+            if index > endIndex { break }
+            if index >= startIndex && index <= endIndex {
+                array[index] = elem
+            }
+        }
+        return array
+    }
     
     /// Iterates over elements of an array and returning the first element
     /// that the callback returns true for.
@@ -410,6 +445,14 @@ public class $ {
         } else {
             return .None
         }
+    }
+    
+    /// Returns size of the array
+    ///
+    /// :param array The array to size.
+    /// :return size of the array
+    public class func size<T>(array: [T]) -> Int {
+        return array.count
     }
     
     /// Randomly shuffles the elements of an array.
@@ -657,6 +700,13 @@ public class $ {
     public class func noop() -> () {
     }
     
+    /// Gets the number of seconds that have elapsed since the Unix epoch (1 January 1970 00:00:00 UTC).
+    ///
+    /// :return number of seconds as double
+    public class func now() -> NSTimeInterval {
+        return NSDate().timeIntervalSince1970
+    }
+    
     /// Creates a shallow clone of a dictionary excluding the specified keys.
     ///
     /// :param dictionary The dictionary to source from.
@@ -858,6 +908,19 @@ public class $ {
     /// :return Array with values pulled out.
     public class func pull<T : Equatable>(array: [T], values: [T]) -> [T] {
         return array.filter { !self.contains(values, value: $0) }
+    }
+
+    /// Removes all provided values from the given array at the given indices
+    ///
+    /// :param array The array to source from.
+    /// :param values The indices to remove from.
+    /// :return Array with values pulled out.
+    public class func pullAt<T : Equatable>(array: [T], indices: Int...) -> [T] {
+        var elemToRemove = [T]()
+        for index in indices {
+            elemToRemove.append(array[index])
+        }
+        return $.pull(array, values: elemToRemove)
     }
     
     public class func random(upperBound: Int) -> Int
@@ -1330,6 +1393,13 @@ public class Chain<C> {
             }
         }
         return false
+    }
+
+    /// Returns size of the array
+    ///
+    /// :return The wrapper object.
+    public func size() -> Int {
+        return self.value.count
     }
     
     /// Slice the array into smaller size based on start and end value.

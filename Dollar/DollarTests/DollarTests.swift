@@ -439,4 +439,24 @@ class DollarTests: XCTestCase {
         XCTAssertEqual(doubleSubtractTen([5, 6, 7]), [0, 2, 4], "Should double value and then subtract 10")
     }
     
+    func testChunk() {
+        XCTAssertEqual($.chunk([1, 2, 3, 4], size: 2), [[1, 2], [3, 4]], "Should chunk with elements in groups of 2")
+        XCTAssertEqual($.chunk([1, 2, 3, 4], size: 3), [[1, 2, 3], [4]], "Should chunk with elements in groups of 2")
+    }
+    
+    func testFill() {
+        var arr = Array<Int>(count: 5, repeatedValue: 1)
+        XCTAssertEqual($.fill(&arr, withElem: 42), [42,42,42,42,42], "Should fill array with 42")
+        
+        $.fill(&arr, withElem: 1, startIndex: 1, endIndex: 3)
+        XCTAssertEqual($.fill(&arr, withElem: 1, startIndex: 1, endIndex: 3), [42,1,1,1,42], "Should fill array with 1")
+    }
+    
+    func testPullAt() {
+        XCTAssertEqual($.pullAt([10, 20, 30, 40, 50], indices: 1, 2, 3), [10, 50], "Remove elements at index")
+    }
+    
+    func testSize() {
+        XCTAssertEqual($.size([10, 20, 30, 40, 50]), 5, "Returns size")
+    }
 }
