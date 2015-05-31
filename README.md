@@ -305,7 +305,7 @@ $.frequencies([1, 2, 3, 4, 5]) { $0 % 2 == 0 }
 => [false: 3, true: 2]
 ```
 
-### indexof - `$.indexof`
+### indexOf - `$.indexOf`
 
 Gets the index at which the first occurrence of value is found.
 
