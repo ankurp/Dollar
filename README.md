@@ -1,4 +1,4 @@
-Dollar and Cent [![Build Status](https://travis-ci.org/ankurp/Dollar.swift.svg?branch=master)](https://travis-ci.org/ankurp/Dollar.swift)
+Dollar and Cent [![Build Status](https://travis-ci.org/ankurp/Dollar.swift.svg?branch=master)](https://travis-ci.org/ankurp/Dollar.swift) ![CocoaPods](https://img.shields.io/cocoapods/v/Dollar.svg) [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 ===========
 [![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/ankurp/Dollar.swift?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
@@ -48,6 +48,18 @@ Creates an array of elements from the specified indexes, or keys, of the collect
 ```swift
 $.at(["ant", "bat", "cat", "dog", "egg"], indexes: 0, 2, 4) 
 => ["ant", "cat", "egg"]
+```
+
+### chunk - `$.chunk`
+
+Creates an array of elements split into groups the length of size. If array can’t be split evenly, the final chunk will be the remaining elements.
+
+```swift
+$.chunk([1, 2, 3, 4], size: 2)
+=> [[1, 2], [3, 4]]
+
+$.chunk([1, 2, 3, 4], size: 3)
+=> [[1, 2, 3], [4]]
 ```
 
 ### compact - `$.compact`
@@ -139,6 +151,21 @@ $.fetch(arr, 100, orElse: 42)
 $.fetch(arr, -1)
 => 8
 ```
+
+### fill - `$.fill`
+
+Fills elements of array with value from start up to, but not including, end. This method mutates array.
+
+```swift
+var arr = Array<Int>(count: 5, repeatedValue: 1)
+$.fill(&arr, withElem: 42)
+=> [42, 42, 42, 42, 42]
+
+var arr = Array<Int>(count: 5, repeatedValue: 1)
+$.fill(&arr, withElem: 42, startIndex: 1, endIndex: 3)
+=> [1, 42, 42, 42, 1]
+```
+
 
 ### find - `$.find`
 
@@ -255,7 +282,7 @@ $.frequencies([1, 2, 3, 4, 5]) { $0 % 2 == 0 }
 => [false: 3, true: 2]
 ```
 
-### indexof - `$.indexof`
+### indexOf - `$.indexOf`
 
 Gets the index at which the first occurrence of value is found.
 
@@ -381,6 +408,15 @@ $.pull([3, 4, 5, 3, 5], values: 3, 4, 5)
 => []
 ```
 
+### pullAt - `$.pullAt`
+
+Removes all provided values from the given array at the given indices
+
+```swift
+let arr = [10, 20, 30, 40, 50]
+$.pullAt(arr, indices: 1, 2, 3)
+```
+
 ### range - `$.range`
 
 Creates an array of numbers (positive and/or negative) progressing from start up to but not including end.
@@ -461,6 +497,15 @@ Shuffles and returns the new shuffled array
 let result = $.shuffle([1, 2, 3, 4, 5, 6])
 result
 => [4, 1, 3, 5, 6, 2]
+```
+
+### size - `$.size`
+
+Returns size of the array
+
+```swift
+_.size(["a", "b", "c")
+=> 3
 ```
 
 ### sortedIndex - `$.sortedIndex`
@@ -781,6 +826,15 @@ $.noop()
 => nil
 ```
 
+### now - `$.now`
+
+Gets the number of seconds that have elapsed since the Unix epoch (1 January 1970 00:00:00 UTC).
+
+```swift
+$.now() 
+=> 1431911564.292577
+```
+
 ### once - `$.once`
 
 Get a wrapper function that executes the passed function only once. Useful for getting shared config or creating singleton objects.
@@ -875,7 +929,7 @@ chain.filter({ ($0 as Int) < 3 }).value
 
 ### `first`
 
-Returns the first element in the array and terminated the chain
+Returns the first element in the array and terminates the chain
 
 ```swift
 var chain = $.chain([1, 2, 3, 4])
@@ -885,7 +939,7 @@ chain.first()
 
 ### `second`
 
-Returns the second element in the array and terminated the chain
+Returns the second element in the array and terminates the chain
 
 ```swift
 var chain = $.chain([1, 2, 3, 4])
@@ -895,7 +949,7 @@ chain.second()
 
 ### `third`
 
-Returns the third element in the array and terminated the chain
+Returns the third element in the array and terminates the chain
 
 ```swift
 var chain = $.chain([1, 2, 3, 4])
@@ -908,7 +962,7 @@ chain.third()
 Flattens a nested array of any depth.
 
 ```swift
-chain = $.chain([[1, [2]], [3], 4])
+var chain = $.chain([[1, [2]], [3], 4])
 chain.flatten().value
 => [1, 2, 3, 4]
 ```
@@ -918,7 +972,7 @@ chain.flatten().value
 Gets all but the last element or last n elements of an array.
 
 ```swift
-varchain = $.chain([1, 2, 3, 4])
+var chain = $.chain([1, 2, 3, 4])
 chain.initial(2).value
 => [1, 2]
 ```
@@ -931,6 +985,16 @@ Maps each element to the new value returned in the callback function
 var chain = $.chain([1, 2, 3, 4])
 chain.map({ ($0 as Int) * 2 }).value
 => [2, 4, 6, 8]
+```
+
+### `size`
+
+Returns size of the array and terminates the chain
+
+```swift
+var chain = $.chain([1, 2, 3, 4])
+chain.map({ ($0 as Int) * 2 }).size()
+=> 4
 ```
 
 ### `slice`
@@ -973,28 +1037,6 @@ $.chain([1, 2, 3, 4, 5])
   .flatten()
   .initial(2).value
 => [2, 4, 6]
-```
-
-## Optional ##
-
-### `equal`
-
-Tells whether two optionals containing Equatable types are equal.
-
-```swift
-let optionalString: String? = "hello"
-let otherOptionalString: String? = "hello"
-$.equal(optionalString, otherOptionalString)
-=> true
-
-let thirdOptionalString: String? = "goodbye"
-$.equal(optionalString, thirdOptionalString)
-=> false
-
-let nilOptionalString: String? = nil
-let otherNilOptionalString: String? = nil
-$.equal(nilOptionalString, otherNilOptionalString)
-=> true
 ```
 
 # Cent Usage #
@@ -1564,23 +1606,6 @@ For each index in the range invoke the callback
 ```swift
 (1...5).each { print("Na") } 
 => "NaNaNaNaNa"
-```
-
-## Optional Extensions ##
-
-### equals - `==`
-
-Check the equality of two Equatable Optionals
-
-```swift
-Optional("hello") == Optional("hello")
-=> true
-
-Optional("hello") == Optional("goodbye")
-=> false
-
-nil as String? == nil as String?
-=> true
 ```
 
 # Contributing #
