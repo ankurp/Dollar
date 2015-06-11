@@ -166,7 +166,7 @@ public class $ {
     /// :param value The value to check.
     /// :return Whether value is in the array.
     public class func contains<T : Equatable>(array: [T], value: T) -> Bool {
-		return array.contains(value)
+        return array.contains(value)
     }
     
     /// Create a copy of an array
@@ -300,15 +300,15 @@ public class $ {
     /// :param index Can be positive or negative to find from end of the array
     /// :param orElse Default value to use if index is out of bounds
     /// :return Element fetched from the array or the default value passed in orElse
-	public class func fetch<T>(array: [T], _ index: Int, orElse: T?) -> T! {
-		if index < 0 && -index < array.count {
-			return array[array.count + index]
-		} else if index < array.count {
-			return array[index]
-		} else {
-			return orElse ?? .None
-		}
-	}
+    public class func fetch<T>(array: [T], _ index: Int, orElse: T?) -> T! {
+        if index < 0 && -index < array.count {
+            return array[array.count + index]
+        } else if index < array.count {
+            return array[index]
+        } else {
+            return orElse ?? .None
+        }
+    }
 
     /// Fills elements of array with value from start up to, but not including, end.
     ///
@@ -606,7 +606,7 @@ public class $ {
     /// :param transform The mapping function
     /// :return Array of elements mapped using the map function
     public class func map<T : CollectionType, E>(collection: T, transform: (T.Generator.Element) -> E) -> [E] {
-		return collection.map(transform)
+        return collection.map(transform)
     }
 
     /// Maps each element to new value based on the map function passed
@@ -615,7 +615,7 @@ public class $ {
     /// :param transform The mapping function
     /// :return Array of elements mapped using the map function
     public class func map<T : SequenceType, E>(sequence: T, transform: (T.Generator.Element) -> E) -> [E] {
-		return sequence.map(transform)
+        return sequence.map(transform)
     }
     
     /// Retrieves the maximum value in an array.
