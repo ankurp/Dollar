@@ -300,15 +300,15 @@ public class $ {
     /// :param index Can be positive or negative to find from end of the array
     /// :param orElse Default value to use if index is out of bounds
     /// :return Element fetched from the array or the default value passed in orElse
-    public class func fetch<T>(array: [T], _ index: Int, orElse: T? = .None) -> T! {
-        if index < 0 && -index < array.count {
-            return array[array.count + index]
-        } else if index < array.count {
-            return array[index]
-        } else {
-            return orElse
-        }
-    }
+	public class func fetch<T>(array: [T], _ index: Int, orElse: T?) -> T! {
+		if index < 0 && -index < array.count {
+			return array[array.count + index]
+		} else if index < array.count {
+			return array[index]
+		} else {
+			return orElse ?? .None
+		}
+	}
 
     /// Fills elements of array with value from start up to, but not including, end.
     ///
