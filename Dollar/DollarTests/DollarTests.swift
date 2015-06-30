@@ -131,7 +131,7 @@ class DollarTests: XCTestCase {
     }
 
     func testSequence() {
-        XCTAssertEqual($.sequence("abc"), ["a", "b", "c"], "Generates array of characters")
+        XCTAssertEqual($.sequence("abc".characters), ["a", "b", "c"], "Generates array of characters")
     }
 
     func testRemove() {
@@ -164,16 +164,16 @@ class DollarTests: XCTestCase {
     }
 
     func testIntersection() {
-        XCTAssertEqual($.intersection([1, 2, 3], [5, 2, 1, 4], [2, 1]).sorted({$0<$1}), [1, 2], "Intersection of arrays")
+        XCTAssertEqual($.intersection([1, 2, 3], [5, 2, 1, 4], [2, 1]).sort({$0<$1}), [1, 2], "Intersection of arrays")
     }
 
     func testDifference() {
-        XCTAssertEqual($.difference([1, 2, 3, 4, 5], [5, 2, 10]).sorted({$0<$1}), [1, 3, 4], "Difference of arrays")
-        XCTAssertEqual($.difference([1, 1, 1, 2, 2], [], [3]).sorted({$0<$1}), [1, 1, 1, 2, 2], "Difference of arrays")
-        XCTAssertEqual($.difference([1, 1, 1, 2, 2], [1, 1], [3]).sorted({$0<$1}), [2, 2], "Difference of arrays")
+        XCTAssertEqual($.difference([1, 2, 3, 4, 5], [5, 2, 10]).sort({$0<$1}), [1, 3, 4], "Difference of arrays")
+        XCTAssertEqual($.difference([1, 1, 1, 2, 2], [], [3]).sort({$0<$1}), [1, 1, 1, 2, 2], "Difference of arrays")
+        XCTAssertEqual($.difference([1, 1, 1, 2, 2], [1, 1], [3]).sort({$0<$1}), [2, 2], "Difference of arrays")
         XCTAssertEqual($.difference([1, 1, 1, 2, 2], [1, 1], [1, 2, 2]), [], "Difference of arrays")
         XCTAssertEqual($.difference([1, 1, 1, 2, 2], [1, 1, 1], [1, 2, 2]), [], "Difference of arrays")
-        XCTAssertEqual($.difference([1, 1, 1, 2, 2], []).sorted({$0<$1}), [1, 1, 1, 2, 2], "Difference of arrays")
+        XCTAssertEqual($.difference([1, 1, 1, 2, 2], []).sort({$0<$1}), [1, 1, 1, 2, 2], "Difference of arrays")
     }
 
     func testUniq() {
@@ -186,7 +186,7 @@ class DollarTests: XCTestCase {
     }
 
     func testXOR() {
-        XCTAssertEqual($.xor([1, 2, 3], [5, 2, 1, 4]).sorted{$0<$1}, [3, 4, 5], "Xor of arrays")
+        XCTAssertEqual($.xor([1, 2, 3], [5, 2, 1, 4]).sort {$0<$1}, [3, 4, 5], "Xor of arrays")
     }
 
     func testAt() {
@@ -230,12 +230,12 @@ class DollarTests: XCTestCase {
 
     func testKeys() {
         let dict = ["Dog": 1, "Cat": 2]
-        XCTAssertEqual($.keys(dict).sorted({$0<$1}), ["Cat", "Dog"], "Returns correct array with keys")
+        XCTAssertEqual($.keys(dict).sort({$0<$1}), ["Cat", "Dog"], "Returns correct array with keys")
     }
 
     func testValues() {
         let dict = ["Dog": 1, "Cat": 2]
-        XCTAssertEqual($.values(dict).sorted({$0<$1}), [1, 2], "Returns correct array with values")
+        XCTAssertEqual($.values(dict).sort({$0<$1}), [1, 2], "Returns correct array with values")
     }
     
     func testMerge() {
@@ -319,7 +319,7 @@ class DollarTests: XCTestCase {
 
     func testTimes() {
         let fun = $.bind({ (names: String...) -> String in
-            let people = $.join(names, separator: " from ")
+            let people = $.join(names, separator: " from")
             return "Hello \(people)"
             }, "Ankur", "Swift")
         XCTAssertEqual($.times(3, function: fun) as [String], ["Hello Ankur from Swift", "Hello Ankur from Swift", "Hello Ankur from Swift"], "Call a function 3 times")

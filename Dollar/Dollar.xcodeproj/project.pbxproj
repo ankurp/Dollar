@@ -194,6 +194,7 @@
 		92E0D03319467C67002ACC3D /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0700;
 				LastUpgradeCheck = 0600;
 				ORGANIZATIONNAME = "Encore Dev Labs LLC";
 				TargetAttributes = {
