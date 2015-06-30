@@ -416,17 +416,6 @@ $.pluck(arr, value: "age")
 => [20, 30, 40]
 ```
 
-### groupBy - `$.groupBy`
-
-Group array elements by a given key value. The result is an array of arrays
-
-```
-let arr = [["company": "Apple", "name": "Pedro"], ["company": "Sony", "name": "Maria"], ["company": "Apple", "name": "Juan"]]
-$.groupBy(arr, key: "company")
-=>  [[["company": "Apple", "name": "Pedro"], ["company": "Apple", "name": "Juan"]], ["company": "Sony", "name": "Maria"]]
-```
-
-
 ### pull - `$.pull`
 
 Removes all provided values from the given array.

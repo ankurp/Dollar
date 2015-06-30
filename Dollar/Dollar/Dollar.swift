@@ -895,37 +895,6 @@ public class $ {
         return result
     }
     
-    /// Return array elements grouped by a given key
-    ///
-    /// :param array The array to source from
-    /// :param key The key used to group elements
-    public class func groupBy<T, E: Equatable>(array: [[T: E]], key: T ) -> [[[T: E]]] {
-        var result: [[[T: E]]] = [[[T: E]]]()
-        for object in array {
-            let keyValue = object[key]
-            var existingArray: [[T:E]]?
-            var existingIndex: Int?
-            for (index, element) in result.enumerate() {
-                if element.first![key] == keyValue {
-                    existingArray = element
-                    existingIndex = index
-                    break
-                }
-            }
-            if existingArray != nil {
-                result.removeAtIndex(existingIndex!)
-                existingArray!.append(object)
-                result.append(existingArray!)
-            }
-            else {
-                var newArray = [[T:E]]()
-                newArray.append(object)
-                result.append(newArray)
-            }
-        }
-        return result
-    }
-    
     /// Removes all provided values from the given array.
     ///
     /// :param array The array to source from.
