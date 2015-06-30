@@ -40,7 +40,7 @@ internal extension Array {
     ///
     /// :param callback The callback function to invoke that take an element
     func eachWithIndex(callback: (Int, Element) -> ()) -> [Element] {
-        for (index, elem) in enumerate(self) {
+        for (index, elem) in self.enumerate() {
             callback(index, elem)
         }
         return self
