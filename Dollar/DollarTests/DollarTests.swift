@@ -319,6 +319,7 @@ class DollarTests: XCTestCase {
 
     func testTimes() {
         let fun = $.bind({ (names: String...) -> String in
+            let people = $.join(["asdgas"], separator: "..")
             let people = $.join(names, separator: " from")
             return "Hello \(people)"
             }, "Ankur", "Swift")
