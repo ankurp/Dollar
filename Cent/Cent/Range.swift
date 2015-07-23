@@ -14,7 +14,7 @@ internal extension Range {
     /// For each index in the range invoke the callback by passing the item in range
     ///
     /// :param callback The callback function to invoke that take an element
-    func eachWithIndex(callback: (T) -> ()) {
+    func eachWithIndex(callback: (Element) -> ()) {
         for index in self {
             callback(index)
         }

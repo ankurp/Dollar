@@ -13,7 +13,7 @@ extension String {
     
     public var length: Int {
         get {
-            return count(self)
+            return Int(characters.count)
         }
     }
     
@@ -22,10 +22,10 @@ extension String {
     /// :param i Index for which the character is returned
     /// :return Character at index i
     public subscript(i: Int) -> Character? {
-        if let char = Array(self).get(i) {
-            return char
+        if i > length - 1 {
+            return .None
         }
-        return .None
+        return [Character](characters)[i]
     }
 
     /// Get character at a subscript
@@ -127,6 +127,6 @@ public func * (str: String, n: Int) -> String {
     n.times {
         stringBuilder.append(str)
     }
-    return Swift.join("", stringBuilder)
+    return "".join(stringBuilder)
 }
 

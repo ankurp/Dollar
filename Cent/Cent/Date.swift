@@ -16,7 +16,7 @@ extension NSDate {
     /// :param month
     /// :param day
     /// :return Date
-    public class func from(#year: Int, month: Int, day: Int) -> NSDate? {
+    public class func from(year year: Int, month: Int, day: Int) -> NSDate? {
         var c = NSDateComponents()
         c.year = year
         c.month = month
@@ -33,7 +33,7 @@ extension NSDate {
     ///
     /// :param unix timestamp
     /// :return Date
-    public class func from(#unix: Double) -> NSDate {
+    public class func from(unix unix: Double) -> NSDate {
         return NSDate(timeIntervalSince1970: unix)
     }
 
