@@ -126,7 +126,7 @@ public extension Int {
             self.value = value
         }
 
-        private func generateComponents(_ modifer: (Int) -> (Int) = (+)) -> NSDateComponents {
+        private func generateComponents(modifer: (Int) -> (Int) = (+)) -> NSDateComponents {
             let components = NSDateComponents()
             components.setValue(modifer(value), forComponent: unit)
             return components

@@ -32,7 +32,7 @@ class CentTests: XCTestCase {
     
     func testEach() {
         var arr: [String] = []
-        var result = ["A", "B", "C"].each({ arr.append($0) })
+        let result = ["A", "B", "C"].each({ arr.append($0) })
         XCTAssertEqual(result, ["A", "B", "C"], "Return array itself")
         XCTAssertEqual("".join(arr), "ABC", "Return string concatenated")
     }
