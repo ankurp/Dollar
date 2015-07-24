@@ -1155,6 +1155,18 @@ Checks if the given callback returns true value for all items in the array.
 => true
 ```
 
+### `indexOf<T: Equatable>(value: T) -> Int`
+
+Gets the index at which the first occurrence of value is found.
+
+```swift
+let array = ["foo", "spam", "bar", "eggs"]
+array.indexOf("spam")
+=> 1
+array.indexOf("None")
+=> nil
+```
+
 ### `fetch(index: Int, orElse: T? = .None) -> T!`
 
 Get element from an array at the given index which can be negative to find elements from the end of the array. A default value can be returned if indexing out of bounds.
