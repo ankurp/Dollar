@@ -1285,6 +1285,17 @@ let max = [ 0, 1, 2].max()
 => 2
 ```
 
+### `remove<T: Equatable>(value: T) -> T?`
+
+Remove element from array
+
+```swift
+var arr = ["A", "B", "C", "D", "E"]
+arr.remove("B")
+=> ["A", "C", "D", "E"]
+```
+
+
 ## Character Extensions ##
 
 ### `"A".description -> String`
