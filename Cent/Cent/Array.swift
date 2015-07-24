@@ -176,7 +176,7 @@ internal extension Array {
         if let index = $.indexOf(map { $0 as! T }, value: value) {
             return (removeAtIndex(index) as? T)
         } else {
-            return nil
+            return .None
         }
     }
 }
