@@ -139,9 +139,9 @@ class DollarTests: XCTestCase {
     }
 
     func testRemoveElement() {
-        XCTAssertEqual($.remove(["ant", "bat", "cat", "dog", "egg"], remove: "cat"), ["ant", "bat", "dog", "egg"], "Array after removing element")
+        XCTAssertEqual($.remove(["ant", "bat", "cat", "dog", "egg"], value: "cat"), ["ant", "bat", "dog", "egg"], "Array after removing element")
         
-        XCTAssertEqual($.remove(["ant", "bat", "cat", "dog", "egg"], remove: "fish"), ["ant", "bat", "cat", "dog", "egg"], "Array after removing element that does not exist")
+        XCTAssertEqual($.remove(["ant", "bat", "cat", "dog", "egg"], value: "fish"), ["ant", "bat", "cat", "dog", "egg"], "Array after removing element that does not exist")
         
     }
     
