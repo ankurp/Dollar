@@ -507,10 +507,17 @@ $.sequence((0..20).by(5))
 $.sequence("abc") 
 => ["a", "b", "c"]
 ```
+### remove - `$.remove`
+
+Removes an element from array.
+```swift
+$.remove(["A", "B", "C", "D"], value: "B")
+=> ["A", "C", "D"]
+```
 
 ### remove - `$.remove`
 
-Removes all elements from an array that the callback returns true.
+Removes all elements from an array that the `callback` returns true.
 
 ```swift
 let result = $.remove([1, 2, 3, 4, 5, 6]) { 
