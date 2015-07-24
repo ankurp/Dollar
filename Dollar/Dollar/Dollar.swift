@@ -1008,7 +1008,7 @@ public class $ {
     /// :param element Element that is to be removed
     /// :return Array with element removed.
     public class func remove<T: Equatable>(array: [T], value: T) -> [T] {
-        return remove(array, callback: {$0 == value})
+        return self.remove(array, callback: {$0 == value})
     }
     
     /// The opposite of initial this method gets all but the first element or first n elements of an array.
