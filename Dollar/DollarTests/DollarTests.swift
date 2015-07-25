@@ -138,6 +138,13 @@ class DollarTests: XCTestCase {
         XCTAssertEqual($.remove([1, 2, 3, 4, 5, 6], callback: { $0 == 2 || $0 == 3 }), [1, 4, 5, 6], "Remove based on callback")
     }
 
+    func testRemoveElement() {
+        XCTAssertEqual($.remove(["ant", "bat", "cat", "dog", "egg"], value: "cat"), ["ant", "bat", "dog", "egg"], "Array after removing element")
+        
+        XCTAssertEqual($.remove(["ant", "bat", "cat", "dog", "egg"], value: "fish"), ["ant", "bat", "cat", "dog", "egg"], "Array after removing element that does not exist")
+        
+    }
+    
     func testSortedIndex() {
         XCTAssertEqual($.sortedIndex([3, 4, 6, 10], value: 5), 2, "Index to insert element at in a sorted array")
         XCTAssertEqual($.sortedIndex([10, 20, 30, 50], value: 40), 3, "Index to insert element at in a sorted array")

@@ -1002,6 +1002,15 @@ public class $ {
         return array.filter { !callback($0) }
     }
     
+    /// Removes an element from an array.
+    ///
+    /// :param array The array to source from.
+    /// :param element Element that is to be removed
+    /// :return Array with element removed.
+    public class func remove<T: Equatable>(array: [T], value: T) -> [T] {
+        return self.remove(array, callback: {$0 == value})
+    }
+    
     /// The opposite of initial this method gets all but the first element or first n elements of an array.
     ///
     /// :param array The array to source from.

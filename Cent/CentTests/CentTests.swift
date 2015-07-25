@@ -75,4 +75,13 @@ class CentTests: XCTestCase {
             XCTAssert(equalIsh(test.multipleMath.ago, rhs: calendar.dateByAddingComponents(components, toDate: NSDate(), options: nil)), "ago multiple units are equal.")
         }
     }
+    
+    func testRemoveArray() {
+        var arr = ["A", "B", "C", "D", "E"]
+        arr.remove("B")
+        XCTAssertEqual(arr, ["A", "C", "D", "E"], "Test remove")
+        
+        arr.remove("Z")
+        XCTAssertEqual(arr, ["A", "C", "D", "E"], "Remove element that does not exist")
+    }
 }

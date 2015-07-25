@@ -159,6 +159,26 @@ internal extension Array {
     func max<T: Comparable>() -> T? {
         return $.max(map { $0 as! T })
     }
+    
+    /// Gets the index at which the first occurrence of value is found.
+    ///
+    /// :param value Value whose index needs to be found.
+    /// :return Index of the element otherwise returns nil if not found.
+    func indexOf<T: Equatable>(value: T) -> Int? {
+        return $.indexOf(map { $0 as! T }, value: value)
+    }
+    
+    /// Remove element from array
+    ///
+    /// :param value Value that is to be removed from array
+    /// :return Element at that index
+    mutating func remove<T: Equatable>(value: T) -> T? {
+        if let index = $.indexOf(map { $0 as! T }, value: value) {
+            return (removeAtIndex(index) as? T)
+        } else {
+            return .None
+        }
+    }
 }
 
 /// Overloaded operator to appends another array to an array
