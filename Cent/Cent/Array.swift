@@ -179,6 +179,15 @@ internal extension Array {
             return .None
         }
     }
+    
+    /// Checks if a given value is present in the array.
+    ///
+    /// :param value The value to check.
+    /// :return Whether value is in the array.
+    func contains<T:Equatable>(value: T) -> Bool {
+        return $.contains(map { $0 as! T }, value: value)
+    }
+
 }
 
 /// Overloaded operator to appends another array to an array

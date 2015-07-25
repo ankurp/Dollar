@@ -84,4 +84,10 @@ class CentTests: XCTestCase {
         arr.remove("Z")
         XCTAssertEqual(arr, ["A", "C", "D", "E"], "Remove element that does not exist")
     }
+    
+    func testArrayContains() {
+        var arr = ["A", "B", "C", "D", "E"]
+        XCTAssert(arr.contains("C"), "Test if array contains C")
+        XCTAssertFalse(arr.contains("Z"), "Test of failure")
+    }
 }
