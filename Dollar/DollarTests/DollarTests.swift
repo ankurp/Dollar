@@ -317,18 +317,6 @@ class DollarTests: XCTestCase {
         XCTAssertEqual(helloWorldFunc(), "Hello World from Swift", "Returns curry function that is evaluated")
     }
 
-    func testTimes() {
-        //REGARDING THE DOCUMENTATION BUT IT'S NOT WORKING
-//        print(Swift.join(" ", [ "here", "be", "dragons" ]))
-        
-//        let fun = $.bind({ (names: String...) -> String in
-//            let peop
-//           let people = Swift.join(" ", [ "here", "be", "dragons" ])
-//            return "Hello \(people)"
-//        }, "Ankur", "Swift")
-//        XCTAssertEqual($.times(3, function: fun) as [String], ["Hello Ankur from Swift", "Hello Ankur from Swift", "Hello Ankur from Swift"], "Call a function 3 times")
-    }
-
     func testAfter() {
         let saves = ["profile", "settings"]
         let asyncSave = { (function: () -> ()?) in

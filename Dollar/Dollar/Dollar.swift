@@ -564,7 +564,7 @@ public class $ {
     /// :param array The array to join the elements of.
     /// :param separator The separator to join the elements with.
     /// :return Joined element from the array of elements.
-    public class func join<C : ExtensibleCollectionType, S : SequenceType where S.Generator.Element == C>(elements: S, separator: C) -> C
+    public class func join<C : RangeReplaceableCollectionType, S : SequenceType where S.Generator.Element == C>(elements: S, separator: C) -> C
     {
         return Swift.join(separator, elements)
     }
