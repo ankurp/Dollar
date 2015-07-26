@@ -1295,6 +1295,18 @@ arr.remove("B")
 => ["A", "C", "D", "E"]
 ```
 
+### `contains<T:Equatable>(value: T) -> Bool`
+
+Checks if a given value is present in the array.
+
+```swift
+var arr = ["A", "B", "C", "D", "E"]
+arr.contains("C")
+=> true
+arr.contains("Z")
+=> false
+```
+
 
 ## Character Extensions ##
 
