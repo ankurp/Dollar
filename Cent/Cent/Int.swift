@@ -126,14 +126,14 @@ public extension Int {
             self.value = value
         }
 
-        private func generateComponents(_ modifer: (Int) -> (Int) = (+)) -> NSDateComponents {
+        private func generateComponents(modifer: (Int) -> (Int) = (+)) -> NSDateComponents {
             let components = NSDateComponents()
             components.setValue(modifer(value), forComponent: unit)
             return components
         }
 
         public func from(date: NSDate) -> NSDate? {
-            return calendar.dateByAddingComponents(generateComponents(), toDate: date, options: nil)
+            return calendar.dateByAddingComponents(generateComponents(), toDate: date, options: [])
         }
 
         public var fromNow: NSDate? {
@@ -141,7 +141,7 @@ public extension Int {
         }
 
         public func before(date: NSDate) -> NSDate? {
-            return calendar.dateByAddingComponents(generateComponents(-), toDate: date, options: nil)
+            return calendar.dateByAddingComponents(generateComponents(-), toDate: date, options: [])
         }
 
         public var ago: NSDate? {
@@ -154,7 +154,7 @@ public extension Int {
     }
 
     var seconds: CalendarMath {
-        return mathForUnit(.CalendarUnitSecond)
+        return mathForUnit(NSCalendarUnit.Second)
     }
 
     var second: CalendarMath {
@@ -162,7 +162,7 @@ public extension Int {
     }
 
     var minutes: CalendarMath {
-        return mathForUnit(.CalendarUnitMinute)
+        return mathForUnit(NSCalendarUnit.Minute)
     }
 
     var minute: CalendarMath {
@@ -170,7 +170,7 @@ public extension Int {
     }
 
     var hours: CalendarMath {
-        return mathForUnit(.CalendarUnitHour)
+        return mathForUnit(NSCalendarUnit.Hour)
     }
 
     var hour: CalendarMath {
@@ -178,7 +178,7 @@ public extension Int {
     }
 
     var days: CalendarMath {
-        return mathForUnit(.CalendarUnitDay)
+        return mathForUnit(NSCalendarUnit.Day)
     }
 
     var day: CalendarMath {
@@ -186,7 +186,7 @@ public extension Int {
     }
 
     var weeks: CalendarMath {
-        return mathForUnit(.CalendarUnitWeekOfYear)
+        return mathForUnit(NSCalendarUnit.WeekOfYear)
     }
 
     var week: CalendarMath {
@@ -194,7 +194,7 @@ public extension Int {
     }
 
     var months: CalendarMath {
-        return mathForUnit(.CalendarUnitMonth)
+        return mathForUnit(NSCalendarUnit.Month)
     }
 
     var month: CalendarMath {
@@ -202,7 +202,7 @@ public extension Int {
     }
 
     var years: CalendarMath {
-        return mathForUnit(.CalendarUnitYear)
+        return mathForUnit(NSCalendarUnit.Year)
     }
     
     var year: CalendarMath {
