@@ -563,8 +563,17 @@ public class $ {
     /// :param array The array to join the elements of.
     /// :param separator The separator to join the elements with.
     /// :return Joined element from the array of elements.
-    public class func join<T: ExtensibleCollectionType>(array: [T], separator: T) -> T {
+    public class func join<T: RangeReplaceableCollectionType>(array: [T], separator: T) -> T {
         return Swift.join(separator, array)
+    }
+    
+    /// Joins strings in an array with the specified separator
+    ///
+    /// :param array The array to join the elements of.
+    /// :param separator The separator to join the elements with.
+    /// :return Joined element from the array of elements.
+    public class func join(strArray: [String], separator: String) -> String {
+        return separator.join(strArray)
     }
     
     /// Creates an array of keys given a dictionary.
@@ -991,6 +1000,14 @@ public class $ {
     /// :return Array of elements generated from the sequence.
     public class func sequence<S : SequenceType>(seq: S) -> [S.Generator.Element] {
         return Array<S.Generator.Element>(seq)
+    }
+    
+    /// Creates an array of an arbitrary string characters.
+    ///
+    /// :param seq The sequence to generate from.
+    /// :return Array of elements generated from the sequence.
+    public class func sequence(str: String) -> [String] {
+        return str.characters.map { String($0) }
     }
     
     /// Removes all elements from an array that the callback returns true.
