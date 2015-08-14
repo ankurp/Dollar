@@ -37,6 +37,14 @@ Using
 * [`cocoapods`](https://github.com/ankurp/DollarPodApp)
 * [`git submodule`](https://github.com/ankurp/DollarSubmoduleApp)
 
+## Communication ##
+
+- If you **need help**, use [Stack Overflow](http://stackoverflow.com/questions/tagged/dollar.swift). (Tag 'dollar.swift')
+- If you'd like to **ask a general question**, use [Stack Overflow](http://stackoverflow.com/questions/tagged/dollar.swift).
+- If you **found a bug**, open an issue.
+- If you **have a feature request**, open an issue.
+- If you **want to contribute**, submit a pull request.
+
 # Dollar Usage #
 
 ## Array ##
@@ -476,10 +484,17 @@ $.sequence((0..20).by(5))
 $.sequence("abc") 
 => ["a", "b", "c"]
 ```
+### remove - `$.remove`
+
+Removes an element from array.
+```swift
+$.remove(["A", "B", "C", "D"], value: "B")
+=> ["A", "C", "D"]
+```
 
 ### remove - `$.remove`
 
-Removes all elements from an array that the callback returns true.
+Removes all elements from an array that the `callback` returns true.
 
 ```swift
 let result = $.remove([1, 2, 3, 4, 5, 6]) { 
@@ -1117,6 +1132,18 @@ Checks if the given callback returns true value for all items in the array.
 => true
 ```
 
+### `indexOf<T: Equatable>(value: T) -> Int`
+
+Gets the index at which the first occurrence of value is found.
+
+```swift
+let array = ["foo", "spam", "bar", "eggs"]
+array.indexOf("spam")
+=> 1
+array.indexOf("None")
+=> nil
+```
+
 ### `fetch(index: Int, orElse: T? = .None) -> T!`
 
 Get element from an array at the given index which can be negative to find elements from the end of the array. A default value can be returned if indexing out of bounds.
@@ -1234,6 +1261,29 @@ Retrieves the maximum value in an array.
 let max = [ 0, 1, 2].max()
 => 2
 ```
+
+### `remove<T: Equatable>(value: T) -> T?`
+
+Remove element from array
+
+```swift
+var arr = ["A", "B", "C", "D", "E"]
+arr.remove("B")
+=> ["A", "C", "D", "E"]
+```
+
+### `contains<T:Equatable>(value: T) -> Bool`
+
+Checks if a given value is present in the array.
+
+```swift
+var arr = ["A", "B", "C", "D", "E"]
+arr.contains("C")
+=> true
+arr.contains("Z")
+=> false
+```
+
 
 ## Character Extensions ##
 

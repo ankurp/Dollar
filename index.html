@@ -54,6 +54,7 @@
                                     <li id="using-git-submodule-item" class="level-2"><a id="using-git-submodule-link" href="#using-git-submodule" class="level-2">Using git submodule</a></li>
                                     <li id="support-for-older-xcode-and-swift-item" class="level-2"><a id="support-for-older-xcode-and-swift-link" href="#support-for-older-xcode-and-swift" class="level-2">Support for Older Xcode and Swift</a></li>
                                     <li id="demo-apps-item" class="level-2"><a id="demo-apps-link" href="#demo-apps" class="level-2">Demo Apps</a></li>
+                                    <li id="communication-item" class="level-2"><a id="communication-link" href="#communication" class="level-2">Communication</a></li>
                                 </ul>
                             </li>
                             <li id="dollar-usage-item" class="level-1"><a id="dollar-usage-link" href="#dollar-usage" class="level-1">Dollar Usage</a>
@@ -95,6 +96,7 @@
                                             <li id="reduce-reduce-item" class="level-3"><a id="reduce-reduce-link" href="#reduce-reduce" class="level-3">reduce - $.reduce</a></li>
                                             <li id="sample-sample-item" class="level-3"><a id="sample-sample-link" href="#sample-sample" class="level-3">sample - $.sample</a></li>
                                             <li id="sequence-sequence-item" class="level-3"><a id="sequence-sequence-link" href="#sequence-sequence" class="level-3">sequence - $.sequence</a></li>
+                                            <li id="remove-remove-item" class="level-3"><a id="remove-remove-link" href="#remove-remove" class="level-3">remove - $.remove</a></li>
                                             <li id="remove-remove-item" class="level-3"><a id="remove-remove-link" href="#remove-remove" class="level-3">remove - $.remove</a></li>
                                             <li id="shuffle-shuffle-item" class="level-3"><a id="shuffle-shuffle-link" href="#shuffle-shuffle" class="level-3">shuffle - $.shuffle</a></li>
                                             <li id="size-size-item" class="level-3"><a id="size-size-link" href="#size-size" class="level-3">size - $.size</a></li>
@@ -169,6 +171,7 @@
                                             <li id="eachwithindex-callback-int-element-element-item" class="level-3"><a id="eachwithindex-callback-int-element-element-link" href="#eachwithindex-callback-int-element-element" class="level-3">eachWithIndex(callback: (Int, Element) -&gt; ()) -&gt; [Element]</a></li>
                                             <li id="cycle-u-times-int-callback-element-u-item" class="level-3"><a id="cycle-u-times-int-callback-element-u-link" href="#cycle-u-times-int-callback-element-u" class="level-3">cycle<u>(times: Int, callback: (Element) -&gt; U)</u></a></li>
                                             <li id="every-callback-element-bool-bool-item" class="level-3"><a id="every-callback-element-bool-bool-link" href="#every-callback-element-bool-bool" class="level-3">every(callback: (Element) -&gt; Bool) -&gt; Bool</a></li>
+                                            <li id="indexof-t-equatable-value-t-int-item" class="level-3"><a id="indexof-t-equatable-value-t-int-link" href="#indexof-t-equatable-value-t-int" class="level-3">indexOf<t: equatable="">(value: T) -&gt; Int</t:></a></li>
                                             <li id="fetch-index-int-orelse-t-none-t-item" class="level-3"><a id="fetch-index-int-orelse-t-none-t-link" href="#fetch-index-int-orelse-t-none-t" class="level-3">fetch(index: Int, orElse: T? = .None) -&gt; T!</a></li>
                                             <li id="findindex-callback-element-bool-int-item" class="level-3"><a id="findindex-callback-element-bool-int-link" href="#findindex-callback-element-bool-int" class="level-3">findIndex(callback: (Element) -&gt; Bool) -&gt; Int?</a></li>
                                             <li id="findlastindex-callback-element-bool-int-item" class="level-3"><a id="findlastindex-callback-element-bool-int-link" href="#findlastindex-callback-element-bool-int" class="level-3">findLastIndex(callback: (Element) -&gt; Bool) -&gt; Int?</a></li>
@@ -180,6 +183,8 @@
                                             <li id="rest-numelements-int-1-element-item" class="level-3"><a id="rest-numelements-int-1-element-link" href="#rest-numelements-int-1-element" class="level-3">rest(numElements: Int? = 1) -&gt; [Element]</a></li>
                                             <li id="min-t-comparable-t-item" class="level-3"><a id="min-t-comparable-t-link" href="#min-t-comparable-t" class="level-3">min<t: comparable="">() -&gt; T?</t:></a></li>
                                             <li id="max-t-comparable-t-item" class="level-3"><a id="max-t-comparable-t-link" href="#max-t-comparable-t" class="level-3">max<t: comparable="">() -&gt; T?</t:></a></li>
+                                            <li id="remove-t-equatable-value-t-t-item" class="level-3"><a id="remove-t-equatable-value-t-t-link" href="#remove-t-equatable-value-t-t" class="level-3">remove<t: equatable="">(value: T) -&gt; T?</t:></a></li>
+                                            <li id="contains-t-equatable-value-t-bool-item" class="level-3"><a id="contains-t-equatable-value-t-bool-link" href="#contains-t-equatable-value-t-bool" class="level-3">contains<t:equatable>(value: T) -&gt; Bool</t:equatable></a></li>
                                         </ul>
                                     </li>
                                     <li id="character-extensions-item" class="level-2"><a id="character-extensions-link" href="#character-extensions" class="level-2">Character Extensions</a>
@@ -257,7 +262,7 @@
             </div>
         </div>
         <div role="flatdoc-content" class="content">
-            <h1 id="dollar-and-cent">Dollar and Cent <img src="https://img.shields.io/cocoapods/v/Dollar.svg" alt="CocoaPods"> <a href="https://github.com/Carthage/Carthage"><img src="https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat" alt="Carthage compatible"></a></h1>
+            <h1 id="dollar-and-cent">Dollar and Cent <a href="https://travis-ci.org/ankurp/Dollar.swift"><img src="https://travis-ci.org/ankurp/Dollar.swift.svg?branch=master" alt="Build Status"></a> <img src="https://img.shields.io/cocoapods/v/Dollar.svg" alt="CocoaPods"> <a href="https://github.com/Carthage/Carthage"><img src="https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat" alt="Carthage compatible"></a></h1>
             <p>
                 <a href="https://gitter.im/ankurp/Dollar.swift?utm_source=badge&amp;utm_medium=badge&amp;utm_campaign=pr-badge&amp;utm_content=badge"><img src="https://badges.gitter.im/Join%20Chat.svg" alt="Gitter"></a>
             </p>
@@ -284,6 +289,14 @@
             <p>Using
                 <em> <a href="https://github.com/ankurp/DollarCarthageApp"><code>carthage</code></a>
 </em> <a href="https://github.com/ankurp/DollarPodApp"><code>cocoapods</code></a> * <a href="https://github.com/ankurp/DollarSubmoduleApp"><code>git submodule</code></a></p>
+            <h2 id="communication">Communication</h2>
+            <ul>
+                <li>If you <strong>need help</strong>, use <a href="http://stackoverflow.com/questions/tagged/dollar.swift">Stack Overflow</a>. (Tag ‘dollar.swift’)</li>
+                <li>If you’d like to <strong>ask a general question</strong>, use <a href="http://stackoverflow.com/questions/tagged/dollar.swift">Stack Overflow</a>.</li>
+                <li>If you <strong>found a bug</strong>, open an issue.</li>
+                <li>If you <strong>have a feature request</strong>, open an issue.</li>
+                <li>If you <strong>want to contribute</strong>, submit a pull request.</li>
+            </ul>
             <h1 id="dollar-usage">Dollar Usage</h1>
             <h2 id="array">Array</h2>
             <h3 id="at-at">at - <code>$.at</code></h3>
@@ -506,7 +519,10 @@ result
 <span class="keyword">$</span>.sequence(<span class="string">"abc"</span>) 
 =&gt; [<span class="string">"a"</span>, <span class="string">"b"</span>, <span class="string">"c"</span>]</code></pre>
             <h3 id="remove-remove">remove - <code>$.remove</code></h3>
-            <p>Removes all elements from an array that the callback returns true.</p><pre><code class="lang-swift"><span class="keyword">let</span> result = <span class="keyword">$</span>.remove([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>]) { 
+            <p>Removes an element from array.</p><pre><code class="lang-swift"><span class="keyword">$</span>.remove([<span class="string">"A"</span>, <span class="string">"B"</span>, <span class="string">"C"</span>, <span class="string">"D"</span>], value: <span class="string">"B"</span>)
+=&gt; [<span class="string">"A"</span>, <span class="string">"C"</span>, <span class="string">"D"</span>]</code></pre>
+            <h3 id="remove-remove">remove - <code>$.remove</code></h3>
+            <p>Removes all elements from an array that the <code>callback</code> returns true.</p><pre><code class="lang-swift"><span class="keyword">let</span> result = <span class="keyword">$</span>.remove([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>]) { 
   <span class="keyword">$</span><span class="number">0</span> == <span class="number">2</span> || <span class="keyword">$</span><span class="number">0</span> == <span class="number">3</span> 
 }
 result
@@ -833,6 +849,12 @@ array.each { (index, elem)
   a.hasSuffix(<span class="string">"gry"</span>) 
 }
 =&gt; <span class="keyword">true</span></code></pre>
+            <h3 id="indexof-t-equatable-value-t-int"><code>indexOf&lt;T: Equatable&gt;(value: T) -&gt; Int</code></h3>
+            <p>Gets the index at which the first occurrence of value is found.</p><pre><code class="lang-swift"><span class="keyword">let</span> array = [<span class="string">"foo"</span>, <span class="string">"spam"</span>, <span class="string">"bar"</span>, <span class="string">"eggs"</span>]
+array.indexOf(<span class="string">"spam"</span>)
+=&gt; <span class="number">1</span>
+array.indexOf(<span class="string">"None"</span>)
+=&gt; nil</code></pre>
             <h3 id="fetch-index-int-orelse-t-none-t"><code>fetch(index: Int, orElse: T? = .None) -&gt; T!</code></h3>
             <p>Get element from an array at the given index which can be negative to find elements from the end of the array. A default value can be returned if indexing out of bounds.</p><pre><code class="lang-swift"><span class="keyword">let</span> arr = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>]
 arr.fetch(<span class="number">100</span>)
@@ -884,6 +906,16 @@ element!
             <h3 id="max-t-comparable-t"><code>max&lt;T: Comparable&gt;() -&gt; T?</code></h3>
             <p>Retrieves the maximum value in an array.</p><pre><code class="lang-swift"><span class="keyword">let</span> max = [ <span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>].max()
 =&gt; <span class="number">2</span></code></pre>
+            <h3 id="remove-t-equatable-value-t-t"><code>remove&lt;T: Equatable&gt;(value: T) -&gt; T?</code></h3>
+            <p>Remove element from array</p><pre><code class="lang-swift">var arr = [<span class="string">"A"</span>, <span class="string">"B"</span>, <span class="string">"C"</span>, <span class="string">"D"</span>, <span class="string">"E"</span>]
+arr.remove(<span class="string">"B"</span>)
+=&gt; [<span class="string">"A"</span>, <span class="string">"C"</span>, <span class="string">"D"</span>, <span class="string">"E"</span>]</code></pre>
+            <h3 id="contains-t-equatable-value-t-bool"><code>contains&lt;T:Equatable&gt;(value: T) -&gt; Bool</code></h3>
+            <p>Checks if a given value is present in the array.</p><pre><code class="lang-swift">var arr = [<span class="string">"A"</span>, <span class="string">"B"</span>, <span class="string">"C"</span>, <span class="string">"D"</span>, <span class="string">"E"</span>]
+arr.contains(<span class="string">"C"</span>)
+=&gt; <span class="keyword">true</span>
+arr.contains(<span class="string">"Z"</span>)
+=&gt; <span class="keyword">false</span></code></pre>
             <h2 id="character-extensions">Character Extensions</h2>
             <h3 id="a-description-string"><code>"A".description -&gt; String</code></h3>
             <p>Get string description of Character</p><pre><code class="lang-swift"><span class="keyword">let</span> ch: Character = <span class="string">"A"</span>
