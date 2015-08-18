@@ -525,7 +525,7 @@ public class $ {
     /// :return Array of initial values.
     public class func initial<T>(array: [T], numElements: Int = 1) -> [T] {
         var result: [T] = []
-        if (array.count > numElements) {
+        if (array.count > numElements && numElements >= 0) {
             for index in 0..<(array.count - numElements) {
                 result.append(array[index])
             }
@@ -1018,7 +1018,7 @@ public class $ {
     /// :return The rest of the elements.
     public class func rest<T>(array: [T], numElements: Int = 1) -> [T] {
         var result : [T] = []
-        if (numElements < array.count) {
+        if (numElements < array.count && numElements >= 0) {
             for index in numElements..<array.count {
                 result.append(array[index])
             }

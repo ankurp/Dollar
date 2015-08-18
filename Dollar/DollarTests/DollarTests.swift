@@ -82,14 +82,16 @@ class DollarTests: XCTestCase {
 
     func testInitial() {
         XCTAssertEqual($.initial([3, 4, 5]), [3, 4], "Return all values except for last")
-        XCTAssertEqual($.initial([3, 4, 5], numElements: 2), [3], "Return all values except for last")
-        XCTAssertEqual($.initial([3, 4, 5], numElements: 4), [], "Return all values except for last")
+        XCTAssertEqual($.initial([3, 4, 5], numElements: 2), [3], "Return first element")
+        XCTAssertEqual($.initial([3, 4, 5], numElements: 4), [], "Returns no elements")
+        XCTAssertEqual($.initial([3, 4, 5], numElements: -1), [], "Return no elements")
     }
 
     func testRest() {
         XCTAssertEqual($.rest([3, 4, 5]), [4, 5], "Returns all value except for first")
-        XCTAssertEqual($.rest([3, 4, 5], numElements: 2), [5], "Returns all value except for first")
-        XCTAssertEqual($.rest([3, 4, 5], numElements: 4), [], "Returns all value except for first")
+        XCTAssertEqual($.rest([3, 4, 5], numElements: 2), [5], "Returns all value except for first two")
+        XCTAssertEqual($.rest([3, 4, 5], numElements: 4), [], "Returns no elements")
+        XCTAssertEqual($.rest([3, 4, 5], numElements: -1), [], "Returns no elements")
     }
 
     func testLast() {
