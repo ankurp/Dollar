@@ -44,8 +44,8 @@ extension String {
     /// :param range The range from which to start and end the substring
     /// :return Substring
     public subscript(range: Range<Int>) -> String {
-        let start = Swift.advance(startIndex, range.startIndex)
-        let end = Swift.advance(startIndex, range.endIndex)
+        let start = startIndex.advancedBy(range.startIndex)
+        let end = startIndex.advancedBy(range.endIndex)
         return self.substringWithRange(Range(start: start, end: end))
     }
     
@@ -127,6 +127,6 @@ public func * (str: String, n: Int) -> String {
     n.times {
         stringBuilder.append(str)
     }
-    return "".join(stringBuilder)
+    return stringBuilder.joinWithSeparator("")
 }
 

@@ -34,7 +34,7 @@ class CentTests: XCTestCase {
         var arr: [String] = []
         let result = ["A", "B", "C"].each({ arr.append($0) })
         XCTAssertEqual(result, ["A", "B", "C"], "Return array itself")
-        XCTAssertEqual("".join(arr), "ABC", "Return string concatenated")
+        XCTAssertEqual(arr.joinWithSeparator(""), "ABC", "Return string concatenated")
     }
     
     func testDateMath() {
