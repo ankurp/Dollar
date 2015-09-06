@@ -19,17 +19,16 @@ public class Regex {
     
     public init(_ pattern: String) {
         self.pattern = pattern
-        var error: NSError?
-        self.expression = NSRegularExpression(pattern: pattern, options: .CaseInsensitive, error: &error)!
+        self.expression = try! NSRegularExpression(pattern: pattern, options: .CaseInsensitive)
     }
     
     public func matches(testStr: String) -> [AnyObject] {
-        let matches = self.expression.matchesInString(testStr, options: nil, range:NSMakeRange(0, count(testStr)))
+        let matches = self.expression.matchesInString(testStr, options: [], range:NSMakeRange(0, testStr.characters.count))
         return matches
     }
     
     public func rangeOfFirstMatch(testStr: String) -> NSRange {
-        return self.expression.rangeOfFirstMatchInString(testStr, options: nil, range:NSMakeRange(0, count(testStr)))
+        return self.expression.rangeOfFirstMatchInString(testStr, options: [], range:NSMakeRange(0, testStr.characters.count))
     }
     
     public func test(testStr: String) -> Bool {
@@ -39,7 +38,7 @@ public class Regex {
     
     public class func escapeStr(str: String) -> String {
         let matches = RegexPatternRegex.matches(str)
-        var charArr = [Character](str)
+        var charArr = [Character](str.characters)
         var strBuilder = [Character]()
         var i = 0
         for match in matches {
