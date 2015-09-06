@@ -32,9 +32,9 @@ class CentTests: XCTestCase {
     
     func testEach() {
         var arr: [String] = []
-        var result = ["A", "B", "C"].each({ arr.append($0) })
+        let result = ["A", "B", "C"].each({ arr.append($0) })
         XCTAssertEqual(result, ["A", "B", "C"], "Return array itself")
-        XCTAssertEqual(Swift.join("", arr), "ABC", "Return string concatenated")
+        XCTAssertEqual(arr.joinWithSeparator(""), "ABC", "Return string concatenated")
     }
     
     func testDateMath() {
@@ -48,31 +48,31 @@ class CentTests: XCTestCase {
         let multiple = 2
 
         let tests = [
-            TestDate(unit: .CalendarUnitSecond, singleMath: 1.second, multipleMath: multiple.seconds),
-            TestDate(unit: .CalendarUnitMinute, singleMath: 1.minute, multipleMath: multiple.minutes),
-            TestDate(unit: .CalendarUnitHour, singleMath: 1.hour, multipleMath: multiple.hours),
-            TestDate(unit: .CalendarUnitDay, singleMath: 1.day, multipleMath: multiple.days),
-            TestDate(unit: .CalendarUnitWeekOfYear, singleMath: 1.week, multipleMath: multiple.weeks),
-            TestDate(unit: .CalendarUnitMonth, singleMath: 1.month, multipleMath: multiple.months),
-            TestDate(unit: .CalendarUnitYear, singleMath: 1.year, multipleMath: multiple.years)
+            TestDate(unit: .Second, singleMath: 1.second, multipleMath: multiple.seconds),
+            TestDate(unit: .Minute, singleMath: 1.minute, multipleMath: multiple.minutes),
+            TestDate(unit: .Hour, singleMath: 1.hour, multipleMath: multiple.hours),
+            TestDate(unit: .Day, singleMath: 1.day, multipleMath: multiple.days),
+            TestDate(unit: .WeekOfYear, singleMath: 1.week, multipleMath: multiple.weeks),
+            TestDate(unit: .Month, singleMath: 1.month, multipleMath: multiple.months),
+            TestDate(unit: .Year, singleMath: 1.year, multipleMath: multiple.years)
         ]
 
         tests.each { (test) -> () in
-            func equalIsh(lhs: NSDate!, #rhs: NSDate!) -> Bool {
+            func equalIsh(lhs: NSDate!, rhs: NSDate!) -> Bool {
                 return round(lhs.timeIntervalSinceNow) == round(rhs.timeIntervalSinceNow)
             }
 
             let components = NSDateComponents()
             components.setValue(1, forComponent: test.unit)
 
-            XCTAssert(equalIsh(test.singleMath.fromNow, rhs: calendar.dateByAddingComponents(components, toDate: NSDate(), options: nil)), "formNow single units are equal.")
+            XCTAssert(equalIsh(test.singleMath.fromNow, rhs: calendar.dateByAddingComponents(components, toDate: NSDate(), options: [])), "formNow single units are equal.")
             components.setValue(-1, forComponent: test.unit)
-            XCTAssert(equalIsh(test.singleMath.ago, rhs: calendar.dateByAddingComponents(components, toDate: NSDate(), options: nil)), "ago single units are equal.")
+            XCTAssert(equalIsh(test.singleMath.ago, rhs: calendar.dateByAddingComponents(components, toDate: NSDate(), options: [])), "ago single units are equal.")
 
             components.setValue(multiple, forComponent: test.unit)
-            XCTAssert(equalIsh(test.multipleMath.fromNow, rhs: calendar.dateByAddingComponents(components, toDate: NSDate(), options: nil)), "formNow multiple units are equal.")
+            XCTAssert(equalIsh(test.multipleMath.fromNow, rhs: calendar.dateByAddingComponents(components, toDate: NSDate(), options: [])), "formNow multiple units are equal.")
             components.setValue(-multiple, forComponent: test.unit)
-            XCTAssert(equalIsh(test.multipleMath.ago, rhs: calendar.dateByAddingComponents(components, toDate: NSDate(), options: nil)), "ago multiple units are equal.")
+            XCTAssert(equalIsh(test.multipleMath.ago, rhs: calendar.dateByAddingComponents(components, toDate: NSDate(), options: [])), "ago multiple units are equal.")
         }
     }
     
@@ -86,7 +86,7 @@ class CentTests: XCTestCase {
     }
     
     func testArrayContains() {
-        var arr = ["A", "B", "C", "D", "E"]
+        let arr = ["A", "B", "C", "D", "E"]
         XCTAssert(arr.contains("C"), "Test if array contains C")
         XCTAssertFalse(arr.contains("Z"), "Test of failure")
     }
