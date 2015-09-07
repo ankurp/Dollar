@@ -104,7 +104,7 @@ public class $ {
     public class func chunk<T>(array: [T], size: Int = 1) -> [[T]] {
         var result = [[T]]()
         var chunk = -1
-        for (index, elem) in enumerate(array) {
+        for (index, elem) in array.enumerate() {
             if index % size == 0 {
                 result.append([T]())
                 chunk += 1
@@ -166,7 +166,7 @@ public class $ {
     /// :param value The value to check.
     /// :return Whether value is in the array.
     public class func contains<T : Equatable>(array: [T], value: T) -> Bool {
-        return Swift.contains(array, value)
+        return array.contains(value)
     }
     
     /// Create a copy of an array
@@ -255,7 +255,7 @@ public class $ {
     /// :param callback function that gets called with each item in the array with its index
     /// :return The array passed
     public class func each<T>(array: [T], callback: (Int, T) -> ()) -> [T] {
-        for (index, elem : T) in enumerate(array) {
+        for (index, elem): (Int, T) in array.enumerate() {
             callback(index, elem)
         }
         return array
@@ -317,7 +317,7 @@ public class $ {
     /// :return array elements chunked
     public class func fill<T>(inout array: [T], withElem elem: T, startIndex: Int = 0, endIndex: Int? = .None) -> [T] {
         let endIndex = endIndex ?? array.count
-        for (index, _) in enumerate(array) {
+        for (index, _) in array.enumerate() {
             if index > endIndex { break }
             if index >= startIndex && index <= endIndex {
                 array[index] = elem
@@ -349,7 +349,7 @@ public class $ {
     /// :param callback Function used to figure out whether element is the same.
     /// :return First element's index from the array found using the callback.
     public class func findIndex<T>(array: [T], callback: (T) -> Bool) -> Int? {
-        for (index, elem : T) in enumerate(array) {
+        for (index, elem): (Int, T) in array.enumerate() {
             if callback(elem) {
                 return index
             }
@@ -365,7 +365,7 @@ public class $ {
     /// :return Last element's index from the array found using the callback.
     public class func findLastIndex<T>(array: [T], callback: (T) -> Bool) -> Int? {
         let count = array.count
-        for (index, _) in enumerate(array) {
+        for (index, _) in array.enumerate() {
             let reverseIndex = count - (index + 1)
             let elem : T = array[reverseIndex]
             if callback(elem) {
@@ -464,10 +464,11 @@ public class $ {
         // Implementation of Fisher-Yates shuffle
         // http://en.wikipedia.org/wiki/Fisher-Yates_Shuffle
         for index in 0..<array.count {
-            var randIndex = self.random(index)
+            let randIndex = self.random(index)
             
-            // We use in-out parameters to swap the internals of the array
-            Swift.swap(&newArr[index], &newArr[randIndex])
+            if index != randIndex {
+                Swift.swap(&newArr[index], &newArr[randIndex])
+            }
         }
         return newArr
     }
@@ -563,8 +564,8 @@ public class $ {
     /// :param array The array to join the elements of.
     /// :param separator The separator to join the elements with.
     /// :return Joined element from the array of elements.
-    public class func join<T: ExtensibleCollectionType>(array: [T], separator: T) -> T {
-        return Swift.join(separator, array)
+    public class func join(array: [String], separator: String) -> String {
+        return array.joinWithSeparator(separator)
     }
     
     /// Creates an array of keys given a dictionary.
@@ -606,7 +607,7 @@ public class $ {
     /// :param transform The mapping function
     /// :return Array of elements mapped using the map function
     public class func map<T : CollectionType, E>(collection: T, transform: (T.Generator.Element) -> E) -> [E] {
-        return Swift.map(collection, transform)
+        return collection.map(transform)
     }
 
     /// Maps each element to new value based on the map function passed
@@ -615,7 +616,7 @@ public class $ {
     /// :param transform The mapping function
     /// :return Array of elements mapped using the map function
     public class func map<T : SequenceType, E>(sequence: T, transform: (T.Generator.Element) -> E) -> [E] {
-        return Swift.map(sequence, transform)
+        return sequence.map(transform)
     }
     
     /// Retrieves the maximum value in an array.
@@ -730,12 +731,12 @@ public class $ {
     /// Consecutive calls will return the value returned when calling the function first time
     public class func once<T, U>(function: (T...) -> U) -> (T...) -> U {
         var result: U?
-        var onceFunc = { (params: T...) -> U in
+        let onceFunc = { (params: T...) -> U in
             typealias Function = [T] -> U
             if let returnVal = result {
                 return returnVal
             } else {
-                var f = unsafeBitCast(function, Function.self)
+                let f = unsafeBitCast(function, Function.self)
                 result = f(params)
                 return result!
             }
@@ -750,7 +751,7 @@ public class $ {
     /// Consecutive calls will return the value returned when calling the function first time
     public class func once<U>(function: () -> U) -> () -> U {
         var result: U?
-        var onceFunc = { () -> U in
+        let onceFunc = { () -> U in
             if let returnVal = result {
                 return returnVal
             } else {
@@ -952,7 +953,7 @@ public class $ {
     /// :param incrementBy Increment sequence by.
     /// :return Array of elements based on the sequence.
     public class func range<T : Strideable>(from startVal: T, to endVal: T, incrementBy: T.Stride) -> [T] {
-        var range = Swift.stride(from: startVal, to: endVal, by: incrementBy)
+        let range = startVal.stride(to: endVal, by: incrementBy)
         return self.sequence(range)
     }
     
@@ -1059,7 +1060,7 @@ public class $ {
     /// :param value Find sorted index of this value.
     /// :return Index of where the elemnt should be inserted.
     public class func sortedIndex<T : Comparable>(array: [T], value: T) -> Int {
-        for (index, elem) in enumerate(array) {
+        for (index, elem) in array.enumerate() {
             if elem > value {
                 return index
             }
@@ -1212,8 +1213,8 @@ public class $ {
         for _ in self.first(arrays)! as [T] {
             result.append([] as [T])
         }
-        for (index, array) in enumerate(arrays) {
-            for (elemIndex, elem : T) in enumerate(array) {
+        for (_, array) in arrays.enumerate() {
+            for (elemIndex, elem): (Int, T) in array.enumerate() {
                 result[elemIndex].append(elem)
             }
         }
@@ -1227,7 +1228,7 @@ public class $ {
     /// :return Dictionary based on the keys and values passed in order.
     public class func zipObject<T, E>(keys: [T], values: [E]) -> [T: E] {
         var result = [T: E]()
-        for (index, key) in enumerate(keys) {
+        for (index, key) in keys.enumerate() {
             result[key] = values[index]
         }
         return result
@@ -1339,7 +1340,7 @@ public class Chain<C> {
     public func map(function: (Int, C) -> C) -> Chain {
         return self.queue {
             var result: [C] = []
-            for (index, elem) in enumerate($0.value) {
+            for (index, elem) in $0.value.enumerate() {
                 result.append(function(index, elem))
             }
             return Wrapper(result)
@@ -1365,7 +1366,7 @@ public class Chain<C> {
     /// :return The wrapper object.
     public func each(function: (Int, C) -> ()) -> Chain {
         return self.queue {
-            for (index, elem) in enumerate($0.value) {
+            for (index, elem) in $0.value.enumerate() {
                 function(index, elem)
             }
             return $0
@@ -1395,7 +1396,7 @@ public class Chain<C> {
     /// :param function Function to tell whether element value is true or false.
     /// :return Whether any one element is true according to func function in the array.
     public func any(function: (C) -> Bool) -> Bool {
-        var resultArr = self.value
+        let resultArr = self.value
         for elem in resultArr {
             if function(elem) {
                 return true
