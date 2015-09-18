@@ -33,11 +33,11 @@ Cent is a library that extends certain Swift object types using the extension fe
 
 ## Using [Carthage](https://github.com/Carthage/Carthage)
 
-Add `github "ankurp/Dollar.swift" ~> 3.0.0` to your `Cartfile` and run `carthage update`. If unfamiliar with Carthage then checkout their [Getting Started section](https://github.com/Carthage/Carthage#getting-started) or this [sample app](https://github.com/ankurp/DollarCarthageApp)
+Add `github "ankurp/Dollar.swift" ~> 4.0.0` to your `Cartfile` and run `carthage update`. If unfamiliar with Carthage then checkout their [Getting Started section](https://github.com/Carthage/Carthage#getting-started) or this [sample app](https://github.com/ankurp/DollarCarthageApp)
 
-## Using [cocoapods](http://cocoapods.org/) version 0.36.1
+## Using [cocoapods](http://cocoapods.org/) version 0.36.x or greater
 
-Add `pod 'Dollar'` to your `Podfile` and run `pod install`. Add `use_frameworks!` to the end of the `Podfile`. Also checkout this [sample app](https://github.com/ankurp/DollarPodApp). Requires cocoapod version 0.36.1.
+Add `pod 'Dollar'` to your `Podfile` and run `pod install`. Add `use_frameworks!` to the end of the `Podfile`. Also checkout this [sample app](https://github.com/ankurp/DollarPodApp). Requires cocoapod version 0.36.x or greater.
 
 ## Using `git submodule`
 
@@ -52,7 +52,8 @@ Still stuck. Then checkout this screencast on [how to import](http://recordit.co
 
 ## Support for Older Xcode and Swift
 
-Use version `2.2.0` or older for Xcode 6.1 and 6.2.
+* For Xcode 6.3 (Swift 1.2) use version `3.0.3`
+* For Xcode 6.1 and 6.2 (Swift 1.1) use version `2.2.0`
 
 ## Demo Apps ##
 Using
