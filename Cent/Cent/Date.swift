@@ -8,7 +8,7 @@
 
 import Foundation
 
-extension NSDate {
+public extension NSDate {
     
     /// Returns a new Date given the year month and day
     ///
