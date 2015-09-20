@@ -9,7 +9,7 @@
 import Foundation
 import Dollar
 
-extension String {
+public extension String {
     
     public var length: Int {
         get {
@@ -102,7 +102,7 @@ extension String {
     }
 }
 
-extension Character {
+public extension Character {
     public var description: String {
         get {
             return String(self)

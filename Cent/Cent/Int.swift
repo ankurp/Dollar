@@ -9,7 +9,7 @@
 import Foundation
 import Dollar
 
-extension Int {
+public extension Int {
     
     /// Invoke a callback n times
     ///
@@ -110,44 +110,6 @@ extension Int {
             callback(selfCopy--)
         }
     }
-    
-}
-
-public extension Int {
-    struct CalendarMath {
-        private let unit: NSCalendarUnit
-        private let value: Int
-        private var calendar: NSCalendar {
-            return NSCalendar.autoupdatingCurrentCalendar()
-        }
-
-        private init(unit: NSCalendarUnit, value: Int) {
-            self.unit = unit
-            self.value = value
-        }
-
-        private func generateComponents(modifer: (Int) -> (Int) = (+)) -> NSDateComponents {
-            let components = NSDateComponents()
-            components.setValue(modifer(value), forComponent: unit)
-            return components
-        }
-
-        public func from(date: NSDate) -> NSDate? {
-            return calendar.dateByAddingComponents(generateComponents(), toDate: date, options: [])
-        }
-
-        public var fromNow: NSDate? {
-            return from(NSDate())
-        }
-
-        public func before(date: NSDate) -> NSDate? {
-            return calendar.dateByAddingComponents(generateComponents(-), toDate: date, options: [])
-        }
-
-        public var ago: NSDate? {
-            return before(NSDate())
-        }
-    }
 
     private func mathForUnit(unit: NSCalendarUnit) -> CalendarMath {
         return CalendarMath(unit: unit, value: self)
@@ -207,5 +169,40 @@ public extension Int {
     
     var year: CalendarMath {
         return years
+    }
+
+    struct CalendarMath {
+        private let unit: NSCalendarUnit
+        private let value: Int
+        private var calendar: NSCalendar {
+            return NSCalendar.autoupdatingCurrentCalendar()
+        }
+
+        private init(unit: NSCalendarUnit, value: Int) {
+            self.unit = unit
+            self.value = value
+        }
+
+        private func generateComponents(modifer: (Int) -> (Int) = (+)) -> NSDateComponents {
+            let components = NSDateComponents()
+            components.setValue(modifer(value), forComponent: unit)
+            return components
+        }
+
+        public func from(date: NSDate) -> NSDate? {
+            return calendar.dateByAddingComponents(generateComponents(), toDate: date, options: [])
+        }
+
+        public var fromNow: NSDate? {
+            return from(NSDate())
+        }
+
+        public func before(date: NSDate) -> NSDate? {
+            return calendar.dateByAddingComponents(generateComponents(-), toDate: date, options: [])
+        }
+
+        public var ago: NSDate? {
+            return before(NSDate())
+        }
     }
 }

@@ -9,7 +9,7 @@
 import Foundation
 import Dollar
 
-internal extension Array {
+public extension Array {
 
     /// Creates an array of elements from the specified indexes, or keys, of the collection.
     /// Indexes may be specified as individual arguments or as arrays of indexes.

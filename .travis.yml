@@ -4,3 +4,7 @@ osx_image: xcode7
 script: 
 - xctool -workspace Dollar.xcworkspace -scheme Dollar -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 6' ONLY_ACTIVE_ARCH=NO clean build test
 - xctool -workspace Dollar.xcworkspace -scheme Cent -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 6' ONLY_ACTIVE_ARCH=NO clean build test
+
+before_install:
+  - brew update
+  - brew uninstall xctool && brew install --HEAD xctool
