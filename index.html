@@ -50,7 +50,7 @@
                             <li id="setup-item" class="level-1"><a id="setup-link" href="#setup" class="level-1">Setup</a>
                                 <ul class="level-2" id="setup-list">
                                     <li id="using-carthage-item" class="level-2"><a id="using-carthage-link" href="#using-carthage" class="level-2">Using Carthage</a></li>
-                                    <li id="using-cocoapods-version-0-36-1-item" class="level-2"><a id="using-cocoapods-version-0-36-1-link" href="#using-cocoapods-version-0-36-1" class="level-2">Using cocoapods version 0.36.1</a></li>
+                                    <li id="using-cocoapods-version-0-36-x-or-greater-item" class="level-2"><a id="using-cocoapods-version-0-36-x-or-greater-link" href="#using-cocoapods-version-0-36-x-or-greater" class="level-2">Using cocoapods version 0.36.x or greater</a></li>
                                     <li id="using-git-submodule-item" class="level-2"><a id="using-git-submodule-link" href="#using-git-submodule" class="level-2">Using git submodule</a></li>
                                     <li id="support-for-older-xcode-and-swift-item" class="level-2"><a id="support-for-older-xcode-and-swift-link" href="#support-for-older-xcode-and-swift" class="level-2">Support for Older Xcode and Swift</a></li>
                                     <li id="demo-apps-item" class="level-2"><a id="demo-apps-link" href="#demo-apps" class="level-2">Demo Apps</a></li>
@@ -270,9 +270,9 @@
             <p>Cent is a library that extends certain Swift object types using the extension feature and gives its two cents to Swift language.</p>
             <h1 id="setup">Setup</h1>
             <h2 id="using-carthage">Using <a href="https://github.com/Carthage/Carthage">Carthage</a></h2>
-            <p>Add <code>github "ankurp/Dollar.swift" ~&gt; 3.0.0</code> to your <code>Cartfile</code> and run <code>carthage update</code>. If unfamiliar with Carthage then checkout their <a href="https://github.com/Carthage/Carthage#getting-started">Getting Started section</a> or this <a href="https://github.com/ankurp/DollarCarthageApp">sample app</a></p>
-            <h2 id="using-cocoapods-version-0-36-1">Using <a href="http://cocoapods.org/">cocoapods</a> version 0.36.1</h2>
-            <p>Add <code>pod 'Dollar'</code> to your <code>Podfile</code> and run <code>pod install</code>. Add <code>use_frameworks!</code> to the end of the <code>Podfile</code>. Also checkout this <a href="https://github.com/ankurp/DollarPodApp">sample app</a>. Requires cocoapod version 0.36.1.</p>
+            <p>Add <code>github "ankurp/Dollar.swift" ~&gt; 4.0.1</code> to your <code>Cartfile</code> and run <code>carthage update</code>. If unfamiliar with Carthage then checkout their <a href="https://github.com/Carthage/Carthage#getting-started">Getting Started section</a> or this <a href="https://github.com/ankurp/DollarCarthageApp">sample app</a></p>
+            <h2 id="using-cocoapods-version-0-36-x-or-greater">Using <a href="http://cocoapods.org/">cocoapods</a> version 0.36.x or greater</h2>
+            <p>Add <code>pod 'Dollar'</code> to your <code>Podfile</code> and run <code>pod install</code>. Add <code>use_frameworks!</code> to the end of the <code>Podfile</code>. Also checkout this <a href="https://github.com/ankurp/DollarPodApp">sample app</a>. Requires cocoapod version 0.36.x or greater.</p>
             <h2 id="using-git-submodule">Using <code>git submodule</code></h2>
             <ol>
                 <li>If you are using git then add Dollar as a submodule using <code>git submodule add https://github.com/ankurp/Dollar.swift.git</code>. If not using git download the project using <code>git clone https://github.com/ankurp/Dollar.swift.git</code> in your project folder.</li>
@@ -284,7 +284,10 @@
             </ol>
             <p>Still stuck. Then checkout this screencast on <a href="http://recordit.co/0gQiCSEREF">how to import</a></p>
             <h2 id="support-for-older-xcode-and-swift">Support for Older Xcode and Swift</h2>
-            <p>Use version <code>2.2.0</code> or older for Xcode 6.1 and 6.2.</p>
+            <ul>
+                <li>For Xcode 6.3 (Swift 1.2) use version <code>3.0.3</code></li>
+                <li>For Xcode 6.1 and 6.2 (Swift 1.1) use version <code>2.2.0</code></li>
+            </ul>
             <h2 id="demo-apps">Demo Apps</h2>
             <p>Using
                 <ul>
