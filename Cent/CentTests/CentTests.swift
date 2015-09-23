@@ -42,14 +42,14 @@ class CentTests: XCTestCase {
         [1, 2, 3].cycle(2) {
             print($0, separator: "", terminator: "", toStream: &result)
         }
-        XCTAssertEqual("123123", result)
+        XCTAssertEqual("123123", result, "testCycle: Should return cycled pattern")
     }
     
     func testEvery(){
         let result = ["angry", "hungry"].every { (a: String) -> (Bool) in
             a.hasSuffix("gry")
         }
-        XCTAssertEqual(result, true)
+        XCTAssertEqual(result, true, "testEvery: Should return true")
     }
     
     func testIndexOf() {
@@ -58,7 +58,7 @@ class CentTests: XCTestCase {
     }
     
     func testIndexOfReturnNillWhenNotFound() {
-        XCTAssertNil(["foo", "spam", "bar", "eggs"].indexOf("NONE"), "Should return nill")
+        XCTAssertNil(["foo", "spam", "bar", "eggs"].indexOf("NONE"), "Should return nill when element not found")
     }
 
     func testFetch(){
