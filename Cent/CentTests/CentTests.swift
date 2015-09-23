@@ -36,6 +36,37 @@ class CentTests: XCTestCase {
         XCTAssertEqual(result, ["A", "B", "C"], "Return array itself")
         XCTAssertEqual(arr.joinWithSeparator(""), "ABC", "Return string concatenated")
     }
+
+    func testCycle() {
+        var result = ""
+        [1, 2, 3].cycle(2) {
+            print($0, separator: "", terminator: "", toStream: &result)
+        }
+        XCTAssertEqual("123123", result)
+    }
+    
+    func testEvery(){
+        let result = ["angry", "hungry"].every { (a: String) -> (Bool) in
+            a.hasSuffix("gry")
+        }
+        XCTAssertEqual(result, true)
+    }
+    
+    func testIndexOf() {
+        let array = ["foo", "spam", "bar", "eggs"]
+        XCTAssertEqual(array.indexOf("spam"), 1, "Should return correct index")
+    }
+    
+    func testIndexOfReturnNillWhenNotFound() {
+        XCTAssertNil(["foo", "spam", "bar", "eggs"].indexOf("NONE"), "Should return nill")
+    }
+
+    func testFetch(){
+        let arr = [1, 2, 3, 4, 5, 6, 7, 8]
+        XCTAssertNil(arr.fetch(100),"Should return nill")
+        XCTAssertEqual(arr.fetch(100, orElse: 42), 42, "Should return orElse value")
+        XCTAssertEqual(arr.fetch(-1), 8, "Should return last element")
+    }
     
     func testDateMath() {
         struct TestDate {
