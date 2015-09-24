@@ -102,6 +102,28 @@ public extension String {
     }
 }
 
+public extension Character {
+
+    /// Get int representation of character
+    ///
+    /// :return UInt32 that represents the given character
+    public var ord: UInt32 {
+        get {
+            let desc = self.description
+            return desc.unicodeScalars[desc.unicodeScalars.startIndex].value
+        }
+    }
+
+    /// Convert character to string
+    ///
+    /// :return String representation of character
+    public var description: String {
+        get {
+            return String(self)
+        }
+    }
+}
+
 infix operator =~ {}
 
 /// Regex match the string on the left with the string pattern on the right
