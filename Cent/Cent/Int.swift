@@ -46,6 +46,15 @@ public extension Int {
         }
     }
 
+    /// Get ASCII character from integer
+    ///
+    /// :return Character represented for the given integer
+    public var char: Character {
+        get {
+            return Character(UnicodeScalar(self))
+        }
+    }
+
     /// Splits the int into array of digits
     ///
     /// :return Bool whether int is odd
@@ -109,6 +118,63 @@ public extension Int {
         while selfCopy >= limit {
             callback(selfCopy--)
         }
+    }
+
+    /// GCD metod return greatest common denominator with number passed
+    ///
+    /// :param number
+    /// :return Greatest common denominator
+    public func gcd(n: Int) -> Int {
+        return $.gcd(self, n)
+    }
+
+    /// LCM method return least common multiple with number passed
+    ///
+    /// :param number
+    /// :return Least common multiple
+    public func lcm(n: Int) -> Int {
+        return $.lcm(self, n)
+    }
+
+    /// Returns random number from 0 upto but not including value of integer
+    ///
+    /// :return Random number
+    public func random() -> Int {
+        return $.random(self)
+    }
+
+    /// Returns Factorial of integer
+    ///
+    /// :return factorial
+    public func factorial() -> Int {
+        return $.factorial(self)
+    }
+
+    /// Returns true if i is in closed interval
+    ///
+    /// :param i to check if it is in interval
+    /// :param interval to check in
+    /// :return true if it is in interval otherwise false
+    public func isIn(interval: ClosedInterval<Int>) -> Bool {
+        return $.it(self, isIn: interval)
+    }
+
+    /// Returns true if i is in half open interval
+    ///
+    /// :param i to check if it is in interval
+    /// :param interval to check in
+    /// :return true if it is in interval otherwise false
+    public func isIn(interval: HalfOpenInterval<Int>) -> Bool {
+        return $.it(self, isIn: interval)
+    }
+
+    /// Returns true if i is in range
+    ///
+    /// :param i to check if it is in range
+    /// :param interval to check in
+    /// :return true if it is in interval otherwise false
+    public func isIn(interval: Range<Int>) -> Bool {
+        return $.it(self, isIn: interval)
     }
 
     private func mathForUnit(unit: NSCalendarUnit) -> CalendarMath {

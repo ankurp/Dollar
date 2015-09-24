@@ -292,6 +292,15 @@ public class $ {
         }
         return true
     }
+
+    /// Returns Factorial of integer
+    ///
+    /// :param num number whose factorial needs to be calculated
+    /// :return factorial
+    public class func factorial(num: Int) -> Int {
+        guard num > 0 else { return 1 }
+        return num * $.factorial(num - 1)
+    }
     
     /// Get element from an array at the given index which can be negative
     /// to find elements from the end of the array
@@ -501,6 +510,27 @@ public class $ {
         }
         return result
     }
+
+    /// GCD function return greatest common denominator
+    ///
+    /// :param first number
+    /// :param second number
+    /// :return Greatest common denominator
+    public class func gcd(var first: Int, var _ second: Int) -> Int {
+        while second != 0 {
+            (first, second) = (second, first % second)
+        }
+        return Swift.abs(first)
+    }
+
+    /// LCM function return least common multiple
+    ///
+    /// :param first number
+    /// :param second number
+    /// :return Least common multiple
+    public class func lcm(first: Int, _ second: Int) -> Int {
+        return (first / $.gcd(first, second)) * second
+    }
     
     /// The identity function. Returns the argument it is given.
     ///
@@ -557,6 +587,24 @@ public class $ {
             }
         }
         return result
+    }
+
+    /// Returns true if i is in range
+    ///
+    /// :param i to check if it is in range
+    /// :param range to check in
+    /// :return true if it is in range otherwise false
+    public class func it<T: Comparable>(i: T, isIn range: Range<T>) -> Bool {
+        return i >= range.startIndex && i < range.endIndex
+    }
+
+    /// Returns true if i is in interval
+    ///
+    /// :param i to check if it is in interval
+    /// :param interval to check in
+    /// :return true if it is in interval otherwise false
+    public class func it<I : IntervalType>(i: I.Bound, isIn interval: I) -> Bool {
+        return interval.contains(i)
     }
     
     /// Joins the elements in the array to create a concatenated element of the same type.
@@ -923,9 +971,11 @@ public class $ {
         }
         return $.pull(array, values: elemToRemove)
     }
-    
-    public class func random(upperBound: Int) -> Int
-    {
+
+    /// Returns random number from 0 upto but not including upperBound
+    ///
+    /// :return Random number
+    public class func random(upperBound: Int) -> Int {
         return Int(arc4random_uniform(UInt32(upperBound)))
     }
     

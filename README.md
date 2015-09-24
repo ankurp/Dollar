@@ -167,6 +167,18 @@ $.every([1, 2, 3, 4]) { $0 == 1 }
 => false
 ```
 
+### factorial `$.factorial`
+
+Returns factorial of integer
+
+```swift
+$.factorial(3)
+=> 6
+
+$.factorial(0)
+=> 1
+```
+
 ### fetch - `$.fetch`
 
 Get element from an array at the given index which can be negative to find elements from the end of the array. A default value can be returned if indexing out of bounds.
@@ -314,6 +326,18 @@ $.frequencies([1, 2, 3, 4, 5]) { $0 % 2 == 0 }
 => [false: 3, true: 2]
 ```
 
+### gcd `$.gcd`
+
+GCD function return greatest common denominator with number passed
+
+```swift
+$.gcd(3, 10)
+=> 1
+
+$.gcd(3, 9)
+=> 3
+```
+
 ### indexOf - `$.indexOf`
 
 Gets the index at which the first occurrence of value is found.
@@ -356,6 +380,21 @@ $.intersection([1, 2, 3], [5, 2, 1, 4], [2, 1])
 => [1, 2]
 ```
 
+### it-isIn `$.it<T: Comparable>(i: T, isIn range: Range<T>)`
+
+Returns true if i is in interval or range
+
+```swift
+$.it("c", isIn: "a"..."z")
+=> true
+
+$.it("z", isIn: "a"..<"z")
+=> false
+
+$.it(1, isIn: -1.0...10.0)
+=> true
+```
+
 ### last - `$.last`
 
 Gets the last element from the array.
@@ -372,6 +411,18 @@ Gets the index at which the last occurrence of value is found.
 ```swift
 $.lastIndexOf([1, 2, 3, 1, 2, 3], value: 2) 
 => 4
+```
+
+### lcm `$.lcm`
+
+LCM method return least common multiple with number passed
+
+```swift
+$.lcm(3, 10)
+=> 30
+
+$.lcm(3, 9)
+=> 9
 ```
 
 ### rest - `$.rest`
@@ -1321,6 +1372,16 @@ let str = ch.description
 => "A"
 ```
 
+### `"A".ord -> Int`
+
+Get int representation of character
+
+```swift
+Character("A").ord
+=> 65
+```
+
+
 ## Date Extensions ##
 
 ### `Date.from(#year: Int, month: Int, day: Int) -> NSDate`
@@ -1407,6 +1468,15 @@ Invoke a callback n times
 => 0 1 2 3 4  
 ```
 
+### `char -> Character`
+
+Get ASCII character from integer
+
+```swift
+65.char
+=> "A"
+```
+
 ### `isEven`
 
 Check if int is even
@@ -1438,6 +1508,66 @@ Splits the int into array of digits
 ```swift
 4208.digits()
 => [4, 2, 0, 8]
+```
+
+### `lcm() -> Int`
+
+LCM method return least common multiple with number passed
+
+```swift
+3.lcm(10)
+=> 30
+
+3.lcm(9)
+=> 9
+```
+
+### `gcd() -> Int`
+
+GCD method return greatest common denominator with number passed
+
+```swift
+3.gcd(10)
+=> 1
+
+3.gcd(9)
+=> 3
+```
+
+### `random() -> Int`
+
+Returns random number from 0 upto but not including value of integer
+
+```swift
+3.random()
+=> 2
+
+3.random()
+=> 1
+```
+
+### `factorial() -> Int`
+
+Returns factorial of integer
+
+```swift
+3.factorial()
+=> 6
+
+0.factorial()
+=> 1
+```
+
+### `isIn(interval) -> Bool`
+
+Returns true if i is in interval or range
+
+```swift
+5.isIn(1...10)
+=> true
+
+10.isIn(1..<10)
+=> false
 ```
 
 ### `next() -> Int`

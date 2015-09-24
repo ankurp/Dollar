@@ -25,6 +25,7 @@
 		9299310C19F747F600150D45 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 920C569F196251D7009D5129 /* String.swift */; };
 		9299310D19F747F600150D45 /* Regex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92D0253F19F73F6B00A8F5E3 /* Regex.swift */; };
 		9299310E19F747F600150D45 /* Range.swift in Sources */ = {isa = PBXBuildFile; fileRef = 920C56A319625401009D5129 /* Range.swift */; };
+		92A12F641BB3790C00778980 /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92A12F631BB3790C00778980 /* Character.swift */; };
 		92D0254019F73F6B00A8F5E3 /* Regex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92D0253F19F73F6B00A8F5E3 /* Regex.swift */; };
 /* End PBXBuildFile section */
 
@@ -86,6 +87,7 @@
 		924F92EE195F8338003DBB60 /* CentTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CentTests.swift; sourceTree = "<group>"; };
 		924F92FA195F854B003DBB60 /* Array.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Array.swift; sourceTree = "<group>"; };
 		925CB1F11A3FE9ED004F1319 /* Dollar.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Dollar.xcodeproj; path = ../Dollar/Dollar.xcodeproj; sourceTree = "<group>"; };
+		92A12F631BB3790C00778980 /* Character.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Character.swift; sourceTree = "<group>"; };
 		92D0253F19F73F6B00A8F5E3 /* Regex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Regex.swift; sourceTree = "<group>"; };
 		92E6688119F0B89600BB4FB8 /* CentTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CentTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -133,6 +135,7 @@
 			children = (
 				924F92E1195F8338003DBB60 /* Cent.h */,
 				924F92FA195F854B003DBB60 /* Array.swift */,
+				92A12F631BB3790C00778980 /* Character.swift */,
 				920C56A7196255E6009D5129 /* Date.swift */,
 				920C569B1962514E009D5129 /* Dictionary.swift */,
 				920C569D196251B5009D5129 /* Int.swift */,
@@ -319,6 +322,7 @@
 				920C56A419625401009D5129 /* Range.swift in Sources */,
 				920C56A0196251D7009D5129 /* String.swift in Sources */,
 				920C569C1962514E009D5129 /* Dictionary.swift in Sources */,
+				92A12F641BB3790C00778980 /* Character.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

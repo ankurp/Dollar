@@ -102,14 +102,6 @@ public extension String {
     }
 }
 
-public extension Character {
-    public var description: String {
-        get {
-            return String(self)
-        }
-    }
-}
-
 infix operator =~ {}
 
 /// Regex match the string on the left with the string pattern on the right
