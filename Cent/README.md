@@ -1,3 +1,5 @@
+# Cent Usage #
+
 ## Array Extensions ##
 
 ### `<< elem: Element -> [Element]`
