@@ -10,14 +10,15 @@ Cent is a library that extends certain Swift object types using the extension fe
 
 - [Setup](#setup)
   - [Demo App](#demo-app)
-- Dollar
+- [API Documentation](http://www.dollarswift.org)
+- [Dollar](https://github.com/ankurp/Dollar.swift/tree/master/Dollar#dollar-usage)
   - [Usage](#dollar-usage)
     - [Array](#array)
     - [Dictionary](#dictionary)
     - [Object](#object)
     - [Function](#function)
     - [Chaining](#chaining)
-- Cent
+- [Cent](https://github.com/ankurp/Dollar.swift/tree/master/Cent#cent-usage)
   - [Usage](#cent-usage)
     - [Array](#array-extensions)
     - [Date](#date-extensions)  
@@ -63,7 +64,7 @@ Using
 
 ## Communication ##
 
-- If you **need help**, use [Stack Overflow](http://stackoverflow.com/questions/tagged/dollar.swift). (Tag 'dollar.swift')
+- If you **need help**, use [gitter.im](https://gitter.im/ankurp/Dollar.swift) or post a question on [Stack Overflow](http://stackoverflow.com/questions/tagged/dollar.swift) with tag 'dollar.swift.
 - If you'd like to **ask a general question**, use [Stack Overflow](http://stackoverflow.com/questions/tagged/dollar.swift).
 - If you **found a bug**, open an issue.
 - If you **have a feature request**, open an issue.
