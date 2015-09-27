@@ -177,12 +177,12 @@ class DollarTests: XCTestCase {
     }
 
     func testDifference() {
-        XCTAssertEqual($.difference([1, 2, 3, 4, 5], [5, 2, 10]).sort({$0<$1}), [1, 3, 4], "Difference of arrays")
-        XCTAssertEqual($.difference([1, 1, 1, 2, 2], [], [3]).sort({$0<$1}), [1, 1, 1, 2, 2], "Difference of arrays")
-        XCTAssertEqual($.difference([1, 1, 1, 2, 2], [1, 1], [3]).sort({$0<$1}), [2, 2], "Difference of arrays")
+        XCTAssertEqual($.difference([1, 2, 3, 4, 5], [5, 2, 10]), [1, 3, 4], "Difference of arrays")
+        XCTAssertEqual($.difference([1, 1, 1, 2, 2], [], [3]), [1, 1, 1, 2, 2], "Difference of arrays")
+        XCTAssertEqual($.difference([4, 1, 1, 1, 2, 2], [1, 1], [3]), [4, 2, 2], "Difference of arrays")
         XCTAssertEqual($.difference([1, 1, 1, 2, 2], [1, 1], [1, 2, 2]), [], "Difference of arrays")
         XCTAssertEqual($.difference([1, 1, 1, 2, 2], [1, 1, 1], [1, 2, 2]), [], "Difference of arrays")
-        XCTAssertEqual($.difference([1, 1, 1, 2, 2], []).sort({$0<$1}), [1, 1, 1, 2, 2], "Difference of arrays")
+        XCTAssertEqual($.difference([1, 1, 1, 2, 2], []), [1, 1, 1, 2, 2], "Difference of arrays")
     }
 
     func testUniq() {

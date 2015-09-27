@@ -90,4 +90,10 @@ class CentTests: XCTestCase {
         XCTAssert(arr.contains("C"), "Test if array contains C")
         XCTAssertFalse(arr.contains("Z"), "Test of failure")
     }
+    
+    func testArrayDifference() {
+        let arr = ["B", "A", "C", "E", "D"]
+        XCTAssertEqual(arr - ["C"], ["B", "A", "E", "D"], "Test removes C")
+        XCTAssertEqual(arr - ["E", "C"], ["B", "A", "D"], "Test removes C and E")
+    }
 }
