@@ -206,3 +206,11 @@ public func <<<T>(inout array: [T], elem: T) -> [T] {
     return array
 }
 
+/// Overloaded operator to remove elements from first array
+///
+/// :return array with the elements from second array removed
+public func -<T: Hashable>(left: [T], right: [T]) -> [T] {
+    return $.difference(left, right)
+}
+
+

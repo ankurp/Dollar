@@ -206,35 +206,50 @@ public class $ {
             }
         }
     }
-        
-    /// Creates an array excluding all values of the provided arrays.
+
+    /// Creates an array excluding all values of the provided arrays in order
     ///
     /// :param arrays The arrays to difference between.
     /// :return The difference between the first array and all the remaining arrays from the arrays params.
-    public class func difference<T : Hashable>(arrays: [T]...) -> [T] {
-        var result : [T] = []
-        var map : [T: Int] = [T: Int]()
-        let firstArr : [T] = self.first(arrays)!
-        let restArr : [[T]] = self.rest(arrays) as [[T]]
-        
-        for elem in firstArr {
-            if let val = map[elem] {
-                map[elem] = val + 1
-            } else {
-                map[elem] = 1
-            }
+    public class func differenceInOrder<T: Equatable>(arrays: [[T]]) -> [T] {
+        return $.reduce(self.rest(arrays), initial: self.first(arrays)!) { (result, arr) -> [T] in
+            return result.filter() { !arr.contains($0) }
         }
-        for arr in restArr {
-            for elem in arr {
-                map.removeValueForKey(elem)
+    }
+
+    /// Creates an array excluding all values of the provided arrays with or without order
+    /// Without order difference is much faster and at times 100% than difference with order
+    ///
+    /// :param arrays The arrays to difference between.
+    /// :param inOrder Optional Paramter which is true by default
+    /// :return The difference between the first array and all the remaining arrays from the arrays params.
+    public class func difference<T: Hashable>(arrays: [T]..., inOrder: Bool = true) -> [T] {
+        if inOrder {
+            return self.differenceInOrder(arrays)
+        } else {
+            var result : [T] = []
+            var map : [T: Int] = [T: Int]()
+            let firstArr : [T] = self.first(arrays)!
+            let restArr : [[T]] = self.rest(arrays) as [[T]]
+            for elem in firstArr {
+                if let val = map[elem] {
+                    map[elem] = val + 1
+                } else {
+                    map[elem] = 1
+                }
             }
-        }
-        for (key, count) in map {
-            for _ in 0..<count {
-                result.append(key)
+            for arr in restArr {
+                for elem in arr {
+                    map.removeValueForKey(elem)
+                }
             }
+            for (key, count) in map {
+                for _ in 0..<count {
+                    result.append(key)
+                }
+            }
+            return result
         }
-        return result
     }
 
     /// Call the callback passing each element in the array
