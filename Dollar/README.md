@@ -74,12 +74,12 @@ Passes each element in the array to the callback
 
 ```swift
 $.each(["A", "B"]) { 
-  println("Value \($0)")
+  print("Value \($0)")
 }
 => ["A", "B"]
 
 $.each(["A", "B"]) { (index, elem) in
-  println("\(index) - \(elem)")
+  print("\(index) - \(elem)")
 }
 => ["A", "B"]
 ```

@@ -146,12 +146,12 @@ Passes each element in the array to the callback
 
 ```swift
 $.each(["A", "B"]) { 
-  println("Value \($0)")
+  print("Value \($0)")
 }
 => ["A", "B"]
 
 $.each(["A", "B"]) { (index, elem) in
-  println("\(index) - \(elem)")
+  print("\(index) - \(elem)")
 }
 => ["A", "B"]
 ```
@@ -1163,7 +1163,7 @@ For each item in the array invoke the callback by passing the elem
 ```swift
 let array = ["foo", "spam", "bar", "eggs"]
 array.each {
-  println($0)
+  print($0)
 }
 => ["foo", "spam", "bar", "eggs"]
 ```
@@ -1175,7 +1175,7 @@ For each item in the array invoke the callback by passing the elem along with th
 ```swift
 let array = ["foo", "spam", "bar", "eggs"]
 array.each { (index, elem)
-  println("\(index) - \(elem)")
+  print("\(index) - \(elem)")
 }
 => ["foo", "spam", "bar", "eggs"]
 ```
