@@ -545,7 +545,7 @@ Get substring using subscript notation and by passing a range
 Get the start index of character
 
 ```swift
-"hello world".indexOf(Character("0"))!
+"hello world".indexOf(Character("o"))!
 => 4
 ```
 
