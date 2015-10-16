@@ -56,6 +56,13 @@ class DollarTests: XCTestCase {
         XCTAssert(arr == [2, 6, 8, 10], "Return array with doubled numbers")
     }
     
+    func testEachWhen() {
+        var arr: [Int] = []
+        let result = $.each([1, 3, 4, 5], callback: { arr.append($0 * 2) }, when: { return $0 < 4 });
+        XCTAssert(result == [1, 3, 4, 5], "Return the array itself")
+        XCTAssert(arr == [2, 6], "Return array with doubled numbers")
+    }
+    
     func testEqual() {
         XCTAssert($.equal(Optional("hello"), Optional("hello")), "optionalString and otherOptionalString should be equal.")
         XCTAssertFalse($.equal(Optional("hello"), Optional("goodbye")), "optionalString and thirdOptionalString should not be equal.")
@@ -206,6 +213,7 @@ class DollarTests: XCTestCase {
         XCTAssertTrue($.every([1, 2, 3, 4]) { $0 < 20 }, "All elements in collection are true")
         XCTAssertFalse($.every([1, 2, 3, 4]) { $0 == 1 }, "All elements in collection are true")
     }
+    
 
     func testFind() {
         XCTAssertEqual($.find([1, 2, 3, 4], callback: { $0 == 2 })!, 2, "Return element when object is found")

@@ -276,6 +276,19 @@ public class $ {
         return array
     }
     
+    /// Call the callback on all elements that meet the when condition
+    ///
+    /// :param array The array to check.
+    /// :param callback Check whether element value is true or false.
+    /// :param when Condition to check before performing callback
+    /// :return First element from the array.
+    public class func each<T>(array: [T], callback: (T) -> (), when: (T) -> Bool) ->[T] {
+        for elem in array where when(elem) {
+            callback(elem);
+        }
+        return array;
+    }
+    
     /// Checks if two optionals containing Equatable types are equal.
     ///
     /// :param value The first optional to check.
@@ -307,6 +320,7 @@ public class $ {
         }
         return true
     }
+    
 
     /// Returns Factorial of integer
     ///
