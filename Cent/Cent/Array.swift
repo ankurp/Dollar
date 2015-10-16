@@ -56,6 +56,17 @@ public extension Array {
         return self
     }
     
+    /// For each item in the array that meets the when conditon, invoke the callback by passing the elem
+    ///
+    /// :param callback The callback function to invoke
+    /// :param when The condition to check each element against
+    func each(callback: (Element) -> (), when: (Element) -> Bool) -> [Element] {
+        for (index, elem) in self.enumerate() where when(elem) {
+            callback(elem)
+        }
+        return self
+    }
+    
     /// Checks if the given callback returns true value for all items in the array.
     ///
     /// :param array The array to check.
