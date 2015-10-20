@@ -60,8 +60,8 @@ public extension Array {
     ///
     /// :param callback The callback function to invoke
     /// :param when The condition to check each element against
-    func each(callback: (Element) -> (), when: (Element) -> Bool) -> [Element] {
-        for (index, elem) in self.enumerate() where when(elem) {
+    func each(when when: (Element) -> Bool, callback: (Element) -> ()) -> [Element] {
+        for (_, elem) in self.enumerate() where when(elem) {
             callback(elem)
         }
         return self
