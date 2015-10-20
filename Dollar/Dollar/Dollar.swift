@@ -282,7 +282,7 @@ public class $ {
     /// :param callback Check whether element value is true or false.
     /// :param when Condition to check before performing callback
     /// :return First element from the array.
-    public class func each<T>(array: [T], callback: (T) -> (), when: (T) -> Bool) ->[T] {
+    public class func each<T>(array: [T], when: (T) -> Bool, callback: (T) -> ()) ->[T] {
         for elem in array where when(elem) {
             callback(elem);
         }
