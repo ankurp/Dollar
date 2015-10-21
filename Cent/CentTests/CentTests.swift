@@ -31,7 +31,7 @@ class CentTests: XCTestCase {
     
     func testArrayEachWhen() {
         var arr: [String] = []
-        let result = ["A", "B", "C"].each({ arr.append($0) }, when: { return $0 <= "B"});
+        let result = ["A", "B", "C"].each(when: { return $0 <= "B"}, callback: { arr.append($0) });
         XCTAssertEqual(result, ["A", "B", "C"], "Return array itself")
         XCTAssertEqual(arr.joinWithSeparator(""), "AB", "Return string concatenated")
     }

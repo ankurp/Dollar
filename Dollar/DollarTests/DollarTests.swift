@@ -58,7 +58,7 @@ class DollarTests: XCTestCase {
     
     func testEachWhen() {
         var arr: [Int] = []
-        let result = $.each([1, 3, 4, 5], callback: { arr.append($0 * 2) }, when: { return $0 < 4 });
+        let result = $.each([1, 3, 4, 5], when: { return $0 < 4 }, callback: { arr.append($0 * 2) });
         XCTAssert(result == [1, 3, 4, 5], "Return the array itself")
         XCTAssert(arr == [2, 6], "Return array with doubled numbers")
     }
