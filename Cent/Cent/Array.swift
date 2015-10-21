@@ -60,11 +60,9 @@ public extension Array {
     ///
     /// :param callback The callback function to invoke
     /// :param when The condition to check each element against
+    /// :return the array itself
     func each(when when: (Element) -> Bool, callback: (Element) -> ()) -> [Element] {
-        for (_, elem) in self.enumerate() where when(elem) {
-            callback(elem)
-        }
-        return self
+        return $.each(self, when: when, callback: callback);
     }
     
     /// Checks if the given callback returns true value for all items in the array.
