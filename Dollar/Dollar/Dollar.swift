@@ -279,9 +279,9 @@ public class $ {
     /// Call the callback on all elements that meet the when condition
     ///
     /// :param array The array to check.
-    /// :param callback Check whether element value is true or false.
     /// :param when Condition to check before performing callback
-    /// :return First element from the array.
+    /// :param callback Check whether element value is true or false.
+    /// :return The array passed
     public class func each<T>(array: [T], when: (T) -> Bool, callback: (T) -> ()) ->[T] {
         for elem in array where when(elem) {
             callback(elem);
