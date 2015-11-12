@@ -326,7 +326,7 @@ public class $ {
     ///
     /// :param num number whose factorial needs to be calculated
     /// :return factorial
-    public class func factorial(num: Int) -> Int {
+    public class func factorial<I : IntegerType>(num: I) -> I {
         guard num > 0 else { return 1 }
         return num * $.factorial(num - 1)
     }
@@ -540,16 +540,20 @@ public class $ {
         return result
     }
 
+    private class func abs<I : IntegerType>(x: I) -> I {
+        return (x < 0) ? 0 - x : x
+    }
+
     /// GCD function return greatest common denominator
     ///
     /// :param first number
     /// :param second number
     /// :return Greatest common denominator
-    public class func gcd(var first: Int, var _ second: Int) -> Int {
+    public class func gcd<I : IntegerType>(var first: I, var _ second: I) -> I {
         while second != 0 {
             (first, second) = (second, first % second)
         }
-        return Swift.abs(first)
+        return abs(first)
     }
 
     /// LCM function return least common multiple
@@ -557,7 +561,7 @@ public class $ {
     /// :param first number
     /// :param second number
     /// :return Least common multiple
-    public class func lcm(first: Int, _ second: Int) -> Int {
+    public class func lcm<I : IntegerType>(first: I, _ second: I) -> I {
         return (first / $.gcd(first, second)) * second
     }
     
