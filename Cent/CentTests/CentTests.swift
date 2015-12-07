@@ -135,6 +135,13 @@ class CentTests: XCTestCase {
         XCTAssert(arr.contains("C"), "Test if array contains C")
         XCTAssertFalse(arr.contains("Z"), "Test of failure")
     }
+  
+    func testArrayReduceWithIndex() {
+        let str = ["A", "B", "C", "D", "E"].reduceWithIndex("") { (result, index, element) -> String in
+          result + element + "\(index)"
+        }
+        XCTAssertEqual(str, "A0B1C2D3E4", "Should reduce array to element followed by the index of the element")
+    }
     
     /**
         String Test Cases
@@ -144,11 +151,109 @@ class CentTests: XCTestCase {
         XCTAssertEqual("Dollar and Cent"[0...5], "Dollar", "Return substring")
         XCTAssertEqual("Dollar and Cent"[7..<10], "and", "Return substring")
     }
-    
+  
+    func testStringToWords() {
+        let str = "The Dukes... ruined my life... over a bet? For how much?"
+        let words = ["The", "Dukes", "ruined", "my", "life", "over", "a", "bet", "For", "how", "much"]
+        XCTAssertEqual(str.words(), words, "Should split the string into words ignoring puncuation")
+    }
+  
+    func testCompoundWordStringsToWords() {
+        let str = "DollarAndCent dollar-and-cent"
+        let words = ["Dollar", "And", "Cent", "dollar", "and", "cent"]
+        XCTAssertEqual(str.words(), words, "Should split compound strings into words")
+    }
+  
+    func testStringDeburr() {
+        let str = "My Göd! Thé Dûkęs àrè gôïng tò cõrnėr the entīre frózen ôrange jūice mårket!"
+        let match = "My God! The Dukes are going to corner the entire frozen orange juice market!"
+        XCTAssertEqual(str.deburr(), match, "Should remove string of all accents and diacritics")
+    }
+  
+    func contextCases(context: (testStrings: [String]) -> Void) {
+        let testStrs = [
+            "I will give you <50> bucks",
+            "In Philàdèlphia, it is wõrth 50 bucks.",
+            "--1-dollar__",
+            "I believe we paid < 35000",
+            "\tMerryNEWYear! 😊",
+            "\nThis is *the* sports-watch of the '80s."
+        ]
+        context(testStrings: testStrs)
+    }
+  
+    func testCamelCase() {
+        contextCases { (testStrings) -> Void in
+            let camelCased = testStrings.map({ (str) -> String in
+                str.camelCase
+            })
+            let matches = [
+                "iWillGiveYou50Bucks",
+                "inPhiladelphiaItIsWorth50Bucks",
+                "1Dollar",
+                "iBelieveWePaid35000",
+                "merryNewYear",
+                "thisIsTheSportsWatchOfThe80S"
+            ]
+            XCTAssertEqual(camelCased, matches, "Should correctly camel case each string")
+        }
+    }
+  
+    func testKebabCase() {
+        contextCases { (testStrings) -> Void in
+            let kebabCase = testStrings.map({ (str) -> String in
+                str.kebabCase
+            })
+            let matches = [
+                "i-will-give-you-50-bucks",
+                "in-philadelphia-it-is-worth-50-bucks",
+                "1-dollar",
+                "i-believe-we-paid-35000",
+                "merry-new-year",
+                "this-is-the-sports-watch-of-the-80s"
+            ]
+            XCTAssertEqual(kebabCase, matches, "Should correctly kebab case each string")
+        }
+    }
+  
+    func testSnakeCase() {
+        contextCases { (testStrings) -> Void in
+            let snakeCase = testStrings.map({ (str) -> String in
+                str.snakeCase
+            })
+            let matches = [
+                "i_will_give_you_50_bucks",
+                "in_philadelphia_it_is_worth_50_bucks",
+                "1_dollar",
+                "i_believe_we_paid_35000",
+                "merry_new_year",
+                "this_is_the_sports_watch_of_the_80s"
+            ]
+            XCTAssertEqual(snakeCase, matches, "Should correctly snake case each string")
+        }
+    }
+  
+    func testStartCase() {
+        contextCases { (testStrings) -> Void in
+            let startCase = testStrings.map({ (str) -> String in
+                str.startCase
+            })
+            let matches = [
+                "I Will Give You 50 Bucks",
+                "In Philadelphia It Is Worth 50 Bucks",
+                "1 Dollar",
+                "I Believe We Paid 35000",
+                "Merry New Year",
+                "This Is The Sports Watch Of The 80S"
+            ]
+            XCTAssertEqual(startCase, matches, "Should correctly start case each string")
+        }
+    }
+  
     /**
         Regex Test Cases
     */
-    
+  
     func testRegex() {
         XCTAssertEqual("Dollar and Cent" =~ "and", true, "Should pattern match with regex string")
         XCTAssertEqual("Dollar and Cent" =~ "and Cent$", true, "Should pattern match with regex string")
