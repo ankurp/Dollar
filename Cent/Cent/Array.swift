@@ -199,6 +199,24 @@ public extension Array {
 
 }
 
+extension Array {
+  
+    /// Return the result of repeatedly calling `combine` with an accumulated value initialized
+    /// to `initial` on each element of `self`, in turn with a corresponding index.
+    ///
+    /// :param initial the value to be accumulated
+    /// :param combine the combiner with the result, index, and current element
+    /// :return combined result
+    func reduceWithIndex<T>(initial: T, @noescape combine: (T, Int, Array.Generator.Element) throws -> T) rethrows -> T {
+        var result = initial
+        for (index, element) in self.enumerate() {
+            result = try combine(result, index, element)
+        }
+        return result
+    }
+  
+}
+
 /// Overloaded operator to appends another array to an array
 ///
 /// :return array with the element appended in the end
