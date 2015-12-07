@@ -1622,6 +1622,42 @@ Get the length of the string
 => 5
 ```
 
+### `.camelCase`
+
+Get the camel case representation of the string
+
+```swift
+"__Dollar and cent-- dollarANDCent".camelCase
+=> "dollarAndCentDollarAndCent"
+```
+
+### `.kebabCase`
+
+Get the kebab case representation of the string
+
+```swift
+"__Dollar and cent-- dollarANDCent".camelCase
+=> "dollar-and-cent-dollar-and-cent"
+```
+
+### `.snakeCase`
+
+Get the snake case representation of the string
+
+```swift
+"__Dollar and cent-- dollarANDCent".camelCase
+=> "dollar_and_cent_dollar_and_cent"
+```
+
+### `.startCase`
+
+Get the start case representation of the string
+
+```swift
+"__Dollar and cent-- dollarANDCent".camelCase
+=> "Dollar And Cent Dollar And Cent"
+```
+
 ### `=~ str: String -> Bool`
 
 Does a regex match of whether regex string on the right is matches the string on the left
