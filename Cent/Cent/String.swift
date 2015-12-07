@@ -49,7 +49,7 @@ public extension String {
         return self.substringWithRange(Range(start: start, end: end))
     }
     
-    /// Get the start index of Charcter
+    /// Get the start index of Character
     ///
     /// :return start index of .None if not found
     public func indexOf(char: Character) -> Int? {
