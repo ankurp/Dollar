@@ -1636,7 +1636,7 @@ Get the camel case representation of the string
 Get the kebab case representation of the string
 
 ```swift
-"__Dollar and cent-- dollarANDCent".camelCase
+"__Dollar and cent-- dollarANDCent".kebabCase
 => "dollar-and-cent-dollar-and-cent"
 ```
 
@@ -1645,7 +1645,7 @@ Get the kebab case representation of the string
 Get the snake case representation of the string
 
 ```swift
-"__Dollar and cent-- dollarANDCent".camelCase
+"__Dollar and cent-- dollarANDCent".snakeCase
 => "dollar_and_cent_dollar_and_cent"
 ```
 
@@ -1654,7 +1654,7 @@ Get the snake case representation of the string
 Get the start case representation of the string
 
 ```swift
-"__Dollar and cent-- dollarANDCent".camelCase
+"__Dollar and cent-- dollarANDCent".startCase
 => "Dollar And Cent Dollar And Cent"
 ```
 
