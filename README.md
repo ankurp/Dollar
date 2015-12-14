@@ -10,7 +10,7 @@ Cent is a library that extends certain Swift object types using the extension fe
 
 ## Using [Carthage](https://github.com/Carthage/Carthage)
 
-Add `github "ankurp/Dollar.swift" ~> 4.0.1` to your `Cartfile` and run `carthage update`. If unfamiliar with Carthage then checkout their [Getting Started section](https://github.com/Carthage/Carthage#getting-started) or this [sample app](https://github.com/ankurp/DollarCarthageApp)
+Add `github "ankurp/Dollar.swift" ~> 4.1.0` to your `Cartfile` and run `carthage update`. If unfamiliar with Carthage then checkout their [Getting Started section](https://github.com/Carthage/Carthage#getting-started) or this [sample app](https://github.com/ankurp/DollarCarthageApp)
 
 ## Using [cocoapods](http://cocoapods.org/) version 0.36.x or greater
 
@@ -40,7 +40,7 @@ Using
 
 ## Communication ##
 
-- If you **need help**, use [Stack Overflow](http://stackoverflow.com/questions/tagged/dollar.swift). (Tag 'dollar.swift')
+- If you **need help**, use [gitter.im](https://gitter.im/ankurp/Dollar.swift) or post a question on [Stack Overflow](http://stackoverflow.com/questions/tagged/dollar.swift) with tag 'dollar.swift.
 - If you'd like to **ask a general question**, use [Stack Overflow](http://stackoverflow.com/questions/tagged/dollar.swift).
 - If you **found a bug**, open an issue.
 - If you **have a feature request**, open an issue.
@@ -122,12 +122,12 @@ Passes each element in the array to the callback
 
 ```swift
 $.each(["A", "B"]) { 
-  println("Value \($0)")
+  print("Value \($0)")
 }
 => ["A", "B"]
 
 $.each(["A", "B"]) { (index, elem) in
-  println("\(index) - \(elem)")
+  print("\(index) - \(elem)")
 }
 => ["A", "B"]
 ```
@@ -1139,7 +1139,7 @@ For each item in the array invoke the callback by passing the elem
 ```swift
 let array = ["foo", "spam", "bar", "eggs"]
 array.each {
-  println($0)
+  print($0)
 }
 => ["foo", "spam", "bar", "eggs"]
 ```
@@ -1151,7 +1151,7 @@ For each item in the array invoke the callback by passing the elem along with th
 ```swift
 let array = ["foo", "spam", "bar", "eggs"]
 array.each { (index, elem)
-  println("\(index) - \(elem)")
+  print("\(index) - \(elem)")
 }
 => ["foo", "spam", "bar", "eggs"]
 ```
@@ -1598,6 +1598,42 @@ Get the length of the string
 => 5
 ```
 
+### `.camelCase`
+
+Get the camel case representation of the string
+
+```swift
+"__Dollar and cent-- dollarANDCent".camelCase
+=> "dollarAndCentDollarAndCent"
+```
+
+### `.kebabCase`
+
+Get the kebab case representation of the string
+
+```swift
+"__Dollar and cent-- dollarANDCent".kebabCase
+=> "dollar-and-cent-dollar-and-cent"
+```
+
+### `.snakeCase`
+
+Get the snake case representation of the string
+
+```swift
+"__Dollar and cent-- dollarANDCent".snakeCase
+=> "dollar_and_cent_dollar_and_cent"
+```
+
+### `.startCase`
+
+Get the start case representation of the string
+
+```swift
+"__Dollar and cent-- dollarANDCent".startCase
+=> "Dollar And Cent Dollar And Cent"
+```
+
 ### `=~ str: String -> Bool`
 
 Does a regex match of whether regex string on the right is matches the string on the left
@@ -1653,7 +1689,7 @@ Get substring using subscript notation and by passing a range
 Get the start index of character
 
 ```swift
-"hello world".indexOf(Character("0"))!
+"hello world".indexOf(Character("o"))!
 => 4
 ```
 

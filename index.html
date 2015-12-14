@@ -233,6 +233,10 @@
                                     <li id="string-extensions-item" class="level-2"><a id="string-extensions-link" href="#string-extensions" class="level-2">String Extensions</a>
                                         <ul class="level-3" id="string-extensions-list">
                                             <li id="length-item" class="level-3"><a id="length-link" href="#length" class="level-3">.length</a></li>
+                                            <li id="camelcase-item" class="level-3"><a id="camelcase-link" href="#camelcase" class="level-3">.camelCase</a></li>
+                                            <li id="kebabcase-item" class="level-3"><a id="kebabcase-link" href="#kebabcase" class="level-3">.kebabCase</a></li>
+                                            <li id="snakecase-item" class="level-3"><a id="snakecase-link" href="#snakecase" class="level-3">.snakeCase</a></li>
+                                            <li id="startcase-item" class="level-3"><a id="startcase-link" href="#startcase" class="level-3">.startCase</a></li>
                                             <li id="str-string-bool-item" class="level-3"><a id="str-string-bool-link" href="#str-string-bool" class="level-3">=~ str: String -&gt; Bool</a></li>
                                             <li id="n-int-string-item" class="level-3"><a id="n-int-string-link" href="#n-int-string" class="level-3">* n: Int -&gt; String</a></li>
                                             <li id="i-int-character-item" class="level-3"><a id="i-int-character-link" href="#i-int-character" class="level-3">[i: Int] -&gt; Character?</a></li>
@@ -281,7 +285,7 @@
             <p>Cent is a library that extends certain Swift object types using the extension feature and gives its two cents to Swift language.</p>
             <h1 id="setup">Setup</h1>
             <h2 id="using-carthage">Using <a href="https://github.com/Carthage/Carthage">Carthage</a></h2>
-            <p>Add <code>github "ankurp/Dollar.swift" ~&gt; 4.0.1</code> to your <code>Cartfile</code> and run <code>carthage update</code>. If unfamiliar with Carthage then checkout their <a href="https://github.com/Carthage/Carthage#getting-started">Getting Started section</a> or this <a href="https://github.com/ankurp/DollarCarthageApp">sample app</a></p>
+            <p>Add <code>github "ankurp/Dollar.swift" ~&gt; 4.1.0</code> to your <code>Cartfile</code> and run <code>carthage update</code>. If unfamiliar with Carthage then checkout their <a href="https://github.com/Carthage/Carthage#getting-started">Getting Started section</a> or this <a href="https://github.com/ankurp/DollarCarthageApp">sample app</a></p>
             <h2 id="using-cocoapods-version-0-36-x-or-greater">Using <a href="http://cocoapods.org/">cocoapods</a> version 0.36.x or greater</h2>
             <p>Add <code>pod 'Dollar'</code> to your <code>Podfile</code> and run <code>pod install</code>. Add <code>use_frameworks!</code> to the end of the <code>Podfile</code>. Also checkout this <a href="https://github.com/ankurp/DollarPodApp">sample app</a>. Requires cocoapod version 0.36.x or greater.</p>
             <h2 id="using-git-submodule">Using <code>git submodule</code></h2>
@@ -315,7 +319,7 @@
             </p>
             <h2 id="communication">Communication</h2>
             <ul>
-                <li>If you <strong>need help</strong>, use <a href="http://stackoverflow.com/questions/tagged/dollar.swift">Stack Overflow</a>. (Tag ‘dollar.swift’)</li>
+                <li>If you <strong>need help</strong>, use <a href="https://gitter.im/ankurp/Dollar.swift">gitter.im</a> or post a question on <a href="http://stackoverflow.com/questions/tagged/dollar.swift">Stack Overflow</a> with tag ‘dollar.swift'.</li>
                 <li>If you’d like to <strong>ask a general question</strong>, use <a href="http://stackoverflow.com/questions/tagged/dollar.swift">Stack Overflow</a>.</li>
                 <li>If you <strong>found a bug</strong>, open an issue.</li>
                 <li>If you <strong>have a feature request</strong>, open an issue.</li>
@@ -355,12 +359,12 @@
 =&gt; [<span class="number">1</span>, <span class="number">3</span>, <span class="number">4</span>]</code></pre>
             <h3 id="each-each">each - <code>$.each</code></h3>
             <p>Passes each element in the array to the callback</p><pre><code class="lang-swift"><span class="keyword">$</span>.each([<span class="string">"A"</span>, <span class="string">"B"</span>]) { 
-  println(<span class="string">"Value \(<span class="keyword">$</span><span class="number">0</span>)"</span>)
+  print(<span class="string">"Value \(<span class="keyword">$</span><span class="number">0</span>)"</span>)
 }
 =&gt; [<span class="string">"A"</span>, <span class="string">"B"</span>]
 
 <span class="keyword">$</span>.each([<span class="string">"A"</span>, <span class="string">"B"</span>]) { (index, elem) in
-  println(<span class="string">"\(index) - \(elem)"</span>)
+  print(<span class="string">"\(index) - \(elem)"</span>)
 }
 =&gt; [<span class="string">"A"</span>, <span class="string">"B"</span>]</code></pre>
             <h3 id="every-every">every - <code>$.every</code></h3>
@@ -875,13 +879,13 @@ array &lt;&lt; [<span class="number">5</span>, <span class="number">6</span>]
             <h3 id="each-callback-element-element"><code>each(callback: (Element) -&gt; ()) -&gt; [Element]</code></h3>
             <p>For each item in the array invoke the callback by passing the elem</p><pre><code class="lang-swift"><span class="keyword">let</span> array = [<span class="string">"foo"</span>, <span class="string">"spam"</span>, <span class="string">"bar"</span>, <span class="string">"eggs"</span>]
 array.each {
-  println(<span class="keyword">$</span><span class="number">0</span>)
+  print(<span class="keyword">$</span><span class="number">0</span>)
 }
 =&gt; [<span class="string">"foo"</span>, <span class="string">"spam"</span>, <span class="string">"bar"</span>, <span class="string">"eggs"</span>]</code></pre>
             <h3 id="eachwithindex-callback-int-element-element"><code>eachWithIndex(callback: (Int, Element) -&gt; ()) -&gt; [Element]</code></h3>
             <p>For each item in the array invoke the callback by passing the elem along with the index</p><pre><code class="lang-swift"><span class="keyword">let</span> array = [<span class="string">"foo"</span>, <span class="string">"spam"</span>, <span class="string">"bar"</span>, <span class="string">"eggs"</span>]
 array.each { (index, elem)
-  println(<span class="string">"\(index) - \(elem)"</span>)
+  print(<span class="string">"\(index) - \(elem)"</span>)
 }
 =&gt; [<span class="string">"foo"</span>, <span class="string">"spam"</span>, <span class="string">"bar"</span>, <span class="string">"eggs"</span>]</code></pre>
             <h3 id="cycle-u-times-int-callback-element-u"><code>cycle&lt;U&gt;(times: Int, callback: (Element) -&gt; U)</code></h3>
@@ -1078,6 +1082,18 @@ Prints <span class="string">"HiHiHiHi"</span></code></pre>
             <h3 id="length"><code>.length</code></h3>
             <p>Get the length of the string</p><pre><code class="lang-swift"><span class="string">"Hello"</span>.length
 =&gt; <span class="number">5</span></code></pre>
+            <h3 id="camelcase"><code>.camelCase</code></h3>
+            <p>Get the camel case representation of the string</p><pre><code class="lang-swift"><span class="string">"__Dollar and cent-- dollarANDCent"</span>.camelCase
+=&gt; <span class="string">"dollarAndCentDollarAndCent"</span></code></pre>
+            <h3 id="kebabcase"><code>.kebabCase</code></h3>
+            <p>Get the kebab case representation of the string</p><pre><code class="lang-swift"><span class="string">"__Dollar and cent-- dollarANDCent"</span>.kebabCase
+=&gt; <span class="string">"dollar-and-cent-dollar-and-cent"</span></code></pre>
+            <h3 id="snakecase"><code>.snakeCase</code></h3>
+            <p>Get the snake case representation of the string</p><pre><code class="lang-swift"><span class="string">"__Dollar and cent-- dollarANDCent"</span>.snakeCase
+=&gt; <span class="string">"dollar_and_cent_dollar_and_cent"</span></code></pre>
+            <h3 id="startcase"><code>.startCase</code></h3>
+            <p>Get the start case representation of the string</p><pre><code class="lang-swift"><span class="string">"__Dollar and cent-- dollarANDCent"</span>.startCase
+=&gt; <span class="string">"Dollar And Cent Dollar And Cent"</span></code></pre>
             <h3 id="str-string-bool"><code>=~ str: String -&gt; Bool</code></h3>
             <p>Does a regex match of whether regex string on the right is matches the string on the left</p><pre><code class="lang-swift"><span class="string">"Dollar"</span> =~ <span class="string">"oll"</span>
 =&gt; <span class="keyword">true</span></code></pre>
@@ -1098,7 +1114,7 @@ proj[<span class="string">"^.+[^and Cent]"</span>]
             <p>Get substring using subscript notation and by passing a range</p><pre><code class="lang-swift"><span class="string">"Hello World"</span>[<span class="number">0</span>..&lt;<span class="number">5</span>] == <span class="string">"Hello"</span> 
 =&gt; <span class="keyword">true</span></code></pre>
             <h3 id="indexof-char-character-int"><code>indexOf(char: Character) -&gt; Int?</code></h3>
-            <p>Get the start index of character</p><pre><code class="lang-swift"><span class="string">"hello world"</span>.indexOf(Character(<span class="string">"<span class="number">0</span>"</span>))!
+            <p>Get the start index of character</p><pre><code class="lang-swift"><span class="string">"hello world"</span>.indexOf(Character(<span class="string">"o"</span>))!
 =&gt; <span class="number">4</span></code></pre>
             <h3 id="indexof-str-string-int"><code>indexOf(str: String) -&gt; Int?</code></h3>
             <p>Get the start index of string</p><pre><code class="lang-swift"><span class="string">"hello world"</span>.indexOf(<span class="string">"llo"</span>)!
