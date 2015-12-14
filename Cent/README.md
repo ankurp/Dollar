@@ -490,6 +490,42 @@ Get the length of the string
 => 5
 ```
 
+### `.camelCase`
+
+Get the camel case representation of the string
+
+```swift
+"__Dollar and cent-- dollarANDCent".camelCase
+=> "dollarAndCentDollarAndCent"
+```
+
+### `.kebabCase`
+
+Get the kebab case representation of the string
+
+```swift
+"__Dollar and cent-- dollarANDCent".kebabCase
+=> "dollar-and-cent-dollar-and-cent"
+```
+
+### `.snakeCase`
+
+Get the snake case representation of the string
+
+```swift
+"__Dollar and cent-- dollarANDCent".snakeCase
+=> "dollar_and_cent_dollar_and_cent"
+```
+
+### `.startCase`
+
+Get the start case representation of the string
+
+```swift
+"__Dollar and cent-- dollarANDCent".startCase
+=> "Dollar And Cent Dollar And Cent"
+```
+
 ### `=~ str: String -> Bool`
 
 Does a regex match of whether regex string on the right is matches the string on the left
@@ -680,3 +716,17 @@ For each index in the range invoke the callback
 (1...5).each { print("Na") } 
 => "NaNaNaNaNa"
 ```
+
+# Contributing #
+If you are interested in contributing checkout [CONTRIBUTING.md](https://github.com/ankurp/Dollar.swift/blob/master/CONTRIBUTING.md)
+
+# Roadmap #
+
+* Add more extention functions to the Cent library
+* Benchmark and improve performance if applicable
+
+# Dollar or Cent #
+If you are interested only in pure functional programming `import Dollar` otherwise `import Cent` which includes extensions for certain object type such as Array for now but more will be added.
+
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/ankurp/dollar.swift/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
