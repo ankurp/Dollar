@@ -1859,6 +1859,3 @@ If you are interested in contributing checkout [CONTRIBUTING.md](https://github.
 
 # Dollar or Cent #
 If you are interested only in pure functional programming `import Dollar` otherwise `import Cent` which includes extensions for certain object type such as Array for now but more will be added.
-
-
-[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/ankurp/dollar.swift/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
