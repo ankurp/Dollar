@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		52897D221BF448C7009E6BCE /* IntegerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52897D211BF448C7009E6BCE /* IntegerType.swift */; };
 		920C569C1962514E009D5129 /* Dictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 920C569B1962514E009D5129 /* Dictionary.swift */; };
 		920C569E196251B5009D5129 /* Int.swift in Sources */ = {isa = PBXBuildFile; fileRef = 920C569D196251B5009D5129 /* Int.swift */; };
 		920C56A0196251D7009D5129 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 920C569F196251D7009D5129 /* String.swift */; };
@@ -74,6 +75,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		52897D211BF448C7009E6BCE /* IntegerType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntegerType.swift; sourceTree = "<group>"; };
 		920C569B1962514E009D5129 /* Dictionary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dictionary.swift; sourceTree = "<group>"; };
 		920C569D196251B5009D5129 /* Int.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Int.swift; sourceTree = "<group>"; };
 		920C569F196251D7009D5129 /* String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
@@ -136,6 +138,7 @@
 				920C56A7196255E6009D5129 /* Date.swift */,
 				920C569B1962514E009D5129 /* Dictionary.swift */,
 				920C569D196251B5009D5129 /* Int.swift */,
+				52897D211BF448C7009E6BCE /* IntegerType.swift */,
 				920C569F196251D7009D5129 /* String.swift */,
 				92D0253F19F73F6B00A8F5E3 /* Regex.swift */,
 				920C56A319625401009D5129 /* Range.swift */,
@@ -316,6 +319,7 @@
 				920C56A8196255E6009D5129 /* Date.swift in Sources */,
 				924F92FB195F854B003DBB60 /* Array.swift in Sources */,
 				92D0254019F73F6B00A8F5E3 /* Regex.swift in Sources */,
+				52897D221BF448C7009E6BCE /* IntegerType.swift in Sources */,
 				920C56A419625401009D5129 /* Range.swift in Sources */,
 				920C56A0196251D7009D5129 /* String.swift in Sources */,
 				920C569C1962514E009D5129 /* Dictionary.swift in Sources */,
