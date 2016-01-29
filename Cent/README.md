@@ -669,10 +669,10 @@ re.matches("Hello World")
 
 ```swift
 let re = Regex.init("^Hello.World$")
-re.matches("Hello World")
+re.test("Hello World")
 => true
 
-re.matches("Str")
+re.test("Str")
 => false
 ```
 
