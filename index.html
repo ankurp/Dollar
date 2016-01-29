@@ -1147,10 +1147,10 @@ spaces.strip()
             <p>Return matches based on String passed.</p><pre><code class="lang-swift"><span class="keyword">let</span> re = Regex.init(<span class="string">"^Hello.World<span class="keyword">$</span>"</span>)
 re.matches(<span class="string">"Hello World"</span>)</code></pre>
             <h3 id="test-teststr-string-bool"><code>test(testStr: String) -&gt; Bool</code></h3><pre><code class="lang-swift"><span class="keyword">let</span> re = Regex.init(<span class="string">"^Hello.World<span class="keyword">$</span>"</span>)
-re.matches(<span class="string">"Hello World"</span>)
+re.test(<span class="string">"Hello World"</span>)
 =&gt; <span class="keyword">true</span>
 
-re.matches(<span class="string">"Str"</span>)
+re.test(<span class="string">"Str"</span>)
 =&gt; <span class="keyword">false</span></code></pre>
             <h3 id="escapestr-str-string-string"><code>escapeStr(str: String) -&gt; String</code></h3>
             <p>Escape string with regex characters</p><pre><code class="lang-swift">Regex.escape(<span class="string">"Hello.World"</span>)
