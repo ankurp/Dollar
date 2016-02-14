@@ -1,25 +1,29 @@
-Dollar and Cent [![Build Status](https://travis-ci.org/ankurp/Dollar.swift.svg?branch=master)](https://travis-ci.org/ankurp/Dollar.swift) ![CocoaPods](https://img.shields.io/cocoapods/v/Dollar.svg) [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
+Dollar and Cent [![Build Status](https://travis-ci.org/ankurp/Dollar.svg?branch=master)](https://travis-ci.org/ankurp/Dollar) ![CocoaPods](https://img.shields.io/cocoapods/v/Dollar.svg) [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 ===========
-[![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/ankurp/Dollar.swift?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+[![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/ankurp/Dollar?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
-Dollar is a Swift library that provides useful functional programming helper methods without extending any built in objects. It is similar to [Lo-Dash](https://lodash.com) or [Underscore.js](http://underscorejs.org) in Javascript.
+[Dollar](https://github.com/ankurp/Dollar) is a Swift library that provides useful functional programming helper methods without extending any built in objects. It is similar to [Lo-Dash](https://lodash.com) or [Underscore.js](http://underscorejs.org) in Javascript.
 
-Cent is a library that extends certain Swift object types using the extension feature and gives its two cents to Swift language.
+[Cent](https://github.com/ankurp/Cent) is a library that extends certain Swift object types using the extension feature and gives its two cents to Swift language.
 
 # Setup #
 
 ## Using [Carthage](https://github.com/Carthage/Carthage)
 
-Add `github "ankurp/Dollar.swift" ~> 4.1.0` to your `Cartfile` and run `carthage update`. If unfamiliar with Carthage then checkout their [Getting Started section](https://github.com/Carthage/Carthage#getting-started) or this [sample app](https://github.com/ankurp/DollarCarthageApp)
+Add `github "ankurp/Dollar" ~> 5.0.0` to your `Cartfile` and run `carthage update`. If unfamiliar with Carthage then checkout their [Getting Started section](https://github.com/Carthage/Carthage#getting-started) or this [sample app](https://github.com/ankurp/DollarCarthageApp)
 
 ## Using [cocoapods](http://cocoapods.org/) version 0.36.x or greater
 
 Add `pod 'Dollar'` to your `Podfile` and run `pod install`. Add `use_frameworks!` to the end of the `Podfile`. Also checkout this [sample app](https://github.com/ankurp/DollarPodApp). Requires cocoapod version 0.36.x or greater.
 
+## Using [Swift Package Manager](https://github.com/apple/swift-package-manager)
+
+Add the following dependency `.Package(url: "https://github.com/ankurp/Dollar", majorVersion: 5, minor: 0)` to your `Package.swift` file and then run `swift build`. Requires swift version 2.2 or greater that you can install from https://swift.org
+
 ## Using `git submodule`
 
-1. If you are using git then add Dollar as a submodule using `git submodule add https://github.com/ankurp/Dollar.swift.git`. If not using git download the project using `git clone https://github.com/ankurp/Dollar.swift.git` in your project folder.
-2. Open the Dollar.swift folder. Drag Dollar.xcodeproj, inside the Dollar folder, into the file navigator of your Xcode project.
+1. If you are using git then add Dollar as a submodule using `git submodule add https://github.com/ankurp/Dollar.git`. If not using git download the project using `git clone https://github.com/ankurp/Dollar.git` in your project folder.
+2. Open the `Dollar` folder. Drag Dollar.xcodeproj, inside the Dollar folder, into the file navigator of your Xcode project.
 3. In Xcode, navigate to the target configuration window by clicking on the blue project icon, and selecting the application target under the "Targets" heading in the sidebar.
 4. In the tab bar at the top of that window, open the "Build Phases" panel.
 5. Expand the "Link Binary with Libraries" group, and add Dollar.framework.
@@ -33,14 +37,15 @@ Still stuck. Then checkout this screencast on [how to import](http://recordit.co
 * For Xcode 6.1 and 6.2 (Swift 1.1) use version `2.2.0`
 
 ## Demo Apps ##
-Using
-* [`carthage`](https://github.com/ankurp/DollarCarthageApp)
-* [`cocoapods`](https://github.com/ankurp/DollarPodApp)
-* [`git submodule`](https://github.com/ankurp/DollarSubmoduleApp)
+
+* Using [`Carthage`](https://github.com/ankurp/DollarCarthageApp)
+* Using [`Cocoa Pods`](https://github.com/ankurp/DollarPodApp)
+* Using [`Swift Package Manager`](https://github.com/ankurp/DollarSwiftPackage)
+* Using [`git submodule`](https://github.com/ankurp/DollarSubmoduleApp)
 
 ## Communication ##
 
-- If you **need help**, use [gitter.im](https://gitter.im/ankurp/Dollar.swift) or post a question on [Stack Overflow](http://stackoverflow.com/questions/tagged/dollar.swift) with tag 'dollar.swift.
+- If you **need help**, use [gitter.im](https://gitter.im/ankurp/Dollar) or post a question on [Stack Overflow](http://stackoverflow.com/questions/tagged/dollar.swift) with tag `dollar.swift`.
 - If you'd like to **ask a general question**, use [Stack Overflow](http://stackoverflow.com/questions/tagged/dollar.swift).
 - If you **found a bug**, open an issue.
 - If you **have a feature request**, open an issue.
@@ -571,7 +576,7 @@ result
 Returns size of the array
 
 ```swift
-_.size(["a", "b", "c")
+$.size(["a", "b", "c")
 => 3
 ```
 
@@ -1826,12 +1831,7 @@ For each index in the range invoke the callback
 ```
 
 # Contributing #
-If you are interested in contributing checkout [CONTRIBUTING.md](https://github.com/ankurp/Dollar.swift/blob/master/CONTRIBUTING.md)
-
-# Roadmap #
-
-* Add more extention functions to the Cent library
-* Benchmark and improve performance if applicable
+If you are interested in contributing checkout [CONTRIBUTING.md](https://github.com/ankurp/Dollar/blob/master/CONTRIBUTING.md)
 
 # Dollar or Cent #
 If you are interested only in pure functional programming `import Dollar` otherwise `import Cent` which includes extensions for certain object type such as Array for now but more will be added.

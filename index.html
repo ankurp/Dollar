@@ -51,6 +51,7 @@
                                 <ul class="level-2" id="setup-list">
                                     <li id="using-carthage-item" class="level-2"><a id="using-carthage-link" href="#using-carthage" class="level-2">Using Carthage</a></li>
                                     <li id="using-cocoapods-version-0-36-x-or-greater-item" class="level-2"><a id="using-cocoapods-version-0-36-x-or-greater-link" href="#using-cocoapods-version-0-36-x-or-greater" class="level-2">Using cocoapods version 0.36.x or greater</a></li>
+                                    <li id="using-swift-package-manager-item" class="level-2"><a id="using-swift-package-manager-link" href="#using-swift-package-manager" class="level-2">Using Swift Package Manager</a></li>
                                     <li id="using-git-submodule-item" class="level-2"><a id="using-git-submodule-link" href="#using-git-submodule" class="level-2">Using git submodule</a></li>
                                     <li id="support-for-older-xcode-and-swift-item" class="level-2"><a id="support-for-older-xcode-and-swift-link" href="#support-for-older-xcode-and-swift" class="level-2">Support for Older Xcode and Swift</a></li>
                                     <li id="demo-apps-item" class="level-2"><a id="demo-apps-link" href="#demo-apps" class="level-2">Demo Apps</a></li>
@@ -64,7 +65,7 @@
                                             <li id="at-at-item" class="level-3"><a id="at-at-link" href="#at-at" class="level-3">at - $.at</a></li>
                                             <li id="chunk-chunk-item" class="level-3"><a id="chunk-chunk-link" href="#chunk-chunk" class="level-3">chunk - $.chunk</a></li>
                                             <li id="compact-compact-item" class="level-3"><a id="compact-compact-link" href="#compact-compact" class="level-3">compact - $.compact</a></li>
-                                            <li id="contains-contains-item" class="level-3"><a id="contains-contains-link" href="#contains-contains" class="level-3">contains - $.contains</a></li>
+                                            <li id="contains-contains-item" class="level-3"><a id="contains-contains-link" href="#contains-contains" class="level-3 active">contains - $.contains</a></li>
                                             <li id="cycle-cycle-item" class="level-3"><a id="cycle-cycle-link" href="#cycle-cycle" class="level-3">cycle - $.cycle</a></li>
                                             <li id="difference-difference-item" class="level-3"><a id="difference-difference-link" href="#difference-difference" class="level-3">difference - $.difference</a></li>
                                             <li id="each-each-item" class="level-3"><a id="each-each-link" href="#each-each" class="level-3">each - $.each</a></li>
@@ -269,7 +270,6 @@
                                 </ul>
                             </li>
                             <li id="contributing-item" class="level-1"><a id="contributing-link" href="#contributing" class="level-1">Contributing</a></li>
-                            <li id="roadmap-item" class="level-1"><a id="roadmap-link" href="#roadmap" class="level-1">Roadmap</a></li>
                             <li id="dollar-or-cent-item" class="level-1"><a id="dollar-or-cent-link" href="#dollar-or-cent" class="level-1">Dollar or Cent</a></li>
                         </ul>
                     </li>
@@ -277,21 +277,23 @@
             </div>
         </div>
         <div role="flatdoc-content" class="content">
-            <h1 id="dollar-and-cent">Dollar and Cent <a href="https://travis-ci.org/ankurp/Dollar.swift"><img src="https://travis-ci.org/ankurp/Dollar.swift.svg?branch=master" alt="Build Status"></a> <img src="https://img.shields.io/cocoapods/v/Dollar.svg" alt="CocoaPods"> <a href="https://github.com/Carthage/Carthage"><img src="https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat" alt="Carthage compatible"></a></h1>
+            <h1 id="dollar-and-cent">Dollar and Cent <a href="https://travis-ci.org/ankurp/Dollar"><img src="https://travis-ci.org/ankurp/Dollar.svg?branch=master" alt="Build Status"></a> <img src="https://img.shields.io/cocoapods/v/Dollar.svg" alt="CocoaPods"> <a href="https://github.com/Carthage/Carthage"><img src="https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat" alt="Carthage compatible"></a></h1>
             <p>
-                <a href="https://gitter.im/ankurp/Dollar.swift?utm_source=badge&amp;utm_medium=badge&amp;utm_campaign=pr-badge&amp;utm_content=badge"><img src="https://badges.gitter.im/Join%20Chat.svg" alt="Gitter"></a>
+                <a href="https://gitter.im/ankurp/Dollar?utm_source=badge&amp;utm_medium=badge&amp;utm_campaign=pr-badge&amp;utm_content=badge"><img src="https://badges.gitter.im/Join%20Chat.svg" alt="Gitter"></a>
             </p>
-            <p>Dollar is a Swift library that provides useful functional programming helper methods without extending any built in objects. It is similar to <a href="https://lodash.com">Lo-Dash</a> or <a href="http://underscorejs.org">Underscore.js</a> in Javascript.</p>
-            <p>Cent is a library that extends certain Swift object types using the extension feature and gives its two cents to Swift language.</p>
+            <p><a href="https://github.com/ankurp/Dollar">Dollar</a> is a Swift library that provides useful functional programming helper methods without extending any built in objects. It is similar to <a href="https://lodash.com">Lo-Dash</a> or <a href="http://underscorejs.org">Underscore.js</a> in Javascript.</p>
+            <p><a href="https://github.com/ankurp/Cent">Cent</a> is a library that extends certain Swift object types using the extension feature and gives its two cents to Swift language.</p>
             <h1 id="setup">Setup</h1>
             <h2 id="using-carthage">Using <a href="https://github.com/Carthage/Carthage">Carthage</a></h2>
-            <p>Add <code>github "ankurp/Dollar.swift" ~&gt; 4.1.0</code> to your <code>Cartfile</code> and run <code>carthage update</code>. If unfamiliar with Carthage then checkout their <a href="https://github.com/Carthage/Carthage#getting-started">Getting Started section</a> or this <a href="https://github.com/ankurp/DollarCarthageApp">sample app</a></p>
+            <p>Add <code>github "ankurp/Dollar" ~&gt; 5.0.0</code> to your <code>Cartfile</code> and run <code>carthage update</code>. If unfamiliar with Carthage then checkout their <a href="https://github.com/Carthage/Carthage#getting-started">Getting Started section</a> or this <a href="https://github.com/ankurp/DollarCarthageApp">sample app</a></p>
             <h2 id="using-cocoapods-version-0-36-x-or-greater">Using <a href="http://cocoapods.org/">cocoapods</a> version 0.36.x or greater</h2>
             <p>Add <code>pod 'Dollar'</code> to your <code>Podfile</code> and run <code>pod install</code>. Add <code>use_frameworks!</code> to the end of the <code>Podfile</code>. Also checkout this <a href="https://github.com/ankurp/DollarPodApp">sample app</a>. Requires cocoapod version 0.36.x or greater.</p>
+            <h2 id="using-swift-package-manager">Using <a href="https://github.com/apple/swift-package-manager">Swift Package Manager</a></h2>
+            <p>Add the following dependency <code>.Package(url: "https://github.com/ankurp/Dollar", majorVersion: 5, minor: 0)</code> to your <code>Package.swift</code> file and then run <code>swift build</code>. Requires swift version 2.2 or greater that you can install from <a href="https://swift.org">https://swift.org</a></p>
             <h2 id="using-git-submodule">Using <code>git submodule</code></h2>
             <ol>
-                <li>If you are using git then add Dollar as a submodule using <code>git submodule add https://github.com/ankurp/Dollar.swift.git</code>. If not using git download the project using <code>git clone https://github.com/ankurp/Dollar.swift.git</code> in your project folder.</li>
-                <li>Open the Dollar.swift folder. Drag Dollar.xcodeproj, inside the Dollar folder, into the file navigator of your Xcode project.</li>
+                <li>If you are using git then add Dollar as a submodule using <code>git submodule add https://github.com/ankurp/Dollar.git</code>. If not using git download the project using <code>git clone https://github.com/ankurp/Dollar.git</code> in your project folder.</li>
+                <li>Open the <code>Dollar</code> folder. Drag Dollar.xcodeproj, inside the Dollar folder, into the file navigator of your Xcode project.</li>
                 <li>In Xcode, navigate to the target configuration window by clicking on the blue project icon, and selecting the application target under the “Targets” heading in the sidebar.</li>
                 <li>In the tab bar at the top of that window, open the “Build Phases” panel.</li>
                 <li>Expand the “Link Binary with Libraries” group, and add Dollar.framework.</li>
@@ -304,22 +306,15 @@
                 <li>For Xcode 6.1 and 6.2 (Swift 1.1) use version <code>2.2.0</code></li>
             </ul>
             <h2 id="demo-apps">Demo Apps</h2>
-            <p>Using
-                <ul>
-                    <li>
-                        <a href="https://github.com/ankurp/DollarCarthageApp"><code>carthage</code></a>
-                    </li>
-                    <li>
-                        <a href="https://github.com/ankurp/DollarPodApp"><code>cocoapods</code></a>
-                    </li>
-                    <li>
-                        <a href="https://github.com/ankurp/DollarSubmoduleApp"><code>git submodule</code></a>
-                    </li>
-                </ul>
-            </p>
+            <ul>
+                <li>Using <a href="https://github.com/ankurp/DollarCarthageApp"><code>Carthage</code></a></li>
+                <li>Using <a href="https://github.com/ankurp/DollarPodApp"><code>Cocoa Pods</code></a></li>
+                <li>Using <a href="https://github.com/ankurp/DollarSwiftPackage"><code>Swift Package Manager</code></a></li>
+                <li>Using <a href="https://github.com/ankurp/DollarSubmoduleApp"><code>git submodule</code></a></li>
+            </ul>
             <h2 id="communication">Communication</h2>
             <ul>
-                <li>If you <strong>need help</strong>, use <a href="https://gitter.im/ankurp/Dollar.swift">gitter.im</a> or post a question on <a href="http://stackoverflow.com/questions/tagged/dollar.swift">Stack Overflow</a> with tag ‘dollar.swift'.</li>
+                <li>If you <strong>need help</strong>, use <a href="https://gitter.im/ankurp/Dollar">gitter.im</a> or post a question on <a href="http://stackoverflow.com/questions/tagged/dollar.swift">Stack Overflow</a> with tag <code>dollar.swift</code>.</li>
                 <li>If you’d like to <strong>ask a general question</strong>, use <a href="http://stackoverflow.com/questions/tagged/dollar.swift">Stack Overflow</a>.</li>
                 <li>If you <strong>found a bug</strong>, open an issue.</li>
                 <li>If you <strong>have a feature request</strong>, open an issue.</li>
@@ -587,7 +582,7 @@ result
 result
 =&gt; [<span class="number">4</span>, <span class="number">1</span>, <span class="number">3</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">2</span>]</code></pre>
             <h3 id="size-size">size - <code>$.size</code></h3>
-            <p>Returns size of the array</p><pre><code class="lang-swift">$.size([<span class="string">"a"</span>, <span class="string">"b"</span>, <span class="string">"c"</span>)
+            <p>Returns size of the array</p><pre><code class="lang-swift"><span class="keyword">$</span>.size([<span class="string">"a"</span>, <span class="string">"b"</span>, <span class="string">"c"</span>)
 =&gt; <span class="number">3</span></code></pre>
             <h3 id="sortedindex-sortedindex">sortedIndex - <code>$.sortedIndex</code></h3>
             <p>Gives the smallest index at which a value should be inserted into a given the array is sorted.</p><pre><code class="lang-swift"><span class="keyword">$</span>.sortedIndex([<span class="number">3</span>, <span class="number">4</span>, <span class="number">6</span>, <span class="number">10</span>], value: <span class="number">5</span>)
@@ -1147,10 +1142,10 @@ spaces.strip()
             <p>Return matches based on String passed.</p><pre><code class="lang-swift"><span class="keyword">let</span> re = Regex.init(<span class="string">"^Hello.World<span class="keyword">$</span>"</span>)
 re.matches(<span class="string">"Hello World"</span>)</code></pre>
             <h3 id="test-teststr-string-bool"><code>test(testStr: String) -&gt; Bool</code></h3><pre><code class="lang-swift"><span class="keyword">let</span> re = Regex.init(<span class="string">"^Hello.World<span class="keyword">$</span>"</span>)
-re.test(<span class="string">"Hello World"</span>)
+re.matches(<span class="string">"Hello World"</span>)
 =&gt; <span class="keyword">true</span>
 
-re.test(<span class="string">"Str"</span>)
+re.matches(<span class="string">"Str"</span>)
 =&gt; <span class="keyword">false</span></code></pre>
             <h3 id="escapestr-str-string-string"><code>escapeStr(str: String) -&gt; String</code></h3>
             <p>Escape string with regex characters</p><pre><code class="lang-swift">Regex.escape(<span class="string">"Hello.World"</span>)
@@ -1169,12 +1164,7 @@ re.test(<span class="string">"Str"</span>)
             <p>For each index in the range invoke the callback</p><pre><code class="lang-swift">(<span class="number">1</span>...<span class="number">5</span>).each { print(<span class="string">"Na"</span>) } 
 =&gt; <span class="string">"NaNaNaNaNa"</span></code></pre>
             <h1 id="contributing">Contributing</h1>
-            <p>If you are interested in contributing checkout <a href="https://github.com/ankurp/Dollar.swift/blob/master/CONTRIBUTING.md">CONTRIBUTING.md</a></p>
-            <h1 id="roadmap">Roadmap</h1>
-            <ul>
-                <li>Add more extention functions to the Cent library</li>
-                <li>Benchmark and improve performance if applicable</li>
-            </ul>
+            <p>If you are interested in contributing checkout <a href="https://github.com/ankurp/Dollar/blob/master/CONTRIBUTING.md">CONTRIBUTING.md</a></p>
             <h1 id="dollar-or-cent">Dollar or Cent</h1>
             <p>If you are interested only in pure functional programming <code>import Dollar</code> otherwise <code>import Cent</code> which includes extensions for certain object type such as Array for now but more will be added.</p>
         </div>
