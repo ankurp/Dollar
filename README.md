@@ -29,6 +29,10 @@ Add `github "ankurp/Dollar" ~> 5.0.0` to your `Cartfile` and run `carthage updat
 
 Add `pod 'Dollar'` to your `Podfile` and run `pod install`. Add `use_frameworks!` to the end of the `Podfile`. Also checkout this [sample app](https://github.com/ankurp/DollarPodApp). Requires cocoapod version 0.36.x or greater.
 
+## Using [Swift Package Manager](https://github.com/apple/swift-package-manager)
+
+Add the following dependency `.Package(url: "https://github.com/ankurp/Dollar", majorVersion: 5, minor: 0)` to your `Package.swift` file and then run `swift build`. Requires swift version 2.2 or greater that you can install from https://swift.org
+
 ## Using `git submodule`
 
 1. If you are using git then add Dollar as a submodule using `git submodule add https://github.com/ankurp/Dollar.git`. If not using git download the project using `git clone https://github.com/ankurp/Dollar.git` in your project folder.
@@ -47,8 +51,9 @@ Still stuck. Then checkout this screencast on [how to import](http://recordit.co
 
 ## Demo Apps ##
 Using
-* [`carthage`](https://github.com/ankurp/DollarCarthageApp)
-* [`cocoapods`](https://github.com/ankurp/DollarPodApp)
+* [`Carthage`](https://github.com/ankurp/DollarCarthageApp)
+* [`Cocoa Pods`](https://github.com/ankurp/DollarPodApp)
+* [`Swift Package Manager`](https://github.com/ankurp/DollarSwiftPackage)
 * [`git submodule`](https://github.com/ankurp/DollarSubmoduleApp)
 
 ## Communication ##
