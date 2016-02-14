@@ -50,11 +50,11 @@ Still stuck. Then checkout this screencast on [how to import](http://recordit.co
 * For Xcode 6.1 and 6.2 (Swift 1.1) use version `2.2.0`
 
 ## Demo Apps ##
-Using
-* [`Carthage`](https://github.com/ankurp/DollarCarthageApp)
-* [`Cocoa Pods`](https://github.com/ankurp/DollarPodApp)
-* [`Swift Package Manager`](https://github.com/ankurp/DollarSwiftPackage)
-* [`git submodule`](https://github.com/ankurp/DollarSubmoduleApp)
+
+* Using [`Carthage`](https://github.com/ankurp/DollarCarthageApp)
+* Using [`Cocoa Pods`](https://github.com/ankurp/DollarPodApp)
+* Using [`Swift Package Manager`](https://github.com/ankurp/DollarSwiftPackage)
+* Using [`git submodule`](https://github.com/ankurp/DollarSubmoduleApp)
 
 ## Communication ##
 
