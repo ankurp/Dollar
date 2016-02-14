@@ -7,10 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		9252FCD21A0F26F6002E85A4 /* AutoCurry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9252FCD11A0F26F6002E85A4 /* AutoCurry.swift */; };
+		92180C3B1C70F155003BA0E3 /* AutoCurry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92180C381C70F155003BA0E3 /* AutoCurry.swift */; };
+		92180C3D1C70F155003BA0E3 /* Dollar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92180C3A1C70F155003BA0E3 /* Dollar.swift */; };
+		92180C461C70F2B2003BA0E3 /* Dollar.h in Headers */ = {isa = PBXBuildFile; fileRef = 92180C391C70F155003BA0E3 /* Dollar.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		92180C501C70F337003BA0E3 /* Dollar.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 92180C4A1C70F337003BA0E3 /* Dollar.podspec */; };
+		92180C561C70F8A1003BA0E3 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 92180C4B1C70F337003BA0E3 /* LICENSE */; };
 		925CB1E11A3FDCA4004F1319 /* Dollar.framework in Copy Files */ = {isa = PBXBuildFile; fileRef = 92E0D03C19467C67002ACC3D /* Dollar.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		92E0D04219467C67002ACC3D /* Dollar.h in Headers */ = {isa = PBXBuildFile; fileRef = 92E0D04119467C67002ACC3D /* Dollar.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		92E0D05919467CA2002ACC3D /* Dollar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92E0D05819467CA2002ACC3D /* Dollar.swift */; };
 		92E6687A19F09D2A00BB4FB8 /* CarExample.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0419C8411948BEC600B947B3 /* CarExample.swift */; };
 		92E6687B19F09D2A00BB4FB8 /* DollarTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92E0D04E19467C67002ACC3D /* DollarTests.swift */; };
 		92E6687C19F09D3000BB4FB8 /* Dollar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92E0D03C19467C67002ACC3D /* Dollar.framework */; };
@@ -42,15 +44,21 @@
 
 /* Begin PBXFileReference section */
 		0419C8411948BEC600B947B3 /* CarExample.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CarExample.swift; sourceTree = "<group>"; };
-		9252FCD11A0F26F6002E85A4 /* AutoCurry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoCurry.swift; sourceTree = "<group>"; };
+		92180C381C70F155003BA0E3 /* AutoCurry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AutoCurry.swift; path = Sources/AutoCurry.swift; sourceTree = SOURCE_ROOT; };
+		92180C391C70F155003BA0E3 /* Dollar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Dollar.h; path = Sources/Dollar.h; sourceTree = SOURCE_ROOT; };
+		92180C3A1C70F155003BA0E3 /* Dollar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Dollar.swift; path = Sources/Dollar.swift; sourceTree = SOURCE_ROOT; };
+		92180C401C70F184003BA0E3 /* auto_curry.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; name = auto_curry.rb; path = scripts/auto_curry.rb; sourceTree = SOURCE_ROOT; };
+		92180C421C70F1BE003BA0E3 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Sources/Info.plist; sourceTree = SOURCE_ROOT; };
+		92180C471C70F337003BA0E3 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		92180C481C70F337003BA0E3 /* .travis.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .travis.yml; sourceTree = "<group>"; };
+		92180C491C70F337003BA0E3 /* CONTRIBUTING.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = CONTRIBUTING.md; sourceTree = "<group>"; };
+		92180C4A1C70F337003BA0E3 /* Dollar.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Dollar.podspec; sourceTree = "<group>"; };
+		92180C4B1C70F337003BA0E3 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		92180C4C1C70F337003BA0E3 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		92E0D03C19467C67002ACC3D /* Dollar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Dollar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		92E0D04019467C67002ACC3D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		92E0D04119467C67002ACC3D /* Dollar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Dollar.h; sourceTree = "<group>"; };
 		92E0D04D19467C67002ACC3D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		92E0D04E19467C67002ACC3D /* DollarTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DollarTests.swift; sourceTree = "<group>"; };
-		92E0D05819467CA2002ACC3D /* Dollar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dollar.swift; sourceTree = "<group>"; };
 		92E6686F19F09C6400BB4FB8 /* DollarTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DollarTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		92F1389C1A0F28C000B72258 /* gen_auto_curry.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = gen_auto_curry.rb; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +86,12 @@
 				92E0D03E19467C67002ACC3D /* Dollar */,
 				92E0D04B19467C67002ACC3D /* DollarTests */,
 				92E0D03D19467C67002ACC3D /* Products */,
+				92180C4A1C70F337003BA0E3 /* Dollar.podspec */,
+				92180C491C70F337003BA0E3 /* CONTRIBUTING.md */,
+				92180C4C1C70F337003BA0E3 /* README.md */,
+				92180C4B1C70F337003BA0E3 /* LICENSE */,
+				92180C471C70F337003BA0E3 /* .gitignore */,
+				92180C481C70F337003BA0E3 /* .travis.yml */,
 			);
 			sourceTree = "<group>";
 		};
@@ -93,9 +107,9 @@
 		92E0D03E19467C67002ACC3D /* Dollar */ = {
 			isa = PBXGroup;
 			children = (
-				92E0D04119467C67002ACC3D /* Dollar.h */,
-				92E0D05819467CA2002ACC3D /* Dollar.swift */,
-				9252FCD11A0F26F6002E85A4 /* AutoCurry.swift */,
+				92180C381C70F155003BA0E3 /* AutoCurry.swift */,
+				92180C391C70F155003BA0E3 /* Dollar.h */,
+				92180C3A1C70F155003BA0E3 /* Dollar.swift */,
 				92F138971A0F283400B72258 /* Pre Build Script */,
 				92E0D03F19467C67002ACC3D /* Supporting Files */,
 			);
@@ -105,7 +119,7 @@
 		92E0D03F19467C67002ACC3D /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				92E0D04019467C67002ACC3D /* Info.plist */,
+				92180C421C70F1BE003BA0E3 /* Info.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -131,7 +145,7 @@
 		92F138971A0F283400B72258 /* Pre Build Script */ = {
 			isa = PBXGroup;
 			children = (
-				92F1389C1A0F28C000B72258 /* gen_auto_curry.rb */,
+				92180C401C70F184003BA0E3 /* auto_curry.rb */,
 			);
 			name = "Pre Build Script";
 			sourceTree = "<group>";
@@ -143,7 +157,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				92E0D04219467C67002ACC3D /* Dollar.h in Headers */,
+				92180C461C70F2B2003BA0E3 /* Dollar.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -195,7 +209,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftMigration = 0700;
-				LastSwiftUpdateCheck = 0700;
+				LastSwiftUpdateCheck = 0720;
 				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = "Encore Dev Labs LLC";
 				TargetAttributes = {
@@ -230,6 +244,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				92180C561C70F8A1003BA0E3 /* LICENSE in Resources */,
+				92180C501C70F337003BA0E3 /* Dollar.podspec in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -256,7 +272,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/bash;
-			shellScript = "ruby \"${PROJECT_DIR}/gen_auto_curry.rb\"\n";
+			shellScript = "ruby \"${PROJECT_DIR}/scripts/auto_curry.rb\"\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -265,8 +281,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9252FCD21A0F26F6002E85A4 /* AutoCurry.swift in Sources */,
-				92E0D05919467CA2002ACC3D /* Dollar.swift in Sources */,
+				92180C3B1C70F155003BA0E3 /* AutoCurry.swift in Sources */,
+				92180C3D1C70F155003BA0E3 /* Dollar.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -390,7 +406,7 @@
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				FRAMEWORK_VERSION = A;
-				INFOPLIST_FILE = Dollar/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/Sources/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.encoredevlabs.${PRODUCT_NAME:rfc1034identifier}";
@@ -412,7 +428,7 @@
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				FRAMEWORK_VERSION = A;
-				INFOPLIST_FILE = Dollar/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/Sources/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.encoredevlabs.${PRODUCT_NAME:rfc1034identifier}";
@@ -424,6 +440,7 @@
 		92E6687619F09C6400BB4FB8 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -444,6 +461,7 @@
 		92E6687719F09C6400BB4FB8 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",

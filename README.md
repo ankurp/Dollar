@@ -1,31 +1,22 @@
-Dollar and Cent [![Build Status](https://travis-ci.org/ankurp/Dollar.swift.svg?branch=master)](https://travis-ci.org/ankurp/Dollar.swift) ![CocoaPods](https://img.shields.io/cocoapods/v/Dollar.svg) [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
+Dollar [![Build Status](https://travis-ci.org/ankurp/Dollar.swift.svg?branch=master)](https://travis-ci.org/ankurp/Dollar.swift) ![CocoaPods](https://img.shields.io/cocoapods/v/Dollar.svg) [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 ===========
-[![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/ankurp/Dollar.swift?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+[![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/ankurp/Dollar?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 Dollar is a Swift library that provides useful functional programming helper methods without extending any built in objects. It is similar to [Lo-Dash](https://lodash.com) or [Underscore.js](http://underscorejs.org) in Javascript.
 
-Cent is a library that extends certain Swift object types using the extension feature and gives its two cents to Swift language.
+Cent is a library that extends certain Swift object types using the extension feature and gives its two cents to Swift language. It is now moved into a seperate repo to support `carthage` and upcoming `Swift Package Manager`
 
 ## Contents ##
 
 - [Setup](#setup)
   - [Demo App](#demo-app)
 - [API Documentation](http://www.dollarswift.org)
-- [Dollar](https://github.com/ankurp/Dollar.swift/tree/master/Dollar#dollar-usage)
-  - [Usage](#dollar-usage)
-    - [Array](#array)
-    - [Dictionary](#dictionary)
-    - [Object](#object)
-    - [Function](#function)
-    - [Chaining](#chaining)
-- [Cent](https://github.com/ankurp/Dollar.swift/tree/master/Cent#cent-usage)
-  - [Usage](#cent-usage)
-    - [Array](#array-extensions)
-    - [Date](#date-extensions)  
-    - [Dictionary](#dictionary-extensions)
-    - [Int](#int-extensions)
-    - [String](#string-extensions)
-    - [Range](#range-extensions)
+- [Usage](#dollar-usage)
+  - [Array](#array)
+  - [Dictionary](#dictionary)
+  - [Object](#object)
+  - [Function](#function)
+  - [Chaining](#chaining)
 - [Contributing](#contributing)
 - [Roadmap](#roadmap)
 - [Dollar or Cent?](#dollar-or-cent)
@@ -42,8 +33,8 @@ Add `pod 'Dollar'` to your `Podfile` and run `pod install`. Add `use_frameworks!
 
 ## Using `git submodule`
 
-1. If you are using git then add Dollar as a submodule using `git submodule add https://github.com/ankurp/Dollar.swift.git`. If not using git download the project using `git clone https://github.com/ankurp/Dollar.swift.git` in your project folder.
-2. Open the Dollar.swift folder. Drag Dollar.xcodeproj, inside the Dollar folder, into the file navigator of your Xcode project.
+1. If you are using git then add Dollar as a submodule using `git submodule add https://github.com/ankurp/Dollar.git`. If not using git download the project using `git clone https://github.com/ankurp/Dollar.git` in your project folder.
+2. Open the `Dollar` folder. Drag Dollar.xcodeproj, inside the Dollar folder, into the file navigator of your Xcode project.
 3. In Xcode, navigate to the target configuration window by clicking on the blue project icon, and selecting the application target under the "Targets" heading in the sidebar.
 4. In the tab bar at the top of that window, open the "Build Phases" panel.
 5. Expand the "Link Binary with Libraries" group, and add Dollar.framework.
@@ -64,7 +55,7 @@ Using
 
 ## Communication ##
 
-- If you **need help**, use [gitter.im](https://gitter.im/ankurp/Dollar.swift) or post a question on [Stack Overflow](http://stackoverflow.com/questions/tagged/dollar.swift) with tag 'dollar.swift.
+- If you **need help**, use [gitter.im](https://gitter.im/ankurp/Dollar) or post a question on [Stack Overflow](http://stackoverflow.com/questions/tagged/dollar.swift) with tag 'dollar.swift.
 - If you'd like to **ask a general question**, use [Stack Overflow](http://stackoverflow.com/questions/tagged/dollar.swift).
 - If you **found a bug**, open an issue.
 - If you **have a feature request**, open an issue.
@@ -1850,7 +1841,7 @@ For each index in the range invoke the callback
 ```
 
 # Contributing #
-If you are interested in contributing checkout [CONTRIBUTING.md](https://github.com/ankurp/Dollar.swift/blob/master/CONTRIBUTING.md)
+If you are interested in contributing checkout [CONTRIBUTING.md](https://github.com/ankurp/Dollar/blob/master/CONTRIBUTING.md)
 
 # Roadmap #
 
