@@ -1,4 +1,4 @@
-Dollar [![Build Status](https://travis-ci.org/ankurp/Dollar.swift.svg?branch=master)](https://travis-ci.org/ankurp/Dollar.swift) ![CocoaPods](https://img.shields.io/cocoapods/v/Dollar.svg) [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
+Dollar [![Build Status](https://travis-ci.org/ankurp/Dollar.svg?branch=master)](https://travis-ci.org/ankurp/Dollar) ![CocoaPods](https://img.shields.io/cocoapods/v/Dollar.svg) [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 ===========
 [![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/ankurp/Dollar?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
@@ -18,14 +18,12 @@ Cent is a library that extends certain Swift object types using the extension fe
   - [Function](#function)
   - [Chaining](#chaining)
 - [Contributing](#contributing)
-- [Roadmap](#roadmap)
-- [Dollar or Cent?](#dollar-or-cent)
 
 # Setup #
 
 ## Using [Carthage](https://github.com/Carthage/Carthage)
 
-Add `github "ankurp/Dollar.swift" ~> 4.1.0` to your `Cartfile` and run `carthage update`. If unfamiliar with Carthage then checkout their [Getting Started section](https://github.com/Carthage/Carthage#getting-started) or this [sample app](https://github.com/ankurp/DollarCarthageApp)
+Add `github "ankurp/Dollar" ~> 5.0.0` to your `Cartfile` and run `carthage update`. If unfamiliar with Carthage then checkout their [Getting Started section](https://github.com/Carthage/Carthage#getting-started) or this [sample app](https://github.com/ankurp/DollarCarthageApp)
 
 ## Using [cocoapods](http://cocoapods.org/) version 0.36.x or greater
 
@@ -586,7 +584,7 @@ result
 Returns size of the array
 
 ```swift
-_.size(["a", "b", "c")
+$.size(["a", "b", "c")
 => 3
 ```
 
@@ -1842,11 +1840,3 @@ For each index in the range invoke the callback
 
 # Contributing #
 If you are interested in contributing checkout [CONTRIBUTING.md](https://github.com/ankurp/Dollar/blob/master/CONTRIBUTING.md)
-
-# Roadmap #
-
-* Add more extention functions to the Cent library
-* Benchmark and improve performance if applicable
-
-# Dollar or Cent #
-If you are interested only in pure functional programming `import Dollar` otherwise `import Cent` which includes extensions for certain object type such as Array for now but more will be added.
