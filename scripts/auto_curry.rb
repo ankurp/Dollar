@@ -21,6 +21,6 @@ funcs = [
   "}"
 ].join("\n\n")
 
-File.open("#{File.dirname(__FILE__)}/Dollar/AutoCurry.swift", "w") do |file|
+File.open("#{File.dirname(__FILE__)}/../Sources/AutoCurry.swift", "w") do |file|
   file.write(funcs)
 end
