@@ -38,7 +38,8 @@ public class $ {
         var counter = n
         return { (params: T...) -> E? in
             typealias Function = [T] -> E
-            if --counter <= 0 {
+            counter -= 1
+            if counter <= 0 {
                 let f = unsafeBitCast(function, Function.self)
                 return f(params)
             }
@@ -199,8 +200,7 @@ public class $ {
     /// :param times Number of times to cycle through the array
     /// :param callback function to call with the element
     public class func cycle<T, U>(array: [T], _ times: Int, callback: (T) -> (U)) {
-        var i = 0
-        while i++ < times {
+        for _ in 0..<times {
             for elem in array {
                 callback(elem)
             }
@@ -353,7 +353,7 @@ public class $ {
     /// :param array to fill
     /// :param elem the element to replace
     /// :return array elements chunked
-    public class func fill<T>(inout array: [T], withElem elem: T, startIndex: Int = 0, endIndex: Int? = .None) -> [T] {
+    public class func fill<T>( array: inout [T], withElem elem: T, startIndex: Int = 0, endIndex: Int? = .None) -> [T] {
         let endIndex = endIndex ?? array.count
         for (index, _) in array.enumerate() {
             if index > endIndex { break }
@@ -545,7 +545,8 @@ public class $ {
     /// :param first number
     /// :param second number
     /// :return Greatest common denominator
-    public class func gcd(var first: Int, var _ second: Int) -> Int {
+    public class func gcd(first: Int, _ second: Int) -> Int {
+        var first = first, second = second
         while second != 0 {
             (first, second) = (second, first % second)
         }
@@ -858,7 +859,8 @@ public class $ {
     /// :param n The number of elements in each partition.
     /// :param step The number of elements to progress between each partition. Set to n if not supplied.
     /// :return Array partitioned into n element arrays, starting step elements apart.
-    public class func partition<T>(array: [T], var n: Int, var step: Int? = .None) -> [[T]] {
+    public class func partition<T>(array: [T], n: Int, step: Int? = .None) -> [[T]] {
+        var n = n, step = step
         var result = [[T]]()
         if step == .None    { step = n } // If no step is supplied move n each step.
         if step < 1         { step = 1 } // Less than 1 results in an infinite loop.
@@ -880,7 +882,8 @@ public class $ {
     ///            contain n elements. If nil is passed or there are not enough pad elements
     ///            the last partition may less than n elements long.
     /// :return Array partitioned into n element arrays, starting step elements apart.
-    public class func partition<T>(var array: [T], var n: Int, var step: Int? = .None, pad: [T]?) -> [[T]] {
+    public class func partition<T>(array: [T], n: Int, step: Int? = .None, pad: [T]?) -> [[T]] {
+        var array = array, n = n, step = step
         var result : [[T]] = []
         if step == .None   { step = n } // If no step is supplied move n each step.
         if step < 1 { step = 1 } // Less than 1 results in an infinite loop.
@@ -907,7 +910,8 @@ public class $ {
     /// :param n The number of elements in each partition.
     /// :param step The number of elements to progress between each partition. Set to n if not supplied.
     /// :return Array partitioned into n element arrays, starting step elements apart.
-    public class func partitionAll<T>(array: [T], var n: Int, var step: Int? = .None) -> [[T]] {
+    public class func partitionAll<T>(array: [T], n: Int, step: Int? = .None) -> [[T]] {
+        var n = n, step = step
         var result = [[T]]()
         if step == .None { step = n } // If no step is supplied move n each step.
         if step < 1 { step = 1 } // Less than 1 results in an infinite loop.
