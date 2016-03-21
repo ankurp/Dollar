@@ -353,7 +353,7 @@ public class $ {
     /// :param array to fill
     /// :param elem the element to replace
     /// :return array elements chunked
-    public class func fill<T>( array: inout [T], withElem elem: T, startIndex: Int = 0, endIndex: Int? = .None) -> [T] {
+    public class func fill<T>(inout array: [T], withElem elem: T, startIndex: Int = 0, endIndex: Int? = .None) -> [T] {
         let endIndex = endIndex ?? array.count
         for (index, _) in array.enumerate() {
             if index > endIndex { break }
