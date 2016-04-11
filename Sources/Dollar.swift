@@ -40,10 +40,10 @@ public class $ {
             typealias Function = [T] -> E
             counter -= 1
             if counter <= 0 {
-                let f = unsafeBitCast(function, Function.self)
+                let f = unsafeBitCast(function, to: Function.self)
                 return f(params)
             }
-            return .None
+            return .none
         }
     }
     
@@ -91,7 +91,7 @@ public class $ {
     public class func bind<T, E>(function: (T...) -> E, _ parameters: T...) -> (() -> E) {
         return { () -> E in
             typealias Function = [T] -> E
-            let f = unsafeBitCast(function, Function.self)
+            let f = unsafeBitCast(function, to: Function.self)
             return f(parameters)
         }
     }
@@ -105,7 +105,7 @@ public class $ {
     public class func chunk<T>(array: [T], size: Int = 1) -> [[T]] {
         var result = [[T]]()
         var chunk = -1
-        for (index, elem) in array.enumerate() {
+        for (index, elem) in array.enumerated() {
             if index % size == 0 {
                 result.append([T]())
                 chunk += 1
@@ -139,7 +139,7 @@ public class $ {
         return {
             var result = $0
             for fun in functions {
-                let f = unsafeBitCast(fun, Function.self)
+                let f = unsafeBitCast(fun, to: Function.self)
                 result = f(result)
             }
             return result
@@ -240,7 +240,7 @@ public class $ {
             }
             for arr in restArr {
                 for elem in arr {
-                    map.removeValueForKey(elem)
+                    map.removeValue(forKey:)(forKey: elem)
                 }
             }
             for (key, count) in map {
@@ -270,7 +270,7 @@ public class $ {
     /// :param callback function that gets called with each item in the array with its index
     /// :return The array passed
     public class func each<T>(array: [T], callback: (Int, T) -> ()) -> [T] {
-        for (index, elem): (Int, T) in array.enumerate() {
+        for (index, elem): (Int, T) in array.enumerated() {
             callback(index, elem)
         }
         return array
@@ -296,13 +296,13 @@ public class $ {
     /// :return: true if the optionals contain two equal values, or both are nil; false otherwise.
     public class func equal<T: Equatable>(value: T?, _ other: T?) -> Bool {
         switch (value, other) {
-        case (.None, .None):
+        case (.none, .none):
             return true
-        case (.None, .Some(_)):
+        case (.none, .some(_)):
             return false
-        case (.Some(_), .None):
+        case (.some(_), .none):
             return false
-        case (.Some(let unwrappedValue), .Some(let otherUnwrappedValue)):
+        case (.some(let unwrappedValue), .some(let otherUnwrappedValue)):
             return unwrappedValue == otherUnwrappedValue
         }
     }
@@ -338,7 +338,7 @@ public class $ {
     /// :param index Can be positive or negative to find from end of the array
     /// :param orElse Default value to use if index is out of bounds
     /// :return Element fetched from the array or the default value passed in orElse
-    public class func fetch<T>(array: [T], _ index: Int, orElse: T? = .None) -> T! {
+    public class func fetch<T>(array: [T], _ index: Int, orElse: T? = .none) -> T! {
         if index < 0 && -index < array.count {
             return array[array.count + index]
         } else if index < array.count {
@@ -353,9 +353,9 @@ public class $ {
     /// :param array to fill
     /// :param elem the element to replace
     /// :return array elements chunked
-    public class func fill<T>( array: inout [T], withElem elem: T, startIndex: Int = 0, endIndex: Int? = .None) -> [T] {
+    public class func fill<T>( array: inout [T], withElem elem: T, startIndex: Int = 0, endIndex: Int? = .none) -> [T] {
         let endIndex = endIndex ?? array.count
-        for (index, _) in array.enumerate() {
+        for (index, _) in array.enumerated() {
             if index > endIndex { break }
             if index >= startIndex && index <= endIndex {
                 array[index] = elem
@@ -377,7 +377,7 @@ public class $ {
                 return elem
             }
         }
-        return .None
+        return .none
     }
     
     /// This method is like find except that it returns the index of the first element
@@ -387,12 +387,12 @@ public class $ {
     /// :param callback Function used to figure out whether element is the same.
     /// :return First element's index from the array found using the callback.
     public class func findIndex<T>(array: [T], callback: (T) -> Bool) -> Int? {
-        for (index, elem): (Int, T) in array.enumerate() {
+        for (index, elem): (Int, T) in array.enumerated() {
             if callback(elem) {
                 return index
             }
         }
-        return .None
+        return .none
     }
     
     /// This method is like findIndex except that it iterates over elements of the array
@@ -403,14 +403,14 @@ public class $ {
     /// :return Last element's index from the array found using the callback.
     public class func findLastIndex<T>(array: [T], callback: (T) -> Bool) -> Int? {
         let count = array.count
-        for (index, _) in array.enumerate() {
+        for (index, _) in array.enumerated() {
             let reverseIndex = count - (index + 1)
             let elem : T = array[reverseIndex]
             if callback(elem) {
                 return reverseIndex
             }
         }
-        return .None
+        return .none
     }
     
     /// Gets the first element in the array.
@@ -419,7 +419,7 @@ public class $ {
     /// :return First element from the array.
     public class func first<T>(array: [T]) -> T? {
         if array.isEmpty {
-            return .None
+            return .none
         } else {
             return array[0]
         }
@@ -431,7 +431,7 @@ public class $ {
     /// :return Second element from the array.
     public class func second<T>(array: [T]) -> T? {
         if array.count < 2 {
-            return .None
+            return .none
         } else {
             return array[1]
         }
@@ -443,7 +443,7 @@ public class $ {
     /// :return Third element from the array.
     public class func third<T>(array: [T]) -> T? {
         if array.count < 3 {
-            return .None
+            return .none
         } else {
             return array[2]
         }
@@ -481,7 +481,7 @@ public class $ {
         if let unwrapped = value.map(f) {
             return unwrapped
         } else {
-            return .None
+            return .none
         }
     }
     
@@ -633,7 +633,7 @@ public class $ {
     /// :param i to check if it is in interval
     /// :param interval to check in
     /// :return true if it is in interval otherwise false
-    public class func it<I : IntervalType>(i: I.Bound, isIn interval: I) -> Bool {
+    public class func it<I : Interval>(i: I.Bound, isIn interval: I) -> Bool {
         return interval.contains(i)
     }
     
@@ -643,7 +643,7 @@ public class $ {
     /// :param separator The separator to join the elements with.
     /// :return Joined element from the array of elements.
     public class func join(array: [String], separator: String) -> String {
-        return array.joinWithSeparator(separator)
+        return array.joined(separator: separator)
     }
     
     /// Creates an array of keys given a dictionary.
@@ -664,7 +664,7 @@ public class $ {
     /// :return Last element from the array.
     public class func last<T>(array: [T]) -> T? {
         if array.isEmpty {
-            return .None
+            return .none
         } else {
             return array[array.count - 1]
         }
@@ -684,7 +684,7 @@ public class $ {
     /// :param collection The collection to source from
     /// :param transform The mapping function
     /// :return Array of elements mapped using the map function
-    public class func map<T : CollectionType, E>(collection: T, transform: (T.Generator.Element) -> E) -> [E] {
+    public class func map<T : Collection, E>(collection: T, transform: (T.Iterator.Element) -> E) -> [E] {
         return collection.map(transform)
     }
 
@@ -693,7 +693,7 @@ public class $ {
     /// :param sequence The sequence to source from
     /// :param transform The mapping function
     /// :return Array of elements mapped using the map function
-    public class func map<T : SequenceType, E>(sequence: T, transform: (T.Generator.Element) -> E) -> [E] {
+    public class func map<T : Sequence, E>(sequence: T, transform: (T.Iterator.Element) -> E) -> [E] {
         return sequence.map(transform)
     }
     
@@ -710,7 +710,7 @@ public class $ {
             }
             return maxVal
         }
-        return .None
+        return .none
     }
     
     /// Get memoized function to improve performance
@@ -770,7 +770,7 @@ public class $ {
             }
             return minVal
         }
-        return .None
+        return .none
     }
     
     /// A no-operation function.
@@ -814,7 +814,7 @@ public class $ {
             if let returnVal = result {
                 return returnVal
             } else {
-                let f = unsafeBitCast(function, Function.self)
+                let f = unsafeBitCast(function, to: Function.self)
                 result = f(params)
                 return result!
             }
@@ -847,7 +847,7 @@ public class $ {
     public class func partial<T, E> (function: (T...) -> E, _ parameters: T...) -> ((T...) -> E) {
         return { (params: T...) -> E in
             typealias Function = [T] -> E
-            let f = unsafeBitCast(function, Function.self)
+            let f = unsafeBitCast(function, to: Function.self)
             return f(parameters + params)
         }
     }
@@ -859,10 +859,10 @@ public class $ {
     /// :param n The number of elements in each partition.
     /// :param step The number of elements to progress between each partition. Set to n if not supplied.
     /// :return Array partitioned into n element arrays, starting step elements apart.
-    public class func partition<T>(array: [T], n: Int, step: Int? = .None) -> [[T]] {
+    public class func partition<T>(array: [T], n: Int, step: Int? = .none) -> [[T]] {
         var n = n, step = step
         var result = [[T]]()
-        if step == .None    { step = n } // If no step is supplied move n each step.
+        if step == .none    { step = n } // If no step is supplied move n each step.
         if step < 1         { step = 1 } // Less than 1 results in an infinite loop.
         if n < 1            { n = 0 }    // Allow 0 if user wants [[],[],[]] for some reason.
         if n > array.count  { return [[]] }
@@ -882,10 +882,10 @@ public class $ {
     ///            contain n elements. If nil is passed or there are not enough pad elements
     ///            the last partition may less than n elements long.
     /// :return Array partitioned into n element arrays, starting step elements apart.
-    public class func partition<T>(array: [T], n: Int, step: Int? = .None, pad: [T]?) -> [[T]] {
+    public class func partition<T>(array: [T], n: Int, step: Int? = .none, pad: [T]?) -> [[T]] {
         var array = array, n = n, step = step
         var result : [[T]] = []
-        if step == .None   { step = n } // If no step is supplied move n each step.
+        if step == .none   { step = n } // If no step is supplied move n each step.
         if step < 1 { step = 1 } // Less than 1 results in an infinite loop.
         if n < 1    { n = 0 }    // Allow 0 if user wants [[],[],[]] for some reason.
         
@@ -910,10 +910,10 @@ public class $ {
     /// :param n The number of elements in each partition.
     /// :param step The number of elements to progress between each partition. Set to n if not supplied.
     /// :return Array partitioned into n element arrays, starting step elements apart.
-    public class func partitionAll<T>(array: [T], n: Int, step: Int? = .None) -> [[T]] {
+    public class func partitionAll<T>(array: [T], n: Int, step: Int? = .none) -> [[T]] {
         var n = n, step = step
         var result = [[T]]()
-        if step == .None { step = n } // If no step is supplied move n each step.
+        if step == .none { step = n } // If no step is supplied move n each step.
         if step < 1 { step = 1 } // Less than 1 results in an infinite loop.
         if n < 1    { n = 0 }    // Allow 0 if user wants [[],[],[]] for some reason.
         
@@ -932,7 +932,7 @@ public class $ {
     /// :return Array partitioned in order, splitting via results of function.
     public class func partitionBy<T, U: Equatable>(array: [T], function: (T) -> U) -> [[T]] {
         var result = [[T]]()
-        var lastValue: U? = .None
+        var lastValue: U? = .none
         
         for item in array {
             let value = function(item)
@@ -1009,7 +1009,7 @@ public class $ {
     ///
     /// :return Random number
     public class func random(upperBound: Int) -> Int {
-        return Int(arc4random_uniform(UInt32(upperBound)))
+        return Int(random(upperBound))
     }
     
     /// Creates an array of numbers (positive and/or negative) progressing from start up to but not including end.
@@ -1036,7 +1036,7 @@ public class $ {
     /// :param incrementBy Increment sequence by.
     /// :return Array of elements based on the sequence.
     public class func range<T : Strideable>(from startVal: T, to endVal: T, incrementBy: T.Stride) -> [T] {
-        let range = startVal.stride(to: endVal, by: incrementBy)
+        let range = stride(from: startVal, to: endVal, by: incrementBy)
         return self.sequence(range)
     }
     
@@ -1073,8 +1073,8 @@ public class $ {
     ///
     /// :param seq The sequence to generate from.
     /// :return Array of elements generated from the sequence.
-    public class func sequence<S : SequenceType>(seq: S) -> [S.Generator.Element] {
-        return Array<S.Generator.Element>(seq)
+    public class func sequence<S : Sequence>(seq: S) -> [S.Iterator.Element] {
+        return Array<S.Iterator.Element>(seq)
     }
     
     /// Removes all elements from an array that the callback returns true.
@@ -1143,7 +1143,7 @@ public class $ {
     /// :param value Find sorted index of this value.
     /// :return Index of where the elemnt should be inserted.
     public class func sortedIndex<T : Comparable>(array: [T], value: T) -> Int {
-        for (index, elem) in array.enumerate() {
+        for (index, elem) in array.enumerated() {
             if elem > value {
                 return index
             }
@@ -1218,7 +1218,7 @@ public class $ {
         var result: [T] = []
         var map: [T: Bool] = [T: Bool]()
         for elem in array {
-            if map[elem] == .None {
+            if map[elem] == .none {
                 result.append(elem)
             }
             map[elem] = true
@@ -1237,7 +1237,7 @@ public class $ {
         var map : [U: Bool] = [U: Bool]()
         for elem in array {
             let val = condition(elem)
-            if map[val] == .None {
+            if map[val] == .none {
                 result.append(elem)
             }
             map[val] = true
@@ -1296,8 +1296,8 @@ public class $ {
         for _ in self.first(arrays)! as [T] {
             result.append([] as [T])
         }
-        for (_, array) in arrays.enumerate() {
-            for (elemIndex, elem): (Int, T) in array.enumerate() {
+        for (_, array) in arrays.enumerated() {
+            for (elemIndex, elem): (Int, T) in array.enumerated() {
                 result[elemIndex].append(elem)
             }
         }
@@ -1311,7 +1311,7 @@ public class $ {
     /// :return Dictionary based on the keys and values passed in order.
     public class func zipObject<T, E>(keys: [T], values: [E]) -> [T: E] {
         var result = [T: E]()
-        for (index, key) in keys.enumerate() {
+        for (index, key) in keys.enumerated() {
             result[key] = values[index]
         }
         return result
@@ -1423,7 +1423,7 @@ public class Chain<C> {
     public func map(function: (Int, C) -> C) -> Chain {
         return self.queue {
             var result: [C] = []
-            for (index, elem) in $0.value.enumerate() {
+            for (index, elem) in $0.value.enumerated() {
                 result.append(function(index, elem))
             }
             return Wrapper(result)
@@ -1449,7 +1449,7 @@ public class Chain<C> {
     /// :return The wrapper object.
     public func each(function: (Int, C) -> ()) -> Chain {
         return self.queue {
-            for (index, elem) in $0.value.enumerate() {
+            for (index, elem) in $0.value.enumerated() {
                 function(index, elem)
             }
             return $0

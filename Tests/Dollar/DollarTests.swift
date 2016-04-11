@@ -7,7 +7,7 @@
 //
 
 import XCTest
-import Dollar
+@testable import Dollar
 
 class DollarTests: XCTestCase {
 
@@ -180,7 +180,7 @@ class DollarTests: XCTestCase {
     }
 
     func testIntersection() {
-        XCTAssertEqual($.intersection([1, 2, 3], [5, 2, 1, 4], [2, 1]).sort({$0<$1}), [1, 2], "Intersection of arrays")
+        XCTAssertEqual($.intersection([1, 2, 3], [5, 2, 1, 4], [2, 1]).sorted(isOrderedBefore: <), [1, 2], "Intersection of arrays")
     }
 
     func testDifference() {
@@ -202,7 +202,7 @@ class DollarTests: XCTestCase {
     }
 
     func testXOR() {
-        XCTAssertEqual($.xor([1, 2, 3], [5, 2, 1, 4]).sort{$0<$1}, [3, 4, 5], "Xor of arrays")
+        XCTAssertEqual($.xor([1, 2, 3], [5, 2, 1, 4]).sorted(isOrderedBefore: <), [3, 4, 5], "Xor of arrays")
     }
 
     func testAt() {
@@ -247,14 +247,14 @@ class DollarTests: XCTestCase {
 
     func testKeys() {
         let dict = ["Dog": 1, "Cat": 2]
-        XCTAssertEqual($.keys(dict).sort({$0<$1}), ["Cat", "Dog"], "Returns correct array with keys")
+        XCTAssertEqual($.keys(dict).sorted(isOrderedBefore: <), ["Cat", "Dog"], "Returns correct array with keys")
     }
 
     func testValues() {
         let dict = ["Dog": 1, "Cat": 2]
-        XCTAssertEqual($.values(dict).sort({$0<$1}), [1, 2], "Returns correct array with values")
+        XCTAssertEqual($.values(dict).sorted(isOrderedBefore: <), [1, 2], "Returns correct array with values")
     }
-    
+
     func testMerge() {
         let dict  = ["Dog": 1, "Cat": 2]
         let dict2 = ["Cow": 3]
@@ -461,7 +461,7 @@ class DollarTests: XCTestCase {
     }
     
     func testFill() {
-        var arr = Array<Int>(count: 5, repeatedValue: 1)
+        var arr = Array<Int>(repeating: 1, count: 5)
         XCTAssertEqual($.fill(&arr, withElem: 42), [42,42,42,42,42], "Should fill array with 42")
         
         $.fill(&arr, withElem: 1, startIndex: 1, endIndex: 3)
