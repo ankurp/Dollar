@@ -1364,14 +1364,14 @@ public class Chain<C> {
     ///
     /// :return Second element from the array.
     public func second() -> C? {
-        return $.first(self.value)
+        return $.second(self.value)
     }
     
     /// Get the third object in the wrapper object.
     ///
     /// :return Third element from the array.
     public func third() -> C? {
-        return $.first(self.value)
+        return $.third(self.value)
     }
     
     /// Flattens nested array.

@@ -288,6 +288,8 @@ class DollarTests: XCTestCase {
     func testChaining() {
         var chain = $.chain([1, 2, 3])
         XCTAssertEqual(chain.first()!, 1, "Returns first element which ends the chain")
+        XCTAssertEqual(chain.second()!, 2, "Returns second element which ends the chain")
+        XCTAssertEqual(chain.third()!, 3, "Returns third element which ends the chain")
         
         chain = $.chain([10, 20, 30, 40, 50])
         var elements: [Int] = []
