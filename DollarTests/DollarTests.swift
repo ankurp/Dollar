@@ -288,6 +288,8 @@ class DollarTests: XCTestCase {
     func testChaining() {
         var chain = $.chain([1, 2, 3])
         XCTAssertEqual(chain.first()!, 1, "Returns first element which ends the chain")
+        XCTAssertEqual(chain.second()!, 2, "Returns second element which ends the chain")
+        XCTAssertEqual(chain.third()!, 3, "Returns third element which ends the chain")
         
         chain = $.chain([10, 20, 30, 40, 50])
         var elements: [Int] = []
@@ -366,6 +368,9 @@ class DollarTests: XCTestCase {
         XCTAssertEqual($.partition(array, n: 4, step: 1, pad: nil), [[1, 2, 3, 4], [2, 3, 4, 5], [3, 4, 5]], "Partition with nil pad stops at the first partition less than n length.")
         XCTAssertEqual($.partition(array, n: 2, step: 1, pad: [6,7,8]), [[1, 2], [2, 3], [3, 4], [4, 5], [5, 6]], "Partition pads the last partition to the right length.")
         XCTAssertEqual($.partition(array, n: 4, step: 3, pad: [6]), [[1, 2, 3, 4], [4, 5, 6]], "Partition doesn't add more elements than pad has.")
+        XCTAssertEqual($.partition(array, n: 4, step: nil, pad: [6,7]), [[1, 2, 3, 4], [5, 6, 7]], "Partition with nil step can add pad elements normally, but can't add more elements than pad has.")
+        XCTAssertEqual($.partition(array, n: 4, step: nil, pad: [6,7,8,9]), [[1, 2, 3, 4], [5, 6, 7, 8]], "Partition with nil step can add pad elements normally.")
+        XCTAssertEqual($.partition(array, n: 4, step: nil, pad: nil), [[1, 2, 3, 4], [5]], "Partition with nil step and nil pad can add pad elements normally.")
         XCTAssertEqual($.partition([1, 2, 3, 4, 5], n: 2, pad: [6]), [[1, 2], [3, 4], [5, 6]], "Partition with pad and no step uses n as step.")
         XCTAssertTrue($.partition([1, 2, 3, 4, 5, 6], n: 2, step: 4) == [[1, 2], [5, 6]], "Partition step length works.")
         XCTAssertEqual($.partition(array, n: 10), [[]], "Partition without pad returns [[]] if n is longer than array.")

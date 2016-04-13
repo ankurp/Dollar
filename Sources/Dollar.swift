@@ -877,11 +877,12 @@ public class $ {
     /// :param n The number of elements in each partition.
     /// :param step The number of elements to progress between each partition. Set to n if not supplied.
     /// :param pad An array of elements to pad the last partition if it is not long enough to
-    ///            contain n elements. If nil is passed or there are not enough pad elements
+    ///            contain n elements. If there are not enough pad elements
     ///            the last partition may less than n elements long.
     /// :return Array partitioned into n element arrays, starting step elements apart.
     public class func partition<T>(var array: [T], var n: Int, var step: Int? = .None, pad: [T]?) -> [[T]] {
         var result : [[T]] = []
+        var need = 0
         if step == .None   { step = n } // If no step is supplied move n each step.
         if step < 1 { step = 1 } // Less than 1 results in an infinite loop.
         if n < 1    { n = 0 }    // Allow 0 if user wants [[],[],[]] for some reason.
@@ -890,13 +891,14 @@ public class $ {
             var end = i + n
             if end > array.count { end = array.count }
             result.append(Array(array[i..<end] as ArraySlice<T>))
-            if end != i+n { break }
+            if end != i+n { need = i + n - end; break }
         }
         
-        if let padding = pad {
-            let remain = array.count % n
-            let end = padding.count > remain ? remain : padding.count
-            result[result.count - 1] += Array(padding[0..<end] as ArraySlice<T>)
+        if need != 0 {
+            if let padding = pad {
+                let end = padding.count > need ? need : padding.count
+                result[result.count - 1] += Array(padding[0..<end] as ArraySlice<T>)
+            }
         }
         return result
     }
@@ -1362,14 +1364,14 @@ public class Chain<C> {
     ///
     /// :return Second element from the array.
     public func second() -> C? {
-        return $.first(self.value)
+        return $.second(self.value)
     }
     
     /// Get the third object in the wrapper object.
     ///
     /// :return Third element from the array.
     public func third() -> C? {
-        return $.first(self.value)
+        return $.third(self.value)
     }
     
     /// Flattens nested array.
