@@ -839,10 +839,11 @@ public class $ {
         return onceFunc
     }
     
-    /// Get the first object in the wrapper object.
+    /// Creates a function that, when called, invokes func with any additional partial arguments prepended to those provided to the new function.
     ///
-    /// :param array The array to wrap.
-    /// :return First element from the array.
+    /// :param function to invoke
+    /// :param parameters to pass the function when invoked
+    /// :return Function with partial arguments prepended
     public class func partial<T, E> (function: (T...) -> E, _ parameters: T...) -> ((T...) -> E) {
         return { (params: T...) -> E in
             typealias Function = [T] -> E
