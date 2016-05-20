@@ -340,6 +340,7 @@ $.groupBy([1, 2, 3, 4, 5], callback: {$0 % 2})
 
 $.groupBy(["strings", "with", "different", lengths"], callback: {$0.characters.count})
 => ["7": ["strings", "lengths"], "9": ["different"], "4": ["With"]]
+```
 ### indexOf - `$.indexOf`
 
 Gets the index at which the first occurrence of value is found.
