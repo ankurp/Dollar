@@ -561,6 +561,24 @@ public class $ {
         return (first / $.gcd(first, second)) * second
     }
     
+    /// Splits a collection into sets, grouped by the result of running each value through a callback.
+    ///
+    /// :param The array to group
+    /// :param callback Function whose response will be used as a key in the new string
+    public class func groupBy<T, U: Hashable>(array: [T], callback: (T) -> U) -> [U: [T]]{
+        var grouped = [U: [T]]()
+        for element in array {
+            let key = callback(element)
+            if var arr = grouped[key] {
+                arr.append(element)
+            } else {
+                grouped[key] = [element]
+            }
+            
+        }
+        return grouped
+    }
+    
     /// The identity function. Returns the argument it is given.
     ///
     /// :param arg Value to return
