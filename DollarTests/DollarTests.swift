@@ -489,6 +489,6 @@ class DollarTests: XCTestCase {
     func testGroupBy() {
         XCTAssertEqual($.groupBy([1, 2, 3, 4], callback: {$0 % 2}), ["0": [2, 4], "1": [1, 3]], "Returns dictionary grouped by remainders of two"
         )
-        XCTAssertEqual($.groupBy(["strings", "with", "different", "lengths"], callback: {$0.characters.count}), ["7": ["strings", "lengths"], "9": ["different"], "4": ["With"]], "Returns dictionary with string lengths as keys")
+        XCTAssertEqual($.groupBy(["strings", "with", "different", "lengths"], callback: {$0.characters.count}), ["7": ["strings", "lengths"], "9": ["different"], "4": ["with"]], "Returns dictionary with string lengths as keys")
     }
 }
