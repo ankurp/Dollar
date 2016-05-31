@@ -16,6 +16,7 @@
 		92E6687A19F09D2A00BB4FB8 /* CarExample.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0419C8411948BEC600B947B3 /* CarExample.swift */; };
 		92E6687B19F09D2A00BB4FB8 /* DollarTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92E0D04E19467C67002ACC3D /* DollarTests.swift */; };
 		92E6687C19F09D3000BB4FB8 /* Dollar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92E0D03C19467C67002ACC3D /* Dollar.framework */; };
+		E2E3FF9D1CD3E7C400C73E4D /* AutoBind.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E3FF9C1CD3E7C400C73E4D /* AutoBind.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +60,7 @@
 		92E0D04D19467C67002ACC3D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		92E0D04E19467C67002ACC3D /* DollarTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DollarTests.swift; sourceTree = "<group>"; };
 		92E6686F19F09C6400BB4FB8 /* DollarTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DollarTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		E2E3FF9C1CD3E7C400C73E4D /* AutoBind.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AutoBind.swift; path = Sources/AutoBind.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +109,7 @@
 		92E0D03E19467C67002ACC3D /* Dollar */ = {
 			isa = PBXGroup;
 			children = (
+				E2E3FF9C1CD3E7C400C73E4D /* AutoBind.swift */,
 				92180C381C70F155003BA0E3 /* AutoCurry.swift */,
 				92180C391C70F155003BA0E3 /* Dollar.h */,
 				92180C3A1C70F155003BA0E3 /* Dollar.swift */,
@@ -282,6 +285,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				92180C3B1C70F155003BA0E3 /* AutoCurry.swift in Sources */,
+				E2E3FF9D1CD3E7C400C73E4D /* AutoBind.swift in Sources */,
 				92180C3D1C70F155003BA0E3 /* Dollar.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

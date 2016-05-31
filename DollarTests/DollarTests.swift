@@ -335,6 +335,16 @@ class DollarTests: XCTestCase {
         XCTAssertEqual(helloWorldFunc(), "Hello World from Swift", "Returns curry function that is evaluated")
     }
 
+    func testBind1() {
+        let helloWorldFunc = $.bind({ $0 + " World" }, "Hello")
+        XCTAssertEqual(helloWorldFunc(), "Hello World", "Returns bind function that is evaluated")
+    }
+
+    func testBind2() {
+        let helloWorldFunc = $.bind({ $0 + $1 + " World" }, "Hello ", "Great")
+        XCTAssertEqual(helloWorldFunc(), "Hello Great World", "Returns bind function that is evaluated")
+    }
+
     func testTimes() {
         let fun = $.bind({ (names: String...) -> String in
             let people = $.join(names, separator: " from ")
