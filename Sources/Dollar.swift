@@ -38,7 +38,8 @@ public class $ {
         var counter = n
         return { (params: T...) -> E? in
             typealias Function = [T] -> E
-            if --counter <= 0 {
+            counter -= 1
+            if counter <= 0 {
                 let f = unsafeBitCast(function, Function.self)
                 return f(params)
             }
@@ -199,8 +200,7 @@ public class $ {
     /// :param times Number of times to cycle through the array
     /// :param callback function to call with the element
     public class func cycle<T, U>(array: [T], _ times: Int, callback: (T) -> (U)) {
-        var i = 0
-        while i++ < times {
+        for _ in 0..<times {
             for elem in array {
                 callback(elem)
             }
@@ -545,7 +545,9 @@ public class $ {
     /// :param first number
     /// :param second number
     /// :return Greatest common denominator
-    public class func gcd(var first: Int, var _ second: Int) -> Int {
+    public class func gcd(first: Int, _ second: Int) -> Int {
+        var first = first
+        var second = second
         while second != 0 {
             (first, second) = (second, first % second)
         }
@@ -859,15 +861,18 @@ public class $ {
     /// :param n The number of elements in each partition.
     /// :param step The number of elements to progress between each partition. Set to n if not supplied.
     /// :return Array partitioned into n element arrays, starting step elements apart.
-    public class func partition<T>(array: [T], var n: Int, var step: Int? = .None) -> [[T]] {
+    public class func partition<T>(array: [T], n: Int, step: Int? = .None) -> [[T]] {
+        var n = n
+        var step = step
         var result = [[T]]()
+    
         if step == .None    { step = n } // If no step is supplied move n each step.
         if step < 1         { step = 1 } // Less than 1 results in an infinite loop.
         if n < 1            { n = 0 }    // Allow 0 if user wants [[],[],[]] for some reason.
         if n > array.count  { return [[]] }
         
         for i in self.range(from: 0, through: array.count - n, incrementBy: step!) {
-            result.append(Array(array[i..<(i+n)] as ArraySlice<T>))
+            result.append(Array(array[i..<(i + n)] as ArraySlice<T>))
         }
         return result
     }
@@ -881,12 +886,16 @@ public class $ {
     ///            contain n elements. If there are not enough pad elements
     ///            the last partition may less than n elements long.
     /// :return Array partitioned into n element arrays, starting step elements apart.
-    public class func partition<T>(var array: [T], var n: Int, var step: Int? = .None, pad: [T]?) -> [[T]] {
+    public class func partition<T>(array: [T], n: Int, step: Int? = .None, pad: [T]?) -> [[T]] {
+        var array = array
+        var n = n
+        var step = step
         var result : [[T]] = []
         var need = 0
-        if step == .None   { step = n } // If no step is supplied move n each step.
-        if step < 1 { step = 1 } // Less than 1 results in an infinite loop.
-        if n < 1    { n = 0 }    // Allow 0 if user wants [[],[],[]] for some reason.
+
+        if step == .None { step = n } // If no step is supplied move n each step.
+        if step < 1      { step = 1 } // Less than 1 results in an infinite loop.
+        if n < 1         { n = 0 }    // Allow 0 if user wants [[],[],[]] for some reason.
         
         for i in self.range(from: 0, to: array.count, incrementBy: step!) {
             var end = i + n
@@ -910,7 +919,9 @@ public class $ {
     /// :param n The number of elements in each partition.
     /// :param step The number of elements to progress between each partition. Set to n if not supplied.
     /// :return Array partitioned into n element arrays, starting step elements apart.
-    public class func partitionAll<T>(array: [T], var n: Int, var step: Int? = .None) -> [[T]] {
+    public class func partitionAll<T>(array: [T], n: Int, step: Int? = .None) -> [[T]] {
+        var n = n
+        var step = step
         var result = [[T]]()
         if step == .None { step = n } // If no step is supplied move n each step.
         if step < 1 { step = 1 } // Less than 1 results in an infinite loop.
