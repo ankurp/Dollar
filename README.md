@@ -23,7 +23,7 @@ Dollar is a Swift library that provides useful functional programming helper met
 
 ## Using [Carthage](https://github.com/Carthage/Carthage)
 
-Add `github "ankurp/Dollar" ~> 5.0.0` to your `Cartfile` and run `carthage update`. If unfamiliar with Carthage then checkout their [Getting Started section](https://github.com/Carthage/Carthage#getting-started) or this [sample app](https://github.com/ankurp/DollarCarthageApp)
+Add `github "ankurp/Dollar" ~> 5.1.0` to your `Cartfile` and run `carthage update`. If unfamiliar with Carthage then checkout their [Getting Started section](https://github.com/Carthage/Carthage#getting-started) or this [sample app](https://github.com/ankurp/DollarCarthageApp)
 
 ## Using [cocoapods](http://cocoapods.org/) version 0.36.x or greater
 
@@ -813,11 +813,19 @@ isDone
 Creates a function that, when called, invokes func with the binding of arguments provided.
 
 ```swift
-let helloWorldFunc = $.bind({(T...) in 
+var helloWorldFunc = $.bind({(T...) in
   T[0] + " " + T[1] + " from " + T[2] 
 }, "Hello", "World", "Swift")
 helloWorldFunc() 
 => "Hello World from Swift"
+
+helloWorldFunc = $.bind({ $0 + " World" }, "Hello")
+helloWorldFunc()
+=> "Hello World"
+
+helloWorldFunc = $.bind({ $0 + $1 + " World" }, "Hello ", "Great")
+helloWorldFunc()
+=> "Hello Great World"
 ```
 
 ### compose - `$.compose`
