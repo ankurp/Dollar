@@ -147,7 +147,7 @@ $.each(["A", "B"]) {
 $.each(["A", "B"]) { (index, elem) in
   print("\(index) - \(elem)")
 }
-=> ["A", "B"]
+=> ["0 - A", "1 - B"]
 ```
 
 ### every - `$.every`
