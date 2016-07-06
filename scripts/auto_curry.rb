@@ -10,7 +10,7 @@ def curry_generator(n)
   [
     "    public class func curry<#{types}, R>(f: (#{types}) -> R) -> #{return_type} -> R {",
     "        return #{closures} in f(#{types.downcase}) #{closing_braces}",
-    "    }"
+    "    }\n"
   ].join("\n")
 end
 

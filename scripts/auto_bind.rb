@@ -8,7 +8,7 @@ def bind_generator(n)
   [
     "    public class func bind<#{types}, R>(f: (#{types}) -> R, #{function_parameters}) -> (() -> R) {",
     "        return { f(#{types.downcase}) }",
-    "    }"
+    "    }\n"
   ].join("\n")
 end
 
