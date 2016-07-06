@@ -9,9 +9,9 @@
 import Foundation
 
 class CarExample {
-    var name:String?
-    var color:String?
-    
+    var name: String?
+    var color: String?
+
     init(name: String) {
         self.name = name
     }
