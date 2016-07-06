@@ -769,7 +769,7 @@ $.pick(["Dog": 1, "Cat": 2, "Cow": 3], keys: "Dog", "Cow")
 Creates a shallow clone of a dictionary excluding the specified keys.
 
 ```swift
-$.omit(["Dog": 1, "Cat": 2, "Cow": 3], keys: "Cat", "Dog")
+$.omit(["Dog": 1, "Cat": 2, "Cow": 3, "Sheep": 4], keys: "Cat", "Dog")
 => ["Cow": 3, "Sheep": 4]
 ```
 
@@ -1750,7 +1750,7 @@ Get an array from string split using the delimiter character
 => ["Hello", "World"]
 ```
 
-### `lstring() -> String`
+### `lstrip() -> String`
 
 Get string without leading spaces
 
@@ -1760,7 +1760,7 @@ leadingSpace.lstrip()
 => "Hello"
 ```
 
-### `rstring() -> String`
+### `rstrip() -> String`
 
 Get string without trailing spaces
 
