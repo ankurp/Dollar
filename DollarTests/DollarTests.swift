@@ -180,7 +180,7 @@ class DollarTests: XCTestCase {
     }
 
     func testIntersection() {
-        XCTAssertEqual($.intersection([1, 2, 3], [5, 2, 1, 4], [2, 1]).sort({$0<$1}), [1, 2], "Intersection of arrays")
+        XCTAssertEqual($.intersection([1, 2, 3], [5, 2, 1, 4], [2, 1]).sorted(isOrderedBefore: {$0<$1}), [1, 2], "Intersection of arrays")
     }
 
     func testDifference() {
@@ -202,7 +202,7 @@ class DollarTests: XCTestCase {
     }
 
     func testXOR() {
-        XCTAssertEqual($.xor([1, 2, 3], [5, 2, 1, 4]).sort {$0<$1}, [3, 4, 5], "Xor of arrays")
+        XCTAssertEqual($.xor([1, 2, 3], [5, 2, 1, 4]).sorted {$0<$1}, [3, 4, 5], "Xor of arrays")
     }
 
     func testAt() {
@@ -247,12 +247,12 @@ class DollarTests: XCTestCase {
 
     func testKeys() {
         let dict = ["Dog": 1, "Cat": 2]
-        XCTAssertEqual($.keys(dict).sort({$0<$1}), ["Cat", "Dog"], "Returns correct array with keys")
+        XCTAssertEqual($.keys(dict).sorted(isOrderedBefore: {$0<$1}), ["Cat", "Dog"], "Returns correct array with keys")
     }
 
     func testValues() {
         let dict = ["Dog": 1, "Cat": 2]
-        XCTAssertEqual($.values(dict).sort({$0<$1}), [1, 2], "Returns correct array with values")
+        XCTAssertEqual($.values(dict).sorted(isOrderedBefore: {$0<$1}), [1, 2], "Returns correct array with values")
     }
 
     func testMerge() {
@@ -293,8 +293,8 @@ class DollarTests: XCTestCase {
 
         chain = $.chain([10, 20, 30, 40, 50])
         var elements: [Int] = []
-        chain.each { elements.append($0 as Int) }
-        chain.value
+        _ = chain.each { elements.append($0 as Int) }
+        _ = chain.value // Needed to calculate value as they are lazily done
         XCTAssertEqual(elements, [10, 20, 30, 40, 50], "Goes through each element in the array")
 
         XCTAssertTrue(chain.all({ ($0 as Int) < 100 }), "All elements are less than 100")
@@ -307,8 +307,8 @@ class DollarTests: XCTestCase {
 
         chain = $.chain([10, 20, 30, 40, 50])
         elements = [Int]()
-        chain.slice(0, end: 3).each { elements.append($0 as Int) }
-        chain.value
+        _ = chain.slice(0, end: 3).each { elements.append($0 as Int) }
+        _ = chain.value
         XCTAssertEqual(elements, [10, 20, 30], "Chained seld")
 
 
@@ -363,7 +363,7 @@ class DollarTests: XCTestCase {
             isDone = true
         }
         for _ in saves {
-            asyncSave(completeCallback)
+            _ = asyncSave(completeCallback)
         }
         XCTAssertTrue(isDone, "Should be done")
     }
@@ -407,7 +407,7 @@ class DollarTests: XCTestCase {
     func testFlatMap() {
         XCTAssertEqual($.flatMap([1, 2, 3]) { [$0, $0] }, [1, 1, 2, 2, 3, 3], "FlatMap should double every item in the array and concatenate them.")
         let expected: String? = "swift"
-        let actual = $.flatMap(NSURL(string: "https://apple.com/swift/")) { $0.lastPathComponent }
+        let actual = $.flatMap(URL(string: "https://apple.com/swift/")) { $0.lastPathComponent }
         XCTAssert($.equal(actual, expected), "FlatMap on optionals should run the function and produce a single-level optional containing the last path component of the url.")
     }
 
@@ -429,7 +429,7 @@ class DollarTests: XCTestCase {
 
     func testFib() {
         var times = 0
-        let fibMemo = $.memoize { (fib: (Int -> Int), val: Int) -> Int in
+        let fibMemo = $.memoize { (fib: ((Int) -> Int), val: Int) -> Int in
             times += 1
             return val == 1 || val == 0 ? 1 : fib(val - 1) + fib(val - 2)
         }
@@ -476,10 +476,9 @@ class DollarTests: XCTestCase {
     }
 
     func testFill() {
-        var arr = Array<Int>(count: 5, repeatedValue: 1)
+        var arr = Array<Int>(repeating: 1, count: 5)
         XCTAssertEqual($.fill(&arr, withElem: 42), [42, 42, 42, 42, 42], "Should fill array with 42")
 
-        $.fill(&arr, withElem: 1, startIndex: 1, endIndex: 3)
         XCTAssertEqual($.fill(&arr, withElem: 1, startIndex: 1, endIndex: 3), [42, 1, 1, 1, 42], "Should fill array with 1")
     }
 
