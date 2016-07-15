@@ -424,7 +424,23 @@ public class $ {
             return array[0]
         }
     }
-
+    /// Splits a collection into sets, grouped by the result of running each value through a callback.
+    ///
+    /// :param The array to group
+    /// :param callback Function whose response will be used as a key in the new string
+    public class func groupBy<T, U: Hashable>(array: [T], callback: (T) -> U) -> [U: [T]] {
+        var grouped = [U: [T]]()
+        for element in array {
+            let key = callback(element)
+            if var arr = grouped[key] {
+                arr.append(element)
+                grouped[key] = arr
+            } else {
+                grouped[key] = [element]
+            }
+        }
+        return grouped
+    }
     /// Gets the second element in the array.
     ///
     /// :param: array The array to wrap.
