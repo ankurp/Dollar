@@ -565,18 +565,20 @@ public class $ {
     ///
     /// :param The array to group
     /// :param callback Function whose response will be used as a key in the new string
-    public class func groupBy<T, U>(array: [T], callback: (T) -> U) -> [Hashable: [T]]{
-        var grouped = [Hashable: [T]]()
+    public class func groupBy<T, U:Hashable>(array: [T], callback: (T) -> U) -> [U: [T]]{
+        var grouped = [U: [T]]()
         for element in array {
-            let key = String(callback(element))
-            if(grouped[key] != .None) {
-                if let arr = grouped[key] {
-                    arr.append(element)
-                } else {`
-                    grouped[key] = [element]
-                }
+            let key = callback(element)
+            
+            if var arr = grouped[key] {
+                arr.append(element)
+            } else {
+                grouped[key] = [element]
+            }
+            
         }
         return grouped
+        
     }
     
     /// The identity function. Returns the argument it is given.
