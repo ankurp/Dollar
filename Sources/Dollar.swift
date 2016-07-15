@@ -577,7 +577,6 @@ public class $ {
             
         }
         return grouped
-        
     }
     
     /// The identity function. Returns the argument it is given.
