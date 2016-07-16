@@ -605,6 +605,15 @@ $.sortedIndex([10, 20, 30, 50], value: 40)
 => 3
 ```
 
+### transpose - `$.transpose`
+
+Creates a tranposed matrix.
+
+```swift
+$.transpose([[1, 2, 3], [4, 5, 6]])
+=> [[1, 4], [2, 5], [3, 6]]
+```
+
 ### union - `$.union`
 
 Creates an array of unique values, in order, of the provided arrays.
