@@ -205,6 +205,10 @@ class DollarTests: XCTestCase {
         XCTAssertEqual($.xor([1, 2, 3], [5, 2, 1, 4]).sort {$0<$1}, [3, 4, 5], "Xor of arrays")
     }
 
+    func testTranspose() {
+        XCTAssertEqual($.transpose([[1, 2, 3], [4, 5, 6]]), [[1, 4], [2, 5], [3, 6]], "Tranpose of matrix")
+    }
+
     func testAt() {
         XCTAssertEqual($.at(["ant", "bat", "cat", "dog", "egg"], indexes: 0, 2, 4), ["ant", "cat", "egg"], "At of arrays")
     }

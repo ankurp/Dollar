@@ -1208,6 +1208,24 @@ public class $ {
         return result
     }
 
+    /// Transposes matrix if able. If unable; parameter matrix is returned.
+    ///
+    /// :param: A generic matrix containing any type.
+    /// :return: A transposed version of input matrix.
+    public class func transpose<T>(matrix: [[T]]) -> [[T]] {
+        guard matrix.filter({ return $0.count == matrix[0].count }).count == matrix.count,
+            var returnMatrix: [[T?]] = Array(count: matrix.first!.count,
+                                             repeatedValue: Array(count: matrix.count, repeatedValue: nil)) else {
+                return matrix
+        }
+        for (rowNumber, row) in matrix.enumerate() {
+            for (index, item) in row.enumerate() {
+                returnMatrix[index][rowNumber] = item
+            }
+        }
+        return returnMatrix.flatMap { $0.flatMap { $0 } }
+    }
+
     /// Creates an array of unique values, in order, of the provided arrays.
     ///
     /// :param: arrays The arrays to perform union on.
