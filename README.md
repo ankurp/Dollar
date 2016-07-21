@@ -260,7 +260,7 @@ $.groupBy([1, 2, 3, 4, 5], callback: {$0 % 2})
 => [0: [2, 4], 1: [1, 3]]
 
 $.groupBy(["strings", "with", "different", lengths"], callback: {$0.characters.count})
-=> [7: ["strings", "lengths"], 9: ["different"], "4": ["With"]]
+=> [7: ["strings", "lengths"], 9: ["different"], 4: ["With"]]
 ```
 
 ### second - `$.second(array: AnyObject[])`
