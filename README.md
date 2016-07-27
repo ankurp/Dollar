@@ -1627,7 +1627,7 @@ Prints "HiHiHi"
 Invoke the callback from int down to and including limit
 
 ```swift
-3.upTo(0) {
+3.downTo(0) {
   print("Hi")
 }
 Prints "HiHiHiHi"
