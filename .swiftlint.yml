@@ -1,5 +1,4 @@
 disabled_rules:
-  - valid_docs
   - type_body_length
   - file_length
   - type_name
