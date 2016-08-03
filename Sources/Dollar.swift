@@ -31,7 +31,7 @@ public class $ {
 
     /// Creates a function that executes passed function only after being called n times.
     ///
-    /// - parameter n: Number of times after which to call function.
+    /// - parameter num: Number of times after which to call function.
     /// - parameter function: Function to be called that takes params.
     /// - returns: Function that can be called n times after which the callback function is called.
     public class func after<T, E>(num: Int, function: (T...) -> E) -> ((T...) -> E?) {
@@ -49,7 +49,7 @@ public class $ {
 
     /// Creates a function that executes passed function only after being called n times.
     ///
-    /// - parameter n: Number of times after which to call function.
+    /// - parameter num: Number of times after which to call function.
     /// - parameter function: Function to be called that does not take any params.
     /// - returns: Function that can be called n times after which the callback function is called.
     public class func after<T>(num: Int, function: () -> T) -> (() -> T?) {
@@ -186,7 +186,7 @@ public class $ {
     ///
     /// - parameter array: to cycle through
     /// - parameter callback: function to call with the element
-    public class func cycle<T, U>(array: [T], callback: (T) -> (U)) {
+    public class func cycle<T, U>(array: [T], callback: T -> U) {
         while true {
             for elem in array {
                 callback(elem)
@@ -199,7 +199,7 @@ public class $ {
     /// - parameter array: to cycle through
     /// - parameter times: Number of times to cycle through the array
     /// - parameter callback: function to call with the element
-    public class func cycle<T, U>(array: [T], _ times: Int, callback: (T) -> (U)) {
+    public class func cycle<T, U>(array: [T], _ times: Int, callback: T -> U) {
         for _ in 0..<times {
             for elem in array {
                 callback(elem)
@@ -351,7 +351,9 @@ public class $ {
     /// Fills elements of array with value from start up to, but not including, end.
     ///
     /// - parameter array: to fill
-    /// - parameter elem: the element to replace
+    /// - parameter withElem: the element to replace
+    /// - parameter startIndex: start index
+    /// - parameter endIndex: end index
     /// - returns: array elements chunked
     public class func fill<T>(inout array: [T], withElem elem: T, startIndex: Int = 0, endIndex: Int? = .None) -> [T] {
         let endIndex = endIndex ?? array.count
@@ -426,8 +428,9 @@ public class $ {
     }
     /// Splits a collection into sets, grouped by the result of running each value through a callback.
     ///
-    /// :param The array to group
-    /// :param callback Function whose response will be used as a key in the new string
+    /// - parameter array: The array to group
+    /// - parameter callback: Function whose response will be used as a key in the new string
+    /// - returns: grouped collection
     public class func groupBy<T, U: Hashable>(array: [T], callback: (T) -> U) -> [U: [T]] {
         var grouped = [U: [T]]()
         for element in array {
@@ -484,6 +487,7 @@ public class $ {
     /// Maps a function that converts elements to a list and then concatenates them.
     ///
     /// - parameter array: The array to map.
+    /// - parameter function: callback function that should return flattened values
     /// - returns: The array with the transformed values concatenated together.
     public class func flatMap<T, U>(array: [T], function: (T) -> ([U])) -> [U] {
         return array.map(function).reduce([], combine: +)
@@ -491,7 +495,8 @@ public class $ {
 
     /// Maps a function that converts a type to an Optional over an Optional, and then returns a single-level Optional.
     ///
-    /// - parameter array: The array to map.
+    /// - parameter value: The array to map.
+    /// - parameter function: callback function that should return mapped values
     /// - returns: The array with the transformed values concatenated together.
     public class func flatMap<T, U>(value: T?, function: (T) -> (U?)) -> U? {
         if let unwrapped = value.map(function) {
@@ -638,8 +643,8 @@ public class $ {
 
     /// Returns true if i is in range
     ///
-    /// - parameter i: to check if it is in range
-    /// - parameter range: to check in
+    /// - parameter index: to check if it is in range
+    /// - parameter isIn: to check in
     /// - returns: true if it is in range otherwise false
     public class func it<T: Comparable>(index: T, isIn range: Range<T>) -> Bool {
         return index >= range.startIndex && index < range.endIndex
@@ -647,8 +652,8 @@ public class $ {
 
     /// Returns true if i is in interval
     ///
-    /// - parameter i: to check if it is in interval
-    /// - parameter interval: to check in
+    /// - parameter index: to check if it is in interval
+    /// - parameter isIn: to check in
     /// - returns: true if it is in interval otherwise false
     public class func it<I: IntervalType>(index: I.Bound, isIn interval: I) -> Bool {
         return interval.contains(index)
@@ -1004,6 +1009,7 @@ public class $ {
     /// Removes all provided values from the given array.
     ///
     /// - parameter array: The array to source from.
+    /// - parameter values: values to remove from the array
     /// - returns: Array with values pulled out.
     public class func pull<T: Equatable>(array: [T], values: T...) -> [T] {
         return self.pull(array, values: values)
@@ -1021,7 +1027,7 @@ public class $ {
     /// Removes all provided values from the given array at the given indices
     ///
     /// - parameter array: The array to source from.
-    /// - parameter values: The indices to remove from.
+    /// - parameter indices: The indices to remove from.
     /// - returns: Array with values pulled out.
     public class func pullAt<T: Equatable>(array: [T], indices: Int...) -> [T] {
         var elemToRemove = [T]()
@@ -1033,6 +1039,7 @@ public class $ {
 
     /// Returns random number from 0 upto but not including upperBound
     ///
+    /// - parameter upperBound: upper bound when generating random number
     /// - returns: Random number
     public class func random(upperBound: Int) -> Int {
         return Int(arc4random_uniform(UInt32(upperBound)))
@@ -1115,7 +1122,7 @@ public class $ {
     /// Removes an element from an array.
     ///
     /// - parameter array: The array to source from.
-    /// - parameter element: Element that is to be removed
+    /// - parameter value: Element that is to be removed
     /// - returns: Array with element removed.
     public class func remove<T: Equatable>(array: [T], value: T) -> [T] {
         return self.remove(array, callback: {$0 == value})
@@ -1190,7 +1197,7 @@ public class $ {
     /// Call a function n times and also passes the index. If a value is returned
     /// in the function then the times method will return an array of those values.
     ///
-    /// - parameter n: Number of times to call function.
+    /// - parameter num: Number of times to call function.
     /// - parameter function: The function to be called every time.
     /// - returns: Values returned from callback function.
     public class func times<T>(num: Int, function: () -> T) -> [T] {
@@ -1202,9 +1209,9 @@ public class $ {
     /// Call a function n times and also passes the index. If a value is returned
     /// in the function then the times method will return an array of those values.
     ///
-    /// - parameter n: Number of times to call function.
-    /// - parameter function: The function to be called every time.
-    public class func times(num: Int, function: () -> ()) {
+    /// - parameter num: Number of times to call function
+    /// - parameter function: The function to be called every time
+    public class func times(num: Int, function: Void -> Void) {
         self.times(num) { (index: Int) -> () in
             function()
         }
@@ -1213,7 +1220,7 @@ public class $ {
     /// Call a function n times and also passes the index. If a value is returned
     /// in the function then the times method will return an array of those values.
     ///
-    /// - parameter n: Number of times to call function.
+    /// - parameter num: Number of times to call function.
     /// - parameter function: The function to be called every time that takes index.
     /// - returns: Values returned from callback function.
     public class func times<T>(num: Int, function: (Int) -> T) -> [T] {
@@ -1226,7 +1233,7 @@ public class $ {
 
     /// Transposes matrix if able. If unable; parameter matrix is returned.
     ///
-    /// - parameter A: generic matrix containing any type.
+    /// - parameter matrix: Generic matrix containing any type.
     /// - returns: A transposed version of input matrix.
     public class func transpose<T>(matrix: [[T]]) -> [[T]] {
         guard matrix.filter({ return $0.count == matrix[0].count }).count == matrix.count,
@@ -1394,7 +1401,7 @@ public class Chain<C> {
 
     /// Initializer of the wrapper object for chaining.
     ///
-    /// - parameter array: The array to wrap.
+    /// - parameter collection: The array to wrap.
     public init(_ collection: [C]) {
         self.result = Wrapper(collection)
     }
@@ -1462,7 +1469,7 @@ public class Chain<C> {
 
     /// Get the first object in the wrapper object.
     ///
-    /// - parameter array: The array to wrap.
+    /// - parameter function: The array to wrap.
     /// - returns: The wrapper object.
     public func map(function: (Int, C) -> C) -> Chain {
         return self.queue {
@@ -1476,7 +1483,7 @@ public class Chain<C> {
 
     /// Get the first object in the wrapper object.
     ///
-    /// - parameter array: The array to wrap.
+    /// - parameter function: The array to wrap.
     /// - returns: The wrapper object.
     public func each(function: (C) -> ()) -> Chain {
         return self.queue {
@@ -1489,7 +1496,7 @@ public class Chain<C> {
 
     /// Get the first object in the wrapper object.
     ///
-    /// - parameter array: The array to wrap.
+    /// - parameter function: The array to wrap.
     /// - returns: The wrapper object.
     public func each(function: (Int, C) -> ()) -> Chain {
         return self.queue {
