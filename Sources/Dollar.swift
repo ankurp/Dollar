@@ -488,7 +488,7 @@ public class $ {
     /// - parameter function: callback function that should return flattened values
     /// - returns: The array with the transformed values concatenated together.
     public class func flatMap<T, U>(_ array: [T], function: (T) -> ([U])) -> [U] {
-        return array.map(function).reduce([], combine: +)
+        return array.map(function).reduce([], +)
     }
 
     /// Maps a function that converts a type to an Optional over an Optional, and then returns a single-level Optional.
@@ -1097,7 +1097,7 @@ public class $ {
     /// - parameter combine: Function that will combine the passed value with element in the array
     /// - returns: The result of reducing all of the elements in the array into one value
     public class func reduce<U, T>(_ array: [T], initial: U, combine: (U, T) -> U) -> U {
-        return array.reduce(initial, combine: combine)
+        return array.reduce(initial, combine)
     }
 
     /// Creates an array of an arbitrary sequence. Especially useful with builtin ranges.
