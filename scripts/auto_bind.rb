@@ -6,7 +6,7 @@ def bind_generator(n)
   types = (1..n).map{|i| "T#{i}" }.join(", ")
   function_parameters = (1..n).map{|i| "_ t#{i}: T#{i}" }.join(", ")
   [
-    "    public class func bind<#{types}, R>(f: (#{types}) -> R, #{function_parameters}) -> (() -> R) {",
+    "    public class func bind<#{types}, R>(f: @escaping (#{types}) -> R, #{function_parameters}) -> (() -> R) {",
     "        return { f(#{types.downcase}) }",
     "    }\n"
   ].join("\n")

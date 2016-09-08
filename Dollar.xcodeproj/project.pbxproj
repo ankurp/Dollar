@@ -271,13 +271,14 @@
 			);
 			inputPaths = (
 				"$(PROJECT_DIR)/Dollar/AutoCurry.swift",
+				"$(PROJECT_DIR)/Dollar/AutoBind.swift",
 			);
 			name = "Run Script";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/bash;
-			shellScript = "ruby \"${PROJECT_DIR}/scripts/auto_curry.rb\"\n";
+			shellScript = "ruby \"${PROJECT_DIR}/scripts/auto_curry.rb\"\nruby \"${PROJECT_DIR}/scripts/auto_bind.rb\"\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
