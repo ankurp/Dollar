@@ -34,7 +34,7 @@ public class $ {
     /// - parameter num: Number of times after which to call function.
     /// - parameter function: Function to be called that takes params.
     /// - returns: Function that can be called n times after which the callback function is called.
-    public class func after<T, E>(_ num: Int, function: (T...) -> E) -> ((T...) -> E?) {
+    public class func after<T, E>(_ num: Int, function: @escaping (T...) -> E) -> ((T...) -> E?) {
         var counter = num
         return { (params: T...) -> E? in
             typealias Function = ([T]) -> E
@@ -52,7 +52,7 @@ public class $ {
     /// - parameter num: Number of times after which to call function.
     /// - parameter function: Function to be called that does not take any params.
     /// - returns: Function that can be called n times after which the callback function is called.
-    public class func after<T>(_ num: Int, function: () -> T) -> (() -> T?) {
+    public class func after<T>(_ num: Int, function: @escaping () -> T) -> (() -> T?) {
         let f = self.after(num) { (params: Any?...) -> T in
             return function()
         }
@@ -85,7 +85,7 @@ public class $ {
     /// - parameter function: Function to be bound.
     /// - parameter parameters: Parameters to be passed into the function when being invoked.
     /// - returns: A new function that when called will invoked the passed function with the parameters specified.
-    public class func bind<T, E>(_ function: (T...) -> E, _ parameters: T...) -> (() -> E) {
+    public class func bind<T, E>(_ function: @escaping (T...) -> E, _ parameters: T...) -> (() -> E) {
         return { () -> E in
             typealias Function = ([T]) -> E
             let f = unsafeBitCast(function, to: Function.self)
@@ -353,7 +353,6 @@ public class $ {
     /// - parameter endIndex: end index
     /// - returns: array elements chunked
     public class func fill<T>(_ array: inout [T], withElem elem: T, startIndex: Int = 0, endIndex: Int? = .none) -> [T] {
->>>>>>> Upgrading library to Swift 3 syntax
         let endIndex = endIndex ?? array.count
         for (index, _) in array.enumerated() {
             if index > endIndex { break }
@@ -737,7 +736,7 @@ public class $ {
     ///
     /// - parameter function: The function to memoize.
     /// - returns: Memoized function
-    public class func memoize<T: Hashable, U>(_ function: (((T) -> U), T) -> U) -> ((T) -> U) {
+    public class func memoize<T: Hashable, U>(_ function: @escaping (((T) -> U), T) -> U) -> ((T) -> U) {
         var cache = [T: U]()
         var funcRef: ((T) -> U)!
         funcRef = { (param: T) -> U in
@@ -827,7 +826,7 @@ public class $ {
     /// - parameter function: That takes variadic arguments and return nil or some value
     /// - returns: Wrapper function that executes the passed function only once
     /// Consecutive calls will return the value returned when calling the function first time
-    public class func once<T, U>(_ function: (T...) -> U) -> (T...) -> U {
+    public class func once<T, U>(_ function: @escaping (T...) -> U) -> (T...) -> U {
         var result: U?
         let onceFunc = { (params: T...) -> U in
             typealias Function = ([T]) -> U
@@ -847,7 +846,7 @@ public class $ {
     /// - parameter function: That takes variadic arguments and return nil or some value
     /// - returns: Wrapper function that executes the passed function only once
     /// Consecutive calls will return the value returned when calling the function first time
-    public class func once<U>(_ function: () -> U) -> () -> U {
+    public class func once<U>(_ function: @escaping () -> U) -> () -> U {
         var result: U?
         let onceFunc = { () -> U in
             if let returnVal = result {
@@ -865,7 +864,7 @@ public class $ {
     /// - parameter function: to invoke
     /// - parameter parameters: to pass the function when invoked
     /// - returns: Function with partial arguments prepended
-    public class func partial<T, E> (_ function: (T...) -> E, _ parameters: T...) -> ((T...) -> E) {
+    public class func partial<T, E> (_ function: @escaping (T...) -> E, _ parameters: T...) -> ((T...) -> E) {
         return { (params: T...) -> E in
             typealias Function = ([T]) -> E
             let f = unsafeBitCast(function, to: Function.self)
@@ -886,7 +885,7 @@ public class $ {
         var result = [[T]]()
 
         if step == .none { step = num } // If no step is supplied move n each step.
-        if step < 1 { step = 1 } // Less than 1 results in an infinite loop.
+        if step! < 1 { step = 1 } // Less than 1 results in an infinite loop.
         if num < 1 { num = 0 }    // Allow 0 if user wants [[],[],[]] for some reason.
         if num > array.count { return [[]] }
 
@@ -913,7 +912,7 @@ public class $ {
         var need = 0
 
         if step == .none { step = num } // If no step is supplied move n each step.
-        if step < 1 { step = 1 } // Less than 1 results in an infinite loop.
+        if step! < 1 { step = 1 } // Less than 1 results in an infinite loop.
         if num < 1 { num = 0 }    // Allow 0 if user wants [[],[],[]] for some reason.
 
         for i in self.range(from: 0, to: array.count, incrementBy: step!) {
@@ -943,7 +942,7 @@ public class $ {
         var step = step
         var result = [[T]]()
         if step == .none { step = num } // If no step is supplied move n each step.
-        if step < 1 { step = 1 } // Less than 1 results in an infinite loop.
+        if step! < 1 { step = 1 } // Less than 1 results in an infinite loop.
         if num < 1 { num = 0 }    // Allow 0 if user wants [[],[],[]] for some reason.
 
         for i in self.range(from: 0, to: array.count, incrementBy: step!) {
@@ -966,7 +965,7 @@ public class $ {
         for item in array {
             let value = function(item)
 
-            if let lastValue = lastValue where value == lastValue {
+            if let lastValue = lastValue, value == lastValue {
                 result[result.count-1].append(item)
             } else {
                 result.append([item])
@@ -1047,7 +1046,7 @@ public class $ {
     ///
     /// - parameter endVal: End value of range.
     /// - returns: Array of elements based on the sequence starting from 0 to endVal and incremented by 1.
-    public class func range<T: Strideable where T : IntegerLiteralConvertible>(_ endVal: T) -> [T] {
+    public class func range<T: Strideable>(_ endVal: T) -> [T] where T : ExpressibleByIntegerLiteral {
         return self.range(from: 0, to: endVal)
     }
 
@@ -1056,7 +1055,7 @@ public class $ {
     /// - parameter from: Start value of range
     /// - parameter to: End value of range
     /// - returns: Array of elements based on the sequence that is incremented by 1
-    public class func range<T: Strideable where T.Stride : IntegerLiteralConvertible>(from startVal: T, to endVal: T) -> [T] {
+    public class func range<T: Strideable>(from startVal: T, to endVal: T) -> [T] where T.Stride : ExpressibleByIntegerLiteral {
         return self.range(from: startVal, to: endVal, incrementBy: 1)
     }
 
@@ -1076,7 +1075,7 @@ public class $ {
     /// - parameter from: Start value of range
     /// - parameter through: End value of range
     /// - returns: Array of elements based on the sequence that is incremented by 1
-    public class func range<T: Strideable where T.Stride : IntegerLiteralConvertible>(from startVal: T, through endVal: T) -> [T] {
+    public class func range<T: Strideable>(from startVal: T, through endVal: T) -> [T] where T.Stride : ExpressibleByIntegerLiteral {
         return self.range(from: startVal, to: endVal + 1, incrementBy: 1)
     }
 
@@ -1455,7 +1454,7 @@ public class Chain<C> {
     ///
     /// - parameter function: Function to map.
     /// - returns: The wrapper object.
-    public func map(_ function: (C) -> C) -> Chain {
+    public func map(_ function: @escaping (C) -> C) -> Chain {
         return self.queue {
             var result: [C] = []
             for elem: C in $0.value {
@@ -1469,7 +1468,7 @@ public class Chain<C> {
     ///
     /// - parameter function: The array to wrap.
     /// - returns: The wrapper object.
-    public func map(_ function: (Int, C) -> C) -> Chain {
+    public func map(_ function: @escaping (Int, C) -> C) -> Chain {
         return self.queue {
             var result: [C] = []
             for (index, elem) in $0.value.enumerated() {
@@ -1483,7 +1482,7 @@ public class Chain<C> {
     ///
     /// - parameter function: The array to wrap.
     /// - returns: The wrapper object.
-    public func each(_ function: (C) -> ()) -> Chain {
+    public func each(_ function: @escaping (C) -> ()) -> Chain {
         return self.queue {
             for elem in $0.value {
                 function(elem)
@@ -1496,7 +1495,7 @@ public class Chain<C> {
     ///
     /// - parameter function: The array to wrap.
     /// - returns: The wrapper object.
-    public func each(_ function: (Int, C) -> ()) -> Chain {
+    public func each(_ function: @escaping (Int, C) -> ()) -> Chain {
         return self.queue {
             for (index, elem) in $0.value.enumerated() {
                 function(index, elem)
@@ -1509,7 +1508,7 @@ public class Chain<C> {
     ///
     /// - parameter function: Function to tell whether to keep an element or remove.
     /// - returns: The wrapper object.
-    public func filter(_ function: (C) -> Bool) -> Chain {
+    public func filter(_ function: @escaping (C) -> Bool) -> Chain {
         return self.queue {
             return Wrapper(($0.value).filter(function))
         }
@@ -1555,7 +1554,7 @@ public class Chain<C> {
         }
     }
 
-    private func queue(_ function: (Wrapper<[C]>) -> Wrapper<[C]>) -> Chain {
+    private func queue(_ function: @escaping (Wrapper<[C]>) -> Wrapper<[C]>) -> Chain {
         funcQueue.append(function)
         return self
     }
