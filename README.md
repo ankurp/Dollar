@@ -44,8 +44,10 @@ Add the following dependency `.Package(url: "https://github.com/ankurp/Dollar", 
 
 Still stuck. Then checkout this screencast on [how to import](http://recordit.co/0gQiCSEREF)
 
-## Support for Older Xcode and Swift
+## Support for Xcode and Swift
 
+* For Xcode 8 (Swift 3) user version `6.0.0`
+* For Xcode 7 (Swift 2) use version `4.1.0` or `5.2.0`
 * For Xcode 6.3 (Swift 1.2) use version `3.0.3`
 * For Xcode 6.1 and 6.2 (Swift 1.1) use version `2.2.0`
 

@@ -7,5 +7,7 @@ included:
 excluded:
   - Sources/AutoCurry.swift
   - Sources/AutoBind.swift
+  - scripts
+  - DollarTests/DollarTests.swift
   - Carthage
   - Pods

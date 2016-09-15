@@ -18,8 +18,19 @@
 //
 
 import Foundation
+fileprivate func < <T: Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l < r
+  case (nil, _?):
+    return true
+  default:
+    return false
+  }
+}
 
-public class $ {
+
+open class $ {
     ///  ___  ___  _______   ___       ________  _______   ________
     /// |\  \|\  \|\  ___ \ |\  \     |\   __  \|\  ___ \ |\   __  \
     /// \ \  \\\  \ \   __/|\ \  \    \ \  \|\  \ \   __/|\ \  \|\  \
@@ -34,16 +45,16 @@ public class $ {
     /// - parameter num: Number of times after which to call function.
     /// - parameter function: Function to be called that takes params.
     /// - returns: Function that can be called n times after which the callback function is called.
-    public class func after<T, E>(num: Int, function: (T...) -> E) -> ((T...) -> E?) {
+    open class func after<T, E>(_ num: Int, function: @escaping (T...) -> E) -> ((T...) -> E?) {
         var counter = num
         return { (params: T...) -> E? in
-            typealias Function = [T] -> E
+            typealias Function = ([T]) -> E
             counter -= 1
             if counter <= 0 {
-                let f = unsafeBitCast(function, Function.self)
+                let f = unsafeBitCast(function, to: Function.self)
                 return f(params)
             }
-            return .None
+            return .none
         }
     }
 
@@ -52,7 +63,7 @@ public class $ {
     /// - parameter num: Number of times after which to call function.
     /// - parameter function: Function to be called that does not take any params.
     /// - returns: Function that can be called n times after which the callback function is called.
-    public class func after<T>(num: Int, function: () -> T) -> (() -> T?) {
+    open class func after<T>(_ num: Int, function: @escaping () -> T) -> (() -> T?) {
         let f = self.after(num) { (params: Any?...) -> T in
             return function()
         }
@@ -65,7 +76,7 @@ public class $ {
     /// - parameter array: The array to source from
     /// - parameter indexes: Get elements from these indexes
     /// - returns: New array with elements from the indexes specified.
-    public class func at<T>(array: [T], indexes: Int...) -> [T] {
+    open class func at<T>(_ array: [T], indexes: Int...) -> [T] {
         return self.at(array, indexes: indexes)
     }
 
@@ -75,7 +86,7 @@ public class $ {
     /// - parameter array: The array to source from
     /// - parameter indexes: Get elements from these indexes
     /// - returns: New array with elements from the indexes specified.
-    public class func at<T>(array: [T], indexes: [Int]) -> [T] {
+    open class func at<T>(_ array: [T], indexes: [Int]) -> [T] {
         var result: [T] = []
         for index in indexes {
             result.append(array[index])
@@ -88,10 +99,10 @@ public class $ {
     /// - parameter function: Function to be bound.
     /// - parameter parameters: Parameters to be passed into the function when being invoked.
     /// - returns: A new function that when called will invoked the passed function with the parameters specified.
-    public class func bind<T, E>(function: (T...) -> E, _ parameters: T...) -> (() -> E) {
+    open class func bind<T, E>(_ function: @escaping (T...) -> E, _ parameters: T...) -> (() -> E) {
         return { () -> E in
-            typealias Function = [T] -> E
-            let f = unsafeBitCast(function, Function.self)
+            typealias Function = ([T]) -> E
+            let f = unsafeBitCast(function, to: Function.self)
             return f(parameters)
         }
     }
@@ -102,10 +113,10 @@ public class $ {
     /// - parameter array: to chunk
     /// - parameter size: size of each chunk
     /// - returns: array elements chunked
-    public class func chunk<T>(array: [T], size: Int = 1) -> [[T]] {
+    open class func chunk<T>(_ array: [T], size: Int = 1) -> [[T]] {
         var result = [[T]]()
         var chunk = -1
-        for (index, elem) in array.enumerate() {
+        for (index, elem) in array.enumerated() {
             if index % size == 0 {
                 result.append([T]())
                 chunk += 1
@@ -119,7 +130,7 @@ public class $ {
     ///
     /// - parameter array: Array to be compacted.
     /// - returns: A new array that doesnt have any nil values.
-    public class func compact<T>(array: [T?]) -> [T] {
+    open class func compact<T>(_ array: [T?]) -> [T] {
         var result: [T] = []
         for elem in array {
             if let val = elem {
@@ -134,12 +145,12 @@ public class $ {
     ///
     /// - parameter functions: - list of functions
     /// - returns: A function that can be called with variadic parameters of values
-    public class func compose<T>(functions: ((T...) -> [T])...) -> ((T...) -> [T]) {
-        typealias Function = [T] -> [T]
+    open class func compose<T>(_ functions: ((T...) -> [T])...) -> ((T...) -> [T]) {
+        typealias Function = ([T]) -> [T]
         return {
             var result = $0
             for fun in functions {
-                let f = unsafeBitCast(fun, Function.self)
+                let f = unsafeBitCast(fun, to: Function.self)
                 result = f(result)
             }
             return result
@@ -151,7 +162,7 @@ public class $ {
     ///
     /// - parameter functions: - list of functions
     /// - returns: A function that can be called with array of values
-    public class func compose<T>(functions: ([T] -> [T])...) -> ([T] -> [T]) {
+    open class func compose<T>(_ functions: (([T]) -> [T])...) -> (([T]) -> [T]) {
         return {
             var result = $0
             for fun in functions {
@@ -166,7 +177,7 @@ public class $ {
     /// - parameter array: The array to check against.
     /// - parameter value: The value to check.
     /// - returns: Whether value is in the array.
-    public class func contains<T: Equatable>(array: [T], value: T) -> Bool {
+    open class func contains<T: Equatable>(_ array: [T], value: T) -> Bool {
         return array.contains(value)
     }
 
@@ -174,7 +185,7 @@ public class $ {
     ///
     /// - parameter array: The array to copy
     /// - returns: New copy of array
-    public class func copy<T>(array: [T]) -> [T] {
+    open class func copy<T>(_ array: [T]) -> [T] {
         var newArr: [T] = []
         for elem in array {
             newArr.append(elem)
@@ -186,10 +197,10 @@ public class $ {
     ///
     /// - parameter array: to cycle through
     /// - parameter callback: function to call with the element
-    public class func cycle<T, U>(array: [T], callback: T -> U) {
+    open class func cycle<T, U>(_ array: [T], callback: (T) -> U) {
         while true {
             for elem in array {
-                callback(elem)
+                _ = callback(elem)
             }
         }
     }
@@ -199,10 +210,10 @@ public class $ {
     /// - parameter array: to cycle through
     /// - parameter times: Number of times to cycle through the array
     /// - parameter callback: function to call with the element
-    public class func cycle<T, U>(array: [T], _ times: Int, callback: T -> U) {
+    open class func cycle<T, U>(_ array: [T], _ times: Int, callback: (T) -> U) {
         for _ in 0..<times {
             for elem in array {
-                callback(elem)
+                _ = callback(elem)
             }
         }
     }
@@ -211,7 +222,7 @@ public class $ {
     ///
     /// - parameter arrays: The arrays to difference between.
     /// - returns: The difference between the first array and all the remaining arrays from the arrays params.
-    public class func differenceInOrder<T: Equatable>(arrays: [[T]]) -> [T] {
+    open class func differenceInOrder<T: Equatable>(_ arrays: [[T]]) -> [T] {
         return $.reduce(self.rest(arrays), initial: self.first(arrays)!) { (result, arr) -> [T] in
             return result.filter() { !arr.contains($0) }
         }
@@ -223,7 +234,7 @@ public class $ {
     /// - parameter arrays: The arrays to difference between.
     /// - parameter inOrder: Optional Paramter which is true by default
     /// - returns: The difference between the first array and all the remaining arrays from the arrays params.
-    public class func difference<T: Hashable>(arrays: [T]..., inOrder: Bool = true) -> [T] {
+    open class func difference<T: Hashable>(_ arrays: [T]..., inOrder: Bool = true) -> [T] {
         if inOrder {
             return self.differenceInOrder(arrays)
         } else {
@@ -240,7 +251,7 @@ public class $ {
             }
             for arr in restArr {
                 for elem in arr {
-                    map.removeValueForKey(elem)
+                    map.removeValue(forKey: elem)
                 }
             }
             for (key, count) in map {
@@ -257,7 +268,7 @@ public class $ {
     /// - parameter array: The array to iterate over
     /// - parameter callback: function that gets called with each item in the array
     /// - returns: The array passed
-    public class func each<T>(array: [T], callback: (T) -> ()) -> [T] {
+    open class func each<T>(_ array: [T], callback: (T) -> ()) -> [T] {
         for elem in array {
             callback(elem)
         }
@@ -269,8 +280,8 @@ public class $ {
     /// - parameter array: The array to iterate over
     /// - parameter callback: function that gets called with each item in the array with its index
     /// - returns: The array passed
-    public class func each<T>(array: [T], callback: (Int, T) -> ()) -> [T] {
-        for (index, elem): (Int, T) in array.enumerate() {
+    open class func each<T>(_ array: [T], callback: (Int, T) -> ()) -> [T] {
+        for (index, elem): (Int, T) in array.enumerated() {
             callback(index, elem)
         }
         return array
@@ -282,7 +293,7 @@ public class $ {
     /// - parameter when: Condition to check before performing callback
     /// - parameter callback: Check whether element value is true or false.
     /// - returns: The array passed
-    public class func each<T>(array: [T], when: (T) -> Bool, callback: (T) -> ()) -> [T] {
+    open class func each<T>(_ array: [T], when: (T) -> Bool, callback: (T) -> ()) -> [T] {
         for elem in array where when(elem) {
             callback(elem)
         }
@@ -294,15 +305,15 @@ public class $ {
     /// - parameter value: The first optional to check.
     /// - parameter other: The second optional to check.
     /// - returns: true if the optionals contain two equal values, or both are nil; false otherwise.
-    public class func equal<T: Equatable>(value: T?, _ other: T?) -> Bool {
+    open class func equal<T: Equatable>(_ value: T?, _ other: T?) -> Bool {
         switch (value, other) {
-        case (.None, .None):
+        case (.none, .none):
             return true
-        case (.None, .Some(_)):
+        case (.none, .some(_)):
             return false
-        case (.Some(_), .None):
+        case (.some(_), .none):
             return false
-        case (.Some(let unwrappedValue), .Some(let otherUnwrappedValue)):
+        case (.some(let unwrappedValue), .some(let otherUnwrappedValue)):
             return unwrappedValue == otherUnwrappedValue
         }
     }
@@ -312,7 +323,7 @@ public class $ {
     /// - parameter array: The array to check.
     /// - parameter callback: Check whether element value is true or false.
     /// - returns: First element from the array.
-    public class func every<T>(array: [T], callback: (T) -> Bool) -> Bool {
+    open class func every<T>(_ array: [T], callback: (T) -> Bool) -> Bool {
         for elem in array {
             if !callback(elem) {
                 return false
@@ -326,7 +337,7 @@ public class $ {
     ///
     /// - parameter num: number whose factorial needs to be calculated
     /// - returns: factorial
-    public class func factorial(num: Int) -> Int {
+    open class func factorial(_ num: Int) -> Int {
         guard num > 0 else { return 1 }
         return num * $.factorial(num - 1)
     }
@@ -338,7 +349,7 @@ public class $ {
     /// - parameter index: Can be positive or negative to find from end of the array
     /// - parameter orElse: Default value to use if index is out of bounds
     /// - returns: Element fetched from the array or the default value passed in orElse
-    public class func fetch<T>(array: [T], _ index: Int, orElse: T? = .None) -> T! {
+    open class func fetch<T>(_ array: [T], _ index: Int, orElse: T? = .none) -> T! {
         if index < 0 && -index < array.count {
             return array[array.count + index]
         } else if index < array.count {
@@ -355,9 +366,9 @@ public class $ {
     /// - parameter startIndex: start index
     /// - parameter endIndex: end index
     /// - returns: array elements chunked
-    public class func fill<T>(inout array: [T], withElem elem: T, startIndex: Int = 0, endIndex: Int? = .None) -> [T] {
+    open class func fill<T>(_ array: inout [T], withElem elem: T, startIndex: Int = 0, endIndex: Int? = .none) -> [T] {
         let endIndex = endIndex ?? array.count
-        for (index, _) in array.enumerate() {
+        for (index, _) in array.enumerated() {
             if index > endIndex { break }
             if index >= startIndex && index <= endIndex {
                 array[index] = elem
@@ -372,14 +383,14 @@ public class $ {
     /// - parameter array: The array to search for the element in.
     /// - parameter callback: The callback function to tell whether element is found.
     /// - returns: Optional containing either found element or nil.
-    public class func find<T>(array: [T], callback: (T) -> Bool) -> T? {
+    open class func find<T>(_ array: [T], callback: (T) -> Bool) -> T? {
         for elem in array {
             let result = callback(elem)
             if result {
                 return elem
             }
         }
-        return .None
+        return .none
     }
 
     /// This method is like find except that it returns the index of the first element
@@ -388,13 +399,13 @@ public class $ {
     /// - parameter array: The array to search for the element in.
     /// - parameter callback: Function used to figure out whether element is the same.
     /// - returns: First element's index from the array found using the callback.
-    public class func findIndex<T>(array: [T], callback: (T) -> Bool) -> Int? {
-        for (index, elem): (Int, T) in array.enumerate() {
+    open class func findIndex<T>(_ array: [T], callback: (T) -> Bool) -> Int? {
+        for (index, elem): (Int, T) in array.enumerated() {
             if callback(elem) {
                 return index
             }
         }
-        return .None
+        return .none
     }
 
     /// This method is like findIndex except that it iterates over elements of the array
@@ -403,25 +414,25 @@ public class $ {
     /// - parameter array: The array to search for the element in.
     /// - parameter callback: Function used to figure out whether element is the same.
     /// - returns: Last element's index from the array found using the callback.
-    public class func findLastIndex<T>(array: [T], callback: (T) -> Bool) -> Int? {
+    open class func findLastIndex<T>(_ array: [T], callback: (T) -> Bool) -> Int? {
         let count = array.count
-        for (index, _) in array.enumerate() {
+        for (index, _) in array.enumerated() {
             let reverseIndex = count - (index + 1)
             let elem: T = array[reverseIndex]
             if callback(elem) {
                 return reverseIndex
             }
         }
-        return .None
+        return .none
     }
 
     /// Gets the first element in the array.
     ///
     /// - parameter array: The array to wrap.
     /// - returns: First element from the array.
-    public class func first<T>(array: [T]) -> T? {
+    open class func first<T>(_ array: [T]) -> T? {
         if array.isEmpty {
-            return .None
+            return .none
         } else {
             return array[0]
         }
@@ -431,7 +442,7 @@ public class $ {
     /// - parameter array: The array to group
     /// - parameter callback: Function whose response will be used as a key in the new string
     /// - returns: grouped collection
-    public class func groupBy<T, U: Hashable>(array: [T], callback: (T) -> U) -> [U: [T]] {
+    open class func groupBy<T, U: Hashable>(_ array: [T], callback: (T) -> U) -> [U: [T]] {
         var grouped = [U: [T]]()
         for element in array {
             let key = callback(element)
@@ -448,9 +459,9 @@ public class $ {
     ///
     /// - parameter array: The array to wrap.
     /// - returns: Second element from the array.
-    public class func second<T>(array: [T]) -> T? {
+    open class func second<T>(_ array: [T]) -> T? {
         if array.count < 2 {
-            return .None
+            return .none
         } else {
             return array[1]
         }
@@ -460,9 +471,9 @@ public class $ {
     ///
     /// - parameter array: The array to wrap.
     /// - returns: Third element from the array.
-    public class func third<T>(array: [T]) -> T? {
+    open class func third<T>(_ array: [T]) -> T? {
         if array.count < 3 {
-            return .None
+            return .none
         } else {
             return array[2]
         }
@@ -472,7 +483,7 @@ public class $ {
     ///
     /// - parameter array: The array to flatten.
     /// - returns: Flattened array.
-    public class func flatten<T>(array: [T]) -> [T] {
+    open class func flatten<T>(_ array: [T]) -> [T] {
         var resultArr: [T] = []
         for elem: T in array {
             if let val = elem as? [T] {
@@ -489,8 +500,8 @@ public class $ {
     /// - parameter array: The array to map.
     /// - parameter function: callback function that should return flattened values
     /// - returns: The array with the transformed values concatenated together.
-    public class func flatMap<T, U>(array: [T], function: (T) -> ([U])) -> [U] {
-        return array.map(function).reduce([], combine: +)
+    open class func flatMap<T, U>(_ array: [T], function: (T) -> ([U])) -> [U] {
+        return array.map(function).reduce([], +)
     }
 
     /// Maps a function that converts a type to an Optional over an Optional, and then returns a single-level Optional.
@@ -498,11 +509,11 @@ public class $ {
     /// - parameter value: The array to map.
     /// - parameter function: callback function that should return mapped values
     /// - returns: The array with the transformed values concatenated together.
-    public class func flatMap<T, U>(value: T?, function: (T) -> (U?)) -> U? {
+    open class func flatMap<T, U>(_ value: T?, function: (T) -> (U?)) -> U? {
         if let unwrapped = value.map(function) {
             return unwrapped
         } else {
-            return .None
+            return .none
         }
     }
 
@@ -510,7 +521,7 @@ public class $ {
     ///
     /// - parameter array: The array to size.
     /// - returns: size of the array
-    public class func size<T>(array: [T]) -> Int {
+    open class func size<T>(_ array: [T]) -> Int {
         return array.count
     }
 
@@ -518,7 +529,7 @@ public class $ {
     ///
     /// - parameter array: The array to shuffle.
     /// - returns: Shuffled array
-    public class func shuffle<T>(array: [T]) -> [T] {
+    open class func shuffle<T>(_ array: [T]) -> [T] {
         var newArr = self.copy(array)
         // Implementation of Fisher-Yates shuffle
         // http://en.wikipedia.org/wiki/Fisher-Yates_Shuffle
@@ -537,7 +548,7 @@ public class $ {
     ///
     /// - parameter array: The array to source from.
     /// - returns: Dictionary that contains the key generated from the element passed in the function.
-    public class func frequencies<T>(array: [T]) -> [T: Int] {
+    open class func frequencies<T>(_ array: [T]) -> [T: Int] {
         return self.frequencies(array) { $0 }
     }
 
@@ -548,7 +559,7 @@ public class $ {
     /// - parameter array: The array to source from.
     /// - parameter function: The function to get value of the key for each element to group by.
     /// - returns: Dictionary that contains the key generated from the element passed in the function.
-    public class func frequencies<T, U: Equatable>(array: [T], function: (T) -> U) -> [U: Int] {
+    open class func frequencies<T, U: Equatable>(_ array: [T], function: (T) -> U) -> [U: Int] {
         var result = [U: Int]()
         for elem in array {
             let key = function(elem)
@@ -566,7 +577,7 @@ public class $ {
     /// - parameter first: number
     /// - parameter second: number
     /// - returns: Greatest common denominator
-    public class func gcd(first: Int, _ second: Int) -> Int {
+    open class func gcd(_ first: Int, _ second: Int) -> Int {
         var first = first
         var second = second
         while second != 0 {
@@ -580,7 +591,7 @@ public class $ {
     /// - parameter first: number
     /// - parameter second: number
     /// - returns: Least common multiple
-    public class func lcm(first: Int, _ second: Int) -> Int {
+    open class func lcm(_ first: Int, _ second: Int) -> Int {
         return (first / $.gcd(first, second)) * second
     }
 
@@ -588,7 +599,7 @@ public class $ {
     ///
     /// - parameter arg: Value to return
     /// - returns: Argument that was passed
-    public class func id<T>(arg: T) -> T {
+    open class func id<T>(_ arg: T) -> T {
         return arg
     }
 
@@ -597,7 +608,7 @@ public class $ {
     /// - parameter array: The array to source from.
     /// - parameter value: Value whose index needs to be found.
     /// - returns: Index of the element otherwise returns nil if not found.
-    public class func indexOf<T: Equatable>(array: [T], value: T) -> Int? {
+    open class func indexOf<T: Equatable>(_ array: [T], value: T) -> Int? {
         return self.findIndex(array) { $0 == value }
     }
 
@@ -606,7 +617,7 @@ public class $ {
     /// - parameter array: The array to source from.
     /// - parameter numElements: The number of elements to ignore in the end.
     /// - returns: Array of initial values.
-    public class func initial<T>(array: [T], numElements: Int = 1) -> [T] {
+    open class func initial<T>(_ array: [T], numElements: Int = 1) -> [T] {
         var result: [T] = []
         if array.count > numElements && numElements >= 0 {
             for index in 0..<(array.count - numElements) {
@@ -620,7 +631,7 @@ public class $ {
     ///
     /// - parameter arrays: The arrays to perform an intersection on.
     /// - returns: Intersection of all arrays passed.
-    public class func intersection<T: Hashable>(arrays: [T]...) -> [T] {
+    open class func intersection<T: Hashable>(_ arrays: [T]...) -> [T] {
         var map: [T: Int] = [T: Int]()
         for arr in arrays {
             for elem in arr {
@@ -646,17 +657,8 @@ public class $ {
     /// - parameter index: to check if it is in range
     /// - parameter isIn: to check in
     /// - returns: true if it is in range otherwise false
-    public class func it<T: Comparable>(index: T, isIn range: Range<T>) -> Bool {
-        return index >= range.startIndex && index < range.endIndex
-    }
-
-    /// Returns true if i is in interval
-    ///
-    /// - parameter index: to check if it is in interval
-    /// - parameter isIn: to check in
-    /// - returns: true if it is in interval otherwise false
-    public class func it<I: IntervalType>(index: I.Bound, isIn interval: I) -> Bool {
-        return interval.contains(index)
+    open class func it<T: Comparable>(_ index: T, isIn range: Range<T>) -> Bool {
+        return index >= range.lowerBound && index < range.upperBound
     }
 
     /// Joins the elements in the array to create a concatenated element of the same type.
@@ -664,15 +666,15 @@ public class $ {
     /// - parameter array: The array to join the elements of.
     /// - parameter separator: The separator to join the elements with.
     /// - returns: Joined element from the array of elements.
-    public class func join(array: [String], separator: String) -> String {
-        return array.joinWithSeparator(separator)
+    open class func join(_ array: [String], separator: String) -> String {
+        return array.joined(separator: separator)
     }
 
     /// Creates an array of keys given a dictionary.
     ///
     /// - parameter dictionary: The dictionary to source from.
     /// - returns: Array of keys from dictionary.
-    public class func keys<T, U>(dictionary: [T: U]) -> [T] {
+    open class func keys<T, U>(_ dictionary: [T: U]) -> [T] {
         var result: [T] = []
         for key in dictionary.keys {
             result.append(key)
@@ -684,9 +686,9 @@ public class $ {
     ///
     /// - parameter array: The array to source from.
     /// - returns: Last element from the array.
-    public class func last<T>(array: [T]) -> T? {
+    open class func last<T>(_ array: [T]) -> T? {
         if array.isEmpty {
-            return .None
+            return .none
         } else {
             return array[array.count - 1]
         }
@@ -697,7 +699,7 @@ public class $ {
     /// - parameter array: The array to source from.
     /// - parameter value: The value whose last index needs to be found.
     /// - returns: Last index of element if found otherwise returns nil.
-    public class func lastIndexOf<T: Equatable>(array: [T], value: T) -> Int? {
+    open class func lastIndexOf<T: Equatable>(_ array: [T], value: T) -> Int? {
         return self.findLastIndex(array) { $0 == value }
     }
 
@@ -706,7 +708,7 @@ public class $ {
     /// - parameter collection: The collection to source from
     /// - parameter transform: The mapping function
     /// - returns: Array of elements mapped using the map function
-    public class func map<T: CollectionType, E>(collection: T, transform: (T.Generator.Element) -> E) -> [E] {
+    open class func map<T: Collection, E>(_ collection: T, transform: (T.Iterator.Element) -> E) -> [E] {
         return collection.map(transform)
     }
 
@@ -715,7 +717,7 @@ public class $ {
     /// - parameter sequence: The sequence to source from
     /// - parameter transform: The mapping function
     /// - returns: Array of elements mapped using the map function
-    public class func map<T: SequenceType, E>(sequence: T, transform: (T.Generator.Element) -> E) -> [E] {
+    open class func map<T: Sequence, E>(_ sequence: T, transform: (T.Iterator.Element) -> E) -> [E] {
         return sequence.map(transform)
     }
 
@@ -723,7 +725,7 @@ public class $ {
     ///
     /// - parameter array: The array to source from.
     /// - returns: Maximum element in array.
-    public class func max<T: Comparable>(array: [T]) -> T? {
+    open class func max<T: Comparable>(_ array: [T]) -> T? {
         if var maxVal = array.first {
             for elem in array {
                 if maxVal < elem {
@@ -732,16 +734,16 @@ public class $ {
             }
             return maxVal
         }
-        return .None
+        return .none
     }
 
     /// Get memoized function to improve performance
     ///
     /// - parameter function: The function to memoize.
     /// - returns: Memoized function
-    public class func memoize<T: Hashable, U>(function: ((T -> U), T) -> U) -> (T -> U) {
+    open class func memoize<T: Hashable, U>(_ function: @escaping (((T) -> U), T) -> U) -> ((T) -> U) {
         var cache = [T: U]()
-        var funcRef: (T -> U)!
+        var funcRef: ((T) -> U)!
         funcRef = { (param: T) -> U in
             if let cacheVal = cache[param] {
                 return cacheVal
@@ -757,7 +759,7 @@ public class $ {
     ///
     /// - parameter dictionaries: The dictionaries to source from.
     /// - returns: Merged dictionary with all of its keys and values.
-    public class func merge<T, U>(dictionaries: [T: U]...) -> [T: U] {
+    open class func merge<T, U>(_ dictionaries: [T: U]...) -> [T: U] {
         var result = [T: U]()
         for dict in dictionaries {
             for (key, value) in dict {
@@ -771,7 +773,7 @@ public class $ {
     ///
     /// - parameter arrays: The arrays to source from.
     /// - returns: Array with all values merged, including duplicates.
-    public class func merge<T>(arrays: [T]...) -> [T] {
+    open class func merge<T>(_ arrays: [T]...) -> [T] {
         var result = [T]()
         for arr in arrays {
             result += arr
@@ -783,7 +785,7 @@ public class $ {
     ///
     /// - parameter array: The array to source from.
     /// - returns: Minimum value from array.
-    public class func min<T: Comparable>(array: [T]) -> T? {
+    open class func min<T: Comparable>(_ array: [T]) -> T? {
         if var minVal = array.first {
             for elem in array {
                 if minVal > elem {
@@ -792,20 +794,20 @@ public class $ {
             }
             return minVal
         }
-        return .None
+        return .none
     }
 
     /// A no-operation function.
     ///
     /// - returns: nil.
-    public class func noop() -> () {
+    open class func noop() -> () {
     }
 
     /// Gets the number of seconds that have elapsed since the Unix epoch (1 January 1970 00:00:00 UTC).
     ///
     /// - returns: number of seconds as double
-    public class func now() -> NSTimeInterval {
-        return NSDate().timeIntervalSince1970
+    open class func now() -> TimeInterval {
+        return Date().timeIntervalSince1970
     }
 
     /// Creates a shallow clone of a dictionary excluding the specified keys.
@@ -813,7 +815,7 @@ public class $ {
     /// - parameter dictionary: The dictionary to source from.
     /// - parameter keys: The keys to omit from returning dictionary.
     /// - returns: Dictionary with the keys specified omitted.
-    public class func omit<T, U>(dictionary: [T: U], keys: T...) -> [T: U] {
+    open class func omit<T, U>(_ dictionary: [T: U], keys: T...) -> [T: U] {
         var result: [T: U] = [T: U]()
 
         for (key, value) in dictionary {
@@ -829,14 +831,14 @@ public class $ {
     /// - parameter function: That takes variadic arguments and return nil or some value
     /// - returns: Wrapper function that executes the passed function only once
     /// Consecutive calls will return the value returned when calling the function first time
-    public class func once<T, U>(function: (T...) -> U) -> (T...) -> U {
+    open class func once<T, U>(_ function: @escaping (T...) -> U) -> (T...) -> U {
         var result: U?
         let onceFunc = { (params: T...) -> U in
-            typealias Function = [T] -> U
+            typealias Function = ([T]) -> U
             if let returnVal = result {
                 return returnVal
             } else {
-                let f = unsafeBitCast(function, Function.self)
+                let f = unsafeBitCast(function, to: Function.self)
                 result = f(params)
                 return result!
             }
@@ -849,7 +851,7 @@ public class $ {
     /// - parameter function: That takes variadic arguments and return nil or some value
     /// - returns: Wrapper function that executes the passed function only once
     /// Consecutive calls will return the value returned when calling the function first time
-    public class func once<U>(function: () -> U) -> () -> U {
+    open class func once<U>(_ function: @escaping () -> U) -> () -> U {
         var result: U?
         let onceFunc = { () -> U in
             if let returnVal = result {
@@ -867,10 +869,10 @@ public class $ {
     /// - parameter function: to invoke
     /// - parameter parameters: to pass the function when invoked
     /// - returns: Function with partial arguments prepended
-    public class func partial<T, E> (function: (T...) -> E, _ parameters: T...) -> ((T...) -> E) {
+    open class func partial<T, E> (_ function: @escaping (T...) -> E, _ parameters: T...) -> ((T...) -> E) {
         return { (params: T...) -> E in
-            typealias Function = [T] -> E
-            let f = unsafeBitCast(function, Function.self)
+            typealias Function = ([T]) -> E
+            let f = unsafeBitCast(function, to: Function.self)
             return f(parameters + params)
         }
     }
@@ -882,12 +884,12 @@ public class $ {
     /// - parameter n: The number of elements in each partition.
     /// - parameter step: The number of elements to progress between each partition. Set to n if not supplied.
     /// - returns: Array partitioned into n element arrays, starting step elements apart.
-    public class func partition<T>(array: [T], n num: Int, step: Int? = .None) -> [[T]] {
+    open class func partition<T>(_ array: [T], n num: Int, step: Int? = .none) -> [[T]] {
         var num = num
         var step = step
         var result = [[T]]()
 
-        if step == .None { step = num } // If no step is supplied move n each step.
+        if step == .none { step = num } // If no step is supplied move n each step.
         if step < 1 { step = 1 } // Less than 1 results in an infinite loop.
         if num < 1 { num = 0 }    // Allow 0 if user wants [[],[],[]] for some reason.
         if num > array.count { return [[]] }
@@ -907,14 +909,14 @@ public class $ {
     ///            contain n elements. If there are not enough pad elements
     ///            the last partition may less than n elements long.
     /// - returns: Array partitioned into n element arrays, starting step elements apart.
-    public class func partition<T>(array: [T], n num: Int, step: Int? = .None, pad: [T]?) -> [[T]] {
+    open class func partition<T>(_ array: [T], n num: Int, step: Int? = .none, pad: [T]?) -> [[T]] {
         var array = array
         var num = num
         var step = step
         var result: [[T]] = []
         var need = 0
 
-        if step == .None { step = num } // If no step is supplied move n each step.
+        if step == .none { step = num } // If no step is supplied move n each step.
         if step < 1 { step = 1 } // Less than 1 results in an infinite loop.
         if num < 1 { num = 0 }    // Allow 0 if user wants [[],[],[]] for some reason.
 
@@ -940,11 +942,11 @@ public class $ {
     /// - parameter n: The number of elements in each partition.
     /// - parameter step: The number of elements to progress between each partition. Set to n if not supplied.
     /// - returns: Array partitioned into n element arrays, starting step elements apart.
-    public class func partitionAll<T>(array: [T], n num: Int, step: Int? = .None) -> [[T]] {
+    open class func partitionAll<T>(_ array: [T], n num: Int, step: Int? = .none) -> [[T]] {
         var num = num
         var step = step
         var result = [[T]]()
-        if step == .None { step = num } // If no step is supplied move n each step.
+        if step == .none { step = num } // If no step is supplied move n each step.
         if step < 1 { step = 1 } // Less than 1 results in an infinite loop.
         if num < 1 { num = 0 }    // Allow 0 if user wants [[],[],[]] for some reason.
 
@@ -961,14 +963,14 @@ public class $ {
     /// - parameter array: The array to partition.
     /// - parameter function: Function which takes an element and produces an equatable result.
     /// - returns: Array partitioned in order, splitting via results of function.
-    public class func partitionBy<T, U: Equatable>(array: [T], function: (T) -> U) -> [[T]] {
+    open class func partitionBy<T, U: Equatable>(_ array: [T], function: (T) -> U) -> [[T]] {
         var result = [[T]]()
-        var lastValue: U? = .None
+        var lastValue: U? = .none
 
         for item in array {
             let value = function(item)
 
-            if let lastValue = lastValue where value == lastValue {
+            if let lastValue = lastValue, value == lastValue {
                 result[result.count-1].append(item)
             } else {
                 result.append([item])
@@ -983,7 +985,7 @@ public class $ {
     /// - parameter dictionary: The dictionary to source from.
     /// - parameter keys: The keys to pick values from.
     /// - returns: Dictionary with the key and values picked from the keys specified.
-    public class func pick<T, U>(dictionary: [T: U], keys: T...) -> [T: U] {
+    open class func pick<T, U>(_ dictionary: [T: U], keys: T...) -> [T: U] {
         var result: [T: U] = [T: U]()
         for key in keys {
             result[key] = dictionary[key]
@@ -996,7 +998,7 @@ public class $ {
     /// - parameter array: The array to source from.
     /// - parameter value: The property on object to pull out value from.
     /// - returns: Array of values from array of objects with property of value.
-    public class func pluck<T, E>(array: [[T: E]], value: T) -> [E] {
+    open class func pluck<T, E>(_ array: [[T: E]], value: T) -> [E] {
         var result: [E] = []
         for obj in array {
             if let val = obj[value] {
@@ -1011,7 +1013,7 @@ public class $ {
     /// - parameter array: The array to source from.
     /// - parameter values: values to remove from the array
     /// - returns: Array with values pulled out.
-    public class func pull<T: Equatable>(array: [T], values: T...) -> [T] {
+    open class func pull<T: Equatable>(_ array: [T], values: T...) -> [T] {
         return self.pull(array, values: values)
     }
 
@@ -1020,7 +1022,7 @@ public class $ {
     /// - parameter array: The array to source from.
     /// - parameter values: The values to remove.
     /// - returns: Array with values pulled out.
-    public class func pull<T: Equatable>(array: [T], values: [T]) -> [T] {
+    open class func pull<T: Equatable>(_ array: [T], values: [T]) -> [T] {
         return array.filter { !self.contains(values, value: $0) }
     }
 
@@ -1029,7 +1031,7 @@ public class $ {
     /// - parameter array: The array to source from.
     /// - parameter indices: The indices to remove from.
     /// - returns: Array with values pulled out.
-    public class func pullAt<T: Equatable>(array: [T], indices: Int...) -> [T] {
+    open class func pullAt<T: Equatable>(_ array: [T], indices: Int...) -> [T] {
         var elemToRemove = [T]()
         for index in indices {
             elemToRemove.append(array[index])
@@ -1041,7 +1043,7 @@ public class $ {
     ///
     /// - parameter upperBound: upper bound when generating random number
     /// - returns: Random number
-    public class func random(upperBound: Int) -> Int {
+    open class func random(_ upperBound: Int) -> Int {
         return Int(arc4random_uniform(UInt32(upperBound)))
     }
 
@@ -1049,7 +1051,7 @@ public class $ {
     ///
     /// - parameter endVal: End value of range.
     /// - returns: Array of elements based on the sequence starting from 0 to endVal and incremented by 1.
-    public class func range<T: Strideable where T : IntegerLiteralConvertible>(endVal: T) -> [T] {
+    open class func range<T: Strideable>(_ endVal: T) -> [T] where T : ExpressibleByIntegerLiteral {
         return self.range(from: 0, to: endVal)
     }
 
@@ -1058,7 +1060,7 @@ public class $ {
     /// - parameter from: Start value of range
     /// - parameter to: End value of range
     /// - returns: Array of elements based on the sequence that is incremented by 1
-    public class func range<T: Strideable where T.Stride : IntegerLiteralConvertible>(from startVal: T, to endVal: T) -> [T] {
+    open class func range<T: Strideable>(from startVal: T, to endVal: T) -> [T] where T.Stride : ExpressibleByIntegerLiteral {
         return self.range(from: startVal, to: endVal, incrementBy: 1)
     }
 
@@ -1068,8 +1070,8 @@ public class $ {
     /// - parameter to: End value of range.
     /// - parameter incrementBy: Increment sequence by.
     /// - returns: Array of elements based on the sequence.
-    public class func range<T: Strideable>(from startVal: T, to endVal: T, incrementBy: T.Stride) -> [T] {
-        let range = startVal.stride(to: endVal, by: incrementBy)
+    open class func range<T: Strideable>(from startVal: T, to endVal: T, incrementBy: T.Stride) -> [T] {
+        let range = stride(from: startVal, to: endVal, by: incrementBy)
         return self.sequence(range)
     }
 
@@ -1078,7 +1080,7 @@ public class $ {
     /// - parameter from: Start value of range
     /// - parameter through: End value of range
     /// - returns: Array of elements based on the sequence that is incremented by 1
-    public class func range<T: Strideable where T.Stride : IntegerLiteralConvertible>(from startVal: T, through endVal: T) -> [T] {
+    open class func range<T: Strideable>(from startVal: T, through endVal: T) -> [T] where T.Stride : ExpressibleByIntegerLiteral {
         return self.range(from: startVal, to: endVal + 1, incrementBy: 1)
     }
 
@@ -1088,7 +1090,7 @@ public class $ {
     /// - parameter through: End value of range.
     /// - parameter incrementBy: Increment sequence by.
     /// - returns: Array of elements based on the sequence.
-    public class func range<T: Strideable>(from startVal: T, through endVal: T, incrementBy: T.Stride) -> [T] {
+    open class func range<T: Strideable>(from startVal: T, through endVal: T, incrementBy: T.Stride) -> [T] {
         return self.range(from: startVal, to: endVal + 1, incrementBy: incrementBy)
     }
 
@@ -1098,16 +1100,16 @@ public class $ {
     /// - parameter initial: Initial value to seed the reduce function with
     /// - parameter combine: Function that will combine the passed value with element in the array
     /// - returns: The result of reducing all of the elements in the array into one value
-    public class func reduce<U, T>(array: [T], initial: U, combine: (U, T) -> U) -> U {
-        return array.reduce(initial, combine: combine)
+    open class func reduce<U, T>(_ array: [T], initial: U, combine: (U, T) -> U) -> U {
+        return array.reduce(initial, combine)
     }
 
     /// Creates an array of an arbitrary sequence. Especially useful with builtin ranges.
     ///
     /// - parameter seq: The sequence to generate from.
     /// - returns: Array of elements generated from the sequence.
-    public class func sequence<S: SequenceType>(seq: S) -> [S.Generator.Element] {
-        return Array<S.Generator.Element>(seq)
+    open class func sequence<S: Sequence>(_ seq: S) -> [S.Iterator.Element] {
+        return Array<S.Iterator.Element>(seq)
     }
 
     /// Removes all elements from an array that the callback returns true.
@@ -1115,7 +1117,7 @@ public class $ {
     /// - parameter array: The array to wrap.
     /// - parameter callback: Remove elements for which callback returns true.
     /// - returns: Array with elements filtered out.
-    public class func remove<T>(array: [T], callback: (T) -> Bool) -> [T] {
+    open class func remove<T>(_ array: [T], callback: (T) -> Bool) -> [T] {
         return array.filter { !callback($0) }
     }
 
@@ -1124,7 +1126,7 @@ public class $ {
     /// - parameter array: The array to source from.
     /// - parameter value: Element that is to be removed
     /// - returns: Array with element removed.
-    public class func remove<T: Equatable>(array: [T], value: T) -> [T] {
+    open class func remove<T: Equatable>(_ array: [T], value: T) -> [T] {
         return self.remove(array, callback: {$0 == value})
     }
 
@@ -1133,7 +1135,7 @@ public class $ {
     /// - parameter array: The array to source from.
     /// - parameter numElements: The number of elements to exclude from the beginning.
     /// - returns: The rest of the elements.
-    public class func rest<T>(array: [T], numElements: Int = 1) -> [T] {
+    open class func rest<T>(_ array: [T], numElements: Int = 1) -> [T] {
         var result: [T] = []
         if numElements < array.count && numElements >= 0 {
             for index in numElements..<array.count {
@@ -1147,7 +1149,7 @@ public class $ {
     ///
     /// - parameter array: The array to sample from.
     /// - returns: Random element from array.
-    public class func sample<T>(array: [T]) -> T {
+    open class func sample<T>(_ array: [T]) -> T {
         return array[self.random(array.count)]
     }
 
@@ -1157,7 +1159,7 @@ public class $ {
     /// - parameter start: Start index.
     /// - parameter end: End index.
     /// - returns: First element from the array.
-    public class func slice<T>(array: [T], start: Int, end: Int = 0) -> [T] {
+    open class func slice<T>(_ array: [T], start: Int, end: Int = 0) -> [T] {
         var uend = end
         if uend == 0 {
             uend = array.count
@@ -1175,8 +1177,8 @@ public class $ {
     /// - parameter array: The array to source from.
     /// - parameter value: Find sorted index of this value.
     /// - returns: Index of where the elemnt should be inserted.
-    public class func sortedIndex<T: Comparable>(array: [T], value: T) -> Int {
-        for (index, elem) in array.enumerate() {
+    open class func sortedIndex<T: Comparable>(_ array: [T], value: T) -> Int {
+        for (index, elem) in array.enumerated() {
             if elem > value {
                 return index
             }
@@ -1189,7 +1191,7 @@ public class $ {
     /// - parameter object: Object to tap into.
     /// - parameter function: Callback function to invoke.
     /// - returns: Returns the object back.
-    public class func tap<T>(object: T, function: (T) -> ()) -> T {
+    open class func tap<T>(_ object: T, function: (T) -> ()) -> T {
         function(object)
         return object
     }
@@ -1200,7 +1202,7 @@ public class $ {
     /// - parameter num: Number of times to call function.
     /// - parameter function: The function to be called every time.
     /// - returns: Values returned from callback function.
-    public class func times<T>(num: Int, function: () -> T) -> [T] {
+    open class func times<T>(_ num: Int, function: () -> T) -> [T] {
         return self.times(num) { (index: Int) -> T in
             return function()
         }
@@ -1211,8 +1213,8 @@ public class $ {
     ///
     /// - parameter num: Number of times to call function
     /// - parameter function: The function to be called every time
-    public class func times(num: Int, function: Void -> Void) {
-        self.times(num) { (index: Int) -> () in
+    open class func times(_ num: Int, function: (Void) -> Void) {
+        _ = self.times(num) { (index: Int) -> () in
             function()
         }
     }
@@ -1223,7 +1225,7 @@ public class $ {
     /// - parameter num: Number of times to call function.
     /// - parameter function: The function to be called every time that takes index.
     /// - returns: Values returned from callback function.
-    public class func times<T>(num: Int, function: (Int) -> T) -> [T] {
+    open class func times<T>(_ num: Int, function: (Int) -> T) -> [T] {
         var result: [T] = []
         for index in (0..<num) {
             result.append(function(index))
@@ -1235,14 +1237,14 @@ public class $ {
     ///
     /// - parameter matrix: Generic matrix containing any type.
     /// - returns: A transposed version of input matrix.
-    public class func transpose<T>(matrix: [[T]]) -> [[T]] {
+    open class func transpose<T>(_ matrix: [[T]]) -> [[T]] {
         guard matrix.filter({ return $0.count == matrix[0].count }).count == matrix.count,
-            var returnMatrix: [[T?]] = Array(count: matrix.first!.count,
-                                             repeatedValue: Array(count: matrix.count, repeatedValue: nil)) else {
+            var returnMatrix: [[T?]] = Array(repeating: Array(repeating: nil, count: matrix.count),
+                                             count: matrix.first!.count) else {
                 return matrix
         }
-        for (rowNumber, row) in matrix.enumerate() {
-            for (index, item) in row.enumerate() {
+        for (rowNumber, row) in matrix.enumerated() {
+            for (index, item) in row.enumerated() {
                 returnMatrix[index][rowNumber] = item
             }
         }
@@ -1253,7 +1255,7 @@ public class $ {
     ///
     /// - parameter arrays: The arrays to perform union on.
     /// - returns: Resulting array after union.
-    public class func union<T: Hashable>(arrays: [T]...) -> [T] {
+    open class func union<T: Hashable>(_ arrays: [T]...) -> [T] {
         var result: [T] = []
         for arr in arrays {
             result += arr
@@ -1265,11 +1267,11 @@ public class $ {
     ///
     /// - parameter array: The array to source from.
     /// - returns: An array with unique values.
-    public class func uniq<T: Hashable>(array: [T]) -> [T] {
+    open class func uniq<T: Hashable>(_ array: [T]) -> [T] {
         var result: [T] = []
         var map: [T: Bool] = [T: Bool]()
         for elem in array {
-            if map[elem] == .None {
+            if map[elem] == .none {
                 result.append(elem)
             }
             map[elem] = true
@@ -1283,12 +1285,12 @@ public class $ {
     /// - parameter array: The array to source from.
     /// - parameter condition: Called per iteration
     /// - returns: An array with unique values.
-    public class func uniq<T: Hashable, U: Hashable>(array: [T], by condition: (T) -> U) -> [T] {
+    open class func uniq<T: Hashable, U: Hashable>(_ array: [T], by condition: (T) -> U) -> [T] {
         var result: [T] = []
         var map: [U: Bool] = [U: Bool]()
         for elem in array {
             let val = condition(elem)
-            if map[val] == .None {
+            if map[val] == .none {
                 result.append(elem)
             }
             map[val] = true
@@ -1300,7 +1302,7 @@ public class $ {
     ///
     /// - parameter dictionary: The dictionary to source from.
     /// - returns: An array of values from the dictionary.
-    public class func values<T, U>(dictionary: [T: U]) -> [U] {
+    open class func values<T, U>(_ dictionary: [T: U]) -> [U] {
         var result: [U] = []
         for value in dictionary.values {
             result.append(value)
@@ -1313,7 +1315,7 @@ public class $ {
     /// - parameter array: The array to source from.
     /// - parameter values: Values to exclude.
     /// - returns: Array excluding provided values.
-    public class func without<T: Equatable>(array: [T], values: T...) -> [T] {
+    open class func without<T: Equatable>(_ array: [T], values: T...) -> [T] {
         return self.pull(array, values: values)
     }
 
@@ -1321,7 +1323,7 @@ public class $ {
     ///
     /// - parameter arrays: The arrays to perform xor on in order.
     /// - returns: Resulting array after performing xor.
-    public class func xor<T: Hashable>(arrays: [T]...) -> [T] {
+    open class func xor<T: Hashable>(_ arrays: [T]...) -> [T] {
         var map: [T: Bool] = [T: Bool]()
         for arr in arrays {
             for elem in arr {
@@ -1342,13 +1344,13 @@ public class $ {
     ///
     /// - parameter arrays: The arrays to be grouped.
     /// - returns: An array of grouped elements.
-    public class func zip<T>(arrays: [T]...) -> [[T]] {
+    open class func zip<T>(_ arrays: [T]...) -> [[T]] {
         var result: [[T]] = []
         for _ in self.first(arrays)! as [T] {
             result.append([] as [T])
         }
-        for (_, array) in arrays.enumerate() {
-            for (elemIndex, elem): (Int, T) in array.enumerate() {
+        for (_, array) in arrays.enumerated() {
+            for (elemIndex, elem): (Int, T) in array.enumerated() {
                 result[elemIndex].append(elem)
             }
         }
@@ -1360,9 +1362,9 @@ public class $ {
     /// - parameter keys: The array of keys.
     /// - parameter values: The array of values.
     /// - returns: Dictionary based on the keys and values passed in order.
-    public class func zipObject<T, E>(keys: [T], values: [E]) -> [T: E] {
+    open class func zipObject<T, E>(_ keys: [T], values: [E]) -> [T: E] {
         var result = [T: E]()
-        for (index, key) in keys.enumerate() {
+        for (index, key) in keys.enumerated() {
             result[key] = values[index]
         }
         return result
@@ -1372,7 +1374,7 @@ public class $ {
     ///
     /// - parameter collection: of elements
     /// - returns: Chain object
-    public class func chain<T>(collection: [T]) -> Chain<T> {
+    open class func chain<T>(_ collection: [T]) -> Chain<T> {
         return Chain(collection)
     }
 }
@@ -1385,11 +1387,11 @@ public class $ {
 //    \ \_______\ \__\ \__\ \__\ \__\ \__\ \__\\ \__\
 //     \|_______|\|__|\|__|\|__|\|__|\|__|\|__| \|__|
 //
-public class Chain<C> {
+open class Chain<C> {
 
-    private var result: Wrapper<[C]>
-    private var funcQueue: [Wrapper<[C]> -> Wrapper<[C]>] = []
-    public var value: [C] {
+    fileprivate var result: Wrapper<[C]>
+    fileprivate var funcQueue: [(Wrapper<[C]>) -> Wrapper<[C]>] = []
+    open var value: [C] {
         get {
             var result: Wrapper<[C]> = self.result
             for function in self.funcQueue {
@@ -1409,28 +1411,28 @@ public class Chain<C> {
     /// Get the first object in the wrapper object.
     ///
     /// - returns: First element from the array.
-    public func first() -> C? {
+    open func first() -> C? {
         return $.first(self.value)
     }
 
     /// Get the second object in the wrapper object.
     ///
     /// - returns: Second element from the array.
-    public func second() -> C? {
+    open func second() -> C? {
         return $.second(self.value)
     }
 
     /// Get the third object in the wrapper object.
     ///
     /// - returns: Third element from the array.
-    public func third() -> C? {
+    open func third() -> C? {
         return $.third(self.value)
     }
 
     /// Flattens nested array.
     ///
     /// - returns: The wrapper object.
-    public func flatten() -> Chain {
+    open func flatten() -> Chain {
         return self.queue {
             return Wrapper($.flatten($0.value))
         }
@@ -1439,7 +1441,7 @@ public class Chain<C> {
     /// Keeps all the elements except last one.
     ///
     /// - returns: The wrapper object.
-    public func initial() -> Chain {
+    open func initial() -> Chain {
         return self.initial(1)
     }
 
@@ -1447,7 +1449,7 @@ public class Chain<C> {
     ///
     /// - parameter numElements: Number of items to remove from the end of the array.
     /// - returns: The wrapper object.
-    public func initial(numElements: Int) -> Chain {
+    open func initial(_ numElements: Int) -> Chain {
         return self.queue {
             return Wrapper($.initial($0.value, numElements: numElements))
         }
@@ -1457,7 +1459,7 @@ public class Chain<C> {
     ///
     /// - parameter function: Function to map.
     /// - returns: The wrapper object.
-    public func map(function: C -> C) -> Chain {
+    open func map(_ function: @escaping (C) -> C) -> Chain {
         return self.queue {
             var result: [C] = []
             for elem: C in $0.value {
@@ -1471,10 +1473,10 @@ public class Chain<C> {
     ///
     /// - parameter function: The array to wrap.
     /// - returns: The wrapper object.
-    public func map(function: (Int, C) -> C) -> Chain {
+    open func map(_ function: @escaping (Int, C) -> C) -> Chain {
         return self.queue {
             var result: [C] = []
-            for (index, elem) in $0.value.enumerate() {
+            for (index, elem) in $0.value.enumerated() {
                 result.append(function(index, elem))
             }
             return Wrapper(result)
@@ -1485,7 +1487,7 @@ public class Chain<C> {
     ///
     /// - parameter function: The array to wrap.
     /// - returns: The wrapper object.
-    public func each(function: (C) -> ()) -> Chain {
+    open func each(_ function: @escaping (C) -> ()) -> Chain {
         return self.queue {
             for elem in $0.value {
                 function(elem)
@@ -1498,9 +1500,9 @@ public class Chain<C> {
     ///
     /// - parameter function: The array to wrap.
     /// - returns: The wrapper object.
-    public func each(function: (Int, C) -> ()) -> Chain {
+    open func each(_ function: @escaping (Int, C) -> ()) -> Chain {
         return self.queue {
-            for (index, elem) in $0.value.enumerate() {
+            for (index, elem) in $0.value.enumerated() {
                 function(index, elem)
             }
             return $0
@@ -1511,7 +1513,7 @@ public class Chain<C> {
     ///
     /// - parameter function: Function to tell whether to keep an element or remove.
     /// - returns: The wrapper object.
-    public func filter(function: (C) -> Bool) -> Chain {
+    open func filter(_ function: @escaping (C) -> Bool) -> Chain {
         return self.queue {
             return Wrapper(($0.value).filter(function))
         }
@@ -1521,7 +1523,7 @@ public class Chain<C> {
     ///
     /// - parameter function: Function to tell whether element value is true or false.
     /// - returns: Whether all elements are true according to func function.
-    public func all(function: (C) -> Bool) -> Bool {
+    open func all(_ function: (C) -> Bool) -> Bool {
         return $.every(self.value, callback: function)
     }
 
@@ -1529,7 +1531,7 @@ public class Chain<C> {
     ///
     /// - parameter function: Function to tell whether element value is true or false.
     /// - returns: Whether any one element is true according to func function in the array.
-    public func any(function: (C) -> Bool) -> Bool {
+    open func any(_ function: (C) -> Bool) -> Bool {
         let resultArr = self.value
         for elem in resultArr {
             if function(elem) {
@@ -1542,7 +1544,7 @@ public class Chain<C> {
     /// Returns size of the array
     ///
     /// - returns: The wrapper object.
-    public func size() -> Int {
+    open func size() -> Int {
         return self.value.count
     }
 
@@ -1551,13 +1553,13 @@ public class Chain<C> {
     /// - parameter start: Start index to start slicing from.
     /// - parameter end: End index to stop slicing to and not including element at that index.
     /// - returns: The wrapper object.
-    public func slice(start: Int, end: Int = 0) -> Chain {
+    open func slice(_ start: Int, end: Int = 0) -> Chain {
         return self.queue {
             return Wrapper($.slice($0.value, start: start, end: end))
         }
     }
 
-    private func queue(function: Wrapper<[C]> -> Wrapper<[C]>) -> Chain {
+    fileprivate func queue(_ function: @escaping (Wrapper<[C]>) -> Wrapper<[C]>) -> Chain {
         funcQueue.append(function)
         return self
     }
