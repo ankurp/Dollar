@@ -1238,11 +1238,11 @@ open class $ {
     /// - parameter matrix: Generic matrix containing any type.
     /// - returns: A transposed version of input matrix.
     open class func transpose<T>(_ matrix: [[T]]) -> [[T]] {
-        guard matrix.filter({ return $0.count == matrix[0].count }).count == matrix.count,
-            var returnMatrix: [[T?]] = Array(repeating: Array(repeating: nil, count: matrix.count),
-                                             count: matrix.first!.count) else {
+        guard matrix.filter({ return $0.count == matrix[0].count }).count == matrix.count else {
                 return matrix
         }
+        var returnMatrix: [[T?]] = Array(repeating: Array(repeating: nil, count: matrix.count),
+                                         count: matrix.first!.count)
         for (rowNumber, row) in matrix.enumerated() {
             for (index, item) in row.enumerated() {
                 returnMatrix[index][rowNumber] = item
