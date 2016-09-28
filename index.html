@@ -46,14 +46,14 @@
                 <ul>
                     <li id="root-item" class="level-0">
                         <ul class="level-1" id="root-list">
-                            <li id="dollar-and-cent-item" class="level-1"><a id="dollar-and-cent-link" href="#dollar-and-cent" class="level-1">Dollar and Cent   </a></li>
+                            <li id="dollar-item" class="level-1"><a id="dollar-link" href="#dollar" class="level-1">Dollar   </a></li>
                             <li id="setup-item" class="level-1"><a id="setup-link" href="#setup" class="level-1">Setup</a>
                                 <ul class="level-2" id="setup-list">
                                     <li id="using-carthage-item" class="level-2"><a id="using-carthage-link" href="#using-carthage" class="level-2">Using Carthage</a></li>
                                     <li id="using-cocoapods-version-0-36-x-or-greater-item" class="level-2"><a id="using-cocoapods-version-0-36-x-or-greater-link" href="#using-cocoapods-version-0-36-x-or-greater" class="level-2">Using cocoapods version 0.36.x or greater</a></li>
                                     <li id="using-swift-package-manager-item" class="level-2"><a id="using-swift-package-manager-link" href="#using-swift-package-manager" class="level-2">Using Swift Package Manager</a></li>
                                     <li id="using-git-submodule-item" class="level-2"><a id="using-git-submodule-link" href="#using-git-submodule" class="level-2">Using git submodule</a></li>
-                                    <li id="support-for-older-xcode-and-swift-item" class="level-2"><a id="support-for-older-xcode-and-swift-link" href="#support-for-older-xcode-and-swift" class="level-2">Support for Older Xcode and Swift</a></li>
+                                    <li id="support-for-xcode-and-swift-item" class="level-2"><a id="support-for-xcode-and-swift-link" href="#support-for-xcode-and-swift" class="level-2">Support for Xcode and Swift</a></li>
                                     <li id="demo-apps-item" class="level-2"><a id="demo-apps-link" href="#demo-apps" class="level-2">Demo Apps</a></li>
                                     <li id="communication-item" class="level-2"><a id="communication-link" href="#communication" class="level-2">Communication</a></li>
                                 </ul>
@@ -65,7 +65,7 @@
                                             <li id="at-at-item" class="level-3"><a id="at-at-link" href="#at-at" class="level-3">at - $.at</a></li>
                                             <li id="chunk-chunk-item" class="level-3"><a id="chunk-chunk-link" href="#chunk-chunk" class="level-3">chunk - $.chunk</a></li>
                                             <li id="compact-compact-item" class="level-3"><a id="compact-compact-link" href="#compact-compact" class="level-3">compact - $.compact</a></li>
-                                            <li id="contains-contains-item" class="level-3"><a id="contains-contains-link" href="#contains-contains" class="level-3 active">contains - $.contains</a></li>
+                                            <li id="contains-contains-item" class="level-3"><a id="contains-contains-link" href="#contains-contains" class="level-3">contains - $.contains</a></li>
                                             <li id="cycle-cycle-item" class="level-3"><a id="cycle-cycle-link" href="#cycle-cycle" class="level-3">cycle - $.cycle</a></li>
                                             <li id="difference-difference-item" class="level-3"><a id="difference-difference-link" href="#difference-difference" class="level-3">difference - $.difference</a></li>
                                             <li id="each-each-item" class="level-3"><a id="each-each-link" href="#each-each" class="level-3">each - $.each</a></li>
@@ -77,6 +77,7 @@
                                             <li id="findindex-findindex-item" class="level-3"><a id="findindex-findindex-link" href="#findindex-findindex" class="level-3">findIndex - $.findIndex</a></li>
                                             <li id="findlastindex-findlastindex-item" class="level-3"><a id="findlastindex-findlastindex-link" href="#findlastindex-findlastindex" class="level-3">findLastIndex - $.findLastIndex</a></li>
                                             <li id="first-first-array-anyobject-item" class="level-3"><a id="first-first-array-anyobject-link" href="#first-first-array-anyobject" class="level-3">first - $.first(array: AnyObject[])</a></li>
+                                            <li id="groupby-groupby-item" class="level-3"><a id="groupby-groupby-link" href="#groupby-groupby" class="level-3">groupBy $.groupBy</a></li>
                                             <li id="second-second-array-anyobject-item" class="level-3"><a id="second-second-array-anyobject-link" href="#second-second-array-anyobject" class="level-3">second - $.second(array: AnyObject[])</a></li>
                                             <li id="flatmap-flatmap-item" class="level-3"><a id="flatmap-flatmap-link" href="#flatmap-flatmap" class="level-3">flatMap - $.flatMap</a></li>
                                             <li id="flatmap-flatmap-item" class="level-3"><a id="flatmap-flatmap-link" href="#flatmap-flatmap" class="level-3">flatMap - $.flatMap</a></li>
@@ -106,6 +107,7 @@
                                             <li id="shuffle-shuffle-item" class="level-3"><a id="shuffle-shuffle-link" href="#shuffle-shuffle" class="level-3">shuffle - $.shuffle</a></li>
                                             <li id="size-size-item" class="level-3"><a id="size-size-link" href="#size-size" class="level-3">size - $.size</a></li>
                                             <li id="sortedindex-sortedindex-item" class="level-3"><a id="sortedindex-sortedindex-link" href="#sortedindex-sortedindex" class="level-3">sortedIndex - $.sortedIndex</a></li>
+                                            <li id="transpose-transpose-item" class="level-3"><a id="transpose-transpose-link" href="#transpose-transpose" class="level-3">transpose - $.transpose</a></li>
                                             <li id="union-union-item" class="level-3"><a id="union-union-link" href="#union-union" class="level-3">union - $.union</a></li>
                                             <li id="merge-merge-item" class="level-3"><a id="merge-merge-link" href="#merge-merge" class="level-3">merge - $.merge</a></li>
                                             <li id="uniq-uniq-item" class="level-3"><a id="uniq-uniq-link" href="#uniq-uniq" class="level-3">uniq - $.uniq</a></li>
@@ -247,8 +249,8 @@
                                             <li id="indexof-str-string-int-item" class="level-3"><a id="indexof-str-string-int-link" href="#indexof-str-string-int" class="level-3">indexOf(str: String) -&gt; Int?</a></li>
                                             <li id="indexof-pattern-string-int-item" class="level-3"><a id="indexof-pattern-string-int-link" href="#indexof-pattern-string-int" class="level-3">indexOf(pattern: String) -&gt; Int?</a></li>
                                             <li id="split-delimiter-character-string-item" class="level-3"><a id="split-delimiter-character-string-link" href="#split-delimiter-character-string" class="level-3">split(delimiter: Character) -&gt; [String]</a></li>
-                                            <li id="lstring-string-item" class="level-3"><a id="lstring-string-link" href="#lstring-string" class="level-3">lstring() -&gt; String</a></li>
-                                            <li id="rstring-string-item" class="level-3"><a id="rstring-string-link" href="#rstring-string" class="level-3">rstring() -&gt; String</a></li>
+                                            <li id="lstrip-string-item" class="level-3"><a id="lstrip-string-link" href="#lstrip-string" class="level-3">lstrip() -&gt; String</a></li>
+                                            <li id="rstrip-string-item" class="level-3"><a id="rstrip-string-link" href="#rstrip-string" class="level-3">rstrip() -&gt; String</a></li>
                                             <li id="strip-string-item" class="level-3"><a id="strip-string-link" href="#strip-string" class="level-3">strip() -&gt; String</a></li>
                                         </ul>
                                     </li>
@@ -270,26 +272,25 @@
                                 </ul>
                             </li>
                             <li id="contributing-item" class="level-1"><a id="contributing-link" href="#contributing" class="level-1">Contributing</a></li>
-                            <li id="dollar-or-cent-item" class="level-1"><a id="dollar-or-cent-link" href="#dollar-or-cent" class="level-1">Dollar or Cent</a></li>
                         </ul>
                     </li>
                 </ul>
             </div>
         </div>
         <div role="flatdoc-content" class="content">
-            <h1 id="dollar-and-cent">Dollar and Cent <a href="https://travis-ci.org/ankurp/Dollar"><img src="https://travis-ci.org/ankurp/Dollar.svg?branch=master" alt="Build Status"></a> <img src="https://img.shields.io/cocoapods/v/Dollar.svg" alt="CocoaPods"> <a href="https://github.com/Carthage/Carthage"><img src="https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat" alt="Carthage compatible"></a></h1>
+            <h1 id="dollar">Dollar <a href="https://travis-ci.org/ankurp/Dollar"><img src="https://travis-ci.org/ankurp/Dollar.svg" alt="Build Status"></a> <img src="https://img.shields.io/cocoapods/v/Dollar.svg" alt="CocoaPods"> <a href="https://github.com/Carthage/Carthage"><img src="https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat" alt="Carthage compatible"></a></h1>
             <p>
                 <a href="https://gitter.im/ankurp/Dollar?utm_source=badge&amp;utm_medium=badge&amp;utm_campaign=pr-badge&amp;utm_content=badge"><img src="https://badges.gitter.im/Join%20Chat.svg" alt="Gitter"></a>
             </p>
-            <p><a href="https://github.com/ankurp/Dollar">Dollar</a> is a Swift library that provides useful functional programming helper methods without extending any built in objects. It is similar to <a href="https://lodash.com">Lo-Dash</a> or <a href="http://underscorejs.org">Underscore.js</a> in Javascript.</p>
-            <p><a href="https://github.com/ankurp/Cent">Cent</a> is a library that extends certain Swift object types using the extension feature and gives its two cents to Swift language.</p>
+            <p>Dollar is a Swift library that provides useful functional programming helper methods without extending any built in objects. It is similar to <a href="https://lodash.com">Lo-Dash</a> or <a href="http://underscorejs.org">Underscore.js</a> in Javascript.</p>
+            <p><a href="https://github.com/ankurp/Cent">Cent</a> is a library that extends certain Swift object types using the extension feature and gives its two cents to Swift language. It is now moved into a separate repo to support <code>carthage</code> and upcoming <code>Swift Package Manager</code></p>
             <h1 id="setup">Setup</h1>
             <h2 id="using-carthage">Using <a href="https://github.com/Carthage/Carthage">Carthage</a></h2>
-            <p>Add <code>github "ankurp/Dollar" ~&gt; 5.0.0</code> to your <code>Cartfile</code> and run <code>carthage update</code>. If unfamiliar with Carthage then checkout their <a href="https://github.com/Carthage/Carthage#getting-started">Getting Started section</a> or this <a href="https://github.com/ankurp/DollarCarthageApp">sample app</a></p>
+            <p>Add <code>github "ankurp/Dollar" ~&gt; 6.0.0</code> to your <code>Cartfile</code> and run <code>carthage update</code>. If unfamiliar with Carthage then checkout their <a href="https://github.com/Carthage/Carthage#getting-started">Getting Started section</a> or this <a href="https://github.com/ankurp/DollarCarthageApp">sample app</a></p>
             <h2 id="using-cocoapods-version-0-36-x-or-greater">Using <a href="http://cocoapods.org/">cocoapods</a> version 0.36.x or greater</h2>
             <p>Add <code>pod 'Dollar'</code> to your <code>Podfile</code> and run <code>pod install</code>. Add <code>use_frameworks!</code> to the end of the <code>Podfile</code>. Also checkout this <a href="https://github.com/ankurp/DollarPodApp">sample app</a>. Requires cocoapod version 0.36.x or greater.</p>
             <h2 id="using-swift-package-manager">Using <a href="https://github.com/apple/swift-package-manager">Swift Package Manager</a></h2>
-            <p>Add the following dependency <code>.Package(url: "https://github.com/ankurp/Dollar", majorVersion: 5, minor: 0)</code> to your <code>Package.swift</code> file and then run <code>swift build</code>. Requires swift version 2.2 or greater that you can install from <a href="https://swift.org">https://swift.org</a></p>
+            <p>Add the following dependency <code>.Package(url: "https://github.com/ankurp/Dollar", majorVersion: 6, minor: 0)</code> to your <code>Package.swift</code> file and then run <code>swift build</code>. Requires swift version 2.2 or greater that you can install from <a href="https://swift.org">https://swift.org</a></p>
             <h2 id="using-git-submodule">Using <code>git submodule</code></h2>
             <ol>
                 <li>If you are using git then add Dollar as a submodule using <code>git submodule add https://github.com/ankurp/Dollar.git</code>. If not using git download the project using <code>git clone https://github.com/ankurp/Dollar.git</code> in your project folder.</li>
@@ -300,17 +301,19 @@
                 <li>In your project file <code>import Dollar</code> and you can call all of the helper functions.</li>
             </ol>
             <p>Still stuck. Then checkout this screencast on <a href="http://recordit.co/0gQiCSEREF">how to import</a></p>
-            <h2 id="support-for-older-xcode-and-swift">Support for Older Xcode and Swift</h2>
+            <h2 id="support-for-xcode-and-swift">Support for Xcode and Swift</h2>
             <ul>
+                <li>For Xcode 8 (Swift 3) user version <code>6.0.0</code></li>
+                <li>For Xcode 7 (Swift 2) use version <code>4.1.0</code> or <code>5.2.0</code></li>
                 <li>For Xcode 6.3 (Swift 1.2) use version <code>3.0.3</code></li>
                 <li>For Xcode 6.1 and 6.2 (Swift 1.1) use version <code>2.2.0</code></li>
             </ul>
             <h2 id="demo-apps">Demo Apps</h2>
             <ul>
-                <li>Using <a href="https://github.com/ankurp/DollarCarthageApp"><code>Carthage</code></a></li>
-                <li>Using <a href="https://github.com/ankurp/DollarPodApp"><code>Cocoa Pods</code></a></li>
-                <li>Using <a href="https://github.com/ankurp/DollarSwiftPackage"><code>Swift Package Manager</code></a></li>
-                <li>Using <a href="https://github.com/ankurp/DollarSubmoduleApp"><code>git submodule</code></a></li>
+                <li>Using <a href="https://github.com/ankurp/DollarCarthageApp">Carthage</a></li>
+                <li>Using <a href="https://github.com/ankurp/DollarPodApp">Cocoa Pods</a></li>
+                <li>Using <a href="https://github.com/ankurp/DollarSwiftPackage">Swift Package Manager</a></li>
+                <li>Using <a href="https://github.com/ankurp/DollarSubmoduleApp">git submodule</a></li>
             </ul>
             <h2 id="communication">Communication</h2>
             <ul>
@@ -361,7 +364,7 @@
 <span class="keyword">$</span>.each([<span class="string">"A"</span>, <span class="string">"B"</span>]) { (index, elem) in
   print(<span class="string">"\(index) - \(elem)"</span>)
 }
-=&gt; [<span class="string">"A"</span>, <span class="string">"B"</span>]</code></pre>
+=&gt; [<span class="string">"<span class="number">0</span> - A"</span>, <span class="string">"<span class="number">1</span> - B"</span>]</code></pre>
             <h3 id="every-every">every - <code>$.every</code></h3>
             <p>Checks if the given callback returns true value for all items in the array.</p><pre><code class="lang-swift"><span class="keyword">$</span>.every([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>], callback: { <span class="keyword">$</span><span class="number">0</span> &lt; <span class="number">20</span> }) 
 =&gt; <span class="keyword">true</span>
@@ -414,6 +417,12 @@ result
 
 <span class="keyword">$</span>.first([]) 
 =&gt; nil</code></pre>
+            <h3 id="groupby-groupby">groupBy <code>$.groupBy</code></h3>
+            <p>This method returns a dictionary of values grouped by the value returned by a callback.</p><pre><code class="lang-swift"><span class="keyword">$</span>.groupBy([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>], callback: {<span class="keyword">$</span><span class="number">0</span> % <span class="number">2</span>})
+=&gt; [<span class="number">0</span>: [<span class="number">2</span>, <span class="number">4</span>], <span class="number">1</span>: [<span class="number">1</span>, <span class="number">3</span>]]
+
+<span class="keyword">$</span>.groupBy([<span class="string">"strings"</span>, <span class="string">"with"</span>, <span class="string">"different"</span>, lengths<span class="string">"], callback: {<span class="keyword">$</span><span class="number">0</span>.characters.count})
+=&gt; [<span class="number">7</span>: ["</span>strings<span class="string">", "</span>lengths<span class="string">"], <span class="number">9</span>: ["</span>different<span class="string">"], <span class="number">4</span>: ["</span>With"]]</code></pre>
             <h3 id="second-second-array-anyobject">second - <code>$.second(array: AnyObject[])</code></h3>
             <p>Gets the second element in the array.</p><pre><code class="lang-swift"><span class="keyword">$</span>.second([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>])
 =&gt; <span class="number">2</span>
@@ -590,6 +599,9 @@ result
 
 <span class="keyword">$</span>.sortedIndex([<span class="number">10</span>, <span class="number">20</span>, <span class="number">30</span>, <span class="number">50</span>], value: <span class="number">40</span>)
 =&gt; <span class="number">3</span></code></pre>
+            <h3 id="transpose-transpose">transpose - <code>$.transpose</code></h3>
+            <p>Creates a tranposed matrix.</p><pre><code class="lang-swift"><span class="keyword">$</span>.transpose([[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>], [<span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>]])
+=&gt; [[<span class="number">1</span>, <span class="number">4</span>], [<span class="number">2</span>, <span class="number">5</span>], [<span class="number">3</span>, <span class="number">6</span>]]</code></pre>
             <h3 id="union-union">union - <code>$.union</code></h3>
             <p>Creates an array of unique values, in order, of the provided arrays.</p><pre><code class="lang-swift"><span class="keyword">$</span>.union([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>], [<span class="number">5</span>, <span class="number">2</span>, <span class="number">1</span>, <span class="number">4</span>], [<span class="number">2</span>, <span class="number">1</span>]) 
 =&gt; [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">5</span>, <span class="number">4</span>]</code></pre>
@@ -665,7 +677,7 @@ result
             <p>Creates a shallow clone of a dictionary composed of the specified keys.</p><pre><code class="lang-swift"><span class="keyword">$</span>.pick([<span class="string">"Dog"</span>: <span class="number">1</span>, <span class="string">"Cat"</span>: <span class="number">2</span>, <span class="string">"Cow"</span>: <span class="number">3</span>], keys: <span class="string">"Dog"</span>, <span class="string">"Cow"</span>)
 =&gt; [<span class="string">"Dog"</span>: <span class="number">1</span>, <span class="string">"Cow"</span>: <span class="number">3</span>]</code></pre>
             <h3 id="omit-omit">omit - <code>$.omit</code></h3>
-            <p>Creates a shallow clone of a dictionary excluding the specified keys.</p><pre><code class="lang-swift"><span class="keyword">$</span>.omit([<span class="string">"Dog"</span>: <span class="number">1</span>, <span class="string">"Cat"</span>: <span class="number">2</span>, <span class="string">"Cow"</span>: <span class="number">3</span>], keys: <span class="string">"Cat"</span>, <span class="string">"Dog"</span>)
+            <p>Creates a shallow clone of a dictionary excluding the specified keys.</p><pre><code class="lang-swift"><span class="keyword">$</span>.omit([<span class="string">"Dog"</span>: <span class="number">1</span>, <span class="string">"Cat"</span>: <span class="number">2</span>, <span class="string">"Cow"</span>: <span class="number">3</span>, <span class="string">"Sheep"</span>: <span class="number">4</span>], keys: <span class="string">"Cat"</span>, <span class="string">"Dog"</span>)
 =&gt; [<span class="string">"Cow"</span>: <span class="number">3</span>, <span class="string">"Sheep"</span>: <span class="number">4</span>]</code></pre>
             <h2 id="object">Object</h2>
             <h3 id="tap-tap">tap - <code>$.tap</code></h3>
@@ -689,11 +701,19 @@ for elem in saves {
 isDone 
 =&gt; <span class="keyword">true</span></code></pre>
             <h3 id="bind-bind">bind - <code>$.bind</code></h3>
-            <p>Creates a function that, when called, invokes func with the binding of arguments provided.</p><pre><code class="lang-swift"><span class="keyword">let</span> helloWorldFunc = <span class="keyword">$</span>.bind({(T...) in 
+            <p>Creates a function that, when called, invokes func with the binding of arguments provided.</p><pre><code class="lang-swift">var helloWorldFunc = <span class="keyword">$</span>.bind({(T...) in
   T[<span class="number">0</span>] + <span class="string">" "</span> + T[<span class="number">1</span>] + <span class="string">" from "</span> + T[<span class="number">2</span>] 
 }, <span class="string">"Hello"</span>, <span class="string">"World"</span>, <span class="string">"Swift"</span>)
 helloWorldFunc() 
-=&gt; <span class="string">"Hello World from Swift"</span></code></pre>
+=&gt; <span class="string">"Hello World from Swift"</span>
+
+helloWorldFunc = <span class="keyword">$</span>.bind({ <span class="keyword">$</span><span class="number">0</span> + <span class="string">" World"</span> }, <span class="string">"Hello"</span>)
+helloWorldFunc()
+=&gt; <span class="string">"Hello World"</span>
+
+helloWorldFunc = <span class="keyword">$</span>.bind({ <span class="keyword">$</span><span class="number">0</span> + <span class="keyword">$</span><span class="number">1</span> + <span class="string">" World"</span> }, <span class="string">"Hello "</span>, <span class="string">"Great"</span>)
+helloWorldFunc()
+=&gt; <span class="string">"Hello Great World"</span></code></pre>
             <h3 id="compose-compose">compose - <code>$.compose</code></h3>
             <p>Compose two or more functions where the return value of the first function is passed into the next function. Useful when chaining functions and returns a function that can be called with variadic argument values or an array of values as input</p><pre><code class="lang-swift"><span class="keyword">let</span> double = { (params: Int...) -&gt; [Int] in
   return <span class="keyword">$</span>.map(params) { <span class="keyword">$</span><span class="number">0</span> * <span class="number">2</span> }
@@ -1123,11 +1143,11 @@ proj[<span class="string">"^.+[^and Cent]"</span>]
             <h3 id="split-delimiter-character-string"><code>split(delimiter: Character) -&gt; [String]</code></h3>
             <p>Get an array from string split using the delimiter character</p><pre><code class="lang-swift"><span class="string">"Hello World"</span>.split(<span class="string">" "</span>) 
 =&gt; [<span class="string">"Hello"</span>, <span class="string">"World"</span>]</code></pre>
-            <h3 id="lstring-string"><code>lstring() -&gt; String</code></h3>
+            <h3 id="lstrip-string"><code>lstrip() -&gt; String</code></h3>
             <p>Get string without leading spaces</p><pre><code class="lang-swift"><span class="keyword">let</span> leadingSpace = <span class="string">"  Hello"</span>
 leadingSpace.lstrip()
 =&gt; <span class="string">"Hello"</span></code></pre>
-            <h3 id="rstring-string"><code>rstring() -&gt; String</code></h3>
+            <h3 id="rstrip-string"><code>rstrip() -&gt; String</code></h3>
             <p>Get string without trailing spaces</p><pre><code class="lang-swift"><span class="keyword">let</span> trailingSpace = <span class="string">"Hello   "</span>
 trailingSpace.rstrip()
 =&gt; <span class="string">"Hello"</span></code></pre>
@@ -1142,10 +1162,10 @@ spaces.strip()
             <p>Return matches based on String passed.</p><pre><code class="lang-swift"><span class="keyword">let</span> re = Regex.init(<span class="string">"^Hello.World<span class="keyword">$</span>"</span>)
 re.matches(<span class="string">"Hello World"</span>)</code></pre>
             <h3 id="test-teststr-string-bool"><code>test(testStr: String) -&gt; Bool</code></h3><pre><code class="lang-swift"><span class="keyword">let</span> re = Regex.init(<span class="string">"^Hello.World<span class="keyword">$</span>"</span>)
-re.matches(<span class="string">"Hello World"</span>)
+re.test(<span class="string">"Hello World"</span>)
 =&gt; <span class="keyword">true</span>
 
-re.matches(<span class="string">"Str"</span>)
+re.test(<span class="string">"Str"</span>)
 =&gt; <span class="keyword">false</span></code></pre>
             <h3 id="escapestr-str-string-string"><code>escapeStr(str: String) -&gt; String</code></h3>
             <p>Escape string with regex characters</p><pre><code class="lang-swift">Regex.escape(<span class="string">"Hello.World"</span>)
@@ -1165,8 +1185,6 @@ re.matches(<span class="string">"Str"</span>)
 =&gt; <span class="string">"NaNaNaNaNa"</span></code></pre>
             <h1 id="contributing">Contributing</h1>
             <p>If you are interested in contributing checkout <a href="https://github.com/ankurp/Dollar/blob/master/CONTRIBUTING.md">CONTRIBUTING.md</a></p>
-            <h1 id="dollar-or-cent">Dollar or Cent</h1>
-            <p>If you are interested only in pure functional programming <code>import Dollar</code> otherwise <code>import Cent</code> which includes extensions for certain object type such as Array for now but more will be added.</p>
         </div>
     </div>
     <script src="http://www.google-analytics.com/ga.js" type="text/javascript"></script>
