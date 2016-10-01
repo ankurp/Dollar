@@ -7,7 +7,9 @@
 //
 
 import XCTest
-import Dollar
+import Foundation
+@testable import Dollar
+
 fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
   switch (lhs, rhs) {
   case let (l?, r?):
@@ -30,6 +32,82 @@ fileprivate func > <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
 
 
 class DollarTests: XCTestCase {
+    static var allTests : [(String, (DollarTests) -> () throws -> Void)] {
+        return [
+            ("testFirst", testFirst),
+            ("testSecond", testSecond),
+            ("testThird", testThird),
+            ("testNoop", testNoop),
+            ("testCompact", testCompact),
+            ("testEach", testEach),
+            ("testEachWhen", testEachWhen),
+            ("testEqual", testEqual),
+            ("testFlatten", testFlatten),
+            ("testShuffle", testShuffle),
+            ("testIndexOf", testIndexOf),
+            ("testInitial", testInitial),
+            ("testRest", testRest),
+            ("testLast", testLast),
+            ("testFindIndex", testFindIndex),
+            ("testFindLastIndex", testFindLastIndex),
+            ("testLastIndexOf", testLastIndexOf),
+            ("testContains", testContains),
+            ("testRange", testRange),
+            ("testSequence", testSequence),
+            ("testRemove", testRemove),
+            ("testRemoveElement", testRemoveElement),
+            ("testSortedIndex", testSortedIndex),
+            ("testWithout", testWithout),
+            ("testPull", testPull),
+            ("testZip", testZip),
+            ("testZipObject", testZipObject),
+            ("testIntersection", testIntersection),
+            ("testDifference", testDifference),
+            ("testUniq", testUniq),
+            ("testUnion", testUnion),
+            ("testXOR", testXOR),
+            ("testTranspose", testTranspose),
+            ("testAt", testAt),
+            ("testEvery", testEvery),
+            ("testFind", testFind),
+            ("testMax", testMax),
+            ("testMin", testMin),
+            ("testSample", testSample),
+            ("testPluck", testPluck),
+            ("testFrequencies", testFrequencies),
+            ("testKeys", testKeys),
+            ("testValues", testValues),
+            ("testMerge", testMerge),
+            ("testPick", testPick),
+            ("testOmit", testOmit),
+            ("testTap", testTap),
+            ("testChaining", testChaining),
+            ("testPartial", testPartial),
+            ("testBind", testBind),
+            ("testBind1", testBind1),
+            ("testBind2", testBind2),
+            ("testTimes", testTimes),
+            ("testAfter", testAfter),
+            ("testPartition", testPartition),
+            ("testPartitionAll", testPartitionAll),
+            ("testPartitionBy", testPartitionBy),
+            ("testMap", testMap),
+            ("testFlatMap", testFlatMap),
+            ("testReduce", testReduce),
+            ("testSlice", testSlice),
+            ("testFib", testFib),
+            ("testId", testId),
+            ("testComposeVariadic", testComposeVariadic),
+            ("testComposeArray", testComposeArray),
+            ("testChunk", testChunk),
+            ("testFill", testFill),
+            ("testPullAt", testPullAt),
+            ("testSize", testSize),
+            ("testFetch", testFetch),
+            ("testGroupBy", testGroupBy),
+            ("testRandom", testRandom)
+        ]
+    }
 
     override func setUp() {
         super.setUp()
@@ -618,5 +696,17 @@ class DollarTests: XCTestCase {
         XCTAssertEqual(wordCount[7]!, ["strings", "lengths"], "Returns dictionary with string lengths as keys")
         XCTAssertEqual(wordCount[9]!, ["different"], "Returns dictionary with string lengths as keys")
         XCTAssertEqual(wordCount[4]!, ["with"], "Returns dictionary with string lengths as keys")
+    }
+    func testRandom(){
+        let upperBoundary = 10
+        for _ in 1...1000 {
+            let rand = $.random(upperBoundary)
+            // This was done so that if this failed, there wouldn't be 1000+ failures, there would just be 1.
+            // Making it easier to debug.
+            if(rand < 0 || rand >= upperBoundary){
+                XCTAssert(rand > 0 && rand < 10, "random failed to generate a number within boundaries")
+                break;
+            }
+        }
     }
 }
