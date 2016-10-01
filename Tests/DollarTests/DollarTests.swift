@@ -32,7 +32,7 @@ fileprivate func > <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
 
 
 class DollarTests: XCTestCase {
-    static var allTests : [(String, (DollarTests) -> () throws -> Void)] {
+    static var allTests: [(String, (DollarTests) -> () throws -> Void)] {
         return [
             ("testFirst", testFirst),
             ("testSecond", testSecond),
@@ -705,7 +705,7 @@ class DollarTests: XCTestCase {
             // Making it easier to debug.
             if(rand < 0 || rand >= upperBoundary){
                 XCTAssert(rand > 0 && rand < 10, "random failed to generate a number within boundaries")
-                break;
+                break
             }
         }
     }
