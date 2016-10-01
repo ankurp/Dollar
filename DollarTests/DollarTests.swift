@@ -619,4 +619,16 @@ class DollarTests: XCTestCase {
         XCTAssertEqual(wordCount[9]!, ["different"], "Returns dictionary with string lengths as keys")
         XCTAssertEqual(wordCount[4]!, ["with"], "Returns dictionary with string lengths as keys")
     }
+    func testRandom() {
+        let upperBoundary = 10
+        for _ in 1...1000 {
+            let rand = $.random(upperBoundary)
+            // This was done so that if this failed, there wouldn't be 1000+ failures, there would just be 1.
+            // Making it easier to debug.
+            if (rand < 0 || rand >= upperBoundary) {
+                XCTAssert(rand > 0 && rand < 10, "random failed to generate a number within boundaries")
+                break
+            }
+        }
+    }
 }
