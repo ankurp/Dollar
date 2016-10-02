@@ -7,9 +7,7 @@
 //
 
 import XCTest
-import Foundation
-@testable import Dollar
-
+import Dollar
 fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
   switch (lhs, rhs) {
   case let (l?, r?):
@@ -32,82 +30,6 @@ fileprivate func > <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
 
 
 class DollarTests: XCTestCase {
-    static var allTests: [(String, (DollarTests) -> () throws -> Void)] {
-        return [
-            ("testFirst", testFirst),
-            ("testSecond", testSecond),
-            ("testThird", testThird),
-            ("testNoop", testNoop),
-            ("testCompact", testCompact),
-            ("testEach", testEach),
-            ("testEachWhen", testEachWhen),
-            ("testEqual", testEqual),
-            ("testFlatten", testFlatten),
-            ("testShuffle", testShuffle),
-            ("testIndexOf", testIndexOf),
-            ("testInitial", testInitial),
-            ("testRest", testRest),
-            ("testLast", testLast),
-            ("testFindIndex", testFindIndex),
-            ("testFindLastIndex", testFindLastIndex),
-            ("testLastIndexOf", testLastIndexOf),
-            ("testContains", testContains),
-            ("testRange", testRange),
-            ("testSequence", testSequence),
-            ("testRemove", testRemove),
-            ("testRemoveElement", testRemoveElement),
-            ("testSortedIndex", testSortedIndex),
-            ("testWithout", testWithout),
-            ("testPull", testPull),
-            ("testZip", testZip),
-            ("testZipObject", testZipObject),
-            ("testIntersection", testIntersection),
-            ("testDifference", testDifference),
-            ("testUniq", testUniq),
-            ("testUnion", testUnion),
-            ("testXOR", testXOR),
-            ("testTranspose", testTranspose),
-            ("testAt", testAt),
-            ("testEvery", testEvery),
-            ("testFind", testFind),
-            ("testMax", testMax),
-            ("testMin", testMin),
-            ("testSample", testSample),
-            ("testPluck", testPluck),
-            ("testFrequencies", testFrequencies),
-            ("testKeys", testKeys),
-            ("testValues", testValues),
-            ("testMerge", testMerge),
-            ("testPick", testPick),
-            ("testOmit", testOmit),
-            ("testTap", testTap),
-            ("testChaining", testChaining),
-            ("testPartial", testPartial),
-            ("testBind", testBind),
-            ("testBind1", testBind1),
-            ("testBind2", testBind2),
-            ("testTimes", testTimes),
-            ("testAfter", testAfter),
-            ("testPartition", testPartition),
-            ("testPartitionAll", testPartitionAll),
-            ("testPartitionBy", testPartitionBy),
-            ("testMap", testMap),
-            ("testFlatMap", testFlatMap),
-            ("testReduce", testReduce),
-            ("testSlice", testSlice),
-            ("testFib", testFib),
-            ("testId", testId),
-            ("testComposeVariadic", testComposeVariadic),
-            ("testComposeArray", testComposeArray),
-            ("testChunk", testChunk),
-            ("testFill", testFill),
-            ("testPullAt", testPullAt),
-            ("testSize", testSize),
-            ("testFetch", testFetch),
-            ("testGroupBy", testGroupBy),
-            ("testRandom", testRandom),
-        ]
-    }
 
     override func setUp() {
         super.setUp()
@@ -173,9 +95,9 @@ class DollarTests: XCTestCase {
     }
 
     func testShuffle() {
-      // XCTAssertEqual($.shuffle([1]), [1], "Return shuffled array")
-      // XCTAssertEqual($.shuffle([1, 2, 3]).count, 3, "Return shuffled array")
-      // XCTAssertEqual($.shuffle([Int]()), [], "Return empty array")
+        XCTAssertEqual($.shuffle([1]), [1], "Return shuffled array")
+        XCTAssertEqual($.shuffle([1, 2, 3]).count, 3, "Return shuffled array")
+        XCTAssertEqual($.shuffle([Int]()), [], "Return empty array")
     }
 
     func testIndexOf() {
