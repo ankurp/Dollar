@@ -7,14 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		42CC73BD1DA2F29300C2E439 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 42CC73BA1DA2F29300C2E439 /* Info.plist */; };
+		42CC73BE1DA2F2A100C2E439 /* CarExample.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42CC73B81DA2F29300C2E439 /* CarExample.swift */; };
+		42CC73BF1DA2F2A400C2E439 /* DollarTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42CC73B91DA2F29300C2E439 /* DollarTests.swift */; };
 		92180C3B1C70F155003BA0E3 /* AutoCurry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92180C381C70F155003BA0E3 /* AutoCurry.swift */; };
 		92180C3D1C70F155003BA0E3 /* Dollar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92180C3A1C70F155003BA0E3 /* Dollar.swift */; };
 		92180C461C70F2B2003BA0E3 /* Dollar.h in Headers */ = {isa = PBXBuildFile; fileRef = 92180C391C70F155003BA0E3 /* Dollar.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		92180C501C70F337003BA0E3 /* Dollar.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 92180C4A1C70F337003BA0E3 /* Dollar.podspec */; };
 		92180C561C70F8A1003BA0E3 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 92180C4B1C70F337003BA0E3 /* LICENSE */; };
 		925CB1E11A3FDCA4004F1319 /* Dollar.framework in Copy Files */ = {isa = PBXBuildFile; fileRef = 92E0D03C19467C67002ACC3D /* Dollar.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		92E6687A19F09D2A00BB4FB8 /* CarExample.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0419C8411948BEC600B947B3 /* CarExample.swift */; };
-		92E6687B19F09D2A00BB4FB8 /* DollarTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92E0D04E19467C67002ACC3D /* DollarTests.swift */; };
 		92E6687C19F09D3000BB4FB8 /* Dollar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92E0D03C19467C67002ACC3D /* Dollar.framework */; };
 		E2E3FF9D1CD3E7C400C73E4D /* AutoBind.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E3FF9C1CD3E7C400C73E4D /* AutoBind.swift */; };
 /* End PBXBuildFile section */
@@ -44,7 +45,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		0419C8411948BEC600B947B3 /* CarExample.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CarExample.swift; sourceTree = "<group>"; };
+		42CC73B81DA2F29300C2E439 /* CarExample.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CarExample.swift; sourceTree = "<group>"; };
+		42CC73B91DA2F29300C2E439 /* DollarTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DollarTests.swift; sourceTree = "<group>"; };
+		42CC73BA1DA2F29300C2E439 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		92180C381C70F155003BA0E3 /* AutoCurry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AutoCurry.swift; path = Sources/AutoCurry.swift; sourceTree = SOURCE_ROOT; };
 		92180C391C70F155003BA0E3 /* Dollar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Dollar.h; path = Sources/Dollar.h; sourceTree = SOURCE_ROOT; };
 		92180C3A1C70F155003BA0E3 /* Dollar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Dollar.swift; path = Sources/Dollar.swift; sourceTree = SOURCE_ROOT; };
@@ -57,8 +60,6 @@
 		92180C4B1C70F337003BA0E3 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		92180C4C1C70F337003BA0E3 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		92E0D03C19467C67002ACC3D /* Dollar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Dollar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		92E0D04D19467C67002ACC3D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		92E0D04E19467C67002ACC3D /* DollarTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DollarTests.swift; sourceTree = "<group>"; };
 		92E6686F19F09C6400BB4FB8 /* DollarTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DollarTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E2E3FF9C1CD3E7C400C73E4D /* AutoBind.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AutoBind.swift; path = Sources/AutoBind.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
@@ -82,11 +83,29 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		42CC73B61DA2F29300C2E439 /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				42CC73B71DA2F29300C2E439 /* DollarTests */,
+				42CC73BA1DA2F29300C2E439 /* Info.plist */,
+			);
+			path = Tests;
+			sourceTree = "<group>";
+		};
+		42CC73B71DA2F29300C2E439 /* DollarTests */ = {
+			isa = PBXGroup;
+			children = (
+				42CC73B81DA2F29300C2E439 /* CarExample.swift */,
+				42CC73B91DA2F29300C2E439 /* DollarTests.swift */,
+			);
+			path = DollarTests;
+			sourceTree = "<group>";
+		};
 		92E0D03219467C67002ACC3D = {
 			isa = PBXGroup;
 			children = (
+				42CC73B61DA2F29300C2E439 /* Tests */,
 				92E0D03E19467C67002ACC3D /* Dollar */,
-				92E0D04B19467C67002ACC3D /* DollarTests */,
 				92E0D03D19467C67002ACC3D /* Products */,
 				92180C4A1C70F337003BA0E3 /* Dollar.podspec */,
 				92180C491C70F337003BA0E3 /* CONTRIBUTING.md */,
@@ -123,24 +142,6 @@
 			isa = PBXGroup;
 			children = (
 				92180C421C70F1BE003BA0E3 /* Info.plist */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		92E0D04B19467C67002ACC3D /* DollarTests */ = {
-			isa = PBXGroup;
-			children = (
-				0419C8411948BEC600B947B3 /* CarExample.swift */,
-				92E0D04E19467C67002ACC3D /* DollarTests.swift */,
-				92E0D04C19467C67002ACC3D /* Supporting Files */,
-			);
-			path = DollarTests;
-			sourceTree = "<group>";
-		};
-		92E0D04C19467C67002ACC3D /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				92E0D04D19467C67002ACC3D /* Info.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -251,6 +252,7 @@
 			files = (
 				92180C561C70F8A1003BA0E3 /* LICENSE in Resources */,
 				92180C501C70F337003BA0E3 /* Dollar.podspec in Resources */,
+				42CC73BD1DA2F29300C2E439 /* Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -296,8 +298,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				92E6687A19F09D2A00BB4FB8 /* CarExample.swift in Sources */,
-				92E6687B19F09D2A00BB4FB8 /* DollarTests.swift in Sources */,
+				42CC73BE1DA2F2A100C2E439 /* CarExample.swift in Sources */,
+				42CC73BF1DA2F2A400C2E439 /* DollarTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -466,7 +468,7 @@
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = DollarTests/Info.plist;
+				INFOPLIST_FILE = Tests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MTL_ENABLE_DEBUG_INFO = YES;
@@ -484,7 +486,7 @@
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = DollarTests/Info.plist;
+				INFOPLIST_FILE = Tests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MTL_ENABLE_DEBUG_INFO = NO;

@@ -7,7 +7,8 @@
 //
 
 import XCTest
-import Dollar
+@testable import Dollar
+
 fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
   switch (lhs, rhs) {
   case let (l?, r?):
@@ -27,7 +28,6 @@ fileprivate func > <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
     return rhs < lhs
   }
 }
-
 
 class DollarTests: XCTestCase {
 
