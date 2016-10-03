@@ -16,7 +16,9 @@
 //  Created by Ankur Patel on 6/3/14.
 //  Copyright (c) 2014 Encore Dev Labs LLC. All rights reserved.
 //
-
+#if os(Linux)
+    import Glibc
+#endif
 import Foundation
 fileprivate func < <T: Comparable>(lhs: T?, rhs: T?) -> Bool {
   switch (lhs, rhs) {
@@ -1044,7 +1046,14 @@ open class $ {
     /// - parameter upperBound: upper bound when generating random number
     /// - returns: Random number
     open class func random(_ upperBound: Int) -> Int {
-        return Int(arc4random_uniform(UInt32(upperBound)))
+        #if os(Linux)
+            let time = UInt32(NSDate().timeIntervalSinceReferenceDate)
+            srand(time)
+            let randomNumber = Glibc.random() % upperBound
+            #else
+            let randomNumber = Int(arc4random_uniform(UInt32(upperBound)))
+        #endif
+        return randomNumber
     }
 
     /// Creates an array of numbers (positive and/or negative) progressing from start up to but not including end.
