@@ -1050,7 +1050,7 @@ open class $ {
             let time = UInt32(NSDate().timeIntervalSinceReferenceDate)
             srand(time)
             let randomNumber = Glibc.random() % upperBound
-            #else
+        #else
             let randomNumber = Int(arc4random_uniform(UInt32(upperBound)))
         #endif
         return randomNumber
