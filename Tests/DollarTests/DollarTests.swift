@@ -39,6 +39,11 @@ class DollarTests: XCTestCase {
         super.tearDown()
     }
 
+    func testPermutation() {
+        let result = $.permutation(["a", "b", "c"])
+        XCTAssertEqual(result, ["abc", "acb", "bac", "bca", "cab", "cba"])
+    }
+
     func testFirst() {
         if let result = $.first([1, 2, 3, 4]) {
             XCTAssertEqual(result, 1, "Return first element")
