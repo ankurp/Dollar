@@ -1041,6 +1041,29 @@ open class $ {
         return $.pull(array, values: elemToRemove)
     }
 
+    /// Returns permutation of array
+    ///
+    /// - parameter character: Characters to source the permutation
+    /// - returns: Array of permutation of the characters specified
+    open class func permutation<T>(_ elements: [T]) -> [String] where T : CustomStringConvertible {
+        guard elements.count > 1 else {
+            return $.map(elements) { $0.description }
+        }
+
+        let strings = self.permutation($.initial(elements))
+        if let char = $.last(elements) {
+            return $.reduce(strings, initial: []) { (result, str) -> [String] in
+                let splitStr = $.map(str.description.characters) { $0.description }
+                return result + $.map(0...splitStr.count) { (index) -> String in
+                    var copy = $.copy(splitStr)
+                    copy.insert(char.description, at: (splitStr.count - index))
+                    return $.join(copy, separator: "")
+                }
+            }.sorted()
+        }
+        return []
+    }
+
     /// Returns random number from 0 upto but not including upperBound
     ///
     /// - parameter upperBound: upper bound when generating random number
