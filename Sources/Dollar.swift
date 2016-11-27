@@ -270,6 +270,7 @@ open class $ {
     /// - parameter array: The array to iterate over
     /// - parameter callback: function that gets called with each item in the array
     /// - returns: The array passed
+    @discardableResult
     open class func each<T>(_ array: [T], callback: (T) -> ()) -> [T] {
         for elem in array {
             callback(elem)
@@ -282,6 +283,7 @@ open class $ {
     /// - parameter array: The array to iterate over
     /// - parameter callback: function that gets called with each item in the array with its index
     /// - returns: The array passed
+    @discardableResult
     open class func each<T>(_ array: [T], callback: (Int, T) -> ()) -> [T] {
         for (index, elem): (Int, T) in array.enumerated() {
             callback(index, elem)
@@ -295,6 +297,7 @@ open class $ {
     /// - parameter when: Condition to check before performing callback
     /// - parameter callback: Check whether element value is true or false.
     /// - returns: The array passed
+    @discardableResult
     open class func each<T>(_ array: [T], when: (T) -> Bool, callback: (T) -> ()) -> [T] {
         for elem in array where when(elem) {
             callback(elem)
