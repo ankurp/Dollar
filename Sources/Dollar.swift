@@ -327,7 +327,7 @@ open class $ {
     ///
     /// - parameter array: The array to check.
     /// - parameter callback: Check whether element value is true or false.
-    /// - returns: First element from the array.
+    /// - returns: true if the given callback returns true value for all items in the array; false otherwise.
     open class func every<T>(_ array: [T], callback: (T) -> Bool) -> Bool {
         for elem in array {
             if !callback(elem) {
