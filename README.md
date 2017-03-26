@@ -127,6 +127,33 @@ $.cycle([1, 2, 3], 2) {
 123123
 ```
 
+### delay - `$.delay`
+
+Delays the execution of a function by the specified DispatchTimeInterval
+
+```swift
+$.delay(by: .seconds(2)) {
+  print("Hello delayed by 2 seconds")
+}
+=> "Hello delayed by 2 seconds"
+```
+
+### debounce - `$.debounce`
+
+Debounce a function such that the function is only invoked once no matter how many times it is called within the delayBy interval
+
+```swift
+let printQueue = $.debounce(delayBy: .seconds(1)) {
+    print("Hello Queue!")
+}
+for _ in 0...9 {
+    printQueue()
+}
+$.delay(by: .seconds(2), printQueue)
+=> "Hello Queue!"
+=> "Hello Queue!"
+```
+
 ### difference - `$.difference`
 
 Creates an array excluding all values of the provided arrays
