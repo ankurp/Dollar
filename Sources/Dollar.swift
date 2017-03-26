@@ -220,6 +220,31 @@ open class $ {
         }
     }
 
+    /// Delays the execution of a function by the specified DispatchTimeInterval
+    ///
+    /// - parameter by: interval to delay the execution of the function by
+    /// - parameter queue: Queue to run the function on. Defaults to main queue
+    /// - parameter function: function to execute
+    open class func delay(by interval: DispatchTimeInterval, queue: DispatchQueue = .main, _ function: @escaping () -> Void) {
+        queue.asyncAfter(deadline: .now() + interval, execute: function)
+    }
+
+    /// Debounce a function such that the function is only invoked once no matter how many times
+    /// it is called within the delayBy interval
+    ///
+    /// - parameter delayBy: interval to delay the execution of the function by
+    /// - parameter queue: Queue to run the function on. Defaults to main queue
+    /// - parameter function: function to execute
+    /// - returns: Function that is debounced and will only invoke once within the delayBy interval
+    open class func debounce(delayBy: DispatchTimeInterval, queue: DispatchQueue = .main, _ function: @escaping (() -> Void)) -> () -> Void {
+        var currentWorkItem: DispatchWorkItem?
+        return {
+            currentWorkItem?.cancel()
+            currentWorkItem = DispatchWorkItem { function() }
+            queue.asyncAfter(deadline: .now() + delayBy, execute: currentWorkItem!)
+        }
+    }
+
     /// Creates an array excluding all values of the provided arrays in order
     ///
     /// - parameter arrays: The arrays to difference between.
