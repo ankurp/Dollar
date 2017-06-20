@@ -22,7 +22,7 @@ import Foundation
 import Dispatch
 #endif
 
-open class $ {
+open class `$` {
     ///  ___  ___  _______   ___       ________  _______   ________
     /// |\  \|\  \|\  ___ \ |\  \     |\   __  \|\  ___ \ |\   __  \
     /// \ \  \\\  \ \   __/|\ \  \    \ \  \|\  \ \   __/|\ \  \|\  \
@@ -139,8 +139,8 @@ open class $ {
     /// - returns: A function that can be called with variadic parameters of values
     open class func compose<T>(_ functions: ((T...) -> [T])...) -> ((T...) -> [T]) {
         typealias Function = ([T]) -> [T]
-        return {
-            var result = $0
+        return { (result: T...) -> [T] in
+            var result = result
             for fun in functions {
                 let f = unsafeBitCast(fun, to: Function.self)
                 result = f(result)
@@ -240,7 +240,7 @@ open class $ {
     /// - parameter arrays: The arrays to difference between.
     /// - returns: The difference between the first array and all the remaining arrays from the arrays params.
     open class func differenceInOrder<T: Equatable>(_ arrays: [[T]]) -> [T] {
-        return $.reduce(self.rest(arrays), initial: self.first(arrays)!) { (result, arr) -> [T] in
+        return `$`.reduce(self.rest(arrays), initial: self.first(arrays)!) { (result, arr) -> [T] in
             return result.filter() { !arr.contains($0) }
         }
     }
@@ -359,7 +359,7 @@ open class $ {
     /// - returns: factorial
     open class func factorial(_ num: Int) -> Int {
         guard num > 0 else { return 1 }
-        return num * $.factorial(num - 1)
+        return num * `$`.factorial(num - 1)
     }
 
     /// Get element from an array at the given index which can be negative
@@ -462,7 +462,7 @@ open class $ {
     /// - parameter array: The array to group
     /// - parameter callback: Function whose response will be used as a key in the new string
     /// - returns: grouped collection
-    open class func groupBy<T, U: Hashable>(_ array: [T], callback: (T) -> U) -> [U: [T]] {
+    open class func groupBy<T, U>(_ array: [T], callback: (T) -> U) -> [U: [T]] {
         var grouped = [U: [T]]()
         for element in array {
             let key = callback(element)
@@ -557,7 +557,7 @@ open class $ {
             let randIndex = self.random(index)
 
             if index != randIndex {
-                Swift.swap(&newArr[index], &newArr[randIndex])
+                newArr.swapAt(index, randIndex)
             }
         }
         return newArr
@@ -579,7 +579,7 @@ open class $ {
     /// - parameter array: The array to source from.
     /// - parameter function: The function to get value of the key for each element to group by.
     /// - returns: Dictionary that contains the key generated from the element passed in the function.
-    open class func frequencies<T, U: Equatable>(_ array: [T], function: (T) -> U) -> [U: Int] {
+    open class func frequencies<T, U>(_ array: [T], function: (T) -> U) -> [U: Int] {
         var result = [U: Int]()
         for elem in array {
             let key = function(elem)
@@ -612,7 +612,7 @@ open class $ {
     /// - parameter second: number
     /// - returns: Least common multiple
     open class func lcm(_ first: Int, _ second: Int) -> Int {
-        return (first / $.gcd(first, second)) * second
+        return (first / `$`.gcd(first, second)) * second
     }
 
     /// The identity function. Returns the argument it is given.
@@ -677,7 +677,7 @@ open class $ {
     /// - parameter index: to check if it is in range
     /// - parameter isIn: to check in
     /// - returns: true if it is in range otherwise false
-    open class func it<T: Comparable>(_ index: T, isIn range: Range<T>) -> Bool {
+    open class func it<T>(_ index: T, isIn range: Range<T>) -> Bool {
         return index >= range.lowerBound && index < range.upperBound
     }
 
@@ -1056,7 +1056,7 @@ open class $ {
         for index in indices {
             elemToRemove.append(array[index])
         }
-        return $.pull(array, values: elemToRemove)
+        return `$`.pull(array, values: elemToRemove)
     }
 
     /// Returns permutation of array
@@ -1065,17 +1065,17 @@ open class $ {
     /// - returns: Array of permutation of the characters specified
     open class func permutation<T>(_ elements: [T]) -> [String] where T : CustomStringConvertible {
         guard elements.count > 1 else {
-            return $.map(elements) { $0.description }
+            return `$`.map(elements) { $0.description }
         }
 
-        let strings = self.permutation($.initial(elements))
-        if let char = $.last(elements) {
-            return $.reduce(strings, initial: []) { (result, str) -> [String] in
-                let splitStr = $.map(str.description.characters) { $0.description }
-                return result + $.map(0...splitStr.count) { (index) -> String in
-                    var copy = $.copy(splitStr)
+        let strings = self.permutation(`$`.initial(elements))
+        if let char = `$`.last(elements) {
+            return `$`.reduce(strings, initial: []) { (result, str) -> [String] in
+                let splitStr = `$`.map(str.description.characters) { $0.description }
+                return result + `$`.map(0...splitStr.count) { (index) -> String in
+                    var copy = `$`.copy(splitStr)
                     copy.insert(char.description, at: (splitStr.count - index))
-                    return $.join(copy, separator: "")
+                    return `$`.join(copy, separator: "")
                 }
             }.sorted()
         }
@@ -1110,7 +1110,7 @@ open class $ {
     /// - parameter from: Start value of range
     /// - parameter to: End value of range
     /// - returns: Array of elements based on the sequence that is incremented by 1
-    open class func range<T: Strideable>(from startVal: T, to endVal: T) -> [T] where T.Stride : ExpressibleByIntegerLiteral {
+    open class func range<T: Strideable>(from startVal: T, to endVal: T) -> [T] {
         return self.range(from: startVal, to: endVal, incrementBy: 1)
     }
 
@@ -1130,8 +1130,8 @@ open class $ {
     /// - parameter from: Start value of range
     /// - parameter through: End value of range
     /// - returns: Array of elements based on the sequence that is incremented by 1
-    open class func range<T: Strideable>(from startVal: T, through endVal: T) -> [T] where T.Stride : ExpressibleByIntegerLiteral {
-        return self.range(from: startVal, to: endVal + 1, incrementBy: 1)
+    open class func range<T: Strideable>(from startVal: T, through endVal: T) -> [T] {
+        return self.range(from: startVal, to: endVal.advanced(by: 1), incrementBy: 1)
     }
 
     /// Creates an array of numbers (positive and/or negative) progressing from start up to but not including end.
@@ -1141,7 +1141,7 @@ open class $ {
     /// - parameter incrementBy: Increment sequence by.
     /// - returns: Array of elements based on the sequence.
     open class func range<T: Strideable>(from startVal: T, through endVal: T, incrementBy: T.Stride) -> [T] {
-        return self.range(from: startVal, to: endVal + 1, incrementBy: incrementBy)
+        return self.range(from: startVal, to: endVal.advanced(by: 1), incrementBy: incrementBy)
     }
 
     /// Reduce function that will resolve to one value after performing combine function on all elements
@@ -1263,7 +1263,7 @@ open class $ {
     ///
     /// - parameter num: Number of times to call function
     /// - parameter function: The function to be called every time
-    open class func times(_ num: Int, function: (Void) -> Void) {
+    open class func times(_ num: Int, function: @escaping () -> Void) {
         _ = self.times(num) { (index: Int) -> () in
             function()
         }
@@ -1462,21 +1462,21 @@ open class Chain<C> {
     ///
     /// - returns: First element from the array.
     open func first() -> C? {
-        return $.first(self.value)
+        return `$`.first(self.value)
     }
 
     /// Get the second object in the wrapper object.
     ///
     /// - returns: Second element from the array.
     open func second() -> C? {
-        return $.second(self.value)
+        return `$`.second(self.value)
     }
 
     /// Get the third object in the wrapper object.
     ///
     /// - returns: Third element from the array.
     open func third() -> C? {
-        return $.third(self.value)
+        return `$`.third(self.value)
     }
 
     /// Flattens nested array.
@@ -1484,7 +1484,7 @@ open class Chain<C> {
     /// - returns: The wrapper object.
     open func flatten() -> Chain {
         return self.queue {
-            return Wrapper($.flatten($0.value))
+            return Wrapper(`$`.flatten($0.value))
         }
     }
 
@@ -1501,7 +1501,7 @@ open class Chain<C> {
     /// - returns: The wrapper object.
     open func initial(_ numElements: Int) -> Chain {
         return self.queue {
-            return Wrapper($.initial($0.value, numElements: numElements))
+            return Wrapper(`$`.initial($0.value, numElements: numElements))
         }
     }
 
@@ -1574,7 +1574,7 @@ open class Chain<C> {
     /// - parameter function: Function to tell whether element value is true or false.
     /// - returns: Whether all elements are true according to func function.
     open func all(_ function: (C) -> Bool) -> Bool {
-        return $.every(self.value, callback: function)
+        return `$`.every(self.value, callback: function)
     }
 
     /// Returns if any element in array is true based on the passed function.
@@ -1605,7 +1605,7 @@ open class Chain<C> {
     /// - returns: The wrapper object.
     open func slice(_ start: Int, end: Int = 0) -> Chain {
         return self.queue {
-            return Wrapper($.slice($0.value, start: start, end: end))
+            return Wrapper(`$`.slice($0.value, start: start, end: end))
         }
     }
 

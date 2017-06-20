@@ -2,7 +2,7 @@
   "type": "sandbox",
   "title": "Dollar",
   "description": "Learn to use Dollar",
-  "swiftversion": "swift-3.0-RELEASE-ubuntu14.04",
+  "swiftversion": "swift-4.0-RELEASE-ubuntu14.04",
   "giturl": "https://github.com/ankurp/DollarSwiftPackageSample",
   "gittag": "1.0.0"
 }
