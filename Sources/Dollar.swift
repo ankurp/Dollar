@@ -16,21 +16,11 @@
 //  Created by Ankur Patel on 6/3/14.
 //  Copyright (c) 2014 Encore Dev Labs LLC. All rights reserved.
 //
-#if os(Linux)
-    import Glibc
-#endif
-import Foundation
-fileprivate func < <T: Comparable>(lhs: T?, rhs: T?) -> Bool {
-  switch (lhs, rhs) {
-  case let (l?, r?):
-    return l < r
-  case (nil, _?):
-    return true
-  default:
-    return false
-  }
-}
 
+import Foundation
+#if os(Linux)
+import Dispatch
+#endif
 
 open class $ {
     ///  ___  ___  _______   ___       ________  _______   ________
@@ -1629,5 +1619,16 @@ private struct Wrapper<V> {
     let value: V
     init(_ value: V) {
         self.value = value
+    }
+}
+
+fileprivate func < <T: Comparable>(lhs: T?, rhs: T?) -> Bool {
+    switch (lhs, rhs) {
+    case let (l?, r?):
+        return l < r
+    case (nil, _?):
+        return true
+    default:
+        return false
     }
 }
