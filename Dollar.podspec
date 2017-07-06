@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "Dollar"
-  s.version      = "6.2.0"
+  s.version      = "6.2.1"
   s.summary      = "A functional tool-belt for Swift Language"
   s.homepage     = "https://github.com/ankurp/Dollar"
   s.license      = { :type => "MIT", :file => "LICENSE" }
