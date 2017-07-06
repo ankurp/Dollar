@@ -26,7 +26,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		925436FD1DBBC97800926BCA /* Try.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Try.playground; sourceTree = "<group>"; };
 		__PBXFileRef_Dollar.xcodeproj/Configs/Project.xcconfig /* Dollar.xcodeproj/Configs/Project.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Dollar.xcodeproj/Configs/Project.xcconfig; sourceTree = "<group>"; };
 		__PBXFileRef_Package.swift /* Package.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
 		__PBXFileRef_Sources/AutoBind.swift /* AutoBind.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoBind.swift; sourceTree = "<group>"; };
@@ -69,7 +68,6 @@
 		"___RootGroup_" = {
 			isa = PBXGroup;
 			children = (
-				925436FD1DBBC97800926BCA /* Try.playground */,
 				__PBXFileRef_Package.swift /* Package.swift */,
 				"_____Configs_" /* Configs */,
 				"_____Sources_" /* Sources */,
