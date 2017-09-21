@@ -21,10 +21,6 @@ Dollar is a Swift library that provides useful functional programming helper met
 
 # Setup #
 
-## Using [Carthage](https://github.com/Carthage/Carthage)
-
-Add `github "ankurp/Dollar" ~> 6.2.1` to your `Cartfile` and run `carthage update`. If unfamiliar with Carthage then checkout their [Getting Started section](https://github.com/Carthage/Carthage#getting-started) or this [sample app](https://github.com/ankurp/DollarCarthageApp)
-
 ## Using [cocoapods](http://cocoapods.org/) version 0.36.x or greater
 
 Add `pod 'Dollar'` to your `Podfile` and run `pod install`. Add `use_frameworks!` to the end of the `Podfile`. Also checkout this [sample app](https://github.com/ankurp/DollarPodApp). Requires cocoapod version 0.36.x or greater.
@@ -46,7 +42,7 @@ Still stuck. Then checkout this screencast on [how to import](http://recordit.co
 
 ## Support for Xcode and Swift
 
-* For Xcode 9 (Swift 4) use branch [`xcode-9-swift-4`](https://github.com/ankurp/Dollar/pull/255)
+* For Xcode 9 (Swift 4) use version `7.0.0`
 * For Xcode 8 (Swift 3) use version `6.2.1`
 * For Xcode 7 (Swift 2) use version `4.1.0` or `5.2.0`
 * For Xcode 6.3 (Swift 1.2) use version `3.0.3`
