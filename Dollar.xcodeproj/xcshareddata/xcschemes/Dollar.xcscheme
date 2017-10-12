@@ -14,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "______Target_Dollar"
-               BuildableName = "Dollar.framework"
-               BlueprintName = "Dollar"
-               ReferencedContainer = "container:Dollar.xcodeproj">
+               BlueprintIdentifier = "______Target_Euro"
+               BuildableName = "Euro.framework"
+               BlueprintName = "Euro"
+               ReferencedContainer = "container:Euro.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -32,10 +32,10 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "______Target_DollarTests"
-               BuildableName = "DollarTests.xctest"
-               BlueprintName = "DollarTests"
-               ReferencedContainer = "container:Dollar.xcodeproj">
+               BlueprintIdentifier = "______Target_EuroTests"
+               BuildableName = "EuroTests.xctest"
+               BlueprintName = "EuroTests"
+               ReferencedContainer = "container:Euro.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -55,10 +55,10 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "______Target_Dollar"
-            BuildableName = "Dollar.framework"
-            BlueprintName = "Dollar"
-            ReferencedContainer = "container:Dollar.xcodeproj">
+            BlueprintIdentifier = "______Target_Euro"
+            BuildableName = "Euro.framework"
+            BlueprintName = "Euro"
+            ReferencedContainer = "container:Euro.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>

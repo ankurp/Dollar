@@ -1,6 +1,6 @@
 //
 //  CarExample.swift
-//  Dollar
+//  Euro
 //
 //  Created by Tiago Bastos on 6/11/14.
 //  Copyright (c) 2014 Encore Dev Labs LLC. All rights reserved.

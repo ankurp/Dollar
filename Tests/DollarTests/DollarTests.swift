@@ -1,13 +1,13 @@
 //
-//  DollarTests.swift
-//  DollarTests
+//  EuroTests.swift
+//  EuroTests
 //
 //  Created by Ankur Patel on 6/3/14.
 //  Copyright (c) 2014 Encore Dev Labs LLC. All rights reserved.
 //
 
 import XCTest
-@testable import Dollar
+@testable import Euro
 
 fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
   switch (lhs, rhs) {
@@ -29,7 +29,7 @@ fileprivate func > <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
   }
 }
 
-class DollarTests: XCTestCase {
+class EuroTests: XCTestCase {
 
     override func setUp() {
         super.setUp()

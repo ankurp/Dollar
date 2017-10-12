@@ -10,7 +10,7 @@
 //    \|___|\__\_|
 //         \|__|
 //
-//  Dollar.swift
+//  Euro.swift
 //  $ - A functional tool-belt for Swift Language
 //
 //  Created by Ankur Patel on 6/3/14.

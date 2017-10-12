@@ -4,9 +4,9 @@
 <dict>
 	<key>classNames</key>
 	<dict>
-		<key>DollarPerformanceTests</key>
+		<key>EuroPerformanceTests</key>
 		<dict>
-			<key>testDollarMapPerformance()</key>
+			<key>testEuroMapPerformance()</key>
 			<dict>
 				<key>com.apple.XCTPerformanceMetric_WallClockTime</key>
 				<dict>
@@ -16,7 +16,7 @@
 					<string>Local Baseline</string>
 				</dict>
 			</dict>
-			<key>testDollarMaxPerformance()</key>
+			<key>testEuroMaxPerformance()</key>
 			<dict>
 				<key>com.apple.XCTPerformanceMetric_WallClockTime</key>
 				<dict>

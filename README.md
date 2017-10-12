@@ -1,8 +1,8 @@
-Dollar [![Build Status](https://travis-ci.org/ankurp/Dollar.svg)](https://travis-ci.org/ankurp/Dollar) ![CocoaPods](https://img.shields.io/cocoapods/v/Dollar.svg) [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
+Euro [![Build Status](https://travis-ci.org/ankurp/Euro.svg)](https://travis-ci.org/ankurp/Euro) ![CocoaPods](https://img.shields.io/cocoapods/v/Euro.svg) [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 ===========
-[![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/ankurp/Dollar?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+[![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/ankurp/Euro?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
-Dollar is a Swift library that provides useful functional programming helper methods without extending any built in objects. It is similar to [Lo-Dash](https://lodash.com) or [Underscore.js](http://underscorejs.org) in Javascript.
+Euro is a Swift library that provides useful functional programming helper methods without extending any built in objects. It is similar to [Lo-Dash](https://lodash.com) or [Underscore.js](http://underscorejs.org) in Javascript.
 
 [Cent](https://github.com/ankurp/Cent) is a library that extends certain Swift object types using the extension feature and gives its two cents to Swift language. It is now moved into a separate repo to support `carthage` and upcoming `Swift Package Manager`
 
@@ -12,8 +12,8 @@ NOTE: Starting Swift 4 `$` is no longer a valid identifier. So you get the follo
 
 - [Setup](#setup)
   - [Demo App](#demo-app)
-- [API Documentation](http://www.dollarswift.org)
-- [Usage](#dollar-usage)
+- [API Documentation](http://www.Euroswift.org)
+- [Usage](#Euro-usage)
   - [Array](#array)
   - [Dictionary](#dictionary)
   - [Object](#object)
@@ -25,20 +25,20 @@ NOTE: Starting Swift 4 `$` is no longer a valid identifier. So you get the follo
 
 ## Using [cocoapods](http://cocoapods.org/) version 0.36.x or greater
 
-Add `pod 'Dollar'` to your `Podfile` and run `pod install`. Add `use_frameworks!` to the end of the `Podfile`. Also checkout this [sample app](https://github.com/ankurp/DollarPodApp). Requires cocoapod version 0.36.x or greater.
+Add `pod 'Euro'` to your `Podfile` and run `pod install`. Add `use_frameworks!` to the end of the `Podfile`. Also checkout this [sample app](https://github.com/ankurp/EuroPodApp). Requires cocoapod version 0.36.x or greater.
 
 ## Using [Swift Package Manager](https://github.com/apple/swift-package-manager)
 
-Add the following dependency `.Package(url: "https://github.com/ankurp/Dollar", majorVersion: 6, minor: 0)` to your `Package.swift` file and then run `swift build`. Requires swift version 2.2 or greater that you can install from https://swift.org
+Add the following dependency `.Package(url: "https://github.com/ankurp/Euro", majorVersion: 6, minor: 0)` to your `Package.swift` file and then run `swift build`. Requires swift version 2.2 or greater that you can install from https://swift.org
 
 ## Using `git submodule`
 
-1. If you are using git then add Dollar as a submodule using `git submodule add https://github.com/ankurp/Dollar.git`. If not using git download the project using `git clone https://github.com/ankurp/Dollar.git` in your project folder.
-2. Open the `Dollar` folder. Drag Dollar.xcodeproj, inside the Dollar folder, into the file navigator of your Xcode project.
+1. If you are using git then add Euro as a submodule using `git submodule add https://github.com/ankurp/Euro.git`. If not using git download the project using `git clone https://github.com/ankurp/Euro.git` in your project folder.
+2. Open the `Euro` folder. Drag Euro.xcodeproj, inside the Euro folder, into the file navigator of your Xcode project.
 3. In Xcode, navigate to the target configuration window by clicking on the blue project icon, and selecting the application target under the "Targets" heading in the sidebar.
 4. In the tab bar at the top of that window, open the "Build Phases" panel.
-5. Expand the "Link Binary with Libraries" group, and add Dollar.framework.
-6. In your project file `import Dollar` and you can call all of the helper functions.
+5. Expand the "Link Binary with Libraries" group, and add Euro.framework.
+6. In your project file `import Euro` and you can call all of the helper functions.
 
 Still stuck. Then checkout this screencast on [how to import](http://recordit.co/0gQiCSEREF)
 
@@ -52,20 +52,20 @@ Still stuck. Then checkout this screencast on [how to import](http://recordit.co
 
 ## Demo Apps ##
 
-* Using [`Carthage`](https://github.com/ankurp/DollarCarthageApp)
-* Using [`Cocoa Pods`](https://github.com/ankurp/DollarPodApp)
-* Using [`Swift Package Manager`](https://github.com/ankurp/DollarSwiftPackage)
-* Using [`git submodule`](https://github.com/ankurp/DollarSubmoduleApp)
+* Using [`Carthage`](https://github.com/ankurp/EuroCarthageApp)
+* Using [`Cocoa Pods`](https://github.com/ankurp/EuroPodApp)
+* Using [`Swift Package Manager`](https://github.com/ankurp/EuroSwiftPackage)
+* Using [`git submodule`](https://github.com/ankurp/EuroSubmoduleApp)
 
 ## Communication ##
 
-- If you **need help**, use [gitter.im](https://gitter.im/ankurp/Dollar) or post a question on [Stack Overflow](http://stackoverflow.com/questions/tagged/dollar.swift) with tag `dollar.swift`.
-- If you'd like to **ask a general question**, use [Stack Overflow](http://stackoverflow.com/questions/tagged/dollar.swift).
+- If you **need help**, use [gitter.im](https://gitter.im/ankurp/Euro) or post a question on [Stack Overflow](http://stackoverflow.com/questions/tagged/Euro.swift) with tag `Euro.swift`.
+- If you'd like to **ask a general question**, use [Stack Overflow](http://stackoverflow.com/questions/tagged/Euro.swift).
 - If you **found a bug**, open an issue.
 - If you **have a feature request**, open an issue.
 - If you **want to contribute**, submit a pull request.
 
-# Dollar Usage #
+# Euro Usage #
 
 ## Array ##
 
@@ -1677,8 +1677,8 @@ Get the length of the string
 Get the camel case representation of the string
 
 ```swift
-"__Dollar and cent-- dollarANDCent".camelCase
-=> "dollarAndCentDollarAndCent"
+"__Euro and cent-- EuroANDCent".camelCase
+=> "EuroAndCentEuroAndCent"
 ```
 
 ### `.kebabCase`
@@ -1686,8 +1686,8 @@ Get the camel case representation of the string
 Get the kebab case representation of the string
 
 ```swift
-"__Dollar and cent-- dollarANDCent".kebabCase
-=> "dollar-and-cent-dollar-and-cent"
+"__Euro and cent-- EuroANDCent".kebabCase
+=> "Euro-and-cent-Euro-and-cent"
 ```
 
 ### `.snakeCase`
@@ -1695,8 +1695,8 @@ Get the kebab case representation of the string
 Get the snake case representation of the string
 
 ```swift
-"__Dollar and cent-- dollarANDCent".snakeCase
-=> "dollar_and_cent_dollar_and_cent"
+"__Euro and cent-- EuroANDCent".snakeCase
+=> "Euro_and_cent_Euro_and_cent"
 ```
 
 ### `.startCase`
@@ -1704,8 +1704,8 @@ Get the snake case representation of the string
 Get the start case representation of the string
 
 ```swift
-"__Dollar and cent-- dollarANDCent".startCase
-=> "Dollar And Cent Dollar And Cent"
+"__Euro and cent-- EuroANDCent".startCase
+=> "Euro And Cent Euro And Cent"
 ```
 
 ### `=~ str: String -> Bool`
@@ -1713,7 +1713,7 @@ Get the start case representation of the string
 Does a regex match of whether regex string on the right is matches the string on the left
 
 ```swift
-"Dollar" =~ "oll"
+"Euro" =~ "oll"
 => true
 ```
 
@@ -1743,9 +1743,9 @@ Get character at a subscript
 Returns the substring based on the first regex match passed in the subscript
 
 ```swift
-let proj = "Dollar and Cent"
+let proj = "Euro and Cent"
 proj["^.+[^and Cent]"]
-=> {Some: "Dollar"}
+=> {Some: "Euro"}
 ```
 
 
@@ -1900,4 +1900,4 @@ For each index in the range invoke the callback
 ```
 
 # Contributing #
-If you are interested in contributing checkout [CONTRIBUTING.md](https://github.com/ankurp/Dollar/blob/master/CONTRIBUTING.md)
+If you are interested in contributing checkout [CONTRIBUTING.md](https://github.com/ankurp/Euro/blob/master/CONTRIBUTING.md)
