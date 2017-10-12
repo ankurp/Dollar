@@ -6,8 +6,6 @@ Euro is a Swift library that provides useful functional programming helper metho
 
 [Cent](https://github.com/ankurp/Cent) is a library that extends certain Swift object types using the extension feature and gives its two cents to Swift language. It is now moved into a separate repo to support `carthage` and upcoming `Swift Package Manager`
 
-NOTE: Starting Swift 4 `$` is no longer a valid identifier. So you get the following `error: '$' is not an identifier; use backticks to escape it` You will need to espace `$` identifier using backticks.
-
 ## Contents ##
 
 - [Setup](#setup)
@@ -69,261 +67,261 @@ Still stuck. Then checkout this screencast on [how to import](http://recordit.co
 
 ## Array ##
 
-### at - `$.at`
+### at - `€.at`
 
 Creates an array of elements from the specified indexes, or keys, of the collection. Indexes may be specified as individual arguments or as arrays of indexes.
 
 ```swift
-$.at(["ant", "bat", "cat", "dog", "egg"], indexes: 0, 2, 4) 
+€.at(["ant", "bat", "cat", "dog", "egg"], indexes: 0, 2, 4) 
 => ["ant", "cat", "egg"]
 ```
 
-### chunk - `$.chunk`
+### chunk - `€.chunk`
 
 Creates an array of elements split into groups the length of size. If array can’t be split evenly, the final chunk will be the remaining elements.
 
 ```swift
-$.chunk([1, 2, 3, 4], size: 2)
+€.chunk([1, 2, 3, 4], size: 2)
 => [[1, 2], [3, 4]]
 
-$.chunk([1, 2, 3, 4], size: 3)
+€.chunk([1, 2, 3, 4], size: 3)
 => [[1, 2, 3], [4]]
 ```
 
-### compact - `$.compact`
+### compact - `€.compact`
 
 Creates an array with all nil values removed.
 
 ```swift
-$.compact([3, nil, 4, 5]) 
+€.compact([3, nil, 4, 5]) 
 => [3, 4, 5]
 
-$.compact([nil, nil]) as NSObject[] 
+€.compact([nil, nil]) as NSObject[] 
 => []
 ```
 
-### contains - `$.contains`
+### contains - `€.contains`
 
 Checks if a given value is present in the array.
 
 ```swift
-$.contains([1, 2, 3, 1, 2, 3], value: 2) 
+€.contains([1, 2, 3, 1, 2, 3], value: 2) 
 => true
 
-$.contains([1, 2, 3, 1, 2, 3], value: 10) 
+€.contains([1, 2, 3, 1, 2, 3], value: 10) 
 => false
 ```
 
-### cycle - `$.cycle`
+### cycle - `€.cycle`
 
 Cycles through the array definetly or indefinetly passing each element into the callback function. The second parameter is to specify how many times to cycle through the array. If left out it will cycle indefinetly.
 
 ```swift
-$.cycle([1, 2, 3], 2) {
-  print($0)
+€.cycle([1, 2, 3], 2) {
+  print(€0)
 }
 // Prints the following
 123123
 ```
 
-### delay - `$.delay`
+### delay - `€.delay`
 
 Delays the execution of a function by the specified DispatchTimeInterval
 
 ```swift
-$.delay(by: .seconds(2)) {
+€.delay(by: .seconds(2)) {
   print("Hello delayed by 2 seconds")
 }
 => "Hello delayed by 2 seconds"
 ```
 
-### debounce - `$.debounce`
+### debounce - `€.debounce`
 
 Debounce a function such that the function is only invoked once no matter how many times it is called within the delayBy interval
 
 ```swift
-let printQueue = $.debounce(delayBy: .seconds(1)) {
+let printQueue = €.debounce(delayBy: .seconds(1)) {
     print("Hello Queue!")
 }
 for _ in 0...9 {
     printQueue()
 }
-$.delay(by: .seconds(2), printQueue)
+€.delay(by: .seconds(2), printQueue)
 => "Hello Queue!"
 => "Hello Queue!"
 ```
 
-### difference - `$.difference`
+### difference - `€.difference`
 
 Creates an array excluding all values of the provided arrays
 
 ```swift
-$.difference([1, 2, 3, 4, 5], [5, 2, 10]) 
+€.difference([1, 2, 3, 4, 5], [5, 2, 10]) 
 => [1, 3, 4]
 ```
 
-### each - `$.each`
+### each - `€.each`
 
 Passes each element in the array to the callback
 
 ```swift
-$.each(["A", "B"]) { 
-  print("Value \($0)")
+€.each(["A", "B"]) { 
+  print("Value \(€0)")
 }
 => ["A", "B"]
 
-$.each(["A", "B"]) { (index, elem) in
+€.each(["A", "B"]) { (index, elem) in
   print("\(index) - \(elem)")
 }
 => ["0 - A", "1 - B"]
 ```
 
-### every - `$.every`
+### every - `€.every`
 
 Checks if the given callback returns true value for all items in the array.
 
 ```swift
-$.every([1, 2, 3, 4], callback: { $0 < 20 }) 
+€.every([1, 2, 3, 4], callback: { €0 < 20 }) 
 => true
 
-$.every([1, 2, 3, 4]) { $0 == 1 } 
+€.every([1, 2, 3, 4]) { €0 == 1 } 
 => false
 ```
 
-### factorial `$.factorial`
+### factorial `€.factorial`
 
 Returns factorial of integer
 
 ```swift
-$.factorial(3)
+€.factorial(3)
 => 6
 
-$.factorial(0)
+€.factorial(0)
 => 1
 ```
 
-### fetch - `$.fetch`
+### fetch - `€.fetch`
 
 Get element from an array at the given index which can be negative to find elements from the end of the array. A default value can be returned if indexing out of bounds.
 
 
 ```swift
 let arr = [1, 2, 3, 4, 5, 6, 7, 8]
-$.fetch(arr, 100)
+€.fetch(arr, 100)
 => nil
 
-$.fetch(arr, 100, orElse: 42)
+€.fetch(arr, 100, orElse: 42)
 => 42
 
-$.fetch(arr, -1)
+€.fetch(arr, -1)
 => 8
 ```
 
-### fill - `$.fill`
+### fill - `€.fill`
 
 Fills elements of array with value from start up to, but not including, end. This method mutates array.
 
 ```swift
 var arr = Array<Int>(count: 5, repeatedValue: 1)
-$.fill(&arr, withElem: 42)
+€.fill(&arr, withElem: 42)
 => [42, 42, 42, 42, 42]
 
 var arr = Array<Int>(count: 5, repeatedValue: 1)
-$.fill(&arr, withElem: 42, startIndex: 1, endIndex: 3)
+€.fill(&arr, withElem: 42, startIndex: 1, endIndex: 3)
 => [1, 42, 42, 42, 1]
 ```
 
 
-### find - `$.find`
+### find - `€.find`
 
 Iterates over elements of an array and returning the first element that the callback returns true for.
 
 ```swift
-$.find([1, 2, 3, 4], callback: { $0 == 2 }) 
+€.find([1, 2, 3, 4], callback: { €0 == 2 }) 
 => 2
 
-$.find([1, 2, 3, 4]) { $0 == 10 } 
+€.find([1, 2, 3, 4]) { €0 == 10 } 
 => nil
 ```
 
-### findIndex - `$.findIndex`
+### findIndex - `€.findIndex`
 
 This method is like find except that it returns the index of the first element that passes the callback check.
 
 ```swift
 let arr = [["age": 36], ["age": 40], ["age": 1]]
-let result = $.findIndex(arr) { $0["age"] < 20 }
+let result = €.findIndex(arr) { €0["age"] < 20 }
 result 
 => 2
 ```
 
-### findLastIndex - `$.findLastIndex`
+### findLastIndex - `€.findLastIndex`
 
 This method is like findIndex except that it iterates over elements of the array from right to left.
 
 ```swift
 let arr = [["age": 36], ["age": 40], ["age": 1]]
-let result = $.findLastIndex(arr) { $0["age"] > 30 }
+let result = €.findLastIndex(arr) { €0["age"] > 30 }
 result
 => 1
 ```
 
-### first - `$.first(array: AnyObject[])`
+### first - `€.first(array: AnyObject[])`
 
 Gets the first element in the array.
 
 ```swift
-$.first([1, 2, 3, 4])
+€.first([1, 2, 3, 4])
 => 1
 
-$.first([]) 
+€.first([]) 
 => nil
 ```
-### groupBy `$.groupBy`
+### groupBy `€.groupBy`
 
 This method returns a dictionary of values grouped by the value returned by a callback.
 
 ``` swift
-$.groupBy([1, 2, 3, 4, 5], callback: {$0 % 2})
+€.groupBy([1, 2, 3, 4, 5], callback: {€0 % 2})
 => [0: [2, 4], 1: [1, 3]]
 
-$.groupBy(["strings", "with", "different", lengths"], callback: {$0.characters.count})
+€.groupBy(["strings", "with", "different", lengths"], callback: {€0.characters.count})
 => [7: ["strings", "lengths"], 9: ["different"], 4: ["With"]]
 ```
 
-### second - `$.second(array: AnyObject[])`
+### second - `€.second(array: AnyObject[])`
 
 Gets the second element in the array.
 
 ```swift
-$.second([1, 2, 3, 4])
+€.second([1, 2, 3, 4])
 => 2
 
-$.second([1]) 
+€.second([1]) 
 => nil
 
-$.second([])
+€.second([])
 => nil
 ```
 
-### flatMap - `$.flatMap`
+### flatMap - `€.flatMap`
 
 Maps a function that converts elements to a list and then concatenates them.
 
 ```swift
 let values = [2, 3, 4, 5, 6, 7]
-$.flatMap(values) { [$0, $0] }
+€.flatMap(values) { [€0, €0] }
 => [2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7]
 ```
 
-### flatMap - `$.flatMap`
+### flatMap - `€.flatMap`
 
 Maps a function that converts a type to an Optional over an Optional, and then returns a single-level Optional.
 
 
 ```swift
 let url = NSURL(string: "https://apple.com/swift")
-$.flatMap(url) { $0.lastPathComponent }
+€.flatMap(url) { €0.lastPathComponent }
 => Optional("swift")
 ```
 
@@ -334,335 +332,335 @@ NSURL(string: "https://apple.com/swift/")?.lastPathComponent
 => Optional("swift")
 ```
 
-### flatten - `$.flatten`
+### flatten - `€.flatten`
 
 Flattens a nested array of any depth.
 
 ```swift
-$.flatten([[3], 4, 5]) as Int[] 
+€.flatten([[3], 4, 5]) as Int[] 
 => [3, 4, 5]
 
-$.flatten([[3], "Hello", 5]) as NSObject[] 
+€.flatten([[3], "Hello", 5]) as NSObject[] 
 => [3, "Hello", 5]
 
-$.flatten([[[3], 4], 5]) as Int[] 
+€.flatten([[[3], 4], 5]) as Int[] 
 => [3, 4, 5]
 ```
 
-### frequencies - `$.frequencies`
+### frequencies - `€.frequencies`
 This method returns a dictionary of values in an array mapping to the total number of occurrences in the array. If passed a function it returns a frequency table of the results of the given function on the arrays elements.
 
 ```swift
-$.frequencies(["a", "a", "b", "c", "a", "b"]) 
+€.frequencies(["a", "a", "b", "c", "a", "b"]) 
 => ["a": 3, "b": 2, "c": 1]
 
-$.frequencies([1, 2, 3, 4, 5]) { $0 % 2 == 0 }
+€.frequencies([1, 2, 3, 4, 5]) { €0 % 2 == 0 }
 => [false: 3, true: 2]
 ```
 
-### gcd `$.gcd`
+### gcd `€.gcd`
 
 GCD function return greatest common denominator with number passed
 
 ```swift
-$.gcd(3, 10)
+€.gcd(3, 10)
 => 1
 
-$.gcd(3, 9)
+€.gcd(3, 9)
 => 3
 ```
 
-### indexOf - `$.indexOf`
+### indexOf - `€.indexOf`
 
 Gets the index at which the first occurrence of value is found.
 
 ```swift
-$.indexOf([1, 2, 3, 1, 2, 3], value: 2) 
+€.indexOf([1, 2, 3, 1, 2, 3], value: 2) 
 => 1
 
-$.indexOf(["A", "B", "C"], value: "B") 
+€.indexOf(["A", "B", "C"], value: "B") 
 => 1
 
-$.indexOf([3, 4, 5], value: 5) 
+€.indexOf([3, 4, 5], value: 5) 
 => 2
 
-$.indexOf([3, 4, 5], value: 3) 
+€.indexOf([3, 4, 5], value: 3) 
 => 0
 
-$.indexOf([3, 4, 5], value: 2) 
+€.indexOf([3, 4, 5], value: 2) 
 => nil
 ```
 
-### initial - `$.initial`
+### initial - `€.initial`
 
 Gets all but the last element or last n elements of an array.
 
 ```swift
-$.initial([3, 4, 5]) 
+€.initial([3, 4, 5]) 
 => [3, 4]
 
-$.initial([3, 4, 5], numElements: 2) 
+€.initial([3, 4, 5], numElements: 2) 
 => [3]
 ```
 
-### intersection - `$.intersection`
+### intersection - `€.intersection`
 
 Creates an array of unique values present in all provided arrays.
 
 ```swift
-$.intersection([1, 2, 3], [5, 2, 1, 4], [2, 1]) 
+€.intersection([1, 2, 3], [5, 2, 1, 4], [2, 1]) 
 => [1, 2]
 ```
 
-### it-isIn `$.it<T: Comparable>(i: T, isIn range: Range<T>)`
+### it-isIn `€.it<T: Comparable>(i: T, isIn range: Range<T>)`
 
 Returns true if i is in interval or range
 
 ```swift
-$.it("c", isIn: "a"..."z")
+€.it("c", isIn: "a"..."z")
 => true
 
-$.it("z", isIn: "a"..<"z")
+€.it("z", isIn: "a"..<"z")
 => false
 
-$.it(1, isIn: -1.0...10.0)
+€.it(1, isIn: -1.0...10.0)
 => true
 ```
 
-### last - `$.last`
+### last - `€.last`
 
 Gets the last element from the array.
 
 ```swift
-$.last([3, 4, 5]) 
+€.last([3, 4, 5]) 
 => 5
 ```
 
-### lastIndexOf - `$.lastIndexOf`
+### lastIndexOf - `€.lastIndexOf`
 
 Gets the index at which the last occurrence of value is found.
 
 ```swift
-$.lastIndexOf([1, 2, 3, 1, 2, 3], value: 2) 
+€.lastIndexOf([1, 2, 3, 1, 2, 3], value: 2) 
 => 4
 ```
 
-### lcm `$.lcm`
+### lcm `€.lcm`
 
 LCM method return least common multiple with number passed
 
 ```swift
-$.lcm(3, 10)
+€.lcm(3, 10)
 => 30
 
-$.lcm(3, 9)
+€.lcm(3, 9)
 => 9
 ```
 
-### rest - `$.rest`
+### rest - `€.rest`
 
 The opposite of initial this method gets all but the first element or first n elements of an array.
 
 ```swift
-$.rest([3, 4, 5]) 
+€.rest([3, 4, 5]) 
 => [4, 5]
 
-$.rest([3, 4, 5], numElements: 2) 
+€.rest([3, 4, 5], numElements: 2) 
 => [5]
 ```
 
-### map - `$.map`
+### map - `€.map`
 
 Maps each element to new value based on the map function passed
 
 ```swift
-$.map([1, 2, 3, 4]) { 
-  $0 * 2
+€.map([1, 2, 3, 4]) { 
+  €0 * 2
 }
 => [2, 4, 6, 8]
 ```
 
-### min - `$.min`
+### min - `€.min`
 
 Retrieves the minimum value in an array.
 
 ```swift
-$.min([2, 1, 2, 3, 4]) 
+€.min([2, 1, 2, 3, 4]) 
 => 1
 ```
 
-### max - `$.max`
+### max - `€.max`
 
 Retrieves the maximum value in an array.
 
 ```swift
-$.max([1, 2, 3, 4, 2, 1]) 
+€.max([1, 2, 3, 4, 2, 1]) 
 => 4
 ```
 
-### pluck - `$.pluck`
+### pluck - `€.pluck`
 
 Retrieves the value of a specified property from all elements in the array.
 
 ```swift
 let arr = [["age": 20], ["age": 30], ["age": 40]]
-$.pluck(arr, value: "age") 
+€.pluck(arr, value: "age") 
 => [20, 30, 40]
 ```
 
-### pull - `$.pull`
+### pull - `€.pull`
 
 Removes all provided values from the given array.
 
 ```swift
-$.pull([3, 4, 5, 3, 5], values: 3, 5) 
+€.pull([3, 4, 5, 3, 5], values: 3, 5) 
 => [4]
 
-$.pull([3, 4, 5, 3, 5], values: 4) 
+€.pull([3, 4, 5, 3, 5], values: 4) 
 => [3, 5, 3, 5]
 
-$.pull([3, 4, 5, 3, 5], values: 3, 4, 5) 
+€.pull([3, 4, 5, 3, 5], values: 3, 4, 5) 
 => []
 ```
 
-### pullAt - `$.pullAt`
+### pullAt - `€.pullAt`
 
 Removes all provided values from the given array at the given indices
 
 ```swift
 let arr = [10, 20, 30, 40, 50]
-$.pullAt(arr, indices: 1, 2, 3)
+€.pullAt(arr, indices: 1, 2, 3)
 ```
 
-### range - `$.range`
+### range - `€.range`
 
 Creates an array of numbers (positive and/or negative) progressing from start up to but not including end.
 
 ```swift
-$.range(4) 
+€.range(4) 
 => [0, 1, 2, 3]
 
-$.range(from: 1, to: 5) 
+€.range(from: 1, to: 5) 
 => [1, 2, 3, 4]
 
-$.range(from: 0, to: 20, incrementBy: 5) 
+€.range(from: 0, to: 20, incrementBy: 5) 
 => [0, 5, 10, 15]
 
-$.range(from: 1, through: 5)
+€.range(from: 1, through: 5)
 => [1, 2, 3, 4, 5]
 
-$.range(from: 0, through: 20, incrementBy: 5)
+€.range(from: 0, through: 20, incrementBy: 5)
 => [0, 5, 10, 15, 20]
 ```
 
-### reduce - `$.reduce`
+### reduce - `€.reduce`
 
 Reduce function that will resolve to one value after performing combine function on all elements
 
 ```swift
-$.reduce([1, 2, 3], initial: 0) { (total, element) in
+€.reduce([1, 2, 3], initial: 0) { (total, element) in
     total + element
 }
 => 6
 ```
 
-### sample - `$.sample`
+### sample - `€.sample`
 
 Returns a sample item from the array
 
 ```swift
 let arr : Int[] = [2, 1, 2, 3, 4]
-$.contains(arr, value: $.sample(arr))
+€.contains(arr, value: €.sample(arr))
 => true
 ```
 
-### sequence - `$.sequence`
+### sequence - `€.sequence`
 
 Creates an array of an arbitrary sequence. Especially useful with builtin ranges.
 
 ```swift
-$.sequence(0..4) 
+€.sequence(0..4) 
 => [0, 1, 2, 3]
 
-$.sequence(-2.0..2.0) 
+€.sequence(-2.0..2.0) 
 => [-2.0, -1.0, 0.0, 1.0]
 
-$.sequence((0..20).by(5)) 
+€.sequence((0..20).by(5)) 
 => [0, 5, 10, 15]
 
-$.sequence("abc") 
+€.sequence("abc") 
 => ["a", "b", "c"]
 ```
-### remove - `$.remove`
+### remove - `€.remove`
 
 Removes an element from array.
 ```swift
-$.remove(["A", "B", "C", "D"], value: "B")
+€.remove(["A", "B", "C", "D"], value: "B")
 => ["A", "C", "D"]
 ```
 
-### remove - `$.remove`
+### remove - `€.remove`
 
 Removes all elements from an array that the `callback` returns true.
 
 ```swift
-let result = $.remove([1, 2, 3, 4, 5, 6]) { 
-  $0 == 2 || $0 == 3 
+let result = €.remove([1, 2, 3, 4, 5, 6]) { 
+  €0 == 2 || €0 == 3 
 }
 result
 => [1, 4, 5, 6]
 ```
 
-### shuffle - `$.shuffle`
+### shuffle - `€.shuffle`
 
 Shuffles and returns the new shuffled array
 
 ```swift
-let result = $.shuffle([1, 2, 3, 4, 5, 6])
+let result = €.shuffle([1, 2, 3, 4, 5, 6])
 result
 => [4, 1, 3, 5, 6, 2]
 ```
 
-### size - `$.size`
+### size - `€.size`
 
 Returns size of the array
 
 ```swift
-$.size(["a", "b", "c")
+€.size(["a", "b", "c")
 => 3
 ```
 
-### sortedIndex - `$.sortedIndex`
+### sortedIndex - `€.sortedIndex`
 
 Gives the smallest index at which a value should be inserted into a given the array is sorted.
 
 ```swift
-$.sortedIndex([3, 4, 6, 10], value: 5)
+€.sortedIndex([3, 4, 6, 10], value: 5)
 => 2
 
-$.sortedIndex([10, 20, 30, 50], value: 40)
+€.sortedIndex([10, 20, 30, 50], value: 40)
 => 3
 ```
 
-### transpose - `$.transpose`
+### transpose - `€.transpose`
 
 Creates a tranposed matrix.
 
 ```swift
-$.transpose([[1, 2, 3], [4, 5, 6]])
+€.transpose([[1, 2, 3], [4, 5, 6]])
 => [[1, 4], [2, 5], [3, 6]]
 ```
 
-### union - `$.union`
+### union - `€.union`
 
 Creates an array of unique values, in order, of the provided arrays.
 
 ```swift
-$.union([1, 2, 3], [5, 2, 1, 4], [2, 1]) 
+€.union([1, 2, 3], [5, 2, 1, 4], [2, 1]) 
 => [1, 2, 3, 5, 4]
 ```
 
-### merge - `$.merge`
+### merge - `€.merge`
 
 Creates an array of all values, including duplicates, of the arrays in the order they are provided.
 
@@ -670,128 +668,128 @@ Creates an array of all values, including duplicates, of the arrays in the order
 let arr  = [1, 5]
 let arr2 = [2, 4]
 let arr3 = [5, 6]
-let result = $.merge(arr, arr2, arr3)
+let result = €.merge(arr, arr2, arr3)
 result
 => [1, 5, 2, 4, 5, 6]
 ```
 
-### uniq - `$.uniq`
+### uniq - `€.uniq`
 
 Creates a duplicate-value-free version of an array.
 
 ```swift
-$.uniq([1, 2, 1, 3, 1])
+€.uniq([1, 2, 1, 3, 1])
 => [1, 2, 3]
 
-$.uniq([1, 2.5, 3, 1.5, 2, 3.5]) {
-  floor($0)
+€.uniq([1, 2.5, 3, 1.5, 2, 3.5]) {
+  floor(€0)
 }
 => [1, 2.5, 3]
 ```
 
-### without - `$.without`
+### without - `€.without`
 
 Creates an array excluding all provided values.
 
 ```swift
-$.without([3, 4, 5, 3, 5], values: 3, 5)
+€.without([3, 4, 5, 3, 5], values: 3, 5)
 => [4]
 
-$.without([3, 4, 5, 3, 5], values: 4)
+€.without([3, 4, 5, 3, 5], values: 4)
 => [3, 5, 3, 5]
 
-$.without([3, 4, 5, 3, 5], values: 3, 4, 5)
+€.without([3, 4, 5, 3, 5], values: 3, 4, 5)
 => []
 ```
 
-### xor - `$.xor`
+### xor - `€.xor`
 
 Creates an array that is the symmetric difference of the provided arrays.
 
 ```swift
-$.xor([1, 2, 3], [5, 2, 1, 4])
+€.xor([1, 2, 3], [5, 2, 1, 4])
 => [3, 4, 5]
 ```
 
-### zip - `$.zip`
+### zip - `€.zip`
 
 Creates an array of grouped elements, the first of which contains the first elements of the given arrays.
 
 ```swift
-$.zip(["fred", "barney"], [30, 40], [true, false]) as [NSObject] 
+€.zip(["fred", "barney"], [30, 40], [true, false]) as [NSObject] 
 => [["fred", 30, true], ["barney", 40, false]]
 ```
 
-### zipObject - `$.zipObject`
+### zipObject - `€.zipObject`
 
 Creates an object composed from arrays of keys and values.
 
 ```swift
-$.zipObject(["fred", "barney"], values: [30, 40])
+€.zipObject(["fred", "barney"], values: [30, 40])
 => ["fred": 30, "barney": 40]
 ```
 
-### partition - `$.partition`
+### partition - `€.partition`
 
 Produces an array of arrays, each containing n elements, each offset by step. Stops after a partition is less than n length.
 
 ```swift
 let arr = [1, 2, 3, 4, 5]
-$.partition(arr, n: 2)
+€.partition(arr, n: 2)
 => [[1, 2], [3, 4]]
 
-$.partition(arr, n: 4, step: 1)
+€.partition(arr, n: 4, step: 1)
 => [[1, 2, 3, 4], [2, 3, 4, 5]]
 
-$.partition(arr, n: 4, step: 1, pad: nil)
+€.partition(arr, n: 4, step: 1, pad: nil)
 => [[1, 2, 3, 4], [2, 3, 4, 5], [3, 4, 5]]
 
-$.partition(arr, n: 4, step: 1, pad: [6, 7, 8])
+€.partition(arr, n: 4, step: 1, pad: [6, 7, 8])
 => [[1, 2, 3, 4], [2, 3, 4, 5], [3, 4, 5, 6]]
 ```
 
-### partitionAll - `$.partitionAll`
+### partitionAll - `€.partitionAll`
 
 Produces an array of arrays, each containing n elements, each offset by step. Continues after a partition is less than n length.
 
 ```swift
-$.partitionAll([1, 2, 3, 4, 5], n:4, step: 1)
+€.partitionAll([1, 2, 3, 4, 5], n:4, step: 1)
 => [[1, 2, 3, 4], [2, 3, 4, 5], [3, 4, 5], [4, 5], [5]]
 ```
 
-### partitionBy - `$.partitionBy`
+### partitionBy - `€.partitionBy`
 
 Applies a function to each element in array, splitting it each time the function returns a new value.
 
 ```swift
-$.partitionBy([1, 2, 3, 4, 5]) { $0 % 2 == 0 }
+€.partitionBy([1, 2, 3, 4, 5]) { €0 % 2 == 0 }
 => [[1], [2, 4], [3, 5], [6]]
 
-$.partitionBy([1, 7, 3, 6, 10, 12]) { $0 % 3 }
+€.partitionBy([1, 7, 3, 6, 10, 12]) { €0 % 3 }
 => [[1, 7], [3, 6], [10], [12]]
 ```
 
 ## Dictionary ##
 
-### keys - `$.keys`
+### keys - `€.keys`
 
 Creates an array of keys given a dictionary.
 
 ```swift
-$.keys(["Dog": 1, "Cat": 2])
+€.keys(["Dog": 1, "Cat": 2])
 => ["Dog", "Cat"]
 ```
 
-### values - `$.values`
+### values - `€.values`
 
 Creates an array of values given a dictionary
 
 ```swift
-$.values(["Dog": 1, "Cat": 2])
+€.values(["Dog": 1, "Cat": 2])
 => [1, 2]
 ```
 
-### merge - `$.merge`
+### merge - `€.merge`
 
 Merges all of the dictionaries together and the latter dictionary overrides the value at a given key
 
@@ -799,42 +797,42 @@ Merges all of the dictionaries together and the latter dictionary overrides the 
 let dict: Dictionary<String, Int> = ["Dog": 1, "Cat": 2]
 let dict2: Dictionary<String, Int> = ["Cow": 3]
 let dict3: Dictionary<String, Int> = ["Sheep": 4]
-$.merge(dict, dict2, dict3)
+€.merge(dict, dict2, dict3)
 => ["Dog": 1, "Cat": 2, "Cow": 3, "Sheep": 4]
 ```
 
-### pick - `$.pick`
+### pick - `€.pick`
 
 Creates a shallow clone of a dictionary composed of the specified keys.
 
 ```swift
-$.pick(["Dog": 1, "Cat": 2, "Cow": 3], keys: "Dog", "Cow")
+€.pick(["Dog": 1, "Cat": 2, "Cow": 3], keys: "Dog", "Cow")
 => ["Dog": 1, "Cow": 3]
 ```
 
-### omit - `$.omit`
+### omit - `€.omit`
 
 Creates a shallow clone of a dictionary excluding the specified keys.
 
 ```swift
-$.omit(["Dog": 1, "Cat": 2, "Cow": 3, "Sheep": 4], keys: "Cat", "Dog")
+€.omit(["Dog": 1, "Cat": 2, "Cow": 3, "Sheep": 4], keys: "Cat", "Dog")
 => ["Cow": 3, "Sheep": 4]
 ```
 
 ## Object ##
 
-### tap - `$.tap`
+### tap - `€.tap`
 
 Invokes interceptor with the object and then returns object.
 
 ```swift
 var beatle = Car(name: "Fusca")
-$.tap(beatle, {$0.name = "Beatle"}).color = "Blue"
+€.tap(beatle, {€0.name = "Beatle"}).color = "Blue"
 ```
 
 ## Function ##
 
-### after - `$.after`
+### after - `€.after`
 
 Creates a function that executes passed function only after being called n times.
 
@@ -846,7 +844,7 @@ let asyncSave = { (function: () -> ()?) in
    // but in real world would be async
 }
 var isDone = false
-var completeCallback = $.after(saves.count) {
+var completeCallback = €.after(saves.count) {
    isDone = true
 }
 for elem in saves {
@@ -856,51 +854,51 @@ isDone
 => true
 ```
 
-### bind - `$.bind`
+### bind - `€.bind`
 
 Creates a function that, when called, invokes func with the binding of arguments provided.
 
 ```swift
-var helloWorldFunc = $.bind({(T...) in
+var helloWorldFunc = €.bind({(T...) in
   T[0] + " " + T[1] + " from " + T[2] 
 }, "Hello", "World", "Swift")
 helloWorldFunc() 
 => "Hello World from Swift"
 
-helloWorldFunc = $.bind({ $0 + " World" }, "Hello")
+helloWorldFunc = €.bind({ €0 + " World" }, "Hello")
 helloWorldFunc()
 => "Hello World"
 
-helloWorldFunc = $.bind({ $0 + $1 + " World" }, "Hello ", "Great")
+helloWorldFunc = €.bind({ €0 + €1 + " World" }, "Hello ", "Great")
 helloWorldFunc()
 => "Hello Great World"
 ```
 
-### compose - `$.compose`
+### compose - `€.compose`
 
 Compose two or more functions where the return value of the first function is passed into the next function. Useful when chaining functions and returns a function that can be called with variadic argument values or an array of values as input
 
 ```swift
 let double = { (params: Int...) -> [Int] in
-  return $.map(params) { $0 * 2 }
+  return €.map(params) { €0 * 2 }
 }
 let subtractTen = { (params: Int...) -> [Int] in
-  return $.map(params) { $0 - 10 }
+  return €.map(params) { €0 - 10 }
 }
-let doubleSubtractTen = $.compose(double, subtractTen)
+let doubleSubtractTen = €.compose(double, subtractTen)
 doubleSubtractTen(5, 6, 7)
 => [0, 2, 4]
 
-let f = $.compose({ (arr: [Int]) -> [Int] in
-  $.map(arr) { $0 + 1 }
+let f = €.compose({ (arr: [Int]) -> [Int] in
+  €.map(arr) { €0 + 1 }
 }, { (arr: [Int]) -> [Int] in
-  $.map(arr) { $0 * 2 }
+  €.map(arr) { €0 * 2 }
 })
 f([1, 2])
 => [4, 6]
 ```
 
-### curry - `$.curry`
+### curry - `€.curry`
 
 Returns a function which when invoked either executes the function returning its result, if all function arguments have been provided, or returns another function that accepts one more argument of the remaining function arguments until all arguments are supplied. This is useful for making partial function as seen in these examples.
 
@@ -909,7 +907,7 @@ func adder(x: Int, y: Int, z: Int) -> Int {
 return x + y + z
 }
 
-let curriedAdder = $.curry(adder)
+let curriedAdder = €.curry(adder)
 let addTenAnd = curriedAdder(10)
 let addThirtyAnd = addTenAnd(20)
 addThirtyAnd(1)
@@ -922,23 +920,23 @@ addTenAnd(10)(10)
 => 30
 ```
 
-### id - `$.id`
+### id - `€.id`
 
 The identify function which simply returns the argument its given.
 
 ```swift
-$.id("Hello World from Swift")
+€.id("Hello World from Swift")
 => "Hello World from Swift"
 ```
 
-### memoize - `$.memoize`
+### memoize - `€.memoize`
 
 Returns a memoized function to improve performance by caching recursive function values.
 
 ```swift
 var times = 0 // to test memoization
 
-let fibMemo = $.memoize { (fib: (Int -> Int), val: Int) -> Int in
+let fibMemo = €.memoize { (fib: (Int -> Int), val: Int) -> Int in
   times += 1
   return val == 1 || val == 0 ? 1 : fib(val - 1) + fib(val - 2)
 }
@@ -958,25 +956,25 @@ times
 => 1
 ```
 
-### noop - `$.noop`
+### noop - `€.noop`
 
 A no-operation function.
 
 ```swift
-$.noop() 
+€.noop() 
 => nil
 ```
 
-### now - `$.now`
+### now - `€.now`
 
 Gets the number of seconds that have elapsed since the Unix epoch (1 January 1970 00:00:00 UTC).
 
 ```swift
-$.now() 
+€.now() 
 => 1431911564.292577
 ```
 
-### once - `$.once`
+### once - `€.once`
 
 Get a wrapper function that executes the passed function only once. Useful for getting shared config or creating singleton objects.
 
@@ -989,7 +987,7 @@ func createConfig() -> [String: String] {
   ]
 }
 
-let getConfig = $.once(createConfig)
+let getConfig = €.once(createConfig)
 getConfig()
 => ["App ID": "1", "URL": "https://someurl"]
 
@@ -997,42 +995,42 @@ getConfig()
 => ["App ID": "1", "URL": "https://someurl"]
 ```
 
-### partial - `$.partial`
+### partial - `€.partial`
 
 Creates a function that, when called, invokes func with any additional partial arguments prepended to those provided to the new function.
 
 ```swift
-let partialFunc = $.partial({(T...) in 
+let partialFunc = €.partial({(T...) in 
   T[0] + " " + T[1] + " from " + T[2] 
 }, "Hello")
 partialFunc("World", "Swift") 
 => "Hello World from Swift"
 ```
 
-### times - `$.times`
+### times - `€.times`
 
 Call a function n times and also passes the index. If a value is returned in the function then the times method will return an array of those values.
 
 ```swift
-let fun = $.bind({ (names: String...) -> String in
-   let people = $.join(names, separator: " from ")
+let fun = €.bind({ (names: String...) -> String in
+   let people = €.join(names, separator: " from ")
    return "Hello \(people)"
    }, "Ankur", "Swift")
-$.times(2, function: fun) as String[] 
+€.times(2, function: fun) as String[] 
 => ["Hello Ankur from Swift", "Hello Ankur from Swift"]
 ```
 
 ## Chaining ##
 
-**`$.chain(...)`**
+**`€.chain(...)`**
 
 ### `any`
 
 Returns true if callback function returns true for at least one element in the array
 
 ```swift
-var chain = $.chain([1, 2, 3])
-chain.any({ ($0 as Int) < 2 })
+var chain = €.chain([1, 2, 3])
+chain.any({ (€0 as Int) < 2 })
 => true
 ```
 
@@ -1041,8 +1039,8 @@ chain.any({ ($0 as Int) < 2 })
 Returns true if callback function returns true for all elements in the array
 
 ```swift
-var chain = $.chain([1, 2, 3])
-chain.all({ ($0 as Int) < 10 })
+var chain = €.chain([1, 2, 3])
+chain.all({ (€0 as Int) < 10 })
 => true
 ```
 
@@ -1051,9 +1049,9 @@ chain.all({ ($0 as Int) < 10 })
 Passes each element value to the callback function
 
 ```swift
-var chain = $.chain(["Hello", "World"])
+var chain = €.chain(["Hello", "World"])
 var strBuilder = ""
-chain.each({ strBuilder += ($0 as String) }).value
+chain.each({ strBuilder += (€0 as String) }).value
 strBuilder
 => "HelloWorld"
 ```
@@ -1063,8 +1061,8 @@ strBuilder
 Filters the arrary to elements for which the callback function returns true
 
 ```swift
-var chain = $.chain([1, 2, 3, 4])
-chain.filter({ ($0 as Int) < 3 }).value
+var chain = €.chain([1, 2, 3, 4])
+chain.filter({ (€0 as Int) < 3 }).value
 => [1, 2]
 ```
 
@@ -1073,7 +1071,7 @@ chain.filter({ ($0 as Int) < 3 }).value
 Returns the first element in the array and terminates the chain
 
 ```swift
-var chain = $.chain([1, 2, 3, 4])
+var chain = €.chain([1, 2, 3, 4])
 chain.first()
 => 1
 ```
@@ -1083,7 +1081,7 @@ chain.first()
 Returns the second element in the array and terminates the chain
 
 ```swift
-var chain = $.chain([1, 2, 3, 4])
+var chain = €.chain([1, 2, 3, 4])
 chain.second()
 => 2
 ```
@@ -1093,7 +1091,7 @@ chain.second()
 Returns the third element in the array and terminates the chain
 
 ```swift
-var chain = $.chain([1, 2, 3, 4])
+var chain = €.chain([1, 2, 3, 4])
 chain.third()
 => 3
 ```
@@ -1103,7 +1101,7 @@ chain.third()
 Flattens a nested array of any depth.
 
 ```swift
-var chain = $.chain([[1, [2]], [3], 4])
+var chain = €.chain([[1, [2]], [3], 4])
 chain.flatten().value
 => [1, 2, 3, 4]
 ```
@@ -1113,7 +1111,7 @@ chain.flatten().value
 Gets all but the last element or last n elements of an array.
 
 ```swift
-var chain = $.chain([1, 2, 3, 4])
+var chain = €.chain([1, 2, 3, 4])
 chain.initial(2).value
 => [1, 2]
 ```
@@ -1123,8 +1121,8 @@ chain.initial(2).value
 Maps each element to the new value returned in the callback function
 
 ```swift
-var chain = $.chain([1, 2, 3, 4])
-chain.map({ ($0 as Int) * 2 }).value
+var chain = €.chain([1, 2, 3, 4])
+chain.map({ (€0 as Int) * 2 }).value
 => [2, 4, 6, 8]
 ```
 
@@ -1133,8 +1131,8 @@ chain.map({ ($0 as Int) * 2 }).value
 Returns size of the array and terminates the chain
 
 ```swift
-var chain = $.chain([1, 2, 3, 4])
-chain.map({ ($0 as Int) * 2 }).size()
+var chain = €.chain([1, 2, 3, 4])
+chain.map({ (€0 as Int) * 2 }).size()
 => 4
 ```
 
@@ -1143,7 +1141,7 @@ chain.map({ ($0 as Int) * 2 }).size()
 Slices the array based on the start and end position. If an end position is not specified it will slice till the end of the array.
 
 ```swift
-var chain = $.chain([1, 2, 3, 4, 5, 6, 7])
+var chain = €.chain([1, 2, 3, 4, 5, 6, 7])
 chain.slice(2, end: 4).value
 => [3, 4]
 ```
@@ -1153,7 +1151,7 @@ chain.slice(2, end: 4).value
 Returns the value after evaluating all callbacks
 
 ```swift
-var chain = $.chain([1, 2, 3, 4, 5, 6, 7])
+var chain = €.chain([1, 2, 3, 4, 5, 6, 7])
 chain.value
 => [1, 2, 3, 4, 5, 6, 7]
 ```
@@ -1161,20 +1159,20 @@ chain.value
 **Chaining more than one method**
 
 ```swift
-$.chain([[1, 2], 3, [[4], 5]])
+€.chain([[1, 2], 3, [[4], 5]])
   .initial()
   .flatten()
   .first()
 => 1
 
-$.chain([1, 2, 3, 4, 5])
-  .filter { $0 % 1 == 0 }
-  .map { $0 * 2 }
-  .all {$0 < 10}
+€.chain([1, 2, 3, 4, 5])
+  .filter { €0 % 1 == 0 }
+  .map { €0 * 2 }
+  .all {€0 < 10}
 => false
 
-$.chain([1, 2, 3, 4, 5])
-  .map({ $0 * 2 })
+€.chain([1, 2, 3, 4, 5])
+  .map({ €0 * 2 })
   .flatten()
   .initial(2).value
 => [2, 4, 6]
@@ -1213,7 +1211,7 @@ For each item in the array invoke the callback by passing the elem
 ```swift
 let array = ["foo", "spam", "bar", "eggs"]
 array.each {
-  print($0)
+  print(€0)
 }
 => ["foo", "spam", "bar", "eggs"]
 ```
@@ -1236,13 +1234,13 @@ Cycles through the array definetly or indefinetly passing each element into the 
 
 ```swift
 [1, 2, 3].cycle(2) {
-  print($0)
+  print(€0)
 }
 // Prints the following
 123123
 
 [1, 2, 3].cycle {
-  print($0)
+  print(€0)
 }
 // Cycles in an infinite loop
 ```
@@ -1293,7 +1291,7 @@ This method is like find except that it returns the index of the first element t
 
 ```swift
 let ind: int? = ["foo", "bar", "spam", "eggs"].findIndex {
-  $0.length == 4
+  €0.length == 4
 }
 ind! == 2 
 => true
@@ -1305,7 +1303,7 @@ This method is like findIndex except that it iterates over elements of the array
 
 ```swift
 let ind: int? = ["foo", "bar", "spam", "eggs"].findLastIndex {
-  $0.length == 4 
+  €0.length == 4 
 }
 ind! == 3 
 => true
@@ -1835,7 +1833,7 @@ spaces.strip()
 Init with regex pattern as string
 
 ```swift
-Regex.init("^Hello.World$") // Regex that matches "Hello World"
+Regex.init("^Hello.World€") // Regex that matches "Hello World"
 ```
 
 ### `matches(testStr: String) -> [AnyObject]`
@@ -1843,14 +1841,14 @@ Regex.init("^Hello.World$") // Regex that matches "Hello World"
 Return matches based on String passed.
 
 ```swift
-let re = Regex.init("^Hello.World$")
+let re = Regex.init("^Hello.World€")
 re.matches("Hello World")
 ```
 
 ### `test(testStr: String) -> Bool`
 
 ```swift
-let re = Regex.init("^Hello.World$")
+let re = Regex.init("^Hello.World€")
 re.test("Hello World")
 => true
 
