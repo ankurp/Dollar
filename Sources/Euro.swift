@@ -10,8 +10,8 @@
 //    \|___|\__\_|
 //         \|__|
 //
-//  Dollar.swift
-//  $ - A functional tool-belt for Swift Language
+//  Euro.swift
+//  € - A functional tool-belt for Swift Language
 //
 //  Created by Ankur Patel on 6/3/14.
 //  Copyright (c) 2014 Encore Dev Labs LLC. All rights reserved.
@@ -22,7 +22,7 @@ import Foundation
 import Dispatch
 #endif
 
-open class `$` {
+open class `€` {
     ///  ___  ___  _______   ___       ________  _______   ________
     /// |\  \|\  \|\  ___ \ |\  \     |\   __  \|\  ___ \ |\   __  \
     /// \ \  \\\  \ \   __/|\ \  \    \ \  \|\  \ \   __/|\ \  \|\  \
@@ -240,7 +240,7 @@ open class `$` {
     /// - parameter arrays: The arrays to difference between.
     /// - returns: The difference between the first array and all the remaining arrays from the arrays params.
     open class func differenceInOrder<T: Equatable>(_ arrays: [[T]]) -> [T] {
-        return `$`.reduce(self.rest(arrays), initial: self.first(arrays)!) { (result, arr) -> [T] in
+        return `€`.reduce(self.rest(arrays), initial: self.first(arrays)!) { (result, arr) -> [T] in
             return result.filter() { !arr.contains($0) }
         }
     }
@@ -359,7 +359,7 @@ open class `$` {
     /// - returns: factorial
     open class func factorial(_ num: Int) -> Int {
         guard num > 0 else { return 1 }
-        return num * `$`.factorial(num - 1)
+        return num * `€`.factorial(num - 1)
     }
 
     /// Get element from an array at the given index which can be negative
@@ -612,7 +612,7 @@ open class `$` {
     /// - parameter second: number
     /// - returns: Least common multiple
     open class func lcm(_ first: Int, _ second: Int) -> Int {
-        return (first / `$`.gcd(first, second)) * second
+        return (first / `€`.gcd(first, second)) * second
     }
 
     /// The identity function. Returns the argument it is given.
@@ -1056,7 +1056,7 @@ open class `$` {
         for index in indices {
             elemToRemove.append(array[index])
         }
-        return `$`.pull(array, values: elemToRemove)
+        return `€`.pull(array, values: elemToRemove)
     }
 
     /// Returns permutation of array
@@ -1065,17 +1065,17 @@ open class `$` {
     /// - returns: Array of permutation of the characters specified
     open class func permutation<T>(_ elements: [T]) -> [String] where T : CustomStringConvertible {
         guard elements.count > 1 else {
-            return `$`.map(elements) { $0.description }
+            return `€`.map(elements) { $0.description }
         }
 
-        let strings = self.permutation(`$`.initial(elements))
-        if let char = `$`.last(elements) {
-            return `$`.reduce(strings, initial: []) { (result, str) -> [String] in
-                let splitStr = `$`.map(str.description.characters) { $0.description }
-                return result + `$`.map(0...splitStr.count) { (index) -> String in
-                    var copy = `$`.copy(splitStr)
+        let strings = self.permutation(`€`.initial(elements))
+        if let char = `€`.last(elements) {
+            return `€`.reduce(strings, initial: []) { (result, str) -> [String] in
+                let splitStr = `€`.map(str.description.characters) { $0.description }
+                return result + `€`.map(0...splitStr.count) { (index) -> String in
+                    var copy = `€`.copy(splitStr)
                     copy.insert(char.description, at: (splitStr.count - index))
-                    return `$`.join(copy, separator: "")
+                    return `€`.join(copy, separator: "")
                 }
             }.sorted()
         }
@@ -1462,21 +1462,21 @@ open class Chain<C> {
     ///
     /// - returns: First element from the array.
     open func first() -> C? {
-        return `$`.first(self.value)
+        return `€`.first(self.value)
     }
 
     /// Get the second object in the wrapper object.
     ///
     /// - returns: Second element from the array.
     open func second() -> C? {
-        return `$`.second(self.value)
+        return `€`.second(self.value)
     }
 
     /// Get the third object in the wrapper object.
     ///
     /// - returns: Third element from the array.
     open func third() -> C? {
-        return `$`.third(self.value)
+        return `€`.third(self.value)
     }
 
     /// Flattens nested array.
@@ -1484,7 +1484,7 @@ open class Chain<C> {
     /// - returns: The wrapper object.
     open func flatten() -> Chain {
         return self.queue {
-            return Wrapper(`$`.flatten($0.value))
+            return Wrapper(`€`.flatten($0.value))
         }
     }
 
@@ -1501,7 +1501,7 @@ open class Chain<C> {
     /// - returns: The wrapper object.
     open func initial(_ numElements: Int) -> Chain {
         return self.queue {
-            return Wrapper(`$`.initial($0.value, numElements: numElements))
+            return Wrapper(`€`.initial($0.value, numElements: numElements))
         }
     }
 
@@ -1574,7 +1574,7 @@ open class Chain<C> {
     /// - parameter function: Function to tell whether element value is true or false.
     /// - returns: Whether all elements are true according to func function.
     open func all(_ function: (C) -> Bool) -> Bool {
-        return `$`.every(self.value, callback: function)
+        return `€`.every(self.value, callback: function)
     }
 
     /// Returns if any element in array is true based on the passed function.
@@ -1605,7 +1605,7 @@ open class Chain<C> {
     /// - returns: The wrapper object.
     open func slice(_ start: Int, end: Int = 0) -> Chain {
         return self.queue {
-            return Wrapper(`$`.slice($0.value, start: start, end: end))
+            return Wrapper(`€`.slice($0.value, start: start, end: end))
         }
     }
 

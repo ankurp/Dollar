@@ -1,3 +1,3 @@
 import PackageDescription
 
-let package = Package(name: "Dollar")
+let package = Package(name: "Euro")
