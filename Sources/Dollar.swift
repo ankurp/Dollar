@@ -245,7 +245,7 @@ open class `$` {
     open class func throttle(limitTo: DispatchTimeInterval, queue: DispatchQueue = .main, _ function: @escaping (() -> Void)) -> () -> Void {
         var allowFunction: Bool = true
         return {
-            guard allowWork else { return }
+            guard allowFunction else { return }
             allowFunction = false
             function()
             queue.asyncAfter(deadline: .now() + limitTo, qos: .background) {
