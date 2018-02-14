@@ -19,7 +19,7 @@
 
 import Foundation
 #if os(Linux)
-import Dispatch
+    import Dispatch
 #endif
 
 open class `$` {
@@ -232,6 +232,25 @@ open class `$` {
             currentWorkItem?.cancel()
             currentWorkItem = DispatchWorkItem { function() }
             queue.asyncAfter(deadline: .now() + delayBy, execute: currentWorkItem!)
+        }
+    }
+
+    /// Throttle a function such that the function is invoked immediately, and only once no matter
+    /// how many times it is called within the limitTo interval
+    ///
+    /// - parameter delayBy: interval to delay the execution of the function by
+    /// - parameter queue: Queue to run the function on. Defaults to main queue
+    /// - parameter function: function to execute
+    /// - returns: Function that is throttled and will only invoke immediately and only once within the limitTo interval
+    open class func throttle(limitTo: DispatchTimeInterval, queue: DispatchQueue = .main, _ function: @escaping (() -> Void)) -> () -> Void {
+        var allowWork: Bool = true
+        return {
+            guard allowWork else { return }
+            allowWork = false
+            function()
+            queue.asyncAfter(deadline: .now() + limitTo, qos: .background) {
+                allowWork = true
+            }
         }
     }
 
@@ -1077,7 +1096,7 @@ open class `$` {
                     copy.insert(char.description, at: (splitStr.count - index))
                     return `$`.join(copy, separator: "")
                 }
-            }.sorted()
+                }.sorted()
         }
         return []
     }
@@ -1289,7 +1308,7 @@ open class `$` {
     /// - returns: A transposed version of input matrix.
     open class func transpose<T>(_ matrix: [[T]]) -> [[T]] {
         guard matrix.filter({ return $0.count == matrix[0].count }).count == matrix.count else {
-                return matrix
+            return matrix
         }
         var returnMatrix: [[T?]] = Array(repeating: Array(repeating: nil, count: matrix.count),
                                          count: matrix.first!.count)
@@ -1632,3 +1651,4 @@ fileprivate func < <T: Comparable>(lhs: T?, rhs: T?) -> Bool {
         return false
     }
 }
+
