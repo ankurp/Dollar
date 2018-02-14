@@ -238,18 +238,18 @@ open class `$` {
     /// Throttle a function such that the function is invoked immediately, and only once no matter
     /// how many times it is called within the limitTo interval
     ///
-    /// - parameter delayBy: interval to delay the execution of the function by
+    /// - parameter limitTo: interval during which subsequent calls will be ignored
     /// - parameter queue: Queue to run the function on. Defaults to main queue
     /// - parameter function: function to execute
     /// - returns: Function that is throttled and will only invoke immediately and only once within the limitTo interval
     open class func throttle(limitTo: DispatchTimeInterval, queue: DispatchQueue = .main, _ function: @escaping (() -> Void)) -> () -> Void {
-        var allowWork: Bool = true
+        var allowFunction: Bool = true
         return {
             guard allowWork else { return }
-            allowWork = false
+            allowFunction = false
             function()
             queue.asyncAfter(deadline: .now() + limitTo, qos: .background) {
-                allowWork = true
+                allowFunction = true
             }
         }
     }
@@ -1651,4 +1651,3 @@ fileprivate func < <T: Comparable>(lhs: T?, rhs: T?) -> Bool {
         return false
     }
 }
-
