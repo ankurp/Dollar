@@ -576,6 +576,16 @@ $.contains(arr, value: $.sample(arr))
 => true
 ```
 
+### sum - `$.sum`
+
+Returns the sum of Integers or Double of the array
+
+```swift
+let arr : Int[] = [5, 10, 5]
+$.sum(arr)
+=> 20
+```
+
 ### sequence - `$.sequence`
 
 Creates an array of an arbitrary sequence. Especially useful with builtin ranges.

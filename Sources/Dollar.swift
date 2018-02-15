@@ -1255,6 +1255,22 @@ open class `$` {
         return array.count
     }
 
+    /// Return the sum of an array of integer numbers
+    ///
+    /// - parameter array: The array to source from.
+    /// - returns: Sum of all int of the array
+    open class func sum(_ array: [Int]) -> Int {
+        return self.reduce(array, initial: 0) { (total, num) in total + num }
+    }
+
+    /// Return the sum of an array of float numbers
+    ///
+    /// - parameter array: The array to source from.
+    /// - returns: Sum of all floats of the array
+    open class func sum(_ array: [Double]) -> Double {
+        return self.reduce(array, initial: 0.0) { (total, num) in total + num }
+    }
+
     /// Invokes interceptor with the object and then returns object.
     ///
     /// - parameter object: Object to tap into.

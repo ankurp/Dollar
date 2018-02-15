@@ -273,6 +273,16 @@ class DollarTests: XCTestCase {
         XCTAssertTrue(`$`.contains(arr, value: `$`.sample(arr)), "Returns sample which is an element from the array")
     }
 
+    func testSumInt() {
+        let arr = [5, 5, 10]
+        XCTAssertEqual(`$`.sum(arr), 20, "Returns the sum of an array of integers")
+    }
+
+    func testSumDouble() {
+        let arr = [21.2, 10.8, 10.0]
+        XCTAssertEqual(`$`.sum(arr), 42.0, "Returns the sum of an array of double numbers")
+    }
+
     func testPluck() {
         let arr = [["age": 20], ["age": 30], ["age": 40]]
         XCTAssertEqual(`$`.pluck(arr, value: "age"), [20, 30, 40], "Returns values from the object where they key is the value")
