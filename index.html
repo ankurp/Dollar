@@ -46,7 +46,11 @@
                 <ul>
                     <li id="root-item" class="level-0">
                         <ul class="level-1" id="root-list">
-                            <li id="dollar-item" class="level-1"><a id="dollar-link" href="#dollar" class="level-1">Dollar  </a></li>
+                            <li id="dollar-item" class="level-1"><a id="dollar-link" href="#dollar" class="level-1">Dollar  </a>
+                                <ul class="level-2" id="dollar-list">
+                                    <li id="contents-item" class="level-2"><a id="contents-link" href="#contents" class="level-2 active">Contents</a></li>
+                                </ul>
+                            </li>
                             <li id="setup-item" class="level-1"><a id="setup-link" href="#setup" class="level-1">Setup</a>
                                 <ul class="level-2" id="setup-list">
                                     <li id="using-cocoapods-version-0-36-x-or-greater-item" class="level-2"><a id="using-cocoapods-version-0-36-x-or-greater-link" href="#using-cocoapods-version-0-36-x-or-greater" class="level-2">Using cocoapods version 0.36.x or greater</a></li>
@@ -265,7 +269,7 @@
                                         <ul class="level-3" id="range-extensions-list">
                                             <li id="equals-item" class="level-3"><a id="equals-link" href="#equals" class="level-3">equals - ==</a></li>
                                             <li id="eachwithindex-callback-t-item" class="level-3"><a id="eachwithindex-callback-t-link" href="#eachwithindex-callback-t" class="level-3">eachWithIndex(callback: (T) -&gt; ())</a></li>
-                                            <li id="each-callback-item" class="level-3"><a id="each-callback-link" href="#each-callback" class="level-3 active">each(callback: () -&gt; ())</a></li>
+                                            <li id="each-callback-item" class="level-3"><a id="each-callback-link" href="#each-callback" class="level-3">each(callback: () -&gt; ())</a></li>
                                         </ul>
                                     </li>
                                 </ul>
@@ -283,6 +287,26 @@
             </p>
             <p>Dollar is a Swift library that provides useful functional programming helper methods without extending any built in objects. It is similar to <a href="https://lodash.com">Lo-Dash</a> or <a href="http://underscorejs.org">Underscore.js</a> in Javascript.</p>
             <p><a href="https://github.com/ankurp/Cent">Cent</a> is a library that extends certain Swift object types using the extension feature and gives its two cents to Swift language. It is now moved into a separate repo to support <code>Swift Package Manager</code></p>
+            <p>NOTE: Starting Swift 4 <code>$</code> is no longer a valid identifier. So you get the following <code>error: '$' is not an identifier; use backticks to escape it</code> You will need to espace <code>$</code> identifier using backticks.</p>
+            <h2 id="contents">Contents</h2>
+            <ul>
+                <li><a href="#setup">Setup</a>
+                    <ul>
+                        <li><a href="#demo-app">Demo App</a></li>
+                    </ul>
+                </li>
+                <li><a href="http://www.dollarswift.org">API Documentation</a></li>
+                <li><a href="#dollar-usage">Usage</a>
+                    <ul>
+                        <li><a href="#array">Array</a></li>
+                        <li><a href="#dictionary">Dictionary</a></li>
+                        <li><a href="#object">Object</a></li>
+                        <li><a href="#function">Function</a></li>
+                        <li><a href="#chaining" class="">Chaining</a></li>
+                    </ul>
+                </li>
+                <li><a href="#contributing">Contributing</a></li>
+            </ul>
             <h1 id="setup">Setup</h1>
             <h2 id="using-cocoapods-version-0-36-x-or-greater">Using <a href="http://cocoapods.org/">cocoapods</a> version 0.36.x or greater</h2>
             <p>Add <code>pod 'Dollar'</code> to your <code>Podfile</code> and run <code>pod install</code>. Add <code>use_frameworks!</code> to the end of the <code>Podfile</code>. Also checkout this <a href="https://github.com/ankurp/DollarPodApp">sample app</a>.</p>
