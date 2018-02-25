@@ -98,7 +98,7 @@ Creates an array with all nil values removed.
 $.compact([3, nil, 4, 5]) 
 => [3, 4, 5]
 
-$.compact([nil, nil]) as NSObject[] 
+$.compact([nil, nil]) as [NSObject] 
 => []
 ```
 
@@ -268,7 +268,7 @@ result
 => 1
 ```
 
-### first - `$.first(array: AnyObject[])`
+### first - `$.first(array: [AnyObject])`
 
 Gets the first element in the array.
 
@@ -291,7 +291,7 @@ $.groupBy(["strings", "with", "different", lengths"], callback: {$0.characters.c
 => [7: ["strings", "lengths"], 9: ["different"], 4: ["With"]]
 ```
 
-### second - `$.second(array: AnyObject[])`
+### second - `$.second(array: [AnyObject])`
 
 Gets the second element in the array.
 
@@ -339,13 +339,13 @@ NSURL(string: "https://apple.com/swift/")?.lastPathComponent
 Flattens a nested array of any depth.
 
 ```swift
-$.flatten([[3], 4, 5]) as Int[] 
+$.flatten([[3], 4, 5]) 
 => [3, 4, 5]
 
-$.flatten([[3], "Hello", 5]) as NSObject[] 
+$.flatten([[3], "Hello", 5]) as [NSObject]
 => [3, "Hello", 5]
 
-$.flatten([[[3], 4], 5]) as Int[] 
+$.flatten([[[3], 4], 5]) 
 => [3, 4, 5]
 ```
 
@@ -571,7 +571,7 @@ $.reduce([1, 2, 3], initial: 0) { (total, element) in
 Returns a sample item from the array
 
 ```swift
-let arr : Int[] = [2, 1, 2, 3, 4]
+let arr = [2, 1, 2, 3, 4]
 $.contains(arr, value: $.sample(arr))
 => true
 ```
@@ -593,6 +593,21 @@ $.sequence((0..20).by(5))
 $.sequence("abc") 
 => ["a", "b", "c"]
 ```
+
+### sum - `$.sum`
+
+Returns the sum of elements in the array
+
+```swift
+let arr = [1, 2, 3]
+$.sum(arr)
+=> 6
+
+let floatingNums = [1.5, 2.5, 3.1]
+$.sum(floatingNums)
+=> 7.1
+```
+
 ### remove - `$.remove`
 
 Removes an element from array.
@@ -1018,7 +1033,7 @@ let fun = $.bind({ (names: String...) -> String in
    let people = $.join(names, separator: " from ")
    return "Hello \(people)"
    }, "Ankur", "Swift")
-$.times(2, function: fun) as String[] 
+$.times(2, function: fun) as [String] 
 => ["Hello Ankur from Swift", "Hello Ankur from Swift"]
 ```
 
