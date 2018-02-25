@@ -33,7 +33,6 @@
 		__PBXFileRef_Sources/Dollar.swift /* Dollar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dollar.swift; sourceTree = "<group>"; };
 		__PBXFileRef_Tests/DollarTests/CarExample.swift /* CarExample.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarExample.swift; sourceTree = "<group>"; };
 		__PBXFileRef_Tests/DollarTests/DollarTests.swift /* DollarTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DollarTests.swift; sourceTree = "<group>"; };
-		__PBXFileRef_scripts /* scripts */ = {isa = PBXFileReference; lastKnownFileType = folder; path = scripts; sourceTree = "<group>"; };
 		"_____Product_Dollar" /* Dollar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Dollar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		"_____Product_DollarTests" /* DollarTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; path = DollarTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -71,7 +70,6 @@
 				__PBXFileRef_Package.swift /* Package.swift */,
 				"_____Configs_" /* Configs */,
 				"_____Sources_" /* Sources */,
-				__PBXFileRef_scripts /* scripts */,
 				"_______Tests_" /* Tests */,
 				"____Products_" /* Products */,
 			);
