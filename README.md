@@ -6,7 +6,7 @@ Dollar is a Swift library that provides useful functional programming helper met
 
 [Cent](https://github.com/ankurp/Cent) is a library that extends certain Swift object types using the extension feature and gives its two cents to Swift language. It is now moved into a separate repo to support `Swift Package Manager`
 
-NOTE: Starting Swift 4 `$` is no longer a valid identifier. So you get the following `error: '$' is not an identifier; use backticks to escape it` You will need to espace `$` identifier using backticks.
+NOTE: Starting Swift 4 `$` is no longer a valid identifier. So you get the following `error: '$' is not an identifier; use backticks to escape it` . Instead use `Dollar`.
 
 ## Contents ##
 
