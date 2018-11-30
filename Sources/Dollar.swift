@@ -1325,7 +1325,7 @@ open class Dollar {
                 returnMatrix[index][rowNumber] = item
             }
         }
-        return returnMatrix.flatMap { $0.flatMap { $0 } }
+        return returnMatrix.compactMap { $0.compactMap { $0 } }
     }
 
     /// Creates an array of unique values, in order, of the provided arrays.
