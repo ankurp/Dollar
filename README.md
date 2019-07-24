@@ -44,6 +44,7 @@ Still stuck. Then checkout this screencast on [how to import](http://recordit.co
 
 ## Support for Xcode and Swift
 
+* For Xcode 11 (Swift 5.0) use version `9.0.0`
 * For Xcode 10 (Swift 4.2) use version `8.0.0`
 * For Xcode 9 (Swift 4) use version `7.1.0`
 * For Xcode 8 (Swift 3) use version `6.0.0`
