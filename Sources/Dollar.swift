@@ -957,7 +957,7 @@ open class Dollar {
     ///            the last partition may less than n elements long.
     /// - returns: Array partitioned into n element arrays, starting step elements apart.
     open class func partition<T>(_ array: [T], n num: Int, step: Int? = .none, pad: [T]?) -> [[T]] {
-        var array = array
+        let array = array
         var num = num
         var step = step
         var result: [[T]] = []
