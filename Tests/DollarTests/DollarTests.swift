@@ -165,7 +165,7 @@ class DollarTests: XCTestCase {
     }
 
     func testSequence() {
-        XCTAssertEqual(Dollar.sequence("abc".characters), ["a", "b", "c"], "Generates array of characters")
+        XCTAssertEqual(Dollar.sequence("abc"), ["a", "b", "c"], "Generates array of characters")
     }
 
     func testRemove() {
@@ -620,7 +620,7 @@ class DollarTests: XCTestCase {
         XCTAssertEqual(oddEven[0]!, [2, 4], "Returns dictionary grouped by remainders of two")
         XCTAssertEqual(oddEven[1]!, [1, 3], "Returns dictionary grouped by remainders of two")
 
-        let wordCount = Dollar.groupBy(["strings", "with", "different", "lengths"], callback: {$0.characters.count})
+        let wordCount = Dollar.groupBy(["strings", "with", "different", "lengths"], callback: {$0.count})
         XCTAssertEqual(wordCount[7]!, ["strings", "lengths"], "Returns dictionary with string lengths as keys")
         XCTAssertEqual(wordCount[9]!, ["different"], "Returns dictionary with string lengths as keys")
         XCTAssertEqual(wordCount[4]!, ["with"], "Returns dictionary with string lengths as keys")
