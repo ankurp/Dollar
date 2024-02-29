@@ -237,7 +237,7 @@ class DollarTests: XCTestCase {
     }
 
     func testTranspose() {
-        var matrix = Dollar.transpose([[1, 2, 3], [4, 5, 6]])
+        let matrix = Dollar.transpose([[1, 2, 3], [4, 5, 6]])
         XCTAssertEqual(matrix[0], [1, 4], "Tranpose of matrix")
         XCTAssertEqual(matrix[1], [2, 5], "Tranpose of matrix")
         XCTAssertEqual(matrix[2], [3, 6], "Tranpose of matrix")
