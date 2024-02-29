@@ -545,7 +545,7 @@ Dollar.reduce([1, 2, 3], initial: 0) { (total, element) in
 Returns a sample item from the array
 
 ```swift
-let arr : Int[] = [2, 1, 2, 3, 4]
+let arr: [Int] = [2, 1, 2, 3, 4]
 Dollar.contains(arr, value: Dollar.sample(arr))
 => true
 ```
@@ -641,7 +641,7 @@ Dollar.union([1, 2, 3], [5, 2, 1, 4], [2, 1])
 Creates an array of all values, including duplicates, of the arrays in the order they are provided.
 
 ```swift
-let arr  = [1, 5]
+let arr = [1, 5]
 let arr2 = [2, 4]
 let arr3 = [5, 6]
 let result = Dollar.merge(arr, arr2, arr3)
@@ -729,7 +729,7 @@ Dollar.partition(arr, n: 4, step: 1, pad: [6, 7, 8])
 Produces an array of arrays, each containing n elements, each offset by step. Continues after a partition is less than n length.
 
 ```swift
-Dollar.partitionAll([1, 2, 3, 4, 5], n:4, step: 1)
+Dollar.partitionAll([1, 2, 3, 4, 5], n: 4, step: 1)
 => [[1, 2, 3, 4], [2, 3, 4, 5], [3, 4, 5], [4, 5], [5]]
 ```
 
@@ -1144,11 +1144,11 @@ Dollar.chain([[1, 2], 3, [[4], 5]])
 Dollar.chain([1, 2, 3, 4, 5])
   .filter { $0 % 1 == 0 }
   .map { $0 * 2 }
-  .all {$0 < 10}
+  .all { $0 < 10}
 => false
 
 Dollar.chain([1, 2, 3, 4, 5])
-  .map({ $0 * 2 })
+  .map { $0 * 2 }
   .flatten()
   .initial(2).value
 => [2, 4, 6]
